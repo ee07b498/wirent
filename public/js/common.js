@@ -1,0 +1,139 @@
+﻿;(function(){
+	'use strict';
+	angular.module('common',[])
+				.controller('HomeController',[
+					'$state',
+					'$scope',
+					'$element',
+					'$http',
+					function($state,$scope,$element,$http){
+					//	$scope.address="";
+						$scope.active1 = true;
+						var address = {};
+						var active = true;
+						var data = {};
+						var count = 0;
+						var regions = {};
+					$scope.switchCheckBox1 = function(e) {  
+						console.log("123");
+						$scope.active1 = true;
+						$scope.active2 = false;
+				}
+				$scope.switchCheckBox2 = function(e) {  
+						console.log("1234");
+						$scope.active1 = false;
+						$scope.active2 = true;
+				}
+				//model types
+				$scope.myMode = 'Entire';
+				$scope.Modes = [{ id: 1, name: 'Entire' }, { id: 2, name: 'Share' }, { id: 3, name: 'New Homes' },{ id: 4, name: 'Sold' }];
+				 // input address
+				 
+				 $scope.sendMsg = function () {
+				 	regions = {};
+				 	data.inputStr = $scope.inputStr;
+				 	if(data.inputStr && data.inputStr.length>2 ) 	
+						$http.post('/customer/filt_address', data)
+							.then(function(r){
+								//console.log('r',r);				
+									angular.forEach(r.data, function(value,key){
+																			
+									  regions.region = value.region;
+									  regions.suburb = value.suburb;
+									  
+									});
+									
+									console.log(regions);
+									
+							},function(e){
+								console.log("数据有误");
+							})
+					
+				}
+				
+				
+				// property types
+			$scope.myPropertyType = 'Any';
+			$scope.propertyTypes = [{ id: 1, propertyType:'Any'}, { id: 2,propertyType:'Apartment'},
+				{ id: 3, propertyType:'Unit'},{ id: 4,propertyType:'Studio'},
+				{ id: 5, propertyType:'House'}];
+			
+			
+			
+			//select minPrice
+				$scope.myMinPrice = 'Any';
+				$scope.minPrices = [{ id: 1, price: 'Any' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
+									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
+									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
+									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
+									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
+									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
+									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
+									,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
+				 
+			//select maxPrice
+				$scope.myMaxPrice = 'Any';
+				$scope.maxPrices = [{ id: 1, price: 'Any' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
+									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
+									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
+									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
+									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
+									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
+									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
+									,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
+			//select bedsNum
+				$scope.minBedNum = 'Any';
+				$scope.maxBedNum = 'Any';
+				$scope.bedsNum = [{ id: 1, num: 'Any' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
+								,{ id: 5, num: '4' },{ id: 6, num: '5' }];				
+			//select bathNum
+				$scope.minBathNum = 'Any';
+				$scope.maxBathNum = 'Any';
+				$scope.bathsNum = [{ id: 1, num: 'Any' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
+								,{ id: 5, num: '4' },{ id: 6, num: '5' }];
+								
+			//select parkingNum
+				$scope.myParkingNum = 'Any';
+				$scope.parkingsNum = [{ id: 1, num: 'Any' }, { id: 2, num: '0' }, { id: 3, num: '1' },{ id: 4, num: '2' }
+								,{ id: 5, num: '3' },{ id: 6, num: '4' },{ id: 7, num: '5' }];
+								
+			//datepicker
+			$scope.entireSearch = function(){
+				
+				data= {
+				 address:$scope.address || ' ',
+				 ER_Suburb:regions.suburb,
+				 ER_Region:regions.region,
+				 ER_Type:$scope.myPropertyType,
+				 ER_PriceMin:$scope.myMinPrice,
+				 ER_PriceMax:$scope.myMaxPrice,
+				 ER_BedRoomMin:$scope.minBedNum,
+				 ER_BedRoomMax:$scope.maxBedNum,
+				 ER_BathRoomMin:$scope.minBathNum,
+				 ER_BathRoomMax:$scope.maxBathNum,
+				 ER_ParkingMin:$scope.myParkingNum,
+				 ER_Description:$scope.keywords || ' '
+			 }
+			 console.log(data);
+			 $state.go('result');
+			/* console.log(me.signup_data);
+					$http.post('/api/signup', data)
+						.then(function(r){
+							//console.log('r',r);
+							if (r.data.status)
+							{
+								me.signup_data = {};
+								$state.go('result');
+							}
+							
+							
+						},function(e){
+							
+						})*/
+			}
+			 
+
+			}])
+			
+
+})();
