@@ -53,16 +53,16 @@
 				
 				
 				// property types
-			$scope.myPropertyType = 'Any';
-			$scope.propertyTypes = [{ id: 1, propertyType:'Any'}, { id: 2,propertyType:'Apartment'},
+			$scope.myPropertyType = '';
+			$scope.propertyTypes = [{ id: 1, propertyType:''}, { id: 2,propertyType:'Apartment'},
 				{ id: 3, propertyType:'Unit'},{ id: 4,propertyType:'Studio'},
 				{ id: 5, propertyType:'House'}];
 			
 			
 			
 			//select minPrice
-				$scope.myMinPrice = 'Any';
-				$scope.minPrices = [{ id: 1, price: 'Any' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
+				$scope.myMinPrice = 0;
+				$scope.minPrices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
 									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
 									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
 									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
@@ -72,8 +72,8 @@
 									,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
 				 
 			//select maxPrice
-				$scope.myMaxPrice = 'Any';
-				$scope.maxPrices = [{ id: 1, price: 'Any' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
+				$scope.myMaxPrice = 2000;
+				$scope.maxPrices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
 									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
 									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
 									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
@@ -82,19 +82,19 @@
 									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
 									,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
 			//select bedsNum
-				$scope.minBedNum = 'Any';
-				$scope.maxBedNum = 'Any';
-				$scope.bedsNum = [{ id: 1, num: 'Any' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
+				$scope.minBedNum = 0;
+				$scope.maxBedNum = 5;
+				$scope.bedsNum = [{ id: 1, num: '' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
 								,{ id: 5, num: '4' },{ id: 6, num: '5' }];				
 			//select bathNum
-				$scope.minBathNum = 'Any';
-				$scope.maxBathNum = 'Any';
-				$scope.bathsNum = [{ id: 1, num: 'Any' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
+				$scope.minBathNum = 0;
+				$scope.maxBathNum = 5;
+				$scope.bathsNum = [{ id: 1, num: '' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
 								,{ id: 5, num: '4' },{ id: 6, num: '5' }];
 								
 			//select parkingNum
-				$scope.myParkingNum = 'Any';
-				$scope.parkingsNum = [{ id: 1, num: 'Any' }, { id: 2, num: '0' }, { id: 3, num: '1' },{ id: 4, num: '2' }
+				$scope.myParkingNum = 0;
+				$scope.parkingsNum = [{ id: 1, num: '' }, { id: 2, num: '0' }, { id: 3, num: '1' },{ id: 4, num: '2' }
 								,{ id: 5, num: '3' },{ id: 6, num: '4' },{ id: 7, num: '5' }];
 								
 			//datepicker
@@ -112,24 +112,28 @@
 				 ER_BathRoomMin:$scope.minBathNum,
 				 ER_BathRoomMax:$scope.maxBathNum,
 				 ER_ParkingMin:$scope.myParkingNum,
+				 ER_ParkingMax:5,	
+				 ER_AreaMin:0,
+				 ER_AreaMax:5000,
+				 ER_AvailableDate:'2020-01-01',
 				 ER_Description:$scope.keywords || ' '
 			 }
-			 console.log(data);
-			 $state.go('result');
-			/* console.log(me.signup_data);
-					$http.post('/api/signup', data)
+//			 console.log(data);
+//			 $state.go('result');
+//			 console.log(me.signup_data);
+					$http.post('/customer/filt/entire', data)
 						.then(function(r){
-							//console.log('r',r);
-							if (r.data.status)
+							console.log('r',r);
+							if (r.status)
 							{
-								me.signup_data = {};
+								
 								$state.go('result');
 							}
 							
 							
 						},function(e){
 							
-						})*/
+						})
 			}
 			 
 

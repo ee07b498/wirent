@@ -45,7 +45,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/login',			'CustomerController@login');
 	$app->post('/register',			'CustomerController@register');
 	$app->get('/logout',			'CustomerController@logout'); 
-	$app->get('/filt/entire', 		'CustomerController@filt_entire');
+	$app->post('/filt/entire', 		'CustomerController@filt_entire');
 	$app->get('/filt/share', 		'CustomerController@filt_share');	
 	$app->post('/filt_address', 		'CustomerController@filt_address');	
 	$app->get('/profile', 			['middleware' => 'cus','uses'=>'CustomerController@profile_check']);
