@@ -1,0 +1,14 @@
+[global]
+ApplicationName=wirent-lumen
+AwsCredentialFile=C:\Users\ee07b498\.elasticbeanstalk\aws_credential_file
+DevToolsEndpoint=git.elasticbeanstalk.ap-southeast-2.amazonaws.com
+EnvironmentName=wirent-lumen-env
+EnvironmentTier=WebServer::Standard::1.0
+EnvironmentType=SingleInstance
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=D:\wamp\www\lumen\.elasticbeanstalk\optionsettings.wirent-lumen-env
+RdsEnabled=No
+Region=ap-southeast-2
+ServiceEndpoint=https://elasticbeanstalk.ap-southeast-2.amazonaws.com
+SolutionStack=64bit Amazon Linux 2016.09 v2.3.3 running PHP 7.0
+

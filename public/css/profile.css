@@ -1,0 +1,325 @@
+.profile {
+	position: relative;
+	width: 100%;
+    min-height: 100%;
+}
+.profile ol, .profile ul, .profile li{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.profile section {
+    padding: 40px 0;
+}
+.profile.main-area {
+    background: #f2f5f7;
+}
+
+.content-wrap {
+    width: 100%;
+}
+.profile.inner-wrap {
+    width: 1020px;
+}
+.profile .inner-wrap {
+    position: relative;
+    margin: 3px auto;
+    max-width: 1020px;
+}
+.feedback.success {
+    background-color: #f5fae5;
+    border-color: #0ea800;
+}
+.feedback.error {
+    background-color: #fee;
+    border-color: #ee6161;
+}
+.feedback {
+    padding: 2px;
+    margin-bottom: 5px;
+    background-color: #fff8ea;
+    border-radius: 3px;
+    border: 1px solid #fca96d;
+}
+.profile-nav {
+	padding: 2px;
+    margin-bottom: 5px;
+   
+    border-radius: 3px;
+   
+}
+.tabNav {
+    overflow: hidden;
+    background: #fff;
+    border-radius: 2px;
+}
+.tabNav a {
+    display: block;
+    height: 60px;
+    position: relative;
+}
+.tabNav .selected a:before, .tabNav a:hover:before {
+    left: 0;
+    background: #b30000;
+}
+.tabNav a:before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    left: 4px;
+    top: 0;
+    background: transparent;
+}
+
+.tabNav li {
+    display: block;
+    width: 100%;
+    border-top: solid #d8dade 1px;
+}
+.tabNav li:first-child {
+    border-top: 0;
+}
+
+a:visited, .faux-link:visited {
+    color: #979da7;
+}
+.tabNav a.f-icon.with-text .icon {
+    margin-left: 12px;
+    height: 60px;
+    line-height: 60px;
+}
+
+
+.f-icon.with-text .icon {
+    float: left;
+}
+.f-icon.with-text {
+    width: auto;
+}
+.f-icon .icon {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+}
+.f-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+.tabNav a.f-icon.with-text .copy {
+    line-height: 60px;
+    margin-left: 8px;
+}
+
+.f-icon.with-text .copy {
+    float: left;
+    display: inline-block;
+    padding-right: 10px;
+    line-height: 40px;
+}
+html>body .f-icon, html>body a.f-icon {
+    color: #b6bbc2;
+}
+html>body .selected>.f-icon, html>body .selected>a.f-icon {
+    color: #3c475b;
+}
+.f-icon:hover, html>body .f-icon:active, html>body .f-icon:focus, html>body a.f-icon:hover, html>body a.f-icon:active, html>body a.f-icon:focus {
+    color: #3c475b;
+}
+
+.card:before {
+	display: table;
+	background: #263248;
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 40px;
+	width: 100%;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+    content: "";
+}
+
+.profile .profile-detail .btn {
+    display: inline-block;
+    padding: 0 26px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    color: #fafbfc;
+    -webkit-appearance: none;
+    border: 0;
+    border-radius: 3px;
+    width: auto;
+    overflow: visible;
+}
+.btn {
+    -webkit-transition: background .2s linear;
+    transition: background .2s linear;
+}
+
+.lowlight {
+    color: #979da7;
+}
+.btn.lowlight {
+    background: #515b6d;
+}
+.btn.lowlight:hover, .btn.lowlight:focus {
+    background: #263248!important;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+/*end of modal*/
+
+
+.card {
+    position: relative;
+    margin-bottom: 20px;
+    display: block;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 #d8dade;
+}
+.card>.inner-wrap, .card>a>.inner-wrap {
+    padding: 0 20px 25px 20px;
+}
+.card .half:first-child {
+    margin-left: 0;
+    margin-right: 2%;
+}
+
+.card .half {
+    float: left;
+    width: 48%;
+    margin-left: 2%;
+}
+.frm-main:after {
+    clear: both;
+}
+
+.frm-main:before, .frm-main:after {
+    display: table;
+    content: "";
+}
+.frm-main {
+    clear: both;
+    margin-bottom: 15px;
+}
+.frm-main .inner-wrap {
+    margin: 0 0 0 180px;
+    width: auto;
+    position: relative;
+}
+.frm-main>label, .frm-main .faux-lbl {
+    float: left;
+    width: 160px;
+    font-weight: normal;
+    text-align: right;
+    color: #979da7;
+}
+
+label, .cursor-hand {
+    cursor: pointer;
+}
+
+.frm-main .inner-wrap {
+    margin: 0 0 0 180px;
+    width: auto;
+    position: relative;
+}
+.no-indent .inner-wrap {
+    margin-left: 0;
+}
+.no-indent>label, .no-indent .faux-lbl {
+    float: none;
+    display: block;
+    width: auto;
+    margin-bottom: 3px;
+    text-align: left;
+}
+
+.frm-main input[type='text'], .frm-main input[type='email'], .frm-main input[type='tel'], .frm-main input[type='password'], .frm-main textarea, .frm-main select, .frm-main .input-placeholder {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    vertical-align: top;
+    border: 1px solid #d0d3d9;
+    background: #fff;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
