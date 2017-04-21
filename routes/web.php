@@ -34,6 +34,18 @@ $app->group(['prefix' => '/tpl/page'], function () use ($app){
 	$app->get('/result',function () {
 		return view('page.result');	
 	});
+	$app->get('/aboutus',function () {
+		return view('page.aboutus');	
+	});
+	$app->get('/contact',function () {
+		return view('page.contact');	
+	});
+	$app->get('/news',function () {
+		return view('page.news');	
+	});
+	$app->get('/profile',function () {
+		return view('page.profile');	
+	});
 });
 
 /*
@@ -44,7 +56,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	 
 	$app->post('/login',			'CustomerController@login');
 	$app->post('/register',			'CustomerController@register');
-	$app->get('/logout',			'CustomerController@logout'); 
+	$app->post('/logout',			'CustomerController@logout'); 
 	$app->post('/filt/entire', 		'CustomerController@filt_entire');
 	$app->get('/filt/share', 		'CustomerController@filt_share');	
 	$app->post('/filt_address', 		'CustomerController@filt_address');	

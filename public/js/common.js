@@ -1,6 +1,6 @@
 ﻿;(function(){
 	'use strict';
-	angular.module('common',[])
+	angular.module('common',['ui.bootstrap'])
 				.controller('HomeController',[
 					'$state',
 					'$scope',
@@ -35,7 +35,7 @@
 				 	if(data.inputStr && data.inputStr.length>2 ) 	
 						$http.post('/customer/filt_address', data)
 							.then(function(r){
-								//console.log('r',r);				
+								console.log('r',r);				
 									angular.forEach(r.data, function(value,key){
 																			
 									  regions.region = value.region;
@@ -136,6 +136,44 @@
 						})
 			}
 			 
+			 //datepicker
+	$scope.today = function() {
+      $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function () {
+      $scope.dt = null;
+    };
+
+    // Disable weekend selection
+    /*$scope.disabled = function(date, mode) {
+      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+    };*/
+
+    $scope.toggleMin = function() {
+      $scope.minDate = $scope.minDate ? null : new Date();
+    };
+    $scope.toggleMin();
+
+    $scope.open = function($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+
+      $scope.opened = true;
+    };
+
+    $scope.dateOptions = {
+      formatYear: 'yy',
+      startingDay: 1,
+      class: 'datepicker'
+    };
+
+    $scope.initDate = new Date('2016-15-20');
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+
+
 
 			}])
 			

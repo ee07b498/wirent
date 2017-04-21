@@ -1,18 +1,18 @@
 ﻿;(function(){
 	'use strict';
 	angular.module('user',['andy'])
-			.service('UserService',['$state','$http',
-			function ($state,$http){
+			.service('UserService',['$state','$http','$window',
+			function ($state,$http,$window){
 				var me = this;
 				me.signup_data = {};
 				me.login_data = {};
 				me.data = {};
-				me.profile = true;
+				me.profile = false;
 				me.loginCheck = function(){
 					return	$http.get('/customer/profile')
 						.then(function(r){
-							return r.customer_login_status;
-							
+							console.log(r);
+							return r.customer_login_status;						
 						})
 				}
 				
@@ -35,13 +35,18 @@
 					$http.post('/customer/login',me.login_data)
 						.then(function(r)
 						{
+							console.log($window.sessionStorage.token);
 							//$state.go('home')
 							if(r.status){
-							me.profile = false;//BaseService.profile = false;
+							$window.sessionStorage.token = r.status;//BaseService.profile = false;
+						//	console.log($window.sessionStorage.token);
 							if(me.loginCheck()){
-								//alert(me);
-								
+									
+								me.profile = true;
+								console.log(me);
 								location.href = '/';
+								 // $state.go('home');
+								
 							}
 							
 							
@@ -53,6 +58,8 @@
 							
 						})
 				}
+				
+				
 			}])
 			.controller('SignupFormController',[
 			'$scope',

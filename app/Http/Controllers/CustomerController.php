@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Aws\S3\S3Client;
 /*
  * return 默认stdClass, 根据前端需求修改。
  * stdClass 成员变量直接以对象形式表示及赋值：$a->b=c, 无key=>value格式：$a['b']=c
@@ -30,7 +30,7 @@ class CustomerController extends Controller
 			//添加session 登陆信息	
 			foreach($customerInfo[0] as $key=>$value)
 			{app('session')->put([$key=>$value]);}
-			app('session')->put('customer_login_status',1);									
+			app('session')->put('customer_login_status',1);								
 			return ['CEmail'=>$CEmail,'stat'=>1];
 		}
         return ['CEmail'=>$CEmail,'stat'=>0];
@@ -437,5 +437,31 @@ class CustomerController extends Controller
 		$result = DB::insert($sql);
 		return $result;
 	}	
+	
+	public function file_upload()
+	{
+		$bucket = 'elasticbeanstalk-ap-southeast-2-653083494801';
+		$keyname = 'CPhoto/1.photo.jpg';
+// $filepath should be absolute path to a file on disk						
+		$filepath = 'D:\wamp\www\lumen\public\img\b20.jpg';
+						
+// Instantiate the client.
+		$s3 = S3Client::factory();
+
+// Upload a file.
+		$result = $s3->putObject(array(
+		    'Bucket'       => $bucket,
+		    'Key'          => $keyname,
+		    'SourceFile'   => $filepath,
+		    'ContentType'  => 'text/plain',
+		    'ACL'          => 'public-read',
+		    'StorageClass' => 'REDUCED_REDUNDANCY',
+		    'Metadata'     => array(    
+		        'Content-Type' => 'image/jpeg'
+   		 	)
+		));
+
+		echo $result['ObjectURL'];
 		
+	}	
 }

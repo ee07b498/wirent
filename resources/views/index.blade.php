@@ -10,14 +10,16 @@
 	<link rel="stylesheet" href="/css/simple-line-icons.css" type="text/css" />
 	<link rel="stylesheet" href="/css/font.css" type="text/css" />
 	<link rel="stylesheet" href="/css/app.css" type="text/css" />
-	<link rel="stylesheet" href="/css/index.css" type="text/css" />
 	<link rel="stylesheet" href="/css/search-option.css" type="text/css" />
+	<link rel="stylesheet" href="/css/profile.css" type="text/css" />
 	<script src="/node_modules/angular/angular.min.js"></script>
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="/node_modules/jquery.slimscroll.min.js"></script>
 	<script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="/node_modules/ui-bootstrap-tpls.js"></script>
 	<script src="/node_modules/ui-utils.js"></script>
+	<script src="/js/directives/ui-jq.js"></script>
+	<script src="/js/services/ui-load.js"></script>
 	<script src="/js/base.js"></script>
 	<script src="/js/user.js"></script>
 	<script src="/js/question.js"></script>
@@ -52,9 +54,9 @@
 		<ul class="nav navbar-nav hidden-sm">
 			<li><a href="#about">Rental</a></li>
 			<li><a href="#services">Buy</a></li>
-			<li><a href="#portfolio">News</a></li>
-			<li><a href="#pricing">Contact</a></li>
-			<li><a href="#contact">About</a></li>
+			<li><a ui-sref="news">News</a></li>
+			<li><a ui-sref="contact">Contact</a></li>
+			<li><a ui-sref="aboutus">About</a></li>
 		</ul>
         <!-- / link and dropdown -->
 
@@ -106,17 +108,17 @@
             </div>
             <!-- / dropdown -->
           </li>
-		  <li>
+		  <li >
 			<a><i class="fa fa-star fa-fw"></i></a>
 		  </li>
-          <li ng-if="User.profile">
-			<a ui-sref="login"><span class="badge badge-lg bg-success" ng-click="login()">登录</span></a>
+          <li ng-if="!profile">
+			<a ui-sref="login"><span class="badge badge-lg bg-success" >登录</span></a>
 		  </li>
-		  <li>
-			<a ui-sref="signup"><span class="badge badge-lg bg-success" ng-click="signup()">注册</span></a>
+		  <li ng-if="!profile">
+			<a ui-sref="signup"><span class="badge badge-lg bg-success" >注册</span></a>
 		  </li>
 		 
-		 <li ng-if="User.profile" class="dropdown" dropdown>
+		 <li ng-if="profile" class="dropdown" dropdown>
             <a href class="dropdown-toggle clear" dropdown-toggle>
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                 <img src="/img/andy.jpg" alt="...">
@@ -149,7 +151,7 @@
               </li>
               <li class="divider"></li>
               <li>
-                <a ui-sref="login">Logout</a>
+                <a ng-click="logout()">Logout</a>
               </li>
             </ul>
             <!-- / dropdown -->

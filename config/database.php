@@ -59,10 +59,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
+            'host'      => env('DB_HOST', 'aaao35ihtzvxyw.cafiqu7euk8i.ap-southeast-2.rds.amazonaws.com'),
             'port'      => env('DB_PORT', 3306),
             'database'  => env('DB_DATABASE', 'wi_rent_test1.0'),
-            'username'  => env('DB_USERNAME', 'customer'),
+            'username'  => env('DB_USERNAME', 'ee07b498'),
             'password'  => env('DB_PASSWORD', 'qsyi3467'),
             'charset'   => env('DB_CHARSET', 'utf8'),
             'collation' => env('DB_COLLATION', 'utf8_unicode_ci'),

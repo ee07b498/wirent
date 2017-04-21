@@ -4,8 +4,10 @@
 	angular.module('andy',['ui.router',
 							'ui.bootstrap',
 							'common',
+							'ui.jq',
 							'question',
 							'user',
+							'ui.load',
 							'answer'])
 		.config(function($interpolateProvider,
 								$stateProvider,
@@ -18,7 +20,7 @@
 				.state('home',{
 					url:'/home',
 					//template:'<h1>homePage</h1>'
-					templateUrl:'/tpl/page/home' //����뵽ui-view�Ǳ�ȥ,//localhost:8080/home.tpl
+					templateUrl:'/tpl/page/home' //localhost:8080/home.tpl
 				})
 				.state('signup',{
 					url:'/signup',
@@ -43,6 +45,18 @@
 				.state('result',{
 					url:'/result',
 					templateUrl:'tpl/page/result'
+				})
+				.state('aboutus',{
+					url:'/aboutus',
+					templateUrl:'tpl/page/aboutus'
+				})
+				.state('news',{
+					url:'/news',
+					templateUrl:'tpl/page/news'
+				})
+				.state('contact',{
+					url:'/contact',
+					templateUrl:'tpl/page/contact'
 				})
 		})
 		 .directive('uiToggleClass', ['$timeout', '$document', function($timeout, $document) {
@@ -80,12 +94,28 @@
 			};
 		}])
 		 .service('BaseService',['$state','$http',function($state,$http){
-		 	var profile = true;
+		 
+		 	
 		 }])
-		.controller('AppCtrl',['$scope','UserService','BaseService',function($scope,UserService,BaseService){
+		.controller('AppCtrl',['$scope','UserService','BaseService','$window','$http',function($scope,$window,UserService,BaseService,$http){
 		$scope.name = "Winning";
-		$scope.User = UserService;
-		console.log("123");
+		$scope.profile = false;
+		 	$http.get('/customer/profile')
+						.then(function(r){
+							console.log(r);
+							if(r.data.customer_login_status)
+							$scope.profile = true;	
+							else 
+							$scope.profile = false;
+						})
+		console.log($scope.profile );
+		$scope.logout = function(){
+					 alert("logout");
+					 $http.post('/customer/logout',{})
+						.then(function(){
+							location.href = '/';
+						});
+				}
 		
 	}])			
 	
