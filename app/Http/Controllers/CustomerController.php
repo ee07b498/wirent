@@ -438,21 +438,26 @@ class CustomerController extends Controller
 		return $result;
 	}	
 	
-	public function file_upload()
+	public function file_upload(Request $request)
 	{
-		$bucket = 'elasticbeanstalk-ap-southeast-2-653083494801';
+		$bucket = 'wirent';
 		$keyname = 'CPhoto/1.photo.jpg';
 // $filepath should be absolute path to a file on disk						
 		$filepath = 'D:\wamp\www\lumen\public\img\b20.jpg';
 						
 // Instantiate the client.
-		$s3 = S3Client::factory();
-
+//		$s3 = S3Client::factory();
+		$options = [
+			    'region'            => 'ap-southeast-2',
+    			'version'           => 'latest',
+   				'credentials' => false
+		];
+		$s3 = new S3Client($options);
 // Upload a file.
 		$result = $s3->putObject(array(
 		    'Bucket'       => $bucket,
 		    'Key'          => $keyname,
-		    'SourceFile'   => $filepath,
+		    'Body'   => $filepath,
 		    'ContentType'  => 'text/plain',
 		    'ACL'          => 'public-read',
 		    'StorageClass' => 'REDUCED_REDUNDANCY',
@@ -460,6 +465,7 @@ class CustomerController extends Controller
 		        'Content-Type' => 'image/jpeg'
    		 	)
 		));
+
 
 		echo $result['ObjectURL'];
 		

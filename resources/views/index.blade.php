@@ -83,7 +83,7 @@
                 <div class="list-group">
                   <a href class="media list-group-item">
                     <span class="pull-left thumb-sm">
-                      <img src="/img/andy.jpg" alt="..." class="img-rounded">
+                      <img src="https://s3-ap-southeast-2.amazonaws.com/elasticbeanstalk-ap-southeast-2-653083494801/CPhoto/andy.jpg" alt="..." class="img-rounded">
                     </span>
                     <span class="media-body block m-b-none">
                       Olympic park<br>
@@ -92,7 +92,7 @@
                   </a>
                   <a href class="media list-group-item">
                     <span class="pull-left thumb-sm">
-                      <img src="/img/andy.jpg" alt="..." class="img-rounded">
+                      <img src="https://s3-ap-southeast-2.amazonaws.com/elasticbeanstalk-ap-southeast-2-653083494801/CPhoto/andy.jpg" alt="..." class="img-rounded">
                     </span>
                     <span class="media-body block m-b-none">
                       Olympic park<br>
@@ -121,7 +121,7 @@
 		 <li ng-if="profile" class="dropdown" dropdown>
             <a href class="dropdown-toggle clear" dropdown-toggle>
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="/img/andy.jpg" alt="...">
+                <img src="https://s3-ap-southeast-2.amazonaws.com/elasticbeanstalk-ap-southeast-2-653083494801/CPhoto/libin.jpg" alt="...">
                 <i class="on md b-white bottom"></i>
               </span>
               <span class="hidden-sm hidden-md">[:User.user_data.CEmail:]</span> <b class="caret"></b>

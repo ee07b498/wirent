@@ -60,6 +60,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/filt/entire', 		'CustomerController@filt_entire');
 	$app->get('/filt/share', 		'CustomerController@filt_share');	
 	$app->post('/filt_address', 		'CustomerController@filt_address');	
+	$app->get('/upload', 		'CustomerController@file_upload');		
 	$app->get('/profile', 			['middleware' => 'cus','uses'=>'CustomerController@profile_check']);
 	$app->get('/profile/update',	['middleware' => 'cus','uses'=>'CustomerController@profile_update']);
 	$app->get('/bill',				['middleware' => 'cus','uses'=>'CustomerController@bill_check']);
