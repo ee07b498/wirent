@@ -446,8 +446,8 @@ class CustomerController extends Controller
 	{
 
 
-		$bucket = 'wirent';
-		$keyname = 'CPhoto/1.photo.jpg';
+		$bucket = $request->input("bucket");
+		$keyname = $request->input("keyname");
 // $filepath should be absolute path to a file on disk						
 //		$filepath = 'D:/wamp/www/lumen/public/img/b20.jpg';
 		$filepath = $request->input("filepath");				
