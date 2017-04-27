@@ -449,8 +449,8 @@ class CustomerController extends Controller
 		$bucket = 'wirent';
 		$keyname = 'CPhoto/1.photo.jpg';
 // $filepath should be absolute path to a file on disk						
-		$filepath = 'D:/wamp/www/lumen/public/img/b20.jpg';
-						
+//		$filepath = 'D:/wamp/www/lumen/public/img/b20.jpg';
+		$filepath = $request->input("filepath");				
 // Instantiate the client.
 		$s3 = S3Client::factory(			
 			array(						
