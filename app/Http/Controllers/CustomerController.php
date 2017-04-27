@@ -462,30 +462,30 @@ class CustomerController extends Controller
 	    			]
 		));
 
-		$uploader = new MultipartUploader($s3, $filepath, [
-		    'bucket' => $bucket,
-		    'key'    => $keyname,
-		]);
+//		$uploader = new MultipartUploader($s3, $filepath, [
+//		    'bucket' => $bucket,
+//		    'key'    => $keyname,
+//		]);
 
 
 // Upload a file.
-//		$result = $s3->putObject(array(
-//		    'Bucket'       => $bucket,
-//		    'Key'          => $keyname,
-//		    'SourceFile'   => $filepath,
-//		    'ACL'          => 'public-read',
-//		));
-//
-//		echo $result['ObjectURL'];		
+		$result = $s3->putObject(array(
+		    'Bucket'       => $bucket,
+		    'Key'          => $keyname,
+		    'SourceFile'   => $filepath,
+		    'ACL'          => 'public-read',
+		));
 
-		try {
-		    $uploader->upload();
-		    echo "Upload complete.\n";
-		} catch (MultipartUploadException $e) {
-		    $uploader->abort();
-		    echo "Upload failed.\n";
-		    echo $e->getMessage() . "\n";
-		}
+		echo $result['ObjectURL'];		
+
+//		try {
+//		    $uploader->upload();
+//		    echo "Upload complete.\n";
+//		} catch (MultipartUploadException $e) {
+//		    $uploader->abort();
+//		    echo "Upload failed.\n";
+//		    echo $e->getMessage() . "\n";
+//		}
 	}	
 	
 	public function file_list(Request $request)
