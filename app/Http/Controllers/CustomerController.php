@@ -457,8 +457,8 @@ class CustomerController extends Controller
 			    'region'  => 'ap-southeast-2',
 				'version' => 'latest',		    	
 		    	'credentials' => [
-			        'key'    => 'ee07b498-at-653083494801',
-			        'secret' => 'qsyi3467'
+			        'key'    => 'AKIAJ3TAV5IAR2HQ6C2A',
+			        'secret' => '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'
 	    			]
 		));
 
