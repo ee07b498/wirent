@@ -1,12 +1,12 @@
 branch-defaults:
   master:
-    environment: LumenTest-env
+    environment: lumen-env
 environment-defaults:
   LumenTest-env:
     branch: null
     repository: null
 global:
-  application_name: wirent-lumen
+  application_name: wirent
   default_ec2_keyname: wirent
   default_platform: 64bit Amazon Linux 2016.09 v2.3.3 running PHP 7.0
   default_region: ap-southeast-2
