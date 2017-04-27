@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
 use Aws\S3\S3Client;
+
+require_once("../vendor/autoload.php");
+use Aws\S3\MultipartUploader;
+use Aws\Exception\S3MultipartUploadException;
 /*
  * return 默认stdClass, 根据前端需求修改。
  * stdClass 成员变量直接以对象形式表示及赋值：$a->b=c, 无key=>value格式：$a['b']=c
@@ -440,34 +444,66 @@ class CustomerController extends Controller
 	
 	public function file_upload(Request $request)
 	{
+
+
 		$bucket = 'wirent';
 		$keyname = 'CPhoto/1.photo.jpg';
 // $filepath should be absolute path to a file on disk						
 		$filepath = 'D:\wamp\www\lumen\public\img\b20.jpg';
 						
 // Instantiate the client.
-//		$s3 = S3Client::factory();
-		$options = [
-			    'region'            => 'ap-southeast-2',
-    			'version'           => 'latest',
-   				'credentials' => false
-		];
-		$s3 = new S3Client($options);
-// Upload a file.
-		$result = $s3->putObject(array(
-		    'Bucket'       => $bucket,
-		    'Key'          => $keyname,
-		    'Body'   => $filepath,
-		    'ContentType'  => 'text/plain',
-		    'ACL'          => 'public-read',
-		    'StorageClass' => 'REDUCED_REDUNDANCY',
-		    'Metadata'     => array(    
-		        'Content-Type' => 'image/jpeg'
-   		 	)
+		$s3 = S3Client::factory(			
+			array(						
+			    'region'  => 'ap-southeast-2',
+				'version' => 'latest',		    	
+		    	'credentials' => [
+			        'key'    => 'ee07b498-at-653083494801',
+			        'secret' => 'qsyi3467'
+	    			]
 		));
 
+		$uploader = new MultipartUploader($s3, $filepath, [
+		    'bucket' => $bucket,
+		    'key'    => $keyname,
+		]);
 
-		echo $result['ObjectURL'];
-		
+
+// Upload a file.
+//		$result = $s3->putObject(array(
+//		    'Bucket'       => $bucket,
+//		    'Key'          => $keyname,
+//		    'SourceFile'   => $filepath,
+//		    'ACL'          => 'public-read',
+//		));
+//
+//		echo $result['ObjectURL'];		
+
+		try {
+		    $uploader->upload();
+		    echo "Upload complete.\n";
+		} catch (MultipartUploadException $e) {
+		    $uploader->abort();
+		    echo "Upload failed.\n";
+		    echo $e->getMessage() . "\n";
+		}
 	}	
+	
+	public function file_list(Request $request)
+	{
+		$bucket = 'wirent';
+		$s3 = S3Client::factory();
+		$iterator = $s3->listObjects('ListObjects',array(
+		    'Bucket'       => $bucket
+		));
+		foreach ($iterator as $object) {
+		    echo $object['Key'] . "\n";
+		}
+	}
+	
+	public function file_delete(Request $request)
+	{
+		
+		
+	}
+	
 }
