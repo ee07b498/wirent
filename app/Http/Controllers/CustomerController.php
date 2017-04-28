@@ -468,11 +468,11 @@ class CustomerController extends Controller
 //		]);
 
 
-// Upload a file.
+   Upload a file.
 		$result = $s3->putObject(array(
 		    'Bucket'       => $bucket,
 		    'Key'          => $keyname,
-		    'SourceFile'   => $filepath,
+		    'Body'   => $filepath,
 		    'ACL'          => 'public-read',
 		));
 
