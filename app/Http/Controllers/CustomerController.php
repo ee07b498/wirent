@@ -472,7 +472,7 @@ class CustomerController extends Controller
 		$result = $s3->putObject(array(
 		    'Bucket'       => $bucket,
 		    'Key'          => $keyname,
-		    'Body'   => $filepath,
+		    'Body'   	   => fopen($filepath,'r'),
 		    'ACL'          => 'public-read-write',
 		));
 
