@@ -473,7 +473,7 @@ class CustomerController extends Controller
 		    'Bucket'       => $bucket,
 		    'Key'          => $keyname,
 		    'Body'   => $filepath,
-		    'ACL'          => 'public-read',
+		    'ACL'          => 'public-read-write',
 		));
 
 		echo $result['ObjectURL'];		
