@@ -437,7 +437,6 @@ class CustomerController extends Controller
 		$result = DB::insert($sql);
 		return $result;
 	}	
-<<<<<<< HEAD
 	
 	public function file_upload(Request $request)
 	{
