@@ -99,16 +99,20 @@
 		 }])
 		.controller('AppCtrl',['$scope','UserService','BaseService','$window','$http',function($scope,$window,UserService,BaseService,$http){
 		$scope.name = "Winning";
-		$scope.profile = false;
-		 	$http.get('/customer/profile')
+//		$scope.profile = false;
+		
+		
+		
+		$http.get('/customer/profile')
 						.then(function(r){
 							console.log(r);
-							if(r.data.customer_login_status)
-							$scope.profile = true;	
-							else 
-							$scope.profile = false;
+//							if(r['data']['customer_login_status'])
+//							$scope.profile = true;	
+//							else 
+//							$scope.profile = false;
+							$scope.profile = r;	
 						})
-		console.log($scope.profile );
+//		console.log($scope.profile );
 		$scope.logout = function(){
 					 alert("logout");
 					 $http.post('/customer/logout',{})

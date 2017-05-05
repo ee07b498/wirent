@@ -1,5 +1,5 @@
-;(function(){
-	'use strict';
+'use strict';
+
 /**
  * 0.1.1
  * Deferred load js/css file, used for ui-jq.js and Lazy Loading.
@@ -91,5 +91,3 @@ angular.module('ui.load', [])
 			return deferred.promise;
 		};
 }]);
-})();
-

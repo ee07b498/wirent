@@ -1,0 +1,602 @@
+<div ng-controller="HomeController"> 
+	<div class="hero-wrap clear" style="background: url(img/Evergrand1366x614Tiny.jpg) no-repeat; height: 300px;">
+	 <div>
+	 	
+			<div class="search-banner">
+			<div class="search-options clearfix">
+				<div id="search-tabs">
+					<div>
+						<div id="accommodation-offer" class="btn-group btn-group-justified" style="width:980px;margin:0 auto; border-radius:4px;background:rgba(100,100,100,0.2);">
+							<a ng-click="switchCheckBox1()" role="button" ng-class="{'active':active1}" class="btn no" style="border-radius:4px;">I need accommodation</a>
+							<a ng-click="switchCheckBox2()" role="button" ng-class="{'active':active2}" class="btn yes" style="border-radius:4px;">I need a flatmate</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<form  ng-show="active1" novalidate class="form-horizontal container form-container">
+ 
+ <div class="panel panel-default form-container form-panel" >
+    
+	<div class="row wrapper" >
+      <div class="form-col-sm-2  m-b-xs">
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myMode" ng-options="mode.name as mode.name for mode in Modes" >
+          
+        </select>
+       </div>
+      
+      <div class="col-sm-8">
+        <div class="input-group">
+          <input type="text" class="input-lg form-control" placeholder="Search">
+          <span class="input-group-btn">
+            <button class="btn btn-lg btn-success" ng-click="entireSearch()"  type="button">Search&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+          </span>
+        </div>
+      </div>
+      <div class="col-sm-2">
+      </div>
+    </div>
+    <div class="row wrapper">
+    	<div class="col-sm-3 m-b-xs">
+    		<label>Property type</label>
+       		<select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
+        </select>
+    	</div>
+    	<div class="form-col-sm-1 m-b-xs">
+    		<label class="m-t-xxl"></label>
+    		<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
+    	</div>
+    	<div class="form-col-sm-2 m-b-xs no-indent">
+    		<label class="m-t-lg"></label>
+    		<input type="text" class="form-control input-lg" placeholder="minPrice" aria-describedby="basic-addon1">
+    	</div>
+    	<div class="form-col-sm-1 m-b-xs">
+    		<label class="m-t-xxl"></label>
+    		<a style="color: white;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
+    	</div>
+    	<div class="form-col-sm-2 m-b-xs">
+    		<label class="m-t-md"></label>
+    		<input type="text" class="form-control input-lg" placeholder="maxPrice" aria-describedby="basic-addon1">
+    	</div>
+    </div>
+    <div ng-show="hello" class="row wrapper">
+    	<div class="col-sm-3 m-b-xs">
+    	<label>Property type</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
+          
+        </select>
+       </div>
+       <div class="form-col-sm-1 m-b-xs">
+    		<label class="m-t-lg"></label>
+    		<a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a>
+    	</div>
+       <div class="col-sm-2 m-b-xs">
+       	<label>minBeds</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
+         
+        </select>
+       </div>
+       <div class="form-col-sm-1 m-b-xs">
+    		<label class="m-t-lg"></label>
+    		<a style="color: white; margin:0 15px;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
+    	</div>
+        <div class="col-sm-2 m-b-xs">
+        <label>maxBeds</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
+        
+        </select>
+       </div>
+      	<div class="col-sm-1 m-b-xs"></div>
+    </div>
+    
+     <div ng-show="hello" class="row wrapper" >
+    	<div class="col-sm-3 m-b-xs">
+    		<label class="m-t-xxs">Available Time:</label>
+            <p class="input-group">
+              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-lg" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>       
+        </div>
+       <div class="col-sm-2 m-b-xs">
+       	<label>minBathRoom</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum"  >
+         
+        </select>
+       </div>
+       <div class="col-sm-2 m-b-xs">
+       	<label>maxBathRoom</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
+          
+        </select>
+       </div>
+       <div class="col-sm-2 m-b-xs">
+       	<label>minParking</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+         
+        </select>
+       </div>
+        <div class="col-sm-2 m-b-xs">
+        <label>maxParking</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+        
+        </select>
+       </div>
+      	<div class="col-sm-1 m-b-xs"></div>
+    </div>
+     <div ng-show="hello" class="row wrapper" >
+     	<div class="col-sm-2 m-b-xs">
+        <label>minArea</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+        
+        </select>
+       </div>
+       <div class="col-sm-2 m-b-xs">
+        <label>maxArea</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+        
+        </select>
+       </div>
+     	<div class="col-sm-4 m-b-xs">
+     		<label>features</label>
+    		<input type="text" class="form-control input-lg" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
+     	</div>
+     	<div class="col-sm-4 m-b-xs">
+     		<label>descriptions</label>
+    		<input type="text" class="form-control input-lg" placeholder="keyword description" aria-describedby="basic-addon1">
+     	</div>
+     </div>
+    <div class="row wrapper" >
+    	<div class="col-sm-10"></div>
+    	<div class="col-sm-2">
+    		<a style="color: gold; display: block; " ng-click="hello = !hello">
+    			more options&nbsp;<i class="fa fa-angle-double-right animate" ng-show="!hello"></i>
+    						<i class="fa fa-angle-double-down animate" ng-show="hello"></i>
+    		</a>
+    	</div>
+    	
+    </div>
+</div>
+
+</form>
+
+
+ <form  ng-show="active2" novalidate class="form-horizontal container form-container" >
+ 
+ <div class="panel panel-default form-container form-panel" >
+    
+	<div class="row wrapper">
+      <div class="form-col-sm-2  m-b-xs">
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myMode" ng-options="mode.name as mode.name for mode in Modes" >
+          
+        </select>
+       </div>
+      
+      <div class="col-sm-8">
+        <div class="input-group">
+          <input type="text" class="input-lg form-control" placeholder="Search">
+          <span class="input-group-btn">
+            <button class="btn btn-lg btn-success" type="button">Search&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+          </span>
+        </div>
+      </div>
+      <div class="col-sm-2">
+      </div>
+    </div>
+     <div class="row wrapper">
+    	<div class="col-sm-3 m-b-xs">
+    		<label>Property type</label>
+       		<select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
+        </select>
+    	</div>
+    	<div class="form-col-sm-1 m-b-xs">
+    		<label class="m-t-xxl"></label>
+    		<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
+    	</div>
+    	<div class="form-col-sm-2 m-b-xs no-indent">
+    		<label class="m-t-lg"></label>
+    		<input type="text" class="form-control input-lg" placeholder="minPrice" aria-describedby="basic-addon1">
+    	</div>
+    	<div class="form-col-sm-1 m-b-xs">
+    		<label class="m-t-xxl"></label>
+    		<a style="color: white;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
+    	</div>
+    	<div class="form-col-sm-2 m-b-xs">
+    		<label class="m-t-md"></label>
+    		<input type="text" class="form-control input-lg" placeholder="maxPrice" aria-describedby="basic-addon1">
+    	</div>
+    	<div class="col-sm-3 m-b-xs">
+    		<label class="m-t-xs">Available Time:</label>
+            <p class="input-group">
+              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-lg btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>       
+        </div>
+    </div>
+    
+    <div class="row wrapper" ng-show="hello1">
+     	<div class="col-sm-2 m-b-xs">
+        <label>minArea</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+        
+        </select>
+       </div>
+       <div class="col-sm-2 m-b-xs">
+        <label>maxArea</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+        
+        </select>
+       </div>
+     	<div class="col-sm-4 m-b-xs">
+     		<label>features</label>
+    		<input type="text" class="form-control input-lg" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
+     	</div>
+     	<div class="col-sm-4 m-b-xs">
+     		<label>descriptions</label>
+    		<input type="text" class="form-control input-lg" placeholder="keyword description" aria-describedby="basic-addon1">
+     	</div>
+     </div>
+   <div class="row wrapper" >
+    	<div class="col-sm-10"></div>
+    	<div class="col-sm-2">
+    		<a style="color: gold; display: block;" ng-click="hello1 = !hello1">
+    			more options&nbsp;<i class="fa fa-angle-double-right" ng-show="!hello1"></i>
+    						<i class="fa fa-angle-double-down" ng-show="hello1"></i>
+    		</a>
+    	</div>
+    	
+    </div>
+	</div>
+</form>
+
+	  </div>  
+	  <div class="ads"></div>
+	  
+	</div>
+	
+		<div class="clear">
+			<section class="content-wrap main-area redesign" id="main-area">
+				<section class="latest-news">
+					<div class="latest-news-inner-wrap cfix">
+						<header class="latest-news-header">
+							<a href="#" class="latest-news-title-link">
+								<h2 class="latest-news-title">latest news</h2></a>
+						</header>
+						<article class="latest-news-item">
+							<div class="media-wrap">
+								<a href="#">
+									<img src="https://strap.domain.com.au/domain-homepage/DomainHomePage-17-04-05-03-32-28-0.jpg" alt="After the boom: What it looks like when a bubble bursts">
+								</a>
+							</div>
+							<a class="latest-news-item-title" href="">After the boom: What it looks like when a bubble bursts</a>
+						</article>
+						<article class="latest-news-item">
+							<div class="media-wrap">
+								<a href="#">
+									<img src="https://strap.domain.com.au/domain-homepage/DomainHomePage-17-04-05-03-32-29-1.jpg" alt="Buying property? You shouldn&amp;#39;t listen to family and friends">
+								</a>
+							</div>
+							<a class="latest-news-item-title" href="#">Buying property? You shouldn&#39;t listen to family and friends</a>
+						</article>
+						<article class="latest-news-item">
+							<div class="media-wrap">
+								<a href="#">
+									<img src="https://strap.domain.com.au/domain-homepage/DomainHomePage-17-04-05-03-32-29-2.jpg" alt="$7 million cottage: Australia&amp;#39;s priciest one-bedroom house?">
+								</a>
+							</div>
+							<a class="latest-news-item-title" href="#">$7 million cottage: Australia&#39;s priciest one-bedroom house?</a>
+						</article>
+						<article class="latest-news-item">
+							<div class="media-wrap">
+								<a href="#">
+									<img src="https://strap.domain.com.au/domain-homepage/DomainHomePage-17-04-05-03-32-29-3.jpg" alt="The kitchen items that are worth splurging on">
+								</a>
+							</div>
+							<a class="latest-news-item-title" href="#">The kitchen items that are worth splurging on</a>
+						</article>
+					</div>
+				</section>
+
+			</section>	
+			
+		</div>
+		<div class="clearfix">
+					<div id="dream-homes-section" style="display: block; margin-top: 5px;">
+				<section class="dream-homes">
+					<h1 class="dream-homes-main-title">Dream Homes</h1>
+					<div class="content-wrap dream-homes-container is-carousel">
+						<ul class="dream-homes-list" style="width: 4497px; left: 0px;">
+							<li class="dream-homes-item " data-adid="2013482649" data-listingtype="Residential" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="2013482649" data-listingtype="Residential" data-position="1">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-agency-name">Fletchers  Canterbury</span>
+										<span class="dream-homes-title-suburb">Balwyn, Vic </span>
+										</h2>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class=" fa fa-bed"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-bath"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            1
+                                        </span>
+										<span class="fa fa-car"></span>
+										</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013482649.jpg" alt="Balwyn, Vic">
+							</li>
+							<li class="dream-homes-item " data-adid="2013431230" data-listingtype="Residential" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="2013431230" data-listingtype="Residential" data-position="2">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
+										<span class="dream-homes-title-suburb">Toorak, Vic </span>
+										</h2>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-bed"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-bath"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-car"></span>
+										</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013431230.jpg" alt="Toorak, Vic">
+							</li>
+							<li class="dream-homes-item " data-adid="2013160302" data-listingtype="Residential" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="2013160302" data-listingtype="Residential" data-position="3">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
+										<span class="dream-homes-title-suburb">South Yarra, Vic </span>
+										</h2>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-bed"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-bath"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-car"></span>
+										</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013160302.jpg" alt="South Yarra, Vic">
+							</li>
+							<li class="dream-homes-item is-lazy-loading" data-adid="2013336062" data-listingtype="NewDevelopment" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="2013336062" data-listingtype="NewDevelopment" data-position="4">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-agency-name">Lechte Corp</span>
+										<span class="dream-homes-title-suburb">Hawthorn, Vic </span>
+										</h2>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-bed"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-bath"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-car"></span>
+										</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013336062.jpg" alt="Hawthorn, Vic">
+							</li>
+							<li class="dream-homes-item is-lazy-loading" data-adid="2013260868" data-listingtype="Residential" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="2013260868" data-listingtype="Residential" data-position="5">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
+										<span class="dream-homes-title-suburb">Glen Iris, Vic </span>
+										</h2>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-bed"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-bath"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-car"></span>
+										</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013260868.jpg" alt="Glen Iris, Vic">
+							</li>
+							<li class="dream-homes-item is-lazy-loading" data-adid="2013498866" data-listingtype="NewDevelopment" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="2013498866" data-listingtype="NewDevelopment" data-position="6">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-agency-name">Trenerry Property Group  Pty Ltd</span>
+										<span class="dream-homes-title-suburb">West Melbourne, Vic </span>
+										</h2>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-bed"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-bath"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-car"></span>
+										</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013498866.jpg" alt="West Melbourne, Vic">
+							</li>
+							<li class="dream-homes-item is-lazy-loading" data-adid="2013483343" data-listingtype="Residential" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="2013483343" data-listingtype="Residential" data-position="7">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-agency-name">Fletchers  Canterbury</span>
+										<span class="dream-homes-title-suburb">Surrey Hills, Vic </span>
+										</h2>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            5
+                                        </span>
+										<span class="fa fa-bed"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            4
+                                        </span>
+										<span class="fa fa-bath"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-car"></span>
+										</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013483343.jpg" alt="Surrey Hills, Vic">
+							</li>
+							<li class="dream-homes-item is-lazy-loading" data-adid="1785" data-listingtype="Project" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="1785" data-listingtype="Project" data-position="8">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-project-name">Collins Arch</span>
+										<span class="dream-homes-title-suburb">Melbourne, Vic </span>
+										</h2>
+										<span class="dream-homes-project-agency-name">Colliers l Collins Arch</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes1785.jpg" alt="Melbourne, Vic">
+							</li>
+							<li class="dream-homes-item is-lazy-loading" data-adid="2013491279" data-listingtype="NewDevelopment" style="width: 499.667px;">
+								<a href="#" class="dream-homes-item-link" data-adid="2013491279" data-listingtype="NewDevelopment" data-position="9">
+									<header class="dream-homes-item-header">
+										<span class="dream-homes-item-header-wrap">
+                                <h2 class="dream-homes-title">
+                                        <span class="dream-homes-title-agency-name">Protec Property Group | Illusso</span>
+										<span class="dream-homes-title-suburb">Kew, Vic </span>
+										</h2>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            3
+                                        </span>
+										<span class="fa fa-bed"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-bath"></span>
+										</span>
+										<span class="f-icon with-text">
+                                        <span class="copy">
+                                            2
+                                        </span>
+										<span class="fa fa-car"></span>
+										</span>
+										</span>
+									</header>
+								</a>
+								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013491279.jpg" alt="Kew, Vic">
+							</li>
+						</ul>
+						<a href="javascript:;" class="dream-homes-prev-btn" style="display: none;">
+							<span class="icon fa fa-chevron-circle-left"></span><span class="hide-visually">previous</span>
+						</a>
+						<a href="javascript:;" class="dream-homes-next-btn" style="display: block;">
+							<span class="icon fa fa-chevron-circle-right"></span><span class="hide-visually">next</span>
+						</a>
+					</div>
+				</section>
+
+				<script src="js/index.js"></script>
+			</div>
+			<div id="adspot-970x250_728x90-pos-1" class="btf-ad ad">
+				<script type="text/javascript">
+					var titan = window.titan || {};
+					if(false) {
+						titan.requestConditionalAd = titan.requestConditionalAd || [];
+						titan.requestConditionalAd.push("adspot-970x250_728x90-pos-1");
+					} else {
+						titan.requestAd = titan.requestAd || [];
+						titan.requestAd.push("adspot-970x250_728x90-pos-1");
+					}
+				</script>
+			</div>
+	
+			
+		</div>
+
+</div>

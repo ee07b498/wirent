@@ -12,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.42857143;
   color: #58666e;
- // background-color: transparent;
+  background-color: transparent;
 }
 
 *:focus {
@@ -842,13 +842,11 @@ body {
   bottom: 0;
   left: 0;
 }
-/*andy*/
+
 .navbar {
   margin: 0;
   border-width: 0;
   border-radius: 0;
-  background:rgba(255,255,255,0.8) !important;/*background-color*/
-  z-index:999;
 }
 
 .navbar .navbar-form-sm {
@@ -907,20 +905,6 @@ body {
   vertical-align: middle;
 }
 
-.bg-grey {
-	border-radius:3px;
-	width:80%;
-	height:300px;
-	background:rgba(255,255,255,0.5);
-	margin:0 auto;
-}
-.bg-grey .wdt {
-	width:100%;
-}
-
-.bg-grey .wdt .bcg-l{
-	background-color:rgba(255,255,255,0);
-}
 @media (min-width: 768px) {
   .app-aside,
   .navbar-header {
@@ -1094,7 +1078,7 @@ body {
 }
 
 html {
-  background: #fff;
+  background: url('../img/bg.jpg');
   background-attachment: fixed;
   background-size: cover;
 }
@@ -3029,7 +3013,7 @@ fieldset[disabled] .i-checks input + i:before {
 .bg-dark .auto .list-group-item.active {
   background-color: #2e3344 !important;
 }
-/*andy*/
+
 .bg-black {
   color: #7793a7;
   background-color: #1c2b36;
@@ -4737,9 +4721,7 @@ a.text-#000000:hover {
 .w-xxl {
   width: 360px;
 }
-.w-xxxl {
-	width: 1012px;
-}
+
 .w-full {
   width: 100%;
 }

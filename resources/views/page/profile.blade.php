@@ -19,7 +19,7 @@
             </div>
             <div class="row">
             	<div class="col-sm-3 profile-nav">
-                    <ul  role="tablist">
+                    <ul class="tabNav" role="tablist">
                         <li ng-class="{'active': tabs[0]}" class="active" role="presentation">
                             <a href ng-click="tab(0)" class="f-icon with-text" id="tab-myProfile" role="tab" aria-active="true" tabindex="0">
                                 <span class="icon fa fa-user"></span>

@@ -1,4 +1,4 @@
-angular.module('andy')
+angular.module('app')
   .directive('uiToggleClass', ['$timeout', '$document', function($timeout, $document) {
     return {
       restrict: 'AC',

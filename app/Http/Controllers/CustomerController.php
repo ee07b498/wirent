@@ -444,8 +444,6 @@ class CustomerController extends Controller
 	
 	public function file_upload(Request $request)
 	{
-
-
 		$bucket = $request->input("bucket");
 		$keyname = $request->input("keyname");
 // $filepath should be absolute path to a file on disk						
@@ -466,7 +464,6 @@ class CustomerController extends Controller
 //		    'bucket' => $bucket,
 //		    'key'    => $keyname,
 //		]);
-
 
 //   Upload a file.
 		$result = $s3->putObject(array(
