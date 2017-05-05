@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
-use Aws\S3\S3Client;
 
-require_once("../vendor/autoload.php");
-use Aws\S3\MultipartUploader;
-use Aws\Exception\S3MultipartUploadException;
 /*
  * return 默认stdClass, 根据前端需求修改。
  * stdClass 成员变量直接以对象形式表示及赋值：$a->b=c, 无key=>value格式：$a['b']=c
@@ -34,7 +30,7 @@ class CustomerController extends Controller
 			//添加session 登陆信息	
 			foreach($customerInfo[0] as $key=>$value)
 			{app('session')->put([$key=>$value]);}
-			app('session')->put('customer_login_status',1);								
+			app('session')->put('customer_login_status',1);									
 			return ['CEmail'=>$CEmail,'stat'=>1];
 		}
         return ['CEmail'=>$CEmail,'stat'=>0];
@@ -441,6 +437,7 @@ class CustomerController extends Controller
 		$result = DB::insert($sql);
 		return $result;
 	}	
+<<<<<<< HEAD
 	
 	public function file_upload(Request $request)
 	{
@@ -499,8 +496,7 @@ class CustomerController extends Controller
 	
 	public function file_delete(Request $request)
 	{
+	}	
+
 		
-		
-	}
-	
 }

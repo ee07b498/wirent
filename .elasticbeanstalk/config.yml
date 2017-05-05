@@ -1,8 +1,8 @@
 branch-defaults:
   master:
-    environment: lumen-env
+    environment: wirent-env
 environment-defaults:
-  lumen-env:
+  wirent-env:
     branch: null
     repository: null
 global:
