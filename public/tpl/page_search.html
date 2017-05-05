@@ -1,0 +1,210 @@
+<!--表1：租客服务；表2：租客维修-->
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Customer Service Administration</h1>
+</div>
+<div class="wrapper-md">
+	<!--表1-->
+  	<div class="panel panel-default">
+	    <div class="panel-heading">
+	      Customer Service Table
+	    </div>
+	    <div class="row wrapper">
+	      <div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">新建</option>
+	          <option value="1">保存</option>
+	          <option value="2">编辑</option>
+	          <option value="3">删除</option>
+	          <option value="4">刷新</option>          
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+	      <div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">条件清空</option>
+	          <option value="1">服务请求</option>
+	          <!--新建服务==服务请求-->
+	          <option value="2">服务处理中</option>   
+	          <option value="3">服务已完成</option> 
+	          <option value="4">服务清除</option>
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+	    </div>
+	    <div class="table-service">
+	      <table class="table table-striped b-t b-light">
+	        <thead>
+	          <tr>
+	            <!--<th style="width:20px;">
+	              <label class="i-checks m-b-none">
+	                <input type="checkbox"><i></i>
+	              </label>
+	            </th>-->
+	            <th>SLID</th>
+	            <th>ER_ID</th>
+	            <th>CID</th>
+	            <th>ServiceType</th>
+	            <th>ServiceFile</th>
+	            <th>ServiceComment</th>
+	            <th>ServiceDate</th>
+	            <th>ServiceStat</th>                                          
+	            <th style="width:30px;"></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	            <tr ng-repeat="service in serviceSet">        
+								<td ng-bind="service.SLID"></td>
+								<td ng-bind="service.ER_ID"></td>
+								<td ng-bind="service.CID"></td>
+								<td ng-bind="service.ServiceType"></td>
+								<td ng-bind="service.ServiceFile"></td>
+								<td ng-bind="service.ServiceComment"></td>
+								<td ng-bind="service.ServiceDate"></td>
+								<td ng-bind="service.ServiceStat"></td>
+	            </tr>
+	        </tbody>
+	      </table>
+	    </div>
+	    <footer class="panel-footer">
+	      <div class="row">
+		      <div class="col-sm-5 m-b-xs">
+		        <select class="input-sm form-control w-sm inline v-middle">
+		          <option value="0">新建</option>
+		          <option value="1">保存</option>
+		          <option value="2">编辑</option>
+		          <option value="3">删除</option>
+		          <option value="4">刷新</option>          
+		        </select>
+		        <button class="btn btn-sm btn-default">Apply</button>                
+		      </div>
+		      <div class="col-sm-5 m-b-xs">
+		        <select class="input-sm form-control w-sm inline v-middle">
+		          <option value="0">条件清空</option>
+		          <option value="1">服务请求</option>
+		          <!--新建服务==服务请求-->
+		          <option value="2">服务处理中</option>   
+		          <option value="3">服务已完成</option> 
+		          <option value="4">服务清除</option>
+		        </select>
+		        <button class="btn btn-sm btn-default">Apply</button>                
+		      </div>
+	        <!--分页标签待修改-->
+	        <div class="col-sm-4 text-center">
+	          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+	        </div>
+	        <div class="col-sm-4 text-right text-center-xs">                
+	          <ul class="pagination pagination-sm m-t-none m-b-none">
+	            <li><a href><i class="fa fa-chevron-left"></i></a></li>
+	            <li><a href>1</a></li>
+	            <li><a href>2</a></li>
+	            <li><a href>3</a></li>
+	            <li><a href>4</a></li>
+	            <li><a href>5</a></li>
+	            <li><a href><i class="fa fa-chevron-right"></i></a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </footer>    
+  	</div>
+    <!--表2-->
+   	<div class="panel panel-default">
+	    <div class="panel-heading">
+	      Customer Maintenance Table
+	    </div>
+	    <div class="row wrapper">
+	      <div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">新建</option>
+	          <option value="1">保存</option>
+	          <option value="2">编辑</option>
+	          <option value="3">删除</option>
+	          <option value="4">刷新</option>
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+      	<div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">条件清空</option>
+	          <option value="1">维修请求</option>
+	          <option value="2">维修处理中</option>   
+	          <option value="3">维修已完成</option> 
+	          <option value="3">维修删除</option>
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+	    </div>
+	    <div class="table-maintenance">
+	      <table class="table table-striped b-t b-light">
+	        <thead>
+	          <tr>
+	            <!--<th style="width:20px;">
+	              <label class="i-checks m-b-none">
+	                <input type="checkbox"><i></i>
+	              </label>
+	            </th>-->
+	            <th>MLID</th>	            
+	            <th>MLType</th>
+	            <th>ER_ID</th>
+	            <th>CID</th>
+	            <th>MApplyForm</th>
+	            <th>MStat</th>
+	            <th>MConfirm</th>
+	            <th>MApplyDate</th>
+	            <th style="width:30px;"></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	            <tr ng-repeat="maintenance in maintenanceSet">        
+								<td ng-bind="maintenance.MLID"></td>
+								<td ng-bind="maintenance.MLType"></td>
+								<td ng-bind="maintenance.ER_ID"></td>
+								<td ng-bind="maintenance.CID"></td>
+								<td ng-bind="maintenance.MApplyForm"></td>
+								<td ng-bind="maintenance.MStat"></td>
+								<td ng-bind="maintenance.MConfirm"></td>
+								<td ng-bind="maintenance.MApplyDate"></td>
+	            </tr>
+	        </tbody>
+	      </table>
+	    </div>
+	    <footer class="panel-footer">
+      <div class="row">
+	      <div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">新建</option>
+	          <option value="1">保存</option>
+	          <option value="2">编辑</option>
+	          <option value="3">删除</option>
+	          <option value="4">刷新</option>
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+        <div class="col-sm-5 hidden-xs">
+          <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">条件清空</option>
+	          <option value="1">维修请求</option>
+	          <option value="2">维修处理中</option>   
+	          <option value="3">维修已完成</option> 
+	          <option value="4">维修删除</option>
+          </select>
+          <button class="btn btn-sm btn-default">Apply</button>                  
+        </div>
+        <!--分页标签待修改-->
+        <div class="col-sm-4 text-center">
+          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+        </div>
+        <div class="col-sm-4 text-right text-center-xs">                
+          <ul class="pagination pagination-sm m-t-none m-b-none">
+            <li><a href><i class="fa fa-chevron-left"></i></a></li>
+            <li><a href>1</a></li>
+            <li><a href>2</a></li>
+            <li><a href>3</a></li>
+            <li><a href>4</a></li>
+            <li><a href>5</a></li>
+            <li><a href><i class="fa fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>    
+  	</div>        	
+</div>

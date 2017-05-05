@@ -1,0 +1,385 @@
+<!--审核|添加|修改客户资料；查看|添加|修改客户账单-->
+<!--表1：租客资料；表2：合同表； 表3：房屋资料； 表4：账单-->
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Customer Administration</h1>
+</div>
+<div class="wrapper-md">
+	<!--表1-->
+  	<div class="panel panel-default">
+	    <div class="panel-heading">
+	      Customer Table
+	    </div>
+	    <div class="row wrapper">
+	      <div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">审核</option>
+	          <option value="1">资料变更</option>
+	          <option value="2">租房</option>
+	          <option value="3">查看住址</option>
+	          <option value="4">查看账单</option>          
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+	      <div class="col-sm-3">
+	        <div class="input-group">
+	          <input type="text" class="input-sm form-control" placeholder="Search">
+	          <span class="input-group-btn">
+	            <button class="btn btn-sm btn-default" type="button">Go!</button>
+	          </span>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="table-customer">
+	      <table class="table table-striped b-t b-light">
+	        <thead>
+	          <tr>
+	            <!--<th style="width:20px;">
+	              <label class="i-checks m-b-none">
+	                <input type="checkbox"><i></i>
+	              </label>
+	            </th>-->
+	            <th>CID</th>
+	            <th>CName</th>
+	            <th>CPassWord</th>
+	            <th>CPhone</th>
+	            <th>CEmail</th>
+	            <th>CCurrStat</th>
+	            <th>CLastContDate</th>
+	            <th>CIDType</th>
+	            <th>CIDProfile</th>
+	            <th>CIncomeProfile</th>
+	            <th>CSavingProfile</th>
+	            <th>CPartenerID</th>
+	            <th>CSex</th>
+	            <th>CAge</th>
+	            <th>CWorking</th>
+	            <th>CPet</th>
+	            <th>CSmoking</th>
+	            <th>CPhoto</th>
+	            <th>CBudget</th>                                            
+	            <th style="width:30px;"></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	            <tr ng-repeat="customer in customerSet">        
+					<td ng-bind="customer.CID"></td>
+					<td ng-bind="customer.CName"></td>
+					<td ng-bind="customer.CPassWord"></td>
+					<td ng-bind="customer.CPhone"></td>
+					<td ng-bind="customer.CEmail"></td>
+					<td ng-bind="customer.CCurrStat"></td>
+					<td ng-bind="customer.CLastContDate"></td>
+					<td ng-bind="customer.CIDType"></td>
+					<td ng-bind="customer.CIDProfile"></td>
+					<td ng-bind="customer.CIncomeProfile"></td>
+					<td ng-bind="customer.CSavingProfile"></td>
+					<td ng-bind="customer.CPartenerID"></td>
+					<td ng-bind="customer.CSex"></td>
+					<td ng-bind="customer.CAge"></td>
+					<td ng-bind="customer.CWorking"></td>
+					<td ng-bind="customer.CPet"></td>
+					<td ng-bind="customer.CSmoking"></td>
+					<td ng-bind="customer.CPhoto"></td>
+					<td ng-bind="customer.CBudget"></td>
+	            </tr>
+	        </tbody>
+	      </table>
+	    </div>
+	    <footer class="panel-footer">
+	      <div class="row">
+	        <!--<div class="col-sm-4 hidden-xs">
+	          <select class="input-sm form-control w-sm inline v-middle">
+	            <option value="0">委托</option>
+	            <option value="1">接受委托</option>
+	            <option value="2">资料变更</option>
+	            <option value="3">取消</option>
+	          </select>
+	          <button class="btn btn-sm btn-default">Apply</button>                  
+	        </div>-->
+	        <!--分页标签待修改-->
+	        <div class="col-sm-4 text-center">
+	          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+	        </div>
+	        <div class="col-sm-4 text-right text-center-xs">                
+	          <ul class="pagination pagination-sm m-t-none m-b-none">
+	            <li><a href><i class="fa fa-chevron-left"></i></a></li>
+	            <li><a href>1</a></li>
+	            <li><a href>2</a></li>
+	            <li><a href>3</a></li>
+	            <li><a href>4</a></li>
+	            <li><a href>5</a></li>
+	            <li><a href><i class="fa fa-chevron-right"></i></a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </footer>    
+  	</div>
+    <!--表2-->
+   	<div class="panel panel-default">
+	    <div class="panel-heading">
+	      Contracts Table
+	    </div>
+	    <div class="row wrapper">
+	      <div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">新建</option>
+	          <option value="1">保存</option>
+	          <option value="2">编辑</option>
+	          <option value="3">删除</option>
+	          <option value="4">刷新</option>
+	          <!--全部合同操作类型-->
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+	    </div>
+	    <div class="table-contracts">
+	      <table class="table table-striped b-t b-light">
+	        <thead>
+	          <tr>
+	            <!--<th style="width:20px;">
+	              <label class="i-checks m-b-none">
+	                <input type="checkbox"><i></i>
+	              </label>
+	            </th>-->
+	            <th>CLID</th>
+	            <th>ER_ID</th>
+	            <th>CLType</th>
+	            <th>CID</th>
+	            <th>ContractFile</th>
+	            <th>CLDate</th>
+	            <th>ContractComment</th>
+	            <th style="width:30px;"></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	            <tr ng-repeat="contract in contractSet">        
+								<td ng-bind="contract.CLID"></td>
+								<td ng-bind="contract.ER_ID"></td>
+								<td ng-bind="contract.CLType"></td>
+								<td ng-bind="contract.CID"></td>
+								<td ng-bind="contract.ContractFile"></td>
+								<td ng-bind="contract.CLDate"></td>
+								<td ng-bind="contract.ContractComment"></td>
+	            </tr>
+	        </tbody>
+	      </table>
+	    </div>
+	    <footer class="panel-footer">
+      <div class="row">
+        <div class="col-sm-4 hidden-xs">
+          <select class="input-sm form-control w-sm inline v-middle">
+            <option value="0">委托</option>
+            <option value="1">接受委托</option>
+            <option value="2">资料变更</option>
+            <option value="3">取消</option>
+                      <!--全部员工操作类型-->
+          </select>
+          <button class="btn btn-sm btn-default">Apply</button>                  
+        </div>
+        <!--分页标签待修改-->
+        <div class="col-sm-4 text-center">
+          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+        </div>
+        <div class="col-sm-4 text-right text-center-xs">                
+          <ul class="pagination pagination-sm m-t-none m-b-none">
+            <li><a href><i class="fa fa-chevron-left"></i></a></li>
+            <li><a href>1</a></li>
+            <li><a href>2</a></li>
+            <li><a href>3</a></li>
+            <li><a href>4</a></li>
+            <li><a href>5</a></li>
+            <li><a href><i class="fa fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>    
+  	</div>     
+	<!--表3-->
+  	<div class="panel panel-default">
+	    <div class="panel-heading">
+	      Rent Table
+	    </div>
+	    <div class="row wrapper">
+	      <div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">租房</option>
+	          <option value="1">查房</option>
+	          <option value="2">查账</option>
+	          <option value="3">查收</option>	          	
+	          <!--租房：向表2新建合同行并添加ER_ID,CLType-->
+	          	
+	          <!--查收为确认当月所由该CID下bill-->
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+	      <div class="col-sm-3">
+	        <div class="input-group">
+	          <input type="text" class="input-sm form-control" placeholder="Search">
+	          <span class="input-group-btn">
+	            <button class="btn btn-sm btn-default" type="button">Go!</button>
+	          </span>
+	        </div>
+	      </div>
+	      
+	    </div>
+	    <div class="table-customerRent">
+	      <table class="table table-striped b-t b-light">
+	        <thead>
+	          <tr>
+	            <!--<th style="width:20px;">
+	              <label class="i-checks m-b-none">
+	                <input type="checkbox"><i></i>
+	              </label>
+	            </th>-->
+	            <th>CID</th>
+	            <th>CName</th>
+	            <th>CPhone</th>
+	            <th>CEmail</th>
+	            <th>CCurrStat</th>
+	            <th>CLDate</th>
+	            <th>ER_ID</th>
+	            <th>ER_No</th>
+	            <th>ER_St</th>
+	            <th>ER_Suburb</th>
+	            <th>ER_Region</th>
+	            <th>ER_Stat</th>                                           
+	            <th style="width:30px;"></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	            <tr ng-repeat="customerRent in customerRentSet">        
+					<td ng-bind="customerRent.CID"></td>
+					<td ng-bind="customerRent.CName"></td>
+					<td ng-bind="customerRent.CPhone"></td>
+					<td ng-bind="customerRent.CEmail"></td>
+					<td ng-bind="customerRent.CCurrStat"></td>
+					<td ng-bind="customerRent.CLDate"></td>
+					<td ng-bind="customerRent.ER_ID"></td>
+					<td ng-bind="customerRent.ER_No"></td>
+					<td ng-bind="customerRent.ER_St"></td>
+					<td ng-bind="customerRent.ER_Suburb"></td>
+					<td ng-bind="customerRent.ER_Region"></td>
+					<td ng-bind="customerRent.ER_Stat"></td>
+	            </tr>
+	        </tbody>
+	      </table>
+	    </div>
+	    <footer class="panel-footer">
+	      <div class="row">
+	        <!--<div class="col-sm-4 hidden-xs">
+	          <select class="input-sm form-control w-sm inline v-middle">
+	            <option value="0">委托</option>
+	            <option value="1">接受委托</option>
+	            <option value="2">资料变更</option>
+	            <option value="3">取消</option>
+	          </select>
+	          <button class="btn btn-sm btn-default">Apply</button>                  
+	        </div>-->
+	        <!--分页标签待修改-->
+	        <div class="col-sm-4 text-center">
+	          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+	        </div>
+	        <div class="col-sm-4 text-right text-center-xs">                
+	          <ul class="pagination pagination-sm m-t-none m-b-none">
+	            <li><a href><i class="fa fa-chevron-left"></i></a></li>
+	            <li><a href>1</a></li>
+	            <li><a href>2</a></li>
+	            <li><a href>3</a></li>
+	            <li><a href>4</a></li>
+	            <li><a href>5</a></li>
+	            <li><a href><i class="fa fa-chevron-right"></i></a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </footer>    
+  	</div>
+	<!--表4-->
+   	<div class="panel panel-default">
+	    <div class="panel-heading">
+	      bill Table
+	    </div>
+	    <div class="row wrapper">
+	      <div class="col-sm-5 m-b-xs">
+	        <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">新建</option>
+	          <option value="1">保存</option>
+	          <option value="2">编辑</option>
+	          <option value="3">删除</option>
+	          <option value="4">刷新</option>
+	          <option value="5">未支付</option>
+	          
+	          <!--全部账单操作类型-->
+	        </select>
+	        <button class="btn btn-sm btn-default">Apply</button>                
+	      </div>
+	    </div>
+	    <div class="table-bill">
+	      <table class="table table-striped b-t b-light">
+	        <thead>
+	          <tr>
+	            <!--<th style="width:20px;">
+	              <label class="i-checks m-b-none">
+	                <input type="checkbox"><i></i>
+	              </label>
+	            </th>-->
+	            <th>BLID</th>
+	            <th>CID</th>	            
+	            <th>ER_ID</th>
+	            <th>BillType</th>
+				<th>BillAmount</th>
+	            <th>BillCopy</th>
+	            <th>BillDate</th>
+	            <th>BillReceipt</th>
+	            <th>BillComment</th>
+	            <th style="width:30px;"></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	            <tr ng-repeat="bill in billSet">        
+								<td ng-bind="bill.BLID"></td>
+								<td ng-bind="bill.CID"></td>
+								<td ng-bind="bill.ER_ID"></td>
+								<td ng-bind="bill.BillType"></td>
+								<td ng-bind="bill.BillAmount"></td>
+								<td ng-bind="bill.BillCopy"></td>
+								<td ng-bind="bill.BillDate"></td>
+								<td ng-bind="bill.BillReceipt"></td>
+								<td ng-bind="bill.BillComment"></td>								
+	            </tr>
+	        </tbody>
+	      </table>
+	    </div>
+	    <footer class="panel-footer">
+      <div class="row">
+        <div class="col-sm-4 hidden-xs">
+          <select class="input-sm form-control w-sm inline v-middle">
+	          <option value="0">新建</option>
+	          <option value="1">保存</option>
+	          <option value="2">编辑</option>
+	          <option value="3">删除</option>
+	          <option value="4">刷新</option>
+	          <option value="5">未支付</option>
+                      <!--全部账单操作类型-->
+          </select>
+          <button class="btn btn-sm btn-default">Apply</button>                  
+        </div>
+        <!--分页标签待修改-->
+        <div class="col-sm-4 text-center">
+          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+        </div>
+        <div class="col-sm-4 text-right text-center-xs">                
+          <ul class="pagination pagination-sm m-t-none m-b-none">
+            <li><a href><i class="fa fa-chevron-left"></i></a></li>
+            <li><a href>1</a></li>
+            <li><a href>2</a></li>
+            <li><a href>3</a></li>
+            <li><a href>4</a></li>
+            <li><a href>5</a></li>
+            <li><a href><i class="fa fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>    
+  	</div>     
+	
+</div>

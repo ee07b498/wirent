@@ -1,0 +1,273 @@
+.my-shortlist {
+	height: 100%;
+}
+.my-shortlist .page-inner-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+}
+.my-shortlist .page-inner-wrap>section {
+    padding: 40px 0;
+}
+.my-shortlist .main-area {
+    background: #f2f5f7;
+    height: 585px;
+}
+.my-shortlist .content-wrap {
+    width: 100%;
+}
+.my-shortlist .content-wrap>.inner-wrap {
+    width: 1020px;
+}
+.my-shortlist .content-wrap>.inner-wrap {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1020px;
+}
+.my-shortlist header.page h1 {
+	margin-top: -20px;
+    margin-bottom: 0;
+}
+.my-shortlist .content-wrap .row {
+    float: left;
+}
+.my-shortlist header.page {
+    margin-bottom: 30px;
+}
+
+.my-shortlist header.page .left {
+    float: left;
+}
+.my-shortlist header.page .left, .my-shortlist header.page .right {
+    position: relative;
+}
+.my-shortlist header.page .right {
+    float: right;
+    text-align: right;
+}
+.my-shortlist header.page .right>* {
+    float: left;
+    margin-left: 8px;
+}
+.my-shortlist header.page .left, header.page .right {
+    position: relative;
+}
+.my-shortlist ul.switchboard li.copy {
+    padding: 10px 15px;
+    font-size: 15px;
+    color: #979da7;
+}
+.my-shortlist ul.switchboard li {
+    float: left;
+    display: block;
+    margin-left: 8px;
+}
+.my-shortlist .cfix:before, .my-shortlist .cfix:after, .my-shortlist .wrap:before, .my-shortlist .wrap:after, .my-shortlist .inner-wrap:before, .my-shortlist .inner-wrap:after, .my-shortlist .fN-columnLinks:before, .my-shortlist .fN-columnLinks:after, .my-shortlist .content-wrap .row:before, .my-shortlist .content-wrap .row:after, .my-shortlist .listing-features:before, .my-shortlist .listing-features:after {
+    content: "";
+    display: table;
+}
+
+.my-shortlist .card.clickable:hover {
+    box-shadow: 0 1px 0 #c1c4ca;
+}
+.my-shortlist .card.listing {
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.my-shortlist .card.shortlist {
+    position: relative;
+    z-index: 1;
+}
+.my-shortlist .card.listing {
+    display: inline;
+    float: left;
+    width: 320px;
+    margin: 5px 8px;
+}
+.my-shortlist .card {
+    position: relative;
+    margin-bottom: 20px;
+    display: block;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 #d8dade;
+}
+.my-shortlist .card.clickable a, .card.clickable a:hover, .card.clickable a:visited {
+    text-decoration: none;
+}
+.my-shortlist .card.listing .shortlist {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 12;
+}
+.my-shortlist .card.clickable>a {
+    display: block;
+}
+.my-shortlist .f-icon.shortlist {
+    position: relative;
+    cursor: pointer;
+}
+.my-shortlist html>body .f-icon, html>body a.f-icon {
+    color: #b6bbc2;
+}
+.my-shortlist a:visited, .faux-link:visited {
+    color: #979da7;
+}
+.my-shortlist .f-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+.my-shortlist .f-icon.shortlist.shortlisted .icon.fill, .f-icon.shortlist.shortlisted:hover .icon.fill, .f-icon.shortlist.shortlisted.active .icon.fill {
+    color: #ffa200;
+}
+.my-shortlist .f-icon.shortlist:hover .icon.fill, .f-icon.shortlist.active .icon.fill {
+    color: #151f30;
+    color: rgba(21,31,48,0.2);
+}
+.my-shortlist .card.listing .shortlist .icon {
+    font-size: 25px;
+}
+.my-shortlist .f-icon.shortlist .icon.fill {
+    color: #151f30;
+    color: rgba(21,31,48,0.3);
+}
+.my-shortlist .f-icon.shortlist .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.my-shortlist .f-icon .icon {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+}
+.my-shortlist .f-icon.shortlist:hover .icon.outline, .f-icon.shortlist.active .icon.outline {
+    color: #fff;
+}
+.my-shortlist .card.listing .shortlist .icon {
+    font-size: 25px;
+}
+.my-shortlist .f-icon.shortlist .icon.outline {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+.my-shortlist .card.listing .media-wrap {
+    height: 213px;
+    overflow: hidden;
+    background: #b6bbc2;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.my-shortlist .media-wrap {
+    position: relative;
+}
+.my-shortlist .card.listing .media-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.my-shortlist img {
+    vertical-align: middle;
+}
+.my-shortlist .card.listing .media-wrap:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,rgba(60,71,91,0)),color-stop(50%,rgba(60,71,91,0.4)),color-stop(100%,rgba(21,31,48,0.8)));
+    background: -webkit-linear-gradient(top,rgba(60,71,91,0) 0,rgba(60,71,91,0.4) 50%,rgba(21,31,48,0.8) 100%);
+    background: linear-gradient(to bottom,rgba(60,71,91,0) 0,rgba(60,71,91,0.4) 50%,rgba(21,31,48,0.8) 100%);
+}
+.my-shortlist .card.listing.shortlist .outer-wrap {
+    min-height: 140px;
+}
+.my-shortlist .card.listing .outer-wrap {
+    position: relative;
+    min-height: 80px;
+    background: #fff;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.my-shortlist .card.listing .outer-wrap .inner-wrap {
+    position: absolute;
+    top: -42px;
+    left: 0;
+    right: 0;
+    background: transparent;
+}
+.my-shortlist .card.listing .inner-wrap {
+    padding: 0 20px;
+}
+.my-shortlist .card.listing .inner-wrap>a {
+    display: block;
+}
+.my-shortlist .card.listing .price-wrap {
+    height: 42px;
+}
+.my-shortlist .card.listing .price-wrap h4 {
+    margin-bottom: 0;
+    line-height: 42px;
+    color: #fff;
+    font-size: 22px;
+}
+.my-shortlist .truncate-single {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.my-shortlist .card .features {
+    color: #263248;
+}
+.my-shortlist .card.listing ul.features>li:first-child {
+    margin-top: 10px;
+}
+.my-shortlist .card.listing ul.features>li {
+    display: block;
+    margin-top: 2px;
+}
+.my-shortlist .card.listing ul.features>li {
+    display: block;
+    margin-top: 2px;
+}
+.my-shortlist .card .address {
+    color: #747c8a;
+}
+.my-shortlist .card.listing dl {
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: solid #eaebed 1px;
+}
+.my-shortlist .card.listing .toolbar-wrap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 50px 0 20px;
+    font-size: 13px;
+    color: #747c8a;
+}
+.my-shortlist .shortlistEnquiry {
+	margin: 2px auto;
+	padding: 2px;
+	border: 1px solid blue;
+}
+.my-shortlist .card .content-disabled-wrap {
+    display: none;
+    visibility: hidden;
+}
+
+
+
+
+

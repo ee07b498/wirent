@@ -1,0 +1,449 @@
+.infowindow-container {
+  /*border: 2px solid #ccc;*/
+  background-color: white;
+  /*border-radius: 5px;*/
+  padding: 5px;
+  margin: 5px 0
+}
+
+.infowindow-container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.infowindow-container img {
+
+  margin-right: 20px;
+  border-radius: 0;
+  margin-top: 0;
+}
+
+/*.infowindow-container span {
+  font-size: 10px;
+  margin-right: 5px;
+}*/
+
+@media (max-width: 500px) {
+  .infowindow-container {
+      text-align: center;
+  }
+  .infowindow-container img {
+      margin: auto;
+      float: none;
+      display: block;
+  }
+}
+.info-left {
+	  float: left;
+}
+.info-right {
+	float: right;
+}
+.info-right .price {
+	font: 400 20px/28px "microsoft sans serif" "microsoft yahei";
+	color: red;
+	font-size: 20px;
+	height: 28px;
+}
+.info-right span {
+	font-size: 14px;
+	margin-left: 5px;
+}
+.info-right .address {
+	font: 200 12px/20px "microsoft sans serif" "microsoft yahei";
+	color: grey;
+	margin-top: 15px;
+}
+.info-right em {
+	font-weight: 800;
+	font: 400 12px/20px "microsoft sans serif" "microsoft yahei";
+	color: dimgrey;
+}
+
+
+/*ads window*/
+.adv {
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+
+.adv ul li {
+	margin-bottom: 10px;
+	float:right;
+	list-style: none;
+	/*clear: both;*/
+	/*margin:0 auto;*/
+	margin-right: 15px;
+	margin-top: 100px;
+}
+.adv li:before {
+	content: "";
+	clear: both;
+	zoom: 1;
+}
+.adv #box {
+	width: 490px;
+	height: 305px;
+	/*padding: 5px;*/
+	position: relative;
+	border: 1px solid #ccc;
+	border-bottom: 1px solid white;
+	margin: 0 auto ;
+	overflow: hidden;
+}
+.adv .description {
+		background-color: white;
+}
+.adv .ad {
+	width: 490px;
+	height: 305px;
+	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+}
+
+.adv .ad:hover {
+	/*box-sizing: content-box;*/
+	border: 1px solid white;
+}
+
+.adv #box img {
+	/*width: 490px;*/
+	/*margin-left: -40px;*/
+}
+
+.adv .ad ol {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
+
+.adv .ad ol li {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #ccc;
+	text-align: center;
+	background: #fff;
+	float: left;
+	margin-right: 10px;
+	cursor: pointer;
+	_display: inline;
+}
+
+.adv .ad ol li.current {
+	background: yellow;
+}
+
+.adv .ad ul li {
+	list-style: none;
+	margin-left: -60px;
+	float: left;
+}
+
+.adv .ad ul {
+	position: absolute;
+	top: -100px;
+	width: 2940px;
+}
+
+.adv .ad ul li.current {
+	display: block;
+}
+
+.adv #arr {
+	display: none;
+}
+
+.adv #arr span {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	left: 5px;
+	top: 50%;
+	margin-top: -20px;
+	background: #000;
+	cursor: pointer;
+	line-height: 40px;
+	text-align: center;
+	font-weight: bold;
+	font-family: '黑体';
+	font-size: 30px;
+	color: #fff;
+	opacity: 0.3;
+	border: 1px solid #fff;
+}
+
+.adv #arr #right {
+	right: 5px;
+	left: auto;
+}
+.adv .description {
+	width: 490px;
+	height: 230px;
+	position: relative;
+	border: 1px solid #ccc;
+	border-top: 1px solid white;
+	margin: 0 auto;
+}
+.adv .content .list-wrap li .info-panel {
+	float: right;
+	height: 230px;
+	margin: 15px;
+	/*width: 490px;*/
+	/*background-color: purple;*/
+	padding-top: 2px;
+	position: relative;
+}
+.adv .info-panel .rooms {
+	/*width: 109px;*/
+	padding-left: 10px;
+	height: 34px;
+	float: left;
+	margin: 6px 65px 0 10px;
+	border: 1px solid #DFDFDF;
+	line-height: 34px;
+	position: relative;
+}
+
+.adv .info-panel .rooms .room-num {
+	position: absolute;
+	font: 400 15px/15px "微软雅黑";
+	top: 10px;
+	left: 40px;
+	color: darkgrey;
+}
+.adv .info-panel .rooms .bath-num {
+	position: absolute;
+	font: 400 15px/15px "微软雅黑";
+	top: 10px;
+	left: 85px;
+	color: darkgrey;
+}
+.adv .info-panel .rooms .park-num {
+	position: absolute;
+	font: 400 15px/15px "microsoft yahei";
+	top: 10px;
+	left: 125px;
+	color: darkgrey;
+}
+.adv .info-panel .address {
+	position: absolute;
+	/*width: 209px;*/
+	top: 80px;
+	float: left;
+	left: 20px;
+	margin: 25px 65px 0 0;
+}
+.adv .info-panel .address span {
+	line-height: 34px;
+	font: 100 15px/15px "microsoft yahei";
+	color: darkgrey;
+}
+
+
+
+.adv .info-panel .benefits {
+	width: 509px;
+	padding-left: 43px;
+	height: 34px;
+	/*float: left;*/
+	margin: 25px 65px 0 10px;
+	/*border: 1px solid #DFDFDF;*/
+	line-height: 34px;
+	position: relative;
+	top: 150px;
+}
+.info-panel .benefits .icon4 {
+	position: absolute;
+	top: 10px;
+	left: 5px;
+	width: 40px;
+	height: 40px;
+	/*background: url(../img/sprite.png) no-repeat -1px -59px;*/
+}
+.adv .info-panel .benefits .train {
+	position: absolute;
+	font: 200 13px/15px "微软雅黑";
+	top: -20px;
+	left: -10px;
+	color: lightslategray;
+}
+.adv .info-panel .benefits .bus {
+	position: absolute;
+	font: 200 13px/15px "微软雅黑";
+	top: -20px;
+	left: 180px;
+	color: lightslategray;
+}
+.adv .info-panel .benefits .shoping {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: 5px;
+	left: -10px;
+	color: lightslategray;
+}
+.adv .info-panel .benefits .hospital {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: 5px;
+	left: 180px;
+	color: lightslategray;
+}
+
+.adv .info-panel .price {
+	width: 100px;
+	padding-left: 43px;
+	height: 134px;
+	/*float: left;*/
+	margin: -15px 65px 0 20px;
+	/*border: 1px solid #DFDFDF;*/
+	
+	position: absolute;
+	top: 20px;
+	left: 210px;
+	/*background: purple;*/
+}
+.adv .info-panel .price .num{
+	display: block;
+	position: absolute;
+	font: 400 40px/40px "microsoft yahei";
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 80;
+	left: 60px;
+	top: 10px;
+	color: #C81623;
+}
+.adv .info-panel .price .period {
+	display: block;
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	/*margin-top: 4px;*/
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 20;
+	left: 160px;
+	top: 30px;
+	color: lightslategray;
+}
+.adv .info-panel .price .available {
+	display: block;
+	position: absolute;
+	font: 100 12px/15px "microsoft yahei";
+	/*margin-top: 4px;*/
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 20;
+	left: 70px;
+	top: 60px;
+	color: #191D3A;
+}
+.adv .info-panel .view {
+	width: 100px;
+	height: 50px;
+	margin: 25px 65px 0 0;
+	position: absolute;
+	top: 160px;
+	left: 380px;
+}
+.adv .info-panel .view .view-num {
+	display: block;
+	font: 300 15px/20px "microsoft yahei";
+	width: 100px;
+	height: 50;
+	/*left: 460px;*/
+	margin-top: 10px;
+	color: #C81623;
+}
+.adv .icon {
+    margin-left: 12px;
+    height: 60px;
+    line-height: 60px;
+}
+
+
+.adv .f-icon.with-text .icon {
+    float: left;
+}
+.adv .f-icon.with-text {
+    width: auto;
+}
+.adv .f-icon .icon {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+    width: 25px;
+    height: 40px;
+}
+.adv .f-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+.adv a.f-icon.with-text .copy {
+    line-height: 60px;
+    margin-left: 8px;
+}
+
+.adv .f-icon.with-text .copy {
+    float: left;
+    display: inline-block;
+    padding-right: 10px;
+    line-height: 40px;
+}
+.adv .benefits .f-icon .icon {
+	margin-top: 10px;
+}
+
+/*more options*/
+.more-options label {
+	color: rgb(151, 157, 167);
+	/*margin-right: 6px;*/
+  margin-top: 3px;
+}
+ .navbar-nav.more-options > li > .dropdown-menu {
+    margin-top: -2px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.more-options .form-control {
+    display: block;
+    width: 65%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.more-options .row .right-li ul li {
+	/*float: left;*/
+	margin-bottom: 2px;
+}
+.more-options .row .left-li ul li input,  .more-options .row .left-li ul li select{
+	float: right;
+}
+.relative-position {
+	position: relative;
+	top: 0;
+	bottom: 0;
+}
+.more-options .dropdown > a:focus {
+	  background-color: #752077;
+    border-color: #428bca;
+}
+.more-options .dropdown > a:hover {
+	  background-color: #752077;
+    border-color: #428bca;
+}
