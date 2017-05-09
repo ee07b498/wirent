@@ -410,7 +410,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
             return $query->{$method}($column, $amount, $extra);
         }
 
-        $this->incrementOrDecrementAttributeValue($column, $amount, $extra, $method);
+        $this->incrementOrDecrementAttributeValue($column, $amount, $method);
 
         return $query->where(
             $this->getKeyName(), $this->getKey()
@@ -422,15 +422,12 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      *
      * @param  string  $column
      * @param  int  $amount
-     * @param  array  $extra
      * @param  string  $method
      * @return void
      */
-    protected function incrementOrDecrementAttributeValue($column, $amount, $extra, $method)
+    protected function incrementOrDecrementAttributeValue($column, $amount, $method)
     {
         $this->{$column} = $this->{$column} + ($method == 'increment' ? $amount : $amount * -1);
-
-        $this->forceFill($extra);
 
         $this->syncOriginalAttribute($column);
     }
@@ -873,7 +870,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     public function newPivot(Model $parent, array $attributes, $table, $exists, $using = null)
     {
-        return $using ? $using::fromRawAttributes($parent, $attributes, $table, $exists)
+        return $using ? new $using($parent, $attributes, $table, $exists)
                       : new Pivot($parent, $attributes, $table, $exists);
     }
 
@@ -1108,26 +1105,13 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     }
 
     /**
-     * Get the auto-incrementing key type.
+     * Get the auto incrementing key type.
      *
      * @return string
      */
     public function getKeyType()
     {
         return $this->keyType;
-    }
-
-    /**
-     * Set the data type for the primary key.
-     *
-     * @param  string  $type
-     * @return $this
-     */
-    public function setKeyType($type)
-    {
-        $this->keyType = $type;
-
-        return $this;
     }
 
     /**

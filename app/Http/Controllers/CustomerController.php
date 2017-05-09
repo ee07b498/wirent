@@ -80,6 +80,7 @@ class CustomerController extends Controller
 		$CEmail=$request->input('CEmail'); //不允许用户从此过程修改邮箱		
 		$CCurrStat=$request->input('CCurrStat'); //不允许用户修改租买状态		
 		$CLastContDate=$request->input('CLastContDate'); //不允许用户最后一次员工管理日期		
+//		echo $CLastContDate;
 		$CIDType=$request->input('CIDType');
 		$CIDProfile=$request->input('CIDProfile');
 		$CIncomeProfile=$request->input('CIncomeProfile');
@@ -234,6 +235,7 @@ class CustomerController extends Controller
 		try{
 			$proc_name = 'filt_Check_BillLibrary';
 			$sql = "call $proc_name({$CID},{$ER_ID},'{$BillType}','{$BillDateMin}','{$BillDateMax}')";
+//			echo $sql;
 			$result = DB::select($sql);
 			return $result;
 		}
@@ -437,65 +439,5 @@ class CustomerController extends Controller
 		$result = DB::insert($sql);
 		return $result;
 	}	
-	
-	public function file_upload(Request $request)
-	{
-		$bucket = $request->input("bucket");
-		$keyname = $request->input("keyname");
-// $filepath should be absolute path to a file on disk						
-//		$filepath = 'D:/wamp/www/lumen/public/img/b20.jpg';
-		$filepath = $request->input("filepath");				
-// Instantiate the client.
-		$s3 = S3Client::factory(			
-			array(						
-			    'region'  => 'ap-southeast-2',
-				'version' => 'latest',		    	
-		    	'credentials' => [
-			        'key'    => 'AKIAJQ6SZZCX7HGN2H4A',
-			        'secret' => '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'
-	    			]
-		));
-
-//		$uploader = new MultipartUploader($s3, $filepath, [
-//		    'bucket' => $bucket,
-//		    'key'    => $keyname,
-//		]);
-
-//   Upload a file.
-		$result = $s3->putObject(array(
-		    'Bucket'       => $bucket,
-		    'Key'          => $keyname,
-		    'Body'   	   => file_get_contents($filepath),
-		    'ACL'          => 'public-read-write',
-		));
-
-		echo $result['ObjectURL'];		
-
-//		try {
-//		    $uploader->upload();
-//		    echo "Upload complete.\n";
-//		} catch (MultipartUploadException $e) {
-//		    $uploader->abort();
-//		    echo "Upload failed.\n";
-//		    echo $e->getMessage() . "\n";
-//		}
-	}	
-	
-	public function file_list(Request $request)
-	{
-		$bucket = 'wirent';
-		$s3 = S3Client::factory();
-		$iterator = $s3->listObjects('ListObjects',array(
-		    'Bucket'       => $bucket
-		));
-		foreach ($iterator as $object) {
-		    echo $object['Key'] . "\n";
-		}
-	}
-	
-	public function file_delete(Request $request)
-	{
-	}	
-
 		
 }

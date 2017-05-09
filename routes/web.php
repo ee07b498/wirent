@@ -83,10 +83,10 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/filt_address', 		'CustomerController@filt_address');	
 	$app->get('/profile', 			['middleware' => 'cus','uses'=>'CustomerController@profile_check']);
 	$app->post('/profile/update',	['middleware' => 'cus','uses'=>'CustomerController@profile_update']);
-	$app->get('/bill',				['middleware' => 'cus','uses'=>'CustomerController@bill_check']);
-	$app->get('/maintenance',		['middleware' => 'cus','uses'=>'CustomerController@maintenance_check']);		
+	$app->post('/bill',				['middleware' => 'cus','uses'=>'CustomerController@bill_check']);
+	$app->post('/maintenance',		['middleware' => 'cus','uses'=>'CustomerController@maintenance_check']);		
 	$app->get('/maintenance/apply',	['middleware' => 'cus','uses'=>'CustomerController@maintenance_apply']);
-	$app->get('/rent',				['middleware' => 'cus','uses'=>'CustomerController@rent_check']);
+	$app->post('/rent',				['middleware' => 'cus','uses'=>'CustomerController@rent_check']);
 	$app->get('/service',			['middleware' => 'cus','uses'=>'CustomerController@service_check']);
 	$app->get('/shortlist',			['middleware' => 'cus','uses'=>'CustomerController@shortlist_check']);	
 	$app->get('/shortlist/delete',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_delete']);	
@@ -107,7 +107,7 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 	$app->get('/logout',			'LandlordController@logout'); 
 
 	$app->get('/profile', 			['middleware' => 'lord','uses'=>'LandlordController@profile_check']);
-	$app->get('/profile/update',	['middleware' => 'lord','uses'=>'LandlordController@profile_update']);
+	$app->post('/profile/update',	['middleware' => 'lord','uses'=>'LandlordController@profile_update']);
 	
 	$app->group(['prefix'=>'pm'], function () use ($app){
 		$app->get('/balance',		['middleware' => 'lord','uses'=>'LandlordController@balance']);

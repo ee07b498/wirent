@@ -184,11 +184,7 @@ trait MakesHttpRequests
             json_decode($this->response->getContent(), true)
         ));
 
-        $data = json_encode(array_sort_recursive(
-            json_decode(json_encode($data), true)
-        ));
-
-        PHPUnit::assertEquals($data, $actual);
+        PHPUnit::assertEquals(json_encode(array_sort_recursive($data)), $actual);
 
         return $this;
     }

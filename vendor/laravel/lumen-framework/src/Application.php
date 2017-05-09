@@ -112,7 +112,7 @@ class Application extends Container
      */
     public function version()
     {
-        return 'Lumen (5.4.6) (Laravel Components 5.4.*)';
+        return 'Lumen (5.4.5) (Laravel Components 5.4.*)';
     }
 
     /**
@@ -695,14 +695,13 @@ class Application extends Container
     }
 
     /**
-     * Get the path to the database directory.
+     * Get the database path for the application.
      *
-     * @param  string  $path
      * @return string
      */
-    public function databasePath($path = '')
+    public function databasePath()
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'database'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $this->basePath().'/database';
     }
 
     /**
@@ -711,7 +710,7 @@ class Application extends Container
      * @param  string|null  $path
      * @return string
      */
-    public function storagePath($path = '')
+    public function storagePath($path = null)
     {
         return $this->basePath().'/storage'.($path ? '/'.$path : $path);
     }
@@ -719,12 +718,11 @@ class Application extends Container
     /**
      * Get the path to the resources directory.
      *
-     * @param  string|null  $path
      * @return string
      */
-    public function resourcePath($path = '')
+    public function resourcePath()
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'resources'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $this->basePath().DIRECTORY_SEPARATOR.'resources';
     }
 
     /**
