@@ -104,7 +104,65 @@ class CustomerController extends Controller
 		$result = DB::update($sql);		
 		return response($result) ; //0:失败或无更新；1：成功
 	} 
+	
+	/*
+	 * hot rent
+	 */ 
+	public function hotrent_check()
+	{
+		$proc_name = 'proc_Check_HotRent';
+		$sql = "call $proc_name()";
+		$data = DB::select($sql);
+
+			//循环查询图片库
+		$proc_Name = 'check_EntireRentPicture_by_ERID';	
+		foreach($data as $item)
+		{
+			$ER_ID = $item->ER_ID;
+			$sql = "call $proc_Name('{$ER_ID}')";	
+			$itempic = DB::select($sql);
+			$item->picset = $itempic;	
+		}
+		return $data;
+	}
+	
+	/*
+	 * relative rent limit 0,4
+	 */ 
 	 
+	public function relative_rent(Request $request)
+	{
+		$ER_Suburb = $request->input('ER_Suburb');
+		$ER_Region = $request->input('ER_Region');
+		$ER_Type = $request->input('ER_Type');
+		$ER_BedRoom = $request->input('ER_BedRoom');
+		$ER_BathRoom = $request->input('ER_BathRoom');
+		$ER_Parking = $request->input('ER_Parking');
+		$ER_Feature = $request->input('ER_Feature');    		//feature暂定furnitured or unfurnitured
+		$ER_Description = $request->input('ER_Description');	//Description 参数要使用%a%b%... 顺序必须与insert至表内顺序一致
+		$ER_Price = $request->input('ER_Price');
+		$ER_AvailableDate = $request->input('ER_AvailableDate');
+				
+		$proc_name = 'proc_Check_RelativeEntireRent';
+		$sql = "call $proc_name(
+									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoom}',
+									'{$ER_BathRoom}','{$ER_Parking}','{$ER_Feature}',
+									'{$ER_Description}','{$ER_Price}',
+									'{$ER_AvailableDate}'
+								)";
+		$data = DB::select($sql);
+
+			//循环查询图片库
+		$proc_Name = 'check_EntireRentPicture_by_ERID';	
+		foreach($data as $item)
+		{
+			$ER_ID = $item->ER_ID;
+			$sql = "call $proc_Name('{$ER_ID}')";	
+			$itempic = DB::select($sql);
+			$item->picset = $itempic;	
+		}
+		return $data;
+	} 
 	/*address check
 	 * 
 	 */
@@ -170,9 +228,27 @@ class CustomerController extends Controller
 			return $e;
 		}	
 	}
+	public function filt_entire_detail(Request $request)
+	{
+		$ER_ID = $request->input('ER_ID');
+		$proc_Name = 'check_EntireRentInfo_by_ERID';
+		$sql = "call $proc_Name({$ER_ID})";
+		$data = DB::select($sql);
+
+		//循环查询图片库
+		$proc_Name = 'check_EntireRentPicture_by_ERID';	
+		foreach($data as $item)
+		{
+			$ER_ID = $item->ER_ID;
+			$sql = "call $proc_Name('{$ER_ID}')";	
+			$itempic = DB::select($sql);
+			$item->picset = $itempic;	
+		}
+		return $data;	
+	}
 	
 	/*
-	 * filt entire rent
+	 * filt share rent
 	 */ 	
 	public function filt_share(Request $request)
 	{
@@ -291,7 +367,7 @@ class CustomerController extends Controller
 			$proc_name = 'proc_Insert_MaintenanceLibrary';
 			$sql = "call $proc_name('{$MType}','{$ER_ID}','{$CID}','{$MApplyForm}','{$MStat}','{$MApplyDate}')";					
 			$result = DB::insert($sql);
-			return $result;
+			return [$result];
 		}
 		catch(exception $e)
 		{
@@ -353,8 +429,18 @@ class CustomerController extends Controller
 		{
 			$proc_name = 'check_CustomerLogbook_by_CIDCLType';
 			$sql = "call $proc_name({$CID},'{$CLType}')";				
+
 			$result = DB::select($sql);
-			return $result;
+						//循环查询ERinfo
+			$proc_Name = 'check_EntireRentInfo_by_ERID';	
+			foreach($result as $item)
+			{
+				$ER_ID = $item->CLDetail;
+				$sql = "call $proc_Name({$ER_ID})";	
+				$ERinfo = DB::select($sql);
+				$ERinfoSet[] = $ERinfo;	
+			}
+			return $ERinfoSet;
 		}
 		catch(exception $e)
 		{
@@ -369,6 +455,7 @@ class CustomerController extends Controller
 		$CID = $request->input('CID');
 		$CLType = $request->input('CLType');
 		$CLDetail=$request->input('CLDetail');
+//		$CLTime = $request->input('CLTime');
 		//执行存储过程
 		$proc_name = 'proc_Delete_CustomerLogbook';
 		$sql = "call $proc_name({$CID},'{$CLType}','{$CLDetail}')";

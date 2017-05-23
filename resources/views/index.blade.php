@@ -14,17 +14,35 @@
 	<link rel="stylesheet" href="/css/winning/search-option.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/profile.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/infowindow.css" type="text/css" />
-	<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />
+	<!--<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />-->
 	<link rel="stylesheet" href="/css/winning/shortlist.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/login.css" type="text/css" />
-	
+	<link rel="stylesheet" href="/css/winning/listpage.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/winning/search.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/winning/business.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/winning/businessDetails.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/winning/documentation.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/winning/serviceTypes.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/winning/guide.css" type="text/css"/>
+	<link rel="stylesheet" href="/font/flaticon.css" />
+	<link rel="stylesheet" href="/css/winning/newsDetail.css" type="text/css"/>
 	</head>
 <body>
 
 	<div style="height: 100%;" ui-view></div>
-	
-	<script src="/node_modules/angular/angular.min.js"></script>
-	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+	 <!-- jQuery -->
+  	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/angular/angular.js"></script>
+	<script src="vendor/angular/angular-animate/angular-animate.js"></script>
+	<script src="vendor/angular/angular-cookies/angular-cookies.js"></script>
+	<script src="vendor/angular/ngstorage/ngStorage.js"></script>
+	<script src="vendor/angular/angular-css.min.js"></script>
+	<script src="vendor/angular/angular-sanitize/angular-sanitize.js"></script>
+	<script src="vendor/angular/angular-translate/angular-translate.js"></script>
+    <script src="vendor/angular/angular-translate/loader-static-files.js"></script>
+    <script src="vendor/angular/angular-translate/storage-cookie.js"></script>
+    <script src="vendor/angular/angular-translate/storage-local.js"></script>
+	<script src="/node_modules/bootstrap.min.js"></script>
 	<script src="/node_modules/jquery.slimscroll.min.js"></script>
 	<script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="/node_modules/ui-bootstrap-tpls.js"></script>
@@ -34,16 +52,21 @@
 	<script src="/node_modules/ui-utils.js"></script>
 	<script src="/js/home/directives/ui-jq.js"></script>
 	<script src="/js/home/services/ui-load.js"></script>
+	 <!-- lazyload -->
+  	<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
 	<script src="/js/home/map/load-google-maps.js"></script>
 	<script src="/js/home/result.js"></script>
 	<script src="/js/home/base.js"></script>
+	<script src="/js/home/base.lazyload.js"></script>
 	<script src="/js/home/user.js"></script>
 	<script src="/js/home/header.js"></script>
 	<script src="/js/home/common.js"></script>
 	<script src="/js/home/details.js"></script>
 	<script src="/js/home/upload.js"></script>
 	<script src="/js/home/profile.js"></script>
-	
+	<script src="/js/home/shortlist.js"></script>
+	<script src="/js/home/listpage.js"></script>
+	<script src="/js/home/new.js"></script>
 	
 </body>
 	

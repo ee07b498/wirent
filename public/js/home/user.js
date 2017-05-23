@@ -11,8 +11,7 @@
 				me.loginCheck = function(){
 					return	$http.get('/customer/profile')
 						.then(function(r){
-
-							return r.customer_login_status;						
+							return r;						
 						})
 				}
 				
@@ -35,21 +34,14 @@
 					$http.post('/customer/login',me.login_data)
 						.then(function(r)
 						{
-							console.log($window.sessionStorage.token);
+							console.log('me.login_data',me.login_data);
+							console.log("r",r);
 							//$state.go('home')
-							if(r.status){
-							$window.sessionStorage.token = r.status;//BaseService.profile = false;
-						//	console.log($window.sessionStorage.token);
-							if(me.loginCheck()){
-									
+							if(r.data.stat){
 								me.profile = true;
 								console.log(me);
 								location.href = '/';
 //								  $state.go('app.home');
-								
-							}
-							
-							
 							}else
 							{
 								me.login_failed = true;

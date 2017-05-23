@@ -1,0 +1,497 @@
+.newsDetail div,
+.newsDetail dl,
+.newsDetail dt,
+.newsDetail dd,
+.newsDetail ul,
+.newsDetail ol,
+.newsDetail li,
+.newsDetail h1,
+.newsDetail h2,
+.newsDetail h3,
+.newsDetail h4,
+.newsDetail h5,
+.newsDetail h6,
+.newsDetail pre,
+.newsDetail form,
+.newsDetail fieldset,
+.newsDetail input,
+.newsDetail textarea,
+.newsDetail blockquote,
+.newsDetail p {
+	padding: 0;
+	margin: 0;
+}
+
+.newsDetail h1,
+.newsDetail h2,
+.newsDetail h3,
+.newsDetail h4,
+.newsDetail h5,
+.newsDetail h6 {
+	margin: 5px 0;
+}
+
+.newsDetail address,
+.newsDetail cite,
+.newsDetail code,
+.newsDetail em,
+.newsDetail th {
+	font-weight: normal;
+	font-style: normal;
+}
+
+.newsDetail :focus {
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+.newsDetail div {
+	display: block;
+}
+
+.newsDetail dl {
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+.newsDetail dt {
+	display: block;
+}
+
+.newsDetail dd {
+	display: block;
+	-webkit-margin-start: 40px;
+}
+
+.newsDetail .fl {
+	float: left;
+}
+
+.newsDetail a {
+	text-decoration: none;
+}
+
+.newsDetail a {
+	text-decoration: none;
+	color: #333;
+}
+
+.newsDetail img {
+	border: none;
+}
+
+.newsDetail img[Attributes Style] {
+	width: 105px;
+	height: 107px;
+}
+
+
+/*.newsDetail a:hover {
+	color: #be0000;
+}*/
+
+.newsDetail .trans,
+.newsDetail a {
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.newsDetail .top_bg .wrap,
+.newsDetail .top_bg .nav,
+.newsDetail .main {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.newsDetail .main {
+	margin: 25px auto;
+	width: 1002px;
+	background: url(/img/bgline.png) repeat-y center top;
+	overflow: hidden;
+}
+
+.newsDetail .main_left {
+	width: 650px;
+	float: left;
+}
+
+.newsDetail .main_left .wznr {
+	width: 650px;
+}
+
+.newsDetail .main_left .wznr h2 {
+	color: #333333;
+	font-family: "Microsoft Yahei";
+	font-size: 28px;
+}
+
+.newsDetail .main_left .wznr p {
+	color: #666666;
+	font-family: "Microsoft Yahei";
+	font-size: 14px;
+	line-height: 26px;
+	padding: 12px 0;
+}
+
+.newsDetail .main_left .wznr dl {
+	width: 650px;
+	height: 20px;
+	border-bottom: 1px dashed #dbdbdb;
+}
+
+.newsDetail .main_left .wznr dt {
+	color: #999999;
+	font-size: 12px;
+	float: left;
+}
+
+.newsDetail .main_left .wznr dt span {
+	color: #999999;
+	font-size: 12px;
+	padding-right: 10px;
+}
+
+.newsDetail .main_left .wznr dt em {
+	color: #999999;
+	font-size: 12px;
+	padding-left: 10px;
+}
+
+.newsDetail .main_left .wznr dd {
+	color: #999999;
+	font-size: 12px;
+	float: right;
+	margin-top: -5px;
+}
+
+.newsDetail .main_left a:hover,
+.newsDetail .zwnr a:hover,
+.newsDetail .main_left .wznr dd a:hover,
+.newsDetail .main_left .wznr h2 a:hover {
+	color: #be0000;
+}
+
+.newsDetail .z_bds_more {
+	float: left;
+	font-size: 12px;
+	padding-left: 17px;
+	line-height: 16px;
+	height: 16px;
+	background-image: url(/img/zxf_mobile0303.png);
+	background-repeat: no-repeat;
+	cursor: pointer;
+	margin: 6px 6px 6px 0;
+}
+
+.newsDetail .navcodebox {
+	display: none;
+	position: absolute;
+	background: #fff;
+	width: 410px;
+	left: -251px;
+	top: 34px;
+	padding: 20px 15px 0;
+	border: 1px solid #ccc;
+}
+
+.navcodebox .ico {
+	position: absolute;
+	top: -8px;
+	left: 194px;
+	z-index: 999999;
+	height: 8px;
+	width: 128px;
+	background: url(/img/nav-hover.png) center no-repeat;
+	border: none;
+	padding: 0;
+}
+
+.navcodebox span {
+	width: 136px;
+	display: inline-block;
+	float: left;
+	text-align: center;
+	color: #747474;
+	font-size: 13px;
+}
+
+.main_left .wznr p {
+	color: #666666;
+	font-family: "Microsoft Yahei";
+	font-size: 14px;
+	line-height: 26px;
+	padding: 12px 0;
+}
+
+.navcodebox span p {
+	padding-top: 10px;
+}
+
+.newsDetail .left {
+	float: left;
+	overflow: hidden;
+}
+
+.bds_more1 {
+	float: left;
+	font-size: 12px;
+	padding-left: 17px;
+	line-height: 16px;
+	height: 16px;
+	background-image: url(/img/scsc1.jpg);
+	background-repeat: no-repeat;
+	cursor: pointer;
+	margin: 6px 6px 6px 0;
+}
+
+.bdshare-button-style0-16 {
+	zoom: 1;
+}
+
+.main_left a:hover,
+.zwnr a:hover,
+.main_left .wznr dd a:hover,
+.main_left .wznr h2 a:hover {
+	color: #be0000;
+}
+
+.bdshare-button-style0-16 a:hover {
+	color: #333;
+	opacity: .8;
+	filter: alpha(opacity=80);
+}
+
+.bdshare-button-style0-16 .bds_more {
+	color: #333;
+	float: left;
+}
+
+.bdshare-button-style0-16 a,
+.bdshare-button-style0-16 .bds_more {
+	float: left;
+	font-size: 12px;
+	padding-left: 17px;
+	line-height: 16px;
+	height: 16px;
+	background-image: url(/img/icons_0_16.png?v=91362611.png);
+	background-repeat: no-repeat;
+	cursor: pointer;
+	margin: 6px 6px 6px 0;
+}
+
+.bdshare-button-style0-16 .bds_more {
+	background-position: 0 0;
+}
+
+.bdshare-button-style0-16:after {
+	content: ".";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+.main_left .zwnr {
+	width: 650px;
+	margin-top: 10px;
+	border-bottom: 1px solid #eae7e2;
+	font-size: 16px;
+}
+
+.main_left .zwnr h2 {
+	font-family: "Microsoft Yahei";
+}
+
+.main_left .zwnr h2 a {
+	color: #ff4200;
+	font-family: "Microsoft Yahei";
+	text-decoration: underline;
+	font-size: 16px;
+}
+
+.main_left a:hover,
+.zwnr a:hover,
+.main_left .wznr dd a:hover,
+.main_left .wznr h2 a:hover {
+	color: #be0000;
+}
+
+.main_left .zwnr h2 a:hover {
+	text-decoration: none;
+	color: #be0000;
+}
+
+.main_left .zwnr p {
+	padding-bottom: 15px;
+	color: #333333;
+	font-family: "Microsoft Yahei";
+	font-size: 16px;
+	text-align: justify;
+	line-height: 30px;
+	word-wrap: break-word;
+}
+
+center {
+	display: block;
+	text-align: -webkit-center;
+}
+
+.main_left .zwnr p {
+	padding-bottom: 15px;
+	color: #333333;
+	font-family: "Microsoft Yahei";
+	font-size: 16px;
+	text-align: justify;
+	line-height: 30px;
+	word-wrap: break-word;
+}
+
+.main_left .zwnr p {
+	padding-bottom: 15px;
+	color: #333333;
+	font-family: "Microsoft Yahei";
+	font-size: 16px;
+	text-align: justify;
+	line-height: 30px;
+	word-wrap: break-word;
+}
+
+.ln {
+	color: #ff4200;
+}
+
+.dzdz:hover {
+	text-decoration: none;
+	color: #000000;
+	background: url(/img/dzdz.jpg) no-repeat 8px -28px;
+}
+
+.dzdz {
+	width: 100px;
+	height: 41px;
+	border: 1px solid #ececec;
+	border-radius: 2px;
+	display: inline-block;
+	color: #666666;
+	font-family: "Microsoft Yahei";
+	font-size: 16px;
+	line-height: 41px;
+	margin-bottom: 17px;
+	background: url(/img/dzdz.jpg) no-repeat 8px 12px;
+	padding-left: 37px;
+}
+
+.share5 {
+	margin-top: 19px;
+	height: 48px;
+	border-bottom: 1px solid #ebe6e2;
+}
+
+.share5 ul {
+	width: 460px;
+	float: left;
+}
+
+.share5 li {
+	margin-right: 8px;
+	float: left;
+}
+
+.share5 li a {
+	padding: 0 25px;
+	text-align: center;
+	height: 36px;
+	line-height: 36px;
+	color: #909090;
+	font-family: "Microsoft Yahei";
+	font-size: 14px;
+	display: inline-block;
+	background: #efefef;
+	border-radius: 2px;
+}
+
+.share5 li a:hover {
+	font-family: "Microsoft Yahei";
+	font-size: 14px;
+	background: #e1e1e1;
+	border-radius: 2px;
+	text-decoration: none;
+}
+
+.share5 dl {
+	float: left;
+}
+
+.share5 dt {
+	width: 190px;
+	float: left;
+}
+
+.share5 dt em {
+	color: #333333;
+	font-family: "Microsoft Yahei";
+	font-size: 14px;
+	float: left;
+	line-height: 36px;
+	margin-right: 10px;
+}
+
+.bdshare-button-style0-16 {
+	zoom: 1;
+}
+
+.share5 dt a.wb:hover {
+	background: url(/img/share2.png) no-repeat;
+}
+
+.share5 dt a.wb {
+	background: url(/img/share2.png) no-repeat -3px -76px;
+}
+
+.bdshare-button-style0-16 a:hover {
+	color: #333;
+	opacity: .8;
+	filter: alpha(opacity=80);
+}
+
+.main_left a:hover,
+.zwnr a:hover,
+.main_left .wznr dd a:hover,
+.main_left .wznr h2 a:hover {
+	color: #be0000;
+}
+
+.share5 dt a {
+	width: 34px;
+	height: 34px;
+	margin-right: 14px;
+	float: left;
+	padding-left: 0px;
+}
+
+.bdshare-button-style0-16 a,
+.bdshare-button-style0-16 .bds_more {
+	float: left;
+	font-size: 12px;
+	padding-left: 17px;
+	line-height: 16px;
+	height: 16px;
+	background-image: url(/img/icons_0_16.png?v=91362611.png);
+	background-repeat: no-repeat;
+	cursor: pointer;
+	margin: 6px 6px 6px 0;
+}
+.share5 dt a.wx {
+    background: url(/img/share2.png) no-repeat -52px -76px;
+}
+.share5 dt a.wx:hover {
+    background: url(/img/share2.png) no-repeat -49px 0px;
+}
+.share5 dt a.more {
+    background: url(/img/share2.png) no-repeat -102px -76px;
+}

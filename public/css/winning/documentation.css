@@ -1,0 +1,351 @@
+.documentation {
+	background-color: #f2f5f7;
+}
+
+.documentation .documentation-content {
+	width: 1000px;
+	margin: 0px auto;
+}
+
+.documentation .con-box {
+	background-color: #fff;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+/*dream homes*/
+
+.documentation .dream-homes-main-title {
+	text-align: center;
+	font-weight: bold;
+}
+
+.documentation h1,
+.documentation .h1 {
+	font-size: 32px;
+	line-height: 34px;
+	margin-bottom: 30px;
+}
+.documentation .clearfix:after{
+    clear:both;
+    display:block;
+    visibility:hidden;
+    height:0;
+    line-height:0;
+    content:'';
+}
+.documentation .clearfix{
+    zoom:1;
+}
+.documentation .dream-homes-container:before {
+	padding-bottom: 56.05%
+}
+
+@media(min-width:976px) and (max-width:1440px) {
+	.documentation .dream-homes-container:before {
+		padding-bottom: 18.55%
+	}
+}
+
+@media(min-width:1441px) {
+	.documentation .dream-homes-container:before {
+		padding-bottom: 18.55%
+	}
+}
+
+.documentation .dream-homes-item {
+	width: 100%
+}
+
+@media(min-width:976px) and (max-width:1440px) {
+	.documentation .dream-homes-item {
+		width: 25%
+	}
+}
+
+@media(min-width:1441px) {
+	.documentation .dream-homes-item {
+		width: 25%
+	}
+}
+
+.documentation .dream-homes {
+	padding: 1px 0;
+	background-color: #f2f5f7;
+	position: relative;
+}
+
+.documentation .dream-homes-main-title {
+	text-align: center;
+	font-weight: bold
+}
+
+.documentation .dream-homes-container {
+	/*position: relative;*/
+	width: 100%;
+	overflow: hidden
+}
+
+.documentation .dream-homes-container:before {
+	display: block;
+	content: ''
+}
+
+.documentation .page-inner-wrap .dream-homes-container {
+	padding: 0
+}
+
+.documentation .dream-homes-list {
+	-webkit-transition: left .8s;
+	transition: left .8s;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	white-space: nowrap
+}
+
+.documentation .dream-homes-item {
+	display: block;
+	position: relative;
+	float: left;
+	margin-bottom: 5px;
+	-webkit-transition: opacity 300ms, -webkit-transform 300ms;
+	transition: opacity 300ms, -webkit-transform 300ms;
+	transition: transform 300ms, opacity 300ms;
+	transition: transform 300ms, opacity 300ms, -webkit-transform 300ms;
+	overflow: hidden
+}
+
+
+/*****important*****/
+
+.documentation .dream-homes-item.is-lazy-loading {
+	-webkit-transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	transform: scale(0.9);
+	opacity: .6
+}
+
+
+/*****important*****/
+
+.documentation .dream-homes-item-link {
+	display: block;
+	position: relative;
+	width: 100%;
+	/*border-right: 1px solid #fff;
+	border-left: 1px solid #fff;*/
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 2
+}
+
+.documentation .dream-homes-item-link:before {
+	display: block;
+	padding-bottom: 56.25%;
+	content: ''
+}
+
+.documentation .dream-homes-item-link:hover {
+	background: rgba(0, 0, 0, 0.2);
+	text-decoration: none
+}
+
+.documentation .dream-homes-item:hover img {
+	-ms-transform: translateY(-50%) scale3d(1.03, 1.03, 1);
+	-webkit-transform: translateY(-50%) scale3d(1.03, 1.03, 1);
+	transform: translateY(-50%) scale3d(1.03, 1.03, 1)
+}
+
+.documentation .dream-homes-item-header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%
+}
+
+.documentation .dream-homes-item-header:before {
+	display: inline-block;
+	height: 100%;
+	margin-right: -.25em;
+	content: '';
+	vertical-align: middle
+}
+
+.documentation .dream-homes-item-header .f-icon {
+	color: #fff
+}
+
+.documentation .dream-homes-item-header .f-icon:hover {
+	color: #fff
+}
+
+.documentation .dream-homes-item-header .f-icon .copy {
+	padding: 0;
+	margin-left: 10px;
+	margin-top: -10px;
+}
+
+.documentation .dream-homes-project-agency-name {
+	color: #fff;
+	line-height: 42px
+}
+
+.documentation .dream-homes-item-header-wrap {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle
+}
+
+.documentation .dream-homes-title {
+	margin: 0;
+	color: #fff;
+	text-align: center;
+	font-size: 32px;
+	line-height: normal
+}
+
+.documentation .dream-homes-title:after {
+	display: block;
+	width: 60px;
+	margin: 20px auto;
+	border-bottom: 1px solid #fff;
+	content: ''
+}
+
+.documentation .dream-homes-title-project-name,
+.documentation .dream-homes-title-agency-name,
+.documentation .dream-homes-title-suburb {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 67px
+}
+
+@media(max-width:623px) {
+	.documentation .dream-homes-title-project-name,
+	.documentation .dream-homes-title-agency-name,
+	.documentation .dream-homes-title-suburb {
+		padding: 0 52px
+	}
+}
+
+.documentation .dream-homes-title-project-name,
+.documentation .dream-homes-title-agency-name {
+	margin: 10px 0 6px;
+	font-family: Georgia, serif;
+	font-size: 15px;
+	font-style: italic;
+	font-weight: 400
+}
+
+@media(min-width:1441px) {
+	.documentation .dream-homes-title-project-name,
+	.documentation .dream-homes-title-agency-name {
+		font-size: 18px
+	}
+}
+
+.documentation .dream-homes-title-suburb {
+	font-size: 24px;
+	font-weight: 600
+}
+
+@media(min-width:1441px) {
+	.documentation .dream-homes-title-suburb {
+		font-size: 36px
+	}
+}
+
+.documentation .dream-homes-item-img {
+	display: block;
+	position: absolute;
+	top: -9999px;
+	right: -9999px;
+	bottom: -9999px;
+	left: -9999px;
+	min-width: 100%;
+	min-height: 100%;
+	margin: auto;
+	z-index: 0;
+	-webkit-transition: -webkit-transform 350ms ease;
+	transition: -webkit-transform 350ms ease;
+	transition: transform 350ms ease;
+	transition: transform 350ms ease, -webkit-transform 350ms ease;
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	top: 50%;
+	width: 100%;
+	display: block;
+	margin: 0 auto
+}
+
+.documentation .dream-homes-prev-btn,
+.documentation .dream-homes-next-btn {
+	display: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 35px;
+	background: rgba(30, 41, 61, 0.8);
+	text-decoration: none;
+	overflow: hidden;
+	z-index: 3
+}
+.documentation .dream-homes-next-btn {
+	top: 720px;
+}
+@media(max-width:623px) {
+	.documentation .dream-homes-prev-btn,
+	.documentation .dream-homes-next-btn {
+		width: 45px
+	}
+}
+
+.documentation .dream-homes-prev-btn .icon,
+.documentation .dream-homes-next-btn .icon {
+	display: block;
+	position: relative;
+	top: 55%;
+	left: 41%;
+	margin: -19px 10px 0;
+	color: #fff;
+	font-size: 35px
+}
+
+@media(max-width:623px) {
+	.documentation .dream-homes-prev-btn .icon,
+	.documentation .dream-homes-next-btn .icon {
+		margin: -14px 8px 0;
+		font-size: 28px
+	}
+}
+
+.documentation .dream-homes-prev-btn:hover,
+.documentation .dream-homes-next-btn:hover {
+	text-decoration: none
+}
+
+.documentation .dream-homes-prev-btn {
+	left: 0
+}
+
+.documentation .dream-homes-next-btn {
+	right: 0
+}
+
+.documentation .dream-homes-container.is-carousel .dream-homes-prev-btn,
+.documentation .dream-homes-container.is-carousel .dream-homes-next-btn {
+	display: block
+}
+
+
+/*dream homes end*/

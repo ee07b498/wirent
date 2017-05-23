@@ -1,0 +1,454 @@
+<div ng-controller="listPageCtrl" class="list-page">
+	<div class="row">
+		<div class="col-md-5">
+			<div class="wrapper-md left-side">
+			  <form class="form-horizontal">
+			    <fieldset>
+				 <div class="form-group">
+			        <label class="col-sm-2 control-label text-left">Location</label>
+			        <div class="col-sm-9">
+			          <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" ng-disabled="disabled">
+			            <ui-select-match placeholder="Select location...">[:$item.name:] &lt;[:$item.email:]&gt;</ui-select-match>
+			            <ui-select-choices group-by="someGroupFn" repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
+			              <div ng-bind-html="person.name | highlight: $select.search"></div>
+			              <small>
+			                email: [:person.email:]
+			                age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+			              </small>
+			            </ui-select-choices>
+			          </ui-select>
+			        </div>
+			        <div class="col-sm-1"></div>
+			      </div>
+			    </fieldset>
+			  </form>
+			  <div style="border-bottom: 3px solid rgba(117, 0, 98, 0.74); width: 100%;"></div>
+ 			  <div class=" wrapper w-full  cust-m-t">
+	              <div class="row">
+	                <div class="b-light">
+	                  <div class="row">
+	                    <div class="col-xs-6 left-li">
+	                    	<label style="margin-left: 115px;margin-bottom: 10px">min</label>
+	                      <ul class="list-unstyled l-h-2x">
+	                        <li class="m-b-md">
+	                         <label>Price</label>
+							 <input type="text" ng-model="myMinPrice" style="width: 149px;height: 40px; margin-left: 20px;" class="form-control input-sm inline" placeholder="minPrice" aria-describedby="basic-addon1">
+	                        </li>
+	                        <li class="m-b-md">
+	                          <label>Beds</label>
+							  <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
+	                          </select>
+	                        </li>
+	                        <li class="m-b-md">
+	                          <label>Baths</label>
+						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 16px;" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum"  >
+						         
+						        </select>
+	                        </li>
+	                        
+	                      </ul>
+	                    </div>
+	                    <div class="col-xs-6 right-li">
+	                    	<label style="margin-left: 60px; margin-bottom: 10px;">max</label>
+	                      <ul class="list-unstyled l-h-2x">
+	                        <li class="m-b-md">
+							<input type="text" class="form-control input-sm" ng-model="myMaxPrice" style="width: 149px;height: 40px;" placeholder="maxPrice" aria-describedby="basic-addon1">
+	                        </li>
+	                        <li class="m-b-md">
+							  <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
+	                          </select>
+	                        </li>
+	                        <li class="m-b-md">
+						        <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
+						        </select>
+	                        </li>
+	                        <li>
+	                          
+	                        </li>
+	                      </ul>
+	                    </div>
+	                  </div>
+	                </div>
+	                <div class="b-light">
+	                  <div class="row">
+	                    <div class="col-xs-6 left-li">
+	                      <ul class="list-unstyled l-h-2x">
+	                        <li class="m-b-md">
+	                          <label>Parking</label>
+						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 5px;"ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+						        </select>
+	                        </li>
+	                        <li class="m-b-md">
+	                          <label>Type</label>
+						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
+						        </select>
+	                        </li>
+	                       <!-- <li>
+	                          <label>minArea</label>
+						        <select class="input-lg form-control w-sm inline v-middle" ng-model="myArea" ng-options="parking.num as parking.num for parking in parkingsNum" >
+						        </select>
+	                        </li>-->
+	                       <!-- <li>
+	                          	<label>features</label>
+								<input type="text" class="form-control input-lg" ng-model="features" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
+	                        </li>-->
+	                        <li ng-show="hello">
+	                         <label class="m-t-xxs pull-left" >Available:</label>
+					            <p class="input-group inline">
+					              <input type="text" class="form-control input-sm" style="width: 149px;height: 34px; margin-left: 53px;" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+					              <span class="input-group-btn">
+					                <button type="button" class="btn btn-default btn-md" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+					              </span>
+					            </p>   
+	                        </li>
+	                          <li ng-show="hello">
+	                          	<label class="m-t-xxs">Descriptions:</label>
+	                          	<ul style="list-style: none; padding-right: 0;">
+	                          		<li>
+	                          			<a class="m-r-md" title="near bus stop" ng-click="bus=!bus">
+	                          					<i class="fa fa-bus" ng-show="bus" aria-hidden="true"></i>
+	                          					<i class="fa fa-bus" ng-show="!bus" aria-hidden="true" style="color: purple;"></i>
+	                          			</a>
+			                          	<a class="m-r-md" title="near the train station" ng-click="train=!train">
+			                          			<i class="fa fa-train" aria-hidden="true" ng-show="train"></i>
+			                          			<i class="fa fa-train" aria-hidden="true" ng-show="!train" style="color: darkred;"></i>
+			                          	</a>
+			                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+			                          	<a class="m-r-md" title="靠近hospital."><i class="fa fa-h-square" aria-hidden="true"></i></a>
+			                          	<a class="m-r-md" title="靠近地铁站."><i class="fa fa-train" aria-hidden="true"></i></a>
+	                          		</li>
+	                          	</ul>
+	                        </li>
+	                      </ul>
+	                    </div>
+	                    <div class="col-xs-6 right-li">
+	                      <ul class="list-unstyled l-h-2x">
+	                        <li>
+	                         <select class="input-sm form-control w-sm inline v-middle" ng-model="maxParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+							 </select>
+	                        </li>
+	                      <!--  <li>
+	                          	<a style="display: block;"></a>
+	                        </li>
+	                        <li style="visibility: hidden;">
+	                           <label>descriptions:</label>
+							   <input type="text" class="form-control input-lg"  style="background: white; border: none;" aria-describedby="basic-addon1">
+	                        </li>-->
+	                        <li ng-show="hello" style="list-style: none; margin-top: 196px; padding-left: 0;">
+								<ul>
+	                          		<li style="list-style: none;">
+	                          			<a class="m-r-md" title="靠近bus stop"><i class="fa fa-bus" aria-hidden="true"></i></a>
+			                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+			                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+			                          	<a class="m-r-md" title="靠近hospital."><i class="fa fa-h-square" aria-hidden="true"></i></a>
+			                          	<a class="m-r-md" title="靠近地铁站."><i class="fa fa-train" aria-hidden="true"></i></a>
+	                          		</li>
+	                          	</ul>
+							</li>  	
+	                      </ul>
+	                    </div>
+	                  </div>
+	                </div>
+	                <div class=" m-l-n-xxs" ng-show="hello">
+	                  <label>Features:</label>
+	                  <div class="row">
+	                    <div class="col-xs-6">
+	                   	  
+	                      <ul class="list-unstyled l-h-2x">
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb0" checked>
+						              <i></i>
+						        </label>
+	                      	<label for="featureproductrankRefineCb0" style="position: absolute; top: 0;left: 60px;">Search only Premiere properties</label>
+	                      	</li>
+	                      	<li>
+	                      		
+	                      		<label class="i-switch bg-danger m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb" checked>
+						              <i></i>
+						        </label>
+	                      		<!--<input type="checkbox" name="allowances" id="allowancesRefineCb1" value="pets-allowed" tabindex="19">-->
+	                      		 <label for="allowancesRefineCb" style="position: absolute; top: 35px;left: 60px;" >Pets allowed</label>
+	                      	</li>
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb2" checked>
+						              <i></i>
+						        </label>
+	                      		<label for="allowancesRefineCb2" style="position: absolute; top: 68px;left: 60px;">Furnished</label>
+	                      	</li>
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb3" checked>
+						              <i></i>
+						        </label>
+	                      		<label for="allowancesRefineCb3" style="position: absolute; top: 102px;left: 60px;">Smoking permitted</label>
+	                      	</li>
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb4" checked>
+						              <i></i>
+						        </label>
+	                      		<label for="allowancesRefineCb4" style="position: absolute; top: 136px;left: 60px;">Smoking permitted</label>
+	                      	</li>
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb5" checked>
+						              <i></i>
+						        </label>
+	                      		<label for="allowancesRefineCb5" style="position: absolute; top: 171px;left: 60px;">Smoking permitted</label>
+	                      	</li>
+	                      </ul>
+	                    </div>
+	                     <div class="col-xs-6">
+	                      <ul class="list-unstyled l-h-2x">
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb6" checked>
+						              <i></i>
+						        </label>
+	                      	<label for="featureproductrankRefineCb6" style="position: absolute; top: 0;left: 60px;">Search only Premiere properties</label>
+	                      	</li>
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb7" checked>
+						              <i></i>
+						        </label>
+	                      		<label for="allowancesRefineCb7" style="position: absolute; top: 35px;left: 60px;">Pets allowed</label>
+	                      	</li>
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb8" checked>
+						              <i></i>
+						        </label>
+	                      		<label for="allowancesRefineCb8" style="position: absolute; top: 68px;left: 60px;">Furnished</label>
+	                      	</li>
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb9" checked>
+						              <i></i>
+						        </label>
+	                      		<label for="allowancesRefineCb9" style="position: absolute; top: 102px;left: 60px;">Furnished</label>
+	                      	</li>
+	                      	<li>
+	                      		<label class="i-switch m-t-xs m-r">
+						              <input type="checkbox" id="allowancesRefineCb10" checked>
+						              <i></i>
+						        </label>
+	                      		<label for="allowancesRefineCb10" style="position: absolute; top: 136px;left: 60px;">Furnished</label>
+	                      	</li>
+	                      	<li>
+	                      		
+	                      	</li>
+	                      </ul>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+			  <div class="row more-options">
+		    	<div class="col-sm-8"></div>
+		    	<div class="col-sm-4">
+		    		<a style="color: rgb(150, 65, 137); display: block; width: 100px;height: 20px;" ng-click="hello = !hello">
+		    			<span ng-show="!hello">more options&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+		    			<span ng-show="hello">less option&nbsp;<i class="fa fa-chevron-circle-up"></i></span>			
+		    		</a>
+		    	</div>
+		      </div>
+			  <button type="submit" class="btn-success plusplus" ng-click="update()" tabindex="23"><span>Update search</span></button>
+			</div>
+		</div>
+		<div class="col-md-7">
+			  <!-- pagination -->
+	      <div class="right-top clear">
+		      <h4>Limit the maximum visible buttons <span class="text-sm">(Page: [:bigCurrentPage:] / [:numPages:])</span></h4>
+	          <div class="m-b-sm m-r-lg">
+	          	<div>features:</div>
+		        <div class="btn-group btn-group-justified features-filter">
+		          <a href class="btn btn-primary">Newest</a>
+		          <a href class="btn btn-info">Lowest Price</a>
+		          <a href class="btn btn-success">Highest Price</a>
+		          <a href class="btn btn-primary">Available Time</a>
+		        </div>
+		      </div>
+	          <div class="clear pagination-top">
+		          	<div class="pull-left">
+		          		<a><i class="fa fa-lg fa-list"></i>&nbsp;List</a>
+		          		<a><i class="fa fa-lg fa-map-marker" ui-sref="app.googlemap"></i>&nbsp;Map</a>
+		          	</div>
+	          	 <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm m-r-lg pull-right" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+	          </div>
+	      </div>
+	     <!-- / pagination -->
+			<div class="content">
+			<div id="results">
+				<div class="list-wrap">
+					<ul id="house-list" class="house-list">
+						<li class="first" ui-sref="app.details">
+							<div class="pic-panel w-slider cl" id="js_slider">
+								<span class="new"></span>
+								<div class="slider cl">
+									<div class="slider-main" id="slider_main_block">
+										<ul class="slider-main-img">
+											<li><img src="../img/andy.jpg" alt="" /></li>
+										</ul>
+									</div>
+								</div>
+								<div class="slider-ctrl cl" id="slider_ctrl">
+									<span class="slider-ctrl-prev text-center" style="color: white;"><i class="fa fa-lg fa-arrow-circle-left m-t-sm"></i></span>
+									<span class="slider-ctrl-next text-center" style="color: white;"><i class="fa fa-lg fa-arrow-circle-right m-t-sm"></i></span>
+								</div>
+							</div>
+							<div class="info-panel">
+								<div class="rooms cl">
+									 <div class="hbox text-center">          
+						              <a href class="col padder-v text-muted">
+						                <div class="h4">
+						                	 <span>2</span>
+						                	 <span class="fa-stack fa-lg">
+								                <i class="fa fa-circle fa-stack-2x text-white"></i>
+								                <i class="fa fa-bed fa-stack-1x "></i>
+								            </span> 
+								           
+						                </div>
+						               
+						              </a>
+						              <a href class="col padder-v text-muted">
+						                <div class="h4">
+						                	<span>2</span>
+						                	<span class="fa-stack fa-lg">
+								                <i class="fa fa-circle fa-stack-2x text-white"></i>
+								                <i class="fa fa-bath fa-stack-1x "></i>
+								            </span>
+						                </div>
+						                
+						              </a>
+						              <a href class="col padder-v text-muted">
+						                <div class="h4">
+						                	<span>1</span>
+						                	<span class="fa-stack fa-lg">
+								                <i class="fa fa-circle fa-stack-2x text-white"></i>
+								                <i class="fa fa-car fa-stack-1x "></i>
+								            </span>
+						                </div>
+						                
+						              </a>
+						          </div>
+								</div>
+								<div class="address">
+									<a>
+										<span>harbourne road,Kingsford,NSW</span>
+									</a>
+								</div>
+								<div class="benefits">
+									<a class="train"><i class="fa fa-train"></i>距central station 200米</a>
+									<!--<a></a>-->
+									<a class="bus"><i class="fa fa-bus"></i>距bus stop 100米</a>
+									<a class="shoping"><i class="fa fa-shopping-cart"></i>距Coles 500米</a>
+									<a class="hospital"><i class="fa fa-h-square"></i>距Hospital 500米</a>
+								</div>
+								<div class="price">
+									<span class="num">$5850<span class="period">per week</span></span>
+									<span class="available">Available Time:10/02/2017</span>
+								</div>
+								<!--<div class="view">
+									<span class="view-num">Viewed:  20</span>
+								</div>-->
+								<div class="save">
+									<span class="save-delete-shortlist"><i class="fa fa-lg fa-heart-o">&nbsp;Save</i></span>
+								</div>
+							</div>
+
+						</li>
+						<li class="" ui-sref="app.details">
+							<div class="pic-panel w-slider cl" id="js_slider">
+								<span class="new"></span>
+								<div class="slider cl">
+									<div class="slider-main" id="slider_main_block">
+										<ul class="slider-main-img">
+											<li><img src="../img/andy.jpg" alt="" /></li>
+										</ul>
+									</div>
+								</div>
+								<div class="slider-ctrl cl" id="slider_ctrl">
+									<span class="slider-ctrl-prev text-center" style="color: white;"><i class="fa fa-lg fa-arrow-circle-left m-t-sm"></i></span>
+									<span class="slider-ctrl-next text-center" style="color: white;"><i class="fa fa-lg fa-arrow-circle-right m-t-sm"></i></span>
+								</div>
+							</div>
+							<div class="info-panel">
+								<div class="rooms cl">
+									 <div class="hbox text-center">          
+						              <a href class="col padder-v text-muted">
+						                <div class="h4">
+						                	 <span>2</span>
+						                	 <span class="fa-stack fa-lg">
+								                <i class="fa fa-circle fa-stack-2x text-white"></i>
+								                <i class="fa fa-bed fa-stack-1x "></i>
+								            </span> 
+								           
+						                </div>
+						               
+						              </a>
+						              <a href class="col padder-v text-muted">
+						                <div class="h4">
+						                	<span>2</span>
+						                	<span class="fa-stack fa-lg">
+								                <i class="fa fa-circle fa-stack-2x text-white"></i>
+								                <i class="fa fa-bath fa-stack-1x "></i>
+								            </span>
+						                </div>
+						                
+						              </a>
+						              <a href class="col padder-v text-muted">
+						                <div class="h4">
+						                	<span>1</span>
+						                	<span class="fa-stack fa-lg">
+								                <i class="fa fa-circle fa-stack-2x text-white"></i>
+								                <i class="fa fa-car fa-stack-1x "></i>
+								            </span>
+						                </div>
+						                
+						              </a>
+						          </div>
+								</div>
+								<div class="address">
+									<a>
+										<span>harbourne road,Kingsford,NSW</span>
+									</a>
+								</div>
+								<div class="benefits">
+									<a class="train"><i class="fa fa-train"></i>距central station 200米</a>
+									<!--<a></a>-->
+									<a class="bus"><i class="fa fa-bus"></i>距bus stop 100米</a>
+									<a class="shoping"><i class="fa fa-shopping-cart"></i>距Coles 500米</a>
+									<a class="hospital"><i class="fa fa-h-square"></i>距Hospital 500米</a>
+								</div>
+								<div class="price">
+									<span class="num">$5850<span class="period">per week</span></span>
+									<span class="available">Available Time:10/02/2017</span>
+								</div>
+								<!--<div class="view">
+									<span class="view-num">Viewed:  20</span>
+								</div>-->
+								<div class="save">
+									<span class="save-delete-shortlist"><i class="fa fa-lg fa-heart-o">&nbsp;Save</i></span>
+								</div>
+							</div>
+
+						</li>
+
+					</ul>
+				</div>
+			  <div class="pagination-bottom">
+	          	<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm m-r-lg" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+	          </div>
+			</div>
+
+		</div>
+		</div>
+	</div>
+	
+		
+</div>
+	

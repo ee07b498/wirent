@@ -1,7 +1,6 @@
 <div ng-controller="HomeController"> 
 	<div class="hero-wrap clear" style="background: url(img/Evergrand1366x614Tiny.jpg) no-repeat; height: 300px;">
 	 <div>
-	 	
 			<div class="search-banner">
 			<div class="search-options clearfix">
 				<div id="search-tabs">
@@ -19,53 +18,105 @@
  <div class="panel panel-default form-container form-panel" >
     
 	<div class="row wrapper" >
-      <div class="form-col-sm-2  m-b-xs">
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myMode" ng-options="mode.name as mode.name for mode in Modes" >
-          
+		<!--<div class="col-sm-1">
+      </div>-->
+      <div class="col-sm-2 m-b-xs m-l-xl">
+       		<select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
         </select>
-       </div>
+    	</div>
       
       <div class="col-sm-8">
         <div class="input-group">
-          <input type="text" class="input-lg form-control" placeholder="Search">
+        <select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search> 
+          <!--<input type="text" class="input-lg form-control" placeholder="Search">-->
           <span class="input-group-btn">
             <button class="btn btn-lg btn-success" ng-click="entireSearch()"  type="button">Search&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
           </span>
+           
         </div>
       </div>
       <div class="col-sm-2">
       </div>
     </div>
     <div class="row wrapper">
-    	<div class="col-sm-3 m-b-xs">
-    		<label>Property type</label>
-       		<select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
-        </select>
-    	</div>
-    	<div class="form-col-sm-1 m-b-xs">
+    	<!--<div class="form-col-sm-1 m-b-xs m-l-xl">
     		<label class="m-t-xxl"></label>
     		<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
     	</div>
-    	<div class="form-col-sm-2 m-b-xs no-indent">
+    	<div class="form-col-sm-2  no-indent m-t-xs">
     		<label class="m-t-lg"></label>
     		<input type="text" class="form-control input-lg" placeholder="minPrice" aria-describedby="basic-addon1">
+    	</div>-->
+    	
+    	<div class="col-sm-3 no-indent m-l-xl">
+    		<label>minPrice</label>
+    		<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1" style="background: #487547; border-color: #216722;">
+			  	<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
+			  </span>
+			  <input type="text" class="form-control input-lg" placeholder="minPrice" ng-model="myMinPrice" aria-describedby="basic-addon1">
+			</div>
     	</div>
-    	<div class="form-col-sm-1 m-b-xs">
+    	<!--<div class="form-col-sm-1 m-b-xs m-l-md">
     		<label class="m-t-xxl"></label>
     		<a style="color: white;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
     	</div>
-    	<div class="form-col-sm-2 m-b-xs">
+    	<div class="form-col-sm-2  m-t-xs">
     		<label class="m-t-md"></label>
     		<input type="text" class="form-control input-lg" placeholder="maxPrice" aria-describedby="basic-addon1">
+    	</div>-->
+    	<div class="col-sm-3 no-indent">
+    		<label>maxPrice</label>
+    		<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1" style="background: #00de04; border-color: #00de04;">
+			  	<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
+			  </span>
+			  <input type="text" class="form-control input-lg" placeholder="maxPrice" ng-model="myMaxPrice" aria-describedby="basic-addon1">
+			</div>
     	</div>
-    </div>
-    <div ng-show="hello" class="row wrapper">
-    	<div class="col-sm-3 m-b-xs">
-    	<label>Property type</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
-          
+    	
+    	<!--<div class="form-col-sm-1 m-b-xs m-l-xxl">
+    		<label class="m-t-xxl"></label>
+    		<a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a>
+    	</div>
+       <div class="col-sm-2 m-b-xs">
+       	<label class="m-t-sm">minBeds</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
+         
         </select>
-       </div>
+       </div>-->
+       <div class="col-sm-1"></div>
+       <div class="col-sm-2">
+       	<label>minBeds</label>
+	       <div class="input-group">
+			  <select class="input-lg form-control w-sm inline v-middle" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
+         
+        	  </select>
+			  <span class="input-group-addon" style="background: #024a4c; border-color: #024a4c;"><a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a></span>
+		   </div>
+	   </div>
+	    <div class="col-sm-2">
+	    	<label>maxBeds</label>
+	       <div class="input-group">
+			 <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
+        
+        	</select>
+			  <span class="input-group-addon" style="background: #0a7e96; border-color:#0a7e96;"><a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a></span>
+		   </div>
+	   </div>
+      <!-- <div class="form-col-sm-1 m-b-xs">
+    		<label class="m-t-lg"></label>
+    		<a style="color: white; margin:0 15px;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
+    	</div>
+        <div class="col-sm-2 m-b-xs">
+        <label class="m-t-sm">maxBeds</label>
+        <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
+        
+        </select>
+       </div>-->
+    </div>
+   <!-- <div ng-show="hello" class="row wrapper">
+    	<div class="col-sm-3 m-b-xs"></div>
        <div class="form-col-sm-1 m-b-xs">
     		<label class="m-t-lg"></label>
     		<a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a>
@@ -88,8 +139,56 @@
        </div>
       	<div class="col-sm-1 m-b-xs"></div>
     </div>
-    
+ -->   
      <div ng-show="hello" class="row wrapper" >
+     	<div class="col-sm-4 m-b-xs">
+     		<label>descriptions</label>
+     		<div class="dropdown">
+     			<button type="button"  class="dropdown-toggle form-control input-lg" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="true" style="background: blueviolet;">Dropdown trigger<a></a></button>  
+	     		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton" style="margin-top: -2px;">
+				  <li class="dropdown-item">
+					  	<div class="input-group">
+					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
+					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
+					      </span>
+					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
+					    </div>
+				  </li>
+				  <li class="dropdown-item">
+				  		<div class="input-group">
+					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
+					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
+					      </span>
+					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
+					    </div>
+				  </li>
+				  <li class="dropdown-item">
+				  		<div class="input-group">
+					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
+					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
+					      </span>
+					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
+					    </div>
+				  </li>
+				  <li class="dropdown-item">
+				  		<div class="input-group">
+					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
+					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
+					      </span>
+					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
+					    </div>
+				  </li>
+				  <li class="dropdown-item">
+				  		<div class="input-group">
+					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
+					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
+					      </span>
+					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
+					    </div>
+				  </li>
+				</ul>
+     		</div>
+     	</div>
     	<div class="col-sm-3 m-b-xs">
     		<label class="m-t-xxs">Available Time:</label>
             <p class="input-group">
@@ -105,24 +204,24 @@
          
         </select>
        </div>
-       <div class="col-sm-2 m-b-xs">
+     <!--  <div class="col-sm-2 m-b-xs">
        	<label>maxBathRoom</label>
         <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
           
         </select>
-       </div>
+       </div>-->
        <div class="col-sm-2 m-b-xs">
        	<label>minParking</label>
         <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
          
         </select>
        </div>
-        <div class="col-sm-2 m-b-xs">
+        <!--<div class="col-sm-2 m-b-xs">
         <label>maxParking</label>
         <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
         
         </select>
-       </div>
+       </div>-->
       	<div class="col-sm-1 m-b-xs"></div>
     </div>
      <div ng-show="hello" class="row wrapper" >
@@ -144,15 +243,15 @@
      	</div>
      	<div class="col-sm-4 m-b-xs">
      		<label>descriptions</label>
-    		<input type="text" class="form-control input-lg" placeholder="keyword description" aria-describedby="basic-addon1">
+    		<input type="text" class="form-control input-lg" placeholder="keyword description" ng-modle="keywords" aria-describedby="basic-addon1">
      	</div>
      </div>
     <div class="row wrapper" >
     	<div class="col-sm-10"></div>
     	<div class="col-sm-2">
     		<a style="color: gold; display: block; " ng-click="hello = !hello">
-    			more options&nbsp;<i class="fa fa-angle-double-right animate" ng-show="!hello"></i>
-    						<i class="fa fa-angle-double-down animate" ng-show="hello"></i>
+    			<span ng-show="!hello">more options&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+    			<span ng-show="hello">less option&nbsp;<i class="fa fa-chevron-circle-up"></i></span>			
     		</a>
     	</div>
     	
@@ -256,8 +355,7 @@
 	  <div class="ads"></div>
 	  
 	</div>
-	
-		<div class="clear">
+<!--	<div class="clear">
 			<section class="content-wrap main-area redesign" id="main-area">
 				<section class="latest-news">
 					<div class="latest-news-inner-wrap cfix">
@@ -299,12 +397,10 @@
 						</article>
 					</div>
 				</section>
-
 			</section>	
-			
 		</div>
 		<div class="clearfix">
-					<div id="dream-homes-section" style="display: block; margin-top: 5px;">
+			<div id="dream-homes-section" style="display: block; margin-top: 5px;">
 				<section class="dream-homes">
 					<h1 class="dream-homes-main-title">Dream Homes</h1>
 					<div class="content-wrap dream-homes-container is-carousel">
@@ -598,5 +694,5 @@
 	
 			
 		</div>
-
+-->
 </div>

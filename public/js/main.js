@@ -6,7 +6,7 @@ angular.module('app')
   .controller('AppCtrl', ['$scope','$state', '$translate', '$localStorage', '$window', 
     function(              $scope,  $state,   $translate,   $localStorage,   $window ) {
       // add 'ie' classes to html
-   location.href = '/admin#/access/signin';
+     location.href = '/admin#/access/signin';
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');

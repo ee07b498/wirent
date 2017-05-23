@@ -35,6 +35,9 @@
 					$scope.payment = {};
 					$scope.management = {};
 					$scope.maintenance={};
+					$scope.mtCheckData={};
+					$scope.mtCheckDataResult={};
+					$scope.serviceHistoryData={};
 					var val= {
 						ER_ID : 0,
 						CID : 0,
@@ -121,10 +124,6 @@
 						$scope.payment.BillDateMin = '2000-01-01';
 						$scope.payment.BillDateMax = '3000-01-01';
 						$scope.payment.BillType = '';
-						
-						
-						console.log("valllllll",val);
-//						
 						 $http.post('/customer/bill',$scope.payment)
             		.then(function (response) {
             			console.log("response",response);
@@ -148,15 +147,68 @@
 					}
 					//maintenance Apply
 					$scope.mtApply =  function(){
-					$scope.maintenance.CID = 0;
-					$http.post('/customer/rent',$scope.maintenance)
-						.then(function(r){
-						console.log(r);
-						$scope.maintenance = r.data[0];
-						console.log($scope.maintenance);
-						},function(e){
+						$scope.submit = function(){
+							$scope.maintenance.CID = 1;
+							$scope.maintenance.ER_ID = 2;
+							$scope.maintenance.MType = $scope.MType;
+							$scope.maintenance.MApplyForm = "q1:"+$scope.maintenance.q1+"@"+"q2:"+$scope.maintenance.q2+"@"+"q3:"+$scope.maintenance.q3+"@"+"q4:"+$scope.maintenance.q4+"@"+"feature:"+$scope.maintenance.feature+"@"+"date1:"+$scope.maintenance.dt1+"@"+"date2:"+$scope.maintenance.dt2+"@"+"date3:"+$scope.maintenance.dt3;
+							delete $scope.maintenance["q1"]; 
+							delete $scope.maintenance["q2"]; 
+							delete $scope.maintenance["q3"]; 
+							delete $scope.maintenance["q4"]; 
+							delete $scope.maintenance["dt1"]; 
+							delete $scope.maintenance["dt2"]; 
+							delete $scope.maintenance["dt3"]; 
+							delete $scope.maintenance["feature"]; 
+							$scope.maintenance.MApplyDate = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd");
+							$scope.maintenance.MStat = "Processing";
+							console.log("$scope.maintenance",$scope.maintenance)
 							
-						})
+							$http.post('/customer/maintenance/apply',$scope.maintenance)
+								.then(function(r){
+								console.log(r);
+								$scope.maintenance = r.data[0];
+								console.log("$scope.maintenance",$scope.maintenance);
+								},function(e){
+									
+								})
+						}
+					
+					}
+					//maintenance check()
+					$scope.mtCheck = function(){
+						$scope.mtCheckData.CID = 0;
+						$scope.mtCheckData.ER_ID =0;
+						$scope.mtCheckData.MType = "";
+						$scope.mtCheckData.MStat = "";
+						$scope.mtCheckData.MApplyDateMin="2000-01-01";
+						$scope.mtCheckData.MApplyDateMax="3000-01-01";
+						$http.post('/customer/maintenance',$scope.mtCheckData)
+								.then(function(r){
+								console.log(r);
+								$scope.mtCheckDataResult = r;
+								console.log("$scope.mtCheckDataResult",$scope.mtCheckDataResult);
+								},function(e){
+									
+								})
+					}
+					
+					//Service history
+					$scope.svHistory = function(){
+						$scope.serviceHistoryData.CID = 0;
+						$scope.serviceHistoryData.ER_ID = 0;
+						$scope.serviceHistoryData.ServiceType = "";
+						$scope.serviceHistoryData.ServiceStat="";
+						$scope.serviceHistoryData.ServiceDateMin="2000-01-01";
+						$scope.serviceHistoryData.ServiceDateMax="3000-01-01";
+						$http.post('/customer/service',$scope.serviceHistoryData)
+								.then(function(r){
+								console.log("$scope.serviceHistoryData",r);
+								$scope.serviceHistoryData = r;
+//								console.log("$scope.mtCheckDataResult",$scope.mtCheckDataResult);
+								},function(e){
+									
+								})
 					}
 			
 			
@@ -184,17 +236,36 @@
 			$scope.tabs_accounts[index] = true;
 		}	
 		
-		
+		/*maintenance type*/
+		$scope.MType = 'Plumb';
+		$scope.MTypes = [{ id: 1, MType:'Plumb'}, { id: 2,MType:'Refrigerator'},
+			{ id: 3, MType:'Microwave'},{ id: 4,propertyType:'Oven'},
+			{ id: 5, MType:'Washing Machine'}];
 		/*datepicker*/
 		$scope.today = function() {
-	      $scope.dt = new Date();
+	      $scope.maintenance.dt1 = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd");
 	    };
 	    $scope.today();
 	
 	    $scope.clear = function () {
-	      $scope.dt = null;
+	      $scope.maintenance.dt1 = null;
 	    };
+		$scope.today = function() {
+	      $scope.maintenance.dt2 = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd");
+	    };
+	    $scope.today();
 	
+	    $scope.clear = function () {
+	      $scope.maintenance.dt2 = null;
+	    };
+	    $scope.today = function() {
+	      $scope.maintenance.dt3 = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd");
+	    };
+	    $scope.today();
+	
+	    $scope.clear = function () {
+	      $scope.maintenance.dt3 = null;
+	    };
 	    // Disable weekend selection
 	    /*$scope.disabled = function(date, mode) {
 	      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
@@ -211,7 +282,18 @@
 	
 	      $scope.opened = true;
 	    };
+		$scope.open2 = function($event) {
+	      $event.preventDefault();
+	      $event.stopPropagation();
 	
+	      $scope.opened2 = true;
+	    };
+	    $scope.open3 = function($event) {
+	      $event.preventDefault();
+	      $event.stopPropagation();
+	
+	      $scope.opened3 = true;
+	    };
 	    $scope.dateOptions = {
 	      formatYear: 'yy',
 	      startingDay: 1,
@@ -219,7 +301,7 @@
 	    };
 	
 	    $scope.initDate = new Date('2016-15-20');
-	    $scope.formats = ['yyyy-MMMM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+	    $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 	    $scope.format = $scope.formats[0];
 
 	}])	

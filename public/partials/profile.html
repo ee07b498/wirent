@@ -45,7 +45,7 @@
                             </a>
                         </li>
                         <li ng-class="{'selected': tabs[4]}" role="presentation">
-                            <a href ng-click="tab(4)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                            <a href ng-click="tab(4);mtCheck()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
                                 <span class="icon "><i class="fa fa-suitcase" aria-hidden="true"></i></span>
                                 <span class="copy">Maintenance&nbsp;History</span>
                             </a>
@@ -57,7 +57,7 @@
                             </a>
                         </li>
 						 <li ng-class="{'selected': tabs[6]}" role="presentation">
-                            <a href ng-click="tab(6)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                            <a href ng-click="tab(6);svHistory()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
                                 <span class="icon "><i class="fa fa-suitcase" aria-hidden="true"></i></span>
                                 <span class="copy">Service&nbsp;History</span>
                             </a>
@@ -257,7 +257,7 @@
 									<div class="panel-body b-b b-light">
 									  Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r" placeholder="input the date to search"/>
 									</div>
-									<div>
+									<div class="table-responsive">
 									  <table class="table m-b-none"  data-filter="#filter" data-page-size="5" >
 										<thead>
 										  <tr>
@@ -443,6 +443,23 @@
                                                 <input aria-required="true" id="EmailAddress" name="EmailAddress" readonly="readonly" type="text" ng-model="data.CEmail">
                                             </div>
                                         </div>
+                                        <div class="frm-main no-indent">
+                                        	<div class="row">
+                                        		<div class="col-sm-3 m-b-xs">
+										    		<label style="color: #979da7;">Property type</label>
+										       		<select class="input-lg form-control w-sm inline v-middle" ng-model="MType"  ng-options="mType.MType as mType.MType for mType in MTypes">
+        											</select>
+									    		</div>
+									    		<div class="col-sm-9 m-b-xs">
+									    			<label for="Feature" style="color: #979da7;">Feature</label>
+		                                            <div class="inner-wrap">
+		                                                <input aria-required="true" id="Feature" name="Feature"  type="text" ng-model="maintenance.feature">
+		                                            </div>
+									    		</div>
+									    		
+                                        	</div>
+                                        	
+                                        </div>
 										 <div class="frm-main no-indent">
                                             <label for="LastName">When did the problem start?</label>
                                             <div class="inner-wrap">
@@ -467,7 +484,7 @@
                                             	<div class="row">
                                             		<div class="col-sm-4">
                                             			<p class="input-group">
-											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt1" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="maintenance.dt1" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
 											              <span class="input-group-btn">
 											                <button type="button" class="btn btn-lg btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 											              </span>
@@ -475,17 +492,17 @@
                                             		</div>
                                             		<div class="col-sm-4">
                                             			<p class="input-group">
-											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt2" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="maintenance.dt2" is-open="opened2" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
 											              <span class="input-group-btn">
-											                <button type="button" class="btn btn-lg btn-default" ng-click="open2($event2)"><i class="glyphicon glyphicon-calendar"></i></button>
+											                <button type="button" class="btn btn-lg btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 											              </span>
 											            </p>  
                                             		</div>
                                             		<div class="col-sm-4">
                                             			<p class="input-group">
-											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt3" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="maintenance.dt3" is-open="opened3" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
 											              <span class="input-group-btn">
-											                <button type="button" class="btn btn-lg btn-default" ng-click="open3($event3)"><i class="glyphicon glyphicon-calendar"></i></button>
+											                <button type="button" class="btn btn-lg btn-default" ng-click="open3($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 											              </span>
 											            </p>  
                                             		</div>
@@ -495,7 +512,7 @@
                                         <div class="frm-main no-indent">
                                             <label for="LastName">What were you doing when the problem occurred?</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="LastName" name="LastName"   type="text" value="Sun">
+                                                <input aria-required="false" id="LastName" name="LastName"   type="text" ng-model="maintenance.q4">
                                             </div>
                                             <div class="inner-wrap">
                                             	<div class="row m-t-md">
@@ -503,7 +520,7 @@
                                             			
                                             		</div>
                                             		<div class="col-sm-4">
-                                            			 <a id="myBtn" class="btn lowlight">Submit</a>
+                                            			 <a id="myBtn" ng-click="submit()" class="btn lowlight">Submit</a>
                                             		</div>
                                             		<div class="col-sm-4">
                                             			
@@ -534,31 +551,37 @@
 											  <span class="label bg-danger pull-right m-t-xs">1 left</span>
 											  Tasks
 											</div>
-											<table class="table table-striped m-b-none">
+											<div class="table-responsive">
+											<table class="table table-striped m-b-none" style="table-layout:fixed ; width: 100%;">
 											  <thead>
 												<tr>
-												  <th>Service Type</th>
-												  <th>Progress</th>
-												  <th>Apply Date</th>
-												  <th style="width:30px;">state</th>
+												  <th style="width:40px;">CID</th>
+												  <th style="width:80px;">Service Type</th>
+												  <th style="width:80px;">MApplyForm</th>
+												  <th style="width:100px;">Mstat</th>
+												  <th style="width:80px;">Apply Date</th>
+												  <th style="width:40px;">MConfirm</th>
 												</tr>
 											  </thead>
 											  <tbody>
-												<tr>
-												  <td>Plumb Repair</td>
+												<tr ng-repeat="data in mtCheckDataResult.data">
+												  <td>[:data.CID:]</td>
+												  <td>[:data.MType:]</td>
+												  <td>[:data.MApplyForm:]</td>
 												  <td>
 													<div class="progress progress-sm progress-striped active m-t-xs m-b-none">
 													  <div class="progress-bar bg-success" data-toggle="tooltip" data-original-title="80%" style="width: 80%"></div>
 													</div>
 												  </td>
-												  <td>21-02-2017</td>
+												  <td>[:data.MApplyDate:]</td>
 												  <td>
 												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
 												</td>
 												</tr>
 											  </tbody>
 											</table>
-										  </div>
+										 	</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -566,13 +589,60 @@
 					</div>
 				</div>
 				
-				 <div class="tab-pane tabPanel" ng-class="{'active': tabs[4]}">
+				 <div class="tab-pane tabPanel" ng-class="{'active': tabs[5]}">
+                    <div class="col-sm-12 tabPanel" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
+						<div class="card">
+							<div class="inner-wrap clear">
+								<header>
+									<h3>Service Apply</h3>
+								</header>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane tabPanel" ng-class="{'active': tabs[6]}">
                     <div class="col-sm-12 tabPanel" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
 						<div class="card">
 							<div class="inner-wrap clear">
 								<header>
 									<h3>Service History</h3>
 								</header>	
+								<div class="content-wrap clear">
+									<div class="wrapper-md">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+											  <span class="label bg-danger pull-right m-t-xs">1 left</span>
+											  Tasks
+											</div>
+											<div class="table-responsive">
+											<table class="table table-striped m-b-none" style="table-layout:fixed ; width: 100%;">
+											  <thead>
+												<tr>
+												  <th style="width:40px;">SLID</th>
+												  <th style="width:80px;">ServiceType</th>
+												  <th style="width:80px;">ServiceFile</th>
+												  <th style="width:100px;">ServiceComment</th>
+												  <th style="width:80px;">Service Date</th>
+												  <th style="width:40px;">ServiceSate</th>
+												</tr>
+											  </thead>
+											  <tbody>
+												<tr ng-repeat="data in serviceHistoryData.data">
+												  <td>[:data.SLID:]</td>
+												  <td>[:data.ServiceType:]</td>
+												  <td>[:data.ServiceFile:]</td>
+												  <td>[:data.ServiceComment:]</td>
+												  <td>[:data.ServiceDate:]</td>
+												  <td>
+												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+												</td>
+												</tr>
+											  </tbody>
+											</table>
+										 	</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

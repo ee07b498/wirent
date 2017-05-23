@@ -1,0 +1,533 @@
+.serviceTypes div,
+.serviceTypes dl,
+.serviceTypes dt,
+.serviceTypes dd,
+.serviceTypes ul,
+.serviceTypes ol,
+.serviceTypes li,
+.serviceTypes h1,
+.serviceTypes h2,
+.serviceTypes h3,
+.serviceTypes h4,
+.serviceTypes h5,
+.serviceTypes h6,
+.serviceTypes pre,
+.serviceTypes code,
+.serviceTypes form,
+.serviceTypes fieldset,
+.serviceTypes legend,
+.serviceTypes input,
+.serviceTypes button,
+.serviceTypes textarea,
+.serviceTypes p,
+.serviceTypes blockquote,
+.serviceTypes th,
+.serviceTypes td {
+	margin: 0;
+	padding: 0;
+}
+
+.serviceTypes * {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-weight: normal;
+	font-family: "Microsoft YaHei";
+}
+.serviceTypes h1, 
+.serviceTypes h2, 
+.serviceTypes h3, 
+.serviceTypes h4, 
+.serviceTypes h5, 
+.serviceTypes h6 {
+    font-size: 100%;
+    font-weight: normal;
+    font-family: "Microsoft YaHei";
+}
+.serviceTypes :focus {
+    outline: 0;
+}
+.serviceTypes div {
+	display: block;
+}
+.serviceTypes a:link, .serviceTypes a:visited {
+    color: #5e5e5e;
+}
+.serviceTypes a:hover {
+    color: #c9394a;
+}
+.serviceTypes a:active {
+    color: #666;
+}
+.serviceTypes a:focus {
+    outline: none;
+    -moz-outline: none;
+}
+.serviceTypes a:focus, .serviceTypes a:active, .serviceTypes a:hover {
+    outline: 0;
+    -moz-outline: none;
+}
+
+.serviceTypes .body-main {
+	min-height: 750px;
+}
+/* banner start*/
+.serviceTypes @keyframes spin1 {
+  100% {
+    transform: rotate(360deg);
+    transform-origin: 50% 50%;
+  }
+}
+.serviceTypes @keyframes spin2 {
+  100% {
+    transform: rotate(-360deg);
+    transform-origin: 50% 50%;
+  }
+}
+/* 方块 */
+.serviceTypes .image1 {
+  animation: spin2 382s linear infinite;
+}
+/* 菱形 */
+.serviceTypes .image2 {
+  animation: spin1 618s linear infinite;
+}
+/* 叶子 */
+.serviceTypes .image3 {
+  animation: spin1 618s linear infinite;
+}
+/* 三角 */
+.serviceTypes .image4 {
+  animation: spin1 1024s linear infinite;
+}
+
+.serviceTypes .program-banner {
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+    position: relative;
+}
+.serviceTypes .MMM {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 9;
+}
+.serviceTypes .wrap {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+.serviceTypes .program-banner-absolute {
+  position: absolute;
+  width: 3174px;
+  height: 2624px;
+  left: 50%;
+  margin-left: -1587px;
+  top: 50%;
+  margin-top: -940px;
+}
+.serviceTypes .program-banner-wrap {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  background-color: #1b324a;
+  overflow: hidden;
+}
+.serviceTypes .program-banner-bk {
+  width: 3174px;
+  height: 2624px;
+  position: relative;
+}
+.serviceTypes .program-banner-bk > div {
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.serviceTypes .svg-block {
+  position: absolute;
+  width: 848px;
+  height: 848px;
+  left: 0;
+  top: 0;
+  background: url(/img/block.png);
+  z-index: 2;
+}
+.serviceTypes .svg-diamond {
+  position: absolute;
+  width: 1213px;
+  height: 1213px;
+  left: 215px;
+  top: 190px;
+  background: url(/img/diamond.png);
+  z-index: 3;
+}
+.serviceTypes .svg-leaf {
+  position: absolute;
+  width: 930px;
+  height: 930px;
+  left: 1060px;
+  top: 450px;
+  background: url(/img/leaf.png);
+  z-index: 2;
+}
+.serviceTypes .svg-small-circle {
+  position: absolute;
+  width: 864px;
+  height: 864px;
+  right: 478px;
+  top: 336px;
+  background: url(/img/small-circle.png);
+  z-index: 0;
+}
+.serviceTypes .svg-big-circle {
+  position: absolute;
+  width: 1664px;
+  height: 1664px;
+  right: 811px;
+  top: 956px;
+  background: url(/img/big-circle.png);
+  z-index: 0;
+}
+.serviceTypes .svg-triangle {
+  position: absolute;
+  width: 1374px;
+  height: 1184px;
+  right: 0px;
+  bottom: 445px;
+  background: url(/img/triangle.png);
+  z-index: 1;
+}
+/* banner end*/
+.serviceTypes .program-banner {
+  width: 100%;
+  height: 300px;
+  box-sizing: border-box;
+  position: relative;
+}
+.serviceTypes .program-banner .relative {
+  position: relative;
+  z-index: 1;
+}
+.serviceTypes .program-banner .banner-head {
+    z-index: 10;
+}
+.serviceTypes .program-banner .banner-head > div.active {
+    display: block;
+}
+.serviceTypes .program-banner .banner-head > div {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+}
+
+.serviceTypes .program-banner .banner-head > div {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+}
+.serviceTypes .program-banner .program-banner-bk {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-position: center 24%;
+  background-size: cover;
+}
+.serviceTypes .program-banner .tit {
+  font-size: 36px;
+  color: #fff;
+  line-height: 36px;
+  text-align: center;
+  text-shadow: 0px 4px 8px rgba(7, 17, 27, 0.4);
+  letter-spacing: 10px;
+  margin-bottom: 16px;
+}
+.serviceTypes .program-banner .intro {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  font-weight: 200;
+  color: #fff;
+  width: 880px;
+  line-height: 28px;
+  height: 56px;
+  overflow: hidden;
+  text-align: center;
+  text-shadow: 0px 4px 8px rgba(7, 17, 27, 0.4);
+}
+.serviceTypes .program-banner .intro span {
+  margin: 0 12px;
+}
+.serviceTypes .program-banner .tab-nav {
+  position: absolute;
+  width: 1104px;
+  height: 120px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(7, 17, 27, 0.1);
+  left: 50%;
+  bottom: -60px;
+  margin-left: -552px;
+  padding: 28px 24px 0;
+  z-index: 10;
+}
+.serviceTypes .program-banner .navitem {
+  float: left;
+  width: 128px;
+  height: 92px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  margin: 0 24px;
+}
+.serviceTypes .program-banner .navitem .navicon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 8px;
+  transition: .1s all linear;
+  margin-top: 0;
+  background-image: url(/img/nav.png);
+  background-size: cover;
+}
+.serviceTypes .program-banner .navitem .navicon.all {
+  background-position: 0 0;
+}
+.serviceTypes .program-banner .navitem .navicon.fe {
+  background-position: -35px 0;
+}
+.serviceTypes .program-banner .navitem .navicon.php {
+  background-position: -72px 0;
+}
+.serviceTypes .program-banner .navitem .navicon.java {
+  background-position: -106px 0;
+}
+.serviceTypes .program-banner .navitem .navicon.android {
+  background-position: -143px 0;
+}
+.serviceTypes .program-banner .navitem .navicon.ios {
+  background-position: -180px 0;
+}
+.serviceTypes .program-banner .navitem .navtext {
+  font-size: 14px;
+  color: #93999f;
+  line-height: 14px;
+  transition: .3s all linear;
+}
+.serviceTypes .program-banner .navitem .navbot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  height: 2px;
+  background-color: #f01414;
+  line-height: 0;
+  overflow: hidden;
+}
+.serviceTypes .program-banner .navitem.active .navtext {
+  color: #07111b;
+}
+.serviceTypes .program-banner .navitem.active .navbot {
+  display: block;
+}
+.serviceTypes .program-banner .navitem:hover .navtext {
+  color: #07111b;
+}
+.serviceTypes .program-banner .navitem:hover .navicon {
+  margin-top: -4px;
+}
+.serviceTypes .program-list {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 108px;
+  text-align: center;
+}
+.serviceTypes .program-list .program-list-wrap {
+  display: inline-block;
+}
+.serviceTypes .program-list .program-item {
+  margin-right: 32px;
+}
+.serviceTypes .program-item {
+  position: relative;
+  float: left;
+  width: 276px;
+  height: 326px;
+  transition: all linear .3s;
+  margin-right: 32px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+.serviceTypes .program-item:nth-child(4n) {
+  margin-right: 0px;
+}
+.serviceTypes .program-item:hover .shadow {
+  box-shadow: 0px 8px 6px 0px rgba(7, 17, 27, 0.2);
+}
+.serviceTypes .program-item:hover .c-line,
+.serviceTypes .program-item:hover .d-line {
+  box-shadow: 0px 8px 6px 0px rgba(7, 17, 27, 0.2);
+}
+.serviceTypes .program-item:hover .program-list-head > div {
+  transform: scale(1.2);
+}
+.serviceTypes .program-item .shadow {
+  transition: all linear .3s;
+  box-shadow: 0px 4px 8px 0px rgba(7, 17, 27, 0.1);
+  overflow: hidden;
+}
+.serviceTypes .program-item .program-list-head {
+  height: 96px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #f3f5f7;
+  overflow: hidden;
+}
+.serviceTypes .program-item .program-list-head div {
+  background-size: cover;
+  transition: all linear .3s;
+  height: 96px;
+}
+.serviceTypes .program-item .program-list-cont {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 0 24px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.serviceTypes .program-item .program-list-tit {
+  width: 100%;
+  padding: 22px 0 8px;
+  color: #07111b;
+  font-size: 16px;
+  line-height: 28px;
+  max-height: 55px;
+  letter-spacing: -0.1px;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.serviceTypes .program-item .program-list-dest {
+  font-size: 12px;
+  line-height: 24px;
+  height: 48px;
+  max-height: 48px;
+  word-break: normal;
+  color: #93999f;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.serviceTypes .program-item .program-list-bot {
+  position: absolute;
+  height: 24px;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+}
+.serviceTypes .program-item .text {
+  float: left;
+  font-size: 12px;
+  color: #93999f;
+  line-height: 24px;
+}
+.serviceTypes .program-item .price {
+  float: right;
+  height: 24px;
+  line-height: 24px;
+  color: #f01414;
+  font-weight: 200;
+  font-size: 16px;
+}
+.serviceTypes .program-item .c-line,
+.serviceTypes .program-item .d-line {
+  transition: all linear .3s;
+  background-color: #fff;
+  height: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  box-shadow: 0px 4px 8px 0px rgba(7, 17, 27, 0.1);
+}
+.serviceTypes .program-item .c-line {
+  width: 264px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.serviceTypes .program-item .d-line {
+  width: 252px;
+}
+.serviceTypes .program-item .learn_rate {
+  position: absolute;
+  width: 40px;
+  height: 24px;
+  font-size: 12px;
+  line-height: 24px;
+  color: #fff;
+  background-color: #07111b;
+  font-weight: 200;
+  text-align: center;
+  right: -4px;
+  top: 12px;
+  z-index: 1;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.serviceTypes .program-item .learn_rate:after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-top: 4px solid #07111b;
+  border-right: 4px solid transparent;
+  right: 0;
+  bottom: -4px;
+}
+.serviceTypes .program-item .learn_rate i {
+  line-height: 24px;
+}
+.serviceTypes .program-item .item-new {
+  position: absolute;
+  width: 40px;
+  height: 24px;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 24px;
+  left: -8px;
+  top: -8px;
+  color: #f01414;
+  border: 2px solid #f01414;
+  font-size: 12px;
+  background-color: #fff;
+  font-weight: 700;
+}

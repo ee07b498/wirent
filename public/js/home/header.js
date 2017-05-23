@@ -1,7 +1,7 @@
 ;
 (function() {
 	'use strict';
-	angular.module('header',[])
+	angular.module('header',['andy','user'])
 		.service('BaseService', ['$state', '$http', function($state, $http) {
 
 		}])

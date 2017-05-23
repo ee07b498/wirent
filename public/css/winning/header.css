@@ -1,0 +1,36 @@
+#topbar-header {}
+
+#topbar-header > .topbar {
+    border-bottom: 1px solid #ccc;
+}
+
+#topbar-header > .topbar > .container {}
+
+#topbar-header > .topbar > .container > div{
+    border-left: 1px solid #fff;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    border-left: 1px solid #ccc;
+    text-align: center;
+}
+#topbar-header > .topbar > .container > div >div>div:last-child{
+	border-right: 1px solid #fff;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    border-right: 1px solid #ccc;
+    text-align: center;
+}
+#topbar-header > .topbar > .container > div > a {
+    color: #666;
+}
+
+#topbar-header > .topbar > .container > div:first-child {
+    border-left: 0;
+    z-index: 2;
+}
+
+#topbar-header > .topbar > .container > div > .btn-link {
+    color: #666;
+}

@@ -1,0 +1,350 @@
+/*content starts*/
+.list-page {
+	background: #f2f5f7;
+}
+/*left side filter start*/
+.list-page .left-side {
+	background-color: #fafbfc;
+	margin: 10px 5px 0 30px;
+	border-radius: 3px;
+}
+/*left side filter end*/
+.list-page label {
+	color: gray;
+}
+.list-page .content {
+	/*width: 1000px;*/
+	position: relative;
+	margin: 0 auto;
+	padding: 0px 30px 0 5px;
+}
+.list-page .plusplus {
+	width: 190px;
+	height: 40px;
+	margin-left: 135px;
+	/*background: purple;*/
+	border: 1px solid plum;
+	border-radius: 3px;
+}
+.list-page .features-filter {
+	margin-top: 15px;
+	border-bottom: 3px solid rgb(150, 65, 137);
+	color: red;
+}
+.list-page .features-filter a{
+	border: none;
+	background-color: white;
+	color: rgb(150, 65, 137)!important;
+}
+.list-page .features-filter a:focus,
+.list-page .features-filter a:hover,
+.list-page .features-filter a:active{
+	background-color: rgb(150, 65, 137);
+	color: white!important;
+}
+.list-page .content .list-wrap ul, 
+.list-page .content .list-wrap li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.list-page .content .list-wrap .first {
+	background-color: white;
+	height: 210px;
+	/*background-color: white;*/
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px lavender;
+	margin-bottom: 10px;
+	position: relative;
+}
+.list-page .content .list-wrap .w-slider {
+	width: 233px;
+	height: 265px;
+	
+	overflow: hidden;
+}
+.list-page .content .list-wrap .w-slider .slider {
+	width: 233px;
+	height: 220px;
+}
+.list-page .content .list-wrap .w-slider .slider .slider-main {
+	width: 233px;
+	height: 220px;
+}
+
+.list-page .content .list-wrap li .pic-panel {
+	float: left;
+	height: 100%;
+	width: 233px;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-topleft: 5px;
+	position: relative;
+}
+.list-page .content .list-wrap li .pic-panel .new {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 260px;
+	width: 16px;
+	height: 13px;
+	z-index: 888;
+	background: url(../img/new.jpg) no-repeat;
+}
+.list-page .slider-main-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 233px;
+	height: 220px;
+}
+.list-page .slider-main-img img {
+	width: 100%;
+}
+.list-page .slider-ctrl {
+	text-align: center;
+	padding-top: 5px;
+}
+.list-page .slider-ctrl-con {
+	width: 24px;
+	height: 20px;
+	display: inline-block;
+	background: url(../img/icon.png) no-repeat -24px -782px;
+	margin: 0 5px;
+	cursor: pointer;
+	text-indent: -20em;
+	overflow: hidden;
+}
+.list-page .current {
+	background-position: -24px -762px;
+}
+.list-page .slider-ctrl-prev,
+.list-page .slider-ctrl-next {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	background:rgba(0,0,0,.3);
+	width: 30px;
+	height: 35px;
+	opacity: 0.8;
+	cursor: pointer;
+}
+.list-page .slider-ctrl-prev:hover,
+.list-page .slider-ctrl-next:hover{
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	background:rgba(0,0,0,.8);
+	width: 30px;
+	height: 35px;
+	opacity: 0.8;
+	cursor: pointer;
+}
+.list-page .slider-ctrl-prev {
+	left: 0;
+}
+.list-page .slider-ctrl-next {
+	right: 0;
+	background-position: -20px -10px;
+}
+
+/*content banner ends*/
+
+
+.list-page .content .list-wrap li .info-panel {
+	float: right;
+	height: 209px;
+	width: 490px;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+.list-page .info-panel .rooms {
+	width: 200px;
+	top: 60px;
+	left: 8px;
+	line-height: 34px;
+	position: absolute;
+}
+.list-page .info-panel .rooms .icon1{
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	width: 16px;
+	height: 13px;
+	background: url(../img/sprite.png) no-repeat -1px -59px;
+}
+.list-page .info-panel .rooms .icon2 {
+	position: absolute;
+	top: 10px;
+	left: 65px;
+	width: 16px;
+	height: 13px;
+	background: url(../img/sprite.png) no-repeat -1px -59px;
+}
+.list-page .info-panel .rooms .icon3 {
+	position: absolute;
+	top: 10px;
+	left: 105px;
+	width: 16px;
+	height: 13px;
+	background: url(../img/sprite.png) no-repeat -1px -59px;
+}
+.list-page .info-panel .rooms .room-num {
+	position: absolute;
+	font: 400 15px/15px "微软雅黑";
+	top: 10px;
+	left: 40px;
+	color: darkgrey;
+}
+.list-page .info-panel .rooms .bath-num {
+	position: absolute;
+	font: 400 15px/15px "微软雅黑";
+	top: 10px;
+	left: 85px;
+	color: darkgrey;
+}
+.list-page .info-panel .rooms .park-num {
+	position: absolute;
+	font: 400 15px/15px "microsoft yahei";
+	top: 10px;
+	left: 125px;
+	color: darkgrey;
+}
+.list-page .info-panel .address {
+	position: absolute;
+	top: 120px;
+	left: 10px;
+}
+.list-page .info-panel .address span {
+	line-height: 34px;
+	font: 100 15px/15px "microsoft yahei";
+	color: darkgrey;
+}
+
+
+
+.list-page .info-panel .benefits {
+	width: 800px;
+	line-height: 34px;
+	position: absolute;
+	left: 10px;
+	top: 160px;
+}
+
+
+.list-page .info-panel .benefits .train {
+	position: absolute;
+	font: 200 13px/15px "微软雅黑";
+	top: 10px;
+	left: 0;
+	color: lightslategray;
+}
+.list-page .info-panel .benefits .bus {
+	position: absolute;
+	font: 200 13px/15px "微软雅黑";
+	top: 10px;
+	left: 155px;
+	color: lightslategray;
+}
+.list-page .info-panel .benefits .shoping {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: 10px;
+	left: 275px;
+	color: lightslategray;
+}
+.list-page .info-panel .benefits .hospital {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: 30px;
+	left: 0px;
+	color: lightslategray;
+}
+
+.list-page .info-panel .price {
+	width: 100px;
+	height: 134px;
+	position: absolute;
+	top: 0;
+	left: -45px;
+}
+.list-page .info-panel .price .num{
+	display: block;
+	position: absolute;
+	font: 400 40px/40px "microsoft yahei";
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 80;
+	left: 50px;
+	top: 10px;
+	color: #C81623;
+}
+.list-page .info-panel .price .period {
+	display: block;
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	/*margin-top: 4px;*/
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 20;
+	left: 150px;
+	top: 30px;
+	color: lightslategray;
+}
+.list-page .info-panel .price .available {
+	display: block;
+	position: absolute;
+	font: 100 12px/15px "microsoft yahei";
+	/*margin-top: 4px;*/
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 20;
+	left: 60px;
+	top: 60px;
+	color: #191D3A;
+}
+.list-page .info-panel .view {
+	width: 100px;
+	height: 50px;
+	margin: 25px 65px 0 0;
+	position: absolute;
+	top: 80px;
+	left:600px;
+}
+.list-page .info-panel .view .view-num {
+	display: block;
+	font: 300 15px/20px "microsoft yahei";
+	width: 100px;
+	height: 50;
+	/*left: 460px;*/
+	margin-top: 20px;
+	color: #C81623;
+}
+.list-page .info-panel .save{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 120px;
+	left: 380px;
+}
+.list-page .pagination-bottom {
+	padding-left: 210px;
+}
+.list-page .pagination-top div{
+	margin:25px 0 0 10px;
+}
+.list-page .pagination-top div a {
+	margin-right: 20px;
+	color: lightgray;
+}
+.list-page .pagination-top div a:hover,
+.list-page .pagination-top div a:active,
+.list-page .pagination-top div a:focus
+ {
+	/*margin-right: 20px;*/
+	color: purple;
+	border-bottom: 3px solid rgb(150, 65, 137);
+}

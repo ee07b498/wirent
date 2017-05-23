@@ -1,3 +1,6 @@
+.map-page {
+	/*position: relative;*/
+}
 .infowindow-container {
   /*border: 2px solid #ccc;*/
   background-color: white;
@@ -64,19 +67,24 @@
 
 /*ads window*/
 .adv {
-	position: relative;
-	padding: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 530px;
+	height: 100%;
 	margin: 0;
+  	overflow-y: scroll;
+  	border-left: solid #d8dade 1px;
 }
 
 .adv ul li {
+	position: relative;
 	margin-bottom: 10px;
 	float:right;
 	list-style: none;
 	/*clear: both;*/
 	/*margin:0 auto;*/
 	margin-right: 15px;
-	margin-top: 100px;
 }
 .adv li:before {
 	content: "";
@@ -146,7 +154,7 @@
 .adv .ad ul {
 	position: absolute;
 	top: -100px;
-	width: 2940px;
+	/*width: 2940px;*/
 }
 
 .adv .ad ul li.current {
@@ -174,6 +182,7 @@
 	color: #fff;
 	opacity: 0.3;
 	border: 1px solid #fff;
+	z-index: 1000;
 }
 
 .adv #arr #right {
@@ -313,7 +322,7 @@
 	width: 150px;
 	/*line-height: 50px;*/
 	height: 80;
-	left: 60px;
+	left: 40px;
 	top: 10px;
 	color: #C81623;
 }
@@ -436,7 +445,7 @@
 }
 .relative-position {
 	position: relative;
-	top: 0;
+	top: 100px;
 	bottom: 0;
 }
 .more-options .dropdown > a:focus {
@@ -446,4 +455,14 @@
 .more-options .dropdown > a:hover {
 	  background-color: #752077;
     border-color: #428bca;
+}
+.shortlist-star a{
+	position: absolute;
+	display: block;
+	right: 70px;
+	top: 10px;
+	width: 20px;
+	height: 70px;
+	/*background: black;*/
+	z-index: 10;
 }

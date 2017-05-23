@@ -1,25 +1,23 @@
 <div ng-controller="MyCtrl as vm" >
-			<div class="row clear">
-				<div style="position: fixed; top: 50px; right: 0;width:100%; z-index: 100; background-color: #f6f8f8;">
-								
-								<div>
-								<form>
+			<div class="map-page">
+				    <div style="position: fixed; right: 0;width:100%; height: 50px; z-index: 100; background-color: #f6f8f8;">
+							<div class="pull-left">
+							<form>
 								<ul class="nav navbar-nav more-options">
 							          <li class="dropdown pos-stc">
 							            <a href class="dropdown-toggle btn-primary" ng-click="dropdown=!dropdown">
 							              <span>Filters</span> 
 							              <span class="caret"></span>
 							            </a>
-							            <div class=" wrapper w-full bg-white cust-m-t" style=" position: fixed; top: 115px; left: 0;z-index: 10000;" ng-show="dropdown">
+							            <div class=" wrapper w-full bg-white cust-m-t" style="position: fixed; top: 100px; left: 0;z-index: 100;" ng-show="dropdown">
 							              <div class="row">
 							                <div class="col-sm-4">
-							                	
 							                  <div class="row">
 							                    <div class="col-xs-6 left-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
 							                         <label>Price</label>
-    												<input type="text" class="form-control input-sm" placeholder="minPrice" aria-describedby="basic-addon1">
+    												<input type="text" ng-model="myMinPrice" class="form-control input-sm" placeholder="minPrice" aria-describedby="basic-addon1">
 							                        </li>
 							                        <li>
 							                          <label>Beds</label>
@@ -33,7 +31,7 @@
 												        </select>
 							                        </li>
 							                        <li>
-							                          <label>Property type</label>
+							                          <label>Type</label>
 												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
 												        </select>
 							                        </li>
@@ -42,11 +40,11 @@
 							                    <div class="col-xs-6 right-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
-    												<input type="text" class="form-control input-sm" placeholder="maxPrice" aria-describedby="basic-addon1">
+    												<input type="text" class="form-control input-sm" ng-model="myMaxPrice" placeholder="maxPrice" aria-describedby="basic-addon1">
 							                        </li>
 							                        <li>
         											  <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
-							                        	</select>
+							                          </select>
 							                        </li>
 							                        <li>
 												        <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
@@ -65,18 +63,18 @@
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
 							                          <label>Parking</label>
-												        <select class="input-sm form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+												        <select class="input-sm form-control w-sm inline v-middle" ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
 												        </select>
 							                        </li>
-							                        <li>
+							                       <!-- <li>
 							                          <label>minArea</label>
-												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myArea" ng-options="parking.num as parking.num for parking in parkingsNum" >
 												        </select>
-							                        </li>
-							                        <li>
+							                        </li>-->
+							                       <!-- <li>
 							                          	<label>features</label>
-    													<input type="text" class="form-control input-lg" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
-							                        </li>
+    													<input type="text" class="form-control input-lg" ng-model="features" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
+							                        </li>-->
 							                        <li>
 							                         <label class="m-t-xxs">Available:</label>
 											            <p class="input-group">
@@ -86,25 +84,42 @@
 											              </span>
 											            </p>   
 							                        </li>
+							                          <li>
+							                          	<label class="m-t-xxs">Descriptions:</label>
+							                          	<ul style="list-style: none; padding-right: 0;">
+							                          		<li>
+							                          			<a class="m-r-md" title="靠近bus stop"><i class="fa fa-bus" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="靠近hospital."><i class="fa fa-h-square" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="靠近地铁站."><i class="fa fa-train" aria-hidden="true"></i></a>
+							                          		</li>
+							                          	</ul>
+							                        </li>
 							                      </ul>
 							                    </div>
 							                    <div class="col-xs-6 right-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
-							                         <select class="input-sm form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+							                         <select class="input-sm form-control w-sm inline v-middle" ng-model="maxParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
         											 </select>
 							                        </li>
 							                        <li>
-												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-												        </select>
+							                          	<a style="display: block;"></a>
 							                        </li>
-							                        <li>
-							                          	<a></a>
+							                        <li style="visibility: hidden;">
+							                           <label>descriptions:</label>
+    												   <input type="text" class="form-control input-lg"  style="background: white; border: none;" aria-describedby="basic-addon1">
 							                        </li>
-							                        <li>
-							                           <label>descriptions</label>
-    												   <input type="text" class="form-control input-lg" placeholder="keyword description" aria-describedby="basic-addon1">
-							                        </li>
+							                          	<ul style="list-style: none; margin-top: 46px; padding-left: 0;">
+							                          		<li>
+							                          			<a class="m-r-md" title="靠近bus stop"><i class="fa fa-bus" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="靠近hospital."><i class="fa fa-h-square" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="靠近地铁站."><i class="fa fa-train" aria-hidden="true"></i></a>
+							                          		</li>
+							                          	</ul>
 							                      </ul>
 							                    </div>
 							                  </div>
@@ -130,7 +145,39 @@
 							                      		<label for="allowancesRefineCb3">Smoking permitted</label>
 							                      	</li>
 							                      	<li>
-							                      		<button type="submit" class="button plusplus" tabindex="23"><span>Update search</span></button>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb3" value="smokers" tabindex="21">
+							                      		<label for="allowancesRefineCb3">Smoking permitted</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb3" value="smokers" tabindex="21">
+							                      		<label for="allowancesRefineCb3">Smoking permitted</label>
+							                      	</li>
+							                      </ul>
+							                    </div>
+							                     <div class="col-xs-6">
+							                      <ul class="list-unstyled l-h-2x">
+							                      	<li>
+							                      	<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">
+							                      	<label for="featureproductrankRefineCb0">Search only Premiere properties</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb1" value="pets-allowed" tabindex="19">
+							                      		<label for="allowancesRefineCb1">Pets allowed</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb2" value="furnished" tabindex="20">
+							                      		<label for="allowancesRefineCb2">Furnished</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb2" value="furnished" tabindex="20">
+							                      		<label for="allowancesRefineCb2">Furnished</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb2" value="furnished" tabindex="20">
+							                      		<label for="allowancesRefineCb2">Furnished</label>
+							                      	</li>
+							                      	<li>
+							                      		<button type="submit" class="button plusplus" ng-click="update()" tabindex="23"><span>Update search</span></button>
 							                      	</li>
 							                      </ul>
 							                    </div>
@@ -139,10 +186,10 @@
 							              </div>
 							            </div>
 							          </li>
-							</ul>
+								</ul>
 							</form>
 							</div>
-							<div>
+							<div class="m-t-xxs pull-left">
 								<form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" >
 					          <div class="form-group">
 					            <div class="input-group">
@@ -166,90 +213,97 @@
 												<li><a href><i class="fa fa-chevron-right"></i></a></li>
 								</ul>
 							</div>
-							
-						</div>
-					<div class="col-sm-7 pull-left">
-						<div class="col-sm-12" style="height: 100%;position: fixed; left: -15px;top: 100px;">
-							<ng-map  center="-33.8688197,151.20929550000005" zoom="18" style="height: 538px; width: 64%;">
-							<marker id='[:shop.id:]' position="[:shop.position:]" ng-repeat="shop in vm.shops" on-mouseover="vm.showDetail(shop)">
-							</marker>
-							<info-window id="foo-iw">
-								<div ng-non-bindable="">
-											<div class="infowindow-container clear">
-														<div class="info-left">
-															<img src="/img/bandmember.jpg" alt="Avatar" style="width:100px; align-content: center;">
-														</div>
-														<div class="info-right">
-															<p class="price">$585<span>per week</span></p>
-														  <p class="address"><span><a ui-sref="details">9/20 harbourne road, Kingsford nsw, australia</span></a></p>
-														  <div class="listing-features">
-																		<span class="f-icon with-text">
-						                            <span class="copy"><em class="ng-binding">2</em></span>
-																		<span class="icon fa fa-bed"></span>
-																		
-																		</span>
-																		<span class="f-icon with-text">
-						                            <span class="copy"><em class="ng-binding">1</em></span>
-																		<span class="icon fa fa-bath"></span>
-																		</span>
-																		<span class="f-icon with-text">
-						                            <span class="copy"><em class="ng-binding">-</em></span>
-																		<span class="icon fa fa-car"></span>
-																		</span>
-																</div>
-															</div>
-											
-											</div>
-								</div>
-							</info-window>
-						</ng-map>
-						</div>
-						
 					</div>
-					<div class="col-sm-5 pull-right clear">
-						<div class="clear">
-								<div class="adv">
+					<div class="" style="height: 100%; width:100%;  padding-right: 530px; position: fixed; left: 0;top: 100px;">
+							<ng-map  center="[:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb:]" zoom="12" style="height: 538px;">
+									<marker id="[:shop.ER_ID:]" position="[:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region:]" ng-repeat="shop in vm.shops" on-click="vm.showDetail(shop)">
+									</marker>
+									<info-window id="foo-iw">
+											<div ng-non-bindable="">
+														<div class="infowindow-container clear">
+																	<div class="info-left">
+																		<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" style="width:100px; align-content: center;">
+																	</div>
+																	<div class="info-right">
+																		<p class="price">$[:vm.shop.ER_Price:]<span>per week</span></p>
+																	  <p class="address"><span><a ui-sref="app.details">[:vm.shop.ER_No+' '+shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region:]</span></a></p>
+																	  <div class="listing-features">
+																					<span class="f-icon with-text">
+									                            <span class="copy"><em class="ng-binding">[:vm.shop.ER_BedRoom:]</em></span>
+																					<span class="icon fa fa-bed"></span>
+																					
+																					</span>
+																					<span class="f-icon with-text">
+									                            <span class="copy"><em class="ng-binding">[:vm.shop.ER_BathRoom:]</em></span>
+																					<span class="icon fa fa-bath"></span>
+																					</span>
+																					<span class="f-icon with-text">
+									                            <span class="copy"><em class="ng-binding">[:vm.shop.ER_Parking:]</em></span>
+																					<span class="icon fa fa-car"></span>
+																					</span>
+																			</div>
+																		</div>
+														</div>
+											</div>
+									</info-window>
+							</ng-map>
+						</div>
+						<div class="adv clear">
 									<div class="relative-position">
-										<ul>
-											<li>
-												<div id="box" class="all clear">
-													<div class="ad">
+										<ul class="clear">
+											<li ng-repeat="shop in vm.shops" ng-mouseover="vm.showDetail(e,shop)">
+												<div id="box" class="all clear panel b-a" set-ng-animate="false">
+													<!--<div class="ad">
+														
 														<ul id="imgs">
-															<li><img src="img/aa.jpg" /></li>
-															<li><img src="img/b1.jpg" /></li>
-															<li><img src="img/b2.jpg" /></li>
-															<li><img src="img/b3.jpg" /></li>
-															<li><img src="img/b4.jpg" /></li>
+															<li ng-repeat="picture in shop.picset">
+																<img src="[:picture.PicFile:]" />
+															</li>
 														</ul>
-													</div>
-													<div id="arr"><span id="left"><</span><span id="right">></span></div>
+													
+													<div id="arr"><span id="left"><</span><span id="right">></span></div>-->
+													<div class="ad">
+														<div class="shortlist-star" >
+																<a style="color: pink;" ng-show="!star" ng-click="star=!star;vm.addShortlist()"><i class="fa fa-5x fa-heart-o" aria-hidden="true"></i></a>
+																<a style="color: pink;" ng-show="star" ng-click="star=!star;vm.deleteShortlist()"><i class="fa fa-5x fa-heart" aria-hidden="true"></i></a>
+														</div>
+														 <carousel interval="myInterval">
+													          <slide ng-repeat="picture in shop.picset" active="slide.active">
+													            <img ng-src="[:picture.PicFile:]" class="img-full" style="height: 400px;">
+													            <div class="carousel-caption">
+													             <!-- <h4>Slide [:$index:]</h4>
+													              <p>[:slide.text:]</p>-->
+													            </div>
+													          </slide>
+												         </carousel>
+											         </div>
 												</div>
 												<div class="description">
 													<div class="info-panel">
 														<div class="listing-features rooms">
 																				<span class="f-icon with-text">
-													                            <span class="copy"><em class="ng-binding">1</em></span>
+													                            <span class="copy"><em class="ng-binding">[:shop.ER_BedRoom:]</em></span>
 																									<span class="icon fa fa-bed"></span>
 																									</span>
 																				<span class="f-icon with-text">
-								                            <span class="copy"><em class="ng-binding">1</em></span>
+								                            <span class="copy"><em class="ng-binding">[:shop.ER_BathRoom:]</em></span>
 																				<span class="icon fa fa-bath"></span>
 																				</span>
 																				<span class="f-icon with-text">
-								                            <span class="copy"><em class="ng-binding">-</em></span>
+								                            <span class="copy"><em class="ng-binding">[:shop.ER_Parking:]</em></span>
 																				<span class="icon fa fa-car"></span>
 																				</span>
 														</div>
 														<div class="address">
-															<a ui-sref="details">
-																<span>harbourne road,</span>
-																<span>Kingsford,NSW</span>
+															<a ui-sref="app.details">
+																<span>[:shop.ER_No+' '+shop.ER_St:],</span>
+																<span>[:shop.ER_Suburb+' '+shop.ER_Region:]</span>
 															</a>
 														</div>
 														<div class="benefits">
 															<a href class="f-icon with-text train">
 								                                <span class="icon "><i class="fa fa-train" aria-hidden="true"></i></span>
-								                                <span class="copy">距central station 200米</span>
+								                                <span class="copy">[:shop.ER_Description:]</span>
 								                            </a>
 								                            <a href class="f-icon with-text bus">
 								                                <span class="icon "><i class="fa fa-train" aria-hidden="true"></i></span>
@@ -266,9 +320,9 @@
 															
 														</div>
 														<div class="price">
-															<span class="num">$585</span>
+															<span class="num">$[:shop.ER_Price:]</span>
 															<span class="period">per week</span>
-															<span class="available">Available Time:10/02/2017</span>
+															<span class="available">Available Time:[:shop.ER_AvailableDate:]</span>
 														</div>
 														<div class="view">
 															<span class="view-num">Viewed:  20</span>
@@ -277,79 +331,10 @@
 							
 												</div>
 											</li>
-											<li>
-												<div id="box" class="all clear">
-													<div class="ad">
-														<ul id="imgs">
-															<li><img src="img/aa.jpg" /></li>
-															<li><img src="img/b1.jpg" /></li>
-															<li><img src="img/b2.jpg" /></li>
-															<li><img src="img/b3.jpg" /></li>
-															<li><img src="img/b4.jpg" /></li>
-														</ul>
-													</div>
-													<div id="arr"><span id="left"><</span><span id="right">></span></div>
-												</div>
-												<div class="description">
-													<div class="info-panel">
-														<div class="listing-features rooms">
-																				<span class="f-icon with-text">
-													                            <span class="copy"><em class="ng-binding">1</em></span>
-																									<span class="icon fa fa-bed"></span>
-																									</span>
-																				<span class="f-icon with-text">
-								                            <span class="copy"><em class="ng-binding">1</em></span>
-																				<span class="icon fa fa-bath"></span>
-																				</span>
-																				<span class="f-icon with-text">
-								                            <span class="copy"><em class="ng-binding">-</em></span>
-																				<span class="icon fa fa-car"></span>
-																				</span>
-														</div>
-														<div class="address">
-															<a ui-sref="details">
-																<span>harbourne road,</span>
-																<span>Kingsford,NSW</span>
-															</a>
-														</div>
-														<div class="benefits">
-															<a href class="f-icon with-text train">
-								                                <span class="icon "><i class="fa fa-train" aria-hidden="true"></i></span>
-								                                <span class="copy">距central station 200米</span>
-								                            </a>
-								                            <a href class="f-icon with-text bus">
-								                                <span class="icon "><i class="fa fa-train" aria-hidden="true"></i></span>
-								                                <span class="copy">距bus stop 100米</span>
-								                            </a>
-															<a href class="f-icon with-text shoping">
-								                                <span class="icon "><i class="fa fa-train" aria-hidden="true"></i></span>
-								                                <span class="copy">距Coles 500米</span>
-								                            </a>
-								                            <a href class="f-icon with-text hospital">
-								                                <span class="icon "><i class="fa fa-train" aria-hidden="true"></i></span>
-								                                <span class="copy">距Hospital 500米</span>
-								                            </a>
-															
-														</div>
-														<div class="price">
-															<span class="num">$585</span>
-															<span class="period">per week</span>
-															<span class="available">Available Time:10/02/2017</span>
-														</div>
-														<div class="view">
-															<span class="view-num">Viewed:  20</span>
-														</div>
-													</div>
-							
-												</div>
-											</li>
-											
+																					
 										</ul>
 									</div>
 								</div>
-						</div>
-						
-					</div>
 			</div>
 			
 </div>
