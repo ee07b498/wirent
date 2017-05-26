@@ -2,8 +2,8 @@
 {
 	'use strict';
 	angular.module('andy',[
-							 'ngAnimate',
-							 'angularCSS',
+							'ngAnimate',
+							'angularCSS',
 							'ui.router',
 							'ui.bootstrap',
 							'ngCookies',
@@ -21,7 +21,9 @@
 							'profile',
 							'shortlist',
 							'listpage',
-							'lunbo'
+							'lunbo',
+							'trainmap',
+							'business'
 							])
 		.config(function($interpolateProvider,
 								$stateProvider,
@@ -117,6 +119,10 @@
 					url:'/newsDetail',
 					templateUrl:'/partials/newsDetail.html'
 				})
+				.state('app.trainmap', {
+                  url: '/trainmap',
+                  templateUrl: '/partials/trainmap.html'
+              })
 				
 		})
 		

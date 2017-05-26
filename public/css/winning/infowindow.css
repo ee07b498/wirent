@@ -265,43 +265,62 @@
 	position: relative;
 	top: 150px;
 }
-.info-panel .benefits .icon4 {
-	position: absolute;
-	top: 10px;
-	left: 5px;
-	width: 40px;
-	height: 40px;
-	/*background: url(../img/sprite.png) no-repeat -1px -59px;*/
-}
 .adv .info-panel .benefits .train {
 	position: absolute;
 	font: 200 13px/15px "微软雅黑";
-	top: -20px;
-	left: -10px;
+	top: -45px;
+	left: -20px;
 	color: lightslategray;
 }
-.adv .info-panel .benefits .bus {
+.adv .info-panel .benefits .university {
 	position: absolute;
 	font: 200 13px/15px "微软雅黑";
-	top: -20px;
-	left: 180px;
+	top: -45px;
+	left: 40px;
 	color: lightslategray;
 }
-.adv .info-panel .benefits .shoping {
+.adv .info-panel .benefits .backpack {
 	position: absolute;
 	font: 200 13px/15px "microsoft yahei";
-	top: 5px;
-	left: -10px;
+	top: -45px;
+	left: 100px;
 	color: lightslategray;
 }
-.adv .info-panel .benefits .hospital {
+.adv .info-panel .benefits .park {
 	position: absolute;
 	font: 200 13px/15px "microsoft yahei";
-	top: 5px;
-	left: 180px;
+	top: -45px;
+	left: 160px;
 	color: lightslategray;
 }
-
+.adv .info-panel .benefits .school {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: -5px;
+	left: -20px;
+	color: lightslategray;
+}
+.adv .info-panel .benefits .bigfamily {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: -5px;
+	left: 40px;
+	color: lightslategray;
+}
+.adv .info-panel .benefits .shoppingmall {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: -5px;
+	left: 100px;
+	color: lightslategray;
+}
+.adv .info-panel .benefits .offical_rental {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: -5px;
+	left: 160px;
+	color: lightslategray;
+}
 .adv .info-panel .price {
 	width: 100px;
 	padding-left: 43px;
@@ -323,7 +342,7 @@
 	/*line-height: 50px;*/
 	height: 80;
 	left: 40px;
-	top: 10px;
+	top: 20px;
 	color: #C81623;
 }
 .adv .info-panel .price .period {
@@ -335,7 +354,7 @@
 	/*line-height: 50px;*/
 	height: 20;
 	left: 160px;
-	top: 30px;
+	top: 45px;
 	color: lightslategray;
 }
 .adv .info-panel .price .available {
@@ -347,7 +366,7 @@
 	/*line-height: 50px;*/
 	height: 20;
 	left: 70px;
-	top: 60px;
+	top: 75px;
 	color: #191D3A;
 }
 .adv .info-panel .view {

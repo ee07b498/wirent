@@ -495,11 +495,12 @@
 
 .business .agent-lst li .info-panel .col-1 {
 	width: 455px;
+	height: 90px;
 	float: left;
 }
 
 .business .agent-lst li .info-panel .col-1 .main-plate {
-	overflow: hidden;
+	/*overflow: hidden;*/
 	clear: both;
 	text-overflow: ellipsis;
 	-o-text-overflow: ellipsis;
@@ -526,15 +527,19 @@
 	margin-top: 8px;
 	width: 410px;
 	white-space: nowrap;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	text-overflow: ellipsis;
 	word-berak: break-all;
 	font-size: 14px;
 	color: #999;
+	position: relative;
 }
 
 .business .agent-lst li .info-panel .col-1 .achievement a {
 	color: #999;
+	top: 0;
+	left: 0;
+	font: 200;
 }
 
 .business .agent-lst li .info-panel .col-1 .label {
@@ -545,6 +550,9 @@
 	width: 460px;
 	height: 25px;
 	margin-bottom: 23px;
+	position: absolute;
+	top: 20px;
+	left: 0;
 }
 
 .business .agent-lst li .info-panel .col-1 .label .owner_trust_mark {
@@ -596,7 +604,8 @@
 	text-align: right;
 	float: left;
 	position: relative;
-	top: -14px;
+	top: -70px;
+	left: 450px;
 }
 
 .business .agent-lst li .info-panel .col-2 .high-praise {
@@ -630,7 +639,8 @@
 .business .agent-lst li .info-panel .col-3 {
 	width: 198px;
 	position: relative;
-	top: -18px;
+	top: -85px;
+	left: 422px;
 	float: right;
 	text-align: center;
 	margin-top: 20px;

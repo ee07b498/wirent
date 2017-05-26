@@ -1,0 +1,252 @@
+ <div ng-controller="MapCtrl">
+		<div class= "free dragscroll">
+			<div class="subway-map" data-columns="960" data-rows="1200" data-cellSize="1" data-legendId="legend" data-textClass="text" data-gridNumbers="true" data-grid="false" data-lineWidth="3">
+			
+				<ul data-color="#fff403" data-label="T1">       <!--基准Emu Plains~Berowra-->              			
+					<li data-coords="139,470" data-marker="interchange"> </li>
+					<li data-coords="158,470" data-marker="interchange"> </li>
+					<li data-coords="176,470" data-marker="station"> </li>
+					<li data-coords="194,470" data-marker="station"> </li>
+					<li data-coords="213,470" data-marker="station"> </li>
+					<li data-coords="230,470" data-marker="station"> </li>
+					<li data-coords="247,470" data-marker="station"> </li>
+					<li data-coords="267,470" data-marker="station"> </li>
+					<li data-coords="287,470" data-marker="station"> </li>		<!--Blacktown-->
+					<li data-coords="305,470" data-marker="station"> </li>
+					<li data-coords="320,470" data-marker="station"> </li>
+					<li data-coords="337,470" data-marker="station"> </li>
+					<li data-coords="353,470"></li>
+					<li data-coords="370,486" data-marker="station"> </li>
+					<li data-coords="379,496" data-marker="station"> </li>
+					<li data-coords="390,507" data-marker="station"> </li>		<!--Parramatta-->
+					<li data-coords="390,507" data-marker="station"> </li>
+					<li data-coords="402,519" data-marker="station"> </li>
+					<li data-coords="410,527" data-marker="station"> </li>		<!--Granville-->
+					<li data-coords="430,540" data-marker="station"></li>
+					<li data-coords="430,540" data-labelPos="W" data-marker="interchange" data-markerInfo = "h3"><a href="#Search?addr=Clyde Station"> </a></li>
+					<li data-coords="450,560" data-marker="station"> </li>
+					<li data-coords="464,574" data-marker="station"> </li>   <!--Lidcombe-->        
+					<li data-coords="510,574" data-marker="station"> </li>
+					<li data-coords="530,574" data-labelPos="ne" data-marker="station"><a href="#Search?addr=Burwood Station">Burwood</a></li>
+					<li data-coords="723,574" data-labelPos="W" data-marker="interchange" data-markerInfo = "h11"><a href="#Search?addr=Redfern Station">Redfern</a></li> 
+					<li data-coords="740,560" data-labelPos="W" data-marker="interchange" data-markerInfo = "h9"><a href="#Search?addr=Central Station">Central</a></li> 
+		            <li data-coords="740,534" data-labelPos="W" data-marker="interchange" data-markerInfo = "h9"><a href="#Search?addr=TownHall Station">TownHall</a></li> 
+		            <li data-coords="740,517" data-labelPos="W" data-marker="interchange" data-markerInfo = "h5"><a href="#Search?addr=Wynard Station">Wynard</a></li>             
+					<li data-coords="740,472"></li>
+					<li data-coords="728,460" data-marker="station"> </li>
+					<li data-coords="716,446" data-marker="station"> </li>
+					<li data-coords="705,435" data-marker="station"> </li>
+					<li data-coords="692,423" data-marker="station"> </li>
+					<li data-coords="680,410" data-marker="station"> </li>
+					<li data-coords="670,400" data-marker="station"> </li>
+					<li data-coords="658,387" data-labelPos="E" data-marker="interchange"><a href="#Search?addr=Chatswood Station">Chatswood</a></li>
+					<li data-coords="645,374" data-marker="station"> </li>
+					<li data-coords="633,362" data-marker="station"> </li>
+					<li data-coords="621,350" data-marker="station"> </li>
+					<li data-coords="609,338" data-marker="station"> </li>
+					<li data-coords="597,326" data-marker="station"> </li>
+					<li data-coords="584,313" data-marker="station"> </li>
+					<li data-coords="572,301" data-marker="station"> </li>
+					<li data-coords="561,290" data-marker="station"> </li>
+					<li data-coords="548,277" data-marker="station"> </li>
+					<li data-coords="522,251" data-marker="station"> </li>	<!--Hornsby--> 
+					<li data-coords="522,230" data-marker="station"> </li>
+					<li data-coords="522,215" data-marker="station"> </li>
+					<li data-coords="522,200" data-marker="station"> </li>
+					<li data-coords="522,180" data-labelPos="E" data-marker="interchange"><a href="#Search?addr=Berowra Station">Berowra</a></li>
+				</ul>
+				<ul data-color="#fff403" data-label="T1 Richmond-Blacktown">
+					<li data-coords="287,470" data-marker="station"> </li>		<!--Blacktown-->
+					<li data-coords="220,403" data-marker="station"> </li>			
+					<li data-coords="202,385" data-marker="station"> </li>
+					<li data-coords="187,370"></li>								<!--Schofields-->						
+					<li data-coords="187,187" data-labelPos="W" data-marker="interchange"><a href="#Search?addr=Richmond Station">Richmond</a></li>
+				</ul>
+				<ul data-color="#fff403" data-label="T1 Chatswood-Epping-Hornsby">
+					<li data-coords="658,387"></li>
+					<li data-coords="651,380"></li>	
+					<li data-coords="620,380" data-labelPos="S" data-marker="station"> </li>
+					<li data-coords="590,380" data-labelPos="S" data-marker="station"> </li>
+					<li data-coords="560,380" data-labelPos="S" data-marker="station"> </li>
+					<li data-coords="520,380"></li>
+					<li data-coords="510,370" data-dir = "W"></li>
+					<li data-coords="510,365" data-marker="station"> </li>		<!--epping-->
+					<li data-coords="510,330" data-labelPos="W" data-marker="station"> </li>
+					<li data-coords="510,310" data-labelPos="W" data-marker="station"> </li>
+					<li data-coords="510,295" data-labelPos="W" data-marker="station"> </li>
+					<li data-coords="510,280" data-labelPos="W" data-marker="station"> </li>
+					<li data-coords="510,263" data-labelPos="W" data-marker="station"> </li>
+					<li data-coords="510,251" data-labelPos="W" data-marker="interchange" data-markerInfo = "h3"><a href="#Search?addr=Hornsby Station">Hornsby</a></li>
+				</ul>	
+		        <ul data-color="#fff403" data-label="T1 Strathfield-Epping">
+		        	<li data-coords="510,574" data-marker="station"> </li>
+		        	<li data-coords="500,564" data-dir="W"></li>
+		        	<li data-coords="500,526" data-labelPos="E" data-marker="station"><a href="#Search?addr=North Strathfield station">N Strathfiled</a></li>
+		        	<li data-coords="500,503" data-labelPos="E" data-marker="station"><a href="#Search?addr=Concord West station">Concord West</a></li>
+		        	<li data-coords="500,480" data-labelPos="E" data-marker="station"><a href="#Search?addr=Rhodes station">Rhodes</a></li></li>
+		        	<li data-coords="500,457" data-labelPos="W" data-marker="station"><a href="#Search?addr=Meadowbank station">Meadowbank</a></li>
+		        	<li data-coords="500,434" data-labelPos="W"  data-marker="station"><a href="#Search?addr=West Ryde station">West Ryde</a></li>
+		        	<li data-coords="500,410" data-labelPos="W" data-marker="station"> </li>
+		        	<li data-coords="500,388" data-labelPos="W" data-marker="station"><a href="#Search?addr=Eastwood station">Eastwood</a></li>
+		        	<li data-coords="500,365" data-labelPos="W" data-marker="interchange" data-markerInfo = "h3"><a href="#Search?addr=Epping Station">Epping</a></li>        	
+				</ul>
+		
+				<ul data-color="#00ae66" data-label="T2"> 			
+					<li data-coords="325,950" ></li>
+					<li data-coords="325,625" ></li>
+					<li data-coords="400,537" ></li>
+					<li data-coords="410,537" data-labelPos="S" data-marker="interchange" data-markerInfo = "v2"><a href="#Search?addr=Granville Station"> </a></li>									
+					<li data-coords="456,574" data-marker="station"> </li>
+					<li data-coords="456,581"></li>
+					<li data-coords="510,581" data-labelPos="S" data-marker="interchange" data-markerInfo = "v2"><a href="#Search?addr=Strathfield Station">Strathfield</a></li>
+					<li data-coords="530,581" data-marker="interchange" data-markerInfo = "v2"> </li>			
+					<li data-coords="710,581"></li>
+					<li data-coords="730,574" data-marker="station"> </li>
+		            <li data-coords="750,560" data-marker="station"></li> 
+		            <li data-coords="750,534" data-marker="station"></li>  
+		            <li data-coords="750,517" data-marker="station"></li> 
+		            <li data-coords="750,500"></li>
+		            <li data-coords="760,490" data-dir="N"></li>
+		            <li data-coords="780,490" data-labelPos="N" data-marker="station"><a href="#Search?addr=Circular Query station">CQ</a></li>
+		            <li data-coords="795,490"></li>
+		            <li data-coords="805,500" data-dir="E"></li>						
+					<li data-coords="805,540" data-labelPos="E" data-marker="station"><a href="#Search?addr=St James station">Sj</a></li>
+		            <li data-coords="795,550" data-dir="S"></li>
+		            <li data-coords="770,550"></li>						
+					<li data-coords="760,560" data-dir="W" data-marker="station"></li>
+					<li data-coords="750,574" data-marker="station"></li>
+					<li data-coords="705,630" data-marker="station"></li>			
+					<li data-coords="671,672"></li>									
+					<li data-coords="591,784"></li>						
+					<li data-coords="345,784"></li>
+					<li data-coords="335,794" data-dir = "W"></li>
+					<li data-coords="335,950" ></li>
+					<li data-coords="335,974"></li>						
+				</ul>
+				<ul data-color="#00ae66" data-label="T2 Leppington-Glenfield">
+					<li data-coords="210,830" data-labelPos="W" data-marker="interchange"><a href="#Search?addr=Leppington Station">Leppington</a></li>			
+					<li data-coords="315,830" ></li>
+					<li data-coords="325,820" data-dir = "E"></li>
+					<li data-coords="325,808" ></li>
+				</ul>
+		        <ul data-color="#00ae66" data-label="T2 Airport">
+		        	<li data-coords="750,574" data-marker="station"> </li>
+		        	<li data-coords="750,610" data-marker="station"> </li>
+		        	<li data-coords="750,645" data-marker="station"> </li>
+		        	<li data-coords="750,662" data-marker="station"> </li>
+		        	<li data-coords="740,672" data-dir="S" data-marker="station" > </li>
+		        	<li data-coords="700,672" data-marker="station"> </li>
+		        	<li data-coords="671,672"></li>
+		        </ul>	
+				
+				<ul data-color="#efad00" data-label="T3">                 
+		            <li data-coords="755,560" data-marker="station"></li> 
+		            <li data-coords="755,534" data-marker="station"></li>  
+		            <li data-coords="755,517" data-marker="station"></li> 
+		            <li data-coords="755,505"></li>
+		            <li data-coords="765,495" data-dir="N"></li>                        
+		            <li data-coords="780,495" data-marker="station"> </li>
+		            <li data-coords="790,495"></li>
+		            <li data-coords="800,505" data-dir="E"></li>                       
+		            <li data-coords="800,540" data-marker="station"></li>
+		            <li data-coords="790,550" data-dir="S"></li>
+		            <li data-coords="765,550"></li>            
+		            <li data-coords="755,560" data-dir="W" data-marker="station"></li> 
+		            <li data-coords="745,574" data-marker="station"> </li>
+		            <li data-coords="700,630" data-labelPos="W" data-marker="interchange" data-markerInfo = "h5"><a href="#Search?addr=Sydenham Station">Sydenham</a></li>
+					<li data-coords="686,650"></li>
+					<li data-coords="640,650" data-marker="station"> </li>
+					<li data-coords="620,650" data-marker="station"> </li>
+					<li data-coords="600,650" data-marker="station"> </li>
+					<li data-coords="590,669" data-marker="station"> </li>
+					<li data-coords="570,680" data-marker="station"> </li>
+					<li data-coords="550,690" data-marker="station"> </li>
+					<li data-coords="525,705" data-marker="station"> </li>
+					<li data-coords="510,705" data-marker="station"> </li>
+					<li data-coords="490,705" data-marker="station"> </li>
+					<li data-coords="480,705" data-labelPos="S" data-marker="interchange"><a href="#Search?addr=Bankstown Station">Bankstown</a></li>
+					<li data-coords="467,690" data-marker="station"> </li>
+					<li data-coords="450,677" data-labelPos="E" data-marker="interchange"><a href="#Search?addr=Birrong Station">Birrong</a></li>
+					<li data-coords="437,677" data-marker="station"> </li>
+					<li data-coords="418,677" data-marker="station"> </li>
+					<li data-coords="400,677" data-marker="station"> </li>
+					<li data-coords="385,677" data-marker="station"> </li>
+					<li data-coords="366,677" data-marker="station"> </li>
+					<li data-coords="345,677"></li>
+					<li data-coords="335,687" data-dir="W"></li>
+					<li data-coords="335,690" data-marker="station"> </li>
+					<li data-coords="335,710" data-marker="station"> </li>
+					<li data-coords="335,738" data-marker="station"> </li>
+				</ul>
+		        <ul data-color="#efad00" data-label="T3 Lidcombe"> 
+		        	<li data-coords="450,677" data-marker="station"> </li>
+		        	<li data-coords="446,657" data-marker="station"> </li>
+		        	<li data-coords="446,639" data-marker="station"> </li>
+		        	<li data-coords="446,574" data-labelPos="S" data-marker="interchange" data-markerInfo = "h5"><a href="#Search?addr=Lidcombe Station">Lidcombe</a></li>
+		        </ul>	
+		        
+				<ul data-color="#0015ef" data-label="T4">                   
+					<li data-coords="690,980" data-labelPos="E" data-marker="interchange"><a href="#Search?addr=Waterfall Station">Waterfall</a></li>
+					<li data-coords="690,900" data-labelPos="E" data-marker="interchange"><a href="#Search?addr=Sutherland Station">Sutherland</a></li>
+					<li data-coords="690,795" data-labelPos="E" data-marker="interchange"><a href="#Search?addr=Hurstville Station">Hurstville</a></li>
+					<li data-coords="690,672" data-labelPos="W" data-marker="interchange" data-markerInfo = "h3"><a href="#Search?addr=Wolli Creek Station">Wolli\nCreek</a></li>
+					<li data-coords="702,648" data-marker="station"> </li>
+					<li data-coords="720,630" data-marker="station"></li>
+					<li data-coords="760,574" data-marker="station"></li>
+					<li data-coords="770,560" data-marker="station"></li>    
+		        	<li data-coords="770,534" data-marker="station"></li>
+		        	<li data-coords="780,530" data-labelPos="N" data-marker="station"><a href="#Search?addr=Martin Place station">M</a></li>
+					<li data-coords="840,530" data-labelPos="N" data-marker="station"><a href="#Search?addr=Kings Cross station">K</a></li>
+					<li data-coords="857,530" data-labelPos="S" data-marker="station"><a href="#Search?addr=Edgecliff station">E</a></li>
+					<li data-coords="875,543" data-labelPos="E" data-marker="interchange"><a href="#Search?addr=Bondi Junction station">Bondi Junction</a></li>		
+				</ul>
+				<ul data-color="#0015ef" data-label="T4 Cronulla"> 
+					<li data-coords="860,910" data-labelPos="E" data-marker="interchange"><a href="#Search?addr=Cronulla station">Cronulla</a></li>
+					<li data-coords="700,910"></li>
+					<li data-coords="690,900" data-dir="W"></li>
+				</ul>	
+		
+		        <ul data-color="#680384" data-label="T5">                           
+					<li data-coords="315,950" ></li>		
+					<li data-coords="315,808" data-labelPos="W" data-marker="interchange" data-markerInfo = "h5"><a href="#Search?addr=Glenfield Station">Glenfield</a></li>
+					<li data-coords="315,738" data-labelPos="W" data-marker="interchange" data-markerInfo = "h5"><a href="#Search?addr=Liverpool Station">Liverpool</a></li>			
+					<li data-coords="315,620" ></li>			
+					<li data-coords="395,525" > </li>			
+					<li data-coords="353,480" ></li>			
+					<li data-coords="287,480" ></li>			
+					<li data-coords="175,370" data-labelPos="W" data-marker="interchange" data-markerInfo = "h3"><a href="#Search?addr=Schofields Station">Schofields</a></li>
+		        </ul>
+		
+				<ul data-color="#004db2" data-label="T6">                   
+					<li data-coords="440,540" data-marker="station"> </li>
+					<li data-coords="440,500"></li>
+					<li data-coords="430,490" data-dir="N"></li>
+					<li data-coords="420,490"></li>
+					<li data-coords="410,480" data-labelPos="E" data-dir="W" data-marker="station"><a href="#Search?addr=Rosehill station">Rosehill</a></li>
+					<li data-coords="410,460" data-labelPos="W" data-marker="station"><a href="#Search?addr="> </a></li>
+					<li data-coords="410,440" data-labelPos="W" data-marker="station"><a href="#Search?addr="> </a></li>
+					<li data-coords="410,425" data-labelPos="W" data-marker="station"><a href="#Search?addr="> </a></li>
+					<li data-coords="410,407" data-labelPos="W" data-marker="station"><a href="#Search?addr="> </a></li>
+					<li data-coords="410,390" data-labelPos="W" data-marker="interchange"><a href="#Search?addr=Carlingford station">Carlingford</a></li>
+				</ul>
+		        
+				<ul data-color="#8f8f90" data-label="T7">                   
+		           <li data-coords="466,574"></li>
+		           <li data-coords="480,540"></li>
+		           <li data-coords="480,500" data-labelPos="W" data-marker="interchange"><a href="#Search?addr=Olympic Park Station"><p class="Olympic">Olympic\nPark</p></a></li>
+				</ul>
+		    
+			</div>
+
+		    <div id="legend"></div>
+		    <script type="text/javascript">
+		    	var app = angular.module('app',[]);
+		    	app.controller('MapCtrl',['$scope','$element',function($scope,$element){
+		    		angular.element(".subway-map").subwayMap({ debug: true });
+		    	}]);
+//		        $(".subway-map").subwayMap({ debug: true });
+		    </script>
+			
+		</div>
+	</div>
+

@@ -11,16 +11,11 @@
 				<div class="header-wrap">
 					<div class="search-box-wrap" log-mod="search">
 						<div class="search-box-con">
-							<div class="menu">
-								<ul>
-									<li class="tab selected" actdata="channel=ershoufang" data-type="请输入区域、商圈或小区名开始找房" formact="/ershoufang/rs"><span>火车站</span></li>
-									<li class="tab " actdata="channel=xinfang" data-type="请输入楼盘名称开始找房" formact="/loupan/rs"><span>出租</span></li>
-									<li class="tab " actdata="channel=zufang" data-type="输入地铁线或地铁站可以找地铁附近的房源" formact="/zufang/rs"><span>租房</span></li>
-									<li class="tab " actdata="channel=xiaoqu" data-type="请输入小区名开始查找小区" formact="/xiaoqu/rs"><span>Tips</span></li>
-									<li class="tab " actdata="channel=wenda" data-type="房产知识有疑问？来搜搜吧~" formact="/wenda/rs"><span>一步到位</span></li>
-									<li class="tab " actdata="channel=wenda" data-type="房产知识有疑问？来搜搜吧~" formact="/wenda/rs"><span>找商家</span></li>
-								</ul>
-								<i></i>
+							<script type="text/ng-template" id="myModalContent.html">
+							        <div ng-include="'partials/tpl/modal.html'"></div>
+							</script>
+							<div animatesearch tips="tips" openmodal = openmodal('lg')>
+								
 							</div>
 							<div class="search">
 								<div class="box">
@@ -39,153 +34,28 @@
 									</div>
 									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
 								</div>
-								<div class="sug-tips" style="display: none;">
-									<ul id="ershoufang" data-bl="sug" data-el="history">
-										<li class="hot-name"><span class="hot-tips">热门搜索</span><span class="del">清空</span></li>
-										<div class="list">
-											<li>
-												<a href="#ershoufang/c1111027381003/" data-log_index="1" data-log_value="新龙城">新龙城</a>
-											</li>
-											<li>
-												<a href="#ershoufang/tiantongyuan/" data-log_index="2" data-log_value="天通苑">天通苑</a>
-											</li>
-											<li>
-												<a href="#ershoufang/c1111027375945/" data-log_index="3" data-log_value="北京新天地">北京新天地</a>
-											</li>
-											<li>
-												<a href="#ershoufang/c1111027382209/" data-log_index="4" data-log_value="远洋山水">远洋山水</a>
-											</li>
-											<li>
-												<a href="#ershoufang/wangjing/" data-log_index="5" data-log_value="望京">望京</a>
-											</li>
-											<li>
-												<a href="#ershoufang/sq45/" data-log_index="6" data-log_value="北京像素">北京像素</a>
-											</li>
-											<li>
-												<a href="#ditiefang/li46107350s46107204/" data-log_index="7" data-log_value="草房站附近房源">草房站附近房源</a>
-											</li>
-											<li>
-												<a href="#ditiefang/li652/" data-log_index="8" data-log_value="13号线地铁">13号线地铁</a>
-											</li>
-										</div>
-									</ul>
-									<ul id="loupan" data-bl="sug" data-el="history">
-										<li class="hot-name"><span class="hot-tips">推荐搜索</span><span class="del">清空</span></li>
-										<div class="list"></div>
-									</ul>
-									<ul id="zufang" data-bl="sug" data-el="history">
-										<li class="hot-name"><span class="hot-tips">热门搜索</span><span class="del">清空</span></li>
-										<div class="list">
-											<li>
-												<a href="#zufang/rs%E5%8C%97%E4%BA%AC%E5%83%8F%E7%B4%A0" data-log_index="1" data-log_value="北京像素">北京像素</a>
-											</li>
-											<li>
-												<a href="#zufang/huilongguan2" data-log_index="2" data-log_value="回龙观">回龙观</a>
-											</li>
-											<li>
-												<a href="#zufang/mudanyuan" data-log_index="3" data-log_value="牡丹园">牡丹园</a>
-											</li>
-											<li>
-												<a href="#zufang/qinghe11/" data-log_index="4" data-log_value="清河">清河</a>
-											</li>
-											<li>
-												<a href="#ditiezufang/li649s20598/" data-log_index="5" data-log_value="天通苑">天通苑</a>
-											</li>
-											<li>
-												<a href="#ditiezufang/li46107350s46107139/" data-log_index="6" data-log_value="青年路">青年路</a>
-											</li>
-										</div>
-									</ul>
-									<ul id="xiaoqu" data-bl="sug" data-el="history">
-										<li class="hot-name"><span class="hot-tips">热门搜索</span><span class="del">清空</span></li>
-										<div class="list">
-											<li>
-												<a href="#xiaoqu/1111027382209/" data-log_index="1" data-log_value="远洋山水">远洋山水</a>
-											</li>
-											<li>
-												<a href="#xiaoqu/1111027375357/" data-log_index="2" data-log_value="后现代城">后现代城</a>
-											</li>
-											<li>
-												<a href="#xiaoqu/1111027378998/" data-log_index="3" data-log_value="荣丰2008">荣丰2008</a>
-											</li>
-											<li>
-												<a href="#xiaoqu/1111027380054/" data-log_index="4" data-log_value="天通西苑三区 ">天通西苑三区 </a>
-											</li>
-											<li>
-												<a href="#xiaoqu/1111027378713/" data-log_index="5" data-log_value="苹果社区">苹果社区</a>
-											</li>
-											<li>
-												<a href="#xiaoqu/1111027375158/" data-log_index="6" data-log_value="华贸城">华贸城</a>
-											</li>
-											<li>
-												<a href="#xiaoqu/1111027380057/" data-log_index="7" data-log_value="天通苑中苑">天通苑中苑</a>
-											</li>
-											<li>
-												<a href="#xiaoqu/1111027375945/" data-log_index="8" data-log_value="北京新天地">北京新天地</a>
-											</li>
-										</div>
-									</ul>
-									<ul id="wenda" data-bl="sug" data-el="history">
-										<li class="hot-name"><span class="hot-tips">热门搜索</span><span class="del">清空</span></li>
-										<div class="list">
-											<li>
-												<a href="#wenda/liebiao/b2001" data-log_index="1" data-log_value="税费计算">税费计算</a>
-											</li>
-											<li>
-												<a href="#wenda/liebiao/b2004" data-log_index="2" data-log_value="过户流程">过户流程</a>
-											</li>
-											<li>
-												<a href="#wenda/liebiao/b1002" data-log_index="3" data-log_value="购房建议">购房建议</a>
-											</li>
-											<li>
-												<a href="#wenda/liebiao/b1003" data-log_index="4" data-log_value="购房资质">购房资质</a>
-											</li>
-											<li>
-												<a href="#wenda/liebiao/b5004" data-log_index="5" data-log_value="住房公积金">住房公积金</a>
-											</li>
-											<li>
-												<a href="#wenda/liebiao/b1005" data-log_index="6" data-log_value="二手房">二手房</a>
-											</li>
-											<li>
-												<a href="#wenda/liebiao/b5003" data-log_index="7" data-log_value="贷款流程">贷款流程</a>
-											</li>
-											<li>
-												<a href="#wenda/liebiao/b1001" data-log_index="8" data-log_value="房价行情">房价行情</a>
-											</li>
-										</div>
-									</ul>
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!--<div class="wrap-video">
-					<div class="video-open"><img src="http://s1.ljcdn.com/feroot/pc/asset/img/home/icon_play.png?_v=20170515195947" alt="掌上链家, 开启移动找房之旅">链家APP, 开启移动找房之旅</div>
-					<div class="pen">
-						<a href="http://page.lianjia.com/subject/11276.html" rel="nofollow"><img src="http://image1.ljcdn.com/materials/list/2016-08-17/php3X11MP.png">关于仿冒我公司进行不正当竞争行为的郑重声明</a>
-					</div>
-					<div class="pen">
-						<a href="http://page.lianjia.com/subject/8334.html" rel="nofollow"><img src="http://image1.ljcdn.com/materials/list/2016-06-29/phpAPdvEm.png">房地产中介诚信服务承诺及保证书</a>
-					</div>
-				</div>-->
-				<div class="free-advs clear">
-							<ul>
-								<li>
-									<h2>Need a room?</h2>
-									<p>Place a free Room Wanted ad and make sure people with rooms can find you.</p>
-									<button class="btn-warning">Place a free advert</button>
-								</li>
-								<li>
-									<h2>Get a room to let?</h2>
-									<p>Place a free ad and rent your room in days find out more.</p>
-									<br />
-									<button class="btn-warning">Place a free advert</button>
-								</li>
-							</ul>
-						</div>
-					
+				<div class="free-advs clear" ng-show="tips">
+					<ul>
+						<li>
+							<h2>Need a room?</h2>
+							<p>Place a free Room Wanted ad and make sure people with rooms can find you.</p>
+							<button class="btn-warning">Place a free advert</button>
+						</li>
+						<li>
+							<h2>Get a room to let?</h2>
+							<p>Place a free ad and rent your room in days find out more.</p>
+							<br />
+							<button class="btn-warning">Place a free advert</button>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div class="cover-header"></div>
+
 		</div>
 	</div>
 	<div class="clear"></div>
@@ -195,165 +65,135 @@
 			<section class="theme-specification">
 				<div class="top-cities clear">
 					<header class="latest-news-header">
-						<a href="#" class="latest-news-title-link" ui-sref="app.listpage">
+						<a class="latest-news-title-link" ui-sref="app.listpage">
 							<h1 class="latest-news-title h1">主题专区</h1></a>
 					</header>
 					<div class="pics pics1">
 						<div class="left1">
-							<div class="wh city-pic">
-								<a href="#" title="清洁服务">
+							<div class="wh city-pic" ng-click="search('university')">
+								<a ng-click="search('university')" title="学生公寓">
 									<span class="flaticon-college-graduation"></span>
 									
 								</a>
 								<div class="holder">
 									<i></i>
 									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="清洁服务"><em>清洁服务</em></a>
-										<a href="#" title="天津二手房"><span><strong>上门服务</strong></span></a>
-										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>
+										<a class="city-title" rel="nofollow" ng-click="search('university')" title="学生公寓"><em>学生公寓</em></a>
+										<!--<a href="#" title="学生公寓"><span><strong>学生公寓</strong></span></a>
+										<a href="#" title="学生公寓"><span><strong>学生公寓</strong></span></a>-->
 									</p>
 								</div>
 								<!--<h3 class="title">清洁服务</h3>-->
 							</div>
-							<div class="w city-pic graduation">
-								<a href="#" title="搬家服务">
+							<div class="w city-pic graduation" ng-click="search('train_station')">
+								<a ng-click="search('train_station')" title="火车站">
 									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">-->
-									<i class="flaticon-backpack"></i>
-								</a>
-								<div class="holder">
-									<i></i>
-									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="搬家服务"><em>搬家服务</em></a>
-										<a href="#" title="北京二手房"><span><strong>长途搬家</strong></span></a>
-										<a href="#" title="搬家服务"><span><strong>短途搬家</strong></span></a>
-									</p>
-								</div>
-								<!--<h3 class="title">搬家服务</h3>-->
-							</div>
-							<div class="wh city-pic railroad">
-								<a href="#" title="水电网服务">
-									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="水电网服务">-->
 									<i class="flaticon-train-on-railroad"></i>
 								</a>
 								<div class="holder">
 									<i></i>
 									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="水电网服务"><em>水电网服务</em></a>
-										<a href="#" title="水电网服务"><span><strong>水电网服务</strong></span></a>
-										<a href="#" title="水电网服务"><span><strong>电话预约</strong></span></a>
+										<a class="city-title" rel="nofollow" ng-click="search('train_station')" title="火车站"><em>火车站</em></a>
+										<!--<a href="#" title="北京二手房"><span><strong>长途搬家</strong></span></a>
+										<a href="#" title="搬家服务"><span><strong>短途搬家</strong></span></a>-->
+									</p>
+								</div>
+								<!--<h3 class="title">搬家服务</h3>-->
+							</div>
+							<div class="wh city-pic railroad" ng-click="search('backpack')">
+								<a ng-click="search('backpack')" title="背包客">
+									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="水电网服务">-->
+									<i class="flaticon-backpack"></i>
+								</a>
+								<div class="holder">
+									<i></i>
+									<p class="desTile">
+										<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="水电网服务"><em>背包客</em></a>
+										<!--<a href="#" title="水电网服务"><span><strong>水电网服务</strong></span></a>
+										<a href="#" title="水电网服务"><span><strong>电话预约</strong></span></a>-->
 									</p>
 								</div>
 								<!--<h3 class="title">水电网服务</h3>-->
 							</div>
-							<div class="wh city-pic park-city-space">
-								<a href="#" title="清洁服务">
+							<div class="wh city-pic park-city-space" ng-click="search('park')">
+								<a ng-click="search('park')" title="近公园绿地">
 									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="清洁服务">-->
 									<i class="flaticon-green-park-city-space"></i>
 								</a>
 								<div class="holder">
 									<i></i>
 									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="清洁服务"><em>清洁服务</em></a>
-										<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
-										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>
+										<a class="city-title" rel="nofollow" ng-click="search('park')" title="近公园绿地"><em>近公园绿地</em></a>
+										<!--<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
+										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>-->
 									</p>
 								</div>
 								<!--<h3 class="title">清洁服务</h3>-->
 							</div>
-							<div class="wh city-pic open-book">
-								<a href="#" title="代收包裹">
+							<div class="wh city-pic open-book" ng-click="search('school')">
+								<a ng-click="search('school')" title="学区房">
 									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="代收包裹">-->
 									<i class="flaticon-open-book"></i>
 								</a>
 								<div class="holder">
 									<i></i>
 									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="代收包裹"><em>代收包裹</em></a>
-										<a href="#" title="代收包裹"><span><strong>邮寄包裹</strong></span></a>
-										<a href="#" title="代收包裹"><span><strong>代收包裹</strong></span></a>
+										<a class="city-title" rel="nofollow" ng-click="search('school')" title="学区房"><em>学区房</em></a>
+										<!--<a href="#" title="代收包裹"><span><strong>邮寄包裹</strong></span></a>
+										<a href="#" title="代收包裹"><span><strong>代收包裹</strong></span></a>-->
 									</p>
 								</div>
 								<!--<h3 class="title">代收包裹</h3>-->
 							</div>
 						</div>
-		<!--				<div class="h city-pic">
-								<a href="#" title="家电维修">
-									<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="家电维修">
-								</a>
-								<div class="holder">
-									<i></i>
-									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="家电维修"><em>家电维修</em></a>
-										<a href="#" title="家电维修"><span><strong>电话预约</strong></span></a>
-									</p>
-								</div>
-								<h3 class="title">家电维修</h3>
-							</div>
--->							<div class="left1 clear">
-							<div class="wh city-pic flaticonpeople">
-								<a href="#" title="清洁服务">
+						<div class="left1 clear">
+							<div class="wh city-pic flaticonpeople" ng-click="search('big_family')">
+								<a ng-click="search('big_family')" title="大家庭/大庭院">
 									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="清洁服务">-->
 									<i class="flaticon-people"></i>
 								</a>
 								<div class="holder">
 									<i></i>
 									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="清洁服务"><em>清洁服务</em></a>
-										<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
-										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>
+										<a class="city-title" rel="nofollow" ng-click="search('big_family')" title="大家庭/大庭院"><em>大庭院</em></a>
+										<!--<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
+										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>-->
 									</p>
 								</div>
 								<!--<h3 class="title">清洁服务</h3>-->
 							</div>
-							<div class="wh city-pic shoppingcart">
-								<a href="#" title="房屋装修">
+							<div class="wh city-pic shoppingcart" ng-click="search('shopping_mall')">
+								<a ng-click="search('shopping_mall')" title="购物商场">
 									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="房屋装修">-->
-									<i class="flaticon-mall-shopping-cart"></i>
+									<i class="flaticon-shopping-cart"></i>
 								</a>
 								<div class="holder">
 									<i></i>
 									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="房屋装修"><em>房屋装修</em></a>
-										<a href="#" title="房屋装修"><span><strong>房屋翻新</strong></span></a>
-										<a href="#" title="房屋装修"><span><strong>局部装修</strong></span></a>
+										<a class="city-title" rel="nofollow" ng-click="search('shopping_mall')" title="购物商场"><em>购物商场</em></a>
+										<!--<a href="#" title="房屋装修"><span><strong>房屋翻新</strong></span></a>
+										<a href="#" title="房屋装修"><span><strong>局部装修</strong></span></a>-->
 									</p>
 								</div>
 								<!--<h3 class="title">房屋装修</h3>-->
 							</div>
-							<div class="right1 city-pic business-rental">
-								<a href="#" title="开锁&配钥匙服务">
+							<div class="right1 city-pic business-rental" ng-click="search('offical_rental')">
+								<a ng-click="search('offical_rental')" title="Office Rental">
 									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="开锁&配钥匙服务">-->
 									<i class="flaticon-business"></i>
 								</a>
 								<div class="holder">
 									<i></i>
 									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="上海站"><em>Cut Keys</em></a>
-										<a href="#" title="开锁&配钥匙服务"><span><strong>开锁</strong></span></a>
-										<a href="#" title="开锁&配钥匙服务"><span><strong>配钥匙</strong></span></a>
+										<a class="city-title" rel="nofollow" ng-click="search('offical_rental')" title="Office Rental"><em>Office Rental</em></a>
+										<!--<a href="#" title="开锁&配钥匙服务"><span><strong>其他</strong></span></a>
+										<a href="#" title="开锁&配钥匙服务"><span><strong>其他</strong></span></a>-->
 									</p>
 								</div>
 								<!--<h3 class="title">Cut Keys</h3>-->
 							</div>
 						</div>
-					<!--	<div class="right1 clear">
-								<div class="h city-pic">
-									<a href="#" title="开锁&配钥匙服务">
-										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="开锁&配钥匙服务">
-									</a>
-									<div class="holder">
-										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="上海站"><em>Cut Keys</em></a>
-											<a href="#" title="开锁&配钥匙服务"><span><strong>开锁</strong></span></a>
-											<a href="#" title="开锁&配钥匙服务"><span><strong>配钥匙</strong></span></a>
-										</p>
-									</div>
-									<h3 class="title">Cut Keys</h3>
-								</div>
-							</div>
--->						</div>
-				</div>
+					</div>
 			</section>
 		</div>
 		</div>
@@ -369,137 +209,120 @@
 						</header>
 						<div class="pics clear">
 							<div class="left">
-								<div class="w city-pic">
-									<a href="#" title="搬家服务">
+								<div class="w city-pic" ng-click="businessSearch('move')">
+									<a ng-click="businessSearch('move')" title="搬家服务">
 										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">
 									</a>
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="搬家服务"><em>搬家服务</em></a>
-											<a href="#" title="北京二手房"><span><strong>长途搬家</strong></span></a>
-											<a href="#" title="搬家服务"><span><strong>短途搬家</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" title="搬家服务"><em>搬家服务</em></a>
+											<a ng-click="businessSearch('move')" title="北京二手房"><span><strong>长途搬家</strong></span></a>
+											<a ng-click="businessSearch('move')" title="搬家服务"><span><strong>短途搬家</strong></span></a>
 										</p>
 									</div>
 									<h3 class="title">搬家服务</h3>
 								</div>
-								<div class="wh city-pic">
-									<a href="#" title="清洁服务">
+								<div class="wh city-pic" ng-click="businessSearch('clean')">
+									<a ng-click="businessSearch('clean')" title="清洁服务">
 										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/tj.jpg?_v=20170515195947" alt="清洁服务">
 									</a>
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="清洁服务"><em>清洁服务</em></a>
-											<a href="#" title="天津二手房"><span><strong>上门服务</strong></span></a>
-											<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')" title="清洁服务"><em>清洁服务</em></a>
+											<a ng-click="businessSearch('clean')" title="天津二手房"><span><strong>上门服务</strong></span></a>
+											<a ng-click="businessSearch('clean')" title="清洁服务"><span><strong>电话预约</strong></span></a>
 										</p>
 									</div>
 									<h3 class="title">清洁服务</h3>
 								</div>
-								<div class="wh city-pic">
-									<a href="#" title="清洁服务">
-										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="清洁服务">
+								<div class="wh city-pic" ng-click="businessSearch('appliance')">
+									<a ng-click="businessSearch('appliance')" title="家电维修">
+										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="家电维修">
 									</a>
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="清洁服务"><em>清洁服务</em></a>
-											<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
-											<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')" title="家电维修"><em>家电维修</em></a>
+											<a ng-click="businessSearch('appliance')" title="家电维修"><span><strong>家电维修</strong></span></a>
+											<a ng-click="businessSearch('appliance')" title="家电维修"><span><strong>电话预约</strong></span></a>
 										</p>
 									</div>
-									<h3 class="title">清洁服务</h3>
+									<h3 class="title">家电维修</h3>
 								</div>
-								<div class="w city-pic">
-									<a href="#" title="水电网服务">
-										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="水电网服务">
+								<div class="wh city-pic" ng-click="businessSearch('handyman')">
+									<a ng-click="businessSearch('handyman')" title="Handyman">
+										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="Handyman">
 									</a>
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="水电网服务"><em>水电网服务</em></a>
-											<a href="#" title="水电网服务"><span><strong>水电网服务</strong></span></a>
-											<a href="#" title="水电网服务"><span><strong>电话预约</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')" title="Handyman"><em>Handyman</em></a>
+											<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong>pulumber</strong></span></a>
+											<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong>水工</strong></span></a>
 										</p>
 									</div>
-									<h3 class="title">水电网服务</h3>
+									<h3 class="title">Handyman</h3>
+								</div>
+								<div class="wh city-pic" ng-click="businessSearch('free_post')">
+									<a ng-click="businessSearch('free_post')" title="freepost">
+										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="freepost">
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')" title="freepost"><em>freepost</em></a>
+											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong>freepost</strong></span></a>
+											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong>freepost</strong></span></a>
+										</p>
+									</div>
+									<h3 class="title">freepost</h3>
 								</div>
 							</div>
-			<!--				<div class="h city-pic">
-								<a href="#" title="家电维修">
-									<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="家电维修">
-								</a>
-								<div class="holder">
-									<i></i>
-									<p class="desTile">
-										<a class="city-title" rel="nofollow" href="#" title="家电维修"><em>家电维修</em></a>
-										<a href="#" title="家电维修"><span><strong>电话预约</strong></span></a>
-									</p>
-								</div>
-								<h3 class="title">家电维修</h3>
-							</div>
--->							<div class="right clear">
-								<div class="wh city-pic">
-									<a href="#" title="代收包裹">
-										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="代收包裹">
+							<div class="wh city-pic" ng-click="businessSearch('take_away')">
+									<a ng-click="businessSearch('take_away')" title="外卖">
+										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="外卖">
 									</a>
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="代收包裹"><em>代收包裹</em></a>
-											<a href="#" title="代收包裹"><span><strong>邮寄包裹</strong></span></a>
-											<a href="#" title="代收包裹"><span><strong>代收包裹</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')" title="代收包裹"><em>外卖</em></a>
+											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong>外卖</strong></span></a>
+											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong>外卖</strong></span></a>
 										</p>
 									</div>
-									<h3 class="title">代收包裹</h3>
+									<h3 class="title">外卖</h3>
 								</div>
-								<div class="wh city-pic">
-									<a href="#" title="房屋装修">
-										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="房屋装修">
+								<div class="wh city-pic" ng-click="businessSearch('painting')">
+									<a ng-click="businessSearch('painting')" title="painting">
+										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="painting">
 									</a>
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="房屋装修"><em>房屋装修</em></a>
-											<a href="#" title="房屋装修"><span><strong>房屋翻新</strong></span></a>
-											<a href="#" title="房屋装修"><span><strong>局部装修</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')" title="房屋装修"><em>painting</em></a>
+											<a ng-click="businessSearch('painting')" title="painting"><span><strong>房屋粉刷</strong></span></a>
+											<a ng-click="businessSearch('painting')" title="painting"><span><strong>局部装修</strong></span></a>
 										</p>
 									</div>
-									<h3 class="title">房屋装修</h3>
+									<h3 class="title">painting</h3>
 								</div>
-								<div class="right1 city-pic">
-									<a href="#" title="开锁&配钥匙服务">
-										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="开锁&配钥匙服务">
+								<div class="right1 city-pic" ng-click="businessSearch('storage')">
+									<a ng-click="businessSearch('storage')" title="仓储">
+										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="仓储">
 									</a>
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="上海站"><em>Cut Keys</em></a>
-											<a href="#" title="开锁&配钥匙服务"><span><strong>开锁</strong></span></a>
-											<a href="#" title="开锁&配钥匙服务"><span><strong>配钥匙</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')" title="上海站"><em>仓储</em></a>
+											<a ng-click="businessSearch('storage')" title="仓储"><span><strong>仓储</strong></span></a>
+											<a ng-click="businessSearch('storage')" title="仓储"><span><strong>仓储</strong></span></a>
 										</p>
 									</div>
-									<h3 class="title">Cut Keys</h3>
+									<h3 class="title">仓储</h3>
 								</div>
 							</div>
-						<!--	<div class="right1 clear">
-								<div class="h city-pic">
-									<a href="#" title="开锁&配钥匙服务">
-										<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="开锁&配钥匙服务">
-									</a>
-									<div class="holder">
-										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" href="#" title="上海站"><em>Cut Keys</em></a>
-											<a href="#" title="开锁&配钥匙服务"><span><strong>开锁</strong></span></a>
-											<a href="#" title="开锁&配钥匙服务"><span><strong>配钥匙</strong></span></a>
-										</p>
-									</div>
-									<h3 class="title">Cut Keys</h3>
-								</div>
-							</div>
--->						</div>
 					</div>
 				</section>
 			</div>
@@ -507,280 +330,7 @@
 
 	</div>
 	<div class="clear">
-			<section class="dream-homes">
-				<h1 class="dream-homes-main-title">Hot Rent</h1>
-				<div class="content-wrap dream-homes-container is-carousel">
-					<ul class="dream-homes-list" style="width: 4497px; left: 0px;">
-						<li class="dream-homes-item " data-adid="2013482649" data-listingtype="Residential" style="width: 341.25px;">
-							<a href="#" class="dream-homes-item-link" data-adid="2013482649" data-listingtype="Residential" data-position="1">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                		<h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Fletchers  Canterbury</span>
-									<span class="dream-homes-title-suburb">Balwyn, Vic </span>
-									</h2>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class=" fa fa-bed"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-bath"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            1
-                                        </span>
-									<span class="fa fa-car"></span>
-									</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" src="../img/b0.jpg" alt="Balwyn, Vic">
-						</li>
-						<li class="dream-homes-item " data-adid="2013431230" data-listingtype="Residential" style="width: 341.25px;">
-							<a href="#" class="dream-homes-item-link" data-adid="2013431230" data-listingtype="Residential" data-position="2">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
-									<span class="dream-homes-title-suburb">Toorak, Vic </span>
-									</h2>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-bed"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-bath"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-car"></span>
-									</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" src="../img/b10.jpg" alt="Toorak, Vic">
-						</li>
-						<li class="dream-homes-item " data-adid="2013160302" data-listingtype="Residential" style="width: 341.25px;">
-							<a href="#" class="dream-homes-item-link" data-adid="2013160302" data-listingtype="Residential" data-position="3">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
-									<span class="dream-homes-title-suburb">South Yarra, Vic </span>
-									</h2>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-bed"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-bath"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-car"></span>
-									</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" src="../img/b12.jpg" alt="South Yarra, Vic">
-						</li>
-						<li class="dream-homes-item " data-adid="2013336062" data-listingtype="NewDevelopment" style="width: 341.25px;">
-							<a href="#" class="dream-homes-item-link" data-adid="2013336062" data-listingtype="NewDevelopment" data-position="4">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Lechte Corp</span>
-									<span class="dream-homes-title-suburb">Hawthorn, Vic </span>
-									</h2>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-bed"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-bath"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-car"></span>
-									</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" src="../img/b13.jpg" alt="Hawthorn, Vic">
-						</li>
-						<li class="dream-homes-item is-lazy-loading" data-adid="2013260868" data-listingtype="Residential" style="width: 341.25px;">
-							<a href="#" class="dream-homes-item-link" data-adid="2013260868" data-listingtype="Residential" data-position="5">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
-									<span class="dream-homes-title-suburb">Glen Iris, Vic </span>
-									</h2>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-bed"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-bath"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-car"></span>
-									</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" data-lazy-src="../img/b14.jpg" alt="Glen Iris, Vic">
-						</li>
-						<li class="dream-homes-item is-lazy-loading" data-adid="2013498866" data-listingtype="NewDevelopment" style="width: 499.667px;">
-							<a href="#" class="dream-homes-item-link" data-adid="2013498866" data-listingtype="NewDevelopment" data-position="6">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Trenerry Property Group  Pty Ltd</span>
-									<span class="dream-homes-title-suburb">West Melbourne, Vic </span>
-									</h2>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-bed"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-bath"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-car"></span>
-									</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" data-lazy-src="../img/b15.jpg" alt="West Melbourne, Vic">
-						</li>
-						<li class="dream-homes-item is-lazy-loading" data-adid="2013483343" data-listingtype="Residential" style="width: 499.667px;">
-							<a href="#" class="dream-homes-item-link" data-adid="2013483343" data-listingtype="Residential" data-position="7">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Fletchers  Canterbury</span>
-									<span class="dream-homes-title-suburb">Surrey Hills, Vic </span>
-									</h2>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            5
-                                        </span>
-									<span class="fa fa-bed"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            4
-                                        </span>
-									<span class="fa fa-bath"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-car"></span>
-									</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" data-lazy-src="../img/b16.jpg" alt="Surrey Hills, Vic">
-						</li>
-						<li class="dream-homes-item is-lazy-loading" data-adid="1785" data-listingtype="Project" style="width: 499.667px;">
-							<a href="#" class="dream-homes-item-link" data-adid="1785" data-listingtype="Project" data-position="8">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-project-name">Collins Arch</span>
-									<span class="dream-homes-title-suburb">Melbourne, Vic </span>
-									</h2>
-									<span class="dream-homes-project-agency-name">Colliers l Collins Arch</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" data-lazy-src="../img/b17.jpg" alt="Melbourne, Vic">
-						</li>
-						<li class="dream-homes-item is-lazy-loading" data-adid="2013491279" data-listingtype="NewDevelopment" style="width: 499.667px;">
-							<a href="#" class="dream-homes-item-link" data-adid="2013491279" data-listingtype="NewDevelopment" data-position="9">
-								<header class="dream-homes-item-header">
-									<span class="dream-homes-item-header-wrap">
-                                		<h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Protec Property Group | Illusso</span>
-									<span class="dream-homes-title-suburb">Kew, Vic </span>
-									</h2>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-									<span class="fa fa-bed"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-bath"></span>
-									</span>
-									<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-									<span class="fa fa-car"></span>
-									</span>
-									</span>
-								</header>
-							</a>
-							<img class="dream-homes-item-img" data-lazy-src="../img/b18.jpg" alt="Kew, Vic">
-						</li>
-					</ul>
-					<a href="javascript:;" class="dream-homes-prev-btn" style="display: none;">
-						<span class="icon fa fa-chevron-circle-left"></span><span class="sr-only">previous</span>
-					</a>
-					<a href="javascript:;" class="dream-homes-next-btn" style="display: block;">
-						<span class="icon fa fa-chevron-circle-right"></span><span class="sr-only">next</span>
-					</a>
-				</div>
+			<section hotrent class="dream-homes">
 			</section>
 	</div>
 </div>

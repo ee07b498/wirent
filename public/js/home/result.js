@@ -17,32 +17,85 @@
 		}])
 	.controller('MyCtrl',function($scope,$http,$log,NgMap,$cookies,$rootScope,$localStorage,SearchService,updateService,utilConvertDateToString) {
 				var shortlistInsert = {};
+				var entireData = {};
+				var datafromhome = {};
 				var vm = this;
 				NgMap.getMap().then(function(map) {
 					vm.map = map;
 					
 				});
-
 				vm.clicked = function() {
 					alert('Clicked a link inside infoWindow');
 				};
 				/*
-					 * when SearchService.get() has children, set the result to localstorage,
-					 * when searchservice has no child, the localstorage will keep the previous 
-					 * set value
-					 *
-					 * */
-					 if(JSON.stringify(SearchService.get()) != "{}"){
-					 	$localStorage.settings = SearchService.get().data;
-					 	console.log('$localStorage.settings',$localStorage.settings);
-					 	vm.shops = $localStorage.settings;
-						console.log('vm.shops',vm.shops);
-					 	alert( updateService.get());
-					 	console.log('updateService.get()',updateService.get());
-					 }else{
-					 	vm.shops = $localStorage.settings;
-					 	console.log('$localStorage.settings other conditions',$localStorage.settings);
-					 }
+				 * when SearchService.get() has children, set the result to localstorage,
+				 * when searchservice has no child, the localstorage will keep the previous 
+				 * set value
+				 *
+				 * */
+				 if(JSON.stringify(SearchService.get()) != "{}"){
+				 	$localStorage.settings = SearchService.get().data;
+				 	console.log('$localStorage.settings',$localStorage.settings);
+				 	vm.shops = $localStorage.settings;
+					console.log('vm.shops',vm.shops);
+					$localStorage.datafromhome=updateService.get();
+					datafromhome=$localStorage.datafromhome;
+				 	console.log('updateService.get()',updateService.get());
+				 }else{
+				 	vm.shops = $localStorage.settings;
+				 	datafromhome=$localStorage.datafromhome;
+				 	console.log('$localStorage.settings other conditions',$localStorage.settings);
+				 }
+				 
+				 $scope.selected = datafromhome.ER_Suburb+' '+datafromhome.ER_Region;
+				 angular.forEach(vm.shops, function(data,index,array){
+				//data等价于array[index]
+					var dataresults = data.ER_Description.split(";");
+					dataresults.pop();
+					for(var i =0;i<dataresults.length;i++)
+					{
+						
+						switch (dataresults[i])
+						{
+						     case "train_station":
+						     	data.train_station = true;
+						   	 break;
+						     case "university":
+								data.university = true;
+						     break;
+						     case "backpack": 
+								data.backpack = true;
+						    break;
+						     case "park": 
+								data.park = true;
+						    break;
+						     case "school": 
+								data.school = true;
+						    break;
+						     case "big_family": 
+								data.big_family = true;
+						    break;
+						     case "shopping_mall": 
+								data.shopping_mall = true;
+						    break;
+						     case "offical_rental": 
+								data.offical_rental = true;
+						    break;
+						  /* default: 
+						   		data.train_station =false;
+								data.university =false;
+								data.backpack =false;
+								data.park =false;
+								data.school =false;
+								data.big_family =false;
+								data.shopping_mall =false;
+								data.offical_rental =false;
+						      	 break;*/
+						}
+					}
+					
+				});
+				console.log("数据",vm.shops);
 				/*vm.shops = [{
 						id: 'foo',
 						name: 'FOO SHOP',
@@ -168,10 +221,72 @@
 		    $scope.initDate = new Date('2016-15-20');
 		    $scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		    $scope.format = $scope.formats[0];
-		/*datepicker end*/
+				/*datepicker end*/
 				/*update submit*/
 				$scope.update = function(){
-					alert("updated");
+						alert($scope.train);
+					/*console.log($scope.x);
+					if($scope.x) {
+						var address = $scope.x[0].split(",");
+						console.log("xxx", address);
+						entireData = {
+							ER_Suburb: address[0],
+							ER_Region: address[1],
+							ER_Type: $scope.myPropertyType,
+							ER_PriceMin: $scope.myMinPrice,
+							ER_PriceMax: $scope.myMaxPrice,
+							ER_BedRoomMin: $scope.minBedNum,
+							ER_BedRoomMax: $scope.maxBedNum,
+							ER_BathRoomMin: $scope.minBathNum,
+							ER_BathRoomMax: $scope.maxBathNum,
+							ER_ParkingMin: $scope.minParkingNum,
+							ER_ParkingMax: $scope.maxParkingNum,
+							ER_AreaMin: 0,
+							ER_AreaMax: 5000,
+							ER_AvailableDate: '2020-01-01',
+							ER_Description: $scope.keywords || '',
+							ER_Feature: ' '
+						};
+					} else {
+						entireData = {
+							ER_Suburb: '',
+							ER_Region: '',
+							ER_Type: $scope.myPropertyType,
+							ER_PriceMin: $scope.myMinPrice,
+							ER_PriceMax: $scope.myMaxPrice,
+							ER_BedRoomMin: $scope.minBedNum,
+							ER_BedRoomMax: $scope.maxBedNum,
+							ER_BathRoomMin: $scope.minBathNum,
+							ER_BathRoomMax: 5,
+							ER_ParkingMin: $scope.myParkingNum,
+							ER_ParkingMax: 5,
+							ER_AreaMin: 0,
+							ER_AreaMax: 5000,
+							ER_AvailableDate: '2020-01-01',
+							ER_Description: $scope.keywords || '',
+							ER_Feature: ''
+						}
+					}*/
+
+					// $state.go('app.googlemap');
+					/*console.log(entireData);
+					$http.post('/customer/filt/entire', entireData)
+						.then(function(r) {
+							SearchService.set(r);
+							updateService.set(entireData);
+							//							SetCredentials(r);
+							console.log('r===>', r);
+							if(r.data.length > 0) {
+								$state.go('app.googlemap');
+							}
+							//							
+
+						}, function(e) {
+
+						});*/
+				
+//					alert("updated");
+					console.log("vm.shops",vm.shops);
 				}
 			})
 		.service('googleService',['$scope',function($scope){

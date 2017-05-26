@@ -52,6 +52,8 @@
 	<script src="/node_modules/ui-utils.js"></script>
 	<script src="/js/home/directives/ui-jq.js"></script>
 	<script src="/js/home/services/ui-load.js"></script>
+	<script src="/js/home/map/jquery.subwayMap-0.5.0.js"></script>
+	<script src="/js/home/map/dragscroll.js"></script>
 	 <!-- lazyload -->
   	<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
 	<script src="/js/home/map/load-google-maps.js"></script>
@@ -67,6 +69,8 @@
 	<script src="/js/home/shortlist.js"></script>
 	<script src="/js/home/listpage.js"></script>
 	<script src="/js/home/new.js"></script>
+	<script src="/js/home/trainmap.js"></script>
+	<script src="/js/home/business.js"></script>
 	
 </body>
 	

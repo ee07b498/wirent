@@ -526,5 +526,16 @@ class CustomerController extends Controller
 		$result = DB::insert($sql);
 		return $result;
 	}	
+	
+	public function filt_thirdparty(Request $request)
+	{
+		$TPDetail=$request->input('TPDetail');  
+		$TPServLoc = $request->input('TPServLoc');			//e.g.租客检查未读邮件$msg_direct_comment = '% to customer';
+		$proc_Name = 'filt_Check_ThirdParty';	
+		$sql = "call $proc_Name('{$TPDetail}','{$TPServLoc}')";  
+		$result = DB::select($sql);
+		return $result;
+	}
+	
 		
 }

@@ -1,4 +1,4 @@
-<div class="business">
+<div class="business" ng-controller="businessCtrl">
 	<div class="wrapper">
 		<!--filter 模块-->
 		<div class="filter-box">
@@ -7,16 +7,16 @@
 					<dl class="dl-lst clear"><dt><h3>区域：</h3></dt>
 						<dd data-index="0">
 							<div class="option-list">
-								<a href="/jingjiren/" class="on">不限</a>
-								<a href="/jingjiren/xihu/">kingsford</a>
-								<a href="/jingjiren/xiacheng/">Chatswood</a>
-								<a href="/jingjiren/jianggan/">Maroubra</a>
-								<a href="/jingjiren/gongshu/">Randwick</a>
-								<a href="/jingjiren/shangcheng/">Burwood</a>
-								<a href="/jingjiren/binjiang/">Kensington</a>
-								<a href="/jingjiren/yuhang/">Hurstvile</a>
-								<a href="/jingjiren/xiaoshan/">Mascot</a>
-								<a href="/jingjiren/xiasha/">Ryde</a>
+								<a href="" class="on">不限</a>
+								<a href="">kingsford</a>
+								<a href="">Chatswood</a>
+								<a href="">Maroubra</a>
+								<a href="">Randwick</a>
+								<a href="">Burwood</a>
+								<a href="">Kensington</a>
+								<a href="">Hurstvile</a>
+								<a href="">Mascot</a>
+								<a href="">Ryde</a>
 							</div>
 						</dd>
 					</dl>
@@ -30,20 +30,20 @@
 							<div class="item-check">
 								<ul>
 									<li>
-										<a href="/jingjiren/are1/"><i></i>客户信赖</a>
+										<a href=""><i></i>客户信赖</a>
 									</li>
 									<li>
-										<a href="/jingjiren/ahc1/"><i></i>客户热评</a>
+										<a href=""><i></i>客户热评</a>
 									</li>
 									<li>
-										<a href="/jingjiren/ags1/"><i></i>价格最低</a>
+										<a href=""><i></i>价格最低</a>
 									</li>
 									<li>
 										<a href="/jingjiren/asa1/"><i></i>接单最多</a>
 									</li>
 									<li></li>
 									<li>
-										<a href="/jingjiren/aae1/"><i></i>服务专业</a>
+										<a href=""><i></i>服务专业</a>
 									</li>
 								</ul>
 							</div>
@@ -53,16 +53,16 @@
 				<div class="filter-bar01">
 					<div class="sort-bar" id="sort-bar"><span>排序：</span>
 						<div class="sort-parent on">
-							<a href="/jingjiren/"><span>默认</span></a>
+							<a href=""><span>默认</span></a>
 						</div>
 						<div class="sort-parent">
-							<a href="/jingjiren/ao12/"><span>综合评分从高到低</span></a>
+							<a href=""><span>综合评分从高到低</span></a>
 						</div>
 						<div class="sort-parent">
-							<a href="/jingjiren/ao22/"><span>价格从高到低</span></a>
+							<a href=""><span>价格从高到低</span></a>
 						</div>
 						<div class="sort-parent">
-							<a href="/jingjiren/ao32/"><span>评分从高到低</span></a>
+							<a href=""><span>评分从高到低</span></a>
 						</div>
 					</div>
 				</div>
@@ -74,22 +74,25 @@
 					<h2 style="font-size:14px;">共有<span>3811</span>个搬家公司</h2></div>
 				<div class="list-wrap">
 					<ul class="agent-lst">
-						<li class="hover_checked" ui-sref="app.businessDetails">
+						<li class="hover_checked" ng-repeat="businessman in serviceData" ui-sref="app.businessDetails">
 							<div class="pic-panel">
-								<a target="_blank" href="#"><img onerror="this.src='http://s1.ljcdn.com/feroot/pc/asset/img/jingjiren/noimg.jpg?_v=20170518183336';" src="../img/andy.jpg"></a>
+								<a ng-show="![:businessman.links:]"><img  ng-src="[:businessman.TPLogo:]"></a>
+								<a target="_blank" ng-show="[:businessman.links:]" href="http://[:businessman.TPLink:]"><img  ng-src="[:businessman.TPLogo:]"></a>
 							</div>
 							<div class="info-panel">
 								<div class="agent-name">
-									<a target="_blank" href="#">
-										<h2>Jack</h2></a><span class="position">MaxMove </span>
-									<a class="lianjiaim-createtalkAll" style="display: none;" title="在线咨询" data-role="lianjiaim-createtalk" data-ucid="1000000020091114"></a>
+									<a ng-show="![:businessman.links:]">
+										<h2>[:businessman.TPName:]</h2>
+									</a>
+									<a target="_blank" ng-show="[:businessman.links:]" href="http://[:businessman.TPLink:]">
+										<h2>[:businessman.TPName:]</h2>
+									</a>
+									<span class="position">[:businessman.TPDetail:]</span>
 								</div>
 								<div class="col-1">
-									<div class="main-plate"><span class="mp-title">主营区域:&nbsp;&nbsp;</span><span><a target="_blank" href="#">Kingsford&nbsp;</a><a target="_blank" href="#">Randwick</a>&nbsp;&nbsp;&nbsp;</span>
-										<!--暂时不显示出售房源数量<span><a target="_blank" href="http://dianpu.lianjia.com/1000000020091114?w=jingxuan">出售房源0套</a></span>--></div>
+									<div class="main-plate"><span class="mp-title">主营区域:&nbsp;&nbsp;</span><span><a href="">[:businessman.TPServLoc:]&nbsp;</a><a href="">Randwick</a>&nbsp;&nbsp;&nbsp;</span>
 									<div class="achievement">
-										<a target="_blank" href="#"><span>长途搬家$50p/h</span>,&nbsp;</a>
-										<!--<a target="_blank" href="http://dianpu.lianjia.com/1000000020091114?w=dujia"><span>独家委托0套</span>,&nbsp;</a>--><span>长途搬家$60p/h</span></div>
+										<a  href=""><span>[:businessman.TPDescription:]</span>&nbsp;</a>
 									<div class="label"><span class="owner_trust_mark">顾客信赖</span><span class="good_comment_mark">客户热评</span><span class="good_saler_mark">评分最高</span><span class="top_guider_mark">专业服务</span></div>
 								</div>
 								<div class="col-2">
@@ -99,14 +102,14 @@
 									</div>
 								</div>
 								<div class="col-3">
-									<h2>0434959654</h2>
+									<h2>[:businessman.TPPhone:]</h2>
 									<p class="method">联系方式</p>
 									<p class="mobile_p"></p>
 								</div>
 								<div class="clear"></div>
 							</div>
 						</li>
-						<li class="" ui-sref="app.businessDetails">
+					<!--	<li class="" ui-sref="app.businessDetails">
 							<div class="pic-panel">
 								<a target="_blank" href="#"><img onerror="this.src='http://s1.ljcdn.com/feroot/pc/asset/img/jingjiren/noimg.jpg?_v=20170518183336';" src="/img/noimg.jpg"></a>
 							</div>
@@ -118,10 +121,8 @@
 								</div>
 								<div class="col-1">
 									<div class="main-plate"><span class="mp-title">主营区域:&nbsp;&nbsp;</span><span><a target="_blank" href="#">Kingsford&nbsp;</a><a target="_blank" href="#">Randwick</a>&nbsp;&nbsp;&nbsp;</span>
-										<!--暂时不显示出售房源数量<span><a target="_blank" href="http://dianpu.lianjia.com/1000000020091114?w=jingxuan">出售房源0套</a></span>--></div>
 									<div class="achievement">
-										<a target="_blank" href="#"><span>长途搬家$50p/h</span>,&nbsp;</a>
-										<!--<a target="_blank" href="http://dianpu.lianjia.com/1000000020091114?w=dujia"><span>独家委托0套</span>,&nbsp;</a>--><span>长途搬家$60p/h</span></div>
+										<a target="_blank" href="#"><span>长途搬家$50p/h</span>&nbsp;</a>
 									<div class="label"><span class="owner_trust_mark">顾客信赖</span><span class="good_comment_mark">客户热评</span><span class="good_saler_mark">评分最高</span><span class="top_guider_mark">专业服务</span></div>
 								</div>
 								<div class="col-2">
@@ -138,7 +139,7 @@
 								<div class="clear"></div>
 							</div>
 						</li>
-						<div class="page-box house-lst-page-box" comp-module="page" page-url="/jingjiren/pg{page}/" page-data="{&quot;totalPage&quot;:100,&quot;curPage&quot;:1}">
+-->						<div class="page-box house-lst-page-box" comp-module="page" page-url="/jingjiren/pg{page}/" page-data="{&quot;totalPage&quot;:100,&quot;curPage&quot;:1}">
 							<a class="on" href="#" data-page="1">1</a>
 							<a href="#" data-page="2">2</a>
 							<a href="#" data-page="3">3</a><span>...</span>
