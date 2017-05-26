@@ -14,8 +14,8 @@
 							<script type="text/ng-template" id="myModalContent.html">
 							        <div ng-include="'partials/tpl/modal.html'"></div>
 							</script>
-							<div animatesearch tips="tips" openmodal = openmodal('lg')>
-								
+							<div animatesearch tips="tips">
+							<!--<div animatesearch tips="tips" openmodal = openmodal('lg')>-->	
 							</div>
 							<div class="search">
 								<div class="box">
@@ -65,7 +65,7 @@
 			<section class="theme-specification">
 				<div class="top-cities clear">
 					<header class="latest-news-header">
-						<a class="latest-news-title-link" ui-sref="app.listpage">
+						<a class="latest-news-title-link" ng-click="search('university')">
 							<h1 class="latest-news-title h1">主题专区</h1></a>
 					</header>
 					<div class="pics pics1">
@@ -85,7 +85,7 @@
 								</div>
 								<!--<h3 class="title">清洁服务</h3>-->
 							</div>
-							<div class="w city-pic graduation" ng-click="search('train_station')">
+							<div class="w city-pic railroad" ng-click="search('train_station')">
 								<a ng-click="search('train_station')" title="火车站">
 									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">-->
 									<i class="flaticon-train-on-railroad"></i>
@@ -100,7 +100,7 @@
 								</div>
 								<!--<h3 class="title">搬家服务</h3>-->
 							</div>
-							<div class="wh city-pic railroad" ng-click="search('backpack')">
+							<div class="wh city-pic graduation" ng-click="search('backpack')">
 								<a ng-click="search('backpack')" title="背包客">
 									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="水电网服务">-->
 									<i class="flaticon-backpack"></i>
@@ -204,7 +204,7 @@
 				<section class="theme-specification">
 					<div class="top-cities clear">
 						<header class="latest-news-header">
-							<a href="#" class="latest-news-title-link" ui-sref="app.business">
+							<a class="latest-news-title-link" ng-click="businessSearch('')">
 								<h1 class="latest-news-title h1">商家专区</h1></a>
 						</header>
 						<div class="pics clear">

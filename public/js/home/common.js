@@ -717,10 +717,11 @@
 						.then(function(r) {
 							SearchService.set(r);
 							updateService.set(entireData);
-							//							SetCredentials(r);
+							//SetCredentials(r);
 							console.log('r===>', r);
 							if(r.data.length > 0) {
-								$state.go('app.googlemap');
+//								$state.go('app.listpage');
+								$state.go('app.listpage');
 							}
 							//							
 

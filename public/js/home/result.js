@@ -38,13 +38,20 @@
 				 	console.log('$localStorage.settings',$localStorage.settings);
 				 	vm.shops = $localStorage.settings;
 					console.log('vm.shops',vm.shops);
-					$localStorage.datafromhome=updateService.get();
-					datafromhome=$localStorage.datafromhome;
-				 	console.log('updateService.get()',updateService.get());
 				 }else{
 				 	vm.shops = $localStorage.settings;
+				 	console.log('$localStorage.settings',$localStorage.settings);
+				 }
+				 /**
+				  * parameters from search engine
+				  */
+				 if(JSON.stringify(updateService.get()) != "{}"){
+					$localStorage.datafromhome=updateService.get();
+					datafromhome=$localStorage.datafromhome;
+		 		console.log('updateService.get()',updateService.get());
+				 }else{
 				 	datafromhome=$localStorage.datafromhome;
-				 	console.log('$localStorage.settings other conditions',$localStorage.settings);
+				 	console.log('$localStorage.datafromhome',datafromhome);
 				 }
 				 
 				 $scope.selected = datafromhome.ER_Suburb+' '+datafromhome.ER_Region;
@@ -222,6 +229,88 @@
 		    $scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		    $scope.format = $scope.formats[0];
 				/*datepicker end*/
+				
+				/**
+				 * filter update code starts
+				 * 
+				 */
+				// colum1
+				$scope.col_requirements = function(){
+					$scope.all_requirements = !$scope.all_requirements;
+					if($scope.all_requirements)
+					{
+						$scope.no_smoking = true;
+						$scope.no_pets = true;
+						$scope.girl_only = true;
+						$scope.boy_only = true;
+						$scope.no_party = true;
+					}
+					else{
+						$scope.no_smoking = false;
+						$scope.no_pets = false;
+						$scope.girl_only = false;
+						$scope.boy_only = false;
+						$scope.no_party = false;
+					}
+				}
+				// colum2
+				$scope.col_appliances = function(){
+					$scope.appliances = !$scope.appliances;
+					if($scope.appliances)
+					{
+						$scope.stove = true;
+						$scope.dishwasher = true;
+						$scope.dryer = true;
+						$scope.aircondition = true;
+					}
+					else{
+						$scope.stove = false;
+						$scope.dishwasher = false;
+						$scope.dryer = false;
+						$scope.aircondition = false;
+					}
+				}
+				// colum3
+				$scope.col_furniture = function(){
+					$scope.furniture = !$scope.furniture;
+					if($scope.furniture)
+					{
+						$scope.bed = true;
+						$scope.desk = true;
+						$scope.wardrob = true;
+					}
+					else{
+						$scope.bed = false;
+						$scope.desk = false;
+						$scope.wardrob = false;
+					}
+				}
+				// colum4
+				$scope.col_other_appliance = function(){
+					$scope.other_appliance = !$scope.other_appliance;
+					if($scope.other_appliance)
+					{
+						$scope.refrigerator = true;
+						$scope.laundry = true;
+					}
+					else{
+						$scope.refrigerator = false;
+						$scope.laundry = false;
+					}
+				}
+				// colum5
+				$scope.col_other_essential = function(){
+					$scope.other_essential = !$scope.other_essential;
+					if($scope.other_essential)
+					{
+						$scope.wifi = true;
+						$scope.gas = true;
+					}
+					else{
+						$scope.wifi = false;
+						$scope.gas = false;
+					}
+				}
 				/*update submit*/
 				$scope.update = function(){
 						alert($scope.train);
@@ -288,6 +377,9 @@
 //					alert("updated");
 					console.log("vm.shops",vm.shops);
 				}
+				/**
+				 * filter update code ends
+				 */
 			})
 		.service('googleService',['$scope',function($scope){
 			var me = this;

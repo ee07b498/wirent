@@ -76,15 +76,15 @@
 					<ul class="agent-lst">
 						<li class="hover_checked" ng-repeat="businessman in serviceData" ui-sref="app.businessDetails">
 							<div class="pic-panel">
-								<a ng-show="![:businessman.links:]"><img  ng-src="[:businessman.TPLogo:]"></a>
-								<a target="_blank" ng-show="[:businessman.links:]" href="http://[:businessman.TPLink:]"><img  ng-src="[:businessman.TPLogo:]"></a>
+								<a ng-show="!businessman.links"><img  ng-src="[:businessman.TPLogo:]"></a>
+								<a target="_blank" ng-show="businessman.links" href="http://[:businessman.TPLink:]"><img  ng-src="[:businessman.TPLogo:]"></a>
 							</div>
 							<div class="info-panel">
 								<div class="agent-name">
-									<a ng-show="![:businessman.links:]">
+									<a ng-show="!businessman.links">
 										<h2>[:businessman.TPName:]</h2>
 									</a>
-									<a target="_blank" ng-show="[:businessman.links:]" href="http://[:businessman.TPLink:]">
+									<a target="_blank" ng-show="businessman.links" href="http://[:businessman.TPLink:]">
 										<h2>[:businessman.TPName:]</h2>
 									</a>
 									<span class="position">[:businessman.TPDetail:]</span>

@@ -32,7 +32,16 @@
 		        return out;
 		    };
 		})
-		.controller('listPageCtrl', ['$scope', '$log','$timeout','$http',function($scope,$log,$timeout,$http) {
+		.controller('listPageCtrl', ['$scope', 
+			'$log','$timeout','$http',
+			'$cookies','$rootScope','$localStorage',
+			'SearchService','updateService',
+			function($scope,$log,$timeout,
+			$http,$cookies,$rootScope,
+			$localStorage,SearchService,
+			updateService) {
+			var entireData = {};
+			var datafromhome = {};
 			$scope.totalItems = 64;
 		    $scope.currentPage = 4;
 		    $scope.setPage = function (pageNo) {
@@ -135,5 +144,181 @@
 				$scope.update = function(){
 					alert("updated");
 				}
+				
+		/**
+		 * resolve the data passed through factory service from home page
+		 */
+		 if(JSON.stringify(SearchService.get()) != "{}"){
+			 	$localStorage.settings = SearchService.get().data;
+			 	console.log('$localStorage.settings',$localStorage.settings);
+			 	entireData = $localStorage.settings;
+				console.log('entireData',entireData);
+			 }else{
+			 	entireData = $localStorage.settings;
+			 	console.log('$localStorage.settings other conditions',$localStorage.settings);
+			 }
+			 $scope.entireData=entireData;
+		 if(JSON.stringify(updateService.get()) != "{}"){
+				$localStorage.datafromhome=updateService.get();
+				datafromhome=$localStorage.datafromhome;
+		 		console.log('updateService.get()',updateService.get());
+				 }else{
+				 	datafromhome=$localStorage.datafromhome;
+				 	console.log('$localStorage.datafromhome',datafromhome);
+				 }
+				  $scope.datafromhome=datafromhome;
+		/**
+		 * filter update code starts
+		 */
+		/**
+				 * filter update code starts
+				 * 
+				 */
+				// colum1
+				$scope.col_requirements = function(){
+					$scope.all_requirements = !$scope.all_requirements;
+					if($scope.all_requirements)
+					{
+						$scope.no_smoking = true;
+						$scope.no_pets = true;
+						$scope.girl_only = true;
+						$scope.boy_only = true;
+						$scope.no_party = true;
+					}
+					else{
+						$scope.no_smoking = false;
+						$scope.no_pets = false;
+						$scope.girl_only = false;
+						$scope.boy_only = false;
+						$scope.no_party = false;
+					}
+				}
+				// colum2
+				$scope.col_appliances = function(){
+					$scope.appliances = !$scope.appliances;
+					if($scope.appliances)
+					{
+						$scope.stove = true;
+						$scope.dishwasher = true;
+						$scope.dryer = true;
+						$scope.aircondition = true;
+					}
+					else{
+						$scope.stove = false;
+						$scope.dishwasher = false;
+						$scope.dryer = false;
+						$scope.aircondition = false;
+					}
+				}
+				// colum3
+				$scope.col_furniture = function(){
+					$scope.furniture = !$scope.furniture;
+					if($scope.furniture)
+					{
+						$scope.bed = true;
+						$scope.desk = true;
+						$scope.wardrob = true;
+					}
+					else{
+						$scope.bed = false;
+						$scope.desk = false;
+						$scope.wardrob = false;
+					}
+				}
+				// colum4
+				$scope.col_other_appliance = function(){
+					$scope.other_appliance = !$scope.other_appliance;
+					if($scope.other_appliance)
+					{
+						$scope.refrigerator = true;
+						$scope.laundry = true;
+					}
+					else{
+						$scope.refrigerator = false;
+						$scope.laundry = false;
+					}
+				}
+				// colum5
+				$scope.col_other_essential = function(){
+					$scope.other_essential = !$scope.other_essential;
+					if($scope.other_essential)
+					{
+						$scope.wifi = true;
+						$scope.gas = true;
+					}
+					else{
+						$scope.wifi = false;
+						$scope.gas = false;
+					}
+				}
+				/*update submit*/
+				$scope.update = function(){
+						alert($scope.train);
+					/*console.log($scope.x);
+					if($scope.x) {
+						var address = $scope.x[0].split(",");
+						console.log("xxx", address);
+						entireData = {
+							ER_Suburb: address[0],
+							ER_Region: address[1],
+							ER_Type: $scope.myPropertyType,
+							ER_PriceMin: $scope.myMinPrice,
+							ER_PriceMax: $scope.myMaxPrice,
+							ER_BedRoomMin: $scope.minBedNum,
+							ER_BedRoomMax: $scope.maxBedNum,
+							ER_BathRoomMin: $scope.minBathNum,
+							ER_BathRoomMax: $scope.maxBathNum,
+							ER_ParkingMin: $scope.minParkingNum,
+							ER_ParkingMax: $scope.maxParkingNum,
+							ER_AreaMin: 0,
+							ER_AreaMax: 5000,
+							ER_AvailableDate: '2020-01-01',
+							ER_Description: $scope.keywords || '',
+							ER_Feature: ' '
+						};
+					} else {
+						entireData = {
+							ER_Suburb: '',
+							ER_Region: '',
+							ER_Type: $scope.myPropertyType,
+							ER_PriceMin: $scope.myMinPrice,
+							ER_PriceMax: $scope.myMaxPrice,
+							ER_BedRoomMin: $scope.minBedNum,
+							ER_BedRoomMax: $scope.maxBedNum,
+							ER_BathRoomMin: $scope.minBathNum,
+							ER_BathRoomMax: 5,
+							ER_ParkingMin: $scope.myParkingNum,
+							ER_ParkingMax: 5,
+							ER_AreaMin: 0,
+							ER_AreaMax: 5000,
+							ER_AvailableDate: '2020-01-01',
+							ER_Description: $scope.keywords || '',
+							ER_Feature: ''
+						}
+					}*/
+
+					// $state.go('app.googlemap');
+					/*console.log(entireData);
+					$http.post('/customer/filt/entire', entireData)
+						.then(function(r) {
+							SearchService.set(r);
+							updateService.set(entireData);
+							//							SetCredentials(r);
+							console.log('r===>', r);
+							if(r.data.length > 0) {
+								$state.go('app.googlemap');
+							}
+							//							
+
+						}, function(e) {
+
+						});*/
+				
+					//alert("updated");
+					console.log("vm.shops",vm.shops);
+				}
+		/**
+		 * filter update code ends
+		 */
 	}])
 })();

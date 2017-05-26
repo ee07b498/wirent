@@ -107,14 +107,15 @@
 .adv .ad {
 	width: 490px;
 	height: 305px;
-	box-sizing: border-box;
+	/*box-sizing: border-box;*/
+	/*border: 1px solid white;*/
 	overflow: hidden;
 	position: relative;
 }
 
 .adv .ad:hover {
-	/*box-sizing: content-box;*/
-	border: 1px solid white;
+	/*box-sizing: content-box;
+	border: 1px solid white;*/
 }
 
 .adv #box img {
