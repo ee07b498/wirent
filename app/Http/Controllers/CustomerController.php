@@ -555,8 +555,9 @@ class CustomerController extends Controller
 		$s3->putObject(array(
 		    'Bucket'     => 'wirent',
 		    'Key'        => $key,
-		    'SourceFile' => $SourceFile
+		    'SourceFile' => $SourceFile,
+		    'ACL' =>'public-read'
 		));
-		
+
 	}	
 }
