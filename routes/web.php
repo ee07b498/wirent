@@ -78,7 +78,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/login',			'CustomerController@login');
 	$app->post('/register',			'CustomerController@register');
 	$app->post('/logout',			'CustomerController@logout'); 
-	$app->post('/hotrent', 		'CustomerController@hotrent_check');	
+	$app->get('/hotrent', 			'CustomerController@hotrent_check');	
 	$app->post('/filt/entire', 		'CustomerController@filt_entire');
 	$app->get('/filt/share', 		'CustomerController@filt_share');	
 	$app->post('/filt_address', 	'CustomerController@filt_address');	

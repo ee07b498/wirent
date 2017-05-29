@@ -540,9 +540,10 @@ class CustomerController extends Controller
 		return $result;
 	}
 	
-	public function upload()
+	public function upload(Request $request)
 	{
-		
+		$SourceFile = $request->input('SourceFile');
+		$key = $request->input('filename');
 		$provider = CredentialProvider::env();	
 			
 		$options = [
@@ -553,8 +554,8 @@ class CustomerController extends Controller
 		$s3 = new S3Client($options);
 		$s3->putObject(array(
 		    'Bucket'     => 'wirent',
-		    'Key'        => 'testfile',
-		    'SourceFile' => 'D:/c1.jpg'
+		    'Key'        => $key,
+		    'SourceFile' => $SourceFile
 		));
 		
 	}	
