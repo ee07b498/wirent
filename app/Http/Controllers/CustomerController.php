@@ -543,7 +543,7 @@ class CustomerController extends Controller
 	public function upload(Request $request)
 	{
 		$SourceFile = $request->input('SourceFile');
-		$key = $request->input('filename');
+		$key = $request->input('key');
 		$provider = CredentialProvider::env();	
 			
 		$options = [
