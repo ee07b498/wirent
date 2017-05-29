@@ -110,6 +110,7 @@ class ComposerStaticInitf90b7f344ed3343414a06e99881281c4
         ),
         'A' => 
         array (
+            'Aws\\Laravel\\' => 12,
             'Aws\\' => 4,
             'App\\' => 4,
         ),
@@ -321,6 +322,10 @@ class ComposerStaticInitf90b7f344ed3343414a06e99881281c4
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Aws\\Laravel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aws/aws-sdk-php-laravel/src',
         ),
         'Aws\\' => 
         array (

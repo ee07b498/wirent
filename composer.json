@@ -9,7 +9,8 @@
         "laravel/lumen-framework": "5.4.*",
         "vlucas/phpdotenv": "~2.2",
         "aws/aws-sdk-php": "^3.26",
-        "laravel/socialite": "^3.0"
+        "laravel/socialite": "^3.0",
+        "aws/aws-sdk-php-laravel": "~3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

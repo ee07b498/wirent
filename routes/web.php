@@ -99,7 +99,9 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 		$app->get('/confirm',		['middleware' => 'cus','uses'=>'CustomerController@msg_confirm']);	
 		$app->get('/received',		['middleware' => 'cus','uses'=>'CustomerController@msg_received']);	//msg_receive is php function
 		$app->get('/write',			['middleware' => 'cus','uses'=>'CustomerController@msg_write']);
-	});			
+	});	
+	
+	$app->get('/upload',			'CustomerController@upload');		
 });
 //landlord entrance 
 $app->group(['prefix' => 'landlord'], function () use ($app){

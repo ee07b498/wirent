@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Aws\S3\S3Client;
+use Aws\Credentials\CredentialProvider;
+
 /*
  * return 默认stdClass, 根据前端需求修改。
  * stdClass 成员变量直接以对象形式表示及赋值：$a->b=c, 无key=>value格式：$a['b']=c
@@ -537,5 +540,22 @@ class CustomerController extends Controller
 		return $result;
 	}
 	
+	public function upload()
+	{
 		
+		$provider = CredentialProvider::env();	
+			
+		$options = [
+		    'region'            => 'ap-southeast-2',
+		    'version'           => '2006-03-01',
+	        'credentials' => $provider
+		];
+		$s3 = new S3Client($options);
+		$s3->putObject(array(
+		    'Bucket'     => 'wirent',
+		    'Key'        => 'testfile',
+		    'SourceFile' => 'D:/c1.jpg'
+		));
+		
+	}	
 }
