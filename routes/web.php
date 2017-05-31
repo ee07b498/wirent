@@ -21,10 +21,6 @@ $app->get('/admin',function () {
 	return view('admin');	
 });
 
-$app->get('/file',function () {
-	return view('file');	
-});
-
 /*
  *  view group:customer|landlord|thirdparty|staff
  */
@@ -82,7 +78,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/login',			'CustomerController@login');
 	$app->post('/register',			'CustomerController@register');
 	$app->post('/logout',			'CustomerController@logout'); 
-	$app->get('/hotrent', 			'CustomerController@hotrent_check');	
+	$app->get('/hotrent', 		'CustomerController@hotrent_check');	
 	$app->post('/filt/entire', 		'CustomerController@filt_entire');
 	$app->get('/filt/share', 		'CustomerController@filt_share');	
 	$app->post('/filt_address', 	'CustomerController@filt_address');	
@@ -99,11 +95,11 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/shortlist/insert',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_insert']);	
 
 	$app->group(['prefix' => 'msg'], function () use ($app){
-		$app->get('/notice',		['middleware' => 'cus','uses'=>'CustomerController@msg_notice']);	
+		$app->post('/notice',		['middleware' => 'cus','uses'=>'CustomerController@msg_notice']);	
 		$app->get('/confirm',		['middleware' => 'cus','uses'=>'CustomerController@msg_confirm']);	
-		$app->get('/received',		['middleware' => 'cus','uses'=>'CustomerController@msg_received']);	//msg_receive is php function
-		$app->get('/write',			['middleware' => 'cus','uses'=>'CustomerController@msg_write']);
-	});		
+		$app->post('/received',		['middleware' => 'cus','uses'=>'CustomerController@msg_received']);	//msg_receive is php function
+		$app->post('/write',			['middleware' => 'cus','uses'=>'CustomerController@msg_write']);
+	});			
 });
 //landlord entrance 
 $app->group(['prefix' => 'landlord'], function () use ($app){
@@ -128,7 +124,7 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 		$app->get('/notice',		['middleware' => 'lord','uses'=>'LandlordController@msg_notice']);	
 		$app->get('/confirm',		['middleware' => 'lord','uses'=>'LandlordController@msg_confirm']);	
 		$app->get('/received',		['middleware' => 'lord','uses'=>'LandlordController@msg_received']);	//msg_receive is php function 
-		$app->get('/write',			['middleware' => 'lord','uses'=>'LandlordController@msg_write']);
+		$app->post('/write',			['middleware' => 'lord','uses'=>'LandlordController@msg_write']);
 	});
 });
 //thirdparty entrance
@@ -139,4 +135,3 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 });
 
 
-$app->get('/upload',			'UploadDownloadController@upload');	

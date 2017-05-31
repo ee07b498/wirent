@@ -1,122 +1,633 @@
-/*.row > .column {
-  padding: 0 8px;
+.details-page .lunbo {
+ 	display: block;
+ }
+ 
+ .details-page .lunbo {
+ 	position: relative;
+ 	/*margin: 0 auto;*/
+ 	left: -25px;
+ 	top: 0;
+ }
+ 
+ .details-page .lunbo ul {
+ 	/*position: absolute;*/
+ }
+ 
+ .details-page .lunbo ul li {
+ 	list-style-type: none;
+ 	position: absolute;
+ }
+ 
+ .details-page .lunbo ul li a img {
+ 	display: block;
+ 	width: 878px;
+ 	height: 354px;
+ }
+ 
+ .details-page .lunbo ul.listContent {
+ 	position: absolute;
+ 	left: 500px;
+ 	top: 300px;
+ 	width: 220px;
+ 	height: 25px;
+ }
+ 
+ .details-page .lunbo ul.listContent li.list {
+ 	position: relative;
+ 	display: block;
+ 	width: 25px;
+ 	height: 25px;
+ 	float: left;
+ 	margin: 0 5px;
+ 	border: 1px solid blue;
+ 	text-align: center;
+ 	line-height: 25px;
+ 	cursor: pointer;
+ }
+ 
+ .details-page .active {
+ 	background: #161616;
+ 	color: #ffffff;
+ }
+.details-page .hander-left,
+.details-page .hander-right {
+	
+	text-align: center;
+	position:absolute;
+	top: 50%;
+	margin-top: -20px;
+	width: 40px;
+	height: 80px;
+	background-color: gray;
+	opacity: 0.8;
+	font: 800;
+}
+.details-page .hander-left{
+	left: 0;
+}
+.details-page .hander-right {
+	right: 0;
+	}
+.details-page .hander-left a,
+.details-page .hander-right a {
+	padding-top: 30px;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.details-page .cent {
+ 	margin: 0 auto;
+ }
+ 
+.details-page .w1001 {
+ 	width: 1002px;
+ }
+ .details-page label {
+	color: gray;
+}
+.details-page .content {
+	/*width: 1000px;*/
+	position: relative;
+	top: 10px;
+	margin: 0 auto;
+	padding: 0px 30px 0 5px;
+}
+.details-page .content .list-wrap ul, 
+.details-page .content .list-wrap li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.details-page .content .list-wrap .first {
+	background-color: white;
+	height: 210px;
+	/*background-color: white;*/
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	box-shadow: 2px 2px 2px lavender;
+	margin-bottom: 10px;
+	position: relative;
+}
+/*content banner ends*/
+
+
+.details-page .content .list-wrap li .info-panel {
+	float: right;
+	height: 209px;
+	width: 490px;
+	position: relative;
+	top: 0;
+	left: 85px;
+}
+.details-page .info-panel .rooms {
+	width: 200px;
+	top: 70px;
+	left: 8px;
+	line-height: 34px;
+	position: absolute;
+}
+.details-page .info-panel .rooms .icon1{
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	width: 16px;
+	height: 13px;
+	background: url(../img/sprite.png) no-repeat -1px -59px;
+}
+.details-page .info-panel .rooms .icon2 {
+	position: absolute;
+	top: 10px;
+	left: 65px;
+	width: 16px;
+	height: 13px;
+	background: url(../img/sprite.png) no-repeat -1px -59px;
+}
+.details-page .info-panel .rooms .icon3 {
+	position: absolute;
+	top: 10px;
+	left: 105px;
+	width: 16px;
+	height: 13px;
+	background: url(../img/sprite.png) no-repeat -1px -59px;
+}
+.details-page .info-panel .rooms .room-num {
+	position: absolute;
+	font: 400 15px/15px "微软雅黑";
+	top: 10px;
+	left: 40px;
+	color: darkgrey;
+}
+.details-page .info-panel .rooms .bath-num {
+	position: absolute;
+	font: 400 15px/15px "微软雅黑";
+	top: 10px;
+	left: 85px;
+	color: darkgrey;
+}
+.details-page .info-panel .rooms .park-num {
+	position: absolute;
+	font: 400 15px/15px "microsoft yahei";
+	top: 10px;
+	left: 125px;
+	color: darkgrey;
+}
+.details-page .info-panel .address {
+	position: absolute;
+	top: 130px;
+	left: 10px;
+}
+.details-page .info-panel .address span {
+	line-height: 34px;
+	font: 100 15px/15px "microsoft yahei";
+	color: darkgrey;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+
+
+.details-page .info-panel .benefits {
+	width: 800px;
+	line-height: 34px;
+	position: absolute;
+	left: 10px;
+	top: 160px;
 }
 
-.column {
-  float: left;
-  width: 25%;
+
+/*.details-page .info-panel .benefits .train {
+	position: absolute;
+	font: 200 13px/15px "微软雅黑";
+	top: 10px;
+	left: 0;
+	color: lightslategray;
+}
+.details-page .info-panel .benefits .bus {
+	position: absolute;
+	font: 200 13px/15px "微软雅黑";
+	top: 10px;
+	left: 155px;
+	color: lightslategray;
+}
+.details-page .info-panel .benefits .shoping {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: 10px;
+	left: 275px;
+	color: lightslategray;
+}
+.details-page .info-panel .benefits .hospital {
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	top: 30px;
+	left: 0px;
+	color: lightslategray;
 }*/
 
-/* The Modal (background) */
-/*.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: black;
+.details-page .info-panel .price {
+	width: 100px;
+	height: 134px;
+	position: absolute;
+	top: 0;
+	left: -45px;
+}
+.details-page .info-panel .price .num{
+	display: block;
+	position: absolute;
+	font: 400 40px/40px "microsoft yahei";
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 80;
+	left: 50px;
+	top: 10px;
+	color: #C81623;
+}
+.details-page .info-panel .price .period {
+	display: block;
+	position: absolute;
+	font: 200 13px/15px "microsoft yahei";
+	/*margin-top: 4px;*/
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 20;
+	left: 115px;
+	top: 30px;
+	color: lightslategray;
+}
+.details-page .info-panel .price .available {
+	display: block;
+	position: absolute;
+	font: 100 12px/15px "microsoft yahei";
+	/*margin-top: 4px;*/
+	width: 150px;
+	/*line-height: 50px;*/
+	height: 20;
+	left: 60px;
+	top: 60px;
+	color: #191D3A;
+}
+.details-page .info-panel .view {
+	width: 100px;
+	height: 50px;
+	margin: 25px 65px 0 0;
+	position: absolute;
+	top: 80px;
+	left:600px;
+}
+.details-page .info-panel .view .view-num {
+	display: block;
+	font: 300 15px/20px "microsoft yahei";
+	width: 100px;
+	height: 50;
+	/*left: 460px;*/
+	margin-top: 20px;
+	color: #C81623;
+}
+.details-page .info-panel .save{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 30px;
+	left: 310px;
+}
+/*dream homes*/
+
+.details-page .dream-homes-main-title {
+	text-align: center;
+	font-weight: bold;
+}
+
+.details-page h1,
+.details-page .h1 {
+	text-align: center;
+	font-size: 32px;
+	line-height: 34px;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+.details-page .dream-homes-container:before {
+	padding-bottom: 56.05%
+}
+
+@media(min-width:976px) and (max-width:1440px) {
+	.details-page .dream-homes-container:before {
+		padding-bottom: 18.55%
+	}
+}
+
+@media(min-width:1441px) {
+	.details-page .dream-homes-container:before {
+		padding-bottom: 18.55%
+	}
+}
+
+.details-page .dream-homes-item {
+	width: 100%
+}
+
+@media(min-width:976px) and (max-width:1440px) {
+	.dream-homes-item {
+		width: 25%
+	}
+}
+
+@media(min-width:1441px) {
+	.dream-homes-item {
+		width: 25%
+	}
+}
+/*.details-page .dream-homes-item-left,
+.details-page .dream-homes-item-right,
+.details-page .dream-homes-item-centered {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: silver;
+	position: absolute;
+	top: 0;
+	left: 0px;
+	transition: left 0.5s;
+}*/
+.details-page .centered {
+	
+}
+.details-page .dreamhomesitemleft {
+	left: -341.25px;
+}
+.details-page .dreamhomesitemright {
+	left: 341.25px;
+}
+.details-page .dream-homes {
+	padding: 1px 0;
+	background-color: #f2f5f7
+}
+
+.details-page .dream-homes-main-title {
+	text-align: center;
+	font-weight: bold
+}
+
+.details-page .dream-homes-container {
+	position: relative;
+	width: 100%;
+	overflow: hidden
+}
+
+.details-page .dream-homes-container:before {
+	display: block;
+	content: ''
+}
+
+.details-page .page-inner-wrap .dream-homes-container {
+	padding: 0
+}
+
+.details-page .dream-homes-list {
+	-webkit-transition: left .8s;
+	transition: left .8s;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	white-space: nowrap
+}
+
+.details-page .dream-homes-item {
+	display: block;
+	position: relative;
+	float: left;
+	-webkit-transition: opacity 300ms, -webkit-transform 300ms;
+	transition: opacity 300ms, -webkit-transform 300ms;
+	transition: transform 300ms, opacity 300ms;
+	transition: transform 300ms, opacity 300ms, -webkit-transform 300ms;
+	overflow: hidden
+}
+
+
+/*****important*****/
+
+.details-page .dream-homes-item.is-lazy-loading {
+	-webkit-transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	transform: scale(0.9);
+	opacity: .6
+}
+
+
+/*****important*****/
+
+.details-page .dream-homes-item-link {
+	display: block;
+	position: relative;
+	width: 100%;
+	border-right: 1px solid #fff;
+	border-left: 1px solid #fff;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 2
+}
+
+.details-page .dream-homes-item-link:before {
+	display: block;
+	padding-bottom: 56.25%;
+	content: ''
+}
+
+.details-page .dream-homes-item-link:hover {
+	background: rgba(0, 0, 0, 0.2);
+	text-decoration: none
+}
+
+.details-page .dream-homes-item:hover img {
+	-ms-transform: translateY(-50%) scale3d(1.03, 1.03, 1);
+	-webkit-transform: translateY(-50%) scale3d(1.03, 1.03, 1);
+	transform: translateY(-50%) scale3d(1.03, 1.03, 1)
+}
+
+.details-page .dream-homes-item-header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%
+}
+
+.details-page .dream-homes-item-header:before {
+	display: inline-block;
+	height: 100%;
+	margin-right: -.25em;
+	content: '';
+	vertical-align: middle
+}
+
+.details-page .dream-homes-item-header .f-icon {
+	color: #fff
+}
+
+.details-page .dream-homes-item-header .f-icon:hover {
+	color: #fff
+}
+
+.details-page .dream-homes-item-header .f-icon .copy {
+	padding: 0;
+	margin-left: 10px;
+	margin-top: -10px;
+}
+
+.details-page .dream-homes-project-agency-name {
+	color: #fff;
+	line-height: 42px
+}
+
+.details-page .dream-homes-item-header-wrap {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle
+}
+
+.details-page .dream-homes-title {
+	margin: 0;
+	color: #fff;
+	text-align: center;
+	font-size: 32px;
+	line-height: normal
+}
+
+/*.details-page .dream-homes-title:after {
+	display: block;
+	width: 60px;
+	margin: 20px auto;
+	border-bottom: 1px solid #fff;
+	content: ''
 }*/
 
-/* Modal Content */
-/*.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  width: 90%;
-  max-width: 1200px;
-}*/
-
-/* The Close Button */
-/*.close {
-  color: white;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 35px;
-  font-weight: bold;
+.details-page .dream-homes-title-project-name,
+.details-page .dream-homes-title-agency-name,
+.details-page .dream-homes-title-suburb {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 67px
 }
 
-.close:hover,
-.close:focus {
-  color: #999;
-  text-decoration: none;
-  cursor: pointer;
+@media(max-width:623px) {
+	.details-page .dream-homes-title-project-name,
+	.details-page .dream-homes-title-agency-name,
+	.details-page .dream-homes-title-suburb {
+		padding: 0 52px
+	}
 }
 
-.mySlides {
-  display: none;
-}*/
-
-/* Next & previous buttons */
-/*.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-*/
-/* Position the "next button" to the right */
-/*.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-*/
-/* On hover, add a black background color with a little bit see-through */
-/*.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-*/
-/* Number text (1/3 etc) */
-/*.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+.details-page .dream-homes-title-project-name,
+.details-page .dream-homes-title-agency-name {
+	margin: 10px 0 6px;
+	font-family: Georgia, serif;
+	font-size: 15px;
+	font-style: italic;
+	font-weight: 400
 }
 
-.caption-container {
-  text-align: center;
-  background-color: black;
-  padding: 2px 16px;
-  color: white;
+@media(min-width:1441px) {
+	.details-page .dream-homes-title-project-name,
+	.details-page .dream-homes-title-agency-name {
+		font-size: 18px
+	}
 }
 
-img.demo {
-  opacity: 0.6;
+.details-page .dream-homes-title-suburb {
+	font-size: 16px;
+	font-weight: 600
 }
 
-.active,
-.demo:hover {
-  opacity: 1;
+@media(min-width:1441px) {
+	.details-page .dream-homes-title-suburb {
+		font-size: 24px
+	}
 }
 
-img.hover-shadow {
-  transition: 0.3s
+.details-page .dream-homes-item-img {
+	display: block;
+	position: absolute;
+	top: -9999px;
+	right: -9999px;
+	bottom: -9999px;
+	left: -9999px;
+	min-width: 100%;
+	min-height: 100%;
+	margin: auto;
+	z-index: 0;
+	-webkit-transition: -webkit-transform 350ms ease;
+	transition: -webkit-transform 350ms ease;
+	transition: transform 350ms ease;
+	transition: transform 350ms ease, -webkit-transform 350ms ease;
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	top: 50%;
+	width: 100%;
+	display: block;
+	margin: 0 auto
 }
 
-.hover-shadow:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}*/
+.details-page .dream-homes-prev-btn,
+.details-page .dream-homes-next-btn {
+	display: none;
+	position: absolute;
+	top: 0;
+	width: 60px;
+	height: 76.5%;
+	background: rgba(30, 41, 61, 0.8);
+	text-decoration: none;
+	overflow: hidden;
+	z-index: 3
+}
+
+@media(max-width:623px) {
+	.details-page .dream-homes-prev-btn,
+	.details-page .dream-homes-next-btn {
+		width: 45px
+	}
+}
+
+.details-page .dream-homes-prev-btn .icon,
+.details-page .dream-homes-next-btn .icon {
+	display: block;
+	position: relative;
+	top: 50%;
+	margin: -19px 10px 0;
+	color: #fff;
+	font-size: 38px
+}
+
+@media(max-width:623px) {
+	.details-page .dream-homes-prev-btn .icon,
+	.details-page .dream-homes-next-btn .icon {
+		margin: -14px 8px 0;
+		font-size: 28px
+	}
+}
+
+.details-page .dream-homes-prev-btn:hover,
+.details-page .dream-homes-next-btn:hover {
+	text-decoration: none
+}
+
+.details-page .dream-homes-prev-btn {
+	left: 0
+}
+
+.details-page .dream-homes-next-btn {
+	right: 0
+}
+
+.details-page .dream-homes-container.is-carousel .dream-homes-prev-btn,
+.details-page .dream-homes-container.is-carousel .dream-homes-next-btn {
+	display: block
+}
+
+
+/*dream homes end*/

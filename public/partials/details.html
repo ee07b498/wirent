@@ -1,78 +1,134 @@
-<div class="" style="background: #f2f5f7;">
-	<div class="row">
-		<!--<div class="col-sm-8">-->
-			<!-- carousel -->
-			<div ng-controller="CarouselDemoCtrl" class="panel b-a pic-frame" set-ng-animate="false">
-				<carousel interval="myInterval">
-					<slide ng-repeat="slide in slides" active="slide.active">
-						<img ng-src="[:slide.image:]" class="img-full" style="height: 400px;">
-						<div class="carousel-caption">
-							<!-- <h4>Slide [:$index:]</h4>
-              <p>[:slide.text:]</p>-->
-						</div>
-					</slide>
-				</carousel>
-				<!--<div class="panel-footer">
-          <button type="button" class="btn btn-default m-r" ng-click="addSlide()">Add Slide</button>
-          Interval: <input type="number" class="form-control w-sm inline" ng-model="myInterval"> ms          
-        </div>-->
-			</div>
-			<!-- / carousel -->
-		<!--</div>-->
-		<!--<div class="col-sm-4">
-			<div class="col b-b">
-				<div class="row-sm-8 ">
-					<div class="m-t-md">
-						<h3>$585</h3>
-						<small class="block m-t-xs">9/20 harbourne road, kingsford NSW 2032 </small>
-					</div>
-				</div>
-				<div class="row-sm-4">
-					<div class="hbox text-center">
-						<a href class="col padder-v text-muted b-r b-light">
-							<div class="h4">
-								<span class="fa-stack fa">
-							                <i class="fa fa-circle fa-stack-2x text-white"></i>
-							                <i class="fa fa-bed fa-stack-1x "></i>
-							            </span>
-							</div>
-							<span>2 Rooms</span>
-						</a>
-						<a href class="col padder-v text-muted b-r b-light">
-							<div class="h4">
-								<span class="fa-stack fa">
-							                <i class="fa fa-circle fa-stack-2x text-white"></i>
-							                <i class="fa fa-bath fa-stack-1x "></i>
-							            </span>
-							</div>
-							<span>2 Baths</span>
-						</a>
-						<a href class="col padder-v text-muted">
-							<div class="h4">
-								<span class="fa-stack fa">
-							                <i class="fa fa-circle fa-stack-2x text-white"></i>
-							                <i class="fa fa-car fa-stack-1x "></i>
-							            </span>
-							</div>
-							<span>1 Parking</span>
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div>
-					<h5 class="inline full-screen m-l-md">Available from Monday, 8 May 2017</h5>
-					<span class="b-r"></span>
-					<h5 class="inline full-screen m-l-xxl">Bond $2540.00</h5>
-				</div>
-			</div>
+<div ng-controller="detailsController" class="details-page">
 
-		</div>
--->
-	</div>
-	<div class="row container-fluid m-r-n-xs">
+	<div class="row">
 		<div class="col-sm-8">
-			<div class="panel panel-default">
+			<div class="">
+				<div imagelunbo></div>
+			</div>
+		</div>
+		<div class="col-sm-4" style="padding: 0; margin: 0;">
+			<div class="col">
+				<div class="row-sm-7">
+				<div class="content">
+					<div id="results">
+						<div class="list-wrap">
+							<ul id="house-list" class="house-list">
+								<li class="first">
+									<div class="info-panel">
+										<div class="rooms cl">
+											 <div class="hbox text-center">          
+								              <a href class="col padder-v text-muted">
+								                <div class="h4">
+								                	 <span>[:detailsData.ER_BedRoom:]</span>
+								                	 <span class="fa-stack fa-lg">
+										                <i class="fa fa-circle fa-stack-2x text-white"></i>
+										                <i class="fa fa-bed fa-stack-1x "></i>
+										            </span> 
+										           
+								                </div>
+								               
+								              </a>
+								              <a href class="col padder-v text-muted">
+								                <div class="h4">
+								                	<span>[:detailsData.ER_BathRoom:]</span>
+								                	<span class="fa-stack fa-lg">
+										                <i class="fa fa-circle fa-stack-2x text-white"></i>
+										                <i class="fa fa-bath fa-stack-1x "></i>
+										            </span>
+								                </div>
+								                
+								              </a>
+								              <a href class="col padder-v text-muted">
+								                <div class="h4">
+								                	<span>[:detailsData.ER_Parking:]</span>
+								                	<span class="fa-stack fa-lg">
+										                <i class="fa fa-circle fa-stack-2x text-white"></i>
+										                <i class="fa fa-car fa-stack-1x "></i>
+										            </span>
+								                </div>
+								                
+								              </a>
+								          </div>
+										</div>
+										<div class="address">
+											<a>
+												<span>[:detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+' '+detailsData.ER_Region:]</span>
+											</a>
+										</div>
+										<div class="benefits">
+											<!--<a class="train"><i class="fa fa-train"></i>距central station 200米</a>
+											<a class="bus"><i class="fa fa-bus"></i>距bus stop 100米</a>
+											<a class="shoping"><i class="fa fa-shopping-cart"></i>距Coles 500米</a>
+											<a class="hospital"><i class="fa fa-h-square"></i>距Hospital 500米</a>-->
+											<a href class="f-icon with-text train" title="near train station">
+				                                <span class="icon " ng-show="detailsData.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
+				                                 <span class="icon " ng-show="!detailsData.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
+				                            </a>
+				                            <a href class="f-icon with-text university" title="near university">
+				                            	<span class="icon " ng-show="detailsData.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+				                                <span class="icon " ng-show="!detailsData.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+				                            </a>
+				                            <a href class="f-icon with-text backpack" title="backpack">
+				                            	<span class="icon " ng-show="detailsData.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
+				                                <span class="icon " ng-show="!detailsData.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
+				                            </a>
+				                            <a href class="f-icon with-text park" title="near park">
+				                            	 <span class="icon " ng-show="detailsData.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
+				                                <span class="icon " ng-show="!detailsData.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
+				                            </a>
+											<a href class="f-icon with-text school" title="near school">
+												<span class="icon " ng-show="detailsData.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
+				                                <span class="icon " ng-show="!detailsData.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
+				                            </a>
+				                            <a href class="f-icon with-text bigfamily" title="big family">
+				                            	 <span class="icon " ng-show="detailsData.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
+				                                <span class="icon " ng-show="!detailsData.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>
+				                            </a>
+				                            <a href class="f-icon with-text shoppingmall" title="near shopping center">
+				                            	<span class="icon " ng-show="detailsData.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
+				                                <span class="icon " ng-show="!detailsData.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
+				                            </a>
+				                            <a href class="f-icon with-text offical_rental" title="office rental">
+				                            	<span class="icon " ng-show="detailsData.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
+				                                <span class="icon " ng-show="!detailsData.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>
+				                            </a>
+										</div>
+										<div class="price">
+											<span class="num">$[:detailsData.ER_Price:]<span class="period">per week</span></span>
+											<span class="available">Available Time:&nbsp;[:detailsData.ER_AvailableDate:]</span>
+										</div>
+										<!--<div class="view">
+											<span class="view-num">Viewed:  20</span>
+										</div>-->
+										<div class="save">
+											<span class="save-delete-shortlist"><i class="fa fa-lg fa-heart-o">&nbsp;Save</i></span>
+										</div>
+									</div>
+		
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="row-sm-5 m-l-xs" >
+						<ng-map center="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" zoom="18" style="width: 426px!important; height: 144px!important;">
+							<marker position="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region:]" title="Hello World!" optimized="false" animation="Animation.BOUNCE" icon="{
+						        url:'img/blue.png',
+						        scaledSize:[30,30],
+						        origin: [0,0],
+						        anchor: [10,10]
+						      }"></marker>
+						</ng-map>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+		<div class="row container-fluid m-r-n-xs" style="margin-top: 0;">
+		<div class="col-sm-8">
+			<img ng-src="[:detailsData.comment.PicFile:]" style="height: 440px; width: 878px;"/>
+			<!--<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row b-b">
 						<div class="col-sm-6 ">
@@ -91,7 +147,6 @@
 							                <i class="fa fa-train fa-stack-1x "></i>
 							            </span>
 									</div>
-									<!--<span style="color: green;"><i class="fa fa-map-marker"></i></span>-->
 								</a>
 								<a href class="col padder-v text-muted b-light" title="location">
 									<div class="h4">
@@ -100,7 +155,6 @@
 							                <i class="fa fa-map-marker fa-stack-1x "></i>
 							            </span>
 									</div>
-									<!--<span ><i class="fa fa-map-marker"></i></span>-->
 								</a>
 								</div>
 							</div>
@@ -251,109 +305,78 @@
 
 				</div>
 			</div>
-		</div>
-		<!--<div class="col-sm-1"></div>-->
+-->		</div>
 		<div class="col-sm-4">
-			<div class="col-sm-12">
-				<div class="panel b-a">
-					<!--<div class="panel-heading bg-info dk no-border wrapper-lg">
-              <button class="btn btn-sm btn-icon btn-rounded btn-info pull-right m-r"><i class="fa fa-phone"></i></button>
-              <button class="btn btn-sm btn-icon btn-rounded btn-info m-l"><i class="fa fa-heart"></i></button>
-            </div>-->
-					<div class="text-center m-b clearfix">
-						<div class="thumb-lg avatar m-t-n-xxl text-center">
-							<img src="img/andy.jpg" alt="..." class="b b-3x b-white">
-							<div class="h4 font-thin m-t-sm">Andy Sun</div>
-							<div class="h4 font-thin m-t-sm m-l-lg">Winning Investment Pty Ltd</div>
-						</div>
-					</div>
-					<div class="padder-v b-t b-light bg-light lter row text-center no-gutter">
-						<div class="col-xs-4">
-							<div>Performance</div>
-							<div class="inline m-t-sm">
-								<div ui-jq="easyPieChart" ui-options="{
-                      percent: 30,
-                      lineWidth: 3,
-                      scaleColor: false,
-                      color: '#fff',
-                      size: 65,
-                      lineCap: 'butt',
-                      rotate: 45,
-                      animate: 1000
-                    }">
-									<div>
-										<span class="step">80</span>%
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-4">
-							<div>age</div>
-							<div class="inline m-t-sm">
-								<div ui-jq="easyPieChart" ui-options="{
-                      percent: 50,
-                      lineWidth: 3,
-                      scaleColor: false,
-                      color: '#fff',
-                      size: 65,
-                      lineCap: 'butt',
-                      rotate: 90,
-                      animate: 1000
-                    }">
-									<div>
-										<span class="step">27</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-4">
-							<div>Working</div>
-							<div class="inline m-t-sm">
-								<div ui-jq="easyPieChart" ui-options="{
-                      percent: 20,
-                      lineWidth: 3,
-                      scaleColor: false,
-                      color: '#fff',
-                      size: 65,
-                      lineCap: 'butt',
-                      rotate: 180,
-                      animate: 1000
-                    }">
-									<div>
-										<span class="step">5</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="hbox text-center b-t b-light">
-						<a href class="col padder-v text-muted b-r b-light">
-							<div class="h4">
-								<span class="fa-stack fa-lg">
-		                <i class="fa fa-circle fa-stack-2x text-info"></i>
-		                <i class="fa fa-phone fa-stack-1x text-white"></i>
-		            </span>
-							</div>
-							<span>Call</span>
-						</a>
-						<a href class="col padder-v text-muted">
-							<div class="h4">
-								<span class="fa-stack fa-lg">
-		                <i class="fa fa-circle fa-stack-2x text-info"></i>
-		                <i class="fa fa-envelope-o fa-stack-1x text-white"></i>
-		            </span>
-							</div>
-							<span>Email</span>
-						</a>
-					</div>
-				</div>
+			<div class="col-sm-12" style="padding: 0; margin: 0;">
+				      <div class="panel b-a">
+				        <div class="panel-heading no-border bg-primary">          
+				          <span class="text-lt">WinningInvestment</span>
+				        </div>
+				        <div class="item m-l-n-xxs m-r-n-xxs">
+				          <div ng-init="x = 3" class="top text-right padder m-t-xs w-full">
+				            <rating ng-model="x" max="5" state-on="'fa fa-star text-white'" state-off="'fa fa-star-o text-white'"></rating>
+				          </div>
+				         <div class="bottom wrapper bg-gd-dk text-white">            
+				            <div class="text-u-c h3 m-b-sm text-primary-lter">Rent&nbsp;Buy&nbsp;Invest</div>
+				            <div>Address</div>
+				            <div>84 Pitt St Sydney</div>
+				          </div>
+				          <img src="img/c0.jpg" class="img-full">
+				        </div>
+				        <div class="hbox text-center b-b b-light text-sm">          
+				          <a href class="col padder-v text-muted b-r b-light">
+				            <i class="icon-call-end block m-b-xs fa-2x"></i>
+				            <span>Call</span>
+				          </a>
+				          <a href class="col padder-v text-muted b-r b-light">
+				            <i class="icon-pointer block m-b-xs fa-2x"></i>
+				            <span>Location</span>
+				          </a>
+				          <a href ng-click="open('lg')" class="col padder-v text-muted">
+				            <i class="fa fa-envelope-o block m-b-xs fa-2x"></i>
+				            <span>
+				            	Email
+				            </span>
+				          </a>
+				          <script type="text/ng-template" id="myModalContent.html">
+						            <div ng-include="'/partials/tpl/modal.html'"></div>
+						  </script>
+				        </div>
+				     <div class="hbox text-center text-sm">          
+				          <a href class="col padder-v text-muted b-r b-light">
+				            <i class="fa fa-whatsapp block m-b-xs fa-2x"></i>
+				            <span>What's App</span>
+				          </a>
+				          <a href class="col padder-v text-muted b-r b-light">
+				            <i class="fa fa-wechat block m-b-xs fa-2x"></i>
+				            <span>Wechat</span>
+				          </a>
+				          <a href class="col padder-v text-muted">
+				            <i class="fa fa-envelope block m-b-xs fa-2x"></i>
+				            <span>Message</span>
+				          </a>
+				        </div>	
+			      </div>
+			        <!-- modal -->
+		<!--		      <div  class="panel b-a">
+				          <script type="text/ng-template" id="myModalContent.html">
+				            <div ng-include="'/partials/tpl/modal.html'"></div>
+				          </script>
+				          <div class="panel-heading b-b b-light">Modal</div>
+				          <div class="panel-body">
+				            <button class="btn btn-success" ng-click="open()">Open me!</button>
+				            <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+				            <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+				          </div>
+				      </div>-->
+			      <!-- /modal -->
 			</div>
 
 		</div>
 	</div>
 	<div class="row">
-		<ng-map center="-33.8688197,151.20929550000005" zoom="18">
-			<marker position="sydney australia" title="Hello World!" optimized="false" animation="Animation.BOUNCE" icon="{
+		<ng-map center="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" zoom="18">
+			<marker position="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" title="Hello World!" optimized="false" animation="Animation.BOUNCE" icon="{
 		        url:'img/blue.png',
 		        scaledSize:[30,30],
 		        origin: [0,0],
@@ -363,6 +386,8 @@
 	</div>
 	
 	<div class="m-t-md"></div>
-	
-	
+	<div class="clear">
+			<section rentrecommend class="dream-homes">
+			</section>
+		</div>
 </div>

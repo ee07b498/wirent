@@ -2,12 +2,30 @@
 (function() {
 	'use strict';
 	angular.module('header',['andy','user'])
-		.service('BaseService', ['$state', '$http', function($state, $http) {
+		.factory('readLetters', ['$http', '$q', function($http, $q) {
+			return {
+				query: function() {
+					var deferred = $q.defer();
+					$http({
+						method: 'POST',
+						url: '/customer/msg/notice',
+						data: {  CID: 1,msg_direct_comment:'% to customer' } 
+					}).success(function(data, status, header, config) {
+						deferred.resolve(data);
+					}).error(function(data, status, header, config) {
+						deferred.reject(data);
+					});
+					return deferred.promise;
+				}
+			}
+		}])
+		.service('BaseService', ['$state', '$http', function($state, $http,$localStorage) {
 
 		}])
-		.controller('WinCtrl', ['$scope', '$window', '$http','UserService',  function($scope, $window, $http,UserService) {
+		.controller('WinCtrl', ['$scope', '$window', '$http','UserService','readLetters','$localStorage', function($scope, $window, $http,UserService,readLetters,$localStorage) {
+			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
-			
+			$scope.letternums = 0;
 			
 			$http.get('/customer/profile')
 				.then(function(r) {
@@ -27,5 +45,16 @@
 						location.href = '/';
 					});
 			}
+			
+			var promise=readLetters.query();
+		    promise.then(function (data) {
+//		    	alert("147");
+		    	$localStorage.headerSetting.letternums = data[0]['count(*)'];
+		    	$scope.letternums = $localStorage.headerSetting.letternums;
+		    });
+			$scope.letternums = $localStorage.headerSetting.letternums;
+			
 		}])
+			
+		
 })();

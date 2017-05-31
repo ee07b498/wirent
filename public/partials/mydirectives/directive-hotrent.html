@@ -2,7 +2,7 @@
 	<h1 class="dream-homes-main-title">Hot Rent</h1>
 				<div class="content-wrap dream-homes-container is-carousel">
 					<ul class="dream-homes-list" style="width: 4497px; left: 0px;">
-						<li ui-sref="app.details" class="dream-homes-item " ng-repeat="image in carouselimages"  data-adid="2013482649" data-listingtype="Residential" style="width: 341.25px;">
+						<li ui-sref="app.details({id:image.ER_ID,name:image.ER_No+' '+image.ER_St+' '+image.ER_Suburb+' '+image.ER_Region})" class="dream-homes-item " ng-repeat="image in carouselimages"  data-adid="2013482649" data-listingtype="Residential" style="width: 341.25px;">
 							<a href="#" class="dream-homes-item-link" data-adid="2013482649" data-listingtype="Residential" data-position="1">
 								<header class="dream-homes-item-header">
 									<span class="dream-homes-item-header-wrap">

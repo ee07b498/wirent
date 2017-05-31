@@ -331,3 +331,10 @@
 	white-space: nowrap; 
 	width: 30px;
 }
+
+.profile .popup {
+	position: relative;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}

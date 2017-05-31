@@ -100,7 +100,7 @@
                   templateUrl: '/partials/shortlist.html'
               })
 				.state('app.details', {
-                  url: '/details',
+                  url: '/details?id&name',
                   templateUrl: '/partials/details.html'
               })
 				.state('app.serviceTypes',{

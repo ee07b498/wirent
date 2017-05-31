@@ -59,6 +59,8 @@
 				//			   css: 'css/winning/new.css',
 				scope: {
 					tips : '=',
+					features : '=',
+					boxshow : '=',
 					openmodal : "&"
 				},
 				controller: function($scope) {
@@ -67,39 +69,65 @@
 				link: function(scope, element, attr) {
 //					scope.openmodal();
 					scope.tips=false;
+					scope.features=false;
+					scope.boxshow=true;
 					/*点击事件*/
 					scope.clickEvent = function(event) {
 						var left = 0;
+						var opacity=0;
 						left = left + 63 * event;
 						if(event == 0) {
 							left = 0;
+							opacity=1;
 							scope.tips=false;
+							scope.features=false;
+							scope.boxshow=true;
+							element.find("i").css({'opacity': 1,'left': left + 56 + 'px'});
 						} else if(event == 1) {
 							left = 64;
+							opacity=1;
 							scope.tips=false;
+							scope.features=false;
+							scope.boxshow=true;
+							element.find("i").css({'opacity': 1,'left': left + 56 + 'px'});
 						}
 						 else if(event == 2) {
 							left = 130;
+							opacity=1;
 							scope.tips=false;
+							scope.features=false;
+							scope.boxshow=true;
+							element.find("i").css({'opacity': 1,'left': left + 56 + 'px'});
 						}
 						  else if(event == 3) {
 							left = 186;
+							opacity=1;
 							scope.tips=true;
-							
+							scope.features=false;
+							scope.boxshow=false;
+							element.find("i").css({'opacity': 0,'left': left + 56 + 'px'});
 						}
 						   else if(event == 4) {
 							left = 256;
+							opacity=1;
 							scope.tips=false;
+							scope.features=true;
+							scope.boxshow=false;
+							element.find("i").css({'opacity': 0,'left': left + 56 + 'px'});
 						}
 						 else if(event == 5) {
-							left = 334;
+						 	left = 334;
+						 	opacity=1;
 							scope.tips=false;
+							scope.features=false;
+							scope.boxshow=true;
+							element.find("i").css({'opacity': 1,'left': left + 56 + 'px'});
 						}
 						element.find("li").removeClass("selected");
 						element.find("li").eq(event).addClass("selected");
-						element.find("i").css({
+						/*element.find("i").css({
 							'left': left + 56 + 'px'
-						});
+						});*/
 					};
 				}
 			}
@@ -124,11 +152,11 @@
 					'ng-change="changeKeyValue(searchField)" ng-keyup="getData({val:searchField})" ng-model="searchField" ' +
 					' value="{{searchField}}" style="width:605px; height:55px;border:none"/>' +
 					'<div  ng-hide="hidden" style = "position:absolute; top:55px; z-index: 1000;">' +
-					'   <select style = "width:605px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;overflow-y:hidden;" ng-change="change(x)" ng-model="x" multiple>' +
-					'       <option ng-repeat="data in datas track by $index" style="padding-left:16px">{{data}}</option>' +
+					'   <select style = "width:605px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;" ng-change="change(x)" ng-model="x" multiple>' +
+					'       <option ng-repeat="data in datas track by $index" style="padding-left:16px;padding-bottom:10px">{{data}}</option>' +
 					'   </select>' +
 					'</div>',
-				//    replace: true,  
+				//    replace: true,  overflow-y:hidden;remove the y-direction overflow-hidden
 				link: function($scope, elem, attr, ctrl) {
 					$scope.getData();
 					$scope.change();
@@ -178,51 +206,64 @@
 					promise.then(function(data) {
 						 angular.forEach(data, function(data,index,array){
 						//data等价于array[index]
-							var dataresults = data.ER_Description.split(";");
-							dataresults.pop();
-							for(var i =0;i<dataresults.length;i++)
+						data.train_station = false;
+						data.backpack = false;
+						data.park = false;
+						data.school = false;
+						data.big_family = false;
+						data.shopping_mall = false;
+						data.offical_rental = false;
+						data.university = false;
+						var dataresults = data.ER_Description.split(";");
+						console.log("lengthhhh",dataresults);
+						var uniindex = 0
+						dataresults.pop();
+						uniindex = dataresults.indexOf('university');
+						console.log("length",dataresults.length);
+						for(var i =0;i<dataresults.length;i++)
+						{
+							switch (dataresults[i])
 							{
-								
-								switch (dataresults[i])
-								{
-								     case "train_station":
-								     	data.train_station = true;
-								   	 break;
-								     case "university":
-										data.university = true;
-								     break;
-								     case "backpack": 
-										data.backpack = true;
-								    break;
-								     case "park": 
-										data.park = true;
-								    break;
-								     case "school": 
-										data.school = true;
-								    break;
-								     case "big_family": 
-										data.big_family = true;
-								    break;
-								     case "shopping_mall": 
-										data.shopping_mall = true;
-								    break;
-								     case "offical_rental": 
-										data.offical_rental = true;
-								    break;
-								  /* default: 
-								   		data.train_station =false;
-										data.university =false;
-										data.backpack =false;
-										data.park =false;
-										data.school =false;
-										data.big_family =false;
-										data.shopping_mall =false;
-										data.offical_rental =false;
-								      	 break;*/
-								}
+							     case "train_station":
+							     	data.train_station = true;
+							   	 break;
+							     case "backpack": 
+									data.backpack = true;
+							    break;
+							     case "park": 
+									data.park = true;
+							    break;
+							     case "school": 
+									data.school = true;
+							    break;
+							     case "big_family": 
+									data.big_family = true;
+							    break;
+							     case "shopping_mall": 
+									data.shopping_mall = true;
+							    break;
+							     case "offical_rental": 
+									data.offical_rental = true;
+							    break;
+							    case "university":
+							     	data.university = true;
+							     break;
+							    case "":
+							    	data.university = false;
+							    	 break;
+							    default:
+							    	data.university = true;
+							    	 break;
+							    	
 							}
-							
-						});
+						}
+						if (uniindex == dataresults.length-1 || uniindex==-1){
+								data.university = false;
+							}
+						if(data.university){
+							data.uniname = dataresults[uniindex + 1];
+						}
+					});
 						scope.carouselimages = data;
 						console.log("scope.carouselimages",scope.carouselimages);
 					});
@@ -263,8 +304,6 @@
 			'$modal', 
 			'$log',
 			function($cookies, $rootScope, $state, $scope, $element, $http, SearchService, updateService,$modal,$log) {
-				//	$scope.address="";
-				$scope.active1 = true;
 				var hello = true;
 				//						var address = {};
 				var active = true;
@@ -274,6 +313,7 @@
 				var business = {};
 				$scope.datas = []; //下拉框选项
 				var entireData = {};
+				var ER_Feature = '';
 				//model types
 				$scope.myMode = 'Entire';
 				$scope.Modes = [{
@@ -605,7 +645,8 @@
 				}
 				//search for the results of properties
 				$scope.entireSearch = function() {
-					console.log($scope.x);
+					//selected items which are an array
+					console.log('$scope.x',$scope.x);
 					if($scope.x) {
 						var address = $scope.x[0].split(",");
 						console.log("xxx", address);
@@ -618,14 +659,14 @@
 							ER_BedRoomMin: $scope.minBedNum,
 							ER_BedRoomMax: $scope.maxBedNum,
 							ER_BathRoomMin: $scope.minBathNum,
-							ER_BathRoomMax: 5,
+							ER_BathRoomMax: 10,
 							ER_ParkingMin: $scope.myParkingNum,
-							ER_ParkingMax: 5,
+							ER_ParkingMax: 10,
 							ER_AreaMin: 0,
-							ER_AreaMax: 5000,
-							ER_AvailableDate: '2020-01-01',
-							ER_Description: $scope.keywords || '',
-							ER_Feature: ' '
+							ER_AreaMax: 50000,
+							ER_AvailableDate: '2200-01-01',
+							ER_Description:'',
+							ER_Feature: ER_Feature
 						};
 					} else {
 						entireData = {
@@ -637,14 +678,14 @@
 							ER_BedRoomMin: $scope.minBedNum,
 							ER_BedRoomMax: $scope.maxBedNum,
 							ER_BathRoomMin: $scope.minBathNum,
-							ER_BathRoomMax: 5,
+							ER_BathRoomMax: 10,
 							ER_ParkingMin: $scope.myParkingNum,
-							ER_ParkingMax: 5,
+							ER_ParkingMax: 10,
 							ER_AreaMin: 0,
 							ER_AreaMax: 5000,
-							ER_AvailableDate: '2020-01-01',
-							ER_Description: $scope.keywords || '',
-							ER_Feature: ''
+							ER_AvailableDate: '2200-01-01',
+							ER_Description:'',
+							ER_Feature: ER_Feature
 						}
 					}
 
@@ -665,7 +706,308 @@
 
 						});
 				}
-				/* theme title search*/
+				/**
+				 * features update code starts
+				 */
+				//all_requirements
+				// colum1
+				$scope.nosmoking = function (){
+					$scope.no_smoking = !$scope.no_smoking;
+					if($scope.no_smoking==true &&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
+					{
+						$scope.all_requirements = true;
+					}else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
+						$scope.all_requirements = false;
+					}
+				}
+				$scope.nopets = function (){
+					$scope.no_pets = !$scope.no_pets;
+					if($scope.no_smoking==true&&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
+					{
+						$scope.all_requirements = true;
+					}else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
+						$scope.all_requirements = false;
+					}
+				}
+				$scope.girlonly = function (){
+					$scope.girl_only = !$scope.girl_only;
+					if($scope.no_smoking==true&&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
+					{
+						$scope.all_requirements = true;
+					}else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
+						$scope.all_requirements = false;
+					}
+				}
+				$scope.boyonly = function (){
+					$scope.boy_only = !$scope.boy_only;
+					if($scope.no_smoking==true&&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
+					{
+						$scope.all_requirements = true;
+					}else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
+						$scope.all_requirements = false;
+					}
+				}
+				$scope.noparty = function (){
+					$scope.no_party = !$scope.no_party;
+					if($scope.no_smoking==true&&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
+					{
+						$scope.all_requirements = true;
+					}else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
+						$scope.all_requirements = false;
+					}
+				}
+				
+				$scope.col_requirements = function(){
+					$scope.all_requirements = !$scope.all_requirements;
+					
+					if($scope.all_requirements)
+					{
+						$scope.no_smoking = true;
+						$scope.no_pets = true;
+						$scope.girl_only = true;
+						$scope.boy_only = true;
+						$scope.no_party = true;
+					}
+					else{
+						$scope.no_smoking = false;
+						$scope.no_pets = false;
+						$scope.girl_only = false;
+						$scope.boy_only = false;
+						$scope.no_party = false;
+					}
+					
+				}
+				// colum2
+				//appliances
+				$scope.stove_click = function (){
+					$scope.stove = !$scope.stove;
+					if($scope.stove==true &&$scope.dishwasher==true&&$scope.dryer==true&&$scope.aircondition==true)
+					{
+						$scope.appliances = true;
+					}else if($scope.stove==false || $scope.dishwasher==false || $scope.dryer==false || $scope.aircondition==false){
+						$scope.appliances = false;
+					}
+				}
+				$scope.dishwasher_click = function (){
+					$scope.dishwasher = !$scope.dishwasher;
+					if($scope.stove==true &&$scope.dishwasher==true&&$scope.dryer==true&&$scope.aircondition==true)
+					{
+						$scope.appliances = true;
+					}else if($scope.stove==false || $scope.dishwasher==false || $scope.dryer==false || $scope.aircondition==false){
+						$scope.appliances = false;
+					}
+				}
+				$scope.dryer_click = function (){
+					$scope.dryer = !$scope.dryer;
+					if($scope.stove==true &&$scope.dishwasher==true&&$scope.dryer==true&&$scope.aircondition==true)
+					{
+						$scope.appliances = true;
+					}else if($scope.stove==false || $scope.dishwasher==false || $scope.dryer==false || $scope.aircondition==false){
+						$scope.appliances = false;
+					}
+				}
+				$scope.aircondition_click = function (){
+					$scope.aircondition = !$scope.aircondition;
+					if($scope.stove==true &&$scope.dishwasher==true&&$scope.dryer==true&&$scope.aircondition==true)
+					{
+						$scope.appliances = true;
+					}else if($scope.stove==false || $scope.dishwasher==false || $scope.dryer==false || $scope.aircondition==false){
+						$scope.appliances = false;
+					}
+				}
+				
+				$scope.col_appliances = function(){
+					$scope.appliances = !$scope.appliances;
+					if($scope.appliances)
+					{
+						$scope.stove = true;
+						$scope.dishwasher = true;
+						$scope.dryer = true;
+						$scope.aircondition = true;
+					}
+					else{
+						$scope.stove = false;
+						$scope.dishwasher = false;
+						$scope.dryer = false;
+						$scope.aircondition = false;
+					}
+//					$scope.appliances = $scope.stove&&$scope.dishwasher&&$scope.dryer;
+				}
+				//furniture
+				// colum3
+				$scope.bed_click = function (){
+					$scope.bed = !$scope.bed;
+					if($scope.bed==true &&$scope.desk==true&&$scope.wardrob==true)
+					{
+						$scope.furniture = true;
+					}else if($scope.bed==false || $scope.desk==false || $scope.wardrob==false){
+						$scope.furniture = false;
+					}
+				}
+				$scope.desk_click = function (){
+					$scope.desk = !$scope.desk;
+					if($scope.bed==true &&$scope.desk==true&&$scope.wardrob==true)
+					{
+						$scope.furniture = true;
+					}else if($scope.bed==false || $scope.desk==false || $scope.wardrob==false){
+						$scope.furniture = false;
+					}
+				}
+				$scope.wardrob_click = function (){
+					$scope.wardrob = !$scope.wardrob;
+					if($scope.bed==true &&$scope.desk==true&&$scope.wardrob==true)
+					{
+						$scope.furniture = true;
+					}else if($scope.bed==false || $scope.desk==false || $scope.wardrob==false){
+						$scope.furniture = false;
+					}
+				}
+				
+				$scope.col_furniture = function(){
+					$scope.furniture = !$scope.furniture;
+					if($scope.furniture)
+					{
+						$scope.bed = true;
+						$scope.desk = true;
+						$scope.wardrob = true;
+					}
+					else{
+						$scope.bed = false;
+						$scope.desk = false;
+						$scope.wardrob = false;
+					}
+				}
+				// colum4
+				//other_appliance
+				$scope.refrigerator_click = function (){
+					$scope.refrigerator = !$scope.refrigerator;
+					if($scope.refrigerator==true &&$scope.laundry==true)
+					{
+						$scope.other_appliance = true;
+					}else if($scope.refrigerator==false || $scope.laundry==false){
+						$scope.other_appliance = false;
+					}
+				}
+				$scope.laundry_click = function (){
+					$scope.laundry = !$scope.laundry;
+					if($scope.refrigerator==true &&$scope.laundry==true)
+					{
+						$scope.other_appliance = true;
+					}else if($scope.refrigerator==false || $scope.laundry==false){
+						$scope.other_appliance = false;
+					}
+				}
+				
+				
+				$scope.col_other_appliance = function(){
+					$scope.other_appliance = !$scope.other_appliance;
+					if($scope.other_appliance)
+					{
+						$scope.refrigerator = true;
+						$scope.laundry = true;
+					}
+					else{
+						$scope.refrigerator = false;
+						$scope.laundry = false;
+					}
+				}
+				// colum5
+				//other_essential
+				$scope.wifi_click = function (){
+					$scope.wifi = !$scope.wifi;
+					if($scope.wifi==true &&$scope.gas==true)
+					{
+						$scope.other_essential = true;
+					}else if($scope.wifi==false || $scope.gas==false){
+						$scope.other_essential = false;
+					}
+				}
+				$scope.gas_click = function (){
+					$scope.gas = !$scope.gas;
+					if($scope.wifi==true &&$scope.gas==true)
+					{
+						$scope.other_essential = true;
+					}else if($scope.wifi==false || $scope.gas==false){
+						$scope.other_essential = false;
+					}
+				}
+				$scope.col_other_essential = function(){
+					$scope.other_essential = !$scope.other_essential;
+					if($scope.other_essential)
+					{
+						$scope.wifi = true;
+						$scope.gas = true;
+					}
+					else{
+						$scope.wifi = false;
+						$scope.gas = false;
+					}
+				}
+				
+				
+		/***************************features update ends *******************************************/
+		
+		/*******************************************************************************************
+		 * search by different features
+		 *******************************************************************************************/
+		$scope.features_Submit = function(){
+//			alert($scope.wardrob);
+			var arr_key = [$scope.stove,$scope.dishwasher,
+							$scope.dryer,$scope.aircondition,
+							$scope.refrigerator,$scope.laundry,$scope.bed,$scope.desk,
+							$scope.wardrob,$scope.wifi,$scope.gas,$scope.no_smoking,$scope.no_pets,
+							$scope.girl_only,$scope.boy_only,$scope.no_party];
+			var arr_value = ["stove","dishwasher","dryer","aircondition","refrigerator"
+								,"laundry","bed","desk","wardrob","wifi","gas","no_smoking",
+								"no_pets","girl_only","boy_only","no_party"];
+			var arr_features = [];
+			for(var i=0;i<arr_key.length;i++){
+				if(arr_key[i]){
+					arr_features.push("%"+arr_value[i]+";");
+				}
+			}
+			if(arr_features.length==0){
+				arr_features.push("");
+			}
+			ER_Feature = arr_features.join('');
+			entireData = {
+							ER_Suburb: '',
+							ER_Region: '',
+							ER_Type: $scope.myPropertyType,
+							ER_PriceMin: $scope.myMinPrice,
+							ER_PriceMax: 10000,
+							ER_BedRoomMin: $scope.minBedNum,
+							ER_BedRoomMax: 20,
+							ER_BathRoomMin: $scope.minBathNum,
+							ER_BathRoomMax: 10,
+							ER_ParkingMin: $scope.myParkingNum,
+							ER_ParkingMax: 10,
+							ER_AreaMin: 0,
+							ER_AreaMax: 50000,
+							ER_AvailableDate: '2200-01-01',
+							ER_Description:'',
+							ER_Feature: ER_Feature
+						}
+			console.log("arr_features",arr_features.join(''));
+			$http.post('/customer/filt/entire', entireData)
+						.then(function(r) {
+							SearchService.set(r);
+							updateService.set(entireData);
+							//SetCredentials(r);
+							console.log('r===>', r);
+							if(r.data.length > 0) {
+//								$state.go('app.listpage');
+								$state.go('app.googlemap');
+							}
+							//							
+
+						}, function(e) {
+
+						});
+		}
+				
+				
+		/*****************theme title search********************************************************/
 				$scope.search = function(keywords) {
 //					console.log($scope.x);
 //					alert(keywords);
@@ -688,7 +1030,7 @@
 							ER_AreaMax: 5000,
 							ER_AvailableDate: '2020-01-01',
 							ER_Description:'%'+keywords+';',
-							ER_Feature: ' '
+							ER_Feature: ER_Feature
 						};
 					} else {
 						entireData = {
@@ -707,7 +1049,7 @@
 							ER_AreaMax: 5000,
 							ER_AvailableDate: '2020-01-01',
 							ER_Description:'%'+keywords+';',
-							ER_Feature: ''
+							ER_Feature: ER_Feature
 						}
 					}
 
@@ -729,7 +1071,10 @@
 
 						});
 				}
-				/*商家专区*/
+		/*****************theme title search ends********************************************************/
+		
+		
+		/**************************************商家专区 starts****************************************************/
 				$scope.businessSearch = function(TPDetail){
 					business.TPDetail = TPDetail;
 					business.TPServLoc = '';
@@ -746,7 +1091,9 @@
 
 						});
 				}
-				//datepicker
+		/**************************************商家专区 ends****************************************************/
+		
+				/****************************datepicker control code************************************/
 				$scope.today = function() {
 					$scope.dt = new Date();
 				};
@@ -784,7 +1131,7 @@
 				$scope.format = $scope.formats[0];
 
 
-			/*modal code*/
+			/**********************************modal code starts***********************************/
 		    $scope.items = ['item1', 'item2', 'item3'];
 		    
 		    $scope.openmodal = function (size) {
@@ -810,6 +1157,7 @@
 		        $log.info('Modal dismissed at: ' + new Date());
 		      });
 		    };
+		    /**********************************modal code starts***********************************/
 			}
 		])
 		.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {

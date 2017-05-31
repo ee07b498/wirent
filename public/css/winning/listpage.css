@@ -235,7 +235,7 @@
 }
 
 
-.list-page .info-panel .benefits .train {
+/*.list-page .info-panel .benefits .train {
 	position: absolute;
 	font: 200 13px/15px "微软雅黑";
 	top: 10px;
@@ -262,7 +262,7 @@
 	top: 30px;
 	left: 0px;
 	color: lightslategray;
-}
+}*/
 
 .list-page .info-panel .price {
 	width: 100px;
@@ -290,7 +290,7 @@
 	width: 150px;
 	/*line-height: 50px;*/
 	height: 20;
-	left: 150px;
+	left: 100px;
 	top: 30px;
 	color: lightslategray;
 }

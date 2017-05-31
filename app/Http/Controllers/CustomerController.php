@@ -222,7 +222,13 @@ class CustomerController extends Controller
 				$ER_ID = $item->ER_ID;
 				$sql = "call $proc_Name('{$ER_ID}')";	
 				$itempic = DB::select($sql);
-				$item->picset = $itempic;	
+				foreach ($itempic as $itemp)
+				{
+					if ($itemp->PicDescription=='Form')
+					{$item->comment = $itemp;}
+					else{$item->picset[] = $itemp;}
+				}
+//				$item->picset = $itempic;	
 			}
 			return $data;
 		}
@@ -520,14 +526,16 @@ class CustomerController extends Controller
 	{
 		$title = $request->input('title');
 		$content = $request->input('content');
-		$createTime =  date("Y-m-d h:i:sa");
+		$createTime =  $request->input('createTime');
 		$IdSender = $request->input('CID');
 		$IdReceiver = $request->input('IdReceiver');						
 		$msg_direct_comment = $request->input('msg_direct_comment'); 	//e.g.'Landlord to Staff';
 		$proc_Name = 'msg_write';
 		$sql = "call $proc_Name('{$title}','{$content}','{$createTime}',{$IdSender},{$IdReceiver},'{$msg_direct_comment}')";  
+//		return $sql;
+		
 		$result = DB::insert($sql);
-		return $result;
+		return json_encode($result);
 	}	
 	
 	public function filt_thirdparty(Request $request)

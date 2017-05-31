@@ -32,7 +32,7 @@
 	                      <ul class="list-unstyled l-h-2x">
 	                        <li class="m-b-md">
 	                         <label>Price</label>
-							 <input type="text" ng-model="myMinPrice" style="width: 149px;height: 40px; margin-left: 20px;" class="form-control input-sm inline" placeholder="minPrice" aria-describedby="basic-addon1">
+							 <input type="text" ng-model="myMinPrice" style="width: 149px;height: 40px; margin-left: 18px;" class="form-control input-sm inline" placeholder="minPrice" aria-describedby="basic-addon1">
 	                        </li>
 	                        <li class="m-b-md">
 	                          <label>Beds</label>
@@ -78,9 +78,13 @@
 						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 5px;"ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
 						        </select>
 	                        </li>
+	                         <li class="m-b-md">
+	                         <label>Area</label>
+							 <input type="text" ng-model="minArea" style="width: 149px;height: 40px; margin-left: 23px;" class="form-control input-sm inline" placeholder="minArea" aria-describedby="basic-addon1">
+	                        </li>
 	                        <li class="m-b-md">
 	                          <label>Type</label>
-						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
+						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 19px;" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
 						        </select>
 	                        </li>
 	                       <!-- <li>
@@ -128,17 +132,13 @@
 	                    </div>
 	                    <div class="col-xs-6 right-li">
 	                      <ul class="list-unstyled l-h-2x">
-	                        <li>
+	                        <li style="margin-bottom: 22px;">
 	                         <select class="input-sm form-control w-sm inline v-middle" ng-model="maxParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
 							 </select>
 	                        </li>
-	                      <!--  <li>
-	                          	<a style="display: block;"></a>
+	                        <li class="m-b-md">
+							<input type="text" class="form-control input-sm" ng-model="maxArea" style="width: 149px;height: 40px;" placeholder="maxArea" aria-describedby="basic-addon1">
 	                        </li>
-	                        <li style="visibility: hidden;">
-	                           <label>descriptions:</label>
-							   <input type="text" class="form-control input-lg"  style="background: white; border: none;" aria-describedby="basic-addon1">
-	                        </li>-->
 	                        <li ng-show="hello" style="list-style: none; margin-top: 196px; padding-left: 0;">
 								<ul>
 	                          		<li style="list-style: none;">
@@ -181,31 +181,31 @@
 					                      	</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="no_smoking" ng-click="no_smoking=!no_smoking">
+					                      		<span title="no_smoking" ng-click="nosmoking()">
 					                      			<i ng-show="no_smoking" style="color: purple;" class="flaticon-no-smoking-sign18"></i>
 					                      			<i ng-show="!no_smoking" class="flaticon-no-smoking-sign18"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="no_pets" ng-click="no_pets=!no_pets">
+					                      		<span title="no_pets" ng-click="nopets()">
 					                      			<i ng-show="no_pets" style="color: purple;" class="flaticon-no-dogs18"></i>
 					                      			<i ng-show="!no_pets" class="flaticon-no-dogs18"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="girl_only" ng-click="girl_only=!girl_only">
+					                      		<span title="girl_only" ng-click="girlonly()">
 					                      			<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette18"></i>
 					                      			<i ng-show="!girl_only" class="flaticon-female-silhouette18"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="boy_only" ng-click="boy_only=!boy_only">
+					                      		<span title="boy_only" ng-click="boyonly()">
 					                      			<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up18"></i>
 					                      			<i ng-show="!boy_only" class="flaticon-man-standing-up18"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="no_party" ng-click="no_party=!no_party">
+					                      		<span title="no_party" ng-click="noparty()">
 					                      			<i ng-show="no_party" style="color: purple;" class="flaticon-turn-microphone-off-button18"></i>
 					                      			<i ng-show="!no_party" class="flaticon-turn-microphone-off-button18"></i>
 					                      		</span>
@@ -221,25 +221,25 @@
 					                      	</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="stove" ng-click="stove=!stove">
+					                      		<span title="stove" ng-click="stove_click()">
 					                      			<i ng-show="stove" style="color: purple;" class="flaticon-stove16"></i>
 					                      			<i ng-show="!stove" class="flaticon-stove16"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="dishwasher" ng-click="dishwasher=!dishwasher">
+					                      		<span title="dishwasher" ng-click="dishwasher_click()">
 					                      			<i ng-show="dishwasher" style="color: purple;" class="flaticon-dishwasher16"></i>
 					                      			<i ng-show="!dishwasher" class="flaticon-dishwasher16"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="dryer" ng-click="dryer=!dryer">
+					                      		<span title="dryer" ng-click="dryer_click()">
 					                      			<i ng-show="dryer" style="color: purple;" class="flaticon-tumble-dryer16"></i>
 					                      			<i ng-show="!dryer" class="flaticon-tumble-dryer16"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="aircondition" ng-click="aircondition=!aircondition">
+					                      		<span title="aircondition" ng-click="aircondition_click()">
 					                      			<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit16"></i>
 					                      			<i ng-show="!aircondition" class="flaticon-minisplit16"></i>
 					                      		</span>
@@ -257,19 +257,19 @@
 					                      	</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="bed" ng-click="bed=!bed">
+					                      		<span title="bed" ng-click="bed_click()">
 					                      			<i ng-show="bed" style="color: purple;" class="flaticon-bed16"></i>
 					                      			<i ng-show="!bed" class="flaticon-bed16"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="desk" ng-click="desk=!desk">
+					                      		<span title="desk" ng-click="desk_click()">
 					                      			<i ng-show="desk" style="color: purple;" class="flaticon-man-in-office-desk-with-computer16"></i>
 					                      			<i ng-show="!desk" class="flaticon-man-in-office-desk-with-computer16"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="wardrob" ng-click="wardrob=!wardrob">
+					                      		<span title="wardrob" ng-click="wardrob_click()">
 					                      			<i ng-show="wardrob" style="color: purple;" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
 					                      			<i ng-show="!wardrob" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
 					                      		</span>
@@ -294,13 +294,13 @@
 					                      	</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="refrigerator" ng-click="refrigerator=!refrigerator">
+					                      		<span title="refrigerator" ng-click="refrigerator_click()">
 					                      			<i ng-show="refrigerator" style="color: purple;" class="flaticon-fridge16"></i>
 					                      			<i ng-show="!refrigerator" class="flaticon-fridge16"></i>
 					                      		</span>
 					                      	</li>
 					                      	<li>
-					                      		<span title="laundry" ng-click="laundry=!laundry">
+					                      		<span title="laundry" ng-click="laundry_click()">
 					                      			<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine16"></i>
 					                      			<i ng-show="!laundry" class="flaticon-washing-machine16"></i>
 					                      		</span>
@@ -318,13 +318,13 @@
 						                      	</span>
 						                      	</li>
 						                      	<li>
-						                      		<span title="wifi" ng-click="wifi=!wifi">
+						                      		<span title="wifi" ng-click="wifi_click()">
 						                      			<i ng-show="wifi" style="color: purple;" class="flaticon-wifi16"></i>
 						                      			<i ng-show="!wifi" class="flaticon-wifi16"></i>
 						                      		</span>
 						                      	</li>
 						                      	<li>
-						                      		<span title="gas" ng-click="gas=!gas">
+						                      		<span title="gas" ng-click="gas_click()">
 						                      			<i ng-show="gas" style="color: purple;" class="flaticon-gas-level16"></i>
 						                      			<i ng-show="!gas" class="flaticon-gas-level16"></i>
 						                      		</span>
@@ -379,7 +379,7 @@
 			<div id="results">
 				<div class="list-wrap">
 					<ul id="house-list" class="house-list">
-						<li class="first" ng-repeat="property in entireData" ui-sref="app.details">
+						<li class="first" ng-repeat="property in entireData">
 							<div class="pic-panel w-slider cl" id="js_slider">
 								<span class="new"></span>
 								<div class="slider cl">
@@ -433,19 +433,50 @@
 						          </div>
 								</div>
 								<div class="address">
-									<a>
+									<a ui-sref="app.details({id:property.ER_ID,name:property.ER_No+' '+property.ER_St+' '+property.ER_Suburb+' '+property.ER_Region})">
 										<span>[:property.ER_No+" "+property.ER_St+" "+property.ER_Suburb+","+property.ER_Region:]</span>
 									</a>
 								</div>
 								<div class="benefits">
-									<a class="train"><i class="fa fa-train"></i>距central station 200米</a>
-									<!--<a></a>-->
+									<!--<a class="train"><i class="fa fa-train"></i>距central station 200米</a>
 									<a class="bus"><i class="fa fa-bus"></i>距bus stop 100米</a>
 									<a class="shoping"><i class="fa fa-shopping-cart"></i>距Coles 500米</a>
-									<a class="hospital"><i class="fa fa-h-square"></i>距Hospital 500米</a>
+									<a class="hospital"><i class="fa fa-h-square"></i>距Hospital 500米</a>-->
+									<a href class="f-icon with-text train" title="near train station">
+		                                <span class="icon " ng-show="property.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
+		                                 <span class="icon " ng-show="!property.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
+		                            </a>
+		                            <a href class="f-icon with-text university" title="near university">
+		                            	<span class="icon " ng-show="property.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+		                                <span class="icon " ng-show="!property.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+		                            </a>
+		                            <a href class="f-icon with-text backpack" title="backpack">
+		                            	<span class="icon " ng-show="property.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
+		                                <span class="icon " ng-show="!property.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
+		                            </a>
+		                            <a href class="f-icon with-text park" title="near park">
+		                            	 <span class="icon " ng-show="property.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
+		                                <span class="icon " ng-show="!property.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
+		                            </a>
+									<a href class="f-icon with-text school" title="near school">
+										<span class="icon " ng-show="property.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
+		                                <span class="icon " ng-show="!property.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
+		                            </a>
+		                            <a href class="f-icon with-text bigfamily" title="big family">
+		                            	 <span class="icon " ng-show="property.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
+		                                <span class="icon " ng-show="!property.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>
+		                            </a>
+		                            <a href class="f-icon with-text shoppingmall" title="near shopping center">
+		                            	<span class="icon " ng-show="property.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
+		                                <span class="icon " ng-show="!property.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
+		                            </a>
+		                            <a href class="f-icon with-text offical_rental" title="office rental">
+		                            	<span class="icon " ng-show="property.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
+		                                <span class="icon " ng-show="!property.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>
+		                            </a>
 								</div>
 								<div class="price">
-									<span class="num">[:property.ER_Price:]<span class="period">per week</span></span>
+									<span class="num">$[:property.ER_Price:]<span class="period">per week</span></span>
 									<span class="available">Available Time:[:property.ER_AvailableDate:]</span>
 								</div>
 								<!--<div class="view">
@@ -457,82 +488,6 @@
 							</div>
 
 						</li>
-			<!--			<li class="" ui-sref="app.details">
-							<div class="pic-panel w-slider cl" id="js_slider">
-								<span class="new"></span>
-								<div class="slider cl">
-									<div class="slider-main" id="slider_main_block">
-										<ul class="slider-main-img">
-											<li><img src="../img/andy.jpg" alt="" /></li>
-										</ul>
-									</div>
-								</div>
-								<div class="slider-ctrl cl" id="slider_ctrl">
-									<span class="slider-ctrl-prev text-center" style="color: white;"><i class="fa fa-lg fa-arrow-circle-left m-t-sm"></i></span>
-									<span class="slider-ctrl-next text-center" style="color: white;"><i class="fa fa-lg fa-arrow-circle-right m-t-sm"></i></span>
-								</div>
-							</div>
-							<div class="info-panel">
-								<div class="rooms cl">
-									 <div class="hbox text-center">          
-						              <a href class="col padder-v text-muted">
-						                <div class="h4">
-						                	 <span>2</span>
-						                	 <span class="fa-stack fa-lg">
-								                <i class="fa fa-circle fa-stack-2x text-white"></i>
-								                <i class="fa fa-bed fa-stack-1x "></i>
-								            </span> 
-								           
-						                </div>
-						               
-						              </a>
-						              <a href class="col padder-v text-muted">
-						                <div class="h4">
-						                	<span>2</span>
-						                	<span class="fa-stack fa-lg">
-								                <i class="fa fa-circle fa-stack-2x text-white"></i>
-								                <i class="fa fa-bath fa-stack-1x "></i>
-								            </span>
-						                </div>
-						                
-						              </a>
-						              <a href class="col padder-v text-muted">
-						                <div class="h4">
-						                	<span>1</span>
-						                	<span class="fa-stack fa-lg">
-								                <i class="fa fa-circle fa-stack-2x text-white"></i>
-								                <i class="fa fa-car fa-stack-1x "></i>
-								            </span>
-						                </div>
-						                
-						              </a>
-						          </div>
-								</div>
-								<div class="address">
-									<a>
-										<span>harbourne road,Kingsford,NSW</span>
-									</a>
-								</div>
-								<div class="benefits">
-									<a class="train"><i class="fa fa-train"></i>距central station 200米</a>
-									<a class="bus"><i class="fa fa-bus"></i>距bus stop 100米</a>
-									<a class="shoping"><i class="fa fa-shopping-cart"></i>距Coles 500米</a>
-									<a class="hospital"><i class="fa fa-h-square"></i>距Hospital 500米</a>
-								</div>
-								<div class="price">
-									<span class="num">$5850<span class="period">per week</span></span>
-									<span class="available">Available Time:10/02/2017</span>
-								</div>
-								<div class="view">
-									<span class="view-num">Viewed:  20</span>
-								</div>
-								<div class="save">
-									<span class="save-delete-shortlist"><i class="fa fa-lg fa-heart-o">&nbsp;Save</i></span>
-								</div>
-							</div>
-
-						</li>
-					-->
 					</ul>
 				</div>
 			  <div class="pagination-bottom">

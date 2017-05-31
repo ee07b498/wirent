@@ -38,6 +38,9 @@
 					$scope.mtCheckData={};
 					$scope.mtCheckDataResult={};
 					$scope.serviceHistoryData={};
+					$scope.messageData = {};
+					$scope.msg_read = {};
+					$scope.msg_content = false;
 					var val= {
 						ER_ID : 0,
 						CID : 0,
@@ -210,9 +213,28 @@
 									
 								})
 					}
-			
-			
-			
+			/***********************************************************************
+			 * message**********************************************************************/
+			 
+			$scope.msg = function(){
+						$scope.messageData.CID = 1;
+						$scope.messageData.msg_direct_comment = '% to customer';
+						$http.post('/customer/msg/received',$scope.messageData)
+								.then(function(r){
+								console.log("$scope.messageData",r);
+								$scope.messageData = r;
+//								console.log("$scope.mtCheckDataResult",$scope.mtCheckDataResult);
+								console.log("222");
+								},function(e){
+									
+								})
+					}
+			$scope.msg_click = function(index){
+				$scope.msg_content = !$scope.msg_content;
+				$scope.msg_read = $scope.messageData.data[index];
+			}
+			/***********************************************************************
+			 * message**********************************************************************/
 			// tab switch
 			 $scope.tabs = [true, false, false, false, false];
 			 $scope.tab = function(index){
