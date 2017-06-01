@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 use Aws\S3\S3Client;
 use Aws\Credentials\CredentialProvider;
 
@@ -547,25 +548,5 @@ class CustomerController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
-	
-	public function upload(Request $request)
-	{
-		$SourceFile = $request->input('SourceFile');
-		$key = $request->input('key');
-		$provider = CredentialProvider::env();	
-			
-		$options = [
-		    'region'            => 'ap-southeast-2',
-		    'version'           => '2006-03-01',
-	        'credentials' => $provider
-		];
-		$s3 = new S3Client($options);
-		$s3->putObject(array(
-		    'Bucket'     => 'wirent',
-		    'Key'        => $key,
-		    'SourceFile' => $SourceFile,
-		    'ACL' =>'public-read'
-		));
 
-	}	
 }

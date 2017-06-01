@@ -47,6 +47,7 @@ return array(
     'Illuminate\\Bus\\' => array($vendorDir . '/illuminate/bus'),
     'Illuminate\\Broadcasting\\' => array($vendorDir . '/illuminate/broadcasting'),
     'Illuminate\\Auth\\' => array($vendorDir . '/illuminate/auth'),
+    'Icyboy\\LumenAws\\' => array($vendorDir . '/icyboy/lumen-aws-sdk/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
@@ -57,7 +58,6 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Cron\\' => array($vendorDir . '/mtdowling/cron-expression/src/Cron'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
-    'Aws\\Laravel\\' => array($vendorDir . '/aws/aws-sdk-php-laravel/src'),
     'Aws\\' => array($vendorDir . '/aws/aws-sdk-php/src'),
     'App\\' => array($baseDir . '/app'),
 );

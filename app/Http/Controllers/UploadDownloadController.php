@@ -1,16 +1,22 @@
 <?php
-// Include the SDK using the Composer autoloader
+
 
 namespace App\Http\Controllers;
+// Include the SDK using the Composer autoloader
 use Illuminate\http\Request;
 use Aws\S3\S3Client;
+use Laravel\Lumen\Routing\Controller as BaseController;
 
-class UploadDownloadController extends Controller
+class UploadDownloadController extends BaseController
 {
 	public function upload(Request $request){
 		$s3 = new S3Client([
 		    'version' => '2006-03-01',
-		    'region'  => 'ap-southeast-2'
+		    'region'  => 'ap-southeast-2',
+		    'credentials' => [
+		    	'key'    => 'AKIAI5VNHGFA5KY4H6IQ',
+        		'secret' => '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',
+		    ]
 		]);
 		
 		

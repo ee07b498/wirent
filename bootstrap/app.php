@@ -92,9 +92,10 @@ $app->singleton(
 	$app->configure('session');
 	// set session name
 	$app->alias('session', 'Illuminate\Session\SessionManager');
-	
-	$app->register(Aws\Laravel\AwsServiceProvider::class);
-	$app->alias('AWS', 'Aws\Laravel\AwsFacade::class');
+
+	//reg aws upload provider
+//  $app->register(Icyboy\LumenAws\AwsServiceProvider::class);    
+//  class_alias('Icyboy\LumenAws\AwsFacade', 'Aws');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

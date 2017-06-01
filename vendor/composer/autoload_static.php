@@ -85,6 +85,7 @@ class ComposerStaticInitf90b7f344ed3343414a06e99881281c4
             'Illuminate\\Bus\\' => 15,
             'Illuminate\\Broadcasting\\' => 24,
             'Illuminate\\Auth\\' => 16,
+            'Icyboy\\LumenAws\\' => 16,
         ),
         'G' => 
         array (
@@ -110,7 +111,6 @@ class ComposerStaticInitf90b7f344ed3343414a06e99881281c4
         ),
         'A' => 
         array (
-            'Aws\\Laravel\\' => 12,
             'Aws\\' => 4,
             'App\\' => 4,
         ),
@@ -283,6 +283,10 @@ class ComposerStaticInitf90b7f344ed3343414a06e99881281c4
         array (
             0 => __DIR__ . '/..' . '/illuminate/auth',
         ),
+        'Icyboy\\LumenAws\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/icyboy/lumen-aws-sdk/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -322,10 +326,6 @@ class ComposerStaticInitf90b7f344ed3343414a06e99881281c4
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
-        'Aws\\Laravel\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/aws/aws-sdk-php-laravel/src',
         ),
         'Aws\\' => 
         array (
