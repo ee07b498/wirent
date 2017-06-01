@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 // Include the SDK using the Composer autoloader
 use Illuminate\http\Request;
 use Aws\S3\S3Client;
-use Laravel\Lumen\Routing\Controller as BaseController;
+require realpath(base_path('vendor/autoload.php'));
 
-class UploadDownloadController extends BaseController
+class UploadDownloadController extends Controller
 {
 	public function upload(Request $request){
 		$s3 = new S3Client([

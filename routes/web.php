@@ -21,6 +21,10 @@ $app->get('/admin',function () {
 	return view('admin');	
 });
 
+$app->get('/upload',function () {
+	return view('upload');	
+});
+
 /*
  *  view group:customer|landlord|thirdparty|staff
  */
