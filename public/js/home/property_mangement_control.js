@@ -1,6 +1,6 @@
 ;(function(){
 	'use strict';
-	angular.module('prpmgmctrl',['profile'])
+	angular.module('andy')
 		.controller('prpMgmCtrl',['$scope','$http','profileService',function($scope,$http,profileService){
 			profileService.propMgm();
 		}])

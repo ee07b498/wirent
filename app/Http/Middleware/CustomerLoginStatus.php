@@ -26,6 +26,8 @@ class CustomerLoginStatus
 					
 	        return $next($request);
 		}
-		return view('page.login');			
+//		return view('page.login');			
+//		return Exception(0);
+		return "login";
     }
 }

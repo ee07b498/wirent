@@ -11,10 +11,10 @@
 	  -->
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-wikipedia-w"></i>
-          <!--<img src="/img/logo.png" />-->
+          <!--<i class="fa fa-wikipedia-w"></i>-->
+          <img src="../img/rsz_wi_origin.png" style="width: 50px;max-height: 48px;position: relative; top: 5px;left: 0;"/>
          
-          <span class="hidden-folded m-l-xs">[:name:]</span>
+          <!--<span class="hidden-folded m-l-xs">[:name:]</span>-->
         </a>
         <!-- / brand -->
       </div>
@@ -24,16 +24,16 @@
       <div class="collapse pos-rlt navbar-collapse box-shadow">
         <!-- link and dropdown -->
 		<ul class="nav navbar-nav hidden-sm">
-			<li><a ui-sref="app.search">Home</a></li>
-			<li><a href="#about">Rental</a></li>
-			<li><a href="http://www.winninginvestment.com.au/project-en">Buy</a></li>
-			<li><a ui-sref="app.new">News</a></li>
-			<li><a ui-sref="app.documentation">Guide</a></li>
-			<!--<li><a ui-sref="app.serviceTypes">Types</a></li>-->
-			<!--<li><a ui-sref="app.guides">guides</a></li>-->
-			<li><a href="http://www.winninginvestment.com.au/contantus">Contact</a></li>
-			<li><a href="http://www.winninginvestment.com.au/aboutus">About</a></li>
-			<li><a ui-sref="app.trainmap">trainmap</a></li>
+			<li><a ui-sref="app.search" translate="header.HOME"></a></li>
+			<li><a href="#about" translate="header.RENT"></a></li>
+			<li><a href="http://www.winninginvestment.com.au/project-en" translate="header.BUY"></a></li>
+			<li><a ui-sref="app.tips" translate="header.ONESETP.OneStep"></a></li>
+			<li><a ui-sref="app.new" translate="header.NEWS"></a></li>
+			<li><a ui-sref="app.guides" translate="header.BUSINESS"></a></li>
+			<li><a href="http://www.winninginvestment.com.au/contantus" translate="header.CONTACT.Contact"></a></li>
+			<li><a href="http://www.winninginvestment.com.au/aboutus" translate="header.ABOUT"></a></li>
+			<li><a href="http://www.winninginvestment.com.au/recruitment-1" translate="header.RECRUIMENT"></a></li>			
+			<!--<li><a ui-sref="app.trainmap">trainmap</a></li>-->
 		</ul>
         <!-- / link and dropdown -->
 
@@ -45,8 +45,8 @@
         <ul class="nav navbar-nav navbar-right">
       <!-- 
 		-->
-		  <li class="dropdown" >
-            <a href class="dropdown-toggle"  ui-sref="app.shortlist"  style="color: deeppink;">
+		  <li class="dropdown" ng-click="go2Shortlist()">
+            <a href class="dropdown-toggle"  style="color: deeppink;">
               <i class="fa fa-x fa-heart fa-fw"></i>
               <span class="visible-xs-inline">Shortlist</span>
               <span class="badge badge-sm up bg-danger pull-right-xs"></span>
@@ -86,17 +86,31 @@
 -->            <!-- / dropdown -->
           </li>
 		  <li>
-			<a ui-sref="app.profile">
+			<a ng-click="read_Letters()">
 				<i class="fa fa-envelope fa-fw"></i>
 				<span class="visible-xs-inline">Shortlist</span>
               	<span class="badge badge-sm up bg-danger pull-right-xs">[:letternums:]</span>
 			</a>
 		  </li>
+		  <!--translate-->
+		  <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              [:selectLang:] <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li ng-repeat="(langKey, label) in langs">
+                <a ng-click="setLang(langKey, $event)" href>[:label:]</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+		  <!--translate-->
       <li ng-if="!profile">
-			<a ui-sref="app.login"><span class="badge badge-lg bg-success" >登录</span></a>
+			<a ui-sref="app.login"><span class="badge badge-lg bg-success" translate="header.LOGIN.Login"></span></a>
 		  </li>
 		  <li ng-if="!profile">
-			<a ui-sref="app.signup"><span class="badge badge-lg bg-success" >注册</span></a>
+			<a ui-sref="app.signup"><span class="badge badge-lg bg-success" translate="header.REGIST.Regist"></span></a>
 		  </li>
 		 
 		 <li ng-if="profile" class="dropdown" dropdown>
@@ -109,30 +123,11 @@
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
-              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-                <div>
-                  <p>Update your profile,30% finished</p>
-                </div>
-                <progressbar value="60" class="progress-xs m-b-none bg-white"></progressbar>
+              <li>
+                <a ui-sref="app.profile" translate="header.LOGIN.Profile"></a>
               </li>
               <li>
-                <a ui-sref="upload">
-                  <span class="badge bg-danger pull-right">30%</span>
-                  <span>Settings</span>
-                </a>
-              </li>
-              <li>
-                <a ui-sref="app.profile">Profile</a>
-              </li>
-              <li>
-                <a ui-sref="app.docs">
-                  <span class="label bg-info pull-right">new</span>
-                  Help
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a ng-click="logout()">Logout</a>
+                <a ng-click="logout()" translate="header.LOGIN.Logout"></a>
               </li>
             </ul>
             <!-- / dropdown -->

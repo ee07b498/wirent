@@ -1,0 +1,316 @@
+<div class="banner-search" ng-controller="HomeController">
+	<div class="clear">
+		<div class="header" data-stellar-background-ratio="0.07">
+				<div class="free-advs clear">
+					<ul>
+						<li ui-sref="app.guide_customer">
+							<h2 style="margin-bottom: -10px!important;" translate="tips.guide.tenant">Need a room?</h2>
+							<span><i class="flaticon-properties-information2" ></i></span>
+							<!--<p>Place a free Room Wanted ad and make sure people with rooms can find you.</p>-->
+							<br />
+							<button class="btn-warning btn-lg" style="opacity: 1!important; width:100px">Go</button>
+						</li>
+						<li  ui-sref="app.guide_landlord">
+							<h2 style="margin-bottom: -10px!important;" translate="tips.guide.landlord">Need rents?</h2>
+							<!--<p>Place a free ad and rent your room in days find out more.</p>-->
+							<span><i class="flaticon-banknote2"></i></span>
+							<br />
+							<button class="btn-warning btn-lg" style="opacity: 1!important;width:100px">Go</button>
+						</li>
+					</ul>
+				</div>
+				<div class="cover-header"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="theme-section">
+				<section class="theme-specification">
+					<div class="top-cities clear">
+						<header class="latest-news-header">
+							<a class="latest-news-title-link">
+								<h1 class="latest-news-title h1" translate="tips.descriptions.title">主题专区</h1></a>
+						</header>
+						<div class="pics pics1">
+							<div class="left1">
+								<div class="wh city-pic" ng-click="search('university')" >
+									<a ng-click="search('university')" title="{{translate='tips.descriptions.uni'}}">
+										<a class="cover-img"></a>
+										<img src="../img/uni.jpg" alt="{{translate='tips.descriptions.uni'}}">
+										<span class="flaticon-college-graduation2" style="opacity: 1; color: lightblue;"></span>
+									</a>
+									<div class="holder1">
+										<i></i>
+										<p class="desTile1">
+											<span class="flaticon-college-graduation2" style="opacity: 1; color: chocolate;"></span>
+											<a class="city-title" rel="nofollow" ng-click="search('university')" title="{{translate='tips.descriptions.uni'}}"><em></em></a>
+										</p>
+									</div>
+									<!--<h3 class="title">清洁服务</h3>-->
+								</div>
+								<div class="w city-pic railroad" ng-click="search('train_station')" >
+									<a ng-click="search('train_station')" title="火车站">
+										<img src="img/station01Warm.jpg" alt="火车站">
+										<i class="flaticon-train-on-railroad"></i>
+									</a>
+									<div class="holder1">
+										<i></i>
+										<p class="desTile1">
+											<i class="flaticon-train-on-railroad2" style="opacity: 1; color: orange;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('train_station')" title="火车站"><em>火车站</em></a>
+											<!--<a href="#" title="北京二手房"><span><strong>长途搬家</strong></span></a>
+										<a href="#" title="搬家服务"><span><strong>短途搬家</strong></span></a>-->
+										</p>
+									</div>
+									<!--<h3 class="title">搬家服务</h3>-->
+								</div>
+								<div class="wh city-pic graduation" ng-click="search('backpack')">
+									<a ng-click="search('backpack')" title="背包客">
+										
+										<img src="../img/backpacker02Warm.jpg" alt="背包客">
+										<!--<i class="flaticon-backpack2" style="z-index: 1; position: absolute; top: 70px;left: 60px;"></i>-->
+									</a>
+									<div class="holder1">
+										<i></i>
+										<p class="desTile1">
+											<i class="flaticon-backpack2" style="opacity: 1; color: greenyellow;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="背包客"><em>背包客</em></a>
+											<!--<a href="#" title="水电网服务"><span><strong>水电网服务</strong></span></a>
+										<a href="#" title="水电网服务"><span><strong>电话预约</strong></span></a>-->
+										</p>
+									</div>
+									<!--<h3 class="title">水电网服务</h3>-->
+								</div>
+								<div class="wh city-pic park-city-space" ng-click="search('park')" >
+									<a ng-click="search('park')" title="近公园绿地">
+										<img src="../img/park01Warm.jpg" alt="近公园绿地">
+										<i class="flaticon-green-park-city-space"></i>
+									</a>
+									<div class="holder1">
+										<i></i>
+										<p class="desTile1">
+											<i class="flaticon-green-park-city-space2" style="opacity: 1; color: green;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('park')" title="近公园绿地"><em>近公园绿地</em></a>
+											<!--<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
+										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>-->
+										</p>
+									</div>
+									<!--<h3 class="title">清洁服务</h3>-->
+								</div>
+								<div class="wh city-pic open-book" ng-click="search('school')" >
+									<a ng-click="search('school')" title="学区房">
+										<img src="img/schoolzone02Warm.jpg" alt="学区房"> 
+										<i class="flaticon-open-book"></i>
+									</a>
+									<div class="holder1">
+										<i></i>
+										<p class="desTile1">
+											<i class="flaticon-open-book2" style="opacity: 1; color: yellow;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('school')" title="学区房"><em>学区房</em></a>
+											<!--<a href="#" title="代收包裹"><span><strong>邮寄包裹</strong></span></a>
+										<a href="#" title="代收包裹"><span><strong>代收包裹</strong></span></a>-->
+										</p>
+									</div>
+									<!--<h3 class="title">代收包裹</h3>-->
+								</div>
+							</div>
+							<div class="left1 clear">
+								<div class="wh city-pic flaticonpeople" ng-click="search('big_family')" >
+									<a ng-click="search('big_family')" title="大家庭/大庭院">
+										<img src="img/grand-front-yard-entranceWarm.jpg" alt="大家庭/大庭院">
+										<i class="flaticon-people"></i>
+									</a>
+									<div class="holder1">
+										<i></i>
+										<p class="desTile1">
+											<i class="flaticon-people2" style="opacity: 1; color: pink;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('big_family')" title="大家庭/大庭院"><em>大庭院</em></a>
+											<!--<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
+										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>-->
+										</p>
+									</div>
+									<!--<h3 class="title">清洁服务</h3>-->
+								</div>
+								<div class="wh city-pic shoppingcart" ng-click="search('shopping_mall')" >
+									<a ng-click="search('shopping_mall')" title="购物商场">
+										<img src="img/Westfield_shopping_centre02Warm.jpg" alt="购物商场">
+										<i class="flaticon-shopping-cart"></i>
+									</a>
+									<div class="holder1">
+										<i></i>
+										<p class="desTile1">
+												<i class="flaticon-shopping-cart2" style="opacity: 1; color: darkred;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('shopping_mall')" title="购物商场"><em>购物商场</em></a>
+											<!--<a href="#" title="房屋装修"><span><strong>房屋翻新</strong></span></a>
+										<a href="#" title="房屋装修"><span><strong>局部装修</strong></span></a>-->
+										</p>
+									</div>
+									<!--<h3 class="title">房屋装修</h3>-->
+								</div>
+								<div class="right1 city-pic business-rental" ng-click="search('offical_rental')" >
+									<a ng-click="search('offical_rental')" title="Office Rental">
+										<img src="/img/officerental02Warm.jpg" alt="Office Rental">
+										<i class="flaticon-business"></i>
+									</a>
+									<div class="holder1">
+										<i></i>
+										<p class="desTile1">
+											<i class="flaticon-business2" style="opacity: 1; color: blue;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('offical_rental')" title="Office Rental"><em>Office Rental</em></a>
+											<!--<a href="#" title="开锁&配钥匙服务"><span><strong>其他</strong></span></a>
+										<a href="#" title="开锁&配钥匙服务"><span><strong>其他</strong></span></a>-->
+										</p>
+									</div>
+									<!--<h3 class="title">Cut Keys</h3>-->
+								</div>
+							</div>
+						</div>
+				</section>
+				</div>
+			</div>
+
+			<div class="clear"></div>
+			<div class="col-sm-6">
+				<div class="theme-section">
+					<section class="theme-specification">
+						<div class="top-cities clear">
+							<header class="latest-news-header">
+								<a class="latest-news-title-link">
+									<h1 class="latest-news-title h1">商家专区</h1></a>
+							</header>
+							<div class="pics clear">
+								<div class="left">
+									<div class="wh city-pic moveicon" ng-click="businessSearch('move')">
+										<a ng-click="businessSearch('move')" title="搬家服务">
+											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">-->
+											<i class="flaticon-moving-home-transport-for-boxes"></i>
+										</a>
+										<div class="holder">
+											<i></i>
+											<p class="desTile">
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" title="搬家服务"><em>搬家服务</em></a>
+												<a ng-click="businessSearch('move')" title="北京二手房"><span><strong>长途搬家</strong></span></a>
+												<a ng-click="businessSearch('move')" title="搬家服务"><span><strong>短途搬家</strong></span></a>
+											</p>
+										</div>
+										<!--<h3 class="title">搬家服务</h3>-->
+									</div>
+									<div class="wh city-pic paintingicon" ng-click="businessSearch('painting')">
+										<a ng-click="businessSearch('painting')" title="painting">
+											<i class="flaticon-paintbrush"></i>
+											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="painting">-->
+										</a>
+										<div class="holder">
+											<i></i>
+											<p class="desTile">
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')" title="房屋装修"><em>painting</em></a>
+												<a ng-click="businessSearch('painting')" title="painting"><span><strong>房屋粉刷</strong></span></a>
+												<a ng-click="businessSearch('painting')" title="painting"><span><strong>局部装修</strong></span></a>
+											</p>
+										</div>
+										<!--<h3 class="title">painting</h3>-->
+									</div>
+									<div class="wh city-pic storageicon" ng-click="businessSearch('storage')">
+										<a ng-click="businessSearch('storage')" title="仓储">
+											<i class="flaticon-factory-stock-house"></i>
+											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="仓储">-->
+										</a>
+										<div class="holder">
+											<i></i>
+											<p class="desTile">
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')" title="上海站"><em>仓储</em></a>
+												<a ng-click="businessSearch('storage')" title="仓储"><span><strong>仓储</strong></span></a>
+												<a ng-click="businessSearch('storage')" title="仓储"><span><strong>仓储</strong></span></a>
+											</p>
+										</div>
+										<!--<h3 class="title">仓储</h3>-->
+									</div>
+									<div class="wh city-pic handymanicon" ng-click="businessSearch('handyman')">
+										<a ng-click="businessSearch('handyman')" title="Handyman">
+											<i class="flaticon-handyman-tools"></i>
+											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="Handyman">-->
+										</a>
+										<div class="holder">
+											<i></i>
+											<p class="desTile">
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')" title="Handyman"><em>Handyman</em></a>
+												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong>pulumber</strong></span></a>
+												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong>水工</strong></span></a>
+											</p>
+										</div>
+										<!--<h3 class="title">Handyman</h3>-->
+									</div>
+									<div class="wh city-pic cleanicon" ng-click="businessSearch('clean')">
+										<a ng-click="businessSearch('clean')" title="清洁服务">
+											<i class="flaticon-vacuum"></i>
+											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/tj.jpg?_v=20170515195947" alt="清洁服务">-->
+										</a>
+										<div class="holder">
+											<i></i>
+											<p class="desTile">
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')" title="清洁服务"><em>清洁服务</em></a>
+												<a ng-click="businessSearch('clean')" title="天津二手房"><span><strong>上门服务</strong></span></a>
+												<a ng-click="businessSearch('clean')" title="清洁服务"><span><strong>电话预约</strong></span></a>
+											</p>
+										</div>
+										<!--<h3 class="title">清洁服务</h3>-->
+									</div>
+									<div class="wh city-pic applianceicon" ng-click="businessSearch('appliance')">
+									<a ng-click="businessSearch('appliance')" title="家电">
+										<i class="flaticon-socket"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="家电维修">-->
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')" title="家电"><em>家电</em></a>
+											<a ng-click="businessSearch('appliance')" title="家电"><span><strong>家电</strong></span></a>
+											<a ng-click="businessSearch('appliance')" title="家电"><span><strong>电话预约</strong></span></a>
+										</p>
+									</div>
+									<!--<h3 class="title">家电</h3>-->
+								</div>
+								</div>
+								<div class="wh city-pic take_awayicon" ng-click="businessSearch('take_away')">
+									<a ng-click="businessSearch('take_away')" title="外卖">
+										<i class="flaticon-food"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="外卖">-->
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')" title="代收包裹"><em>外卖</em></a>
+											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong>外卖</strong></span></a>
+											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong>外卖</strong></span></a>
+										</p>
+									</div>
+									<!--<h3 class="title">外卖</h3>-->
+								</div>
+								<div class="w city-pic free_posticon" ng-click="businessSearch('free_post')">
+									<a ng-click="businessSearch('free_post')" title="freepost">
+										<i class="flaticon-puzzle"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="freepost">-->
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')" title="freepost"><em>freepost</em></a>
+											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong>freepost</strong></span></a>
+											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong>freepost</strong></span></a>
+										</p>
+									</div>
+									<!--<h3 class="title">freepost</h3>-->
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+
+		</div>
+		<div class="clear">
+			<section hotrent class="dream-homes">
+			</section>
+		</div>
+	</div>

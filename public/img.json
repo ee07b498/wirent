@@ -1,47 +1,67 @@
 [
- {
- "href":"http://www.google.com",
- "src":"img/b0.jpg",
- "alt":"5"
- },
- {
- "href":"http://www.google.com",
- "src":"img/b10.jpg",
- "alt":"6"
- },
- {
- "href":"http://www.google.com",
- "src":"img/b12.jpg",
- "alt":"7"
- },
- {
- "href":"http://www.google.com",
- "src":"img/b13.jpg",
- "alt":"8"
- },
- {
- "href":"http://www.google.com",
- "src":"img/b14.jpg",
- "alt":"9"
- },
-  {
- "href":"http://www.google.com",
- "src":"img/b0.jpg",
- "alt":"5"
- },
- {
- "href":"http://www.google.com",
- "src":"img/b10.jpg",
- "alt":"6"
- },
- {
- "href":"http://www.google.com",
- "src":"img/b12.jpg",
- "alt":"7"
- },
- {
- "href":"http://www.google.com",
- "src":"img/b13.jpg",
- "alt":"8"
- }
+	{
+		"step": " 1 搜尋”YBUY”網站進入YBUY 網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊",
+		"description": "搜尋”YBUY”網站進入YBUY 網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊",
+		"images": [  
+				{
+					"href": "app.regist",
+					"src": "img/b13.jpg",
+					"alt": "8",
+					"text":"搜尋”YBUY”網站進入YBUY"
+				}, {
+					"href": "app.login",
+					"src": "img/b14.jpg",
+					"alt": "9",
+					"text":"網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊"
+				}, {
+					"href": "app.search",
+					"src": "img/b0.jpg",
+					"alt": "5",
+					"text":"搜尋”YBUY”網站進入YBUY網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊"
+				}, {
+					"href": "app.search",
+					"src": "img/b0.jpg",
+					"alt": "5",
+					"text":"搜尋”YBUY”網站進入YBUY網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊"
+				}
+			]
+	},
+	{
+		"step": "2 搜尋”YBUY”網站進入YBUY 網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊",
+		"description": "搜尋”YBUY”網站進入YBUY 網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊",
+		"images": [  
+				{
+					"href": "app.regist",
+					"src": "img/b10.jpg",
+					"alt": "6"
+				}, {
+					"href": "app.login",
+					"src": "img/b12.jpg",
+					"alt": "7"
+				}, {
+					"href": "app.search",
+					"src": "img/b13.jpg",
+					"alt": "8"
+				}
+		]
+	},
+	{
+		"step": "3搜尋”YBUY”網站進入YBUY 網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊",
+		"description": "搜尋”YBUY”網站進入YBUY 網站搜尋想要的地方、房型、價格進入有興趣的房源頁面檢視房源資訊",
+		"images": [ 
+				{
+					"href": "app.regist",
+					"src": "img/b0.jpg",
+					"alt": "5"
+				}, {
+					"href": "app.login",
+					"src": "img/b10.jpg",
+					"alt": "6"
+				}, {
+					"href": "app.search",
+					"src": "img/b12.jpg",
+					"alt": "7"
+				}
+		]
+	}
 ]

@@ -1,29 +1,46 @@
+.details-page dl,
+.details-page dt,
+.details-page dd,
+.details-page ul,
+.details-page ol,
+.details-page li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 .details-page .lunbo {
  	display: block;
  }
- 
+
  .details-page .lunbo {
  	position: relative;
  	/*margin: 0 auto;*/
- 	left: -25px;
- 	top: 0;
+ 	width: 918px;
+ 	height: 354px;
+ 	left: 15px;
+ 	top: 10px;
+ 	overflow: hidden;
  }
- 
+
  .details-page .lunbo ul {
- 	/*position: absolute;*/
- }
- 
- .details-page .lunbo ul li {
- 	list-style-type: none;
  	position: absolute;
- }
- 
- .details-page .lunbo ul li a img {
- 	display: block;
  	width: 878px;
  	height: 354px;
  }
- 
+
+ .details-page .lunbo ul li {
+ 	list-style-type: none;
+ 	position: absolute;
+ 	width: 878px;
+ 	height: 354px;
+ }
+
+ .details-page .lunbo ul li a img {
+ 	display: inline-block;
+ 	width: 878px;
+ 	height: 354px;
+ }
+
  .details-page .lunbo ul.listContent {
  	position: absolute;
  	left: 500px;
@@ -31,7 +48,7 @@
  	width: 220px;
  	height: 25px;
  }
- 
+
  .details-page .lunbo ul.listContent li.list {
  	position: relative;
  	display: block;
@@ -44,18 +61,18 @@
  	line-height: 25px;
  	cursor: pointer;
  }
- 
+
  .details-page .active {
  	background: #161616;
  	color: #ffffff;
  }
 .details-page .hander-left,
 .details-page .hander-right {
-	
+
 	text-align: center;
 	position:absolute;
 	top: 50%;
-	margin-top: -20px;
+	margin-top: -26px;
 	width: 40px;
 	height: 80px;
 	background-color: gray;
@@ -66,7 +83,7 @@
 	left: 0;
 }
 .details-page .hander-right {
-	right: 0;
+	right: 40px;
 	}
 .details-page .hander-left a,
 .details-page .hander-right a {
@@ -78,7 +95,7 @@
 .details-page .cent {
  	margin: 0 auto;
  }
- 
+
 .details-page .w1001 {
  	width: 1002px;
  }
@@ -92,7 +109,7 @@
 	margin: 0 auto;
 	padding: 0px 30px 0 5px;
 }
-.details-page .content .list-wrap ul, 
+.details-page .content .list-wrap ul,
 .details-page .content .list-wrap li {
 	list-style: none;
 	padding: 0;
@@ -127,6 +144,9 @@
 	left: 8px;
 	line-height: 34px;
 	position: absolute;
+}
+.details-page .info-panel .rooms a:hover {
+	cursor: default;
 }
 .details-page .info-panel .rooms .icon1{
 	position: absolute;
@@ -178,6 +198,9 @@
 	top: 130px;
 	left: 10px;
 }
+.details-page .info-panel .address a:hover {
+	cursor: default;
+}
 .details-page .info-panel .address span {
 	line-height: 34px;
 	font: 100 15px/15px "microsoft yahei";
@@ -193,7 +216,9 @@
 	left: 10px;
 	top: 160px;
 }
-
+.details-page .info-panel .benefits a:hover {
+	cursor: default;
+}
 
 /*.details-page .info-panel .benefits .train {
 	position: absolute;
@@ -290,8 +315,120 @@
 	top: 30px;
 	left: 310px;
 }
-/*dream homes*/
+.details-page .info-panel .save span:hover{
+	color: #C81623;
+	cursor: pointer;
+}
+.details-page .info-panel .print{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 30px;
+	left: 230px;
+}
+.details-page .info-panel .print a:hover {
+	color: #C81623;
+}
 
+/*details description starts*/
+.details-page .introduction-wrapper {
+		margin-top: 15px;
+}
+.details-page .content-wrapper {
+    width: 880px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(13,3,9,0.2);
+    border-radius: 2px;
+}
+.details-page .introduction-wrapper .introduction {
+    width: 808px;
+    margin: 0 auto;
+    padding-top: 38px;
+    padding-bottom: 26px;
+    line-height: 1;
+}
+.details-page .introduction-wrapper .introduction .title {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 33px;
+}
+.details-page .introduction-wrapper .introduction .introContent {
+    text-align: justify;
+}
+.details-page .introduction-wrapper .introduction .introContent .base {
+    width: 702px;
+}
+.details-page .introduction-wrapper .introduction .introContent .base {
+    display: inline-block;
+    width: 808px;
+    vertical-align: top;
+}
+.details-page .introduction-wrapper .introduction .name {
+    font-size: 16px;
+    color: #222222;
+    font-weight: bold;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #222222;
+}
+.details-page .clear {
+    display: block;
+}
+.details-page .clear:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+}
+.details-page .introduction-wrapper .introduction .introContent .content {
+    margin-top: 10px;
+}
+.details-page .introduction-wrapper .introduction .introContent .content ul {
+    font-size: 0;
+}
+.details-page .introduction-wrapper .introduction .introContent .content ul li {
+    display: inline-block;
+    width: 50%;
+    line-height: 30px;
+    font-size: 14px;
+    color: #222222;
+}
+.details-page .introduction-wrapper .introduction .introContent .content ul li {
+    width: 50%;
+}
+.details-page .introduction-wrapper .introduction .introContent .content ul li .label {
+    color: #999999;
+    font-weight: 500;
+    font-size: 14px;
+    text-shadow: none;
+}
+.details-page .introduction-wrapper .introduction .feature {
+    margin-top: 34px;
+}
+.details-page .introduction-wrapper .introduction .feature .featureContent {
+    padding-top: 25px;
+    font-size: 14px;
+    line-height: 28px;
+    overflow: hidden;
+    max-height: 411px;
+}
+.details-page .introduction-wrapper .introduction .feature .featureContent span {
+    display: table-cell;
+}
+.details-page .introduction-wrapper .introduction .feature .featureContent .label {
+    width: 75px;
+    font-weight: bold;
+    color: #222222;
+}
+.details-page .introduction-wrapper .introduction .feature .featureContent .text {
+    color: #666666;
+}
+/*details description starts*/
+
+/*dream homes starts*/
 .details-page .dream-homes-main-title {
 	text-align: center;
 	font-weight: bold;
@@ -350,7 +487,7 @@
 	transition: left 0.5s;
 }*/
 .details-page .centered {
-	
+
 }
 .details-page .dreamhomesitemleft {
 	left: -341.25px;

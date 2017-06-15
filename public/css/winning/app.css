@@ -1,4 +1,4 @@
-/* 
+/*
 
 */
 
@@ -2334,7 +2334,7 @@ fieldset[disabled] .btn-black.active {
   border-width: 0 0 0 4px;
 }
 
-.tl-wrap:before,
+/*.tl-wrap:before,
 .tl-wrap:after {
   display: table;
   content: " ";
@@ -2363,7 +2363,7 @@ fieldset[disabled] .btn-black.active {
 .tl-wrap:hover:before {
   background: transparent;
   border-color: #fff;
-}
+}*/
 
 .tl-date {
   position: relative;

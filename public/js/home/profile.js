@@ -1,6 +1,6 @@
 ;(function(){
 	'use strict';
-	angular.module('profile',[])
+	angular.module('andy')
 		.factory('utilConvertDateToString', ['$filter', function ($filter) {  
 		    return {  
 		        getDateToString: function (date, format) {  
@@ -20,7 +20,7 @@
 			me.profiledata = {};
 			
 			alert("111");
-			me.propMgm() = function(){
+			me.propMgm = function(){
 					alert("111");
 					$http.get('/customer/maintenance')
 						.then(function(r){

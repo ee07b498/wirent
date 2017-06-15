@@ -1,42 +1,9 @@
 ;
 (function() {
 	'use strict';
-	angular.module('listpage', [])
-		.filter('propsFilter', function() {
-		    return function(items, props) {
-		        var out = [];
-		
-		        if (angular.isArray(items)) {
-		          items.forEach(function(item) {
-		            var itemMatches = false;
-		
-		            var keys = Object.keys(props);
-		            for (var i = 0; i < keys.length; i++) {
-		              var prop = keys[i];
-		              var text = props[prop].toLowerCase();
-		              if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
-		                itemMatches = true;
-		                break;
-		              }
-		            }
-		
-		            if (itemMatches) {
-		              out.push(item);
-		            }
-		          });
-		        } else {
-		          // Let the output be the input untouched
-		          out = items;
-		        }
-		
-		        return out;
-		    };
-		})
-		.controller('listPageCtrl', ['$scope', 
-			'$log','$timeout','$http','$state',
-			'$cookies','$rootScope','$localStorage',
-			'SearchService','updateService','utilConvertDateToString',
-			function($scope,$log,$timeout,
+	angular.module('andy')
+		.controller('listPageCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString',
+			function($scope,$animate,$log,$timeout,
 			$http,$state,$cookies,$rootScope,
 			$localStorage,SearchService,
 			updateService,utilConvertDateToString) {
@@ -44,6 +11,7 @@
 			var datafromhome = {};
 			$scope.totalItems = 64;
 		    $scope.currentPage = 4;
+		     $animate.enabled(false);//消除carousel bug
 		    var ER_Feature = [];
 		    $scope.setPage = function (pageNo) {
 		      $scope.currentPage = pageNo;
@@ -811,5 +779,81 @@
 //					alert("updated");
 				}
 				/********************************filter update code ends*****************************/
-	}])
+			
+			/************************filter orderby*******************************/
+			$scope.orderleft = false;
+			$scope.orderright = false;
+			$scope.sortBy = function(orderName){
+				if(orderName==='ER_Price'){
+					$scope.orderright = false;
+					$scope.orderleft = true;
+					$scope.sortPrice=!$scope.sortPrice;
+				}else if(orderName==='ER_AvailableDate'){
+					$scope.orderleft = false;
+					$scope.orderright = true;
+					$scope.sortDate=!$scope.sortDate;
+				}
+				
+				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
+    			$scope.orderName = orderName;
+//				$scope.orderName = order+'';
+			}
+			/************************filter orderby*******************************/
+			
+			/***********************add to shortlist************************************/
+			$scope.save2shortlist = function(){
+				$http.get('/customer/profile')
+				.then(function(r) {
+					console.log(r);
+					if(r.data.customer_login_status){
+						$scope.shortlistInsert.CID = $scope.detailsData.CID;
+						$scope.shortlistInsert.CLType="FavorSave";
+						$scope.shortlistInsert.CLDetail=$scope.detailsData.ER_ID+'';;
+						$scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+						console.log("shortlistInsert",$scope.shortlistInsert);
+						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
+								.then(function(r){
+									console.log('r',r);				
+								},function(e){
+									console.log("数据有误");
+								});
+					}else{
+						$state.go('app.login');
+					}
+				},function(e){
+						console.log("数据有误");
+					})
+			}
+			/**********************************************************************/
+			
+		}])
+		/*.filter('propsFilter', function() {
+		    return function(items, props) {
+		        var out = [];
+		        if (angular.isArray(items)) {
+		          items.forEach(function(item) {
+		            var itemMatches = false;
+		
+		            var keys = Object.keys(props);
+		            for (var i = 0; i < keys.length; i++) {
+		              var prop = keys[i];
+		              var text = props[prop].toLowerCase();
+		              if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+		                itemMatches = true;
+		                break;
+		              }
+		            }
+		
+		            if (itemMatches) {
+		              out.push(item);
+		            }
+		          });
+		        } else {
+		          // Let the output be the input untouched
+		          out = items;
+		        }
+		
+		        return out;
+		    };
+		})*/
 })();

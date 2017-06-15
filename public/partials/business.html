@@ -1,7 +1,7 @@
 <div class="business" ng-controller="businessCtrl">
 	<div class="wrapper">
 		<!--filter 模块-->
-		<div class="filter-box">
+	<!--	<div class="filter-box">
 			<div class="pd">
 				<div class="bd" id="filter-options">
 					<dl class="dl-lst clear"><dt><h3>区域：</h3></dt>
@@ -67,17 +67,19 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 		<div class="main-box clear">
 			<div class="con-box">
 				<div class="list-head clear" pan="">
-					<h2 style="font-size:14px;">共有<span>3811</span>个搬家公司</h2></div>
+					<h2 style="font-size:14px;"><i translate="business.counts.part_1"></i><span>[:serviceData.length:]</span><i translate="business.counts.part_2"></i>[:datafromhome:]<i translate="business.counts.part_3"></i></h2></div>
 				<div class="list-wrap">
 					<ul class="agent-lst">
-						<li class="hover_checked" ng-repeat="businessman in serviceData" ui-sref="app.businessDetails">
+						<li class="hover_checked" ng-repeat="businessman in serviceData">
+							<div><img ng-src="[:businessman.TPAds:]" style="width: 944px;height: 100px;"></div>
+							
 							<div class="pic-panel">
-								<a ng-show="!businessman.links"><img  ng-src="[:businessman.TPLogo:]"></a>
-								<a target="_blank" ng-show="businessman.links" href="http://[:businessman.TPLink:]"><img  ng-src="[:businessman.TPLogo:]"></a>
+								<a ng-show="!businessman.links"><img ng-src="[:businessman.TPLogo:]"></a>
+								<a target="_blank" ng-show="businessman.links" href="http://[:businessman.TPLink:]"><img ng-src="[:businessman.TPLogo:]"></a>
 							</div>
 							<div class="info-panel">
 								<div class="agent-name">
@@ -90,22 +92,27 @@
 									<span class="position">[:businessman.TPDetail:]</span>
 								</div>
 								<div class="col-1">
-									<div class="main-plate"><span class="mp-title">主营区域:&nbsp;&nbsp;</span><span><a href="">[:businessman.TPServLoc:]&nbsp;</a><a href="">Randwick</a>&nbsp;&nbsp;&nbsp;</span>
+									<div class="main-plate"><span class="mp-title"><a translate="business.row.location"></a>:&nbsp;&nbsp;</span><span><a href="">[:businessman.TPServLoc:]&nbsp;</a></span>
 									<div class="achievement">
-										<a  href=""><span>[:businessman.TPDescription:]</span>&nbsp;</a>
-									<div class="label"><span class="owner_trust_mark">顾客信赖</span><span class="good_comment_mark">客户热评</span><span class="good_saler_mark">评分最高</span><span class="top_guider_mark">专业服务</span></div>
+										<a  href=""><span>[:businessman.TPDescription:]</span>&nbsp;</a>					
+									</div>
+									</div>
 								</div>
 								<div class="col-2">
-									<div class="high-praise">综合评分<span class="num">5.0</span></div>
+									<h1 class="method" style="font: 700;border-bottom: 3px solid black;" translate="business.row.contact.title"></h1>	
+									<h2><a translate="business.row.contact.phone"></a>:&nbsp;</i>[:businessman.TPPhone:]</h2>
+									<h2><a translate="business.row.contact.email"></a>:&nbsp;</i>[:businessman.TPEmail:]</h2>
+									<h2><a translate="business.row.contact.website"></a>:&nbsp;<a href="http://[:businessman.TPLink:]">[:businessman.TPLink:]</a></h2>
+								</div>
+								
+								<div class="col-3">
+									<div class="high-praise"><a translate="business.row.score.General"></a><span class="num">5.0</span></div>
+									<div class="label"><span class="owner_trust_mark">顾客信赖</span><span class="good_comment_mark">客户热评</span><span class="good_saler_mark">评分最高</span><span class="top_guider_mark">专业服务</span></div>
 									<div class="comment-num">
 										<a target="_blank" href="#">评论161条</a>
 									</div>
 								</div>
-								<div class="col-3">
-									<h2>[:businessman.TPPhone:]</h2>
-									<p class="method">联系方式</p>
-									<p class="mobile_p"></p>
-								</div>
+
 								<div class="clear"></div>
 							</div>
 						</li>
@@ -139,13 +146,14 @@
 								<div class="clear"></div>
 							</div>
 						</li>
--->						<div class="page-box house-lst-page-box" comp-module="page" page-url="/jingjiren/pg{page}/" page-data="{&quot;totalPage&quot;:100,&quot;curPage&quot;:1}">
-							<a class="on" href="#" data-page="1">1</a>
-							<a href="#" data-page="2">2</a>
-							<a href="#" data-page="3">3</a><span>...</span>
-							<a href="#" data-page="100">100</a>
-							<a href="#" data-page="2">下一页</a>
-						</div>
+-->						
+						<!--<div class="page-box house-lst-page-box" comp-module="page" page-url="/jingjiren/pg{page}/" page-data="{&quot;totalPage&quot;:100,&quot;curPage&quot;:1}">
+							<a class="on" href="" data-page="1">1</a>
+							<a href="" data-page="2">2</a>
+							<a href="" data-page="3">3</a><span>...</span>
+							<a href="" data-page="100">100</a>
+							<a href="" data-page="2">下一页</a>
+						</div>-->
 					</ul>
 				</div>
 			</div>

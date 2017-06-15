@@ -1,8 +1,20 @@
 ;(function(){
 	'use strict';
-	 angular.module('lunbo',[])
-  		.controller('lunboController',['$scope','readJSON','mouseEvent' ,function ($scope,readJSON,mouseEvent) {
-
+	 angular.module('andy')
+  		.controller('lunboController',['$scope','$animate','readJSON','mouseEvent' ,function ($scope,$animate,readJSON,mouseEvent) {
+			$scope.active=0;
+		    $scope.myInterval = 5000;
+		    var slides = $scope.slides = [];
+		     $animate.enabled(false);
+		    $scope.addSlide = function() {
+		      slides.push({
+		        image: 'img/c' + slides.length + '.jpg',
+		        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
+		      });
+		    };
+		    for (var i=0; i<4; i++) {
+		      $scope.addSlide();
+		    }
 	 	}])
  		.factory('readJSON',['$http','$q', function ($http,$q) {
 		  return {
@@ -10,7 +22,7 @@
 		    var deferred=$q.defer();
 		    $http({
 		     method:'GET',
-		     url:'img.json'
+		     url:'newsimg.json'
 		    }).success(function (data, status, header, config) {
 		     deferred.resolve(data);
 		    }).error(function (data, status, header, config) {
@@ -46,7 +58,7 @@
  	.directive('lunbo',['readJSON','$timeout','mouseEvent' ,function (readJSON,$timeout,mouseEvent) {
 	  return{
 	   restrict:'EA',
-	   templateUrl:'/partials/mydirectives/directive-lunbo.html',
+	   templateUrl:'/partials/mydirectives/directive-newslunbo.html',
 	   css: 'css/winning/new.css',
 	   scope:{},
 	   link: function (scope, element, attr) {

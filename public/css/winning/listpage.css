@@ -13,7 +13,7 @@
 	color: gray;
 }
 .list-page .content {
-	/*width: 1000px;*/
+	/*/*width: 1000px;*/   /*there seems some problem here */
 	position: relative;
 	margin: 0 auto;
 	padding: 0px 30px 0 5px;
@@ -35,6 +35,8 @@
 	border: none;
 	background-color: white;
 	color: rgb(150, 65, 137)!important;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 }
 .list-page .features-filter a:focus,
 .list-page .features-filter a:hover,
@@ -42,6 +44,12 @@
 	background-color: rgb(150, 65, 137);
 	color: white!important;
 }
+/*.list-page .ranking_active {
+	background-color: rgb(150, 65, 137);
+	color: white!important; 
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	}*/
 .list-page .content .list-wrap ul, 
 .list-page .content .list-wrap li {
 	list-style: none;
@@ -168,6 +176,9 @@
 	line-height: 34px;
 	position: absolute;
 }
+.list-page .info-panel .rooms a:hover {
+	cursor:default;
+}
 .list-page .info-panel .rooms .icon1{
 	position: absolute;
 	top: 10px;
@@ -218,12 +229,17 @@
 	top: 120px;
 	left: 10px;
 }
-.list-page .info-panel .address span {
+.list-page .info-panel .address a {
 	line-height: 34px;
 	font: 100 15px/15px "microsoft yahei";
 	color: darkgrey;
 }
-
+.list-page .info-panel .address a:hover {
+	line-height: 34px;
+	font: 100 15px/15px "microsoft yahei";
+	color: #C81623;
+	/*text-decoration: underline;*/
+}
 
 
 .list-page .info-panel .benefits {
@@ -233,7 +249,9 @@
 	left: 10px;
 	top: 160px;
 }
-
+.list-page .info-panel .benefits a:hover {
+	 cursor:default;
+}
 
 /*.list-page .info-panel .benefits .train {
 	position: absolute;
@@ -290,7 +308,7 @@
 	width: 150px;
 	/*line-height: 50px;*/
 	height: 20;
-	left: 100px;
+	left: 120px;
 	top: 30px;
 	color: lightslategray;
 }
@@ -299,7 +317,7 @@
 	position: absolute;
 	font: 100 12px/15px "microsoft yahei";
 	/*margin-top: 4px;*/
-	width: 150px;
+	width: 160px;
 	/*line-height: 50px;*/
 	height: 20;
 	left: 60px;
@@ -311,24 +329,31 @@
 	height: 50px;
 	margin: 25px 65px 0 0;
 	position: absolute;
-	top: 80px;
-	left:600px;
+	top: 125px;
+	left:380px;
 }
 .list-page .info-panel .view .view-num {
 	display: block;
-	font: 300 15px/20px "microsoft yahei";
+	font: 400 16px/20px "microsoft yahei";
 	width: 100px;
 	height: 50;
 	/*left: 460px;*/
 	margin-top: 20px;
+	color: darkgrey;
+}
+.list-page .info-panel .view .view-num:hover {
 	color: #C81623;
+	cursor: pointer;
 }
 .list-page .info-panel .save{
 	width: 40px;
 	height: 40px;
 	position: absolute;
-	top: 120px;
+	top: 30px;
 	left: 380px;
+}
+.list-page .info-panel .save a:hover {
+	color: #C81623;
 }
 .list-page .pagination-bottom {
 	padding-left: 210px;

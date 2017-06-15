@@ -1,28 +1,48 @@
 <div class="banner-search" ng-controller="HomeController">
 	<div class="clear">
 		<div class="header" data-stellar-background-ratio="0.07">
-			<div class="wrapper">
+			<!--<div class="top-topics">
+					<ul>
+						<li class="tab selected" ng-click="clickEvent(0)" ><span>租房</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(1);openmodal('lg');" ><span>火车站</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(2)"><span>主题</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(3);tips!=tips" ><span>Tips</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(4)"><span>一步到位</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(5)"><span>找商家</span></li>
+						<a href="" class="js-buy-trigger buy-trigger">立即订阅</a>
+					</ul>
+					<i></i>
+				</div>
+-->
+			<div class="wrapper1">
 				<!--<div class="fl">
 					<a href="#" title="Winning Investment" class="logo" target="_self">WinningInvestment</a>
 					<span class="exchange"><i></i>Sydney</span>
 					</div>
 					<!--[if lte IE 8]><div class="old-browser-popup" id="old" >亲，您当前正在使用旧版本的IE浏览器，为了保证您的浏览体验，唯赢网建议您使用：<label class="chrome-borwser-ico"></label><a href="//rj.baidu.com/soft/detail/14744.html?ald" target="_blank">谷歌浏览器</a>&nbsp;或&nbsp;&nbsp;<label class="firefox-borwser-ico"></label><a href="//rj.baidu.com/soft/detail/11843.html?ald" target="_blank">火狐浏览器</a><span id="oldclose"></span></div><![endif]-->
 				<!--<div class="clear"></div>-->
-				<div class="header-wrap">
-					<div class="search-box-wrap" log-mod="search">
-						<div class="search-box-con">
+				<div class="header-wrap1">
+					<div class="search-box-wrap1 left-box" log-mod="search">
+						<div class="header-wrap1-title">
+							<h1>Share Rental</h1>
+						</div>
+						<div class="search-box-con1">
 							<script type="text/ng-template" id="myModalContent.html">
 								<div ng-include="'partials/tpl/modal.html'"></div>
 							</script>
-							<div animatesearch tips="tips" features="features" boxshow="boxshow">
-								<!--<div animatesearch tips="tips" openmodal = openmodal('lg')>-->
+							<div animatesearch1 tips1="tips1" features1="features1" boxshow1="boxshow1">
 							</div>
-							<div class="search">
-								<div class="box" ng-show="boxshow">
+							<div class="search1">
+								<div class="box1" ng-show="boxshow1">
 									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
-										<select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search>
+										<select-search1 datas1="datas1" get-data1="getData1(searchField1)" change1="change1(x1)" bind="searchField1" x1="x1"></select-search1>
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-										<button class="btn btn-lg btn-success" style="position: absolute; left: 605px;top: 0;" ng-click="entireSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="shareSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
@@ -34,192 +54,1355 @@
 									</div>
 									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
 								</div>
-								<div class="free-advs clear" ng-show="tips">
-									<ul>
-										<li>
-											<h2>Need a room?</h2>
-											<p>Place a free Room Wanted ad and make sure people with rooms can find you.</p>
-											<button class="btn-warning">Place a free advert</button>
-										</li>
-										<li>
-											<h2>Get a room to let?</h2>
-											<p>Place a free ad and rent your room in days find out more.</p>
-											<button class="btn-warning">Place a free advert</button>
-										</li>
-									</ul>
+								<!-- trainstation -->
+								<div class="trainstation" ng-show="tips1">
+									<div class="step-wrap openstyle" id="Step">
+											<ul class="clearfix">
+												<div class="sc-course-cart" >
+														<div class="sc-course-cart-wrap">
+															<div class="sc-cart-t" style="background-color: #fcb514;">
+																T1
+															</div>
+														</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Chatswood()" >
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Chatswood">
+															Chatswood
+														</div>
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Hornsby()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Hornsby">
+															Hornsby
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Epping()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Epping">
+															Epping
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_MQ_Uni()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _MQ_Uni">
+															MQ Uni
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Rodes()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Rodes">
+															Rhodes
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_All_T1()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _AllT1">
+															All
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+											</ul>
+											<ul class="clearfix">
+												<div class="sc-course-cart">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t" style="background-color: #26ae4e;">
+															T2
+														</div>
+
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Burwood()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Burwood">
+															Burwood
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Straithfield()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Straithfield">
+															Strathfield
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Greensquare()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Greensquare">
+															Greensquare
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Mascot()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Mascot">
+															Mascot
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Lidcome_T2()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Lidcome_T2">
+															Lidcome
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_All_T2()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _AllT2">
+															All
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+											</ul>
+											<ul class="clearfix">
+												<div class="sc-course-cart">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t" style="background-color: #f47424;">
+															T3
+														</div>
+
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Central_T3()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Central_T3">
+															Central
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Sydenham()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Sydenham">
+															Sydenham
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Campsie()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Campsie">
+															Campsie
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Bankstown()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Bankstown">
+															Bankstown
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Liverpool_T3()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Liverpool_T3">
+															Liverpool
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_All_T3()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _AllT3">
+															All
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+											</ul>
+											<ul class="clearfix">
+												<div class="sc-course-cart">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t" style="background-color: #0073c7;">
+															T4
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Central_T4()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Central_T4">
+															Central
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Redfern()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Redfern">
+															Redfern
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Wollicreek()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Wollicreek">
+															Wollicreek
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Rockdale()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Rockdale">
+															Rockdale
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_Hurstville()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _Hurstville">
+															Hurstville
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="_get_All_T4()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t _AllT4">
+															All
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+											</ul>
+											<ul class="clearfix">
+											<div class="sc-course-cart">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t" style="background-color: #cc00a1;">
+														T5
+													</div>
+
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Parramatta()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Parramatta">
+														Parramatta
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Westmead()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Westmead">
+														Westmead
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Blacktown()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Blacktown">
+														Blacktown
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Merrylands()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Merrylands">
+														Merrylands
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Liverpool_T5()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Liverpool_T5">
+														Liverpool
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_All_T5()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _AllT5">
+														All
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											</ul>
+										<ul class="clearfix">
+											<div class="sc-course-cart">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t" style="background-color: #336699;">
+														T6
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Clyde()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Clyde">
+														Clyde
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Rosehill()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Rosehill">
+														Rosehill
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Camellia()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Camellia">
+														Camellia
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Carlingford()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Carlingford">
+														Carlingford
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_All_T6()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _AllT6">
+														All
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+										</ul>
+										<ul class="clearfix">
+											<div class="sc-course-cart">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t" style="background-color: #999999;">
+														<span>T7</span>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Lidcome_T7()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Lidcome_T7">
+														Lidcombe
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_Olympic_Park()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _Olympic_Park" style="line-height: 15px;">
+														Olympic Park
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="_get_All_T7()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t _AllT7">
+														All
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+										</ul>
+									</div>
 								</div>
-								<div class="row m-l-xs m-r-xs" ng-if="features">
-									<div class="features-bcg clear">
-										<div class="col-xs-6">
-											<div class="row">
-												<div class="col-xs-4">
-													<ul class="list-unstyled l-h-2x">
-														<li>
-															<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
-															<!--<label for="featureproductrankRefineCb0"></label>-->
-															<span title="all_requirements" ng-click="col_requirements()">
-							                      		<i ng-show="all_requirements" style="color: purple;" class="flaticon-puzzle20"></i>
-							                      		<i ng-show="!all_requirements" class="flaticon-puzzle20"></i>
-							                      	</span>
-														</li>
-														<li>
-															<span title="no_smoking" ng-click="nosmoking()">
-							                      			<i ng-show="no_smoking" style="color: purple;" class="flaticon-no-smoking-sign18"></i>
-							                      			<i ng-show="!no_smoking" class="flaticon-no-smoking-sign18"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="no_pets" ng-click="nopets()">
-							                      			<i ng-show="no_pets" style="color: purple;" class="flaticon-no-dogs18"></i>
-							                      			<i ng-show="!no_pets" class="flaticon-no-dogs18"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="girl_only" ng-click="girlonly()">
-							                      			<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette18"></i>
-							                      			<i ng-show="!girl_only" class="flaticon-female-silhouette18"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="boy_only" ng-click="boyonly()">
-							                      			<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up18"></i>
-							                      			<i ng-show="!boy_only" class="flaticon-man-standing-up18"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="no_party" ng-click="noparty()">
-							                      			<i ng-show="no_party" style="color: purple;" class="flaticon-turn-microphone-off-button18"></i>
-							                      			<i ng-show="!no_party" class="flaticon-turn-microphone-off-button18"></i>
-							                      		</span>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-4">
-													<ul class="list-unstyled l-h-2x">
-														<li>
-															<span title="appliances" ng-click="col_appliances()">
-							                      		<i ng-show="appliances" style="color: purple;" class="flaticon-socket20"></i>
-							                      		<i ng-show="!appliances" class="flaticon-socket20"></i>
-							                      	</span>
-														</li>
-														<li>
-															<span title="stove" ng-click="stove_click()">
-							                      			<i ng-show="stove" style="color: purple;" class="flaticon-stove16"></i>
-							                      			<i ng-show="!stove" class="flaticon-stove16"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="dishwasher" ng-click="dishwasher_click()">
-							                      			<i ng-show="dishwasher" style="color: purple;" class="flaticon-dishwasher16"></i>
-							                      			<i ng-show="!dishwasher" class="flaticon-dishwasher16"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="dryer" ng-click="dryer_click()">
-							                      			<i ng-show="dryer" style="color: purple;" class="flaticon-tumble-dryer16"></i>
-							                      			<i ng-show="!dryer" class="flaticon-tumble-dryer16"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="aircondition" ng-click="aircondition_click()">
-							                      			<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit16"></i>
-							                      			<i ng-show="!aircondition" class="flaticon-minisplit16"></i>
-							                      		</span>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-4">
-													<ul class="list-unstyled l-h-2x">
-														<li>
-															<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
-															<!--<label for="featureproductrankRefineCb0"></label>-->
-															<span title="furniture" ng-click="col_furniture()">
-							                      		<i ng-show="furniture" style="color: purple;" class="flaticon-cabinet20"></i>
-							                      		<i ng-show="!furniture" class="flaticon-cabinet20"></i>
-							                      	</span>
-														</li>
-														<li>
-															<span title="bed" ng-click="bed_click()">
-							                      			<i ng-show="bed" style="color: purple;" class="flaticon-bed16"></i>
-							                      			<i ng-show="!bed" class="flaticon-bed16"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="desk" ng-click="desk_click()">
-							                      			<i ng-show="desk" style="color: purple;" class="flaticon-man-in-office-desk-with-computer16"></i>
-							                      			<i ng-show="!desk" class="flaticon-man-in-office-desk-with-computer16"></i>
-							                      		</span>
-														</li>
-														<li>
-															<span title="wardrob" ng-click="wardrob_click()">
-							                      			<i ng-show="wardrob" style="color: purple;" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
-							                      			<i ng-show="!wardrob" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
-							                      		</span>
-														</li>
-														<!--<li>
-							                      		<span><i class="flaticon-minisplit16"></i></span>
-							                      	</li>-->
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="col-xs-6">
-											<div class="row">
-												<div class="col-xs-4">
-													<ul class="list-unstyled l-h-2x">
-														<li>
-															<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
-															<!--<label for="featureproductrankRefineCb0"></label>-->
-															<span title="other_appliance" ng-click="col_other_appliance()">
-								                      		<i ng-show="other_appliance" style="color: purple;" class="flaticon-plug20"></i>
-								                      		<i ng-show="!other_appliance" class="flaticon-plug20"></i>
-								                      	</span>
-														</li>
-														<li>
-															<span title="refrigerator" ng-click="refrigerator_click()">
-								                      			<i ng-show="refrigerator" style="color: purple;" class="flaticon-fridge16"></i>
-								                      			<i ng-show="!refrigerator" class="flaticon-fridge16"></i>
-								                      		</span>
-														</li>
-														<li>
-															<span title="laundry" ng-click="laundry_click()">
-								                      			<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine16"></i>
-								                      			<i ng-show="!laundry" class="flaticon-washing-machine16"></i>
-								                      		</span>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-4">
-													<ul class="list-unstyled l-h-2x">
-														<li>
-															<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
-															<!--<label for="featureproductrankRefineCb0"></label>-->
-															<span title="other_essential" ng-click="col_other_essential()">
-									                      		<i ng-show="other_essential" style="color: purple;" class="flaticon-settings20"></i>
-									                      		<i ng-show="!other_essential" class="flaticon-settings20"></i>
-									                      	</span>
-														</li>
-														<li>
-															<span title="wifi" ng-click="wifi_click()">
-									                      			<i ng-show="wifi" style="color: purple;" class="flaticon-wifi16"></i>
-									                      			<i ng-show="!wifi" class="flaticon-wifi16"></i>
-									                      		</span>
-														</li>
-														<li>
-															<span title="gas" ng-click="gas_click()">
-									                      			<i ng-show="gas" style="color: purple;" class="flaticon-gas-level16"></i>
-									                      			<i ng-show="!gas" class="flaticon-gas-level16"></i>
-									                      		</span>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-4"></div>
-											</div>
-											<div style="margin-left: 190px; margin-top: 40px; text-align: center;">
-												<button class="btn-warning btn-lg" ng-click="features_Submit()">Submit</button>
-											</div>
+								<!-- trainstation end -->
+								<div class="bottom-filter-right" ng-show="!tips1">
+									<div class="filter-wrapper-right" ng-show="more_options_right_right">
+										<ul class="clearfix">
+											<li>
+												<span><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;minPrice</span>
+												<select ng-model="myMinPrice_Share" ng-options="minPrice_Share.price as minPrice_Share.price for minPrice_Share in Prices">
+
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;maxPrice</span>
+												<select ng-model="myMaxPrice_Share" ng-options="maxPrice_Share.price as maxPrice_Share.price for maxPrice_Share in Prices">
+
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-bed" aria-hidden="true"></i>&nbsp;minBed</span>
+												<select ng-model="minBedNum_Share" ng-options="minBed_Share.num as minBed_Share.num for minBed_Share in bedsNum">
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-bed" aria-hidden="true"></i>&nbsp;maxBed</span>
+												<select ng-model="maxBedNum_Share" ng-options="maxBed_Share.num as maxBed_Share.num for maxBed_Share in bedsNum">
+												</select>
+											</li>
+										</ul>
+										<ul class="clearfix">
+											<li>
+												<span><i class="fa fa-bath" aria-hidden="true"></i>&nbsp;minBath</span>
+												<select ng-model="minBathNum_Share" ng-options="minBath_Share.num as minBath_Share.num for minBath_Share in bathsNum">
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-bath" aria-hidden="true"></i>&nbsp;maxBath</span>
+											 <select ng-model="maxBathNum_Share" ng-options="maxBath_Share.num as maxBath_Share.num for maxBath_Share in bathsNum" >
+											 </select>
+											</li>
+											<li>
+												<span><i class="fa fa-car" aria-hidden="true"></i>&nbsp;minParking</span>
+												<select ng-model="minParkingNum_Share" ng-options="minParkingNum_Share.num as minParkingNum_Share.num for minParkingNum_Share in parkingsNum" >
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-car" aria-hidden="true"></i>&nbsp;maxParking</span>
+												<select ng-model="maxParkingNum_Share" ng-options="maxParkingNum_Share.num as maxParkingNum_Share.num for maxParkingNum_Share in parkingsNum" >
+												</select>
+											</li>
+										</ul>
+										 <div class="surrounding-suburbs-more-options">
+										      <input type="checkbox" value="None" id="roundedOne" name="check" checked />
+										      <label for="roundedOne">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surrounding&nbsp;&nbsp;Suburbs</label>
+									    </div>
+									</div>
+									<div class="more-options-right">
+										<a class="angle-icon" ng-click="more_options_right_right=!more_options_right_right">
+											more
+											<span>
+												<i ng-show="!more_options_right_right" class="fa fa-angle-down"></i>
+												<i ng-show="more_options_right_right" class="fa fa-angle-up"></i>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wrapper2">
+				<div class="header-wrap2">
+					<div class="search-box-wrap2 right-box" log-mod="search">
+						<div class="header-wrap2-title">
+							<h1>Entire Rental</h1>
+						</div>
+						<div class="search-box-con2">
+							<script type="text/ng-template" id="myModalContent.html">
+								<div ng-include="'partials/tpl/modal.html'"></div>
+							</script>
+							<div animatesearch tips="tips" features="features" boxshow="boxshow">
+							</div>
+							<div class="search2">
+								<div class="box2" ng-show="boxshow">
+									<div class="searchBox2" style="z-index: 10;" >
+										<select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search>
+										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="entireSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
+										<button class="btn home-ico ico-search left" id="findHouse" type="button">
+												Search
+												<a style="color:white;margin-left: 5px;"><i class="fa fa-lg fa-search"></i></a>
+										</button>-->
+										<div id="userNews" class="savesearch">
+
 										</div>
 									</div>
+									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
+								</div>
+								<div class="trainstation" ng-show="tips">
+									<!-- trainstation -->
+									<div class="step-wrap openstyle" id="Step">
+											<ul class="clearfix">
+												<div class="sc-course-cart" >
+														<div class="sc-course-cart-wrap">
+															<div class="sc-cart-t" style="background-color: #fcb514;">
+																T1
+															</div>
+														</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Chatswood()" >
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Chatswood">
+															Chatswood
+														</div>
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Hornsby()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Hornsby">
+															Hornsby
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Epping()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Epping">
+															Epping
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_MQ_Uni()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t MQ_Uni">
+															MQ Uni
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Rodes()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Rodes">
+															Rhodes
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_All_T1()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t AllT1">
+															All
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+											</ul>
+											<ul class="clearfix">
+												<div class="sc-course-cart">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t" style="background-color: #26ae4e;">
+															T2
+														</div>
+
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Burwood()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Burwood">
+															Burwood
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Straithfield()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Straithfield">
+															Strathfield
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Greensquare()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Greensquare">
+															Greensquare
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Mascot()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Mascot">
+															Mascot
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Lidcome_T2()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Lidcome_T2">
+															Lidcome
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_All_T2()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t AllT2">
+															All
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+											</ul>
+											<ul class="clearfix">
+												<div class="sc-course-cart">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t" style="background-color: #f47424;">
+															T3
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Central_T3()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Central_T3">
+															Central
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Sydenham()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Sydenham">
+															Sydenham
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Campsie()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Campsie">
+															Campsie
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Bankstown()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Bankstown">
+															Bankstown
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Liverpool_T3()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Liverpool_T3">
+															Liverpool
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_All_T3()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t AllT3">
+															All
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+											</ul>
+											<ul class="clearfix">
+												<div class="sc-course-cart">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t" style="background-color: #0073c7;">
+															T4
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Central_T4()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Central_T4">
+															Central
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Redfern()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Redfern">
+															Redfern
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Wollicreek()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Wollicreek">
+															Wollicreek
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Rockdale()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Rockdale">
+															Rockdale
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_Hurstville()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t Hurstville">
+															Hurstville
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+												<div class="sc-course-cart" ng-click="get_All_T4()">
+													<div class="sc-course-cart-wrap">
+														<div class="sc-cart-t AllT4">
+															All
+														</div>
+
+													</div>
+													<div class="sc-course-cart-axis">
+														<div class="relative">
+															<div class="axisx"></div>
+															<div class="axisy"></div>
+														</div>
+													</div>
+												</div>
+											</ul>
+											<ul class="clearfix">
+											<div class="sc-course-cart">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t" style="background-color: #cc00a1;">
+														T5
+													</div>
+
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Parramatta()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Parramatta">
+														Parramatta
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Westmead()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Westmead">
+														Westmead
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Blacktown()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Blacktown">
+														Blacktown
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Merrylands()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Merrylands">
+														Merrylands
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Liverpool_T5()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Liverpool_T5">
+														Liverpool
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_All_T5()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t AllT5">
+														All
+													</div>
+
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											</ul>
+										<ul class="clearfix">
+											<div class="sc-course-cart">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t" style="background-color: #336699;">
+														T6
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Clyde()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Clyde">
+														Clyde
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Rosehill()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Rosehill">
+														Rosehill
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Camellia()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Camellia">
+														Camellia
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Carlingford()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Carlingford">
+														Carlingford
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_All_T6()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t AllT6">
+														All
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+										</ul>
+										<ul class="clearfix">
+											<div class="sc-course-cart">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t" style="background-color: #999999;">
+														<span>T7</span>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Lidcome_T7()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Lidcome_T7">
+														Lidcombe
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_Olympic_Park()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t Olympic_Park" style="line-height: 15px;">
+														Olympic Park
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+											<div class="sc-course-cart" ng-click="get_All_T7()">
+												<div class="sc-course-cart-wrap">
+													<div class="sc-cart-t AllT7">
+														All
+													</div>
+												</div>
+												<div class="sc-course-cart-axis">
+													<div class="relative">
+														<div class="axisx"></div>
+														<div class="axisy"></div>
+													</div>
+												</div>
+											</div>
+										</ul>
+									</div>
+									<!-- trainstation end -->
+
+								</div>
+								<div class="bottom-filter-left" ng-show="!tips">
+									<div class="filter-wrapper-left" ng-show="more_options_right_left">
+										<ul class="clearfix">
+											<li>
+												<span><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;minPrice</span>
+												<select ng-model="myMinPrice" ng-options="minPrice.price as minPrice.price for minPrice in Prices">
+
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;maxPrice</span>
+												<select ng-model="myMaxPrice" ng-options="maxPrice.price as maxPrice.price for maxPrice in Prices">
+
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-bed" aria-hidden="true"></i>&nbsp;minBed</span>
+												<select ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-bed" aria-hidden="true"></i>&nbsp;maxBed</span>
+												<select ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
+					              </select>
+											</li>
+										</ul>
+										<ul class="clearfix">
+											<li>
+												<span><i class="fa fa-bath" aria-hidden="true"></i>&nbsp;minBath</span>
+												<select ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum">
+												</select>
+											</li>
+											<li>
+												<span><i class="fa fa-bath" aria-hidden="true"></i>&nbsp;maxBath</span>
+											 <select ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
+											 </select>
+											</li>
+											<li>
+												<span><i class="fa fa-car" aria-hidden="true"></i>&nbsp;minParking</span>
+												<select ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+								        </select>
+											</li>
+											<li>
+												<span><i class="fa fa-car" aria-hidden="true"></i>&nbsp;maxParking</span>
+												<select ng-model="maxParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+					 							</select>
+											</li>
+										</ul>
+										 <div class="surrounding-suburbs-more-options-left">
+										      <input type="checkbox" value="None" id="roundedOne_left" name="check" checked />
+										      <label for="roundedOne_left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surrounding&nbsp;&nbsp;Suburbs</label>
+									    </div>
+									 </div>
+									 <div class="more-options-right">
+										 <a class="angle-icon" ng-click="more_options_right_left=!more_options_right_left">
+											 more
+											 <span>
+												 <i ng-show="!more_options_right_left" class="fa fa-angle-down"></i>
+												 <i ng-show="more_options_right_left" class="fa fa-angle-up"></i>
+											 </span>
+										 </a>
+									 </div>
 								</div>
 
 							</div>
@@ -239,131 +1422,115 @@
 					<div class="top-cities clear">
 						<header class="latest-news-header">
 							<a class="latest-news-title-link">
-								<h1 class="latest-news-title h1">主题专区</h1></a>
+								<h1 class="latest-news-title h1"  translate="tips.descriptions.title">主题专区</h1></a>
 						</header>
 						<div class="pics pics1">
 							<div class="left1">
-								<div class="wh city-pic" ng-click="search('university')">
-									<a ng-click="search('university')" title="学生公寓">
-										<span class="flaticon-college-graduation"></span>
-
+								<div class="wh city-pic" ng-click="search('university')" >
+									<a ng-click="search('university')">
+										<a class="cover-img"></a>
+										<img src="../img/uni.jpg">
+										<span class="flaticon-college-graduation2" style="opacity: 1; color: lightblue;"></span>
 									</a>
-									<div class="holder">
+									<div class="holder1">
 										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('university')" title="学生公寓"><em>学生公寓</em></a>
-											<!--<a href="#" title="学生公寓"><span><strong>学生公寓</strong></span></a>
-										<a href="#" title="学生公寓"><span><strong>学生公寓</strong></span></a>-->
+										<p class="desTile1">
+											<span class="flaticon-college-graduation2" style="opacity: 1; color: chocolate;"></span>
+											<a class="city-title" rel="nofollow" ng-click="search('university')"><em translate='tips.descriptions.uni'></em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
-								<div class="w city-pic railroad" ng-click="search('train_station')">
-									<a ng-click="search('train_station')" title="火车站">
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">-->
+								<div class="w city-pic railroad" ng-click="search('train_station')" >
+									<a ng-click="search('train_station')">
+										<img src="img/station01Warm.jpg">
 										<i class="flaticon-train-on-railroad"></i>
 									</a>
-									<div class="holder">
-										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('train_station')" title="火车站"><em>火车站</em></a>
-											<!--<a href="#" title="北京二手房"><span><strong>长途搬家</strong></span></a>
-										<a href="#" title="搬家服务"><span><strong>短途搬家</strong></span></a>-->
+									<div class="holder1">
+										<p class="desTile1">
+											<i class="flaticon-train-on-railroad2" style="opacity: 1; color: orange;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('train_station')"><em translate='tips.descriptions.station'>火车站</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">搬家服务</h3>-->
 								</div>
 								<div class="wh city-pic graduation" ng-click="search('backpack')">
 									<a ng-click="search('backpack')" title="背包客">
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="水电网服务">-->
-										<i class="flaticon-backpack"></i>
+										<img src="../img/backpacker02Warm.jpg" alt="背包客">
 									</a>
-									<div class="holder">
+									<div class="holder1">
 										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="水电网服务"><em>背包客</em></a>
-											<!--<a href="#" title="水电网服务"><span><strong>水电网服务</strong></span></a>
-										<a href="#" title="水电网服务"><span><strong>电话预约</strong></span></a>-->
+										<p class="desTile1">
+											<i class="flaticon-backpack2" style="opacity: 1; color: greenyellow;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="背包客"><em translate='tips.descriptions.backpack'>背包客</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">水电网服务</h3>-->
 								</div>
-								<div class="wh city-pic park-city-space" ng-click="search('park')">
+								<div class="wh city-pic park-city-space" ng-click="search('park')" >
 									<a ng-click="search('park')" title="近公园绿地">
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="清洁服务">-->
+										<img src="../img/park01Warm.jpg" alt="近公园绿地">
 										<i class="flaticon-green-park-city-space"></i>
 									</a>
-									<div class="holder">
+									<div class="holder1">
 										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('park')" title="近公园绿地"><em>近公园绿地</em></a>
-											<!--<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
-										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>-->
+										<p class="desTile1">
+											<i class="flaticon-green-park-city-space2" style="opacity: 1; color: green;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('park')" title="近公园绿地"><em translate='tips.descriptions.park'>近公园绿地</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
-								<div class="wh city-pic open-book" ng-click="search('school')">
+								<div class="wh city-pic open-book" ng-click="search('school')" >
 									<a ng-click="search('school')" title="学区房">
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="代收包裹">-->
+										<img src="img/schoolzone02Warm.jpg" alt="学区房">
 										<i class="flaticon-open-book"></i>
 									</a>
-									<div class="holder">
+									<div class="holder1">
 										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('school')" title="学区房"><em>学区房</em></a>
-											<!--<a href="#" title="代收包裹"><span><strong>邮寄包裹</strong></span></a>
-										<a href="#" title="代收包裹"><span><strong>代收包裹</strong></span></a>-->
+										<p class="desTile1">
+											<i class="flaticon-open-book2" style="opacity: 1; color: yellow;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('school')" title="学区房"><em translate='tips.descriptions.school'>学区房</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">代收包裹</h3>-->
 								</div>
 							</div>
 							<div class="left1 clear">
-								<div class="wh city-pic flaticonpeople" ng-click="search('big_family')">
+								<div class="wh city-pic flaticonpeople" ng-click="search('big_family')" >
 									<a ng-click="search('big_family')" title="大家庭/大庭院">
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="清洁服务">-->
+										<img src="img/grand-front-yard-entranceWarm.jpg" alt="大家庭/大庭院">
 										<i class="flaticon-people"></i>
 									</a>
-									<div class="holder">
+									<div class="holder1">
 										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('big_family')" title="大家庭/大庭院"><em>大庭院</em></a>
-											<!--<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
-										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>-->
+										<p class="desTile1">
+											<i class="flaticon-people2" style="opacity: 1; color: pink;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('big_family')" title="大家庭/大庭院"><em translate='tips.descriptions.bigfamily'>大庭院</em></a>
 										</p>
 									</div>
 									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
-								<div class="wh city-pic shoppingcart" ng-click="search('shopping_mall')">
+								<div class="wh city-pic shoppingcart" ng-click="search('shopping_mall')" >
 									<a ng-click="search('shopping_mall')" title="购物商场">
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="房屋装修">-->
+										<img src="img/Westfield_shopping_centre02Warm.jpg" alt="购物商场">
 										<i class="flaticon-shopping-cart"></i>
 									</a>
-									<div class="holder">
+									<div class="holder1">
 										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('shopping_mall')" title="购物商场"><em>购物商场</em></a>
-											<!--<a href="#" title="房屋装修"><span><strong>房屋翻新</strong></span></a>
-										<a href="#" title="房屋装修"><span><strong>局部装修</strong></span></a>-->
+										<p class="desTile1">
+												<i class="flaticon-shopping-cart2" style="opacity: 1; color: darkred;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('shopping_mall')" title="购物商场"><em translate='tips.descriptions.shop'>购物商场</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">房屋装修</h3>-->
 								</div>
-								<div class="right1 city-pic business-rental" ng-click="search('offical_rental')">
+								<div class="right1 city-pic business-rental" ng-click="search('offical_rental')" >
 									<a ng-click="search('offical_rental')" title="Office Rental">
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="开锁&配钥匙服务">-->
+										<img src="/img/officerental02Warm.jpg" alt="Office Rental">
 										<i class="flaticon-business"></i>
 									</a>
-									<div class="holder">
+									<div class="holder1">
 										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('offical_rental')" title="Office Rental"><em>Office Rental</em></a>
-											<!--<a href="#" title="开锁&配钥匙服务"><span><strong>其他</strong></span></a>
-										<a href="#" title="开锁&配钥匙服务"><span><strong>其他</strong></span></a>-->
+										<p class="desTile1">
+											<i class="flaticon-business2" style="opacity: 1; color: blue;"></i>
+											<a class="city-title" rel="nofollow" ng-click="search('offical_rental')" title="Office Rental"><em translate='tips.descriptions.office'>Office Rental</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">Cut Keys</h3>-->
 								</div>
 							</div>
 						</div>
@@ -378,7 +1545,7 @@
 						<div class="top-cities clear">
 							<header class="latest-news-header">
 								<a class="latest-news-title-link">
-									<h1 class="latest-news-title h1">商家专区</h1></a>
+									<h1 class="latest-news-title h1" translate='tips.business.title'>商家专区</h1></a>
 							</header>
 							<div class="pics clear">
 								<div class="left">
@@ -390,9 +1557,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" title="搬家服务"><em>搬家服务</em></a>
-												<a ng-click="businessSearch('move')" title="北京二手房"><span><strong>长途搬家</strong></span></a>
-												<a ng-click="businessSearch('move')" title="搬家服务"><span><strong>短途搬家</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" title="搬家服务"><em translate='tips.business.move.title'>搬家服务</em></a>
+												<a ng-click="businessSearch('move')" title="北京二手房"><span><strong translate='tips.business.move.tip_1'>长途搬家</strong></span></a>
+												<a ng-click="businessSearch('move')" title="搬家服务"><span><strong translate='tips.business.move.tip_2'>短途搬家</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">搬家服务</h3>-->
@@ -405,9 +1572,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')" title="房屋装修"><em>painting</em></a>
-												<a ng-click="businessSearch('painting')" title="painting"><span><strong>房屋粉刷</strong></span></a>
-												<a ng-click="businessSearch('painting')" title="painting"><span><strong>局部装修</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')" title="房屋装修"><em translate='tips.business.painting.title'>painting</em></a>
+												<a ng-click="businessSearch('painting')" title="painting"><span><strong translate='tips.business.painting.tip_1'>房屋粉刷</strong></span></a>
+												<a ng-click="businessSearch('painting')" title="painting"><span><strong translate='tips.business.painting.tip_2'>局部装修</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">painting</h3>-->
@@ -420,9 +1587,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')" title="上海站"><em>仓储</em></a>
-												<a ng-click="businessSearch('storage')" title="仓储"><span><strong>仓储</strong></span></a>
-												<a ng-click="businessSearch('storage')" title="仓储"><span><strong>仓储</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')" title="上海站"><em translate='tips.business.store.title'>仓储</em></a>
+												<a ng-click="businessSearch('storage')" title="仓储"><span><strong translate='tips.business.store.tip_1'>仓储</strong></span></a>
+												<a ng-click="businessSearch('storage')" title="仓储"><span><strong translate='tips.business.store.tip_2'>仓储</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">仓储</h3>-->
@@ -435,9 +1602,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')" title="Handyman"><em>Handyman</em></a>
-												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong>pulumber</strong></span></a>
-												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong>水工</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')" title="Handyman"><em translate='tips.business.handyman.title'>Handyman</em></a>
+												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong translate='tips.business.handyman.tip_1'>pulumber</strong></span></a>
+												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong translate='tips.business.handyman.tip_2'> 水工</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">Handyman</h3>-->
@@ -450,9 +1617,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')" title="清洁服务"><em>清洁服务</em></a>
-												<a ng-click="businessSearch('clean')" title="天津二手房"><span><strong>上门服务</strong></span></a>
-												<a ng-click="businessSearch('clean')" title="清洁服务"><span><strong>电话预约</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')" title="清洁服务"><em translate='tips.business.clean.title'>清洁服务</em></a>
+												<a ng-click="businessSearch('clean')" title="天津二手房"><span><strong translate='tips.business.clean.tip_1'>上门服务</strong></span></a>
+												<a ng-click="businessSearch('clean')" title="清洁服务"><span><strong translate='tips.business.clean.tip_2'>电话预约</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">清洁服务</h3>-->
@@ -465,9 +1632,9 @@
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')" title="家电"><em>家电</em></a>
-											<a ng-click="businessSearch('appliance')" title="家电"><span><strong>家电</strong></span></a>
-											<a ng-click="businessSearch('appliance')" title="家电"><span><strong>电话预约</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')" title="家电"><em translate='tips.business.app.title'>家电</em></a>
+											<a ng-click="businessSearch('appliance')" title="家电"><span><strong translate='tips.business.app.tip_1'>家电</strong></span></a>
+											<a ng-click="businessSearch('appliance')" title="家电"><span><strong translate='tips.business.app.tip_2'> 电话预约</strong></span></a>
 										</p>
 									</div>
 									<!--<h3 class="title">家电</h3>-->
@@ -481,9 +1648,9 @@
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')" title="代收包裹"><em>外卖</em></a>
-											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong>外卖</strong></span></a>
-											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong>外卖</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')" title="代收包裹"><em translate='tips.business.food.title'>外卖</em></a>
+											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong translate='tips.business.food.tip_1'>外卖</strong></span></a>
+											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong translate='tips.business.food.tip_2'>外卖</strong></span></a>
 										</p>
 									</div>
 									<!--<h3 class="title">外卖</h3>-->
@@ -496,9 +1663,9 @@
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')" title="freepost"><em>freepost</em></a>
-											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong>freepost</strong></span></a>
-											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong>freepost</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')" title="freepost"><em translate='tips.business.post.title'>freepost</em></a>
+											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong translate='tips.business.post.tip_1'>freepost</strong></span></a>
+											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong translate='tips.business.post.tip_2'>freepost</strong></span></a>
 										</p>
 									</div>
 									<!--<h3 class="title">freepost</h3>-->

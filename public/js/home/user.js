@@ -1,6 +1,6 @@
 ﻿;(function(){
 	'use strict';
-	angular.module('user',['andy'])
+	angular.module('andy')
 			.service('UserService',['$state','$http','$window',
 			function ($state,$http,$window){
 				var me = this;

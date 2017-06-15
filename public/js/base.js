@@ -30,10 +30,6 @@
 					url:'/login',
 					templateUrl:'/tpl/page/login'
 				})
-				.state('question.detail',{
-					url:'/detail/:id',
-					templateUrl:'tpl/page/question_detail'
-				})
 				.state('profile',{
 					url:'/profile',
 					templateUrl:'tpl/page/profile'

@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="/css/winning/search-option.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/profile.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/infowindow.css" type="text/css" />
-	<!--<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />-->
+	<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/shortlist.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/login.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/listpage.css" type="text/css"/>
@@ -26,8 +26,9 @@
 	<link rel="stylesheet" href="/css/winning/guide.css" type="text/css"/>
 	<link rel="stylesheet" href="/font/flaticon.css" />
 	<link rel="stylesheet" href="/css/winning/newsDetail.css" type="text/css"/>
-	</head>
-<body>
+	<link rel="stylesheet" href="/css/winning/fixright.css" type="text/css"/>
+</head>
+<body ng-controller="MainCtrl">
 
 	<div style="height: 100%;" ui-view></div>
 	 <!-- jQuery -->
@@ -39,9 +40,9 @@
 	<script src="vendor/angular/angular-css.min.js"></script>
 	<script src="vendor/angular/angular-sanitize/angular-sanitize.js"></script>
 	<script src="vendor/angular/angular-translate/angular-translate.js"></script>
-    <script src="vendor/angular/angular-translate/loader-static-files.js"></script>
-    <script src="vendor/angular/angular-translate/storage-cookie.js"></script>
-    <script src="vendor/angular/angular-translate/storage-local.js"></script>
+  <script src="vendor/angular/angular-translate/loader-static-files.js"></script>
+  <script src="vendor/angular/angular-translate/storage-cookie.js"></script>
+  <script src="vendor/angular/angular-translate/storage-local.js"></script>
 	<script src="/node_modules/bootstrap.min.js"></script>
 	<script src="/node_modules/jquery.slimscroll.min.js"></script>
 	<script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -59,6 +60,8 @@
 	<script src="/js/home/map/load-google-maps.js"></script>
 	<script src="/js/home/result.js"></script>
 	<script src="/js/home/base.js"></script>
+	<script src="/js/home/config.js"></script>
+	<script src="/js/home/main.js"></script>
 	<script src="/js/home/base.lazyload.js"></script>
 	<script src="/js/home/user.js"></script>
 	<script src="/js/home/header.js"></script>
@@ -71,7 +74,8 @@
 	<script src="/js/home/new.js"></script>
 	<script src="/js/home/trainmap.js"></script>
 	<script src="/js/home/business.js"></script>
-	
+	<script src="/js/home/documentation.js"></script>
+	<script src="/js/home/rightfix.js"></script>
 </body>
-	
+
 </html>

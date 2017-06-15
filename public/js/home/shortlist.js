@@ -1,19 +1,8 @@
 ;(function(){
 	'use strict';
-	angular.module('shortlist',[])
-		.controller('shortlistCtrl',['$scope','$http',function($scope,$http){
-//			alert("shortlist");
-			$scope.shortlistData = {};
-			$scope.shortlistDelete={};
-			$scope.shortlistData.CID = 0;
-			$scope.shortlistData.CLType='FavorSave';
-			$http.post('/customer/shortlist',$scope.shortlistData)
-						.then(function(r){
-							$scope.shortlistData = r.data;
-//							console.log("$scope.shortlistData",$scope.shortlistData);
-						},function(e){
-							
-						});
+	angular.module('andy')
+		.controller('shortlistCtrl',['$scope','$http','SearchService',function($scope,$http,SearchService){
+			$scope.shortlistData=SearchService.get();
 			$scope.remove = function(key){
 				alert("remove");
 				$scope.shortlistDelete.CID = 0;

@@ -21,10 +21,6 @@ $app->get('/admin',function () {
 	return view('admin');	
 });
 
-$app->get('/upload',function () {
-	return view('upload');	
-});
-
 /*
  *  view group:customer|landlord|thirdparty|staff
  */
@@ -39,6 +35,9 @@ $app->group(['prefix' => '/tpl/page'], function () use ($app){
 		return view('page.signup');	
 	});
 	$app->get('/adminlogin',function () {
+		return view('page.login');	
+	});
+	$app->get('/login',function () {
 		return view('page.login');	
 	});
 	$app->get('/result',function () {
@@ -103,9 +102,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 		$app->get('/confirm',		['middleware' => 'cus','uses'=>'CustomerController@msg_confirm']);	
 		$app->post('/received',		['middleware' => 'cus','uses'=>'CustomerController@msg_received']);	//msg_receive is php function
 		$app->post('/write',			['middleware' => 'cus','uses'=>'CustomerController@msg_write']);
-	});	
-	
-	$app->get('/upload', 		'UploadDownloadController@upload');			
+	});			
 });
 //landlord entrance 
 $app->group(['prefix' => 'landlord'], function () use ($app){
