@@ -1,5 +1,6 @@
 {
-	"header": {
+	"header": 
+	{
 			"HOME": "首頁",
 			"RENT"	:"租房",
 			"BUY"	:"買房",
@@ -26,30 +27,37 @@
 				"Twitter":"Twitter",
 				"Instagram":"Instagram"
 			},									
-			"LOGIN": {
+			"LOGIN": 
+			{
 				"Login":"登錄",
 				"Login_enquiry":"還沒賬戶?",    
 				"Logout":"注銷",
 				"Profile":"個人管理"
 			},
-			"REGIST": {
+			"REGIST": 
+			{
 				"Regist":"注冊",
 				"Regist_enquiry":"已經注冊過"
 			}
 	},
-	"profile":{
+	"profile":
+	{
 		"TITLE":"我的賬戶",
-		"UPDATE":{
-			"Success":{
+		"UPDATE":
+		{
+			"Success":
+			{
 				"header":"更新 已完成",
 				"details":"更新 已上傳至服務器."
 			},
-			"Error":{
+			"Error":
+			{
 				"header":"更新失敗",
 				"details":"服務器拒絕更新，請檢查您的網絡連接後電話或郵件聯繫我們."
 			}
 		},		
-		"SECTION":{
+		"SECTION":
+		{
 			"Profile":
 			{
 				"header":"個人資料",
@@ -218,7 +226,7 @@
 			}
 		}
 	},
-		"listpage":
+	"listpage":
 	{
 		"title":"列表",
 		"filter":
@@ -296,168 +304,260 @@
 	},
 	"search":
 	{
-		"title":"Search"
+		"title":"搜尋",
+		"er":"整租",
+		"sr":"分租",
+		"address":"地址",
+		"address_tips":"按區，州，郵編搜尋",
+		"train": "火車站",
+		"train_tips":"下方選取臨近火車站",
+		"surround":"包含臨區",
+		"more":"更多",
+		"less":"收起"
 	},
+	"hotrent":"推荐房源",
+	"footer":
+	{
+		"title":"Footer",
+		"director":
+		{
+			"about":"關于我們",
+			"contact":"聯係我們",
+			"business":"商家入駐"
+		},
+		"office":
+		{
+			"tw_addr":"11071臺北市信義區忠孝東路四段560號13樓"
+		}
+	},	
 	"tips":
 	{
 		"title":"Tips",
 		"guide":
 		{
-			"tenant":"Need a room?",
-			"landlord":"Need rents?"
+			"tenant":"找房?",
+			"landlord":"招租?"
 		},
 		"descriptions":
 		{
-			"title":"Themes",
-			"station":"Train_station",
-			"uni":"Uni Nearby",
-			"backpack":"Backpack",
-			"park":"Park Nearby",
-			"school":"School Zone",
-			"bigfamily":"Big Family Capatible",
-			"shop":"Shopping Mall Nearby",
-			"office":"Office Rental"
+			"title":"主題專區",
+			"station":"近火車站",
+			"uni":"近大學",
+			"backpack":"背包客",
+			"park":"近公園",
+			"school":"學區房",
+			"bigfamily":"大戶型|大庭院",
+			"shop":"近商場",
+			"office":"辦公租賃"
 		},
 		"business":
 		{
-			"title":"Business",
+			"title":"商務專區",
 			"move":
 			{
-				"title":"Move",
-				"tip_1":"Surrond Area",
-				"tip_2":"Long Distance"
+				"title":"搬家",
+				"tip_1":"短途搬家",
+				"tip_2":"長途搬家"
 			},
 			"painting":
 			{
-				"title":"Painting",
-				"tip_1":"Entire Area",
-				"tip_2":"Partial Area"
+				"title":"粉刷",
+				"tip_1":"整體粉刷",
+				"tip_2":"局部粉刷"
 			},
 			"store":
 			{
-				"title":"Storage",
-				"tip_1":"Luggage",
-				"tip_2":"Container"
+				"title":"倉儲",
+				"tip_1":"行李寄存",
+				"tip_2":"大件集裝"
 			},	
 			"handyman":
 			{
-				"title":"Handyman",
-				"tip_1":"Repair",
-				"tip_2":"Maintenance"
+				"title":"維修工",
+				"tip_1":"配件",
+				"tip_2":"維修"
 			},	
 			"clean":
 			{
-				"title":"Cleaning",
-				"tip_1":"Short term",
-				"tip_2":"Long term"
+				"title":"清潔",
+				"tip_1":"臨時預約",
+				"tip_2":"長期合作"
 			},	
 			"app":
 			{
-				"title":"Appliance",
-				"tip_1":"Brands",
-				"tip_2":"Dealer"
+				"title":"家電",
+				"tip_1":"品牌直銷",
+				"tip_2":"實體零售"
 			},	
 			"food":
 			{
-				"title":"Take Away",
-				"tip_1":"Restaurant",
-				"tip_2":"Cafe"
+				"title":"外賣",
+				"tip_1":"酒店餐館",
+				"tip_2":"飲品快餐"
 			},
 			"post":
 			{
-				"title":"Free Post",
-				"tip_1":"New",
-				"tip_2":"Resale"
+				"title":"會員交流",
+				"tip_1":"新品",
+				"tip_2":"轉售"
 			}
 		}
 	},
 	"detail":
 	{
-		"title":"Detail"
+		"title":"詳情",
+		"table":
+		{
+			"title":"房源介紹",
+			"basic":"基本信息",
+			"feature":
+			{
+				"title":"綜合列表",
+				"facility":"設備",
+				"transport":
+				{
+					"title":"公共交通",
+					"train":"火車站",
+					"bus":"巴士站",
+					"ferry":"渡輪碼頭",
+					"light":"輕軌站"
+				},
+				"furniture":
+				{
+					"title":"家具家電",
+					"room":"臥室",
+					"kitchen":"厨房",
+					"laundry":"洗衣房",
+					"living":"客廳餐廳"
+				},
+				"retails":"商店",
+				"schools":"學校"
+			},
+			"description":"詳細描述",
+			"requirements":
+			{
+				"title":"房客要求",
+				"smoke":"禁止吸烟",
+				"pet":"禁養寵物",
+				"girl":"限女生",
+				"boy":"限男生"
+			},
+			"tips":
+			{
+				"title":"房源提供設施",
+				"kitchen":"全灶具厨房",
+				"coffee":"咖啡吧台",
+				"aircondition":"空調",
+				"media":"工作台",
+				"fridge":"冰箱",
+				"laundry":"洗衣機"
+			},
+			"others":"備注"
+		}
 	},
 	"business":
 	{
-		"title":"Business",
+		"title":"商務",
 		"counts":
 		{
-			"part_1":"total",
-			"part_2":" ",
-			"part_3":"company"
+			"part_1":"共",
+			"part_2":"個",
+			"part_3":"單位"
 		},
 		"row":
 		{
-			"location":"Service Locations",
+			"location":"服務區域",
 			"contact":
 			{
-				"title":"Contact",
-				"phone":"Phone",
+				"title":"聯絡方式",
+				"phone":"電話",
 				"email":"email",
-				"website":"website"
+				"website":"網址鏈接"
 			},
 			"score":
 			{
-				"General":"General",
-				"Quality":"Quality",
-				"Attitude":"Attitude",
-				"Efficency":"Efficency",
-				"Recommond":"Recommond"
+				"General":"綜合分",
+				"Quality":"服務質量",
+				"Attitude":"服務態度",
+				"Efficency":"服務效率",
+				"Recommond":"會員推薦"
 			},
-			"comments":"Comments"
+			"comments":"評價留言"
 		}
 	},
 	"onestep":
 	{
 		"tenant":
 		{
-			"title":"Customer Guide",
+			"title":"租客向導",
 			"section_1":
 			{
 				"title":"Section_1",
-				"step_1":"Find 'YBUY.com.au' on your browser.",
-				"step_2":"Filter in different methods and find the properties attract you.",
-				"step_3":"Click the address or 'details' to see its details.",
-				"tips":"sign up as our member can let you save your interest properties and compare them in your shortlist ♥"
+				"step_1":"登陸'YBUY.com.au'.",
+				"step_2":"選擇查詢條件挑選所需房源.",
+				"step_3":"點擊房源地址或 '詳情'來查看細節.",
+				"tips":"註冊會員可於收藏後在右上[♥]處點擊進入收藏列表進行比較"
 			},
 			"section_2":
 			{
 				"title":"Section_2",
-				"step_1":"You can contact us through any method you can find on this website.",
-				"option_1":"Email us via the footer's email address or use the header link 'Contact' to leave your message to us",
-				"option_2":"Send message through the detail page's agent 'Message' or Call us via number in 'Call'",
-				"tips":"As a member, you can chat online directly through your tiny 'manager'"
+				"step_1":"您可通過網站內找到的任何联系方式聯繫我們.",
+				"option_1":"您可通過網站底部我們的email地址直接聯繫我們或通過頂部'聯繫我們'向我們發送站內信",
+				"option_2":"也可以點擊中介'電話'找到我們中介的電話號碼",
+				"tips":"會員可使用小管家線上聯繫哦♥"
 			},
 			"section_3":
 			{
 				"title":"Section_3",
-				"step_1":"Our staff will contact with you to enquiry your further requirements and book inspections for you.",
-				"tips":"sign up as our member can let you upload your personal profiles through our website and remote inspect via 'Wechat'|'Skype'|'Line'... with our staff on site. Then......jump to Section_5!"
+				"step_1":"我們的員工會稍後聯繫您進一步了解您的具體要求並為您預約看房時間",
+				"tips":"會員可以先行上傳個人資料並通過[微信]|[Skype]|[Line]等視頻工具遠程看房，簽合同，交錢拿鑰匙!"
 			},
 			"section_4":
 			{
 				"title":"Section_4",
-				"step_1":"Send your personal files to agent when your decide to take it.",
-				"including":"Files required for rent:1.ID     2.Income proof    3.Saving proof",				
-				"tips":"you can still upload files through 'Profile' when you sign up."
+				"step_1":"在您決定承租後請向我們的員工提交您的個人資料.",
+				"including":"所需資料包括:1.身份證明 2.收入證明 3.存款證明",				
+				"tips":"您仍然可以在註冊後通過[個人資料]上傳您的個人資料."
 			},
 			"section_5":
 			{
 				"title":"Section_5",
-				"step_1":"Agent will contact you to sign the contract after checking your files.",
-				"step_2":"Sign the contract and get the keys.",
-				"tips":"If you are still not sign up now, agent will auto generate one for you. Then you can manage your applications and bills online. You can also order services online in the next version."
+				"step_1":"核查完您的資料後中介會聯繫您預約簽約.",
+				"step_2":"簽約拿鑰匙🔑",
+				"tips":"若您此時仍未註冊，系統將在您簽約後自動為您生成內部用賬戶，您也可以向員工索要用以線上管理您的租房後續事務。下次網站版本更新時會添加線上多種便捷服務申請功能"
 			}			
 		},
 		"landlord":
 		{
-			"title":"Customer Guide",
+			"title":"業主嚮導",
 			"section_1":
 			{
 				"title":"Section_1",
-				"step_1":"Sign up as a landlord and update your basic personal information in 'Profile|my Profile'",
-				"step_2":"add your rental property in 'Profile|Property Management'",
-				"tips":"You can contact us to introduce all your and your properties' information for rental requirement on business hours directly."				
-			}
-			
+				"step_1":"註冊業主上傳更新 '個人資料|我的資料'",
+				"step_2":"在'個人資料|房產管理'添加房源信息",
+				"tips":"您可以在工作時間直接電話聯繫我們的員工告知我們所有信息."				
+			},
+			"section_2":
+			{
+				"title":"Section_2: Strategy and Benifits",
+				"step_1":"Our staff will contact you within 24 hours, and book the first inspection.",
+				"step_2":"Our staff will customize strategy to promote your property. We also match proper benefits with your property depending on the current benefits we provided.",
+				"tips":"You can preview the current benefits for landlord in 'Profile|Property details'."				
+			},
+			"section_3":
+			{
+				"title":"Section_3: Contracts and Inspection",
+				"step_1":"After the on-site negotiation with our staff, you may sign the trust agreement with agent.",
+				"step_2":"We may start inspection and make promotion immediately or book a later arrangement for you",
+				"tips":"You can preview your 'To be released' status property online and share your ideas with us."				
+			},	
+			"section_4":
+			{
+				"title":"Section_4: Monthly Management",
+				"step_1":"Now you will start to receive our monthly balance reports and transfer receipts via email.",
+				"step_2":"You can also manage your property online through your 'Profile'",
+				"tips":"All details will be shown in your 'Profile' and we may help you to analysis your investment in next versions functional update."				
+			}			
 		}
 	},
 	"conditions of use":

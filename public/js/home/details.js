@@ -2,11 +2,280 @@
 (function() {
 	'use strict';
 	angular.module('andy')
+	.controller('detailsController',function ($anchorScroll,$animate,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
+		var datapackage = {};
+		$scope.detailsData = {};
+		$scope.shortlistInsert = {};
+		$scope.no_smoking=false;
+		$scope.no_pets=false;
+		$scope.girl_only=false;
+		$scope.boy_only=false;
+		$scope.stove=false;
+		$scope.dishwasher=false;
+		$scope.aircondition=false;
+		$scope.bed=false;
+		$scope.desk=false;
+		$scope.wardrob=false;
+		$scope.refrigerator=false;
+		$scope.laundry=false;
+		$scope.wifi=false;
+		var ER_Feature = [];
+		$(window).scrollTop(0,0);//回到顶部
+		$animate.enabled(false);//消除carousel bug
+		if(JSON.stringify(SearchService.get()) != "{}"){
+		 	$localStorage.settings = SearchService.get().data;
+		 	console.log('$localStorage.settings',$localStorage.settings);
+		 	datapackage = $localStorage.settings;
+			console.log('datapackage',datapackage);
+
+		 }else{
+		 	datapackage = $localStorage.settings;
+		 	console.log('$localStorage.settings',$localStorage.settings);
+		 }
+//		 $scope.datapackage = datapackage;
+		 console.log("=====datapackage=====",datapackage);
+		 console.log($stateParams.id +"<======>"+$stateParams.name);
+		 	/*$scope.shortlistData = {};
+			$scope.shortlistDelete={};
+			$scope.shortlistData.CID = 0;
+			$scope.shortlistData.CLType='FavorSave';
+			$http.post('/customer/shortlist',$scope.shortlistData)
+						.then(function(r){
+							$scope.shortlistData = r.data;
+							//console.log("$scope.shortlistData",$scope.shortlistData);
+						},function(e){
+
+						});*/
+		if (typeof($scope.datapackage) === "undefined")
+		 {
+		 	if(JSON.stringify(hotRentService.get()) != "{}"){
+		 	$localStorage.settings = hotRentService.get();
+		 	console.log('$localStorage.settings',$localStorage.settings);
+		 	datapackage = $localStorage.settings;
+			console.log('datapackage',datapackage);
+		 }else{
+		 	datapackage = $localStorage.settings;
+		 	console.log('$localStorage.settings',$localStorage.settings);
+		 }
+		}
+		  $scope.datapackage = datapackage;
+		  console.log("=====datapackage=====",datapackage);
+		 angular.forEach($scope.datapackage, function(data,index,array){
+					//data等价于array[index]
+					console.log("ER_ID",data.ER_ID);
+					if($stateParams.id==data.ER_ID){
+						$scope.detailsData = data;
+					}
+				});
+		console.log("$scope.datapackage======>",$scope.datapackage );
+		/******************display the features data passed through home starts*****************/
+			 if($scope.detailsData.ER_Feature!=""){
+			 var str = $scope.detailsData.ER_Feature + "";
+			 ER_Feature = str.split(";");
+			//  ER_Feature = ER_Feature.pop();// there is something needed to be changed here
+			 for (var j = 0; j<ER_Feature.length;j++) {
+				//  console.log(ER_Feature[j]);
+				switch (ER_Feature[j])
+					{
+							 case "stove":
+								$scope.stove = true;
+							 break;
+							 case "dishwasher":
+							$scope.dishwasher = true;
+							break;
+							 case "dryer":
+							$scope.dryer = true;
+							break;
+							 case "aircondition":
+							$scope.aircondition = true;
+							break;
+							 case "refrigerator":
+							$scope.refrigerator = true;
+							break;
+							 case "laundry":
+							$scope.laundry = true;
+							break;
+							 case "bed":
+							$scope.bed = true;
+							break;
+							case "desk":
+								$scope.desk = true;
+							 break;
+							case "wardrob":
+								$scope.wardrob = true;
+								 break;
+								case "wifi":
+										$scope.wifi = true;
+								break;
+								case "gas":
+								$scope.gas = true;
+								 break;
+								case "no_pets":
+								$scope.no_pets = true;
+								break;
+								case "girl_only":
+								$scope.girl_only = true;
+								break;
+							case "boy_only":
+								$scope.boy_only = true;
+								break;
+							case "no_party":
+								$scope.no_party = true;
+								break;
+								case "no_smoking":
+									$scope.no_smoking = true;
+									break;
+					}
+				 }
+			 }
+/******************display the features data passed through home ends*****************/
+
+		/**************************Advertisements carousel********************************/
+		$scope.myInterval = 5000;
+	    var slides = $scope.slides = [];
+	    $scope.addSlide = function() {
+	      slides.push({
+	        image: 'img/c' + slides.length + '.jpg',
+	        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
+	      });
+	    };
+	    for (var i=0; i<4; i++) {
+	      $scope.addSlide();
+	    }
+
+		/****************************************************************/
+
+		/******************details page map starts******************************/
+		var vm = this;
+		$scope.center = '';
+		NgMap.getMap().then(function(map) {
+			vm.map = map;
+		});
+		 $scope.locations = [
+					{
+						id: 'property',
+						center: $scope.detailsData.ER_No+' '+$scope.detailsData.ER_St+' '+$scope.detailsData.ER_Suburb+','+$scope.detailsData.ER_Region,
+						position: $scope.detailsData.ER_No+' '+$scope.detailsData.ER_St+' '+$scope.detailsData.ER_Suburb+','+$scope.detailsData.ER_Region
+					},
+					{
+						id: 'company',
+						center: '84 pitt street Sydney NSW',
+						position: '84 pitt street Sydney NSW'
+					}
+				];
+				$scope.center = $scope.locations[0].center;
+				$scope.showDetail = function() {
+						$scope.center = $scope.locations[1].center;
+				};
+
+				$scope.gotoAnchor = function(company) {
+	      var newHash = company;
+	      if ($location.hash() !== newHash) {
+	        // set the $location.hash to `newHash` and
+	        // $anchorScroll will automatically scroll to it
+	        $location.hash(company);
+	      } else {
+	        // call $anchorScroll() explicitly,
+	        // since $location.hash hasn't changed
+	        $anchorScroll();
+	      }
+	    };
+		/******************details page map******************************/
+
+		/************print web page*****************/
+		$scope.printDiv = function (div){
+			var printContents = document.getElementById(div);
+            var popupWin = window.open('', '_blank', 'width=880,height=800,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no,top=200,bottom=200');
+            popupWin.window.focus();
+            popupWin.document.open();
+            popupWin.document.write('<!DOCTYPE html><html><head><title>TITLE OF THE PRINT OUT</title>'
+																		+'<link rel="stylesheet" type="text/css" href="/fonts/css/font-awesome.min.css" />'
+																		+'<link rel="stylesheet" type="text/css"  href="/font/flaticon.css" />'
+																		+'<link rel="stylesheet" type="text/css"  href="css/winning/app.css" />'
+																		+'<link rel="stylesheet" type="text/css" media="print" href="css/winning/print.css" />'
+																		+'<script src="vendor/angular/angular.js"></script>'
+                                    +'</head><body onload="window.print(); "><div>');
+                                    popupWin.document.write(printContents.innerHTML);
+																		popupWin.document.write('</div></body></html>');
+																		popupWin.focus();
+																		// popupWin.print();
+																		// popupWin.close();
+																	  popupWin.document.close();
+		}
+		/*******************************/
+
+
+
+		/****************************add shortlist**********************************/
+
+		   	$scope.addShortlist = function (){
+		   		$http.get('/customer/profile')
+				.then(function(r) {
+					console.log(r);
+					if(r.data.customer_login_status){
+						$scope.shortlistInsert.CID = $scope.detailsData.CID;
+						$scope.shortlistInsert.CLType="FavorSave";
+						$scope.shortlistInsert.CLDetail=$scope.detailsData.ER_ID+'';
+						$scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+						console.log("shortlistInsert",$scope.shortlistInsert);
+						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
+								.then(function(r){
+									console.log('r',r);
+								},function(e){
+									console.log("数据有误");
+								});
+					}else{
+						$state.go('app.login');
+					}
+				},function(e){
+						console.log("数据有误");
+					})
+
+			}
+	   	/****************************add shortlist end**********************************/
+		   /* $scope.myInterval = 5000;
+		    var slides = $scope.slides = [];
+		    $scope.addSlide = function() {
+		      slides.push({
+		        image: 'img/b1' + slides.length + '.jpg',
+		        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
+		      });
+		    };
+		    for (var i=0; i<4; i++) {
+		      $scope.addSlide();
+		    }*/
+			/********************************************/
+				$scope.wechatShow = false;
+				$scope.showWechat = function(){
+					$scope.wechatShow = !$scope.wechatShow;
+					$rootScope.$broadcast('wechat', $scope.wechatShow);
+				}
+			/********************************************/
+				/************************contactus modal starts*************************/
+	$scope.items = ['item1', 'item2', 'item3'];
+    $scope.open = function (size) {
+      var modalInstance = $modal.open({
+        templateUrl: 'myModalContent.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+	})
 	.controller('ModalInstanceCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
 	    $scope.contact = {};
 	    $scope.customer = {};
 		$scope.saveEnvelope = function(){
-			alert('1010');
 			$scope.customer.title = 'Contact';
 			$scope.customer.CID = 1;
 			$scope.customer.createTime = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd HH:mm:ss");
@@ -41,152 +310,6 @@
 	      $modalInstance.dismiss('cancel');
 	    };
 	  }])
-	.controller('detailsController',['$http','$scope','$state','$window','$stateParams','$cookies','$rootScope','$localStorage','$modal', '$log','SearchService','readJSON','mouseEvent','utilConvertDateToString','hotRentService',function ($http,$scope,$state,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
-		var datapackage = {};
-		$scope.detailsData = {};
-		$scope.shortlistInsert = {};
-		$(window).scrollTop(0,0);
-		if(JSON.stringify(SearchService.get()) != "{}"){
-		 	$localStorage.settings = SearchService.get().data;
-		 	console.log('$localStorage.settings',$localStorage.settings);
-		 	datapackage = $localStorage.settings;
-			console.log('datapackage',datapackage);
-
-		 }else{
-		 	datapackage = $localStorage.settings;
-		 	console.log('$localStorage.settings',$localStorage.settings);
-		 }
-//		 $scope.datapackage = datapackage;
-		 console.log("=====datapackage=====",datapackage);
-		 console.log($stateParams.id +"<======>"+$stateParams.name);
-		 	/*$scope.shortlistData = {};
-			$scope.shortlistDelete={};
-			$scope.shortlistData.CID = 0;
-			$scope.shortlistData.CLType='FavorSave';
-			$http.post('/customer/shortlist',$scope.shortlistData)
-						.then(function(r){
-							$scope.shortlistData = r.data;
-//							console.log("$scope.shortlistData",$scope.shortlistData);
-						},function(e){
-
-						});*/
-		if (typeof($scope.datapackage) === "undefined")
-		 {
-		 	if(JSON.stringify(hotRentService.get()) != "{}"){
-		 	$localStorage.settings = hotRentService.get();
-		 	console.log('$localStorage.settings',$localStorage.settings);
-		 	datapackage = $localStorage.settings;
-			console.log('datapackage',datapackage);
-		 }else{
-		 	datapackage = $localStorage.settings;
-		 	console.log('$localStorage.settings',$localStorage.settings);
-		 }
-		}
-		  $scope.datapackage = datapackage;
-		  console.log("=====datapackage=====",datapackage);
-		 angular.forEach($scope.datapackage, function(data,index,array){
-					//data等价于array[index]
-					console.log("ER_ID",data.ER_ID);
-					if($stateParams.id==data.ER_ID){
-						$scope.detailsData = data;
-					}
-				});
-		console.log("$scope.datapackage======>",$scope.datapackage );
-
-		/**************************Advertisements carousel********************************/
-		$scope.myInterval = 5000;
-	    var slides = $scope.slides = [];
-	    $scope.addSlide = function() {
-	      slides.push({
-	        image: 'img/c' + slides.length + '.jpg',
-	        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
-	      });
-	    };
-	    for (var i=0; i<4; i++) {
-	      $scope.addSlide();
-	    }
-
-		/****************************************************************/
-
-		/************print web page*****************/
-		$scope.printDiv = function (div){
-			var printContents = document.getElementById(div).innerHTML;
-            var popupWin = window.open('', '_blank', 'width=800,height=800,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no,top=50');
-            // popupWin.window.focus();
-            popupWin.document.open();
-            popupWin.document.write('<!DOCTYPE html><html><head><title>TITLE OF THE PRINT OUT</title>'
-                                    +'<link rel="stylesheet" type="text/css" href="app/directory/file.css" />'
-																		+'<link rel="stylesheet" type="text/css" href="/fonts/css/font-awesome.min.css" />'
-																		+'<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />'
-																		+'<link rel="stylesheet" type="text/css" href="css/winning/app.css" />'
-																		+'<link rel="stylesheet" type="text/css" href="css/winning/details.css" />'
-                                    +'</head><body onload="window.print()">');
-																		popupWin.document.write(printContents);
-																		popupWin.document.write('</body></html>');
-            popupWin.document.close();
-		}
-		/*******************************/
-
-
-
-		/****************************add shortlist**********************************/
-
-		   	$scope.addShortlist = function (){
-		   		$http.get('/customer/profile')
-				.then(function(r) {
-					console.log(r);
-					if(r.data.customer_login_status){
-						$scope.shortlistInsert.CID = $scope.detailsData.CID;
-						$scope.shortlistInsert.CLType="FavorSave";
-						$scope.shortlistInsert.CLDetail=$scope.detailsData.ER_ID+'';;
-						$scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
-						console.log("shortlistInsert",$scope.shortlistInsert);
-						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
-								.then(function(r){
-									console.log('r',r);
-								},function(e){
-									console.log("数据有误");
-								});
-					}else{
-						$state.go('app.login');
-					}
-				},function(e){
-						console.log("数据有误");
-					})
-
-			}
-	   	/****************************add shortlist**********************************/
-		   /* $scope.myInterval = 5000;
-		    var slides = $scope.slides = [];
-		    $scope.addSlide = function() {
-		      slides.push({
-		        image: 'img/b1' + slides.length + '.jpg',
-		        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
-		      });
-		    };
-		    for (var i=0; i<4; i++) {
-		      $scope.addSlide();
-		    }*/
-	$scope.items = ['item1', 'item2', 'item3'];
-    $scope.open = function (size) {
-      var modalInstance = $modal.open({
-        templateUrl: 'myModalContent.html',
-        controller: 'ModalInstanceCtrl',
-        size: size,
-        resolve: {
-          items: function () {
-            return $scope.items;
-          }
-        }
-      });
-
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
-      }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
-      });
-    };
-	}])
 .factory('readData', ['$http', '$q', function($http, $q) {
 		return {
 			query: function() {

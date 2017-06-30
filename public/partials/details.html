@@ -1,5 +1,4 @@
 <div ng-controller="detailsController" class="details-page">
-
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="">
@@ -21,12 +20,10 @@
 									                <div class="h4">
 									                	 <span>[:detailsData.ER_BedRoom:]</span>
 									                	 <span class="fa-stack fa-lg">
-											                <i class="fa fa-circle fa-stack-2x text-white"></i>
-											                <i class="fa fa-bed fa-stack-1x "></i>
-											            </span>
-
+												                <i class="fa fa-circle fa-stack-2x text-white"></i>
+												                <i class="fa fa-bed fa-stack-1x "></i>
+											            		</span>
 									                </div>
-
 									              </a>
 									              <a href class="col padder-v text-muted">
 									                <div class="h4">
@@ -34,9 +31,8 @@
 									                	<span class="fa-stack fa-lg">
 											                <i class="fa fa-circle fa-stack-2x text-white"></i>
 											                <i class="fa fa-bath fa-stack-1x "></i>
-											            </span>
+											            	</span>
 									                </div>
-
 									              </a>
 									              <a href class="col padder-v text-muted">
 									                <div class="h4">
@@ -44,9 +40,8 @@
 									                	<span class="fa-stack fa-lg">
 											                <i class="fa fa-circle fa-stack-2x text-white"></i>
 											                <i class="fa fa-car fa-stack-1x "></i>
-											            </span>
+											            	</span>
 									                </div>
-
 									              </a>
 									          </div>
 											</div>
@@ -56,38 +51,65 @@
 												</a>
 											</div>
 											<div class="benefits">
-												<a href class="f-icon with-text train" title="near train station">
-					                                <span class="icon " ng-show="detailsData.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
-					                                 <!--<span class="icon " ng-show="!detailsData.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
-					                            </a>
-					                            <a href class="f-icon with-text university" title="near university">
-					                            	<span class="icon " ng-show="detailsData.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
-					                                <span class="icon " ng-show="!detailsData.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
-					                            </a>
-					                            <a href class="f-icon with-text backpack" title="backpack">
-					                            	<span class="icon " ng-show="detailsData.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
-					                                <!--<span class="icon " ng-show="!detailsData.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
-					                            </a>
-					                            <a href class="f-icon with-text park" title="near park">
-					                            	 <span class="icon " ng-show="detailsData.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
-					                                <!--<span class="icon " ng-show="!detailsData.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
-					                            </a>
-												<a href class="f-icon with-text school" title="near school">
-													<span class="icon " ng-show="detailsData.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
-					                                <!--<span class="icon " ng-show="!detailsData.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
-					                            </a>
-					                            <a href class="f-icon with-text bigfamily" title="big family">
-					                            	 <span class="icon " ng-show="detailsData.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
-					                                <!--<span class="icon " ng-show="!detailsData.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
-					                            </a>
-					                            <a href class="f-icon with-text shoppingmall" title="near shopping center">
-					                            	<span class="icon " ng-show="detailsData.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
-					                                <!--<span class="icon " ng-show="!detailsData.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
-					                            </a>
-					                            <a href class="f-icon with-text offical_rental" title="office rental">
-					                            	<span class="icon " ng-show="detailsData.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
-					                                <!--<span class="icon " ng-show="!detailsData.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
-					                            </a>
+												<ul>
+													<li ng-show="detailsData.train_station">
+														<a href class="f-icon with-text train" title="near train station">
+		                            <a class="icon "  style="color: orange;"><i class="flaticon-train-on-railroad01" aria-hidden="true"></i></a>
+																<a>train</a>
+																 <!--<span class="icon " ng-show="!detailsData.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
+		                        </a>
+
+													</li>
+													<li  ng-show="detailsData.university">
+														<a href class="f-icon with-text university" title="near university">
+		                        	<a class="icon " style="color: chocolate;"><i class="flaticon-college-graduation01" aria-hidden="true"></i></a>
+		                            <!-- <span class="icon " ng-show="!detailsData.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span> -->
+															<a>university</a>
+														</a>
+													</li>
+													<li ng-show="detailsData.backpack">
+														<a href class="f-icon with-text backpack" title="backpack">
+															<span class="icon "  style="color: greenyellow;"><i class="flaticon-backpack01" aria-hidden="true"  ></i></span>
+																<!--<span class="icon " ng-show="!detailsData.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
+																<a>backpack</a>
+														</a>
+													</li>
+													<li ng-show="detailsData.park">
+														<a href class="f-icon with-text park" title="near park">
+															 <span class="icon "  style="color: green;"><i class="flaticon-green-park-city-space01" aria-hidden="true"></i></span>
+																<!--<span class="icon " ng-show="!detailsData.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
+																<a>park</a>
+														</a>
+													</li>
+													<li  ng-show="detailsData.school">
+														<a href class="f-icon with-text school" title="near school">
+															<span class="icon " style="color: yellow;"><i class="flaticon-open-book01" aria-hidden="true"></i></span>
+		                            <!--<span class="icon " ng-show="!detailsData.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
+																<a>school</a>
+														</a>
+													</li>
+													<li ng-show="detailsData.big_family">
+														<a href class="f-icon with-text bigfamily" title="big family">
+															 <span class="icon "  style="color: pink;"><i class="flaticon-people01"  aria-hidden="true"></i></span>
+																<!--<span class="icon " ng-show="!detailsData.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
+																<a>bigfamily</a>
+														</a>
+													</li>
+													<li ng-show="detailsData.shopping_mall">
+														<a href class="f-icon with-text shoppingmall" title="near shopping center">
+															<span class="icon "  style="color: darkred;"><i class="flaticon-shopping-cart01" aria-hidden="true"></i></span>
+																<!--<span class="icon " ng-show="!detailsData.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
+																<a>shoppingmall</a>
+														</a>
+													</li>
+													<li ng-show="detailsData.offical_rental">
+														<a href class="f-icon with-text offical_rental" title="office rental">
+		                        	<span class="icon "  style="color: blue;"><i class="flaticon-business01" aria-hidden="true"></i></span>
+		                            <!--<span class="icon " ng-show="!detailsData.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
+																<a>offical_rental</a>
+														</a>
+													</li>
+												</ul>
 											</div>
 											<div class="price">
 												<span class="num">$[:detailsData.ER_Price:]<span class="period">per week</span></span>
@@ -108,7 +130,6 @@
 												</a>
 											</div>
 										</div>
-
 									</li>
 								</ul>
 							</div>
@@ -120,7 +141,7 @@
 	</div>
 		<div class="row container-fluid m-r-n-xs" style="margin-top: 0;">
 		<div class="col-sm-8">
-			<div class="content-wrapper introduction-wrapper" id="introduction">
+		<div class="content-wrapper introduction-wrapper" id="introduction">
 				<div class="introduction">
 					<div class="title">房源介绍</div>
 					<div class="introContent">
@@ -128,23 +149,18 @@
 							<div class="name">基本属性</div>
 							<div class="content">
 								<ul>
-									<li><span class="label">Address：</span>Level 2, 84 Pitt Street, Sydney 2000</li>
+									<li><span class="label">Address:</span>[:detailsData.ER_No + " " +detailsData.ER_St+ " " +detailsData.ER_Suburb+ " " +detailsData.ER_Region:]</li>
 									<li>
-										<span class="label">Rental Fee：</span> $750/ week
+										<span class="label">Rental Fee:</span>$[:detailsData.ER_Price:] week
 									</li>
-									<li><span class="label">Property Type：</span>Apartment</li>
-									<li>
-										<span class="label">Fit Out：</span>1 Bath/ 1 Bed / 1 Parking
-										<!-- 1<i class="fa fa-bed"></i>
-										1<i class="fa fa-bath"></i>
-										1<i class="fa fa-car"></i> -->
-									</li>
-									<li><span class="label">Including：</span> Air-conditioner  Internet</li>
-									<li><span class="label">Available Time：</span>01/06/2017</li>
+									<li><span class="label">Property Type:</span>[:detailsData.ER_Type:]</li>
+									<li><span class="label">Fit Out:</span>[:detailsData.ER_BedRoom:] <i class="fa fa-bed"></i>&nbsp; [:detailsData.ER_BathRoom:] <i class="fa fa-bath"></i> &nbsp; [:detailsData.ER_Parking:] <i class="fa fa-car"></i></li>
+									<li><span class="label">Including:</span> Air-conditioner  Internet</li>
+									<li><span class="label">Available Time:</span>[:detailsData.ER_AvailableDate:]</li>
 									<li>
 										<span class="label">Bond：</span> $2280
 									</li>
-									<li><span class="label">房屋现状：</span>整租</li>
+									<li><span class="label">房屋现状:</span>[:detailsData.ER_Stat:]</li>
 								</ul>
 							</div>
 						</div>
@@ -156,117 +172,28 @@
 							<div class="featureContent">
 								<ul>
 									<li>
-										<span class="label">Facilities：</span>
-										<span class="text">Pool/ Gym</span>
+										<span class="label">Facilities:</span>
+										<span class="text">[:detailsData.details[0].facility:]</span>
 									</li>
 									<li>
-										<span class="label">交通出行：</span>
-										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+										<span class="label">交通出行:</span>
+										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].train_station:]</span>
 									</li>
 									<li>
 										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].bus_stop:]</span>
 									</li>
 									<li>
 										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label">Retails/ Shops：</span>
-										<span class="text">Woolworths, Priceline</span>
-									</li>
-									<li>
-										<span class="label">School：</span>
-										<span class="text">Sydney Girls High school</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="feature">
-							<div class="name">房源描述</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
-								</p>
-							</div>
-						</div>
-						<div class="feature">
-							<div class="name">Others</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="content-wrapper introduction-wrapper" id="introduction">
-				<div class="introduction">
-					<div class="title">房源介绍</div>
-					<div class="introContent">
-						<div class="base">
-							<div class="name">基本属性</div>
-							<div class="content">
-								<ul>
-									<li><span class="label">Address：</span>Level 2, 84 Pitt Street, Sydney 2000</li>
-									<li>
-										<span class="label">Rental Fee：</span>$350/ week
-									</li>
-									<li><span class="label">Property Type：</span>Apartment</li>
-									<li><span class="label">Room Type：</span>Single room</li>
-									<li><span class="label">Fit Out：</span>1 Bath/ 1 Bed / 1 Parking</li>
-									<li><span class="label">Including：</span> Air-conditioner  Internet</li>
-									<li><span class="label">Available Time：</span>01/06/2017</li>
-									<li>
-										<span class="label">Bond：</span> $2280
-									</li>
-									<li><span class="label">房屋现状：</span>分租</li>
-								</ul>
-							</div>
-						</div>
-						<div class="feature">
-							<div class="name">房源特色</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<ul>
-									<li>
-										<span class="label">Facilities：</span>
-										<span class="text">Pool/ Gym</span>
-									</li>
-									<li>
-										<span class="label">交通出行：</span>
-										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].ferry:]</span>
 									</li>
 									<li>
 										<span class="label"></span>
-										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].light_rail:]</span>
 									</li>
 
-									<li>
-										<span class="label">Furniture：</span>
+									<!-- <li>
+										<span class="label">Furniture:</span>
 										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;Room&nbsp;&nbsp;&nbsp;&nbsp;Build-In Wardrobes  Furnished bed, desk and chair</span>
 									</li>
 									<li>
@@ -280,15 +207,15 @@
 									<li>
 										<span class="label"></span>
 										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp; Living/ Dinning&nbsp;&nbsp;&nbsp;&nbsp; Air-conditioner</span>
-									</li>
+									</li> -->
 
 									<li>
-										<span class="label">Retails/ Shops：</span>
-										<span class="text">Woolworths, Priceline</span>
+										<span class="label">Retails/Shops:</span>
+										<span class="text">[:detailsData.details[0].shops:]</span>
 									</li>
 									<li>
-										<span class="label">School：</span>
-										<span class="text">Sydney Girls High school</span>
+										<span class="label">School:</span>
+										<span class="text">[:detailsData.details[0].school:]</span>
 									</li>
 								</ul>
 							</div>
@@ -300,9 +227,120 @@
 							</div>
 							<div class="featureContent">
 								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
+									[:detailsData.details[0].description_en:]
 								</p>
+							</div>
+						</div>
+						<div class="base">
+							<div class="name">房屋要求</div>
+							<div class="content">
+								<ul>
+									<li class="list-features" ng-show="no_smoking">
+										<div class="features">
+											<span class="icon">
+												<i class="flaticon-no-smoking-sign30" style="color:purple;"></i>
+											</span>
+											<span class="description">no smoking</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="no_pets">
+										<div class="features">
+											<span class="icon"><i class="flaticon-no-dogs30" style="color:purple;"></i></span>
+											<span class="description">no pets</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="girl_only">
+										<div class="features">
+											<span class="icon"><i class="flaticon-female-silhouette30" style="color:purple;"></i></span>
+											<span class="description">girls only</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="boy_only">
+										<div class="features">
+											<span class="icon"><i class="flaticon-man-standing-up30" style="color:purple;"></i></span>
+											<span class="description">boys only</span>
+										</div>
+									</li>
+									<!-- <li class="list-features">
+										<div class="features">
+											<span class="icon"><i class="flaticon-turn-microphone-off-button30"></i></span>
+											<span class="description">no party</span>
+										</div>
+									</li> -->
+								</ul>
+							</div>
+						</div>
+						<div class="base">
+							<div class="name">基本设施</div>
+							<div class="content">
+								<ul>
+									<li class="list-features" ng-show="stove">
+										<div class="features">
+											<span class="icon"><i class="flaticon-stove30" style="color:purple;"></i></span>
+											<span class="description">full kitchen</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="dishwasher">
+										<div class="features">
+											<span class="icon"><i class="flaticon-dishwasher30" style="color:purple;"></i></span>
+											<span class="description">dishwasher</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="dryer">
+										<div class="features">
+											<span class="icon"><i class="flaticon-tumble-dryer30" style="color:purple;"></i></span>
+											<span class="description">dryer</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="aircondition">
+										<div class="features">
+											<span class="icon"><i class="flaticon-minisplit30" style="color:purple;"></i></span>
+											<span class="description">aircondition</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="bed">
+										<div class="features">
+											<span class="icon"><i class="flaticon-bed30" style="color:purple;"></i></span>
+											<span class="description">bed</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="desk">
+										<div class="features">
+											<span class="icon"><i class="flaticon-man-in-office-desk-with-computer30" style="color:purple;"></i></span>
+											<span class="description">desk</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="wardrob">
+										<div class="features">
+											<span class="icon"><i class="flaticon-bedroom-black-closed-closet-for-clothes30" style="color:purple;"></i></span>
+											<span class="description">wardrob</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="refrigerator">
+										<div class="features">
+											<span class="icon"><i class="flaticon-fridge30" style="color:purple;"></i></span>
+											<span class="description">refrigerator</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="laundry">
+										<div class="features">
+											<span class="icon"><i class="flaticon-washing-machine30" style="color:purple;"></i></span>
+											<span class="description">laundry</span>
+										</div>
+									</li>
+									<li class="list-features"  ng-show="wifi">
+										<div class="features">
+											<span class="icon"><i class="flaticon-wifi30" style="color:purple;"></i></span>
+											<span class="description">wifi</span>
+										</div>
+									</li>
+									<!-- <li class="list-features">
+										<div class="features">
+											<span class="icon"><i class="flaticon-gas-level30"></i></span>
+											<span class="description">gas</span>
+										</div>
+									</li> -->
+								</ul>
 							</div>
 						</div>
 						<div class="feature">
@@ -312,15 +350,13 @@
 							</div>
 							<div class="featureContent">
 								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
+									[:detailsData.details[0].comment:]
 								</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<div class="col-sm-4">
 			<div class="col-sm-12">
@@ -330,25 +366,25 @@
 				        </div>
 				        <div class="item m-l-n-xxs m-r-n-xxs">
 				          <div ng-init="x = 3" class="top text-right padder m-t-xs w-full">
-				            <rating ng-model="x" max="5" state-on="'fa fa-star text-white'" state-off="'fa fa-star-o text-white'"></rating>
+				            <!-- <rating ng-model="x" max="5" state-on="'fa fa-star text-white'" state-off="'fa fa-star-o text-white'"></rating> -->
 				          </div>
 				         <div class="bottom wrapper bg-gd-dk text-white">
 				            <div class="text-u-c h3 m-b-sm text-primary-lter">Rent&nbsp;Buy&nbsp;Invest</div>
 				            <div>Address</div>
 				            <div>84 Pitt St Sydney</div>
 				          </div>
-				          <img src="img/c0.jpg" class="img-full" style="height: 104px;">
+				          <img src="img/c0.jpg" class="img-full" style="height: 200px;">
 				        </div>
 				        <div class="hbox text-center b-b b-light text-sm">
 				          <a href class="col padder-v text-muted b-r b-light">
 				            <i class="icon-call-end block m-b-xs fa-2x"></i>
 				            <span>Call</span>
 				          </a>
-				          <a href class="col padder-v text-muted b-r b-light">
+				          <a ng-click="showDetail();gotoAnchor('company')" class="col padder-v text-muted b-r b-light">
 				            <i class="icon-pointer block m-b-xs fa-2x"></i>
 				            <span>Location</span>
 				          </a>
-				          <a href ng-click="open('lg')" class="col padder-v text-muted">
+				          <a href ng-click="open()" class="col padder-v text-muted">
 				            <i class="fa fa-envelope-o block m-b-xs fa-2x"></i>
 				            <span>
 				            	Email
@@ -356,14 +392,14 @@
 				          </a>
 				          <script type="text/ng-template" id="myModalContent.html">
 						            <div ng-include="'/partials/tpl/modal.html'"></div>
-						  </script>
+						  		</script>
 				        </div>
-				     <div class="hbox text-center text-sm">
+				     		<div class="hbox text-center text-sm">
 				          <a href class="col padder-v text-muted b-r b-light">
 				            <i class="fa fa-whatsapp block m-b-xs fa-2x"></i>
 				            <span>What's App</span>
 				          </a>
-				          <a href class="col padder-v text-muted b-r b-light">
+				          <a href class="col padder-v text-muted b-r b-light" ng-click="showWechat()">
 				            <i class="fa fa-wechat block m-b-xs fa-2x"></i>
 				            <span>Wechat</span>
 				          </a>
@@ -373,30 +409,71 @@
 				          </a>
 				        </div>
 			      </div>
-			      	  <div class="panel-heading">
-				          Advertisement
-				        </div>
-				        <carousel interval="myInterval">
-				          <slide ng-repeat="slide in slides" active="slide.active">
-				            <img ng-src="[:slide.image:]" class="img-full">
-				            <div class="carousel-caption">
-				              <h4>Slide [:$index:]</h4>
-				              <p>[:slide.text:]</p>
-				            </div>
-				          </slide>
-				        </carousel>
+	      	  <div class="panel-heading">
+		          Advertisement
+		        </div>
+		        <carousel interval="myInterval">
+		          <slide ng-repeat="slide in slides" active="slide.active">
+		            <img ng-src="[:slide.image:]" class="img-full">
+		            <div class="carousel-caption">
+		              <h4>Slide [:$index:]</h4>
+		              <p>[:slide.text:]</p>
+		            </div>
+		          </slide>
+		        </carousel>
 			</div>
 
 		</div>
 	</div>
-	<div class="row m-t-sm">
-		<ng-map center="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" zoom="18"  scrollwheel="false"> <!--draggable="false" zoom-control="false"-->
-			<marker position="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" title="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" optimized="false" animation="Animation.BOUNCE" icon="{
+	<div class="row m-t-sm" id="company">
+		<ng-map center="[: center :]"  zoom="18"  scrollwheel="false"> <!--draggable="false" zoom-control="false"-->
+			<marker position="[: location.position :]" id='[: location.id: ]' position="[:location.position:]" ng-repeat="location in locations" title="[: location.position :]" optimized="false" animation="Animation.BOUNCE" icon="{
 		        url:'img/blue.png',
 		        scaledSize:[30,30],
 		        origin: [0,0],
 		        anchor: [10,10]
 		      }"></marker>
+					<!-- <info-window id="foo-iw">
+							<div ng-non-bindable="">
+										<div class="infowindow-container clear">
+													<div class="info-left">
+														<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="width:100px; align-content: center;">
+													</div>
+													<div class="info-right">
+															<p class="price">$[:vm.shop.ER_Price:]<i translate="listpage.list.row.price_unit"></i></p>
+															<p class="address">
+																	<a ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})">
+																		[:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region:]
+																	</a>
+															</p>
+															<div class="listing-features">
+																<span class="f-icon with-text">
+																	<span class="copy">
+																		<em class="ng-binding">[:vm.shop.ER_BedRoom:]</em>
+																	</span>
+																	<span class="icon fa fa-bed"></span>
+																</span>
+																<span class="f-icon with-text">
+																	<span class="copy">
+																		<em class="ng-binding">[:vm.shop.ER_BathRoom:]</em>
+																	</span>
+																	<span class="icon fa fa-bath"></span>
+																</span>
+																<span class="f-icon with-text">
+																	<span class="copy">
+																		<em class="ng-binding">[:vm.shop.ER_Parking:]</em>
+																	</span>
+																	<span class="icon fa fa-car"></span>
+																</span>
+																<span class="details" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="margin-left: 20px;">
+																	<i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i>
+																</span>
+															</div>
+
+													</div>
+										</div>
+							</div>
+					</info-window> -->
 		</ng-map>
 	</div>
 
@@ -406,257 +483,164 @@
 			</section>
 	</div>
 	<div id="printableArea" style="display:none;">
-		<!-- <div class="wrapper-md">
-				<div>
-					<i class="fa fa-apple fa fa-3x"></i>
-					<div class="row">
-						<div class="col-xs-6">
-			 				<p style="text-align:center;">
-								<img href="http://www.winninginvestment.com" src="/img/logo.png" style="width:100%;">
-							</p>
-							<p>Level 2, 84 Pitt St<br>
-								Sydney, NSW 2000<br>
-								Australia
-							</p>
-							<p>
-								Telephone:  800-692-7753<br>
-								Fax:  800-692-7753
-							</p>
-						</div>
-						<div class="col-xs-6 text-right">
-							<p class="h4">#9048392</p>
-							<h5>29th Mar 2013</h5>
-						</div>
+			<div class="details-head">
+				<div class="details-head-wrapper">
+				<div class="details-head-content clear">
+					<div class="left-image">
+							<img src="img/logo.png" />
 					</div>
-					<div class="well m-t bg-light lt">
-						<div class="row">
-							<div class="col-xs-6">
-								<strong>TO:</strong>
-								<h4>John Smith</h4>
-								<p>
-									2nd Floor<br>
-									St John Street, Aberdeenshire 2541<br>
-									United Kingdom<br>
-									Phone: 031-432-678<br>
-									Email: youemail@gmail.com<br>
-								</p>
-							</div>
-							<div class="col-xs-6">
-								<strong>SHIP TO:</strong>
-								<h4>John Smith</h4>
-								<p>
-									2nd Floor<br>
-									St John Street, Aberdeenshire 2541<br>
-									United Kingdom<br>
-									Phone: 031-432-678<br>
-									Email: youemail@gmail.com<br>
-								</p>
-							</div>
-						</div>
-					</div>
-					<p class="m-t m-b">Order date: <strong>26th Mar 2013</strong><br>
-							Order status: <span class="label bg-success">Shipped</span><br>
-							Order ID: <strong>#9399034</strong>
-					</p>
-					<div class="line"></div>
-					<table class="table table-striped bg-white b-a">
-						<thead>
-							<tr>
-								<th style="width: 60px">QTY</th>
-								<th>DESCRIPTION</th>
-								<th style="width: 140px">UNIT PRICE</th>
-								<th style="width: 90px">TOTAL</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>iPhone 5 32GB White & Silver (GSM) Unlocked</td>
-								<td>$749.00</td>
-								<td>$749.00</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>iPad mini with Wi-Fi 32GB - White & Silver</td>
-								<td>$429.00</td>
-								<td>$858.00</td>
-							</tr>
-							<tr>
-								<td colspan="3" class="text-right"><strong>Subtotal</strong></td>
-								<td>$1607.00</td>
-							</tr>
-							<tr>
-								<td colspan="3" class="text-right no-border"><strong>Shipping</strong></td>
-								<td>$0.00</td>
-							</tr>
-							<tr>
-								<td colspan="3" class="text-right no-border"><strong>VAT Included in Total</strong></td>
-								<td>$0.00</td>
-							</tr>
-							<tr>
-								<td colspan="3" class="text-right no-border"><strong>Total</strong></td>
-								<td><strong>$1607.00</strong></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div> -->
-			<div class="content">
-				<div id="results">
-					<div class="list-wrap">
-						<ul id="house-list" class="house-list">
-							<li class="first">
-								<div class="info-panel">
-									<div class="rooms cl">
-										 <div class="hbox text-center">
-														<a href class="col padder-v text-muted">
-															<div class="h4">
-																 <span>[:detailsData.ER_BedRoom:]</span>
-																 <span class="fa-stack fa-lg">
-																	<i class="fa fa-circle fa-stack-2x text-white"></i>
-																	<i class="fa fa-bed fa-stack-1x "></i>
-															</span>
-
-															</div>
-
-														</a>
-														<a href class="col padder-v text-muted">
-															<div class="h4">
-																<span>[:detailsData.ER_BathRoom:]</span>
-																<span class="fa-stack fa-lg">
-																	<i class="fa fa-circle fa-stack-2x text-white"></i>
-																	<i class="fa fa-bath fa-stack-1x "></i>
-															</span>
-															</div>
-
-														</a>
-														<a href class="col padder-v text-muted">
-															<div class="h4">
-																<span>[:detailsData.ER_Parking:]</span>
-																<span class="fa-stack fa-lg">
-																	<i class="fa fa-circle fa-stack-2x text-white"></i>
-																	<i class="fa fa-car fa-stack-1x "></i>
-															</span>
-															</div>
-
-														</a>
-												</div>
-									</div>
-									<div class="address">
-										<a>
+					<div class="right-descriptions">
+							<div class="desc-text">
+									<ul>
+										<li class="center-text"><a class="price">$[:detailsData.ER_Price:]</a><i class="period">&nbsp;&nbsp;per&nbsp;&nbsp;week</i></li>
+										<li class="center-text"><a class="time">available time:</a><i class="date">&nbsp;&nbsp;[:detailsData.ER_AvailableDate:]</i></li>
+										<li class="center-text">
+											<span>
+												<i>[:detailsData.ER_BedRoom:]</i>
+												<i class="fa fa-bed"></i>
+											</span>
+											<span>
+												<i>[:detailsData.ER_BathRoom:]</i>
+												<i class="fa fa-bath"></i>
+											</span>
+											<span>
+												<i>[:detailsData.ER_Parking:]</i>
+												<i class="fa fa-car"></i>
+											</span>
+										</li>
+										<li class="center-text">
 											<span>[:detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+' '+detailsData.ER_Region:]</span>
-										</a>
+										</li>
+										<li class="center-text">
+											<a href class="f-icon with-text train" title="near train station">
+													<span class="icon " ng-show="detailsData.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
+													 <!--<span class="icon " ng-show="!detailsData.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
+											</a>
+											<a href class="f-icon with-text university" title="near university">
+												<span class="icon " ng-show="detailsData.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+													<!-- <span class="icon " ng-show="!detailsData.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span> -->
+											</a>
+											<a href class="f-icon with-text backpack" title="backpack">
+												<span class="icon " ng-show="detailsData.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
+													<!--<span class="icon " ng-show="!detailsData.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
+											</a>
+											<a href class="f-icon with-text park" title="near park">
+												 <span class="icon " ng-show="detailsData.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
+													<!--<span class="icon " ng-show="!detailsData.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
+											</a>
+											<a href class="f-icon with-text school" title="near school">
+												<span class="icon " ng-show="detailsData.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
+													<!--<span class="icon " ng-show="!detailsData.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
+											</a>
+											<a href class="f-icon with-text bigfamily" title="big family">
+												 <span class="icon " ng-show="detailsData.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
+													<!--<span class="icon " ng-show="!detailsData.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
+											</a>
+											<a href class="f-icon with-text shoppingmall" title="near shopping center">
+												<span class="icon " ng-show="detailsData.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
+													<!--<span class="icon " ng-show="!detailsData.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
+											</a>
+											<a href class="f-icon with-text offical_rental" title="office rental">
+												<span class="icon " ng-show="detailsData.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
+													<!--<span class="icon " ng-show="!detailsData.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
+											</a>
+										</li>
+									</ul>
+							</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="details-body">
+				<div class="introduction-head">
+						<div class="details-image">
+							<div class="image-description clear">
+								<!-- <div class="left-side-image clear">
+											<img src="img/img1.jpg"/>
+											<img src="img/img1.jpg"/>
+											<img src="img/img1.jpg"/>
+								</div> -->
+									<div class="left-side-image clear">
+												<img ng-src="[:detailsData.picset[0].PicFile:]"/>
 									</div>
-									<div class="benefits">
-										<a href class="f-icon with-text train" title="near train station">
-												<span class="icon " ng-show="detailsData.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
-												 <!--<span class="icon " ng-show="!detailsData.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
-										</a>
-										<a href class="f-icon with-text university" title="near university">
-											<span class="icon " ng-show="detailsData.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
-												<span class="icon " ng-show="!detailsData.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
-										</a>
-										<a href class="f-icon with-text backpack" title="backpack">
-											<span class="icon " ng-show="detailsData.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
-												<!--<span class="icon " ng-show="!detailsData.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
-										</a>
-										<a href class="f-icon with-text park" title="near park">
-											 <span class="icon " ng-show="detailsData.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
-												<!--<span class="icon " ng-show="!detailsData.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
-										</a>
-										<a href class="f-icon with-text school" title="near school">
-											<span class="icon " ng-show="detailsData.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
-												<!--<span class="icon " ng-show="!detailsData.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
-										</a>
-										<a href class="f-icon with-text bigfamily" title="big family">
-											 <span class="icon " ng-show="detailsData.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
-												<!--<span class="icon " ng-show="!detailsData.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
-										</a>
-										<a href class="f-icon with-text shoppingmall" title="near shopping center">
-											<span class="icon " ng-show="detailsData.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
-												<!--<span class="icon " ng-show="!detailsData.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
-										</a>
-										<a href class="f-icon with-text offical_rental" title="office rental">
-											<span class="icon " ng-show="detailsData.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
-												<!--<span class="icon " ng-show="!detailsData.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
-										</a>
+									<div class="right-side-image clear">
+												<img ng-src="[:detailsData.picset[1].PicFile:]"/>
+												<img ng-src="[:detailsData.picset[2].PicFile:]"/>
 									</div>
-									<div class="price">
-										<span class="num">$[:detailsData.ER_Price:]<span class="period">per week</span></span>
-										<span class="available">Available Time:&nbsp;[:detailsData.ER_AvailableDate:]</span>
-									</div>
+							</div>
+					</div>
+				</div>
+				<div class="content-wrapper introduction-wrapper" id="introduction">
+					<div class="introduction">
+						<div class="title">房源介绍</div>
+						<div class="introContent">
+								<div class="feature">
+										<div class="name">房源特色</div>
+											<div class="zf-tag">
+												<div class="clear"></div>
+											</div>
+											<div class="featureContent">
+												<ul>
+													<li>
+														<span class="label">Facilities:</span>
+														<span class="text">[:detailsData.details[0].facility:]</span>
+													</li>
+													<li>
+														<span class="label">交通出行:</span>
+														<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].train_station:]</span>
+													</li>
+													<li>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].bus_stop:]</span>
+													</li>
+													<li>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].ferry:]</span>
+													</li>
+													<li>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].light_rail:]</span>
+													</li>
+
+													<!-- <li>
+														<span class="label">Furniture:</span>
+														<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;Room&nbsp;&nbsp;&nbsp;&nbsp;Build-In Wardrobes  Furnished bed, desk and chair</span>
+													</li>
+													<li>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp; Kitchen&nbsp;&nbsp;&nbsp;&nbsp; Furnished stove, microwave and fridge</span>
+													</li>
+													<li>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Laundry&nbsp;&nbsp;&nbsp;&nbsp;Washing machine</span>
+													</li>
+													<li>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp; Living/ Dinning&nbsp;&nbsp;&nbsp;&nbsp; Air-conditioner</span>
+													</li> -->
+
+													<li>
+														<span class="label">Retails/Shops:</span>
+														<span class="text">[:detailsData.details[0].shops:]</span>
+													</li>
+													<li>
+														<span class="label">School:</span>
+														<span class="text">[:detailsData.details[0].school:]</span>
+													</li>
+												</ul>
+											</div>
 								</div>
-							</li>
-						</ul>
+
+						</div>
 					</div>
 				</div>
 			</div>
+			<div class="page-break">
+
+			</div>
 			<div class="content-wrapper introduction-wrapper" id="introduction">
 				<div class="introduction">
-					<div class="title">房源介绍</div>
 					<div class="introContent">
-						<div class="base">
-							<div class="name">基本属性</div>
-							<div class="content">
-								<ul>
-									<li><span class="label">Address：</span>Level 2, 84 Pitt Street, Sydney 2000</li>
-									<li>
-										<span class="label">Rental Fee：</span> $750/ week
-									</li>
-									<li><span class="label">Property Type：</span>Apartment</li>
-									<li>
-										<span class="label">Fit Out：</span>1 Bath/ 1 Bed / 1 Parking
-										<!-- 1<i class="fa fa-bed"></i>
-										1<i class="fa fa-bath"></i>
-										1<i class="fa fa-car"></i> -->
-									</li>
-									<li><span class="label">Including：</span> Air-conditioner  Internet</li>
-									<li><span class="label">Available Time：</span>01/06/2017</li>
-									<li>
-										<span class="label">Bond：</span> $2280
-									</li>
-									<li><span class="label">房屋现状：</span>整租</li>
-								</ul>
-							</div>
-						</div>
-						<div class="feature">
-							<div class="name">房源特色</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<ul>
-									<li>
-										<span class="label">Facilities：</span>
-										<span class="text">Pool/ Gym</span>
-									</li>
-									<li>
-										<span class="label">交通出行：</span>
-										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label">Retails/ Shops：</span>
-										<span class="text">Woolworths, Priceline</span>
-									</li>
-									<li>
-										<span class="label">School：</span>
-										<span class="text">Sydney Girls High school</span>
-									</li>
-								</ul>
-							</div>
-						</div>
 						<div class="feature">
 							<div class="name">房源描述</div>
 							<div class="zf-tag">
@@ -664,118 +648,122 @@
 							</div>
 							<div class="featureContent">
 								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
+									[:detailsData.details[0].description_en:]
 								</p>
 							</div>
 						</div>
-						<div class="feature">
-							<div class="name">Others</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="content-wrapper introduction-wrapper" id="introduction">
-				<div class="introduction">
-					<div class="title">房源介绍</div>
-					<div class="introContent">
 						<div class="base">
-							<div class="name">基本属性</div>
+							<div class="name">房屋要求</div>
 							<div class="content">
 								<ul>
-									<li><span class="label">Address：</span>Level 2, 84 Pitt Street, Sydney 2000</li>
-									<li>
-										<span class="label">Rental Fee：</span>$350/ week
+									<li class="list-features" ng-show="no_smoking">
+										<div class="features">
+											<span class="icon">
+												<i class="flaticon-no-smoking-sign30" style="color:purple;"></i>
+											</span>
+											<span class="description">no smoking</span>
+										</div>
 									</li>
-									<li><span class="label">Property Type：</span>Apartment</li>
-									<li><span class="label">Room Type：</span>Single room</li>
-									<li><span class="label">Fit Out：</span>1 Bath/ 1 Bed / 1 Parking</li>
-									<li><span class="label">Including：</span> Air-conditioner  Internet</li>
-									<li><span class="label">Available Time：</span>01/06/2017</li>
-									<li>
-										<span class="label">Bond：</span> $2280
+									<li class="list-features" ng-show="no_pets">
+										<div class="features">
+											<span class="icon"><i class="flaticon-no-dogs30" style="color:purple;"></i></span>
+											<span class="description">no pets</span>
+										</div>
 									</li>
-									<li><span class="label">房屋现状：</span>分租</li>
+									<li class="list-features" ng-show="girl_only">
+										<div class="features">
+											<span class="icon"><i class="flaticon-female-silhouette30" style="color:purple;"></i></span>
+											<span class="description">girls only</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="boy_only">
+										<div class="features">
+											<span class="icon"><i class="flaticon-man-standing-up30" style="color:purple;"></i></span>
+											<span class="description">boys only</span>
+										</div>
+									</li>
+									<!-- <li class="list-features">
+										<div class="features">
+											<span class="icon"><i class="flaticon-turn-microphone-off-button30"></i></span>
+											<span class="description">no party</span>
+										</div>
+									</li> -->
 								</ul>
 							</div>
 						</div>
-						<div class="feature">
-							<div class="name">房源特色</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
+						<div class="base">
+							<div class="name">基本设施</div>
+							<div class="content">
 								<ul>
-									<li>
-										<span class="label">Facilities：</span>
-										<span class="text">Pool/ Gym</span>
+									<li class="list-features" ng-show="stove">
+										<div class="features">
+											<span class="icon"><i class="flaticon-stove30" style="color:purple;"></i></span>
+											<span class="description">full kitchen</span>
+										</div>
 									</li>
-									<li>
-										<span class="label">交通出行：</span>
-										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									<li class="list-features" ng-show="dishwasher">
+										<div class="features">
+											<span class="icon"><i class="flaticon-dishwasher30" style="color:purple;"></i></span>
+											<span class="description">dishwasher</span>
+										</div>
 									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									<li class="list-features" ng-show="dryer">
+										<div class="features">
+											<span class="icon"><i class="flaticon-tumble-dryer30" style="color:purple;"></i></span>
+											<span class="description">dryer</span>
+										</div>
 									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									<li class="list-features" ng-show="aircondition">
+										<div class="features">
+											<span class="icon"><i class="flaticon-minisplit30" style="color:purple;"></i></span>
+											<span class="description">aircondition</span>
+										</div>
 									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									<li class="list-features" ng-show="bed">
+										<div class="features">
+											<span class="icon"><i class="flaticon-bed30" style="color:purple;"></i></span>
+											<span class="description">bed</span>
+										</div>
 									</li>
-
-									<li>
-										<span class="label">Furniture：</span>
-										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;Room&nbsp;&nbsp;&nbsp;&nbsp;Build-In Wardrobes  Furnished bed, desk and chair</span>
+									<li class="list-features" ng-show="desk">
+										<div class="features">
+											<span class="icon"><i class="flaticon-man-in-office-desk-with-computer30" style="color:purple;"></i></span>
+											<span class="description">desk</span>
+										</div>
 									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp; Kitchen&nbsp;&nbsp;&nbsp;&nbsp; Furnished stove, microwave and fridge</span>
+									<li class="list-features" ng-show="wardrob">
+										<div class="features">
+											<span class="icon"><i class="flaticon-bedroom-black-closed-closet-for-clothes30" style="color:purple;"></i></span>
+											<span class="description">wardrob</span>
+										</div>
 									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Laundry&nbsp;&nbsp;&nbsp;&nbsp;Washing machine</span>
+									<li class="list-features" ng-show="refrigerator">
+										<div class="features">
+											<span class="icon"><i class="flaticon-fridge30" style="color:purple;"></i></span>
+											<span class="description">refrigerator</span>
+										</div>
 									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp; Living/ Dinning&nbsp;&nbsp;&nbsp;&nbsp; Air-conditioner</span>
+									<li class="list-features" ng-show="laundry">
+										<div class="features">
+											<span class="icon"><i class="flaticon-washing-machine30" style="color:purple;"></i></span>
+											<span class="description">laundry</span>
+										</div>
 									</li>
-
-									<li>
-										<span class="label">Retails/ Shops：</span>
-										<span class="text">Woolworths, Priceline</span>
+									<li class="list-features"  ng-show="wifi">
+										<div class="features">
+											<span class="icon"><i class="flaticon-wifi30" style="color:purple;"></i></span>
+											<span class="description">wifi</span>
+										</div>
 									</li>
-									<li>
-										<span class="label">School：</span>
-										<span class="text">Sydney Girls High school</span>
-									</li>
+									<!-- <li class="list-features">
+										<div class="features">
+											<span class="icon"><i class="flaticon-gas-level30"></i></span>
+											<span class="description">gas</span>
+										</div>
+									</li> -->
 								</ul>
 							</div>
-						</div>
-						<div class="feature">
-							<div class="name">房源描述</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
-								</p>
-							</div>
-						</div>
+					  </div>
 						<div class="feature">
 							<div class="name">Others</div>
 							<div class="zf-tag">
@@ -783,13 +771,31 @@
 							</div>
 							<div class="featureContent">
 								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
+									[:detailsData.details[0].comment:]
 								</p>
 							</div>
 						</div>
-					</div>
 				</div>
+			</div>
+			</div>
+
+			<div class="introduction-foot">
+					<div class="introduction-foot-wrapper">
+						<div class="foot-content">
+							 <div class="content-left">
+								 			<img class="img-circle" src="img/andy.jpg"/>
+							 </div>
+							 <div class="content-right">
+								 			<ul>
+								 				<li><h4>Winning Investment Ltd</h4></li>
+								 				<li><a>Email: yiensuen@gmail.com</a></li>
+								 				<li><a>Tel:0420594599</a></li>
+								 				<li><a>Address:Level 2 Pitt St Sydney NSW</a></li>
+								 				<li><a>Wechat:yiensuen97</a></li>
+								 			</ul>
+							 </div>
+						</div>
+					</div>
 			</div>
 	</div>
 </div>

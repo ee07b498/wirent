@@ -1,26 +1,39 @@
 <div class="rightfix " ng-controller="fixCtrl">
 	<div id="J_GotoTop" class="elevator">
-		<a href="" class="elevator-msg" target="_blank"> 
-			<i class="fa fa-exclamation-circle"></i> 
-			<span class="">意见反馈</span> 
-		</a>
-		<a href="" class="elevator-faq" target="_blank"> 
-			<i class="fa fa-commenting"></i> 
-			<span class="">联系我们</span> 
-		</a>
-		<a href="" target="_blank" class="elevator-app"> 
-			<i class="fa fa-mobile"></i> 
-			<span class="">APP下载</span>
-			<div class="elevator-app-box"></div>
-		</a>
-		<a href="javascript:void(0)" class="elevator-weixin" id="js-elevator-weixin"> 
-			<i class="fa fa-wechat"></i> 
-			<span class="">官方微信</span>
-			<div class="elevator-weixin-box"></div>
-		</a>
-		<a ng-click="go2Top()" class="elevator-top no-goto" style="display: block;" id="backTop"> 
-			<i class="fa fa-angle-up"></i> 
-			<span class="">返回顶部</span> 
+		<div ng-show="hiddenright">
+			<a href="" target="_blank" class="elevator-app">
+				<i class="fa fa-user-circle" aria-hidden="true"></i>
+				<span class="">小管家</span>
+				<div class="elevator-app-box"></div>
+			</a>
+				<a href="" ng-click="open()" class="elevator-faq" target="_blank">
+					<i class="fa fa-commenting"></i>
+					<span class="">联系我们</span>
+				</a>
+				<a ng-click="wechatShow()" class="" id="js-elevator-weixin">
+					<i class="fa fa-wechat"></i>
+					<span class="">官方微信</span>
+					<div class="elevator-weixin-box"></div>
+				</a>
+				<a href="" ng-click="feedback()" class="elevator-msg" target="_blank">
+					<i class="fa fa-exclamation-circle"></i>
+					<span class="">意见反馈</span>
+				</a>
+				<a ng-click="go2Top()" class="elevator-top no-goto" style="display: block;" id="backTop">
+					<i class="fa fa-angle-up"></i>
+					<span class="">返回顶部</span>
+				</a>
+				<script type="text/ng-template" id="myModalContact.html">
+							<div ng-include="'/partials/tpl/modal_contact.html'"></div>
+				</script>
+				<script type="text/ng-template" id="myModalFeedback.html">
+							<div ng-include="'/partials/tpl/modal_feedback.html'"></div>
+				</script>
+		</div>
+		<a  class=" no-goto" id="backTop" ng-click="hiddenright=!hiddenright">
+			<i class="fa fa-plus" ng-show="!hiddenright" aria-hidden="true" style="color:#098f64;"></i>
+			<i class="fa fa-minus" ng-show="hiddenright" aria-hidden="true" style="color:#098f64;"></i>
+			<!-- <span class="">展开</span> -->
 		</a>
 	</div>
 </div>

@@ -1,3 +1,80 @@
-<div>
-	contact us
+<div style="background-color:#f2f5f7" ng-controller="contactCtrl">
+	<div class="container" style="padding-top:20px;">
+		<div class="row">
+	    <div class="col-sm-6">
+	      <h3 class="m-t-none m-b font-thin">Contact us</h3>
+	      <p>We’d love to hear what you think! Please fill out the form with any questions or feedback you might have.</p>
+	      <form role="form">
+					<div class="row form-group">
+						<div class="form-group col-sm-6">
+							<label>First Name</label>
+		          <input type="text" class="form-control" placeholder="*First Name">
+		        </div>
+						<div class="form-group col-sm-6">
+							<label>Last Name</label>
+		        	<input type="text" class="form-control" placeholder="*Last Name">
+		        </div>
+					</div>
+	        <div class="form-group">
+	          <label>serviceTypes</label>
+						<select ng-model="myService" class="input form-control inline v-middle" ng-options="serviceType.service as serviceType.service for serviceType in serviceTypes">
+						</select>
+	        </div>
+	        <div class="form-group">
+	          <label>Email</label>
+	          <input type="email" class="form-control" placeholder="*Email@">
+	        </div>
+					<div class="form-group">
+	          <label>phone</label>
+	          <input type="number" class="form-control" placeholder="*phone">
+	        </div>
+					<div class="form-group">
+	          <label>phone</label>
+	          <textarea class="form-control" rows="6" placeholder="Type your message"></textarea>
+	        </div>
+	        <div class="checkbox m-t-lg">
+	          <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs" ng-click="ok()"><strong>submit</strong></button>
+	          <label class="i-checks">
+	            <input type="checkbox"><i></i> Remember me
+	          </label>
+	        </div>
+	      </form>
+	    </div>
+	    <div class="col-sm-6">
+	      <!-- <h4>Not a member?</h4>
+	      <p>You can create an account <a href class="text-info">here</a></p>
+	      <p>OR</p>
+	      <a href class="btn btn-primary btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a>
+	      <a href class="btn btn-info btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>Sign in with Twitter</a>
+	      <a href class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>Sign in with Google+</a> -->
+				<div class="row m-t-sm">
+					<div class="m-l-lg">
+						<h4>Not a member?</h4>
+						<p>You can create an account <a ui-sref="app.signup" class="text-info">here</a></p>
+						<p>OR</p>
+						<div class="bg-white">
+							<h4>Support</h4>
+						 	<p>Private Advertisers</p>
+							<a>Call: 1300 234 567</a>
+							<a>email: privateads@winninginvestment.com.au</a>
+						</div>
+						<p>OR</p>
+						<div class="bg-white m-b-lg">
+						 	<p>Real Estate Agent Support</p>
+							<a>Call: 1300 234 567</a>
+							<a>email: privateads@winninginvestment.com.au</a>
+						</div>
+						<ng-map center="84 pitt st Sydney, NSW" zoom="18"  scrollwheel="false"> <!--draggable="false" zoom-control="false"-->
+							<marker position="84 pitt st Sydney, NSW" title="WinningInvestment" optimized="false" animation="Animation.BOUNCE" icon="{
+										url:'img/blue.png',
+										scaledSize:[30,30],
+										origin: [0,0],
+										anchor: [10,10]
+									}"></marker>
+						</ng-map>
+					</div>
+				</div>
+			</div>
+	  </div>
+	</div>
 </div>

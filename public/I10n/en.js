@@ -1,5 +1,6 @@
 {
-	"header": {
+	"header": 
+	{
 			"HOME": "Home",
 			"RENT"	:"Rent",
 			"BUY"	:"Buy",
@@ -26,13 +27,15 @@
 				"Twitter":"Twitter",
 				"Instagram":"Instagram"
 			},			
-			"LOGIN": {
+			"LOGIN": 
+			{
 				"Login":"login",
 				"Login_enquiry":"Don't have an account?",
 				"Logout":"Logout",
 				"Profile":"Profile"
 			},
-			"REGIST": {
+			"REGIST": 
+			{
 				"Regist":"regist",
 				"Regist_enquiry":"Already had an account."
 			}		
@@ -47,7 +50,8 @@
 				"header":"Update Success",
 				"details":"Your update has been uploaded."
 			},
-			"Error":{
+			"Error":
+			{
 				"header":"Update Error Occurr",
 				"details":"Your update has been refused by server, check your internet connection or contact us via phone."
 			}
@@ -239,14 +243,14 @@
 			"description":
 			{
 				"title":"Descriptions",
-				"train_station":"train_station nearby",
-				"uni":"uni nearby",
-				"backpack":"backpack",
-				"park":"park nearby",
-				"school":"school nearby",
-				"big_family":"big_family compatible",
-				"shopping_mall":"shopping_centre nearby",
-				"office_rental":"office_rental"
+				"train_station"	:"train_station nearby  ",
+				"uni"			:"uni nearby            ",
+				"backpack"		:"backpack              ",
+				"park"			:"park nearby           ",
+				"school"		:"school nearby         ",
+				"big_family"	:"big_family compatible ",
+				"shopping_mall"	:"shopping_centre nearby",
+				"office_rental"	:"office_rental         "
 			},
 			"feature":
 			{
@@ -300,7 +304,31 @@
 	},
 	"search":
 	{
-		"title":"Search"
+		"title":"Search",
+		"er":"Entire Rental",
+		"sr":"Share Rental",
+		"address":"Address",
+		"address_tips":"Search by surburb,region,postcode",
+		"train": "Train Station",
+		"train_tips":"Search by train station nearby",
+		"surround":"Surrond Suburb Including",
+		"more":"more",
+		"less":"tiny"
+	},
+	"hotrent":"Hot Rent",
+	"footer":
+	{
+		"title":"Footer",
+		"director":
+		{
+			"about":"about us",
+			"contact":"contact us",
+			"business":"business admin"
+		},
+		"office":
+		{
+			"tw_addr":"11071/Lv13 No. 560, Section 4, Zhongxiao East Road, Xinyi District"
+		}
 	},
 	"tips":
 	{
@@ -377,7 +405,55 @@
 	},
 	"detail":
 	{
-		"title":"Detail"
+		"title":"Detail",
+		"table":
+		{
+			"title":"Introduction",
+			"basic":"Basic Information",
+			"feature":
+			{
+				"title":"Features",
+				"facility":"Facility",
+				"transport":
+				{
+					"title":"Transports",
+					"train":"train station",
+					"bus":"bus stops",
+					"ferry":"ferry ports",
+					"light":"light rails"
+				},
+				"furniture":
+				{
+					"title":"Furniture",
+					"room":"Room",
+					"kitchen":"Kitchen",
+					"laundry":"Laundry",
+					"living":"Living/Dinning"
+				},
+				"retails":"Retails/Shops",
+				"schools":"Schools"
+			},
+			"description":"Description",
+			"requirements":
+			{
+				"title":"All Requirements",
+				"smoke":"Non-Smoking",
+				"pet":"No-Pets",
+				"girl":"Girl-Only",
+				"boy":"Boy-Only"
+			},
+			"tips":
+			{
+				"title":"This Property Offers",
+				"kitchen":"Full-Kitchen",
+				"coffee":"Coffee-Bar",
+				"aircondition":"Air-Condition",
+				"media":"Media",
+				"fridge":"Fridge",
+				"laundry":"Laundry"
+			},
+			"others":"Others"
+		}
 	},
 	"business":
 	{
@@ -456,12 +532,33 @@
 			"title":"Customer Guide",
 			"section_1":
 			{
-				"title":"Section_1",
+				"title":"Section_1: Join us",
 				"step_1":"Sign up as a landlord and update your basic personal information in 'Profile|my Profile'",
-				"step_2":"add your rental property in 'Profile|Property Management'",
-				"tips":"You can contact us to introduce all your and your properties' information for rental requirement on business hours directly."				
-			}
-			
+				"step_2":"fill your rental property details in 'Profile|Property Management'",
+				"step_3":"sumbit",
+				"tips":"You can also contact our property management coordinator directly."				
+			},
+			"section_2":
+			{
+				"title":"Section_2: Strategy and Benifits",
+				"step_1":"Our staff will contact you within 24 hours, and book the first inspection.",
+				"step_2":"Our staff will customize strategy to promote your property. We also match proper benefits with your property depending on the current benefits we provided.",
+				"tips":"You can preview the current benefits for landlord in 'Profile|Property details'."				
+			},
+			"section_3":
+			{
+				"title":"Section_3: Contracts and Inspection",
+				"step_1":"After the on-site negotiation with our staff, you may sign the trust agreement with agent.",
+				"step_2":"We may start inspection and make promotion immediately or book a later arrangement for you",
+				"tips":"You can preview your 'To be released' status property online and share your ideas with us."				
+			},	
+			"section_4":
+			{
+				"title":"Section_4: Monthly Management",
+				"step_1":"Now you will start to receive our monthly balance reports and transfer receipts via email.",
+				"step_2":"You can also manage your property online through your 'Profile'",
+				"tips":"All details will be shown in your 'Profile' and we may help you to analysis your investment in next versions functional update."				
+			}			
 		}
 	},
 	"conditions of use":

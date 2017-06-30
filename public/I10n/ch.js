@@ -1,5 +1,6 @@
 {
-	"header": {
+	"header": 
+	{
 			"HOME": "首页",
 			"RENT"	:"租房",
 			"BUY"	:"买房",
@@ -26,30 +27,37 @@
 				"Twitter":"Twitter",
 				"Instagram":"Instagram"
 			},			
-			"LOGIN": {
+			"LOGIN": 
+			{
 				"Login":"登录",
 				"Login_enquiry":"还没有注册?",
 				"Logout":"注销",
 				"Profile":"个人管理"
 			},			
-			"REGIST": {
+			"REGIST": 
+			{
 				"Regist":"注册",
 				"Regist_enquiry":"注册老用户"
 			}
 	},
-	"profile":{
+	"profile":
+	{
 		"TITLE":"我的账户",
-		"UPDATE":{
-			"Success":{
+		"UPDATE":
+		{			
+			"Success":
+			{
 				"header":"更新 已完成",
 				"details":"更新 已上传至服务器."
 			},
-			"Error":{
+			"Error":
+			{
 				"header":"更新失败",
 				"details":"服务器拒绝更新，请检查您的网络连接后电话或邮件联系我们"
 			}
 		},
-		"SECTION":{
+		"SECTION":
+		{
 			"Profile":
 			{
 				"header":"个人资料",
@@ -296,7 +304,31 @@
 	},
 	"search":
 	{
-		"title":"Search"
+		"title":"搜索",
+		"er":"整租",
+		"sr":"分租",
+		"address":"地址",
+		"address_tips":"区，州，邮编",
+		"train": "火车站",
+		"train_tips":"下方选取临近火车站",
+		"surround":"扩展范围",
+		"more":"更多",
+		"less":"收起"
+	},
+	"hotrent":"推荐房源",
+	"footer":
+	{
+		"title":"Footer",
+		"director":
+		{
+			"about":"关于我们",
+			"contact":"联系我们",
+			"business":"商家入驻"
+		},
+		"office":
+		{
+			"tw_addr":"11071台北市信义区忠孝东路四段560号13楼"
+		}
 	},
 	"tips":
 	{
@@ -320,7 +352,7 @@
 		},
 		"business":
 		{
-			"title":"Business",
+			"title":"商家专区",
 			"move":
 			{
 				"title":"搬家",
@@ -373,7 +405,55 @@
 	},
 	"detail":
 	{
-		"title":"Detail"
+		"title":"详情",
+		"table":
+		{
+			"title":"房源介绍",
+			"basic":"基本信息",
+			"feature":
+			{
+				"title":"综合列表",
+				"facility":"设施",
+				"transport":
+				{
+					"title":"公共交通",
+					"train":"火车站",
+					"bus":"巴士站",
+					"ferry":"渡轮码头",
+					"light":"轻轨车站"
+				},
+				"furniture":
+				{
+					"title":"家具家电列表",
+					"room":"卧室",
+					"kitchen":"厨房",
+					"laundry":"洗衣房",
+					"living":"客厅/餐厅"
+				},
+				"retails":"商店",
+				"schools":"学校"
+			},
+			"description":"房源描述",
+			"requirements":
+			{
+				"title":"房客要求",
+				"smoke":"禁烟",
+				"pet":"禁养宠物",
+				"girl":"限女生",
+				"boy":"限男生"
+			},
+			"tips":
+			{
+				"title":"房源供应设施",
+				"kitchen":"全灶具",
+				"coffee":"咖啡吧台",
+				"aircondition":"空调",
+				"media":"工作台",
+				"fridge":"冰箱",
+				"laundry":"洗衣机"
+			},
+			"others":"备注"
+		}
 	},
 	"business":
 	{
@@ -456,8 +536,28 @@
 				"step_1":"注册业主上传更新 '个人资料|我的资料'",
 				"step_2":"在'个人资料|房产管理'添加房源信息",
 				"tips":"您可以在工作时间直接电话联系我们的员工告知我们所有信息."				
-			}
-			
+			},
+			"section_2":
+			{
+				"title":"Section_2: Strategy and Benifits",
+				"step_1":"Our staff will contact you within 24 hours, and book the first inspection.",
+				"step_2":"Our staff will customize strategy to promote your property. We also match proper benefits with your property depending on the current benefits we provided.",
+				"tips":"You can preview the current benefits for landlord in 'Profile|Property details'."				
+			},
+			"section_3":
+			{
+				"title":"Section_3: Contracts and Inspection",
+				"step_1":"After the on-site negotiation with our staff, you may sign the trust agreement with agent.",
+				"step_2":"We may start inspection and make promotion immediately or book a later arrangement for you",
+				"tips":"You can preview your 'To be released' status property online and share your ideas with us."				
+			},	
+			"section_4":
+			{
+				"title":"Section_4: Monthly Management",
+				"step_1":"Now you will start to receive our monthly balance reports and transfer receipts via email.",
+				"step_2":"You can also manage your property online through your 'Profile'",
+				"tips":"All details will be shown in your 'Profile' and we may help you to analysis your investment in next versions functional update."				
+			}			
 		}
 	},
 	"conditions of use":

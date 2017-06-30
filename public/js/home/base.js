@@ -12,6 +12,7 @@ angular.module('andy', [
       'ui.jq',
       'ngMap',
       'map',
+      'mapshare'
       ])
  .config(function ($interpolateProvider,
        $stateProvider,
@@ -36,6 +37,16 @@ angular.module('andy', [
     //template:'<h1>homePage</h1>'
     templateUrl: '/partials/googlemap.html', //localhost:8080/home.tpl
   })
+  .state('googlemap', {
+   url: '/googlemap',
+   //template:'<h1>homePage</h1>'
+   templateUrl: '/partials/map.html', //localhost:8080/home.tpl
+ })
+ .state('googlemapShare', {
+  url: '/googlemapShare',
+  //template:'<h1>homePage</h1>'
+  templateUrl: '/partials/mapshare.html', //localhost:8080/home.tpl
+})
    .state('app.signup', {
     url: '/signup',
     templateUrl: '/tpl/page/signup',
@@ -90,17 +101,28 @@ angular.module('andy', [
           }, ],
       },
   })
+  .state('app.listpageShare', {
+   url: '/listpageShare',
+   templateUrl: '/partials/listpage_share.html',
+   controller: 'listPageShareCtrl',
+   resolve: {
+       deps: ['$ocLazyLoad',
+         function ($ocLazyLoad) {
+           return $ocLazyLoad.load('ui.select').then(
+               function () {
+                   return $ocLazyLoad.load('js/home/listpageShare.js');
+                 }
+           );
+         }, ],
+     },
+ })
    .state('app.business', {
     url: '/business',
     templateUrl: '/partials/business.html',
   })
-   .state('app.guide_customer', {
-                url: '/guide_customer',
-                templateUrl: '/partials/guideCustomer.html',
-              })
-   .state('app.guide_landlord', {
-                url: '/guide_landlord',
-                templateUrl: '/partials/guideLandlord.html',
+   .state('app.documentation', {
+                url: '/documentation',
+                templateUrl: '/partials/documentation.html',
               })
    .state('app.shortlist', {
                 url: '/shortlist',
@@ -110,6 +132,10 @@ angular.module('andy', [
                 url: '/details?id&name',
                 templateUrl: '/partials/details.html',
               })
+  .state('app.detailsShare', {
+               url: '/detailsShare?id&name',
+               templateUrl: '/partials/detailsShare.html',
+             })
    .state('app.serviceTypes', {
     url: '/serviceTypes',
     templateUrl: '/partials/serviceTypes.html',
@@ -130,6 +156,10 @@ angular.module('andy', [
     url: '/newsDetail',
     templateUrl: '/partials/newsDetail.html',
   })
+  .state('app.contact', {
+   url: '/contactus',
+   templateUrl: '/partials/contact.html',
+ })
    .state('app.trainmap', {
                 url: '/trainmap',
                 templateUrl: '/partials/trainmap.html',

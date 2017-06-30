@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/css/simple-line-icons.css" type="text/css" />
 	<link rel="stylesheet" href="/css/font.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/app.css" type="text/css" />
-	<link rel="stylesheet" href="/css/winning/search-option.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="/css/winning/search-option.css" type="text/css" /> -->
 	<link rel="stylesheet" href="/css/winning/profile.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/infowindow.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />
@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="/font/flaticon.css" />
 	<link rel="stylesheet" href="/css/winning/newsDetail.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/winning/fixright.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/winning/loading.css" type="text/css" />
 </head>
 <body ng-controller="MainCtrl">
 
@@ -51,6 +52,7 @@
 	<script src="/node_modules/angular-file-upload.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDvEbpAtBYXMXoun-I3wYhn-7K33iVc7qs"></script>
 	<script src="/node_modules/ui-utils.js"></script>
+	<script src="/node_modules/underscore-min.js"></script>
 	<script src="/js/home/directives/ui-jq.js"></script>
 	<script src="/js/home/services/ui-load.js"></script>
 	<script src="/js/home/map/jquery.subwayMap-0.5.0.js"></script>
@@ -58,7 +60,8 @@
 	 <!-- lazyload -->
   	<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
 	<script src="/js/home/map/load-google-maps.js"></script>
-	<script src="/js/home/result.js"></script>
+	<script src="/js/home/googlemap.js"></script>
+	<script src="/js/home/googlemapShare.js"></script>
 	<script src="/js/home/base.js"></script>
 	<script src="/js/home/config.js"></script>
 	<script src="/js/home/main.js"></script>
@@ -67,15 +70,19 @@
 	<script src="/js/home/header.js"></script>
 	<script src="/js/home/common.js"></script>
 	<script src="/js/home/details.js"></script>
+	<script src="/js/home/detailsShare.js"></script>
 	<script src="/js/home/upload.js"></script>
 	<script src="/js/home/profile.js"></script>
 	<script src="/js/home/shortlist.js"></script>
 	<script src="/js/home/listpage.js"></script>
+	<script src="/js/home/listpageShare.js"></script>
 	<script src="/js/home/new.js"></script>
 	<script src="/js/home/trainmap.js"></script>
 	<script src="/js/home/business.js"></script>
 	<script src="/js/home/documentation.js"></script>
 	<script src="/js/home/rightfix.js"></script>
+	<script src="/js/home/footer.js"></script>
+	<script src="/js/home/contact.js"></script>
 </body>
 
 </html>

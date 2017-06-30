@@ -24,15 +24,12 @@ use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 class LoggerDataCollector extends DataCollector implements LateDataCollectorInterface
 {
     private $logger;
-    private $containerPathPrefix;
 
-    public function __construct($logger = null, $containerPathPrefix = null)
+    public function __construct($logger = null)
     {
         if (null !== $logger && $logger instanceof DebugLoggerInterface) {
             $this->logger = $logger;
         }
-
-        $this->containerPathPrefix = $containerPathPrefix;
     }
 
     /**
@@ -50,12 +47,7 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
     {
         if (null !== $this->logger) {
             $this->data = $this->computeErrorsCount();
-
-            $containerDeprecationLogs = $this->getContainerDeprecationLogs();
-            $this->data['deprecation_count'] += count($containerDeprecationLogs);
-            $this->data['compiler_logs'] = $this->getContainerCompilerLogs();
-            $this->data['logs'] = $this->sanitizeLogs(array_merge($this->logger->getLogs(), $containerDeprecationLogs));
-            $this->data = $this->cloneVar($this->data);
+            $this->data['logs'] = $this->sanitizeLogs($this->logger->getLogs());
         }
     }
 
@@ -94,11 +86,6 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
         return isset($this->data['scream_count']) ? $this->data['scream_count'] : 0;
     }
 
-    public function getCompilerLogs()
-    {
-        return isset($this->data['compiler_logs']) ? $this->data['compiler_logs'] : array();
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -107,61 +94,26 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
         return 'logger';
     }
 
-    private function getContainerDeprecationLogs()
-    {
-        if (null === $this->containerPathPrefix || !file_exists($file = $this->containerPathPrefix.'Deprecations.log')) {
-            return array();
-        }
-
-        $stubs = array();
-        $bootTime = filemtime($file);
-        $logs = array();
-        foreach (unserialize(file_get_contents($file)) as $log) {
-            $log['context'] = array('exception' => new SilencedErrorContext($log['type'], $log['file'], $log['line']));
-            $log['timestamp'] = $bootTime;
-            $log['priority'] = 100;
-            $log['priorityName'] = 'DEBUG';
-            $log['channel'] = '-';
-            $log['scream'] = false;
-            $logs[] = $log;
-        }
-
-        return $logs;
-    }
-
-    private function getContainerCompilerLogs()
-    {
-        if (null === $this->containerPathPrefix || !file_exists($file = $this->containerPathPrefix.'Compiler.log')) {
-            return array();
-        }
-
-        $logs = array();
-        foreach (file($file, FILE_IGNORE_NEW_LINES) as $log) {
-            $log = explode(': ', $log, 2);
-
-            $logs[$log[0]][] = array('message' => $log[1]);
-        }
-
-        return $logs;
-    }
-
     private function sanitizeLogs($logs)
     {
         $sanitizedLogs = array();
 
         foreach ($logs as $log) {
             if (!$this->isSilencedOrDeprecationErrorLog($log)) {
+                $log['context'] = $log['context'] ? $this->cloneVar($log['context']) : $log['context'];
                 $sanitizedLogs[] = $log;
 
                 continue;
             }
 
             $exception = $log['context']['exception'];
-            $errorId = md5("{$exception->getSeverity()}/{$exception->getLine()}/{$exception->getFile()}\0{$log['message']}", true);
+            $errorId = md5("{$exception->getSeverity()}/{$exception->getLine()}/{$exception->getFile()}".($exception instanceof \Exception ? "\0".$exception->getMessage() : ''), true);
 
             if (isset($sanitizedLogs[$errorId])) {
                 ++$sanitizedLogs[$errorId]['errorCount'];
             } else {
+                $log['context'] = $log['context'] ? $this->cloneVar($log['context']) : $log['context'];
+
                 $log += array(
                     'errorCount' => 1,
                     'scream' => $exception instanceof SilencedErrorContext,

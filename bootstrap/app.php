@@ -68,7 +68,8 @@ $app->singleton(
    $app->routeMiddleware([
        'auth' => App\Http\Middleware\Authenticate::class,
        'cus'=>App\Http\Middleware\CustomerLoginStatus::class,
-       'lord'=>App\Http\Middleware\LandlordLoginStatus::class,       
+       'lord'=>App\Http\Middleware\LandlordLoginStatus::class,  
+       'id'=>App\Http\Middleware\idTenant::class,     
    ]);
 
 /*

@@ -65,7 +65,7 @@ class StaffController extends Controller
 									'{$SEmail}'，'{$SWorkStat}'，'{$SCurrLoc}'，'{$SComment}'
 								)"; 	
 		$result = DB::update($sql);		
-		return $result ; //0:失败或无更新；1：成功									
+		return json_encode($result) ; //0:失败或无更新；1：成功									
 	}
 	
 	public function logbook(Request $request) {
@@ -76,7 +76,7 @@ class StaffController extends Controller
 		$proc = 'proc_Insert_StaffLogbook';
 		$sql = "call $proc({$StaffID},'{$SLType}','{$SLDetail}','{$SLTime}')";
 		$result = DB::insert($sql);
-		return $result;		
+		return json_encode($result);		
 	}
 	/**
 	 * admin staff
@@ -89,7 +89,7 @@ class StaffController extends Controller
 		$proc_Name = 'proc_Insert_StaffInfo';
 		$sql = "call $proc_Name('{$user_name}','{$password}','{$rankname}')"; 
 		$result = DB::insert($sql);		
-		return $result ; //0:失败或无添加；1：成功	
+		return json_encode($result) ; //0:失败或无添加；1：成功	
 	}
 	
 	public function admin_staff_update(Request $request) {
@@ -113,7 +113,7 @@ class StaffController extends Controller
 									'{$SEmail}'，'{$SWorkStat}'，'{$SCurrLoc}'，'{$SComment}'
 								)"; 
 		$result = DB::update($sql);		
-		return $result ; //0:失败或无更新；1：成功	
+		return json_encode($result) ; //0:失败或无更新；1：成功	
 	}
 	
 	/**
@@ -124,7 +124,7 @@ class StaffController extends Controller
 		$proc_Name = 'proc_Insert_RankName';	
 		$sql = "call $proc_Name('{$SRankName}')";  
 		$result = DB::insert($sql);		
-		return $result ; 							//0:失败或无添加；1：成功	
+		return json_encode($result) ; 							//0:失败或无添加；1：成功	
 	}
 	
 	public function admin_rankrights_delete_rankname(Request $request) {
@@ -132,7 +132,7 @@ class StaffController extends Controller
 		$proc_Name = 'proc_Delete_RankName';	
 		$sql = "call $proc_Name('{$SRankName}')";  
 		$result = DB::delete($sql);		
-		return $result ;
+		return json_encode($result) ;
 	}
 	
 	public function admin_rankrights_add_rankrights(Request $request) {
@@ -141,7 +141,7 @@ class StaffController extends Controller
 		$proc_Name = 'proc_Insert_RankRight';	
 		$sql = "call $proc_Name('{$SRankName}','{$Right_Name}')"; 
 		$result = DB::insert($sql);		
-		return $result ; 							
+		return json_encode($result) ; 							
 	}
 	
 	public function admin_rankrights_delete_rankrights(Request $request) {
@@ -150,7 +150,7 @@ class StaffController extends Controller
 		$proc_Name = 'proc_Delete_RankRight';	
 		$sql = "call $proc_Name('{$SRankName}','{$Right_Name}')"; 
 		$result = DB::delete($sql);		
-		return $result ; 
+		return json_encode($result) ; 
 	}	
 	
 	/**
@@ -173,7 +173,7 @@ class StaffController extends Controller
 		$LLPassword = password_hash($request->input('LLPassword'),PASSWORD_DEFAULT);
 		$proc_Name = 'proc_Insert_LandlordInfo';
 		$result = DB::insert("call $proc_Name('{$LLName}','{$LLPassword}','{$LLPhone}','{$LLCellphone}','{$LLEmail}')");
-		return $result;	
+		return json_encode($result);	
 	}
 	
 	public function admin_landlord_update(Request $request) {
@@ -189,7 +189,7 @@ class StaffController extends Controller
 									'{$LLID}'，'{$LLName}'，'{$LLPassword}'，'{$LLPhone}'，'{$LLCellphone}'，'{$LLEmail}'
 								)"; 
 		$result = DB::update($sql);		
-		return response($result) ; //0:失败或无更新；1：成功
+		return json_encode($result) ; //0:失败或无更新；1：成功
 	}
 	//requirements to define inval landlord 
 	public function admin_landlord_delete(Request $request) {
@@ -238,7 +238,7 @@ class StaffController extends Controller
 								'{$ER_Stat}'
 								)";
 			$result = DB::insert($sql);
-			return $result;						
+			return json_encode($result);						
 		}	
 		else{return false;} 		//该地址已注册
 	} 
@@ -273,7 +273,7 @@ class StaffController extends Controller
 							'{$ER_Description}','{$ER_Type}','{$ER_Feature}'							
 							)";
 		$result = DB::update($sql);
-		return $result;			
+		return json_encode($result);			
 	} 
 	
 	public function admin_landlord_er_delete(Request $request) {
@@ -281,7 +281,7 @@ class StaffController extends Controller
 		$proc = 'proc_Delete_ER';
 		$sql = 'call $proc($ER_ID)';
 		$result = DB::delete($sql);
-		return $result;
+		return json_encode($result);
 	}
 			
 	/**
@@ -328,7 +328,7 @@ class StaffController extends Controller
 		$proc = 'proc_Insert_SRInfo';
 		$sql = "call $proc({$ER_ID},{$SRArea},'{$SRStat}','{$SRAvailableDate}',{$SRPrice},'{$SRName}')";
 		$result = DB::insert($sql);
-		return $result;
+		return json_encode($result);
 	} 
 	
 	public function admin_sr_update(Request $request) {
@@ -342,7 +342,7 @@ class StaffController extends Controller
 		$proc = 'proc_Update_SRInfo';
 		$sql = "call $proc({$SRID},{$ER_ID},{$SRArea},'{$SRStat}','{$SRAvailableDate}',{$SRPrice},'{$SRName}')";
 		$result = DB::update($sql);
-		return $result;
+		return json_encode($result);
 	} 
 	//requirements to inval sr
 	public function admin_sr_delete(Request $request) {
@@ -360,14 +360,14 @@ class StaffController extends Controller
 		$proc = 'proc_Insert_PicLibrary';
 		$sql = "call $proc({$ER_ID},{$SRID},'{$PicFile}','{$PicDescription}')";
 		$result = DB::insert($sql);
-		return $result;		
+		return json_encode($result);		
 	}	
 	public function admin_pic_delete(Request $request) {
 		$PLID = $request->input('PLID');	
 		$proc = 'proc_Delete_PicLibrary';
 		$sql = 'call $proc({$PLID})';
 		$result = DB::delete($sql);
-		return $result;
+		return json_encode($result);
 	}
 	// all income and expense of properties included in billLibrary table
 	// staff has more options to filter bill but mainly with admin_er_check 
@@ -388,7 +388,7 @@ class StaffController extends Controller
 		$proc = 'proc_Insert_BillLibrary';
 		$sql = "call $proc({$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
 		$result = DB::insert($sql);
-		return $result;
+		return json_encode($result);
 	}
 	
 	public function admin_er_bill_update(Request $request) {
@@ -405,7 +405,7 @@ class StaffController extends Controller
 		$proc = 'proc_Update_BillLibrary';
 		$sql = "call $proc({$BLID},{$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
 		$result = DB::insert($sql);
-		return $result;		
+		return json_encode($result);		
 	}
 	
 	public function admin_er_bill_delete(Request $request) {
@@ -413,7 +413,7 @@ class StaffController extends Controller
 		$proc = 'proc_Delete_BillLibrary';
 		$sql = 'call $proc({$BLID})';
 		$result = DB::delete($sql);
-		return $result;
+		return json_encode($result);
 	}
 	//生成balance
 	public function admin_er_balance(Request $request) {
@@ -443,7 +443,7 @@ class StaffController extends Controller
 		$today = date("Y-m-d");
 		$proc_Name = 'proc_Insert_CustomerInfo';
 		$result = DB::insert("call $proc_Name('','{$CPassword}','','{$CEmail}','{$status}','{$today}','1','0')");
-		return $result;
+		return json_encode($result);
 	}
 
 	public function admin_customer_update(Request $request) {
@@ -476,7 +476,7 @@ class StaffController extends Controller
 							{$CBudget}
 						);"; 
 		$result = DB::update($sql);		
-		return response($result) ; //0:失败或无更新；1：成功
+		return json_encode($result); //0:失败或无更新；1：成功
 	}
 	//table has foreign key limitation so can only delete pending customer account
 	//the account used to rent or has records such as shortlists in db need to join delete from db use another method
@@ -485,7 +485,7 @@ class StaffController extends Controller
 		$proc = 'proc_Delete_CustomerInfo';
 		$sql = 'call $proc({$CID})';
 		$result = DB::delete($sql);
-		return $result;
+		return json_encode($result);
 	}		
 	
 	public function admin_customer_er_check(Request $request) {
@@ -511,7 +511,7 @@ class StaffController extends Controller
 		$proc = 'proc_Insert_ContractLibrary';
 		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{$CLDate}','{$ContractFile}','{$ContractComment}')";
 		$result = DB::insert($sql);
-		return $result;
+		return json_encode($result);
 	}
 	
 	public function admin_customer_contract_delete(Request $request) {
@@ -522,7 +522,7 @@ class StaffController extends Controller
 		$proc = 'proc_Delete_ContractLibrary';
 		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{$CLDate}')";
 		$result = DB::delete($sql);
-		return $result;
+		return json_encode($result);
 	}
 	//rent success and all info recorded into db, send msg to customer for another record
 	public function admin_customer_er_notice(Request $request) {
@@ -658,7 +658,7 @@ class StaffController extends Controller
 			$proc_name = 'proc_Insert_MaintenanceLibrary';
 			$sql = "call $proc_name('{$MType}',{$ER_ID},{$CID},'{$MApplyForm}','{$MStat}','{$MApplyDate}')";					
 			$result = DB::insert($sql);
-			return $result;
+			return json_encode($result);
 		}
 		catch(exception $e)
 		{
@@ -678,7 +678,7 @@ class StaffController extends Controller
 		$proc_name = 'proc_Insert_MaintenanceLibrary';
 		$sql = "call $proc_name({$MLID},'{$MType}',{$ER_ID},{$CID},'{$MApplyForm}','{$MStat}','{$MConfirm}')";					
 		$result = DB::update($sql);
-		return $result;				
+		return json_encode($result);				
 	}
 	
 	public function admin_customer_maintenance_delete(Request $request) {
@@ -686,7 +686,7 @@ class StaffController extends Controller
 		$proc_name = 'proc_Delete_MaintenanceLibrary';
 		$sql = "call $proc_name({$MLID})";					
 		$result = DB::delete($sql);
-		return $result;					
+		return json_encode($result);					
 	}	
 	
 	public function admin_customer_maintenance_notice(Request $request) {
@@ -734,7 +734,7 @@ class StaffController extends Controller
 		$proc = 'proc_Insert_BillLibrary';
 		$sql = "call $proc({$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
 		$result = DB::insert($sql);
-		return $result;
+		return json_encode($result);
 	}
 	
 	public function admin_bill_update(Request $request) {
@@ -751,7 +751,7 @@ class StaffController extends Controller
 		$proc = 'proc_Update_BillLibrary';
 		$sql = "call $proc({$BLID},{$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
 		$result = DB::insert($sql);
-		return $result;		
+		return json_encode($result);		
 	}
 	
 	public function admin_bill_delete(Request $request) {
@@ -759,7 +759,7 @@ class StaffController extends Controller
 		$proc = 'proc_Delete_BillLibrary';
 		$sql = 'call $proc({$BLID})';
 		$result = DB::delete($sql);
-		return $result;
+		return json_encode($result);
 	}
 		
 							
@@ -793,7 +793,7 @@ class StaffController extends Controller
 		$sql = "call $proc_Name({$idMsg_sr})"; 
 		 
 		$result = DB::update($sql);
-		return $result;		
+		return json_encode($result);		
 	}
 	
 	public function msg_received(Request $request) {
@@ -815,7 +815,7 @@ class StaffController extends Controller
 		$proc_Name = 'msg_write';
 		$sql = "call $proc_Name('{$title}','{$content}','{$createTime}',{$IdSender},{$IdReceiver},'{$msg_direct_comment}')";  
 		$result = DB::insert($sql);
-		return $result;		
+		return json_encode($result);		
 	}
 	
 }

@@ -77,7 +77,7 @@
 }
 
 .business .filter-box .bd {
-	padding: 18px 26px 12px;
+	padding: 7px 26px 0px;
 	background: #fff;
 	font-size: 12px;
 	position: relative;
@@ -175,7 +175,7 @@
 	height: 27px;
 	line-height: 27px;
 	color: #333;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 .business a {
@@ -427,15 +427,14 @@
 .business .agent-lst li .pic-panel {
 	font-size: 0;
 	position: relative;
-	width: 200px;
+	width: 103px;
 	float: left;
 	overflow: hidden;
 }
 
 .business .agent-lst li .pic-panel img {
 	display: inline;
-	height: 100px;
-	padding-top: 4px;
+	height: 90px;
 }
 
 .business img {
@@ -444,10 +443,10 @@
 }
 
 .business .agent-lst li .info-panel {
-	width: 700px;
+	width: 841px;
 	position: relative;
 	float: right;
-	padding-top: 10px;
+	padding-top: 4px;
 }
 
 .business .agent-lst li .info-panel .agent-name {
@@ -474,7 +473,6 @@
 	padding: 4px;
 	color: #888888;
 	margin-left: 5px;
-	margin-top: 5px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	-ms-border-radius: 2px;
@@ -497,7 +495,7 @@
 
 .business .agent-lst li .info-panel .col-1 {
 	width: 455px;
-	height: 100px;
+	height: 90px;
 	float: left;
 }
 
@@ -602,12 +600,12 @@
 }
 
 .business .agent-lst li .info-panel .col-2 {
-	width: 200px;
+	width: 129px;
 	text-align: right;
 	float: left;
 	position: relative;
-	top: -34px;
-	left: 40px;
+	top: -70px;
+	left: 450px;
 }
 
 .business .agent-lst li .info-panel .col-2 .high-praise {

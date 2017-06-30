@@ -1,6 +1,6 @@
 ;(function () {
   'use strict';
-  angular.module('andy').controller('businessCtrl', ['$scope', '$http', '$cookies', '$rootScope', '$localStorage', 'SearchService', 'updateService', function ($scope, $http, $cookies, $rootScope, $localStorage, SearchService, updateService) {
+  angular.module('andy').controller('businessCtrl', ['$scope', '$http', '$cookies', '$rootScope', '$localStorage', 'SearchService', 'updateService','pagerService', function ($scope, $http, $cookies, $rootScope, $localStorage, SearchService, updateService,pagerService) {
     var businessData = {};
     var datafromhome = {};
     $scope.datafromhome = '';
@@ -34,7 +34,55 @@
       data.links = false;
      }
     });
-   $scope.serviceData = businessData;
+    $scope.serviceData = businessData;
 
+    /**************************************商家专区 starts****************************************************/
+      var business = {};
+      $scope.businessSearch = function(TPDetail){
+       business.TPDetail = TPDetail;
+       business.TPServLoc = '';
+       $http.post('/customer/filt_thirdparty', business)
+        .then(function(r) {
+         SearchService.set(r);
+         updateService.set(TPDetail);
+         console.log('r===>', r);
+         $scope.serviceData = r.data;
+         businessData = r.data;
+         console.log(r.data.length);
+         var len = businessData.length;
+         vm.dummyItems = _.range(1, len+1); // dummy array of items to be paged
+         vm.pager = {};
+         vm.setPage = setPage;
+         initController();
+        }, function(e) {
+
+        });
+      }
+    /**************************************商家专区 ends****************************************************/
+
+
+   /***************pagination starts*************************/
+    var vm = this;
+    var len = businessData.length;
+    vm.dummyItems = _.range(1, len+1); // dummy array of items to be paged
+    vm.pager = {};
+    vm.setPage = setPage;
+    initController();
+    function initController() {
+        // initialize to page 1
+        vm.setPage(1);
+    }
+    function setPage(page) {
+        if (page < 1 || page > vm.pager.totalPages) {
+            return;
+        }
+        // get pager object from service
+        vm.pager = pagerService.GetPager(vm.dummyItems.length, page,3);
+        // get current page of items
+        console.log(vm.pager);
+        $scope.serviceData = businessData.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
+    }
+
+   /***************pagination ends***********************************/
   }])
 })();

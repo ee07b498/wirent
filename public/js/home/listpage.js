@@ -1,41 +1,106 @@
-;
-(function() {
-	'use strict';
+'use strict';
 	angular.module('andy')
-		.controller('listPageCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString',
+		.controller('listPageCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString','getDataService',
 			function($scope,$animate,$log,$timeout,
 			$http,$state,$cookies,$rootScope,
 			$localStorage,SearchService,
-			updateService,utilConvertDateToString) {
+			updateService,utilConvertDateToString,getDataService) {
 			var entireData = {};
 			var datafromhome = {};
-			$scope.totalItems = 64;
-		    $scope.currentPage = 4;
+			$scope.favorsave = false;
+			$scope.shortlistInsert = {};
+			// $scope.totalItems = 64;
+		  //   $scope.currentPage = 4;
 		     $animate.enabled(false);//消除carousel bug
 		    var ER_Feature = [];
-		    $scope.setPage = function (pageNo) {
-		      $scope.currentPage = pageNo;
-		    };
-		    $scope.pageChanged = function() {
-		      $log.info('Page changed to: ' + $scope.currentPage);
-		    };
-		    $scope.maxSize = 5;
-		    $scope.bigTotalItems = 175;
-		    $scope.bigCurrentPage = 1;
+		    // $scope.setPage = function (pageNo) {
+		    //   $scope.currentPage = pageNo;
+		    // };
+		    // $scope.pageChanged = function() {
+		    //   $log.info('Page changed to: ' + $scope.currentPage);
+		    // };
+		    // $scope.maxSize = 5;
+				// $scope.numPages = 2;
+		    // $scope.bigTotalItems = 175;
+		    // $scope.bigCurrentPage = 1;
+				// $scope.itemsPerPage = 20;
 		   /* location input*/
-		    $scope.person = {};
-	        $scope.people = [
-	        { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
-	        { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
-	        { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
-	        { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
-	        { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
-	        { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
-	        { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
-	        { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
-	        { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
-	        { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
-	        ];
+			 /*******************multiple-ui-select starts***************************************/
+			 $scope.disabled = undefined;
+			 $scope.searchEnabled = undefined;
+
+			 $scope.enable = function() {
+			 $scope.disabled = false;
+			 };
+
+			 $scope.disable = function() {
+			 $scope.disabled = true;
+			 };
+
+			 $scope.enableSearch = function() {
+			 $scope.searchEnabled = true;
+			 }
+
+			 $scope.disableSearch = function() {
+			 $scope.searchEnabled = false;
+			 }
+
+			 $scope.clear = function() {
+			 $scope.person.selected = undefined;
+			 $scope.address.selected = undefined;
+			 $scope.country.selected = undefined;
+			 };
+
+			 $scope.someGroupFn = function (item){
+
+			 if (item.name[0] >= 'A' && item.name[0] <= 'M')
+					 return 'From A - M';
+
+			 if (item.name[0] >= 'N' && item.name[0] <= 'Z')
+					 return 'From N - Z';
+
+			 };
+
+			
+
+
+
+			 $scope.counter = 0;
+			 $scope.someFunction = function (item, model){
+			 $scope.counter++;
+			 $scope.eventResult = {item: item, model: model};
+			 };
+
+			 $scope.removed = function (item, model) {
+			 $scope.lastRemoved = {
+					 item: item,
+					 model: model
+			 };
+			 };
+
+			 $scope.person = {};
+			 $scope.people = [
+			 { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
+			 { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
+			 { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
+			 { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
+			 { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
+			 { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
+			 { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
+			 { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
+			 { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
+			 { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
+			 ];
+
+
+
+			 $scope.multipleDemo = {};
+			 $scope.multipleDemo.colors = ['Blue','Red'];
+			 $scope.multipleDemo.selectedPeople = [$scope.people[5], $scope.people[4]];
+			 $scope.multipleDemo.selectedPeopleWithGroupBy = [$scope.people[8], $scope.people[6]];
+			 $scope.multipleDemo.selectedPeopleSimple = ['samantha@email.com','wladimir@email.com'];
+/*******************multiple-ui-select ends***************************************/
+
 	        /*the other filter attributes*/
 	       	/******************************start of filter data*******************************/
 				// property types
@@ -61,8 +126,8 @@
 									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
 									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
 									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
-									,{ id: 29, price: '1800' },{ id: 30, price: '2000' },{ id: 31, price: '3000' },{ id: 32, price: '4000' }
-									,{ id: 33, price: '5000' },{ id: 34, price: '10000' }];
+									,{ id: 29, price: '1800' },{ id: 30, price: '1900' },{ id: 31, price: '2000' },{ id: 32, price: '3000' },{ id: 33, price: '4000' }
+									,{ id: 34, price: '5000' },{ id: 35, price: '10000' }];
 			//select bedsNum
 				$scope.minBedNum = '1';
 				$scope.maxBedNum = '10';
@@ -82,7 +147,7 @@
 				$scope.minArea = 0;
 				$scope.maxArea = 10000;
 				/******************************end of filter data*******************************/
-				
+
 		/*datepicker start*/
 			$scope.today = function() {
 		      $scope.dt =new Date() ;
@@ -128,6 +193,12 @@
 			 	console.log('$localStorage.settings other conditions',$localStorage.settings);
 			 }
 			 $scope.entireData=entireData;
+			 /***********pagination starts********************/
+			 	$scope.maxSize = 5;
+				$scope.totalItems = entireData.length;
+				$scope.currentPage = 1;
+				$scope.itemsPerPage = 20;
+			/***********pagination starts********************/
 		 if(JSON.stringify(updateService.get()) != "{}"){
 				$localStorage.datafromhome=updateService.get();
 				datafromhome=$localStorage.datafromhome;
@@ -147,22 +218,22 @@
 						     case "%stove":
 						     	$scope.stove = true;
 						   	 break;
-						     case "%dishwasher": 
+						     case "%dishwasher":
 								$scope.dishwasher = true;
 						    break;
-						     case "%dryer": 
+						     case "%dryer":
 								$scope.dryer = true;
 						    break;
-						     case "%aircondition": 
+						     case "%aircondition":
 								$scope.aircondition = true;
 						    break;
-						     case "%refrigerator": 
+						     case "%refrigerator":
 								$scope.refrigerator = true;
 						    break;
-						     case "%laundry": 
+						     case "%laundry":
 								$scope.laundry = true;
 						    break;
-						     case "%bed": 
+						     case "%bed":
 								$scope.bed = true;
 						    break;
 						    case "%desk":
@@ -198,22 +269,22 @@
 						     case "%train_station;":
 						     	$scope.train = true;
 						   	 break;
-						     case "%backpack;": 
+						     case "%backpack;":
 								$scope.backpack = true;
 						    break;
-						     case "%park;": 
+						     case "%park;":
 								$scope.park = true;
 						    break;
-						     case "%school;": 
+						     case "%school;":
 								$scope.school = true;
 						    break;
-						     case "%big_family;": 
+						     case "%big_family;":
 								$scope.family = true;
 						    break;
-						     case "%shopping_mall;": 
+						     case "%shopping_mall;":
 								$scope.shoppingcenter = true;
 						    break;
-						     case "%offical_rental;": 
+						     case "%offical_rental;":
 								$scope.officerental = true;
 						    break;
 						    case "%university;":
@@ -242,37 +313,39 @@
 						     case "train_station":
 						     	data.train_station = true;
 						   	 break;
-						     case "backpack": 
+						     case "backpack":
 								data.backpack = true;
 						    break;
-						     case "park": 
+						     case "park":
 								data.park = true;
 						    break;
-						     case "school": 
+						     case "school":
 								data.school = true;
 						    break;
-						     case "big_family": 
+						     case "big_family":
 								data.big_family = true;
 						    break;
-						     case "shopping_mall": 
+						     case "shopping_mall":
 								data.shopping_mall = true;
 						    break;
-						     case "offical_rental": 
+						     case "offical_rental":
 								data.offical_rental = true;
 						    break;
 						    case "university":
 						     	data.university = true;
 						     break;
 						    case "":
-						    	data.university = false;
+						    	data.university = true;
 						    	 break;
 						    default:
 						    	data.university = true;
 						    	 break;
-						    	
+
 						}
 					}
-					if (uniindex == dataresults.length-1 || uniindex==-1){
+					if (uniindex == dataresults.length-1){
+							data.university = true;
+						}else if ( uniindex==-1) {
 							data.university = false;
 						}
 					if(data.university){
@@ -282,7 +355,7 @@
 				/*********************************************************************
 				 *******************filter update code starts*************************
 				 ********************************************************************/
-				
+
 				 /********************************************************************
 				 **********************features update code starts********************
 				 *********************************************************************/
@@ -333,10 +406,10 @@
 						$scope.all_requirements = false;
 					}
 				}
-				
+
 				$scope.col_requirements = function(){
 					$scope.all_requirements = !$scope.all_requirements;
-					
+
 					if($scope.all_requirements)
 					{
 						$scope.no_smoking = true;
@@ -352,7 +425,7 @@
 						$scope.boy_only = false;
 						$scope.no_party = false;
 					}
-					
+
 				}
 				// colum2
 				//appliances
@@ -392,7 +465,7 @@
 						$scope.appliances = false;
 					}
 				}
-				
+
 				$scope.col_appliances = function(){
 					$scope.appliances = !$scope.appliances;
 					if($scope.appliances)
@@ -439,7 +512,7 @@
 						$scope.furniture = false;
 					}
 				}
-				
+
 				$scope.col_furniture = function(){
 					$scope.furniture = !$scope.furniture;
 					if($scope.furniture)
@@ -474,8 +547,8 @@
 						$scope.other_appliance = false;
 					}
 				}
-				
-				
+
+
 				$scope.col_other_appliance = function(){
 					$scope.other_appliance = !$scope.other_appliance;
 					if($scope.other_appliance)
@@ -520,7 +593,7 @@
 						$scope.gas = false;
 					}
 				}
-				
+
 				/****************************update submit***************************************/
 				$scope.update = function(){
 					var arr_desckey = [$scope.train,$scope.university,
@@ -580,7 +653,11 @@
 							ER_Feature:features
 						};
 					} else {*/
+					$http.get('/customer/profile')
+		      .then(function(r) {
+					 if(r.data.customer_login_status){
 						entireData = {
+							CID:r.data.CID,
 							ER_Suburb: '',
 							ER_Region: '',
 							ER_Type: $scope.myPropertyType,
@@ -598,188 +675,421 @@
 							ER_Description: descriptions,
 							ER_Feature: features
 						}
-//					}
-					console.log("entireData===>",entireData);
-					$http.post('/customer/filt/entire', entireData)
-						.then(function(r) {
-							SearchService.set(r);
-							updateService.set(entireData);
-							
-							console.log('r===>', r);
-							if(r.data.length > 0) {
-								alert("刷新吧");
-						/***resolve the data passed through factory service from home page**********************/
-					 if(JSON.stringify(SearchService.get()) != "{}"){
-						 	$localStorage.settings = SearchService.get().data;
-						 	console.log('$localStorage.settings',$localStorage.settings);
-						 	entireData = $localStorage.settings;
-							console.log('entireData',entireData);
-						 }else{
-						 	entireData = $localStorage.settings;
-						 	console.log('$localStorage.settings other conditions',$localStorage.settings);
-						 }
-						 $scope.entireData=entireData;
-					 if(JSON.stringify(updateService.get()) != "{}"){
-							$localStorage.datafromhome=updateService.get();
-							datafromhome=$localStorage.datafromhome;
-					 		console.log('updateService.get()',updateService.get());
-							 }else{
-							 	datafromhome=$localStorage.datafromhome;
-							 	console.log('$localStorage.datafromhome',datafromhome);
-							 }
-							  $scope.datafromhome=datafromhome;
-						/******************display the features data passed through home*****************/
-							 if(datafromhome.ER_Feature!=""){
-							 	ER_Feature = datafromhome.ER_Feature.split(";");
-							 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
-							 for (var j = 0; j<ER_Feature.length;j++) {
-							 	switch (ER_Feature[j])
-									{
-									     case "%stove":
-									     	$scope.stove = true;
-									   	 break;
-									     case "%dishwasher": 
-											$scope.dishwasher = true;
-									    break;
-									     case "%dryer": 
-											$scope.dryer = true;
-									    break;
-									     case "%aircondition": 
-											$scope.aircondition = true;
-									    break;
-									     case "%refrigerator": 
-											$scope.refrigerator = true;
-									    break;
-									     case "%laundry": 
-											$scope.laundry = true;
-									    break;
-									     case "%bed": 
-											$scope.bed = true;
-									    break;
-									    case "%desk":
-									     	$scope.desk = true;
-									     break;
-									    case "%wardrob":
-									    	$scope.wardrob = true;
-									    	 break;
-							    	    case "%wifi":
-							    	        $scope.wifi = true;
-							    	 		break;
-							    	    case "%gas":
-							    			$scope.gas = true;
-							    			 break;
-							    	    case "%no_pets":
-							    			$scope.no_pets = true;
-							    	 		break;
-							    	    case "%girl_only":
-							    			$scope.girl_only = true;
-							    	 		break;
-							    	 	case "%boy_only":
-							    			$scope.boy_only = true;
-							    	 		break;
-							    	 	case "%no_party":
-							    			$scope.no_party = true;
-							    	 		break;
-									}
-								 }
-							 }
-							  /***************display the description data passed through home*********************/
-							 	switch (datafromhome.ER_Description)
-									{
-									     case "%train_station;":
-									     	$scope.train = true;
-									   	 break;
-									     case "%backpack;": 
-											$scope.backpack = true;
-									    break;
-									     case "%park;": 
-											$scope.park = true;
-									    break;
-									     case "%school;": 
-											$scope.school = true;
-									    break;
-									     case "%big_family;": 
-											$scope.family = true;
-									    break;
-									     case "%shopping_mall;": 
-											$scope.shoppingcenter = true;
-									    break;
-									     case "%offical_rental;": 
-											$scope.officerental = true;
-									    break;
-									    case "%university;":
-									     	$scope.university = true;
-									     break;
-							 		}
-							angular.forEach(entireData, function(data,index,array){
-								//data等价于array[index]
-								data.train_station = false;
-								data.backpack = false;
-								data.park = false;
-								data.school = false;
-								data.big_family = false;
-								data.shopping_mall = false;
-								data.offical_rental = false;
-								data.university = false;
-								var dataresults = data.ER_Description.split(";");
-								var uniindex = 0
-								dataresults.pop();
-								uniindex = dataresults.indexOf('university');
-								console.log("length",dataresults.length);
-								for(var i =0;i<dataresults.length;i++)
-								{
-									switch (dataresults[i])
-									{
-									     case "train_station":
-									     	data.train_station = true;
-									   	 break;
-									     case "backpack": 
-											data.backpack = true;
-									    break;
-									     case "park": 
-											data.park = true;
-									    break;
-									     case "school": 
-											data.school = true;
-									    break;
-									     case "big_family": 
-											data.big_family = true;
-									    break;
-									     case "shopping_mall": 
-											data.shopping_mall = true;
-									    break;
-									     case "offical_rental": 
-											data.offical_rental = true;
-									    break;
-									    case "university":
-									     	data.university = true;
-									     break;
-									    case "":
-									    	data.university = true;
-									    	 break;
-									    default:
-									    	data.university = true;
-									    	 break;
-									    	
-									}
-								}
-								if (uniindex == dataresults.length-1 || uniindex==-1){
-										data.university = false;
-									}
-								if(data.university){
-									data.uniname = dataresults[uniindex + 1];
-								}
-							});
-						/*****************************page update******************************/
-								$state.go('app.listpage');
-							}
-						}, function(e) {
+						getDataService.getDataRequests('/customer/filt/entire/count', entireData).then(function(result){
+                 $scope.data = result;
+                 console.log($scope.data);
+                 return result;
+             },function(error){
+               console.log("error" + error);
+             }).then(function(result){
+               result = Math.ceil(result/20);
+               entireData.OrderBy = 'ER_AvailableDate';
+               entireData.PageID = 0;
+               console.log(entireData);
 
+                $http.post('/customer/filt/entire/tenant', entireData)
+                 .then(function(r) {
+                  //  alert("entire login")
+                  SearchService.set(r);
+                  updateService.set(entireData);
+									if(r.data.length > 0) {
+												// alert("刷新吧");
+										/***resolve the data passed through factory service from home page**********************/
+									 if(JSON.stringify(SearchService.get()) != "{}"){
+											$localStorage.settings = SearchService.get().data;
+											console.log('$localStorage.settings',$localStorage.settings);
+											entireData = $localStorage.settings;
+											console.log('entireData',entireData);
+										 }else{
+											entireData = $localStorage.settings;
+											console.log('$localStorage.settings other conditions',$localStorage.settings);
+										 }
+										 $scope.entireData=entireData;
+									 if(JSON.stringify(updateService.get()) != "{}"){
+											$localStorage.datafromhome=updateService.get();
+											datafromhome=$localStorage.datafromhome;
+											console.log('updateService.get()',updateService.get());
+											 }else{
+												datafromhome=$localStorage.datafromhome;
+												console.log('$localStorage.datafromhome',datafromhome);
+											 }
+												$scope.datafromhome=datafromhome;
+										/******************display the features data passed through home*****************/
+											 if(datafromhome.ER_Feature!=""){
+												ER_Feature = datafromhome.ER_Feature.split(";");
+											 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
+											 for (var j = 0; j<ER_Feature.length;j++) {
+												switch (ER_Feature[j])
+													{
+															 case "%stove":
+																$scope.stove = true;
+															 break;
+															 case "%dishwasher":
+															$scope.dishwasher = true;
+															break;
+															 case "%dryer":
+															$scope.dryer = true;
+															break;
+															 case "%aircondition":
+															$scope.aircondition = true;
+															break;
+															 case "%refrigerator":
+															$scope.refrigerator = true;
+															break;
+															 case "%laundry":
+															$scope.laundry = true;
+															break;
+															 case "%bed":
+															$scope.bed = true;
+															break;
+															case "%desk":
+																$scope.desk = true;
+															 break;
+															case "%wardrob":
+																$scope.wardrob = true;
+																 break;
+																case "%wifi":
+																		$scope.wifi = true;
+																break;
+																case "%gas":
+																$scope.gas = true;
+																 break;
+																case "%no_pets":
+																$scope.no_pets = true;
+																break;
+																case "%girl_only":
+																$scope.girl_only = true;
+																break;
+															case "%boy_only":
+																$scope.boy_only = true;
+																break;
+															case "%no_party":
+																$scope.no_party = true;
+																break;
+													}
+												 }
+											 }
+												/***************display the description data passed through home*********************/
+												switch (datafromhome.ER_Description)
+													{
+															 case "%train_station;":
+																$scope.train = true;
+															 break;
+															 case "%backpack;":
+															$scope.backpack = true;
+															break;
+															 case "%park;":
+															$scope.park = true;
+															break;
+															 case "%school;":
+															$scope.school = true;
+															break;
+															 case "%big_family;":
+															$scope.family = true;
+															break;
+															 case "%shopping_mall;":
+															$scope.shoppingcenter = true;
+															break;
+															 case "%offical_rental;":
+															$scope.officerental = true;
+															break;
+															case "%university;":
+																$scope.university = true;
+															 break;
+													}
+											angular.forEach(entireData, function(data,index,array){
+												//data等价于array[index]
+												data.train_station = false;
+												data.backpack = false;
+												data.park = false;
+												data.school = false;
+												data.big_family = false;
+												data.shopping_mall = false;
+												data.offical_rental = false;
+												data.university = false;
+												var dataresults = data.ER_Description.split(";");
+												var uniindex = 0
+												dataresults.pop();
+												uniindex = dataresults.indexOf('university');
+												console.log("length",dataresults.length);
+												for(var i =0;i<dataresults.length;i++)
+												{
+													switch (dataresults[i])
+													{
+															 case "train_station":
+																data.train_station = true;
+															 break;
+															 case "backpack":
+															data.backpack = true;
+															break;
+															 case "park":
+															data.park = true;
+															break;
+															 case "school":
+															data.school = true;
+															break;
+															 case "big_family":
+															data.big_family = true;
+															break;
+															 case "shopping_mall":
+															data.shopping_mall = true;
+															break;
+															 case "offical_rental":
+															data.offical_rental = true;
+															break;
+															case "university":
+																data.university = true;
+															 break;
+															case "":
+																data.university = true;
+																 break;
+															default:
+																data.university = true;
+																 break;
+
+													}
+												}
+												if (uniindex == dataresults.length-1){
+														data.university = true;
+													}else if (uniindex==-1) {
+															data.university = false;
+													}
+												if(data.university){
+													data.uniname = dataresults[uniindex + 1];
+												}
+											});
+										/*****************************page update******************************/
+												$state.go('app.listpage');
+											}
+                 }, function(e) {
+
+                 });
+             },function(error){
+               console.log("error" + error);
+             });
+					}else {
+						entireData = {
+						 ER_Suburb: '',
+						 ER_Region: '',
+						 include_area:$scope.include_area,
+						 ER_Type: $scope.myPropertyType,
+						 ER_PriceMin: $scope.myMinPrice,
+						 ER_PriceMax: $scope.myMaxPrice,
+						 ER_BedRoomMin: $scope.minBedNum,
+						 ER_BedRoomMax: $scope.maxBedNum,
+						 ER_BathRoomMin: $scope.minBathNum,
+						 ER_BathRoomMax: $scope.maxBathNum,
+						 ER_ParkingMin: $scope.minParkingNum,
+						 ER_ParkingMax: $scope.maxParkingNum,
+						 ER_AreaMin: 0,
+						 ER_AreaMax: 50000,
+						 ER_AvailableDate: '2200-01-01',
+						 ER_Description: descriptions,
+						 ER_Feature: features
+						};
+					 // $state.go('app.googlemap');
+					 console.log(entireData);
+					 getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
+								$scope.data = result;
+								console.log($scope.data);
+								return result;
+						},function(error){
+							console.log("error" + error);
+						}).then(function(result){
+							result = Math.ceil(result/20);
+							entireData.OrderBy = 'ER_AvailableDate';
+							entireData.PageID = 0;
+							console.log(entireData);
+
+							 $http.post('/customer/filt/entire', entireData)
+								.then(function(r) {
+								 SearchService.set(r);
+								 updateService.set(entireData);
+								 console.log("entireData===>",entireData);
+						 					if(r.data.length > 0) {
+						 								// alert("刷新吧");
+						 						/***resolve the data passed through factory service from home page**********************/
+						 					 if(JSON.stringify(SearchService.get()) != "{}"){
+						 						 	$localStorage.settings = SearchService.get().data;
+						 						 	console.log('$localStorage.settings',$localStorage.settings);
+						 						 	entireData = $localStorage.settings;
+						 							console.log('entireData',entireData);
+						 						 }else{
+						 						 	entireData = $localStorage.settings;
+						 						 	console.log('$localStorage.settings other conditions',$localStorage.settings);
+						 						 }
+						 						 $scope.entireData=entireData;
+						 					 if(JSON.stringify(updateService.get()) != "{}"){
+						 							$localStorage.datafromhome=updateService.get();
+						 							datafromhome=$localStorage.datafromhome;
+						 					 		console.log('updateService.get()',updateService.get());
+						 							 }else{
+						 							 	datafromhome=$localStorage.datafromhome;
+						 							 	console.log('$localStorage.datafromhome',datafromhome);
+						 							 }
+						 							  $scope.datafromhome=datafromhome;
+						 						/******************display the features data passed through home*****************/
+						 							 if(datafromhome.ER_Feature!=""){
+						 							 	ER_Feature = datafromhome.ER_Feature.split(";");
+						 							 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
+						 							 for (var j = 0; j<ER_Feature.length;j++) {
+						 							 	switch (ER_Feature[j])
+						 									{
+						 									     case "%stove":
+						 									     	$scope.stove = true;
+						 									   	 break;
+						 									     case "%dishwasher":
+						 											$scope.dishwasher = true;
+						 									    break;
+						 									     case "%dryer":
+						 											$scope.dryer = true;
+						 									    break;
+						 									     case "%aircondition":
+						 											$scope.aircondition = true;
+						 									    break;
+						 									     case "%refrigerator":
+						 											$scope.refrigerator = true;
+						 									    break;
+						 									     case "%laundry":
+						 											$scope.laundry = true;
+						 									    break;
+						 									     case "%bed":
+						 											$scope.bed = true;
+						 									    break;
+						 									    case "%desk":
+						 									     	$scope.desk = true;
+						 									     break;
+						 									    case "%wardrob":
+						 									    	$scope.wardrob = true;
+						 									    	 break;
+						 							    	    case "%wifi":
+						 							    	        $scope.wifi = true;
+						 							    	 		break;
+						 							    	    case "%gas":
+						 							    			$scope.gas = true;
+						 							    			 break;
+						 							    	    case "%no_pets":
+						 							    			$scope.no_pets = true;
+						 							    	 		break;
+						 							    	    case "%girl_only":
+						 							    			$scope.girl_only = true;
+						 							    	 		break;
+						 							    	 	case "%boy_only":
+						 							    			$scope.boy_only = true;
+						 							    	 		break;
+						 							    	 	case "%no_party":
+						 							    			$scope.no_party = true;
+						 							    	 		break;
+						 									}
+						 								 }
+						 							 }
+						 							  /***************display the description data passed through home*********************/
+						 							 	switch (datafromhome.ER_Description)
+						 									{
+						 									     case "%train_station;":
+						 									     	$scope.train = true;
+						 									   	 break;
+						 									     case "%backpack;":
+						 											$scope.backpack = true;
+						 									    break;
+						 									     case "%park;":
+						 											$scope.park = true;
+						 									    break;
+						 									     case "%school;":
+						 											$scope.school = true;
+						 									    break;
+						 									     case "%big_family;":
+						 											$scope.family = true;
+						 									    break;
+						 									     case "%shopping_mall;":
+						 											$scope.shoppingcenter = true;
+						 									    break;
+						 									     case "%offical_rental;":
+						 											$scope.officerental = true;
+						 									    break;
+						 									    case "%university;":
+						 									     	$scope.university = true;
+						 									     break;
+						 							 		}
+						 							angular.forEach(entireData, function(data,index,array){
+						 								//data等价于array[index]
+						 								data.train_station = false;
+						 								data.backpack = false;
+						 								data.park = false;
+						 								data.school = false;
+						 								data.big_family = false;
+						 								data.shopping_mall = false;
+						 								data.offical_rental = false;
+						 								data.university = false;
+						 								var dataresults = data.ER_Description.split(";");
+						 								var uniindex = 0
+						 								dataresults.pop();
+						 								uniindex = dataresults.indexOf('university');
+						 								console.log("length",dataresults.length);
+						 								for(var i =0;i<dataresults.length;i++)
+						 								{
+						 									switch (dataresults[i])
+						 									{
+						 									     case "train_station":
+						 									     	data.train_station = true;
+						 									   	 break;
+						 									     case "backpack":
+						 											data.backpack = true;
+						 									    break;
+						 									     case "park":
+						 											data.park = true;
+						 									    break;
+						 									     case "school":
+						 											data.school = true;
+						 									    break;
+						 									     case "big_family":
+						 											data.big_family = true;
+						 									    break;
+						 									     case "shopping_mall":
+						 											data.shopping_mall = true;
+						 									    break;
+						 									     case "offical_rental":
+						 											data.offical_rental = true;
+						 									    break;
+						 									    case "university":
+						 									     	data.university = true;
+						 									     break;
+						 									    case "":
+						 									    	data.university = true;
+						 									    	 break;
+						 									    default:
+						 									    	data.university = true;
+						 									    	 break;
+
+						 									}
+						 								}
+						 								if (uniindex == dataresults.length-1){
+						 										data.university = true;
+						 									}else if (uniindex==-1) {
+						 											data.university = false;
+						 									}
+						 								if(data.university){
+						 									data.uniname = dataresults[uniindex + 1];
+						 								}
+						 							});
+						 						/*****************************page update******************************/
+						 								$state.go('app.listpage');
+						 							}
+
+								}, function(e) {
+										console.log("error"+e);
+								});
+						},function(error){
+							console.log("error" + error);
 						});
+					}
+				});
+//					}
+
 //					alert("updated");
 				}
 				/********************************filter update code ends*****************************/
-			
+
 			/************************filter orderby*******************************/
 			$scope.orderleft = false;
 			$scope.orderright = false;
@@ -793,47 +1103,115 @@
 					$scope.orderright = true;
 					$scope.sortDate=!$scope.sortDate;
 				}
-				
+
 				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
     			$scope.orderName = orderName;
 //				$scope.orderName = order+'';
 			}
 			/************************filter orderby*******************************/
-			
-			/***********************add to shortlist************************************/
-			$scope.save2shortlist = function(){
-				$http.get('/customer/profile')
-				.then(function(r) {
-					console.log(r);
-					if(r.data.customer_login_status){
-						$scope.shortlistInsert.CID = $scope.detailsData.CID;
-						$scope.shortlistInsert.CLType="FavorSave";
-						$scope.shortlistInsert.CLDetail=$scope.detailsData.ER_ID+'';;
-						$scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
-						console.log("shortlistInsert",$scope.shortlistInsert);
-						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
-								.then(function(r){
-									console.log('r',r);				
-								},function(e){
-									console.log("数据有误");
-								});
-					}else{
-						$state.go('app.login');
-					}
-				},function(e){
-						console.log("数据有误");
-					})
-			}
+
+
+		 /***********************add to shortlist starts************************************/
+		 var shortlistInsert = {};
+		 var shortlistDelete = {};
+		 $scope.save2shortlist = function($index){
+			 $scope.favorsave=!$scope.favorsave;
+			 $http.get('/customer/profile')
+			 .then(function(r) {
+				 console.log(r);
+				 if(r.data.customer_login_status){
+					 	if ($scope.favorsave) {
+							 shortlistInsert.CID =r.data.CID;
+							 shortlistInsert.CLType="FavorSave";
+							 shortlistInsert.CLDetail=$scope.entireData[$index].ER_ID;
+							 shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+							 console.log("shortlistInsert",shortlistInsert);
+							 $http.post('/customer/shortlist/insert', shortlistInsert)
+								 .then(function(r){
+									 console.log('r',r);
+								 },function(e){
+									 console.log("数据有误");
+								 });
+					 	}else {
+							/*******************delete from shortlist*********************************************/
+										console.log(r);
+										shortlistDelete.CID = r.data.CID;
+										shortlistDelete.CLType="FavorSave";
+										shortlistDelete.CLDetail= $scope.entireData[$index].ER_ID;;
+										//	$scope.shortlistDelete.CLTime="";
+										$http.post('/customer/shortlist/delete',shortlistDelete)
+												.then(function(r){
+													// 	$scope.shortlistData = r.data;
+													console.log("shortlistDelete",r);
+												},function(e){
+													console.log("数据有误"+e);
+												});
+							}
+							/*************************shortlist check selection ends************************************************/
+				 }else{
+					 $state.go('app.login');
+				 }
+			 },function(e){
+					 console.log("数据有误" + e);
+				 });
+		 }
+/***********************add to shortlist ends************************************/
+/*************$watch update data starts----save(shortlist)*******************/
+$scope.$watch(function(){
+			//  return getShortlistData();
+		 },function(new_data,old_data){
+
+			 // var timeline_data = TimelineService.data;
+			 // for(var k in new_data)
+			 // {
+			 // 	for(var i=0;i< timeline_data.length;i++)
+			 // 	{
+			 // 		if(k==timeline_data[i].id){
+			 // 			timeline_data[i] = new_data[k];
+			 // 		}
+			 // 	}
+			 // }
+			 // TimelineService.data = AnswerService.count_vote(TimelineService.data);
+		 },true)
+/*************$watch update data ends----save(shortlist)*******************/
+
+
+/*******************get shortlistData starts*************************/
+	var shortlistcheckdata = {};
+	var shortlistData = {};
+	function getShortlistData(){
+		$http.get('/customer/profile')
+			.then(function(r) {
+			 console.log(r);
+			 if(r.data.customer_login_status){
+				 shortlistcheckdata.CID = r.data.CID;
+				 shortlistcheckdata.CLType = 'FavorSave';
+				 $http.post('/customer/shortlist', shortlistcheckdata)
+						 .then(function(r){
+							 shortlistData = r.data;
+							 return shortlistData;
+							 console.log('r',r);
+						 },function(e){
+							 console.log("数据有误");
+						 });
+			 }
+			});
+	}
+/*******************get shortlistData ends*************************/
+
+
+
+
 			/**********************************************************************/
-			
-		}])
+
+		}]);
 		/*.filter('propsFilter', function() {
 		    return function(items, props) {
 		        var out = [];
 		        if (angular.isArray(items)) {
 		          items.forEach(function(item) {
 		            var itemMatches = false;
-		
+
 		            var keys = Object.keys(props);
 		            for (var i = 0; i < keys.length; i++) {
 		              var prop = keys[i];
@@ -843,7 +1221,7 @@
 		                break;
 		              }
 		            }
-		
+
 		            if (itemMatches) {
 		              out.push(item);
 		            }
@@ -852,8 +1230,7 @@
 		          // Let the output be the input untouched
 		          out = items;
 		        }
-		
+
 		        return out;
 		    };
 		})*/
-})();

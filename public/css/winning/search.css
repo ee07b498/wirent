@@ -940,6 +940,10 @@
 	margin-right: 5px;
 	opacity: 0.9;
 }
+
+
+
+
 /*dream homes*/
 
 .banner-search .dream-homes-main-title {
@@ -1284,13 +1288,19 @@
 
 
 /* main theme section*/
-
+.banner-search .theme-section {
+	width: 50%;
+	float: left;
+}
 .banner-search .top-cities {
 	width: 100%;
-	margin: auto;
 	margin-bottom: 25px;
-	/*padding-top: 50px;*/
-	/*padding-right: 40px;*/
+}
+.banner-search .h1-left {
+	padding-left: 150px;
+}
+.banner-search .h1-right {
+	padding-right: 150px;
 }
 .banner-search .top-cities .pics .left {
 	/*width: 600px;*/

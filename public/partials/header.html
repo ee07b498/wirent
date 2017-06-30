@@ -4,7 +4,7 @@
         <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
           <i class="glyphicon glyphicon-align-justify"></i>
         </button>
-      <!--  
+      <!--
 		<button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" >
           <i class="glyphicon glyphicon-align-justify"></i>
         </button>
@@ -13,7 +13,7 @@
         <a href="#/" class="navbar-brand text-lt">
           <!--<i class="fa fa-wikipedia-w"></i>-->
           <img src="../img/rsz_wi_origin.png" style="width: 50px;max-height: 48px;position: relative; top: 5px;left: 0;"/>
-         
+
           <!--<span class="hidden-folded m-l-xs">[:name:]</span>-->
         </a>
         <!-- / brand -->
@@ -28,22 +28,23 @@
 			<li><a href="#about" translate="header.RENT"></a></li>
 			<li><a href="http://www.winninginvestment.com.au/project-en" translate="header.BUY"></a></li>
 			<li><a ui-sref="app.tips" translate="header.ONESETP.OneStep"></a></li>
-			<li><a ui-sref="app.new" translate="header.NEWS"></a></li>
-			<li><a ui-sref="app.guides" translate="header.BUSINESS"></a></li>
-			<li><a href="http://www.winninginvestment.com.au/contantus" translate="header.CONTACT.Contact"></a></li>
+			<li><a href="http://blog.sina.com.cn/u/5893040453" translate="header.NEWS"></a></li>
+			<li><a ng-click="businessSearch('')" translate="header.BUSINESS"></a></li>
+			<li><a ui-sref="app.contact" translate="header.CONTACT.Contact"></a></li>
+      <!-- <li><a ui-sref="app.serviceTypes">types</a></li> -->
 			<li><a href="http://www.winninginvestment.com.au/aboutus" translate="header.ABOUT"></a></li>
-			<li><a href="http://www.winninginvestment.com.au/recruitment-1" translate="header.RECRUIMENT"></a></li>			
+			<li><a href="http://www.winninginvestment.com.au/recruitment-1" translate="header.RECRUIMENT"></a></li>
 			<!--<li><a ui-sref="app.trainmap">trainmap</a></li>-->
 		</ul>
         <!-- / link and dropdown -->
 
         <!-- search form -->
-		
+
         <!-- / search form -->
 
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
-      <!-- 
+      <!--
 		-->
 		  <li class="dropdown" ng-click="go2Shortlist()">
             <a href class="dropdown-toggle"  style="color: deeppink;">
@@ -112,7 +113,7 @@
 		  <li ng-if="!profile">
 			<a ui-sref="app.signup"><span class="badge badge-lg bg-success" translate="header.REGIST.Regist"></span></a>
 		  </li>
-		 
+
 		 <li ng-if="profile" class="dropdown" dropdown>
             <a href class="dropdown-toggle clear" dropdown-toggle>
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
@@ -132,7 +133,7 @@
             </ul>
             <!-- / dropdown -->
           </li>
-       
+
 		 </ul>
         <!-- / navbar right -->
 

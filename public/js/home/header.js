@@ -19,19 +19,33 @@
 				}
 			}
 		}])
+		// .run(['$anchorScroll', function($anchorScroll) {
+		//   $anchorScroll.yOffset = -50;   // always scroll by 50 extra pixels
+		// }])
 		.service('BaseService', ['$state', '$http', function($state, $http,$localStorage) {
 
 		}])
-		.controller('WinCtrl', ['$scope', '$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($scope, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
+		.controller('WinCtrl', ['$anchorScroll', '$location','$scope', '$filter','$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService','updateService',function($anchorScroll,$location,$scope,$filter, $state,$window, $http,UserService,readLetters,$localStorage,SearchService,updateService) {
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
-			$scope.letternums = 0;
-
+			// $scope.letternums = 0;
 			$http.get('/customer/profile')
 				.then(function(r) {
 					console.log(r);
 					if(r.data.customer_login_status)
-						$scope.profile = true;
+						{
+								$scope.profile = true;
+							/*********************obtain unread messages number***********************************/
+								var promise=readLetters.query();
+									promise.then(function (data) {
+										console.log("===data===",data);
+										$localStorage.headerSetting.letternums = data[0]['count(*)'];
+										$scope.letternums = $localStorage.headerSetting.letternums;
+									});
+									$scope.letternums = $localStorage.headerSetting.letternums;
+
+							/*********************obtain unread messages number***********************************/
+						}
 					else
 						$scope.profile = false;
 				})
@@ -45,30 +59,21 @@
 						location.href = '/';
 					});
 			}
-			$scope.read_Letters = function(){
+			$scope.read_Letters = function(messages){
 				$http.get('/customer/profile')
 						.then(function(r){
 							console.log("=============",r);
 							if(r.data=="login"){
 								$state.go("app.login");
 							}else{
-
+								$state.go("app.profile");
 							}
 						},function(e){
 							$state.go("app.login");
 						})
 
 					}
-			/*********************obtain unread messages number***********************************/
-				var promise=readLetters.query();
-			    promise.then(function (data) {
-			    	console.log("===data===",data);
-			    	$localStorage.headerSetting.letternums = data[0]['count(*)'];
-			    	$scope.letternums = $localStorage.headerSetting.letternums;
-			    });
-					$scope.letternums = $localStorage.headerSetting.letternums;
 
-			/*********************obtain unread messages number***********************************/
 
 			/*********************go to shortlist******************************************/
 			$scope.go2Shortlist = function(){
@@ -87,7 +92,7 @@
 										$state.go("app.shortlist");
 								//console.log("$scope.shortlistData",$scope.shortlistData);
 									},function(e){
-
+											console.log(e);
 									});
 							}
 						},function(e){
@@ -95,10 +100,37 @@
 						})
 
 			}
-			/*********************go to shortlist******************************************/
+			/*********************go to shortlist end******************************************/
+			/**************businessSection entry********************/
+			var business = {};
+			$scope.businessSearch = function(TPDetail){
+			 business.TPDetail = TPDetail;
+			 business.TPServLoc = '';
+			 $http.post('/customer/filt_thirdparty', business)
+				.then(function(r) {
+				 SearchService.set(r);
+				 updateService.set(TPDetail);
+				 console.log('r===>', r);
+				 if(r.data.length > 0) {
+					$state.go('app.business');
+				 }
+				 //
 
+				}, function(e) {
 
+				});
+			}
+		// 	$scope.gotoAnchor = function(businessSection) {
+    //   var newHash = businessSection;
+    //   if ($location.hash() !== newHash) {
+    //     // set the $location.hash to `newHash` and
+    //     // $anchorScroll will automatically scroll to it
+    //     $location.hash(businessSection);
+    //   } else {
+    //     // call $anchorScroll() explicitly,
+    //     // since $location.hash hasn't changed
+    //     $anchorScroll();
+    //   }
+    // };
 		}])
-
-
 })();

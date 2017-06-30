@@ -29,7 +29,7 @@
 				<div class="header-wrap1">
 					<div class="search-box-wrap1 left-box" log-mod="search">
 						<div class="header-wrap1-title">
-							<h1>Share Rental</h1>
+							<h1 translate="search.sr">Share Rental</h1>
 						</div>
 						<div class="search-box-con1">
 							<script type="text/ng-template" id="myModalContent.html">
@@ -42,14 +42,13 @@
 									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
 										<select-search1 datas1="datas1" get-data1="getData1(searchField1)" change1="change1(x1)" bind="searchField1" x1="x1"></select-search1>
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="shareSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="shareSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
 												<a style="color:white;margin-left: 5px;"><i class="fa fa-lg fa-search"></i></a>
 										</button>-->
 										<div id="userNews" class="savesearch">
-
 										</div>
 									</div>
 									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
@@ -65,7 +64,7 @@
 															</div>
 														</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Chatswood()" >
+												<div class="sc-course-cart" ng-click="_get_Chatswood();shareSearch('station;Chatswood')" >
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Chatswood">
 															Chatswood
@@ -78,7 +77,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Hornsby()">
+												<div class="sc-course-cart" ng-click="_get_Hornsby();shareSearch('station;Hornsby')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Hornsby">
 															Hornsby
@@ -92,7 +91,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Epping()">
+												<div class="sc-course-cart" ng-click="_get_Epping();shareSearch('station;Epping')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Epping">
 															Epping
@@ -106,7 +105,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_MQ_Uni()">
+												<div class="sc-course-cart" ng-click="_get_MQ_Uni();shareSearch('station;Macquarie University')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _MQ_Uni">
 															MQ Uni
@@ -120,7 +119,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Rodes()">
+												<div class="sc-course-cart" ng-click="_get_Rodes();shareSearch('station;Rhodes')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Rodes">
 															Rhodes
@@ -134,7 +133,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_All_T1()">
+												<div class="sc-course-cart" ng-click="_get_All_T1();shareSearch('%station;%T1;')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _AllT1">
 															All
@@ -158,7 +157,7 @@
 
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Burwood()">
+												<div class="sc-course-cart" ng-click="_get_Burwood();shareSearch('station;Burwood')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Burwood">
 															Burwood
@@ -172,7 +171,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Straithfield()">
+												<div class="sc-course-cart" ng-click="_get_Straithfield();shareSearch('station;Straithfield')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Straithfield">
 															Strathfield
@@ -186,7 +185,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Greensquare()">
+												<div class="sc-course-cart" ng-click="_get_Greensquare();shareSearch('station;Greensquare')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Greensquare">
 															Greensquare
@@ -200,7 +199,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Mascot()">
+												<div class="sc-course-cart" ng-click="_get_Mascot();shareSearch('station;Mascot')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Mascot">
 															Mascot
@@ -214,7 +213,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Lidcome_T2()">
+												<div class="sc-course-cart" ng-click="_get_Lidcome_T2();shareSearch('station;Lidcome')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Lidcome_T2">
 															Lidcome
@@ -228,7 +227,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_All_T2()">
+												<div class="sc-course-cart" ng-click="_get_All_T2();shareSearch('%station;%T2;')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _AllT2">
 															All
@@ -252,7 +251,7 @@
 
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Central_T3()">
+												<div class="sc-course-cart" ng-click="_get_Central_T3();shareSearch('station;Sydney')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Central_T3">
 															Central
@@ -266,7 +265,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Sydenham()">
+												<div class="sc-course-cart" ng-click="_get_Sydenham();shareSearch('station;Sydenham')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Sydenham">
 															Sydenham
@@ -280,7 +279,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Campsie()">
+												<div class="sc-course-cart" ng-click="_get_Campsie();shareSearch('station;Campsie')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Campsie">
 															Campsie
@@ -294,7 +293,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Bankstown()">
+												<div class="sc-course-cart" ng-click="_get_Bankstown();shareSearch('station;Bankstown')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Bankstown">
 															Bankstown
@@ -308,7 +307,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Liverpool_T3()">
+												<div class="sc-course-cart" ng-click="_get_Liverpool_T3();shareSearch('station;Liverpool')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Liverpool_T3">
 															Liverpool
@@ -322,7 +321,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_All_T3()">
+												<div class="sc-course-cart" ng-click="_get_All_T3();shareSearch('%station;%T3;')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _AllT3">
 															All
@@ -345,7 +344,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Central_T4()">
+												<div class="sc-course-cart" ng-click="_get_Central_T4();shareSearch('station;Sydney')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Central_T4">
 															Central
@@ -359,7 +358,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Redfern()">
+												<div class="sc-course-cart" ng-click="_get_Redfern();shareSearch('station;Redfern')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Redfern">
 															Redfern
@@ -373,7 +372,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Wollicreek()">
+												<div class="sc-course-cart" ng-click="_get_Wollicreek();shareSearch('station;Wollicreek')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Wollicreek">
 															Wollicreek
@@ -387,7 +386,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Rockdale()">
+												<div class="sc-course-cart" ng-click="_get_Rockdale();shareSearch('station;Rockdale')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Rockdale">
 															Rockdale
@@ -401,7 +400,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Hurstville()">
+												<div class="sc-course-cart" ng-click="_get_Hurstville();shareSearch('station;Hurstville')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Hurstville">
 															Hurstville
@@ -415,7 +414,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_All_T4()">
+												<div class="sc-course-cart" ng-click="_get_All_T4();shareSearch('%station;%T4;')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _AllT4">
 															All
@@ -439,7 +438,7 @@
 
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Parramatta()">
+											<div class="sc-course-cart" ng-click="_get_Parramatta();shareSearch('station;Parramatta')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Parramatta">
 														Parramatta
@@ -453,7 +452,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Westmead()">
+											<div class="sc-course-cart" ng-click="_get_Westmead();shareSearch('station;Westmead')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Westmead">
 														Westmead
@@ -467,7 +466,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Blacktown()">
+											<div class="sc-course-cart" ng-click="_get_Blacktown();shareSearch('station;Blacktown')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Blacktown">
 														Blacktown
@@ -481,7 +480,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Merrylands()">
+											<div class="sc-course-cart" ng-click="_get_Merrylands();shareSearch('station;Merrylands')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Merrylands">
 														Merrylands
@@ -495,7 +494,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Liverpool_T5()">
+											<div class="sc-course-cart" ng-click="_get_Liverpool_T5();shareSearch('station;Liverpool')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Liverpool_T5">
 														Liverpool
@@ -509,7 +508,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_All_T5()">
+											<div class="sc-course-cart" ng-click="_get_All_T5();shareSearch('%station;%T5;')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _AllT5">
 														All
@@ -532,7 +531,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Clyde()">
+											<div class="sc-course-cart" ng-click="_get_Clyde();shareSearch('station;Clyde')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Clyde">
 														Clyde
@@ -545,7 +544,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Rosehill()">
+											<div class="sc-course-cart" ng-click="_get_Rosehill();shareSearch('station;Rosehill')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Rosehill">
 														Rosehill
@@ -558,7 +557,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Camellia()">
+											<div class="sc-course-cart" ng-click="_get_Camellia();shareSearch('station;Camellia')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Camellia">
 														Camellia
@@ -571,7 +570,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Carlingford()">
+											<div class="sc-course-cart" ng-click="_get_Carlingford();shareSearch('station;Carlingford')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Carlingford">
 														Carlingford
@@ -584,7 +583,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_All_T6()">
+											<div class="sc-course-cart" ng-click="_get_All_T6();shareSearch('%station;%T6;')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _AllT6">
 														All
@@ -606,7 +605,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Lidcome_T7()">
+											<div class="sc-course-cart" ng-click="_get_Lidcome_T7();shareSearch('station;Lidcome')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Lidcome_T7">
 														Lidcombe
@@ -619,7 +618,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Olympic_Park()">
+											<div class="sc-course-cart" ng-click="_get_Olympic_Park();shareSearch('station;Wentworth Point')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Olympic_Park" style="line-height: 15px;">
 														Olympic Park
@@ -632,7 +631,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_All_T7()">
+											<div class="sc-course-cart" ng-click="_get_All_T7();shareSearch('%station;%T7;')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _AllT7">
 														All
@@ -698,17 +697,16 @@
 											</li>
 										</ul>
 										 <div class="surrounding-suburbs-more-options">
-										      <input type="checkbox" value="None" id="roundedOne" name="check" checked />
-										      <label for="roundedOne">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surrounding&nbsp;&nbsp;Suburbs</label>
-									    </div>
+										      <input type="checkbox" value="None" id="roundedOne_right" name="check" ng-model="include_area_share" checked />
+										      <label for="roundedOne_right">
+														<i translate="search.surround" style="width: 200px!important; height: 20px; display: inline-block; position: absolute; text-align:left;left: 20px;top: 0; color: white;"></i>
+													</label>
+											</div>
 									</div>
 									<div class="more-options-right">
 										<a class="angle-icon" ng-click="more_options_right_right=!more_options_right_right">
-											more
-											<span>
-												<i ng-show="!more_options_right_right" class="fa fa-angle-down"></i>
-												<i ng-show="more_options_right_right" class="fa fa-angle-up"></i>
-											</span>
+			 								<span ng-show="!more_options_right_right"><i translate="search.more"></i>&nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i></span>
+											<span ng-show="more_options_right_right"><i translate="search.less"></i>&nbsp;<i class="fa fa-angle-up"></i></span>
 										</a>
 									</div>
 								</div>
@@ -721,7 +719,7 @@
 				<div class="header-wrap2">
 					<div class="search-box-wrap2 right-box" log-mod="search">
 						<div class="header-wrap2-title">
-							<h1>Entire Rental</h1>
+							<h1 translate="search.er">Entire Rental</h1>
 						</div>
 						<div class="search-box-con2">
 							<script type="text/ng-template" id="myModalContent.html">
@@ -734,7 +732,7 @@
 									<div class="searchBox2" style="z-index: 10;" >
 										<select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search>
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="entireSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="entireSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
@@ -757,7 +755,7 @@
 															</div>
 														</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Chatswood()" >
+												<div class="sc-course-cart" ng-click="get_Chatswood();entireSearch('station;Chatswood')" >
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Chatswood">
 															Chatswood
@@ -770,7 +768,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Hornsby()">
+												<div class="sc-course-cart" ng-click="get_Hornsby();entireSearch('station;Hornsby')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Hornsby">
 															Hornsby
@@ -784,7 +782,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Epping()">
+												<div class="sc-course-cart" ng-click="get_Epping();entireSearch('station;Epping')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Epping">
 															Epping
@@ -798,7 +796,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_MQ_Uni()">
+												<div class="sc-course-cart" ng-click="get_MQ_Uni();entireSearch('station;Macquarie University')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t MQ_Uni">
 															MQ Uni
@@ -812,7 +810,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Rodes()">
+												<div class="sc-course-cart" ng-click="get_Rodes();entireSearch('station;Rhodes')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Rodes">
 															Rhodes
@@ -826,7 +824,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_All_T1()">
+												<div class="sc-course-cart" ng-click="get_All_T1();entireSearch('%station;%T1;')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t AllT1">
 															All
@@ -850,7 +848,7 @@
 
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Burwood()">
+												<div class="sc-course-cart" ng-click="get_Burwood();entireSearch('station;Burwood')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Burwood">
 															Burwood
@@ -864,7 +862,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Straithfield()">
+												<div class="sc-course-cart" ng-click="get_Straithfield();entireSearch('station;Straithfield')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Straithfield">
 															Strathfield
@@ -878,7 +876,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Greensquare()">
+												<div class="sc-course-cart" ng-click="get_Greensquare();entireSearch('station;Greensquare')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Greensquare">
 															Greensquare
@@ -892,7 +890,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Mascot()">
+												<div class="sc-course-cart" ng-click="get_Mascot();entireSearch('station;Mascot')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Mascot">
 															Mascot
@@ -906,7 +904,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Lidcome_T2()">
+												<div class="sc-course-cart" ng-click="get_Lidcome_T2();entireSearch('station;Lidcome')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Lidcome_T2">
 															Lidcome
@@ -920,7 +918,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_All_T2()">
+												<div class="sc-course-cart" ng-click="get_All_T2();entireSearch('%station;%T2;')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t AllT2">
 															All
@@ -943,7 +941,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Central_T3()">
+												<div class="sc-course-cart" ng-click="get_Central_T3();entireSearch('station;Sydney')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Central_T3">
 															Central
@@ -957,7 +955,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Sydenham()">
+												<div class="sc-course-cart" ng-click="get_Sydenham();entireSearch('station;Sydenham')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Sydenham">
 															Sydenham
@@ -971,7 +969,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Campsie()">
+												<div class="sc-course-cart" ng-click="get_Campsie();entireSearch('station;Campsie')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Campsie">
 															Campsie
@@ -985,7 +983,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Bankstown()">
+												<div class="sc-course-cart" ng-click="get_Bankstown();entireSearch('station;Bankstown')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Bankstown">
 															Bankstown
@@ -999,7 +997,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Liverpool_T3()">
+												<div class="sc-course-cart" ng-click="get_Liverpool_T3();entireSearch('station;Liverpool')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Liverpool_T3">
 															Liverpool
@@ -1013,7 +1011,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_All_T3()">
+												<div class="sc-course-cart" ng-click="get_All_T3();entireSearch('%station;%T3;')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t AllT3">
 															All
@@ -1036,7 +1034,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Central_T4()">
+												<div class="sc-course-cart" ng-click="get_Central_T4();entireSearch('station;Sydney')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Central_T4">
 															Central
@@ -1050,7 +1048,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Redfern()">
+												<div class="sc-course-cart" ng-click="get_Redfern();entireSearch('station;Redfern')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Redfern">
 															Redfern
@@ -1064,7 +1062,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Wollicreek()">
+												<div class="sc-course-cart" ng-click="get_Wollicreek();entireSearch('station;Wollicreek')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Wollicreek">
 															Wollicreek
@@ -1078,7 +1076,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Rockdale()">
+												<div class="sc-course-cart" ng-click="get_Rockdale();entireSearch('station;Rockdale')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Rockdale">
 															Rockdale
@@ -1092,7 +1090,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_Hurstville()">
+												<div class="sc-course-cart" ng-click="get_Hurstville();entireSearch('station;Hurstville')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Hurstville">
 															Hurstville
@@ -1106,7 +1104,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="get_All_T4()">
+												<div class="sc-course-cart" ng-click="get_All_T4();entireSearch('%station;%T4;')">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t AllT4">
 															All
@@ -1130,7 +1128,7 @@
 
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Parramatta()">
+											<div class="sc-course-cart" ng-click="get_Parramatta();entireSearch('station;Parramatta')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Parramatta">
 														Parramatta
@@ -1144,7 +1142,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Westmead()">
+											<div class="sc-course-cart" ng-click="get_Westmead();entireSearch('station;Westmead')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Westmead">
 														Westmead
@@ -1158,7 +1156,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Blacktown()">
+											<div class="sc-course-cart" ng-click="get_Blacktown();entireSearch('station;Blacktown')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Blacktown">
 														Blacktown
@@ -1172,7 +1170,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Merrylands()">
+											<div class="sc-course-cart" ng-click="get_Merrylands();entireSearch('station;Merrylands')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Merrylands">
 														Merrylands
@@ -1186,7 +1184,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Liverpool_T5()">
+											<div class="sc-course-cart" ng-click="get_Liverpool_T5();entireSearch('station;Liverpool')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Liverpool_T5">
 														Liverpool
@@ -1200,7 +1198,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_All_T5()">
+											<div class="sc-course-cart" ng-click="get_All_T5();entireSearch('%station;%T5;')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t AllT5">
 														All
@@ -1223,7 +1221,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Clyde()">
+											<div class="sc-course-cart" ng-click="get_Clyde();entireSearch('station;Clyde')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Clyde">
 														Clyde
@@ -1236,7 +1234,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Rosehill()">
+											<div class="sc-course-cart" ng-click="get_Rosehill();entireSearch('station;Rosehill')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Rosehill">
 														Rosehill
@@ -1249,7 +1247,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Camellia()">
+											<div class="sc-course-cart" ng-click="get_Camellia();entireSearch('station;Camellia')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Camellia">
 														Camellia
@@ -1262,7 +1260,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Carlingford()">
+											<div class="sc-course-cart" ng-click="get_Carlingford();entireSearch('station;Carlingford')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Carlingford">
 														Carlingford
@@ -1275,7 +1273,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_All_T6()">
+											<div class="sc-course-cart" ng-click="get_All_T6();entireSearch('%station;%T6;')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t AllT6">
 														All
@@ -1297,7 +1295,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Lidcome_T7()">
+											<div class="sc-course-cart" ng-click="get_Lidcome_T7();entireSearch('station;Lidcome')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Lidcome_T7">
 														Lidcombe
@@ -1310,7 +1308,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_Olympic_Park()">
+											<div class="sc-course-cart" ng-click="get_Olympic_Park();entireSearch('station;Wentworth Point')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t Olympic_Park" style="line-height: 15px;">
 														Olympic Park
@@ -1323,7 +1321,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="get_All_T7()">
+											<div class="sc-course-cart" ng-click="get_All_T7();entireSearch('%station;%T7;')">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t AllT7">
 														All
@@ -1390,17 +1388,15 @@
 											</li>
 										</ul>
 										 <div class="surrounding-suburbs-more-options-left">
-										      <input type="checkbox" value="None" id="roundedOne_left" name="check" checked />
-										      <label for="roundedOne_left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surrounding&nbsp;&nbsp;Suburbs</label>
-									    </div>
+										      <input type="checkbox" value="None" id="roundedOne_left" name="check" ng-model="include_area" checked />
+										      <label for="roundedOne_left"><i translate="search.surround" style="width: 200px!important; height: 20px; display: inline-block; text-align:left;left: 20px; position: absolute; top: 0; color: white;"></i>
+													</label>
+											</div>
 									 </div>
 									 <div class="more-options-right">
 										 <a class="angle-icon" ng-click="more_options_right_left=!more_options_right_left">
-											 more
-											 <span>
-												 <i ng-show="!more_options_right_left" class="fa fa-angle-down"></i>
-												 <i ng-show="more_options_right_left" class="fa fa-angle-up"></i>
-											 </span>
+										 	<span ng-show="!more_options_right_left"><i translate="search.more"></i>&nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i></span>
+											<span ng-show="more_options_right_left"><i translate="search.less"></i>&nbsp;<i class="fa fa-angle-up"></i></span>
 										 </a>
 									 </div>
 								</div>
@@ -1415,270 +1411,268 @@
 		</div>
 	</div>
 	<div class="clear"></div>
-	<div class="row">
-		<div class="col-sm-6">
-			<div class="theme-section">
+
+	<div style="width:100%;" class="clear">
+		<div class="theme-section">
+			<section class="theme-specification">
+				<div class="top-cities clear">
+					<header class="latest-news-header">
+						<a class="latest-news-title-link">
+							<h1 class="latest-news-title h1 h1-left"  translate="tips.descriptions.title">主题专区</h1>
+						</a>
+					</header>
+					<div class="pics pics1 clear">
+						<div class="left1">
+							<div class="wh city-pic" ng-click="entireSearch('%university;')" >
+								<a ng-click="entireSearch('%university;')">
+									<a class="cover-img"></a>
+									<img src="../img/uni.jpg">
+									<span class="flaticon-college-graduation2" style="opacity: 1; color: lightblue;"></span>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<span class="flaticon-college-graduation2" style="opacity: 1; color: chocolate;"></span>
+										<a class="city-title" rel="nofollow" ng-click="entireSearch('%university;')"><em translate='tips.descriptions.uni'></em></a>
+									</p>
+								</div>
+							</div>
+							<div class="w city-pic railroad" ng-click="entireSearch('%train_station;')" >
+								<a ng-click="entireSearch('%train_station;')">
+									<img src="img/station01Warm.jpg">
+									<i class="flaticon-train-on-railroad"></i>
+								</a>
+								<div class="holder1">
+									<p class="desTile1">
+										<i class="flaticon-train-on-railroad2" style="opacity: 1; color: orange;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireSearch('%train_station;')"><em translate='tips.descriptions.station'>火车站</em></a>
+									</p>
+								</div>
+							</div>
+							<div class="wh city-pic graduation" ng-click="entireSearch('%backpack;')">
+								<a ng-click="entireSearch('%backpack;')" >
+									<img src="../img/backpacker02Warm.jpg">
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-backpack2" style="opacity: 1; color: greenyellow;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireSearch('%backpack;')" ><em translate='tips.descriptions.backpack'>背包客</em></a>
+									</p>
+								</div>
+							</div>
+							<div class="wh city-pic park-city-space" ng-click="entireSearch('%park;')" >
+								<a ng-click="entireSearch('%park;')" >
+									<img src="../img/park01Warm.jpg">
+									<i class="flaticon-green-park-city-space"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-green-park-city-space2" style="opacity: 1; color: green;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireSearch('%park;')" ><em translate='tips.descriptions.park'>近公园绿地</em></a>
+									</p>
+								</div>
+							</div>
+							<div class="wh city-pic open-book" ng-click="entireSearch('%school;')" >
+								<a ng-click="entireSearch('%school;')" >
+									<img src="img/schoolzone02Warm.jpg" >
+									<i class="flaticon-open-book"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-open-book2" style="opacity: 1; color: yellow;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireSearch('%school;')" ><em translate='tips.descriptions.school'>学区房</em></a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="left1 clear">
+							<div class="wh city-pic flaticonpeople" ng-click="entireSearch('%big_family;')" >
+								<a ng-click="entireSearch('%big_family;')">
+									<img src="img/grand-front-yard-entranceWarm.jpg">
+									<i class="flaticon-people"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-people2" style="opacity: 1; color: pink;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireSearch('%big_family;')"><em translate='tips.descriptions.bigfamily'>大庭院</em></a>
+									</p>
+								</div>
+								<!--<h3 class="title">清洁服务</h3>-->
+							</div>
+							<div class="wh city-pic shoppingcart" ng-click="entireSearch('%shopping_mall;')" >
+								<a ng-click="entireSearch('%shopping_mall;')">
+									<img src="img/Westfield_shopping_centre02Warm.jpg">
+									<i class="flaticon-shopping-cart"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+											<i class="flaticon-shopping-cart2" style="opacity: 1; color: darkred;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireSearch('%shopping_mall;')"><em translate='tips.descriptions.shop'>购物商场</em></a>
+									</p>
+								</div>
+							</div>
+							<div class="right1 city-pic business-rental" ng-click="entireSearch('%offical_rental;')" >
+								<a ng-click="entireSearch('%offical_rental;')">
+									<img src="/img/officerental02Warm.jpg">
+									<i class="flaticon-business"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-business2" style="opacity: 1; color: blue;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireSearch('%offical_rental;')"><em translate='tips.descriptions.office'>Office Rental</em></a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="clear"></div>
+			<div class="theme-section" id="businessSection">
 				<section class="theme-specification">
 					<div class="top-cities clear">
 						<header class="latest-news-header">
 							<a class="latest-news-title-link">
-								<h1 class="latest-news-title h1"  translate="tips.descriptions.title">主题专区</h1></a>
+								<h1 class="latest-news-title h1 h1-right" translate='tips.business.title'>商家专区</h1></a>
 						</header>
-						<div class="pics pics1">
-							<div class="left1">
-								<div class="wh city-pic" ng-click="search('university')" >
-									<a ng-click="search('university')">
-										<a class="cover-img"></a>
-										<img src="../img/uni.jpg">
-										<span class="flaticon-college-graduation2" style="opacity: 1; color: lightblue;"></span>
+						<div class="pics clear">
+							<div class="left">
+								<div class="wh city-pic moveicon" ng-click="businessSearch('move')">
+									<a ng-click="businessSearch('move')">
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">-->
+										<i class="flaticon-moving-home-transport-for-boxes"></i>
 									</a>
-									<div class="holder1">
+									<div class="holder">
 										<i></i>
-										<p class="desTile1">
-											<span class="flaticon-college-graduation2" style="opacity: 1; color: chocolate;"></span>
-											<a class="city-title" rel="nofollow" ng-click="search('university')"><em translate='tips.descriptions.uni'></em></a>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" ><em translate='tips.business.move.title'>搬家服务</em></a>
+											<!-- <a ng-click="businessSearch('move')"><span><strong translate='tips.business.move.tip_1'>长途搬家</strong></span></a>
+											<a ng-click="businessSearch('move')"><span><strong translate='tips.business.move.tip_2'>短途搬家</strong></span></a> -->
 										</p>
 									</div>
+									<!--<h3 class="title">搬家服务</h3>-->
 								</div>
-								<div class="w city-pic railroad" ng-click="search('train_station')" >
-									<a ng-click="search('train_station')">
-										<img src="img/station01Warm.jpg">
-										<i class="flaticon-train-on-railroad"></i>
+								<div class="wh city-pic paintingicon" ng-click="businessSearch('painting')">
+									<a ng-click="businessSearch('painting')">
+										<i class="flaticon-paintbrush"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="painting">-->
 									</a>
-									<div class="holder1">
-										<p class="desTile1">
-											<i class="flaticon-train-on-railroad2" style="opacity: 1; color: orange;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('train_station')"><em translate='tips.descriptions.station'>火车站</em></a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')"><em translate='tips.business.painting.title'>painting</em></a>
+											<!-- <a ng-click="businessSearch('painting')"><span><strong translate='tips.business.painting.tip_1'>房屋粉刷</strong></span></a>
+											<a ng-click="businessSearch('painting')"><span><strong translate='tips.business.painting.tip_2'>局部装修</strong></span></a> -->
 										</p>
 									</div>
+									<!--<h3 class="title">painting</h3>-->
 								</div>
-								<div class="wh city-pic graduation" ng-click="search('backpack')">
-									<a ng-click="search('backpack')" title="背包客">
-										<img src="../img/backpacker02Warm.jpg" alt="背包客">
+								<div class="wh city-pic storageicon" ng-click="businessSearch('storage')">
+									<a ng-click="businessSearch('storage')">
+										<i class="flaticon-factory-stock-house"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="仓储">-->
 									</a>
-									<div class="holder1">
+									<div class="holder">
 										<i></i>
-										<p class="desTile1">
-											<i class="flaticon-backpack2" style="opacity: 1; color: greenyellow;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="背包客"><em translate='tips.descriptions.backpack'>背包客</em></a>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')"><em translate='tips.business.store.title'>仓储</em></a>
+											<!-- <a ng-click="businessSearch('storage')"><span><strong translate='tips.business.store.tip_1'>仓储</strong></span></a>
+											<a ng-click="businessSearch('storage')"><span><strong translate='tips.business.store.tip_2'>仓储</strong></span></a> -->
 										</p>
 									</div>
+									<!--<h3 class="title">仓储</h3>-->
 								</div>
-								<div class="wh city-pic park-city-space" ng-click="search('park')" >
-									<a ng-click="search('park')" title="近公园绿地">
-										<img src="../img/park01Warm.jpg" alt="近公园绿地">
-										<i class="flaticon-green-park-city-space"></i>
+								<div class="wh city-pic handymanicon" ng-click="businessSearch('handyman')">
+									<a ng-click="businessSearch('handyman')">
+										<i class="flaticon-handyman-tools"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="Handyman">-->
 									</a>
-									<div class="holder1">
+									<div class="holder">
 										<i></i>
-										<p class="desTile1">
-											<i class="flaticon-green-park-city-space2" style="opacity: 1; color: green;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('park')" title="近公园绿地"><em translate='tips.descriptions.park'>近公园绿地</em></a>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')"><em translate='tips.business.handyman.title'>Handyman</em></a>
+											<!-- <a ng-click="businessSearch('handyman')" ><span><strong translate='tips.business.handyman.tip_1'>pulumber</strong></span></a>
+											<a ng-click="businessSearch('handyman')"><span><strong translate='tips.business.handyman.tip_2'> 水工</strong></span></a> -->
 										</p>
 									</div>
+									<!--<h3 class="title">Handyman</h3>-->
 								</div>
-								<div class="wh city-pic open-book" ng-click="search('school')" >
-									<a ng-click="search('school')" title="学区房">
-										<img src="img/schoolzone02Warm.jpg" alt="学区房">
-										<i class="flaticon-open-book"></i>
+								<div class="wh city-pic cleanicon" ng-click="businessSearch('clean')">
+									<a ng-click="businessSearch('clean')">
+										<i class="flaticon-vacuum"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/tj.jpg?_v=20170515195947" alt="清洁服务">-->
 									</a>
-									<div class="holder1">
+									<div class="holder">
 										<i></i>
-										<p class="desTile1">
-											<i class="flaticon-open-book2" style="opacity: 1; color: yellow;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('school')" title="学区房"><em translate='tips.descriptions.school'>学区房</em></a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="left1 clear">
-								<div class="wh city-pic flaticonpeople" ng-click="search('big_family')" >
-									<a ng-click="search('big_family')" title="大家庭/大庭院">
-										<img src="img/grand-front-yard-entranceWarm.jpg" alt="大家庭/大庭院">
-										<i class="flaticon-people"></i>
-									</a>
-									<div class="holder1">
-										<i></i>
-										<p class="desTile1">
-											<i class="flaticon-people2" style="opacity: 1; color: pink;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('big_family')" title="大家庭/大庭院"><em translate='tips.descriptions.bigfamily'>大庭院</em></a>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')"><em translate='tips.business.clean.title'>清洁服务</em></a>
+											<!-- <a ng-click="businessSearch('clean')"><span><strong translate='tips.business.clean.tip_1'>上门服务</strong></span></a>
+											<a ng-click="businessSearch('clean')"><span><strong translate='tips.business.clean.tip_2'>电话预约</strong></span></a> -->
 										</p>
 									</div>
 									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
-								<div class="wh city-pic shoppingcart" ng-click="search('shopping_mall')" >
-									<a ng-click="search('shopping_mall')" title="购物商场">
-										<img src="img/Westfield_shopping_centre02Warm.jpg" alt="购物商场">
-										<i class="flaticon-shopping-cart"></i>
-									</a>
-									<div class="holder1">
-										<i></i>
-										<p class="desTile1">
-												<i class="flaticon-shopping-cart2" style="opacity: 1; color: darkred;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('shopping_mall')" title="购物商场"><em translate='tips.descriptions.shop'>购物商场</em></a>
-										</p>
-									</div>
+								<div class="wh city-pic applianceicon" ng-click="businessSearch('appliance')">
+								<a ng-click="businessSearch('appliance')">
+									<i class="flaticon-socket"></i>
+									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="家电维修">-->
+								</a>
+								<div class="holder">
+									<i></i>
+									<p class="desTile">
+										<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')"><em translate='tips.business.app.title'>家电</em></a>
+										<!-- <a ng-click="businessSearch('appliance')"><span><strong translate='tips.business.app.tip_1'>家电</strong></span></a>
+										<a ng-click="businessSearch('appliance')"><span><strong translate='tips.business.app.tip_2'> 电话预约</strong></span></a> -->
+									</p>
 								</div>
-								<div class="right1 city-pic business-rental" ng-click="search('offical_rental')" >
-									<a ng-click="search('offical_rental')" title="Office Rental">
-										<img src="/img/officerental02Warm.jpg" alt="Office Rental">
-										<i class="flaticon-business"></i>
-									</a>
-									<div class="holder1">
-										<i></i>
-										<p class="desTile1">
-											<i class="flaticon-business2" style="opacity: 1; color: blue;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('offical_rental')" title="Office Rental"><em translate='tips.descriptions.office'>Office Rental</em></a>
-										</p>
-									</div>
+								<!--<h3 class="title">家电</h3>-->
+							</div>
+							</div>
+							<div class="wh city-pic take_awayicon" ng-click="businessSearch('take_away')">
+								<a ng-click="businessSearch('take_away')">
+									<i class="flaticon-food"></i>
+									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="外卖">-->
+								</a>
+								<div class="holder">
+									<i></i>
+									<p class="desTile">
+										<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')"><em translate='tips.business.food.title'>外卖</em></a>
+										<!-- <a ng-click="businessSearch('take_away')"><span><strong translate='tips.business.food.tip_1'>外卖</strong></span></a>
+										<a ng-click="businessSearch('take_away')"><span><strong translate='tips.business.food.tip_2'>外卖</strong></span></a> -->
+									</p>
 								</div>
+								<!--<h3 class="title">外卖</h3>-->
+							</div>
+							<div class="w city-pic free_posticon" ng-click="businessSearch('free_post')">
+								<a ng-click="businessSearch('free_post')">
+									<i class="flaticon-puzzle"></i>
+									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="freepost">-->
+								</a>
+								<div class="holder">
+									<i></i>
+									<p class="desTile">
+										<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')"><em translate='tips.business.post.title'>freepost</em></a>
+										<!-- <a ng-click="businessSearch('free_post')"><span><strong translate='tips.business.post.tip_1'>freepost</strong></span></a>
+										<a ng-click="businessSearch('free_post')"><span><strong translate='tips.business.post.tip_2'>freepost</strong></span></a> -->
+									</p>
+								</div>
+								<!--<h3 class="title">freepost</h3>-->
 							</div>
 						</div>
+					</div>
 				</section>
-				</div>
 			</div>
+	</div>
 
-			<div class="clear"></div>
-			<div class="col-sm-6">
-				<div class="theme-section">
-					<section class="theme-specification">
-						<div class="top-cities clear">
-							<header class="latest-news-header">
-								<a class="latest-news-title-link">
-									<h1 class="latest-news-title h1" translate='tips.business.title'>商家专区</h1></a>
-							</header>
-							<div class="pics clear">
-								<div class="left">
-									<div class="wh city-pic moveicon" ng-click="businessSearch('move')">
-										<a ng-click="businessSearch('move')" title="搬家服务">
-											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">-->
-											<i class="flaticon-moving-home-transport-for-boxes"></i>
-										</a>
-										<div class="holder">
-											<i></i>
-											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" title="搬家服务"><em translate='tips.business.move.title'>搬家服务</em></a>
-												<a ng-click="businessSearch('move')" title="北京二手房"><span><strong translate='tips.business.move.tip_1'>长途搬家</strong></span></a>
-												<a ng-click="businessSearch('move')" title="搬家服务"><span><strong translate='tips.business.move.tip_2'>短途搬家</strong></span></a>
-											</p>
-										</div>
-										<!--<h3 class="title">搬家服务</h3>-->
-									</div>
-									<div class="wh city-pic paintingicon" ng-click="businessSearch('painting')">
-										<a ng-click="businessSearch('painting')" title="painting">
-											<i class="flaticon-paintbrush"></i>
-											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="painting">-->
-										</a>
-										<div class="holder">
-											<i></i>
-											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')" title="房屋装修"><em translate='tips.business.painting.title'>painting</em></a>
-												<a ng-click="businessSearch('painting')" title="painting"><span><strong translate='tips.business.painting.tip_1'>房屋粉刷</strong></span></a>
-												<a ng-click="businessSearch('painting')" title="painting"><span><strong translate='tips.business.painting.tip_2'>局部装修</strong></span></a>
-											</p>
-										</div>
-										<!--<h3 class="title">painting</h3>-->
-									</div>
-									<div class="wh city-pic storageicon" ng-click="businessSearch('storage')">
-										<a ng-click="businessSearch('storage')" title="仓储">
-											<i class="flaticon-factory-stock-house"></i>
-											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="仓储">-->
-										</a>
-										<div class="holder">
-											<i></i>
-											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')" title="上海站"><em translate='tips.business.store.title'>仓储</em></a>
-												<a ng-click="businessSearch('storage')" title="仓储"><span><strong translate='tips.business.store.tip_1'>仓储</strong></span></a>
-												<a ng-click="businessSearch('storage')" title="仓储"><span><strong translate='tips.business.store.tip_2'>仓储</strong></span></a>
-											</p>
-										</div>
-										<!--<h3 class="title">仓储</h3>-->
-									</div>
-									<div class="wh city-pic handymanicon" ng-click="businessSearch('handyman')">
-										<a ng-click="businessSearch('handyman')" title="Handyman">
-											<i class="flaticon-handyman-tools"></i>
-											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="Handyman">-->
-										</a>
-										<div class="holder">
-											<i></i>
-											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')" title="Handyman"><em translate='tips.business.handyman.title'>Handyman</em></a>
-												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong translate='tips.business.handyman.tip_1'>pulumber</strong></span></a>
-												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong translate='tips.business.handyman.tip_2'> 水工</strong></span></a>
-											</p>
-										</div>
-										<!--<h3 class="title">Handyman</h3>-->
-									</div>
-									<div class="wh city-pic cleanicon" ng-click="businessSearch('clean')">
-										<a ng-click="businessSearch('clean')" title="清洁服务">
-											<i class="flaticon-vacuum"></i>
-											<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/tj.jpg?_v=20170515195947" alt="清洁服务">-->
-										</a>
-										<div class="holder">
-											<i></i>
-											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')" title="清洁服务"><em translate='tips.business.clean.title'>清洁服务</em></a>
-												<a ng-click="businessSearch('clean')" title="天津二手房"><span><strong translate='tips.business.clean.tip_1'>上门服务</strong></span></a>
-												<a ng-click="businessSearch('clean')" title="清洁服务"><span><strong translate='tips.business.clean.tip_2'>电话预约</strong></span></a>
-											</p>
-										</div>
-										<!--<h3 class="title">清洁服务</h3>-->
-									</div>
-									<div class="wh city-pic applianceicon" ng-click="businessSearch('appliance')">
-									<a ng-click="businessSearch('appliance')" title="家电">
-										<i class="flaticon-socket"></i>
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="家电维修">-->
-									</a>
-									<div class="holder">
-										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')" title="家电"><em translate='tips.business.app.title'>家电</em></a>
-											<a ng-click="businessSearch('appliance')" title="家电"><span><strong translate='tips.business.app.tip_1'>家电</strong></span></a>
-											<a ng-click="businessSearch('appliance')" title="家电"><span><strong translate='tips.business.app.tip_2'> 电话预约</strong></span></a>
-										</p>
-									</div>
-									<!--<h3 class="title">家电</h3>-->
-								</div>
-								</div>
-								<div class="wh city-pic take_awayicon" ng-click="businessSearch('take_away')">
-									<a ng-click="businessSearch('take_away')" title="外卖">
-										<i class="flaticon-food"></i>
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="外卖">-->
-									</a>
-									<div class="holder">
-										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')" title="代收包裹"><em translate='tips.business.food.title'>外卖</em></a>
-											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong translate='tips.business.food.tip_1'>外卖</strong></span></a>
-											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong translate='tips.business.food.tip_2'>外卖</strong></span></a>
-										</p>
-									</div>
-									<!--<h3 class="title">外卖</h3>-->
-								</div>
-								<div class="w city-pic free_posticon" ng-click="businessSearch('free_post')">
-									<a ng-click="businessSearch('free_post')" title="freepost">
-										<i class="flaticon-puzzle"></i>
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="freepost">-->
-									</a>
-									<div class="holder">
-										<i></i>
-										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')" title="freepost"><em translate='tips.business.post.title'>freepost</em></a>
-											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong translate='tips.business.post.tip_1'>freepost</strong></span></a>
-											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong translate='tips.business.post.tip_2'>freepost</strong></span></a>
-										</p>
-									</div>
-									<!--<h3 class="title">freepost</h3>-->
-								</div>
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
-
-		</div>
 		<div class="clear">
 			<section hotrent class="dream-homes">
 			</section>
 		</div>
-	</div>
+</div>

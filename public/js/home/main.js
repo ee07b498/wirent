@@ -88,6 +88,86 @@ angular.module('andy')
 		};
 
 })
+.factory('getDataService', ["$q", "$http", function($q, $http){
+			 var getDataRequests = function(url,parameters){
+			 var deferred = $q.defer();
+			 var promise = deferred.promise;
+			 var progress;
+			 $http.post(url,parameters)
+			 .success(function(r){
+					 var result = 0;
+					//  for(var i = 0; i < data.length; i++){
+					// 		 result.push(data[i].user);
+					// 		 progress = (i+1)/data.length * 100;
+					// 		 deferred.notify(progress);
+					//  }
+					 result = r[0]['count(*)'];
+					 deferred.resolve(result);
+					 })
+			 .error(function(error){
+					 deferred.reject(error);
+			 });
+			 return promise;
+	 }
+
+	 return {
+			 getDataRequests: getDataRequests
+	 };
+}])
+.factory('pagerService',function(){
+	// service definition
+	 var service = {};
+	 service.GetPager = GetPager;
+	 return service;
+	 // service implementation
+	 function GetPager(totalItems, currentPage, pageSize) {
+			 // default to first page
+			 currentPage = currentPage || 1;
+
+			 // default page size is 10
+			 pageSize = pageSize || 10;
+
+			 // calculate total pages
+			 var totalPages = Math.ceil(totalItems / pageSize);
+
+			 var startPage, endPage;
+			 if (totalPages <= 10) {
+					 // less than 10 total pages so show all
+					 startPage = 1;
+					 endPage = totalPages;
+			 } else {
+					 // more than 10 total pages so calculate start and end pages
+					 if (currentPage <= 6) {
+							 startPage = 1;
+							 endPage = 10;
+					 } else if (currentPage + 4 >= totalPages) {
+							 startPage = totalPages - 9;
+							 endPage = totalPages;
+					 } else {
+							 startPage = currentPage - 5;
+							 endPage = currentPage + 4;
+					 }
+			 }
+			 // calculate start and end item indexes
+			 var startIndex = (currentPage - 1) * pageSize;
+			 var endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
+
+			 // create an array of pages to ng-repeat in the pager control
+			 var pages = _.range(startPage, endPage + 1);
+			 // return object with all pager properties required by the view
+			 return {
+					 totalItems: totalItems,
+					 currentPage: currentPage,
+					 pageSize: pageSize,
+					 totalPages: totalPages,
+					 startPage: startPage,
+					 endPage: endPage,
+					 startIndex: startIndex,
+					 endIndex: endIndex,
+					 pages: pages
+			 };
+	 }
+})
 	.filter('propsFilter', function () {
 		    return function (items, props) {
 		        var out = [];
@@ -330,9 +410,12 @@ angular.module('andy')
 						//如果不包含或者输入的是空字符串则用初始变量副本做替换
 						if($scope.datas.length == 0 || '' == v) {
 							$scope.datas = $scope.tempdatas;
+								// $scope.hidden = true;
 						}
+
 						console.log($scope.datas);
 					}
+					
 				}
 			};
 		})
@@ -460,7 +543,9 @@ angular.module('andy')
 
 							}
 						}
-						if (uniindex == dataresults.length-1 || uniindex==-1){
+						if (uniindex == dataresults.length-1){
+								data.university = true;
+							}else if (uniindex==-1) {
 								data.university = false;
 							}
 						if(data.university){
