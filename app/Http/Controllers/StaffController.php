@@ -242,7 +242,31 @@ class StaffController extends Controller
 		}	
 		else{return false;} 		//该地址已注册
 	} 
-	
+	//input string 表单录入db
+	public function admin_landlord_er_form_insert(Request $request) {
+		$ER_ID=$request->input('ER_ID');
+		$er_including=$request->input('er_including');
+		$facility=$request->input('facility');
+		$train_station=$request->input('train_station');
+		$bus_stop=$request->input('bus_stop');
+		$ferry=$request->input('ferry');
+		$light_rail=$request->input('light_rail');
+		$shops=$request->input('shops');
+		$school=$request->input('school');
+		$others=$request->input('others');
+        $description_en=$request->input('description_en');
+        $description_ch=$request->input('description_ch');
+        $description_zh=$request->input('description_zh');
+        $comment=$request->input('comment');
+		
+		$proc_name = 'proc_Insert_ERForm';
+		$sql = "call $proc_name({ER_ID},'{$er_including}','{$facility}',
+		'{$train_station}','{$bus_stop}','{$ferry}','{$light_rail}','{$shops}',
+		'{$school}','{$others}','{$description_en}','{$description_ch}','{$description_zh}','{$comment}')";
+		$result = DB::insert($sql);
+		return json_encode($result);
+	}
+		
 	public function admin_landlord_er_update(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$ER_No = $request->input('ER_No');
@@ -276,6 +300,32 @@ class StaffController extends Controller
 		return json_encode($result);			
 	} 
 	
+	public function admin_landlord_er_form_update(Request $request) {
+		$identirerent_form=$request->input('identirerent_form');
+		$ER_ID=$request->input('ER_ID');
+		$er_including=$request->input('er_including');
+		$facility=$request->input('facility');
+		$train_station=$request->input('train_station');
+		$bus_stop=$request->input('bus_stop');
+		$ferry=$request->input('ferry');
+		$light_rail=$request->input('light_rail');
+		$shops=$request->input('shops');
+		$school=$request->input('school');
+		$others=$request->input('others');
+        $description_en=$request->input('description_en');
+        $description_ch=$request->input('description_ch');
+        $description_zh=$request->input('description_zh');
+        $comment=$request->input('comment');
+        
+		$proc_name = 'proc_Update_ERForm';
+		$sql = "call $proc_name({$identirerent_form},{ER_ID},'{$er_including}','{$facility}',
+		'{$train_station}','{$bus_stop}','{$ferry}','{$light_rail}','{$shops}',
+		'{$school}','{$others}','{$description_en}','{$description_ch}','{$description_zh}','{$comment}')";
+		$result = DB::update($sql);
+		return json_encode($result);
+		
+	}
+	
 	public function admin_landlord_er_delete(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$proc = 'proc_Delete_ER';
@@ -283,6 +333,15 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
+	
+	public function admin_landlord_er_form_delete(Request $request) {
+		$identirerent_form = $request->input('identirerent_form');
+		$proc = 'proc_Delete_ERForm';
+		$sql = 'call $proc($identirerent_form)';
+		$result = DB::delete($sql);
+		return json_encode($result);
+	}
+	
 			
 	/**
 	 * admin properties 
@@ -331,6 +390,21 @@ class StaffController extends Controller
 		return json_encode($result);
 	} 
 	
+	public function admin_sr_form_insert(Request $request) {
+		$SRID= $request->input('SRID');
+		$sr_including= $request->input('sr_including');
+		$fur_kitchen= $request->input('fur_kitchen');
+		$fur_laundry= $request->input('fur_laundry');
+		$fur_living= $request->input('fur_living');
+		$fur_balcony= $request->input('fur_balcony');
+		$others= $request->input('others');
+				
+		$proc = 'proc_Insert_SRForm';
+		$sql = "call $proc({$SRID},'{$sr_including}','{$fur_kitchen}','{$fur_laundry}',{$fur_living},'{$fur_balcony}','{$others}')";
+		$result = DB::insert($sql);
+		return json_encode($result);		
+	}
+	
 	public function admin_sr_update(Request $request) {
 		$SRID = $request->input('SRID');	
 		$ER_ID = $request->input('ER_ID');
@@ -344,10 +418,38 @@ class StaffController extends Controller
 		$result = DB::update($sql);
 		return json_encode($result);
 	} 
-	//requirements to inval sr
+	
+	public function admin_sr_form_update(Request $request) {
+		$idsharerent_form = $request->input('idsharerent_form');	
+		$SRID= $request->input('SRID');
+		$sr_including= $request->input('sr_including');
+		$fur_kitchen= $request->input('fur_kitchen');
+		$fur_laundry= $request->input('fur_laundry');
+		$fur_living= $request->input('fur_living');
+		$fur_balcony= $request->input('fur_balcony');
+		$others= $request->input('others');
+				
+		$proc = 'proc_Update_SRForm';
+		$sql = "call $proc({$idsharerent_form},{$SRID},'{$sr_including}','{$fur_kitchen}','{$fur_laundry}',{$fur_living},'{$fur_balcony}','{$others}')";
+		$result = DB::update($sql);
+		return json_encode($result);		
+	}	
+
 	public function admin_sr_delete(Request $request) {
-		
+		$SRID = $request->input('SRID');
+		$proc = 'proc_Delete_SR';
+		$sql = 'call $proc({$SRID})';
+		$result = DB::delete($sql);
+		return json_encode($result);
 	}		
+	
+	public function admin_sr_form_delete(Request $request) {
+		$idsharerent_form = $request->input('idsharerent_form');
+		$proc = 'proc_Delete_SRForm';
+		$sql = 'call $proc({$idsharerent_form})';
+		$result = DB::delete($sql);
+		return json_encode($result);
+	}
 	
 	//picLibrary
 	//upload and view pic only after insp
