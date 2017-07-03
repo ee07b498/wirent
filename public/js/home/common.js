@@ -1,5 +1,3 @@
-;
-(function () {
   'use strict';
   angular.module('andy')
    .controller('HomeController', [
@@ -9,13 +7,14 @@
     '$scope',
     '$element',
     '$http',
+    '$animate',
     '$timeout',
     'SearchService',
     'updateService',
     'getDataService',
     '$modal',
     '$log',
-    function ($cookies, $rootScope, $state, $scope, $element, $http, $timeout, SearchService, updateService, getDataService,$modal, $log) {
+    function ($cookies, $rootScope, $state, $scope, $element, $http,$animate, $timeout, SearchService, updateService, getDataService,$modal, $log) {
      var hello = true;
      //						var address = {};
      var active = true;
@@ -30,15 +29,115 @@
      var entireData = {};
 		 var shareData = {};
      var ER_Feature = '';
-     var t1Arr = [];
-     var t2Arr = [];
-     var t3Arr = [];
-     var t4Arr = [];
-     var t5Arr = [];
-     var t6Arr = [];
-     var t7Arr = [];
+     $animate.enabled(false);//消除carousel bug
      /*****************anchorscroll********************/
 
+     /***************ui-select multiple choices******************************/
+           $scope.location = {};
+           $scope.dataResults = [];
+           $scope.location.postcode = "";
+           $scope.location.region = "";
+           $scope.location.suburb = "";
+           $scope.dataResults.push( $scope.location);
+           $scope.someGroupFn = function (item){
+           if (item.suburb[0] >= 'A' && item.suburb[0] <= 'M')
+               return 'From A - M';
+           if (item.suburb[0] >= 'N' && item.suburb[0] <= 'Z')
+               return 'From N - Z';
+           };
+           $scope.someGroupFnStation = function (item){
+           if (item.station[0] >= 'A' && item.station[0] <= 'M')
+               return 'From A - M';
+           if (item.station[0] >= 'N' && item.station[0] <= 'Z')
+               return 'From N - Z';
+           };
+           $scope.person = {};
+           $scope.people = [];
+           $scope.multipleLocationDemo = {};
+           $scope.multipleLocationDemo.selectedLocationWithGroupBy = [];
+           $scope.multipleDemo = {};
+          $scope.multipleDemo.selectedPeopleWithGroupBy = [$scope.people[8], $scope.people[6]];
+
+          /***************get the value from the input***********************************/
+          function unique(arr) {
+                var comparer = function compareObject(a, b) {
+                    if (a.suburb == b.suburb) {
+                        if (a.postcode < b.postcode) {
+                            return -1;
+                        } else if (a.postcode > b.postcode) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    } else {
+                        if (a.suburb < b.suburb) {
+                            return -1;
+                        } else {
+                            return 1;
+                        }
+                    }
+                }
+
+                arr.sort(comparer);
+                console.log("Sorted: " + JSON.stringify(arr));
+                for (var i = 0; i < arr.length - 1; ++i) {
+                    if (comparer(arr[i], arr[i+1]) === 0) {
+                        arr.splice(i, 1);
+                        console.log("Splicing: " + JSON.stringify(arr));
+                    }
+                }
+                return arr;
+            }
+            function uniqueStation(arr) {
+                  var comparer = function compareObject(a, b) {
+                      if (a.suburb == b.suburb) {
+                          if (a.station < b.station) {
+                              return -1;
+                          } else if (a.station > b.station) {
+                              return 1;
+                          } else {
+                              return 0;
+                          }
+                      } else {
+                          if (a.suburb < b.suburb) {
+                              return -1;
+                          } else {
+                              return 1;
+                          }
+                      }
+                  }
+
+                  arr.sort(comparer);
+                  console.log("Sorted: " + JSON.stringify(arr));
+                  for (var i = 0; i < arr.length - 1; ++i) {
+                      if (comparer(arr[i], arr[i+1]) === 0) {
+                          arr.splice(i, 1);
+                          console.log("Splicing: " + JSON.stringify(arr));
+                      }
+                  }
+                  return arr;
+              }
+           $scope.fn = function(search) {
+              //do something with search
+              console.log(search);
+              $scope.datas = [];
+              regions = {};
+              data.inputStr = search;
+              if(data.inputStr && data.inputStr.length > 2) {
+               $http.post('/customer/filt_address', data)
+                .then(function(r) {
+                 console.log('search===>',search);
+                 console.log('r===>',r);
+                 $scope.dataResults = unique(r.data);
+                console.log('$scope.dataResults===>',$scope.dataResults);
+                 console.log($scope.dataResults);
+                }, function(e) {
+                 console.log("数据有误"+ e);
+                })
+              } else {
+               $scope.datas = [""];
+              }
+          }
      /************************************************/
 
      //model types
@@ -633,7 +732,7 @@
      /*****************************************************************
          ********************entire rental station filter*****************
          ****************************************************************/
-      $scope.Chatswood=false;$scope.Hornsby=false;$scope.Epping=false;$scope.MQ_Uni=false;$scope.Rodes=false;$scope.allT1=false;
+     $scope.Chatswood=false;$scope.Hornsby=false;$scope.Epping=false;$scope.MQ_Uni=false;$scope.Rodes=false;$scope.allT1=false;
      $scope.Burwood=false;$scope.Straithfield=false;$scope.Greensquare=false;$scope.Mascot=false;$scope.Lidcome_T2=false;$scope.allT2=false;
      $scope.Central_T3=false;$scope.Sydenham=false;$scope.Campsie=false;$scope.Bankstown=false;$scope.Liverpool_T3=false;$scope.allT3=false;
      $scope.Central_T4=false;$scope.Redfern=false;$scope.Wollicreek=false;$scope.Rockdale=false;$scope.Hurstville=false;$scope.allT4=false;
@@ -643,7 +742,6 @@
       // T1
      $scope.get_Chatswood = function (){
       $scope.Chatswood = !$scope.Chatswood;
-      console.log("$scope.Chatswood",$scope.Chatswood);
       if($scope.Chatswood==true &&$scope.Hornsby==true&&$scope.Epping==true&&$scope.MQ_Uni==true&&$scope.Rodes==true)
       {
        $scope.allT1 = true;
@@ -675,7 +773,7 @@
       }else if($scope.Chatswood==false || $scope.Hornsby==false || $scope.Epping==false || $scope.MQ_Uni==false || $scope.Rodes==false){
        $scope.allT1 = false;
       }
-      station_selection();
+        station_selection();
      }
      $scope.get_MQ_Uni = function (){
       $scope.MQ_Uni = !$scope.MQ_Uni;
@@ -687,7 +785,7 @@
       }else if($scope.Chatswood==false || $scope.Hornsby==false || $scope.Epping==false || $scope.MQ_Uni==false || $scope.Rodes==false){
        $scope.allT1 = false;
       }
-      station_selection();
+        station_selection();
      }
      $scope.get_Rodes = function (){
       $scope.Rodes = !$scope.Rodes;
@@ -698,7 +796,7 @@
       }else if($scope.Chatswood==false || $scope.Hornsby==false || $scope.Epping==false || $scope.MQ_Uni==false || $scope.Rodes==false){
        $scope.allT1 = false;
       }
-      station_selection();
+        station_selection();
      }
 
      $scope.get_All_T1 = function(){
@@ -715,7 +813,7 @@
       else{
 
       }
-      station_selection();
+        station_selection();
      }
 
      // T2
@@ -728,7 +826,7 @@
       }else if($scope.Burwood==false || $scope.Straithfield==false || $scope.Greensquare==false || $scope.Mascot==false || $scope.Lidcome_T2==false){
        $scope.allT2 = false;
       }
-      station_selection();
+        station_selection();
      }
      $scope.get_Straithfield = function (){
       $scope.Straithfield = !$scope.Straithfield;
@@ -739,7 +837,7 @@
       }else if($scope.Burwood==false || $scope.Straithfield==false || $scope.Greensquare==false || $scope.Mascot==false || $scope.Lidcome_T2==false){
        $scope.allT2 = false;
       }
-      station_selection();
+        station_selection();
      }
      $scope.get_Greensquare = function (){
       $scope.Greensquare = !$scope.Greensquare;
@@ -750,7 +848,7 @@
       }else if($scope.Burwood==false || $scope.Straithfield==false || $scope.Greensquare==false || $scope.Mascot==false || $scope.Lidcome_T2==false){
        $scope.allT2 = false;
       }
-      station_selection();
+        station_selection();
      }
      $scope.get_Mascot = function (){
       $scope.Mascot = !$scope.Mascot;
@@ -761,7 +859,7 @@
       }else if($scope.Burwood==false || $scope.Straithfield==false || $scope.Greensquare==false || $scope.Mascot==false || $scope.Lidcome_T2==false){
        $scope.allT2 = false;
       }
-      station_selection();
+        station_selection();
      }
      $scope.get_Lidcome_T2 = function (){
       $scope.Lidcome_T2 = !$scope.Lidcome_T2;
@@ -772,7 +870,7 @@
       }else if($scope.Burwood==false || $scope.Straithfield==false || $scope.Greensquare==false || $scope.Mascot==false || $scope.Lidcome_T2==false){
        $scope.allT2 = false;
       }
-      station_selection();
+        station_selection();
      }
 
      $scope.get_All_T2 = function(){
@@ -802,7 +900,7 @@
       }else if($scope.Central_T3==false || $scope.Sydenham==false || $scope.Campsie==false || $scope.Bankstown==false || $scope.Liverpool_T3==false){
        $scope.allT3 = false;
       }
-      station_selection();
+        station_selection();
      }
      $scope.get_Sydenham = function (){
       $scope.Sydenham = !$scope.Sydenham;
@@ -1106,7 +1204,11 @@
       }
       station_selection();
      }
-     function station_selection(){
+     function addStation (station,suburb) {
+          this.station = station;
+          this.suburb = suburb;
+          }
+     function station_selection(station){
       var station_key = [
       $scope.Chatswood,$scope.Hornsby,$scope.Epping,$scope.MQ_Uni,$scope.Rodes,$scope.allT1,
       $scope.Burwood,$scope.Straithfield,$scope.Greensquare,$scope.Mascot,$scope.Lidcome_T2,$scope.allT2,
@@ -1123,28 +1225,48 @@
           "Parramatta","Westmead","Blacktown","Merrylands","Liverpool_T5","AllT5",
           "Clyde","Rosehill","Camellia","Carlingford","AllT6",
           "Lidcome_T7","Olympic_Park","AllT7"];
-     for(var i=0;i<station_key.length;i++){
-      if(station_key[i]){
-        if(i>34){
-         angular.element("."+station_value[i]).css({'background-color': '#999999'});
-        }else if(i>=30){
-         angular.element("."+station_value[i]).css({'background-color': '#336699'});
-        }else if(i>=24){
-         angular.element("."+station_value[i]).css({'background-color': '#cc00a1'});
-        }else if(i>=18){
-         angular.element("."+station_value[i]).css({'background-color': '#0073c7'});
-        }else if(i>=12){
-         angular.element("."+station_value[i]).css({'background-color': '#f47424'});
-        }else if(i>=6){
-         angular.element("."+station_value[i]).css({'background-color': '#26ae4e'});
-        }else if(i>=0){
-         angular.element("."+station_value[i]).css({'background-color': '#fcb514'});
-        }
-
-       }else{
-        angular.element("."+station_value[i]).css({'background-color': '#4d555d'});
-       }
-      }
+    var station_suburb = ["Chatswood","Hornsby","Epping","MQ_Uni","Rodes","AllT1",
+         "Burwood","Straithfield","Greensquare","Mascot","Lidcome_T2","AllT2",
+         "Central_T3","Sydenham","Campsie","Bankstown","Liverpool_T3","AllT3",
+         "Central_T4","Redfern","Wollicreek","Rockdale","Hurstville","AllT4",
+         "Parramatta","Westmead","Blacktown","Merrylands","Liverpool_T5","AllT5",
+         "Clyde","Rosehill","Camellia","Carlingford","AllT6",
+         "Lidcome_T7","Olympic_Park","AllT7"];
+         for(var i=0;i<station_key.length;i++){
+          if(station_key[i]){
+            if(i>34){
+             angular.element("."+station_value[i]).css({'background-color': '#999999'});
+            }else if(i>=30){
+             angular.element("."+station_value[i]).css({'background-color': '#336699'});
+            }else if(i>=24){
+             angular.element("."+station_value[i]).css({'background-color': '#cc00a1'});
+            }else if(i>=18){
+             angular.element("."+station_value[i]).css({'background-color': '#0073c7'});
+            }else if(i>=12){
+             angular.element("."+station_value[i]).css({'background-color': '#f47424'});
+            }else if(i>=6){
+             angular.element("."+station_value[i]).css({'background-color': '#26ae4e'});
+            }else if(i>=0){
+             angular.element("."+station_value[i]).css({'background-color': '#fcb514'});
+            }
+           }else{
+            angular.element("."+station_value[i]).css({'background-color': '#4d555d'});
+           }
+          }
+          for (var i = 0; i < station_key.length; i++) {
+            if (station_key[i]) {
+              var add1 = new addStation(station_value[i],station_suburb[i]);
+              $scope.people[$scope.people.length] = add1;
+              $scope.people = uniqueStation($scope.people);
+            }
+          }
+          $scope.multipleDemo.selectedPeopleWithGroupBy = $scope.people;
+          for (var j = 0; j <$scope.multipleDemo.selectedPeopleWithGroupBy.length; j++) {
+            var index = station_suburb.indexOf($scope.multipleDemo.selectedPeopleWithGroupBy[j].suburb);
+            if (station_key[index]===false && index>=0 ) {
+              $scope.multipleDemo.selectedPeopleWithGroupBy.splice(j, 1);
+            }
+          }
      }
 
      /*****************************************************************
@@ -2081,5 +2203,3 @@
 	    }
 	  }
 	}])*/
-
-})();

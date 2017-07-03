@@ -5,7 +5,7 @@
 				<div imagelunbo></div>
 			</div>
 		</div>
-		<div class="col-sm-4" style="padding: 0; margin: 0;">
+		<div class="col-sm-4" style="padding: 0 10px 0 0px; margin: 0;">
 			<div class="col">
 				<div class="row-sm-12">
 					<div class="content">
@@ -359,7 +359,7 @@
 			</div>
 		</div>
 		<div class="col-sm-4">
-			<div class="col-sm-12">
+			<div class="col-sm-12" style="padding:0;">
 				      <div class="panel b-a">
 				        <div class="panel-heading no-border bg-primary">
 				          <span class="text-lt">WinningInvestment</span>
@@ -368,26 +368,27 @@
 				          <div ng-init="x = 3" class="top text-right padder m-t-xs w-full">
 				            <!-- <rating ng-model="x" max="5" state-on="'fa fa-star text-white'" state-off="'fa fa-star-o text-white'"></rating> -->
 				          </div>
-				         <div class="bottom wrapper bg-gd-dk text-white">
+				          <div class="bottom wrapper bg-gd-dk text-white">
 				            <div class="text-u-c h3 m-b-sm text-primary-lter">Rent&nbsp;Buy&nbsp;Invest</div>
 				            <div>Address</div>
 				            <div>84 Pitt St Sydney</div>
+										<div ng-show="phone"><h4 style="color:#23b7e5">Phone:02-80021739 / 0431396515</h4></div>
 				          </div>
 				          <img src="img/c0.jpg" class="img-full" style="height: 200px;">
 				        </div>
-				        <div class="hbox text-center b-b b-light text-sm">
-				          <a href class="col padder-v text-muted b-r b-light">
-				            <i class="icon-call-end block m-b-xs fa-2x"></i>
+				        <div ng-click="phone=!phone" class="hbox text-center b-b b-light text-sm">
+				          <a href class="col padder-v text-muted b-r b-light" style="color:#036f88">
+				            <i class="icon-call-end block m-b-xs fa-2x" ></i>
 				            <span>Call</span>
 				          </a>
-				          <a ng-click="showDetail();gotoAnchor('company')" class="col padder-v text-muted b-r b-light">
-				            <i class="icon-pointer block m-b-xs fa-2x"></i>
+				          <a ng-click="showDetail();gotoAnchor('company')" class="col padder-v text-muted b-r b-light" style="color:#123c94">
+				            <i class="icon-pointer block m-b-xs fa-2x" ></i>
 				            <span>Location</span>
 				          </a>
-				          <a href ng-click="open()" class="col padder-v text-muted">
-				            <i class="fa fa-envelope-o block m-b-xs fa-2x"></i>
+				          <a href ng-click="open()" class="col padder-v text-muted" style="color:#367d00">
+				            <i class="fa fa-comment block m-b-xs fa-2x" ></i>
 				            <span>
-				            	Email
+				            	Contact Us
 				            </span>
 				          </a>
 				          <script type="text/ng-template" id="myModalContent.html">
@@ -395,17 +396,17 @@
 						  		</script>
 				        </div>
 				     		<div class="hbox text-center text-sm">
-				          <a href class="col padder-v text-muted b-r b-light">
-				            <i class="fa fa-whatsapp block m-b-xs fa-2x"></i>
-				            <span>What's App</span>
-				          </a>
-				          <a href class="col padder-v text-muted b-r b-light" ng-click="showWechat()">
-				            <i class="fa fa-wechat block m-b-xs fa-2x"></i>
+									<a class="col padder-v text-muted b-r b-light" href="https://www.facebook.com/winninginvestment2015" style="color:#3e5c9a">
+										<i class="fa fa-facebook-square block m-b-xs fa-2x" ></i>
+										<span>Facebook</span>
+									</a>
+				          <a href class="col padder-v text-muted b-r b-light" ng-click="showWechat()" style="color:#00d00d">
+				            <i class="fa fa-wechat block m-b-xs fa-2x" ></i>
 				            <span>Wechat</span>
 				          </a>
-				          <a href class="col padder-v text-muted">
-				            <i class="fa fa-envelope block m-b-xs fa-2x"></i>
-				            <span>Message</span>
+				          <a href="mailto:info@winninginvestment.com.au" class="col padder-v text-muted" style="color:#f05050">
+				            <i class="fa fa-envelope block m-b-xs fa-2x" ></i>
+				            <span>Email</span>
 				          </a>
 				        </div>
 			      </div>

@@ -234,7 +234,7 @@ angular.module('andy')
 							opacity=1;
 							scope.tips=true;
 							scope.features=false;
-							scope.boxshow=true;
+							scope.boxshow=false;
 							element.find("i").css({'opacity': 1,'left': left + 90 + 'px'});
 						}
 						 else if(event == 2) {
@@ -314,7 +314,7 @@ angular.module('andy')
 							opacity=1;
 							scope.tips1=true;
 							scope.features1=false;
-							scope.boxshow1=true;
+							scope.boxshow1=false;
 							element.find("i").css({'opacity': 1,'left': left + 90 + 'px'});
 						}
 						 else if(event == 2) {
@@ -372,15 +372,7 @@ angular.module('andy')
 					$scope.getData();
 					$scope.change();
 				},
-				template: '<input type = "test"' +
-					'class="input-lg form-control" autocomplete="off" name="inputStr" data-val="true" data-val-required="Please choose a location to search." ng-minlength="2"  placeholder="Search by suburb, region, postcode or address" type="text"' +
-					'ng-change="changeKeyValue(searchField)" ng-keyup="getData({val:searchField})" ng-model="searchField" ' +
-					' value="{{searchField}}" style="width:414px; height:55px;border:none"/>' +
-					'<div  ng-hide="hidden" style = "position:absolute; top:55px; z-index: 1000;">' +
-					'   <select style = "width:413px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;" ng-change="change(x)" ng-model="x" multiple>' +
-					'       <option ng-repeat="data in datas track by $index" style="padding-left:16px;padding-bottom:10px">{{data}}</option>' +
-					'   </select>' +
-					'</div>',
+				templateUrl: '/partials/mydirectives/directive-leftsearch.html',
 				//    replace: true,  overflow-y:hidden;remove the y-direction overflow-hidden
 				link: function($scope, elem, attr, ctrl) {
 					$scope.getData();
@@ -415,7 +407,7 @@ angular.module('andy')
 
 						console.log($scope.datas);
 					}
-					
+
 				}
 			};
 		})

@@ -58,14 +58,15 @@
 	<script src="/js/home/map/jquery.subwayMap-0.5.0.js"></script>
 	<script src="/js/home/map/dragscroll.js"></script>
 	 <!-- lazyload -->
-  	<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
+	<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
+
+	<script src="/js/home/base.js"></script>
+	<script src="/js/home/base.lazyload.js"></script>
+	<script src="/js/home/config.js"></script>
+	<script src="/js/home/main.js"></script>
 	<script src="/js/home/map/load-google-maps.js"></script>
 	<script src="/js/home/googlemap.js"></script>
 	<script src="/js/home/googlemapShare.js"></script>
-	<script src="/js/home/base.js"></script>
-	<script src="/js/home/config.js"></script>
-	<script src="/js/home/main.js"></script>
-	<script src="/js/home/base.lazyload.js"></script>
 	<script src="/js/home/user.js"></script>
 	<script src="/js/home/header.js"></script>
 	<script src="/js/home/common.js"></script>

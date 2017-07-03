@@ -31,6 +31,17 @@ angular.module('andy', [
     url: '/home',
     //template:'<h1>homePage</h1>'
     templateUrl: '/partials/search.html', //localhost:8080/home.tpl
+    controller: 'HomeController',
+    resolve: {
+        deps: ['$ocLazyLoad',
+          function ($ocLazyLoad) {
+            return $ocLazyLoad.load('ui.select').then(
+                function () {
+                    return $ocLazyLoad.load('js/home/common.js');
+                  }
+            );
+          }, ],
+      },
   })
    .state('app.googlemap', {
     url: '/googlemap',
@@ -76,7 +87,7 @@ angular.module('andy', [
           function ($ocLazyLoad) {
             return $ocLazyLoad.load('ui.select').then(
                 function () {
-                    return $ocLazyLoad.load('js/home/common.js');
+                    return $ocLazyLoad.load('js/home/listpage.js');
                   }
             );
           }, ],

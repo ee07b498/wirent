@@ -7,7 +7,7 @@
 				 <div class="form-group">
 			        <label class="col-sm-2 control-label text-left" translate="listpage.filter.location">Location</label>
 			        <div class="col-sm-9">
-			          <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" ng-disabled="disabled">
+			          <!-- <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" ng-disabled="disabled">
 			            <ui-select-match placeholder="Select location...">[:$item.name:] &lt;[:$item.email:]&gt;</ui-select-match>
 			            <ui-select-choices group-by="someGroupFn" repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
 			              <div ng-bind-html="person.name | highlight: $select.search"></div>
@@ -16,7 +16,8 @@
 			                age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
 			              </small>
 			            </ui-select-choices>
-			          </ui-select>
+			          </ui-select> -->
+								<input type="text" class="form-control input-lg"  placeholder="input address,suburb or region" aria-describedby="basic-addon1">
 			        </div>
 			        <div class="col-sm-1"></div>
 			      </div>
