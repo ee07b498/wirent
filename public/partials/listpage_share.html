@@ -7,17 +7,17 @@
 				 <div class="form-group">
 			        <label class="col-sm-2 control-label text-left" translate="listpage.filter.location">Location</label>
 			        <div class="col-sm-9">
-			          <!-- <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" ng-disabled="disabled">
-			            <ui-select-match placeholder="Select location...">[:$item.name:] &lt;[:$item.email:]&gt;</ui-select-match>
-			            <ui-select-choices group-by="someGroupFn" repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
-			              <div ng-bind-html="person.name | highlight: $select.search"></div>
-			              <small>
-			                email: [:person.email:]
-			                age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
-			              </small>
-			            </ui-select-choices>
-			          </ui-select> -->
-								<input type="text" class="form-control input-lg"  placeholder="input address,suburb or region" aria-describedby="basic-addon1">
+								<ui-select multiple ng-model="multipleLocationDemo.selectedLocationWithGroupBy" theme="bootstrap" >
+									 <ui-select-match placeholder="Select location...">[:$item.suburb+" "+$item.region+" "+$item.postcode:]</ui-select-match>
+									 <ui-select-choices group-by="someGroupFn" refresh="fn($select.search)" refresh-delay="100" repeat="location in dataResults track by $index | propsFilter: {suburb: $select.search, postcode: $select.search}">
+										 <div ng-bind-html="location.region | highlight: $select.search"></div>
+										 <small>
+											 <i class="fa fa-map-marker"></i>
+											[:location.suburb+" "+location.region:]
+											&nbsp;|&nbsp; POSTCODE: <span ng-bind-html="''+location.postcode | highlight: $select.search"></span>
+										 </small>
+									 </ui-select-choices>
+								</ui-select>
 			        </div>
 			        <div class="col-sm-1"></div>
 			      </div>

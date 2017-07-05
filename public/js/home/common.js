@@ -21,42 +21,51 @@
      var data = {};
      var data1 = {};
      var count = 0;
-     var regions = {};
-     var regions1 = {};
      var business = {};
      $scope.datas = []; //下拉框选项
      $scope.datas1 = []; //下拉框选项
      var entireData = {};
 		 var shareData = {};
      var ER_Feature = '';
-     $animate.enabled(false);//消除carousel bug
      /*****************anchorscroll********************/
 
      /***************ui-select multiple choices******************************/
            $scope.location = {};
            $scope.dataResults = [];
+           $scope._location = {};
+           $scope._dataResults = [];
            $scope.location.postcode = "";
            $scope.location.region = "";
            $scope.location.suburb = "";
            $scope.dataResults.push( $scope.location);
+           $scope._location.postcode = "";
+           $scope._location.region = "";
+           $scope._location.suburb = "";
+           $scope._dataResults.push( $scope._location);
+           $scope.person = {};
+           $scope.people = [];
+           $scope._person = {};
+           $scope._people = [];
+           $scope.multipleLocationDemo = {};
+           $scope.multipleLocationDemo.selectedLocationWithGroupBy = [];
+           $scope._multipleLocationDemo = {};
+           $scope._multipleLocationDemo._selectedLocationWithGroupBy = [];
+           $scope.multipleDemo = {};
+           $scope.multipleDemo.selectedPeopleWithGroupBy = [];
+           $scope._multipleDemo = {};
+           $scope._multipleDemo._selectedPeopleWithGroupBy = [];
            $scope.someGroupFn = function (item){
            if (item.suburb[0] >= 'A' && item.suburb[0] <= 'M')
-               return 'From A - M';
+              return 'From A - M';
            if (item.suburb[0] >= 'N' && item.suburb[0] <= 'Z')
-               return 'From N - Z';
+              return 'From N - Z';
            };
            $scope.someGroupFnStation = function (item){
            if (item.station[0] >= 'A' && item.station[0] <= 'M')
-               return 'From A - M';
+              return 'From A - M';
            if (item.station[0] >= 'N' && item.station[0] <= 'Z')
-               return 'From N - Z';
+              return 'From N - Z';
            };
-           $scope.person = {};
-           $scope.people = [];
-           $scope.multipleLocationDemo = {};
-           $scope.multipleLocationDemo.selectedLocationWithGroupBy = [];
-           $scope.multipleDemo = {};
-          $scope.multipleDemo.selectedPeopleWithGroupBy = [$scope.people[8], $scope.people[6]];
 
           /***************get the value from the input***********************************/
           function unique(arr) {
@@ -120,8 +129,6 @@
            $scope.fn = function(search) {
               //do something with search
               console.log(search);
-              $scope.datas = [];
-              regions = {};
               data.inputStr = search;
               if(data.inputStr && data.inputStr.length > 2) {
                $http.post('/customer/filt_address', data)
@@ -135,67 +142,34 @@
                  console.log("数据有误"+ e);
                 })
               } else {
-               $scope.datas = [""];
+
               }
           }
+          $scope._fn = function(search) {
+             //do something with search
+             console.log(search);
+             data1.inputStr = search;
+             if(data1.inputStr && data1.inputStr.length > 2) {
+              $http.post('/customer/filt_address', data1)
+               .then(function(r) {
+                console.log('search===>',search);
+                console.log('r===>',r);
+                $scope._dataResults = unique(r.data);
+               console.log('$scope.dataResults===>',$scope._dataResults);
+                console.log($scope._dataResults);
+               }, function(e) {
+                console.log("数据有误"+ e);
+               })
+             } else {
+
+             }
+         }
      /************************************************/
 
      //model types
      $scope.myMode = 'Entire';
      $scope.Modes = [{id: 1,name: 'Entire'}, {id: 2,name: 'Share'},
      {id: 3, name: 'New Homes'}, {id: 4,name: 'Sold'}];
-     // input address
-     $scope.getData = function(val) {
-      $scope.datas = [];
-      regions = {};
-      data.inputStr = val;
-      if(data.inputStr && data.inputStr.length > 2) {
-       $http.post('/customer/filt_address', data)
-        .then(function(r) {
-         console.log('r', r);
-         angular.forEach(r.data, function(value, key) {
-          regions.postcode = value.postcode;
-          regions.region = value.region;
-          regions.suburb = value.suburb;
-          //									  console.log("regions",regions);
-          //									  if( !$scope.datas.contains(regions.postcode))
-          $scope.datas.push(regions.suburb + "," + regions.region + "," + regions.postcode);
-         });
-
-        }, function(e) {
-         console.log("数据有误"+ e);
-        })
-      } else {
-       $scope.datas = [""];
-      }
-     }
-     /*share get datas starts*/
-     $scope.getData1 = function(val) {
-      $scope.datas1 = [];
-      regions1 = {};
-      data1.inputStr = val;
-      if(data1.inputStr && data1.inputStr.length > 2) {
-       $http.post('/customer/filt_address', data1)
-        .then(function(r) {
-         console.log('r', r);
-         angular.forEach(r.data, function(value, key) {
-          regions1.postcode = value.postcode;
-          regions1.region = value.region;
-          regions1.suburb = value.suburb;
-          //									  console.log("regions",regions);
-          //									  if( !$scope.datas.contains(regions.postcode))
-          $scope.datas1.push(regions1.suburb + "," + regions1.region + "," + regions1.postcode);
-         });
-
-        }, function(e) {
-         console.log("数据有误");
-        })
-      } else {
-       $scope.datas1 = [""];
-      }
-     }
-     /***share get datas ends***/
-
      // property types
      $scope.myPropertyType = '';
      $scope.propertyTypes = [{ id: 1,propertyType: 'House'},
@@ -503,7 +477,7 @@
         $scope.refrigerator,$scope.laundry,$scope.bed,$scope.desk,
         $scope.wardrob,$scope.wifi,$scope.gas,$scope.no_smoking,$scope.no_pets,
         $scope.girl_only,$scope.boy_only,$scope.no_party];
-    var arr_value = ["stove","dishwasher","dryer","aircondition","refrigerator"
+    var arr_value = ["full_kitchen","dishwasher","dryer","aircondition","refrigerator"
          ,"laundry","bed","desk","wardrob","wifi","gas","no_smoking",
          "no_pets","girl_only","boy_only","no_party"];
     var arr_features = [];
@@ -677,7 +651,6 @@
     $scope.orderleft = false;
     $scope.orderright = false;
     $scope.sortBy = function(orderName){
-     alert("000");
      if(orderName==='ER_Price'){
       $scope.orderright = false;
       $scope.orderleft = true;
@@ -1225,13 +1198,13 @@
           "Parramatta","Westmead","Blacktown","Merrylands","Liverpool_T5","AllT5",
           "Clyde","Rosehill","Camellia","Carlingford","AllT6",
           "Lidcome_T7","Olympic_Park","AllT7"];
-    var station_suburb = ["Chatswood","Hornsby","Epping","MQ_Uni","Rodes","AllT1",
-         "Burwood","Straithfield","Greensquare","Mascot","Lidcome_T2","AllT2",
-         "Central_T3","Sydenham","Campsie","Bankstown","Liverpool_T3","AllT3",
-         "Central_T4","Redfern","Wollicreek","Rockdale","Hurstville","AllT4",
-         "Parramatta","Westmead","Blacktown","Merrylands","Liverpool_T5","AllT5",
-         "Clyde","Rosehill","Camellia","Carlingford","AllT6",
-         "Lidcome_T7","Olympic_Park","AllT7"];
+    var station_suburb = ["Chatswood","Hornsby","Epping","MQ_Uni","Rodes","Chatswood Hornsby Epping MQ_Uni Rodes",
+         "Burwood","Straithfield","Greensquare","Mascot","Lidcome_T2","Burwood Straithfield Greensquare Mascot Lidcome_T2",
+         "Central_T3","Sydenham","Campsie","Bankstown","Liverpool_T3","Central_T3 Sydenham Campsie Bankstown Liverpool_T3",
+         "Central_T4","Redfern","Wollicreek","Rockdale","Hurstville","Central_T4 Redfern Wollicreek Rockdale Hurstville",
+         "Parramatta","Westmead","Blacktown","Merrylands","Liverpool_T5","Parramatta Westmead Blacktown Merrylands Liverpool_T5",
+         "Clyde","Rosehill","Camellia","Carlingford","Clyde Rosehill Camellia Carlingford",
+         "Lidcome_T7","Olympic_Park","Lidcome_T7 Olympic_Park"];
          for(var i=0;i<station_key.length;i++){
           if(station_key[i]){
             if(i>34){
@@ -1254,17 +1227,19 @@
            }
           }
           for (var i = 0; i < station_key.length; i++) {
-            if (station_key[i]) {
+            if (station_key[i] ===true) {
               var add1 = new addStation(station_value[i],station_suburb[i]);
               $scope.people[$scope.people.length] = add1;
               $scope.people = uniqueStation($scope.people);
-            }
-          }
-          $scope.multipleDemo.selectedPeopleWithGroupBy = $scope.people;
-          for (var j = 0; j <$scope.multipleDemo.selectedPeopleWithGroupBy.length; j++) {
-            var index = station_suburb.indexOf($scope.multipleDemo.selectedPeopleWithGroupBy[j].suburb);
-            if (station_key[index]===false && index>=0 ) {
-              $scope.multipleDemo.selectedPeopleWithGroupBy.splice(j, 1);
+              $scope.multipleDemo.selectedPeopleWithGroupBy = $scope.people;
+            }else {
+              $scope.multipleDemo.selectedPeopleWithGroupBy = $scope.people;
+              for (var j = 0; j <$scope.multipleDemo.selectedPeopleWithGroupBy.length; j++) {
+                var index = station_suburb.indexOf($scope.multipleDemo.selectedPeopleWithGroupBy[j].suburb);
+                if (station_key[index]===false && index>=0 ) {
+                  $scope.multipleDemo.selectedPeopleWithGroupBy.splice(j, 1);
+                }
+              }
             }
           }
      }
@@ -1762,6 +1737,13 @@
           "_Parramatta","_Westmead","_Blacktown","_Merrylands","_Liverpool_T5","_AllT5",
           "_Clyde","_Rosehill","_Camellia","_Carlingford","_AllT6",
           "_Lidcome_T7","_Olympic_Park","_AllT7"];
+      var _station_suburb = ["Chatswood","Hornsby","Epping","MQ_Uni","Rodes","Chatswood Hornsby Epping MQ_Uni Rodes",
+           "Burwood","Straithfield","Greensquare","Mascot","Lidcome_T2","Burwood Straithfield Greensquare Mascot Lidcome_T2",
+           "Central_T3","Sydenham","Campsie","Bankstown","Liverpool_T3","Central_T3 Sydenham Campsie Bankstown Liverpool_T3",
+           "Central_T4","Redfern","Wollicreek","Rockdale","Hurstville","Central_T4 Redfern Wollicreek Rockdale Hurstville",
+           "Parramatta","Westmead","Blacktown","Merrylands","Liverpool_T5","Parramatta Westmead Blacktown Merrylands Liverpool_T5",
+           "Clyde","Rosehill","Camellia","Carlingford","Clyde Rosehill Camellia Carlingford",
+           "Lidcome_T7","Olympic_Park","Lidcome_T7 Olympic_Park"];
      for(var i=0;i<_station_key.length;i++){
       if(_station_key[i]){
         if(i>34){
@@ -1784,6 +1766,22 @@
         angular.element("."+_station_value[i]).css({'background-color': '#4d555d'});
        }
       }
+      for (var i = 0; i < _station_key.length; i++) {
+        if (_station_key[i] ===true) {
+          var add1 = new addStation(_station_value[i],_station_suburb[i]);
+          $scope._people[$scope._people.length] = add1;
+          $scope._people = uniqueStation($scope._people);
+          $scope._multipleDemo._selectedPeopleWithGroupBy = $scope._people;
+        }else {
+          $scope._multipleDemo._selectedPeopleWithGroupBy = $scope._people;
+          for (var j = 0; j <$scope._multipleDemo._selectedPeopleWithGroupBy.length; j++) {
+            var index = _station_suburb.indexOf($scope._multipleDemo._selectedPeopleWithGroupBy[j].suburb);
+            if (_station_key[index]===false && index>=0 ) {
+              $scope._multipleDemo._selectedPeopleWithGroupBy.splice(j, 1);
+            }
+          }
+        }
+      }
      }
      /****************************train filter ends*****************************/
 
@@ -1792,36 +1790,36 @@
 ********************************************************************************/
      $scope.include_area = true;
      $scope.include_area_share = true;
-     var suburb = "";
-     var station = "";
      $http.get('/customer/profile')
      .then(function(r) {
        console.log(r);
        if(r.data.customer_login_status){
          //search for the results of properties
-           $scope.entireSearch = function(station) {
-             if(typeof station != "string")
-              {
-                station = "";
-                suburb = "";
-              }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
-                 var arr_station = station.split(";");
-                 station = "%"+arr_station[0]+";";
-                 suburb = arr_station[1];
-              }else{
-                 station = station;
-                 suburb = "";
-              }
+           $scope.entireLocationSearch = function(theme) {
+             var regionArr = [];
+             var result = [];
+             var suburb = "";
+             var region = "";
+             var station = "";
+            console.log($scope.multipleLocationDemo.selectedLocationWithGroupBy);
             //selected items which are an array
-            console.log('$scope.x',$scope.x);
-            if($scope.x) {
-             var address = $scope.x[0].split(",");
-             console.log("xxx", address);
-             suburb = address[0];
+            for (var i = 0; i < $scope.multipleLocationDemo.selectedLocationWithGroupBy.length; i++) {
+              suburb = "%"+$scope.multipleLocationDemo.selectedLocationWithGroupBy[i].suburb+";"+suburb;
+              regionArr[regionArr.length] = $scope.multipleLocationDemo.selectedLocationWithGroupBy[i].region;
+            }
+             regionArr.forEach(function(item) {
+                  if(result.indexOf(item) < 0) {
+                      result.push(item);
+                  }
+             });
+             regionArr = result;
+             for (var i = 0; i < regionArr.length; i++) {
+                 region = "%"+regionArr[i]+";";
+             }
              entireData = {
               CID:r.data.CID,
               ER_Suburb: suburb,
-              ER_Region: address[1],
+              ER_Region: region,
               include_area:$scope.include_area,
               ER_Type: $scope.myPropertyType,
               ER_PriceMin: $scope.myMinPrice,
@@ -1835,48 +1833,10 @@
               ER_AreaMin: 0,
               ER_AreaMax: 50000,
               ER_AvailableDate: '2200-01-01',
-              ER_Description: station,
+              ER_Description: theme,
               ER_Feature: ER_Feature
              };
-            } else {
-             entireData = {
-              CID:r.data.CID,
-              ER_Suburb: suburb,
-              ER_Region: '',
-              include_area:$scope.include_area,
-              ER_Type: $scope.myPropertyType,
-              ER_PriceMin: $scope.myMinPrice,
-              ER_PriceMax: $scope.myMaxPrice,
-              ER_BedRoomMin: $scope.minBedNum,
-              ER_BedRoomMax: $scope.maxBedNum,
-              ER_BathRoomMin: $scope.minBathNum,
-              ER_BathRoomMax: $scope.maxBathNum,
-              ER_ParkingMin: $scope.minParkingNum,
-              ER_ParkingMax: $scope.maxParkingNum,
-              ER_AreaMin: 0,
-              ER_AreaMax: 5000,
-              ER_AvailableDate: '2200-01-01',
-              ER_Description: station,
-              ER_Feature: ER_Feature
-             }
-            }
-
-            // $state.go('app.googlemap');
             console.log(entireData);
-            // $http.post('/customer/filt/entire/tenant', entireData)
-            //  .then(function(r) {
-            //   SearchService.set(r);
-            //   updateService.set(entireData);
-            //   //							SetCredentials(r);
-            //   console.log('rrrrrrrrr==========>', r);
-            //   if(r.data.length > 0) {
-            //    $state.go('app.listpage');
-            //   }
-            //   //
-            //
-            //  }, function(e) {
-            //
-            //  });
             getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
                  $scope.data = result;
                  console.log($scope.data);
@@ -1888,10 +1848,12 @@
                entireData.OrderBy = 'ER_AvailableDate';
                entireData.PageID = 0;
                console.log(entireData);
-
                 $http.post('/customer/filt/entire/tenant', entireData)
                  .then(function(r) {
                   //  alert("entire login")
+                  entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                  entireData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
+                  entireData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
                   SearchService.set(r);
                   updateService.set(entireData);
                   console.log('r===>', r);
@@ -1904,30 +1866,32 @@
              });
            }
            /************************share search login status starts**************/
+
            /************share rooms data filter get starts**************/
-          $scope.shareSearch = function(station){
-            if(typeof station != "string")
-             {
-               station = "";
-               suburb = "";
-             }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
-                var arr_station = station.split(";");
-                station = "%"+arr_station[0]+";";
-                suburb = arr_station[1];
-             }else{
-                station = station;
-                suburb = "";
-             }
+          $scope.shareLocationSearch = function(theme){
+            var regionArr = [];
+            var result = [];
+            var suburb = "";
+            var region = "";
+            var station = "";
             //selected items which are an array
-            console.log('$scope.x',$scope.x);
-            if($scope.x) {
-             var address = $scope.x[0].split(",");
-             console.log("xxx", address);
-             suburb = address[0];
+            for (var i = 0; i < $scope._multipleLocationDemo._selectedLocationWithGroupBy.length; i++) {
+              suburb = "%"+$scope._multipleLocationDemo._selectedLocationWithGroupBy[i].suburb+";"+suburb;
+              regionArr[regionArr.length] = $scope._multipleLocationDemo._selectedLocationWithGroupBy[i].region;
+            }
+             regionArr.forEach(function(item) {
+                  if(result.indexOf(item) < 0) {
+                      result.push(item);
+                  }
+             });
+             regionArr = result;
+             for (var i = 0; i < regionArr.length; i++) {
+                 region = "%"+regionArr[i]+";";
+             }
              shareData = {
               CID:r.data.CID,
               ER_Suburb: suburb,
-              ER_Region: address[1],
+              ER_Region: region,
               include_area:$scope.include_area_share,
               ER_Type: $scope.myPropertyType,
               SRName:'',
@@ -1936,28 +1900,10 @@
               SRAreaMin: 0,
               SRAreaMax: 5000,
               SRAvailableDate: '2200-01-01',
-              ER_Description: station,
+              ER_Description: theme,
               ER_Feature: ER_Feature
              };
-            } else {
-             shareData = {
-              CID:r.data.CID,
-              ER_Suburb: suburb,
-              ER_Region: '',
-              include_area:$scope.include_area_share,
-              ER_Type: $scope.myPropertyType,
-              SRName:'',
-              SRPriceMin: $scope.myMinPrice_Share,
-              SRPriceMax: $scope.myMaxPrice_Share,
-              SRAreaMin: 0,
-              SRAreaMax: 5000,
-              SRAvailableDate: '2200-01-01',
-              ER_Description: station,
-              ER_Feature: ER_Feature
-             }
-            }
-
-            getDataService.getDataRequests('/customer/filt/share/count', shareData).then(function(result){
+             getDataService.getDataRequests('/customer/filt/share/count', shareData).then(function(result){
                  $scope.data = result;
                  console.log($scope.data);
                  return result;
@@ -1965,13 +1911,16 @@
                console.log("error" + error);
              }).then(function(result){
                result = Math.ceil(result/20);
-               shareData.OrderBy = 'ER_AvailableDate';
+               shareData.OrderBy = 'SRAvailableDate';
                shareData.PageID = 0;
                console.log(shareData);
 
                 $http.post('/customer/filt/share/tenant', shareData)
                  .then(function(r) {
                   //  alert("entire login")
+                  shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                  shareData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
+                  shareData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
                   SearchService.set(r);
                   updateService.set(shareData);
                   console.log('r===>', r);
@@ -1982,49 +1931,168 @@
              },function(error){
                console.log("error" + error);
              });
-
-            // $state.go('app.googlemap');
-            // console.log(shareData);
-            // $http.post('/customer/filt/share/count', shareData)
-            //  .then(function(r) {
-            //   SearchService.set(r);
-            //   updateService.set(shareData);
-            //   //							SetCredentials(r);
-            //   console.log('r===>', r);
-            //   if(r.data[0]["count(*)"] > 0) {
-            //
-            //   }
-            //   //
-            //  }, function(e) {
-            //
-            //  });
           }
           /************share rooms data filter get ends**************/
 
+          /**********************entire property station search starts*************************************/
+          $scope.entireStationSearch = function(theme) {
+            var suburb = "";
+            var region = "";
+            var station = "";
+            var arrsuburbs = [];
+            console.log($scope.multipleDemo.selectedPeopleWithGroupBy);
+            for (var i = 0; i < $scope.multipleDemo.selectedPeopleWithGroupBy.length; i++) {
+              if ($scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb.indexOf(" ")>=0) {
+                arrsuburbs = $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb.split(" ");
+                for (var j = 0; j < arrsuburbs.length; j++) {
+                  suburb = "%" + arrsuburbs[j] + ";" + suburb;
+                }
+              }else {
+                suburb = "%" + $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb + ";" + suburb;
+              }
+            }
+            station = suburb;
+            entireData = {
+             CID:r.data.CID,
+             ER_Suburb: suburb,
+             ER_Region: region,
+             include_area:$scope.include_area,
+             ER_Type: $scope.myPropertyType,
+             ER_PriceMin: $scope.myMinPrice,
+             ER_PriceMax: $scope.myMaxPrice,
+             ER_BedRoomMin: $scope.minBedNum,
+             ER_BedRoomMax: $scope.maxBedNum,
+             ER_BathRoomMin: $scope.minBathNum,
+             ER_BathRoomMax: $scope.maxBathNum,
+             ER_ParkingMin: $scope.minParkingNum,
+             ER_ParkingMax: $scope.maxParkingNum,
+             ER_AreaMin: 0,
+             ER_AreaMax: 50000,
+             ER_AvailableDate: '2200-01-01',
+             ER_Description: theme,
+             ER_Feature: ER_Feature
+            };
+           console.log(entireData);
+           getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
+                $scope.data = result;
+                console.log($scope.data);
+                return result;
+            },function(error){
+              console.log("error" + error);
+            }).then(function(result){
+              result = Math.ceil(result/20);
+              entireData.OrderBy = 'ER_AvailableDate';
+              entireData.PageID = 0;
+              console.log(entireData);
+
+               $http.post('/customer/filt/entire/tenant', entireData)
+                .then(function(r) {
+                 //  alert("entire login")
+                 entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                 entireData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
+                 entireData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                 SearchService.set(r);
+                 updateService.set(entireData);
+                 console.log('r===>', r);
+                  $state.go('app.listpage');
+                }, function(e) {
+
+                });
+            },function(error){
+              console.log("error" + error);
+            });
+          }
+          /****************share station search with login starts***************************/
+          $scope.shareStationSearch = function(theme){
+            var suburb = "";
+            var region = "";
+            var station = "";
+            var arrsuburbs = [];
+            console.log($scope._multipleDemo._selectedPeopleWithGroupBy);
+            for (var i = 0; i < $scope._multipleDemo._selectedPeopleWithGroupBy.length; i++) {
+              if ($scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb.indexOf(" ")>=0) {
+                arrsuburbs = $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb.split(" ");
+                for (var j = 0; j < arrsuburbs.length; j++) {
+                  suburb = "%" + arrsuburbs[j] + ";" + suburb;
+                }
+              }else {
+                suburb = "%" + $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb + ";" + suburb;
+              }
+            }
+             station = suburb;
+             shareData = {
+              CID:r.data.CID,
+              ER_Suburb: suburb,
+              ER_Region:region,
+              include_area:$scope.include_area_share,
+              ER_Type: $scope.myPropertyType,
+              SRName:'',
+              SRPriceMin: $scope.myMinPrice_Share,
+              SRPriceMax: $scope.myMaxPrice_Share,
+              SRAreaMin: 0,
+              SRAreaMax: 5000,
+              SRAvailableDate: '2200-01-01',
+              ER_Description: theme,
+              ER_Feature: ER_Feature
+             };
+             getDataService.getDataRequests('/customer/filt/share/count', shareData).then(function(result){
+                 $scope.data = result;
+                 console.log($scope.data);
+                 return result;
+             },function(error){
+               console.log("error" + error);
+             }).then(function(result){
+               result = Math.ceil(result/20);
+               shareData.OrderBy = 'SRAvailableDate';
+               shareData.PageID = 0;
+               console.log(shareData);
+
+                $http.post('/customer/filt/share/tenant', shareData)
+                 .then(function(r) {
+                  //  alert("entire login")
+                  shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                  shareData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
+                  shareData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                  SearchService.set(r);
+                  updateService.set(shareData);
+                  console.log('r===>', r);
+                   $state.go('app.listpageShare');
+                 }, function(e) {
+
+                 });
+             },function(error){
+               console.log("error" + error);
+             });
+          }
+          /*****************share station search with login ends*************************/
+          /**********************entire property station search ends*************************************/
+
         }else {
           //search for the results of properties
-            $scope.entireSearch = function(station) {
-              if(typeof station != "string")
-               {
-                 station = "";
-                 suburb = "";
-               }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
-                  var arr_station = station.split(";");
-                  station = "%"+arr_station[0]+";";
-                  suburb = arr_station[1];
-               }else{
-                  station = station;
-                  suburb = "";
-               }
+            $scope.entireLocationSearch = function(theme) {
+              var regionArr = [];
+              var result = [];
+              var suburb = "";
+              var region = "";
+              var station = "";
+             console.log($scope.multipleLocationDemo.selectedLocationWithGroupBy);
              //selected items which are an array
-             console.log('$scope.x',$scope.x);
-             if($scope.x) {
-              var address = $scope.x[0].split(",");
-              console.log("xxx", address);
-              suburb = address[0];
+             for (var i = 0; i < $scope.multipleLocationDemo.selectedLocationWithGroupBy.length; i++) {
+               suburb = "%"+$scope.multipleLocationDemo.selectedLocationWithGroupBy[i].suburb+";"+suburb;
+               regionArr[regionArr.length] = $scope.multipleLocationDemo.selectedLocationWithGroupBy[i].region;
+             }
+              regionArr.forEach(function(item) {
+                   if(result.indexOf(item) < 0) {
+                       result.push(item);
+                   }
+              });
+              regionArr = result;
+              for (var i = 0; i < regionArr.length; i++) {
+                  region = "%"+regionArr[i]+";";
+              }
               entireData = {
                ER_Suburb: suburb,
-               ER_Region: address[1],
+               ER_Region: region,
                include_area:$scope.include_area,
                ER_Type: $scope.myPropertyType,
                ER_PriceMin: $scope.myMinPrice,
@@ -2038,31 +2106,9 @@
                ER_AreaMin: 0,
                ER_AreaMax: 50000,
                ER_AvailableDate: '2200-01-01',
-               ER_Description: station,
+               ER_Description: theme,
                ER_Feature: ER_Feature
               };
-             } else {
-              entireData = {
-               ER_Suburb: suburb,
-               ER_Region: '',
-               include_area:$scope.include_area,
-               ER_Type: $scope.myPropertyType,
-               ER_PriceMin: $scope.myMinPrice,
-               ER_PriceMax: $scope.myMaxPrice,
-               ER_BedRoomMin: $scope.minBedNum,
-               ER_BedRoomMax: $scope.maxBedNum,
-               ER_BathRoomMin: $scope.minBathNum,
-               ER_BathRoomMax: $scope.maxBathNum,
-               ER_ParkingMin: $scope.minParkingNum,
-               ER_ParkingMax: $scope.maxParkingNum,
-               ER_AreaMin: 0,
-               ER_AreaMax: 5000,
-               ER_AvailableDate: '2200-01-01',
-               ER_Description: station,
-               ER_Feature: ER_Feature
-              }
-             }
-             // $state.go('app.googlemap');
              console.log(entireData);
              getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
                   $scope.data = result;
@@ -2078,6 +2124,9 @@
 
                  $http.post('/customer/filt/entire', entireData)
                   .then(function(r) {
+                    entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                    entireData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
+                    entireData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
                    SearchService.set(r);
                    updateService.set(entireData);
                    console.log('r===>', r);
@@ -2092,31 +2141,30 @@
             }
             /****************entire search without login ends***********************/
 
-            /***************share search without login starts************************/
-            /************share rooms data filter get starts**************/
-            $scope.shareSearch = function(station){
-
-              if(typeof station != "string")
-               {
-                 station = "";
-                 suburb = "";
-               }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
-                  var arr_station = station.split(";");
-                  station = "%"+arr_station[0]+";";
-                  suburb = arr_station[1];
-               }else{
-                  station = station;
-                  suburb = "";
-               }
+            /***************share rooms search without login starts************************/
+            $scope.shareLocationSearch = function(theme){
+              var regionArr = [];
+              var result = [];
+              var suburb = "";
+              var region = "";
+              var station = "";
               //selected items which are an array
-              console.log('$scope.x',$scope.x);
-              if($scope.x) {
-               var address = $scope.x[0].split(",");
-               console.log("xxx", address);
-               suburb = address[0];
+              for (var i = 0; i < $scope._multipleLocationDemo._selectedLocationWithGroupBy.length; i++) {
+                suburb = "%"+$scope._multipleLocationDemo._selectedLocationWithGroupBy[i].suburb+";"+suburb;
+                regionArr[regionArr.length] = $scope._multipleLocationDemo._selectedLocationWithGroupBy[i].region;
+              }
+               regionArr.forEach(function(item) {
+                    if(result.indexOf(item) < 0) {
+                        result.push(item);
+                    }
+               });
+               regionArr = result;
+               for (var i = 0; i < regionArr.length; i++) {
+                   region = "%"+regionArr[i]+";";
+               }
                shareData = {
                 ER_Suburb: suburb,
-                ER_Region: address[1],
+                ER_Region: region,
                 include_area:$scope.include_area_share,
                 ER_Type: $scope.myPropertyType,
                 SRPriceMin: $scope.myMinPrice_Share,
@@ -2125,41 +2173,10 @@
                 SRAreaMin: 0,
                 SRAreaMax: 50000,
                 SRAvailableDate: '2200-01-01',
-                ER_Description: station,
+                ER_Description: theme,
                 ER_Feature: ER_Feature
                };
-              } else {
-               shareData = {
-                ER_Suburb: suburb,
-                ER_Region: '',
-                include_area:$scope.include_area_share,
-                ER_Type: $scope.myPropertyType,
-                SRName:'',
-                SRPriceMin: $scope.myMinPrice_Share,
-                SRPriceMax: $scope.myMaxPrice_Share,
-                SRAreaMin: 0,
-                SRAreaMax: 5000,
-                SRAvailableDate: '2200-01-01',
-                ER_Description: station,
-                ER_Feature: ER_Feature
-               }
-              }
-
-              // $state.go('app.googlemap');
               console.log(shareData);
-              // $http.post('/customer/filt/share/count', shareData)
-              //  .then(function(r) {
-              //   SearchService.set(r);
-              //   updateService.set(shareData);
-              //   //							SetCredentials(r);
-              //   console.log('r===>', r);
-              //   if(r.data.length > 0) {
-              //   //  $state.go('app.listpage');
-              //   }
-              //   //
-              //  }, function(e) {
-              //
-              //  });
               getDataService.getDataRequests('/customer/filt/share/count',shareData).then(function(result){
                    $scope.data = result;
                    console.log($scope.data);
@@ -2174,6 +2191,9 @@
 
                   $http.post('/customer/filt/share', shareData)
                    .then(function(r) {
+                     shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                     shareData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
+                     shareData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
                     SearchService.set(r);
                     updateService.set(shareData);
                     console.log('r===>', r);
@@ -2186,6 +2206,139 @@
                });
             }
             /************share rooms data filter get ends**************/
+
+            /*******************entire station search without login starts***********************/
+            //search for the results of properties
+              $scope.entireStationSearch = function(theme) {
+                var suburb = "";
+                var region = "";
+                var station = "";
+                var arrsuburbs = [];
+                console.log($scope.multipleDemo.selectedPeopleWithGroupBy);
+                for (var i = 0; i < $scope.multipleDemo.selectedPeopleWithGroupBy.length; i++) {
+                  if ($scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb.indexOf(" ")>=0) {
+                    arrsuburbs = $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb.split(" ");
+                    for (var j = 0; j < arrsuburbs.length; j++) {
+                      suburb = "%" + arrsuburbs[j] + ";" + suburb;
+                    }
+                  }else {
+                    suburb = "%" + $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb + ";" + suburb;
+                  }
+                }
+                station = suburb;
+                entireData = {
+                 ER_Suburb: suburb,
+                 ER_Region: region,
+                 include_area:$scope.include_area,
+                 ER_Type: $scope.myPropertyType,
+                 ER_PriceMin: $scope.myMinPrice,
+                 ER_PriceMax: $scope.myMaxPrice,
+                 ER_BedRoomMin: $scope.minBedNum,
+                 ER_BedRoomMax: $scope.maxBedNum,
+                 ER_BathRoomMin: $scope.minBathNum,
+                 ER_BathRoomMax: $scope.maxBathNum,
+                 ER_ParkingMin: $scope.minParkingNum,
+                 ER_ParkingMax: $scope.maxParkingNum,
+                 ER_AreaMin: 0,
+                 ER_AreaMax: 50000,
+                 ER_AvailableDate: '2200-01-01',
+                 ER_Description: theme,
+                 ER_Feature: ER_Feature
+                };
+               console.log(entireData);
+               getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
+                    $scope.data = result;
+                    console.log($scope.data);
+                    return result;
+                },function(error){
+                  console.log("error" + error);
+                }).then(function(result){
+                  result = Math.ceil(result/20);
+                  entireData.OrderBy = 'ER_AvailableDate';
+                  entireData.PageID = 0;
+                  console.log(entireData);
+
+                   $http.post('/customer/filt/entire', entireData)
+                    .then(function(r) {
+                      entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                      entireData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
+                      entireData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                     SearchService.set(r);
+                     updateService.set(entireData);
+                     console.log('r===>', r);
+                      $state.go('app.listpage');
+                    }, function(e) {
+
+                    });
+                },function(error){
+                  console.log("error" + error);
+                });
+
+              }
+            /*******************entire room station search without login ends*************************/
+
+            /*********************share room station search without login start************************/
+            $scope.shareStationSearch = function(theme){
+              var suburb = "";
+              var region = "";
+              var station = "";
+              var arrsuburbs = [];
+              console.log($scope._multipleDemo._selectedPeopleWithGroupBy);
+              for (var i = 0; i < $scope._multipleDemo._selectedPeopleWithGroupBy.length; i++) {
+                if ($scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb.indexOf(" ")>=0) {
+                  arrsuburbs = $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb.split(" ");
+                  for (var j = 0; j < arrsuburbs.length; j++) {
+                    suburb = "%" + arrsuburbs[j] + ";" + suburb;
+                  }
+                }else {
+                  suburb = "%" + $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb + ";" + suburb;
+                }
+              }
+              station = suburb;
+               shareData = {
+                ER_Suburb: suburb,
+                ER_Region: region,
+                include_area:$scope.include_area_share,
+                ER_Type: $scope.myPropertyType,
+                SRPriceMin: $scope.myMinPrice_Share,
+                SRPriceMax: $scope.myMaxPrice_Share,
+                SRName:'',
+                SRAreaMin: 0,
+                SRAreaMax: 50000,
+                SRAvailableDate: '2200-01-01',
+                ER_Description: theme,
+                ER_Feature: ER_Feature
+               };
+              console.log(shareData);
+              getDataService.getDataRequests('/customer/filt/share/count',shareData).then(function(result){
+                   $scope.data = result;
+                   console.log($scope.data);
+                   return result;
+               },function(error){
+                 console.log("error" + error);
+               }).then(function(result){
+                 result = Math.ceil(result/20);
+                 shareData.OrderBy = 'SRAvailableDate';
+                 shareData.PageID = 0;
+                 console.log(shareData);
+
+                  $http.post('/customer/filt/share', shareData)
+                   .then(function(r) {
+                     shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                     shareData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
+                     shareData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                    SearchService.set(r);
+                    updateService.set(shareData);
+                    console.log('r===>', r);
+                     $state.go('app.listpageShare');
+                   }, function(e) {
+
+                   });
+               },function(error){
+                 console.log("error" + error);
+               });
+            }
+            /**********************share room station search without login ends***********************/
         }
       });
 

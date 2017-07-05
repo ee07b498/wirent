@@ -1,29 +1,7 @@
 <div class="banner-search" ng-controller="HomeController">
 	<div class="clear">
 		<div class="header" data-stellar-background-ratio="0.07">
-			<!--<div class="top-topics">
-					<ul>
-						<li class="tab selected" ng-click="clickEvent(0)" ><span>租房</span></li>
-						<div class="sc-info-line"></div>
-						<li class="tab " ng-click="clickEvent(1);openmodal('lg');" ><span>火车站</span></li>
-						<div class="sc-info-line"></div>
-						<li class="tab " ng-click="clickEvent(2)"><span>主题</span></li>
-						<div class="sc-info-line"></div>
-						<li class="tab " ng-click="clickEvent(3);tips!=tips" ><span>Tips</span></li>
-						<div class="sc-info-line"></div>
-						<li class="tab " ng-click="clickEvent(4)"><span>一步到位</span></li>
-						<div class="sc-info-line"></div>
-						<li class="tab " ng-click="clickEvent(5)"><span>找商家</span></li>
-						<a href="" class="js-buy-trigger buy-trigger">立即订阅</a>
-					</ul>
-					<i></i>
-				</div>
--->
 			<div class="wrapper1">
-				<!--<div class="fl">
-					<a href="#" title="Winning Investment" class="logo" target="_self">WinningInvestment</a>
-					<span class="exchange"><i></i>Sydney</span>
-					</div>
 					<!--[if lte IE 8]><div class="old-browser-popup" id="old" >亲，您当前正在使用旧版本的IE浏览器，为了保证您的浏览体验，唯赢网建议您使用：<label class="chrome-borwser-ico"></label><a href="//rj.baidu.com/soft/detail/14744.html?ald" target="_blank">谷歌浏览器</a>&nbsp;或&nbsp;&nbsp;<label class="firefox-borwser-ico"></label><a href="//rj.baidu.com/soft/detail/11843.html?ald" target="_blank">火狐浏览器</a><span id="oldclose"></span></div><![endif]-->
 				<!--<div class="clear"></div>-->
 				<div class="header-wrap1">
@@ -40,24 +18,47 @@
 							<div class="search1">
 								<div class="box1" ng-show="boxshow1">
 									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
-										<!-- <select-search1 datas1="datas1" get-data1="getData1(searchField1)" change1="change1(x1)" bind="searchField1" x1="x1"></select-search1> -->
-										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
 										<div class="searchbar1">
-											<ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" >
+											<ui-select multiple ng-model="_multipleLocationDemo._selectedLocationWithGroupBy" key-bind="{ enter: 'shareLocationSearch()'}" theme="bootstrap">
 												 <ui-select-match placeholder="Select location...">[:$item.suburb+" "+$item.region+" "+$item.postcode:]</ui-select-match>
-												 <ui-select-choices group-by="someGroupFn" refresh="fn($select.search)" refresh-delay="100" repeat="location in dataResults track by $index | propsFilter: {suburb: $select.search, postcode: $select.search}">
-													 <div ng-bind-html="location.region | highlight: $select.search"></div>
-
+												 <ui-select-choices group-by="someGroupFn" refresh="_fn($select.search)" refresh-delay="100" repeat="_location in _dataResults track by $index | propsFilter: {suburb: $select.search, postcode: $select.search}">
+													 <div ng-bind-html="_location.region | highlight: $select.search"></div>
 													 <small>
 														 <i class="fa fa-map-marker"></i>
-														[:location.suburb+" "+location.region:]
-														&nbsp;|&nbsp; POSTCODE: <span ng-bind-html="''+location.postcode | highlight: $select.search"></span>
-
+														[:_location.suburb+" "+_location.region:]
+														&nbsp;|&nbsp; POSTCODE: <span ng-bind-html="''+_location.postcode | highlight: $select.search"></span>
 													 </small>
 												 </ui-select-choices>
 										  </ui-select>
 										</div>
-										<button class="btn btn-lg btn-success search_btn1" style="position: absolute; left: 473px;top: 0;" ng-click="shareSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn btn-lg btn-success search_btn1" style="position: absolute; left: 473px;top: 0;" ng-click="shareLocationSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
+										<button class="btn home-ico ico-search left" id="findHouse" type="button">
+												Search
+												<a style="color:white;margin-left: 5px;"><i class="fa fa-lg fa-search"></i></a>
+										</button>-->
+										<div id="userNews" class="savesearch">
+										</div>
+									</div>
+									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
+								</div>
+								<div class="box1" ng-show="!boxshow1">
+									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
+										<!-- <select-search1 datas1="datas1" get-data1="getData1(searchField1)" change1="change1(x1)" bind="searchField1" x1="x1"></select-search1> -->
+										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
+										<div class="searchbar1">
+											<ui-select multiple ng-model="_multipleDemo._selectedPeopleWithGroupBy" theme="bootstrap" key-bind="{ enter: 'shareStationSearch(%station;)'}">
+											 <ui-select-match placeholder="Select train station...">[:$item.station:]</ui-select-match>
+											 <ui-select-choices group-by="someGroupFnStation" repeat="_person in _people | propsFilter: {station: $select.search, suburb: $select.search}">
+												 <div ng-bind-html="_person.station | highlight: $select.search"></div>
+												 <small>
+													 station: [:_person.station:]
+													 suburb: <span ng-bind-html="''+_person.suburb | highlight: $select.search"></span>
+												 </small>
+											 </ui-select-choices>
+										 </ui-select>
+										</div>
+										<button class="btn btn-lg btn-success search_btn1" style="position: absolute; left: 473px;top: 0;" ng-click="shareStationSearch('%station;')" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
@@ -79,7 +80,7 @@
 															</div>
 														</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Chatswood();shareSearch('station;Chatswood')" >
+												<div class="sc-course-cart" ng-click="_get_Chatswood()" >
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Chatswood">
 															Chatswood
@@ -92,7 +93,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Hornsby();shareSearch('station;Hornsby')">
+												<div class="sc-course-cart" ng-click="_get_Hornsby()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Hornsby">
 															Hornsby
@@ -106,7 +107,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Epping();shareSearch('station;Epping')">
+												<div class="sc-course-cart" ng-click="_get_Epping()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Epping">
 															Epping
@@ -120,7 +121,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_MQ_Uni();shareSearch('station;Macquarie University')">
+												<div class="sc-course-cart" ng-click="_get_MQ_Uni()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _MQ_Uni">
 															MQ Uni
@@ -134,7 +135,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Rodes();shareSearch('station;Rhodes')">
+												<div class="sc-course-cart" ng-click="_get_Rodes()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Rodes">
 															Rhodes
@@ -148,7 +149,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_All_T1();shareSearch('%station;%T1;')">
+												<div class="sc-course-cart" ng-click="_get_All_T1()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _AllT1">
 															All
@@ -172,7 +173,7 @@
 
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Burwood();shareSearch('station;Burwood')">
+												<div class="sc-course-cart" ng-click="_get_Burwood()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Burwood">
 															Burwood
@@ -186,7 +187,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Straithfield();shareSearch('station;Straithfield')">
+												<div class="sc-course-cart" ng-click="_get_Straithfield()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Straithfield">
 															Strathfield
@@ -200,7 +201,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Greensquare();shareSearch('station;Greensquare')">
+												<div class="sc-course-cart" ng-click="_get_Greensquare()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Greensquare">
 															Greensquare
@@ -214,7 +215,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Mascot();shareSearch('station;Mascot')">
+												<div class="sc-course-cart" ng-click="_get_Mascot()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Mascot">
 															Mascot
@@ -228,7 +229,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Lidcome_T2();shareSearch('station;Lidcome')">
+												<div class="sc-course-cart" ng-click="_get_Lidcome_T2()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Lidcome_T2">
 															Lidcome
@@ -242,7 +243,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_All_T2();shareSearch('%station;%T2;')">
+												<div class="sc-course-cart" ng-click="_get_All_T2()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _AllT2">
 															All
@@ -266,7 +267,7 @@
 
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Central_T3();shareSearch('station;Sydney')">
+												<div class="sc-course-cart" ng-click="_get_Central_T3()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Central_T3">
 															Central
@@ -280,7 +281,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Sydenham();shareSearch('station;Sydenham')">
+												<div class="sc-course-cart" ng-click="_get_Sydenham()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Sydenham">
 															Sydenham
@@ -294,7 +295,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Campsie();shareSearch('station;Campsie')">
+												<div class="sc-course-cart" ng-click="_get_Campsie()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Campsie">
 															Campsie
@@ -308,7 +309,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Bankstown();shareSearch('station;Bankstown')">
+												<div class="sc-course-cart" ng-click="_get_Bankstown()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Bankstown">
 															Bankstown
@@ -322,7 +323,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Liverpool_T3();shareSearch('station;Liverpool')">
+												<div class="sc-course-cart" ng-click="_get_Liverpool_T3()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Liverpool_T3">
 															Liverpool
@@ -336,7 +337,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_All_T3();shareSearch('%station;%T3;')">
+												<div class="sc-course-cart" ng-click="_get_All_T3()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _AllT3">
 															All
@@ -359,7 +360,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Central_T4();shareSearch('station;Sydney')">
+												<div class="sc-course-cart" ng-click="_get_Central_T4()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Central_T4">
 															Central
@@ -373,7 +374,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Redfern();shareSearch('station;Redfern')">
+												<div class="sc-course-cart" ng-click="_get_Redfern()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Redfern">
 															Redfern
@@ -387,7 +388,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Wollicreek();shareSearch('station;Wollicreek')">
+												<div class="sc-course-cart" ng-click="_get_Wollicreek()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Wollicreek">
 															Wollicreek
@@ -401,7 +402,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Rockdale();shareSearch('station;Rockdale')">
+												<div class="sc-course-cart" ng-click="_get_Rockdale()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Rockdale">
 															Rockdale
@@ -415,7 +416,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_Hurstville();shareSearch('station;Hurstville')">
+												<div class="sc-course-cart" ng-click="_get_Hurstville()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Hurstville">
 															Hurstville
@@ -429,7 +430,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="sc-course-cart" ng-click="_get_All_T4();shareSearch('%station;%T4;')">
+												<div class="sc-course-cart" ng-click="_get_All_T4()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _AllT4">
 															All
@@ -453,7 +454,7 @@
 
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Parramatta();shareSearch('station;Parramatta')">
+											<div class="sc-course-cart" ng-click="_get_Parramatta()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Parramatta">
 														Parramatta
@@ -467,7 +468,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Westmead();shareSearch('station;Westmead')">
+											<div class="sc-course-cart" ng-click="_get_Westmead()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Westmead">
 														Westmead
@@ -481,7 +482,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Blacktown();shareSearch('station;Blacktown')">
+											<div class="sc-course-cart" ng-click="_get_Blacktown()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Blacktown">
 														Blacktown
@@ -495,7 +496,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Merrylands();shareSearch('station;Merrylands')">
+											<div class="sc-course-cart" ng-click="_get_Merrylands()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Merrylands">
 														Merrylands
@@ -509,7 +510,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Liverpool_T5();shareSearch('station;Liverpool')">
+											<div class="sc-course-cart" ng-click="_get_Liverpool_T5()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Liverpool_T5">
 														Liverpool
@@ -523,7 +524,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_All_T5();shareSearch('%station;%T5;')">
+											<div class="sc-course-cart" ng-click="_get_All_T5()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _AllT5">
 														All
@@ -546,7 +547,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Clyde();shareSearch('station;Clyde')">
+											<div class="sc-course-cart" ng-click="_get_Clyde()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Clyde">
 														Clyde
@@ -559,7 +560,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Rosehill();shareSearch('station;Rosehill')">
+											<div class="sc-course-cart" ng-click="_get_Rosehill()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Rosehill">
 														Rosehill
@@ -572,7 +573,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Camellia();shareSearch('station;Camellia')">
+											<div class="sc-course-cart" ng-click="_get_Camellia()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Camellia">
 														Camellia
@@ -585,7 +586,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Carlingford();shareSearch('station;Carlingford')">
+											<div class="sc-course-cart" ng-click="_get_Carlingford()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Carlingford">
 														Carlingford
@@ -598,7 +599,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_All_T6();shareSearch('%station;%T6;')">
+											<div class="sc-course-cart" ng-click="_get_All_T6()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _AllT6">
 														All
@@ -620,7 +621,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Lidcome_T7();shareSearch('station;Lidcome')">
+											<div class="sc-course-cart" ng-click="_get_Lidcome_T7()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Lidcome_T7">
 														Lidcombe
@@ -633,7 +634,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_Olympic_Park();shareSearch('station;Wentworth Point')">
+											<div class="sc-course-cart" ng-click="_get_Olympic_Park()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _Olympic_Park" style="line-height: 15px;">
 														Olympic Park
@@ -646,7 +647,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="sc-course-cart" ng-click="_get_All_T7();shareSearch('%station;%T7;')">
+											<div class="sc-course-cart" ng-click="_get_All_T7()">
 												<div class="sc-course-cart-wrap">
 													<div class="sc-cart-t _AllT7">
 														All
@@ -740,43 +741,46 @@
 							<div animatesearch tips="tips" features="features" boxshow="boxshow">
 							</div>
 							<div class="search2">
-								<div class="box2" ng-show="boxshow">
-									<div class="searchBox2" style="z-index: 10;" >
-										<!-- <select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search> -->
-										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-										<div class="searchbar2">
-											<ui-select multiple ng-model="multipleLocationDemo.selectedLocationWithGroupBy" theme="bootstrap" >
-												 <ui-select-match placeholder="Select location...">[:$item.suburb+" "+$item.region+" "+$item.postcode:]</ui-select-match>
-												 <ui-select-choices group-by="someGroupFn" refresh="fn($select.search)" refresh-delay="100" repeat="location in dataResults track by $index | propsFilter: {suburb: $select.search, postcode: $select.search}">
-													 <div ng-bind-html="location.region | highlight: $select.search"></div>
+								<form>
+									<div class="box2" ng-show="boxshow">
+										<div class="searchBox2" style="z-index: 10;" >
+											<!-- <select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search> -->
+											<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
+											<div class="searchbar2">
+												<!-- <ui-select multiple ng-model="multipleLocationDemo.selectedLocationWithGroupBy"  key-bind="{ enter: 'entireLocationSearch()'}" theme="bootstrap" > -->
+												<ui-select multiple ng-model="multipleLocationDemo.selectedLocationWithGroupBy"  key-bind="{ enter: 'entireLocationSearch()'}"  theme="bootstrap" >
+													 <ui-select-match placeholder="Select location...">[:$item.suburb+" "+$item.region+" "+$item.postcode:]</ui-select-match>
+													 <ui-select-choices group-by="someGroupFn" refresh="fn($select.search)" refresh-delay="100"  repeat="location in dataResults track by $index | propsFilter: {suburb: $select.search, postcode: $select.search}">
+														 <div ng-bind-html="location.region | highlight: $select.search"></div>
 
-													 <small>
-														 <i class="fa fa-map-marker"></i>
-														[:location.suburb+" "+location.region:]
-														&nbsp;|&nbsp; POSTCODE: <span ng-bind-html="''+location.postcode | highlight: $select.search"></span>
+														 <small>
+															 <i class="fa fa-map-marker"></i>
+															[:location.suburb+" "+location.region:]
+															&nbsp;|&nbsp; POSTCODE: <span ng-bind-html="''+location.postcode | highlight: $select.search"></span>
 
-													 </small>
-												 </ui-select-choices>
-										  </ui-select>
+														 </small>
+													 </ui-select-choices>
+												</ui-select>
+											</div>
+											<button class="btn search_btn2 btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="entireLocationSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+											<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
+											<button class="btn home-ico ico-search left" id="findHouse" type="button">
+													Search
+													<a style="color:white;margin-left: 5px;"><i class="fa fa-lg fa-search"></i></a>
+											</button>-->
+											<div id="userNews" class="savesearch">
+
+											</div>
 										</div>
-										<button class="btn search_btn2 btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="entireSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
-										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
-										<button class="btn home-ico ico-search left" id="findHouse" type="button">
-												Search
-												<a style="color:white;margin-left: 5px;"><i class="fa fa-lg fa-search"></i></a>
-										</button>-->
-										<div id="userNews" class="savesearch">
-
-										</div>
+										<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
 									</div>
-									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
-								</div>
+								</form>
 								<div class="box2" ng-show="!boxshow">
 									<div class="searchBox2" style="z-index: 10;width: 413px;position: absolute;" >
 										<!-- <select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search> -->
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
 										<div class="searchbar2">
-											<ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" >
+											<ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" key-bind="{ enter: 'entireStationSearch(%station;)'}" theme="bootstrap" >
 											 <ui-select-match placeholder="Select train station...">[:$item.station:]</ui-select-match>
 											 <ui-select-choices group-by="someGroupFnStation" repeat="person in people | propsFilter: {station: $select.search, suburb: $select.search}">
 												 <div ng-bind-html="person.station | highlight: $select.search"></div>
@@ -787,7 +791,7 @@
 											 </ui-select-choices>
 										 </ui-select>
 										</div>
-										<button class="btn search_btn2 btn-lg btn-success" style="position: absolute; left: 413px;top: 0;" ng-click="entireSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn search_btn2 btn-lg btn-success" style="position: absolute; left: 413px;top: 0;" ng-click="entireStationSearch('%station;')" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
@@ -1478,8 +1482,8 @@
 					</header>
 					<div class="pics pics1 clear">
 						<div class="left1">
-							<div class="wh city-pic" ng-click="entireSearch('%university;')" >
-								<a ng-click="entireSearch('%university;')">
+							<div class="wh city-pic" ng-click="entireLocationSearch('%university;')" >
+								<a ng-click="entireLocationSearch('%university;')">
 									<a class="cover-img"></a>
 									<img src="../img/uni.jpg">
 									<span class="flaticon-college-graduation2" style="opacity: 1; color: lightblue;"></span>
@@ -1488,36 +1492,36 @@
 									<i></i>
 									<p class="desTile1">
 										<span class="flaticon-college-graduation2" style="opacity: 1; color: chocolate;"></span>
-										<a class="city-title" rel="nofollow" ng-click="entireSearch('%university;')"><em translate='tips.descriptions.uni'></em></a>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%university;')"><em translate='tips.descriptions.uni'></em></a>
 									</p>
 								</div>
 							</div>
-							<div class="w city-pic railroad" ng-click="entireSearch('%train_station;')" >
-								<a ng-click="entireSearch('%train_station;')">
+							<div class="w city-pic railroad" ng-click="entireLocationSearch('%train_station;')" >
+								<a ng-click="entireLocationSearch('%train_station;')">
 									<img src="img/station01Warm.jpg">
 									<i class="flaticon-train-on-railroad"></i>
 								</a>
 								<div class="holder1">
 									<p class="desTile1">
 										<i class="flaticon-train-on-railroad2" style="opacity: 1; color: orange;"></i>
-										<a class="city-title" rel="nofollow" ng-click="entireSearch('%train_station;')"><em translate='tips.descriptions.station'>火车站</em></a>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%train_station;')"><em translate='tips.descriptions.station'>火车站</em></a>
 									</p>
 								</div>
 							</div>
-							<div class="wh city-pic graduation" ng-click="entireSearch('%backpack;')">
-								<a ng-click="entireSearch('%backpack;')" >
+							<div class="wh city-pic graduation" ng-click="entireLocationSearch('%backpack;')">
+								<a ng-click="entireLocationSearch('%backpack;')" >
 									<img src="../img/backpacker02Warm.jpg">
 								</a>
 								<div class="holder1">
 									<i></i>
 									<p class="desTile1">
 										<i class="flaticon-backpack2" style="opacity: 1; color: greenyellow;"></i>
-										<a class="city-title" rel="nofollow" ng-click="entireSearch('%backpack;')" ><em translate='tips.descriptions.backpack'>背包客</em></a>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%backpack;')" ><em translate='tips.descriptions.backpack'>背包客</em></a>
 									</p>
 								</div>
 							</div>
-							<div class="wh city-pic park-city-space" ng-click="entireSearch('%park;')" >
-								<a ng-click="entireSearch('%park;')" >
+							<div class="wh city-pic park-city-space" ng-click="entireLocationSearch('%park;')" >
+								<a ng-click="entireLocationSearch('%park;')" >
 									<img src="../img/park01Warm.jpg">
 									<i class="flaticon-green-park-city-space"></i>
 								</a>
@@ -1525,12 +1529,12 @@
 									<i></i>
 									<p class="desTile1">
 										<i class="flaticon-green-park-city-space2" style="opacity: 1; color: green;"></i>
-										<a class="city-title" rel="nofollow" ng-click="entireSearch('%park;')" ><em translate='tips.descriptions.park'>近公园绿地</em></a>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%park;')" ><em translate='tips.descriptions.park'>近公园绿地</em></a>
 									</p>
 								</div>
 							</div>
-							<div class="wh city-pic open-book" ng-click="entireSearch('%school;')" >
-								<a ng-click="entireSearch('%school;')" >
+							<div class="wh city-pic open-book" ng-click="entireLocationSearch('%school;')" >
+								<a ng-click="entireLocationSearch('%school;')" >
 									<img src="img/schoolzone02Warm.jpg" >
 									<i class="flaticon-open-book"></i>
 								</a>
@@ -1538,14 +1542,14 @@
 									<i></i>
 									<p class="desTile1">
 										<i class="flaticon-open-book2" style="opacity: 1; color: yellow;"></i>
-										<a class="city-title" rel="nofollow" ng-click="entireSearch('%school;')" ><em translate='tips.descriptions.school'>学区房</em></a>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%school;')" ><em translate='tips.descriptions.school'>学区房</em></a>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="left1 clear">
-							<div class="wh city-pic flaticonpeople" ng-click="entireSearch('%big_family;')" >
-								<a ng-click="entireSearch('%big_family;')">
+							<div class="wh city-pic flaticonpeople" ng-click="entireLocationSearch('%big_family;')" >
+								<a ng-click="entireLocationSearch('%big_family;')">
 									<img src="img/grand-front-yard-entranceWarm.jpg">
 									<i class="flaticon-people"></i>
 								</a>
@@ -1553,13 +1557,13 @@
 									<i></i>
 									<p class="desTile1">
 										<i class="flaticon-people2" style="opacity: 1; color: pink;"></i>
-										<a class="city-title" rel="nofollow" ng-click="entireSearch('%big_family;')"><em translate='tips.descriptions.bigfamily'>大庭院</em></a>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%big_family;')"><em translate='tips.descriptions.bigfamily'>大庭院</em></a>
 									</p>
 								</div>
 								<!--<h3 class="title">清洁服务</h3>-->
 							</div>
-							<div class="wh city-pic shoppingcart" ng-click="entireSearch('%shopping_mall;')" >
-								<a ng-click="entireSearch('%shopping_mall;')">
+							<div class="wh city-pic shoppingcart" ng-click="entireLocationSearch('%shopping_mall;')" >
+								<a ng-click="entireLocationSearch('%shopping_mall;')">
 									<img src="img/Westfield_shopping_centre02Warm.jpg">
 									<i class="flaticon-shopping-cart"></i>
 								</a>
@@ -1567,12 +1571,12 @@
 									<i></i>
 									<p class="desTile1">
 											<i class="flaticon-shopping-cart2" style="opacity: 1; color: darkred;"></i>
-										<a class="city-title" rel="nofollow" ng-click="entireSearch('%shopping_mall;')"><em translate='tips.descriptions.shop'>购物商场</em></a>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%shopping_mall;')"><em translate='tips.descriptions.shop'>购物商场</em></a>
 									</p>
 								</div>
 							</div>
-							<div class="right1 city-pic business-rental" ng-click="entireSearch('%offical_rental;')" >
-								<a ng-click="entireSearch('%offical_rental;')">
+							<div class="right1 city-pic business-rental" ng-click="entireLocationSearch('%offical_rental;')" >
+								<a ng-click="entireLocationSearch('%offical_rental;')">
 									<img src="/img/officerental02Warm.jpg">
 									<i class="flaticon-business"></i>
 								</a>
@@ -1580,7 +1584,7 @@
 									<i></i>
 									<p class="desTile1">
 										<i class="flaticon-business2" style="opacity: 1; color: blue;"></i>
-										<a class="city-title" rel="nofollow" ng-click="entireSearch('%offical_rental;')"><em translate='tips.descriptions.office'>Office Rental</em></a>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%offical_rental;')"><em translate='tips.descriptions.office'>Office Rental</em></a>
 									</p>
 								</div>
 							</div>

@@ -203,7 +203,18 @@
 								<form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" >
 					          <div class="form-group">
 					            <div class="input-group">
-					              <input type="text" ng-model="selected"  class="form-control input-sm bg-light no-border rounded padder" placeholder="address...">
+					              <!-- <input type="text" ng-model="selected"  class="form-control input-sm bg-light no-border rounded padder" placeholder="address..."> -->
+												<ui-select multiple ng-model="multipleLocationDemo.selectedLocationWithGroupBy"  class="form-control input-sm bg-light no-border rounded padder" theme="bootstrap" >
+													 <ui-select-match placeholder="Select location...">[:$item.suburb+" "+$item.region+" "+$item.postcode:]</ui-select-match>
+													 <ui-select-choices group-by="someGroupFn" refresh="fn($select.search)" refresh-delay="100" repeat="location in dataResults track by $index | propsFilter: {suburb: $select.search, postcode: $select.search}">
+														 <div ng-bind-html="location.region | highlight: $select.search"></div>
+														 <small>
+															 <i class="fa fa-map-marker"></i>
+															[:location.suburb+" "+location.region:]
+															&nbsp;|&nbsp; POSTCODE: <span ng-bind-html="''+location.postcode | highlight: $select.search"></span>
+														 </small>
+													 </ui-select-choices>
+												</ui-select>
 					              <span class="input-group-btn">
 					                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
 					              </span>

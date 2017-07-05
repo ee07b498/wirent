@@ -7,6 +7,7 @@
 			updateService,utilConvertDateToString,getDataService) {
 			var entireData = {};
 			var datafromhome = {};
+			var data = {};
 			$scope.favorsave = false;
 			$scope.shortlistInsert = {};
 			// $scope.totalItems = 64;
@@ -26,79 +27,69 @@
 				// $scope.itemsPerPage = 20;
 		   /* location input*/
 			 /*******************multiple-ui-select starts***************************************/
-			 $scope.disabled = undefined;
-			 $scope.searchEnabled = undefined;
-
-			 $scope.enable = function() {
-			 $scope.disabled = false;
-			 };
-
-			 $scope.disable = function() {
-			 $scope.disabled = true;
-			 };
-
-			 $scope.enableSearch = function() {
-			 $scope.searchEnabled = true;
-			 }
-
-			 $scope.disableSearch = function() {
-			 $scope.searchEnabled = false;
-			 }
-
-			 $scope.clear = function() {
-			 $scope.person.selected = undefined;
-			 $scope.address.selected = undefined;
-			 $scope.country.selected = undefined;
-			 };
-
+			 $scope.location = {};
+			 $scope.dataResults = [];
+			 $scope.location.postcode = "";
+			 $scope.location.region = "";
+			 $scope.location.suburb = "";
+			 $scope.dataResults.push( $scope.location);
+			 $scope.multipleLocationDemo = {};
+			 $scope.multipleLocationDemo.selectedLocationWithGroupBy = [];
 			 $scope.someGroupFn = function (item){
-
-			 if (item.name[0] >= 'A' && item.name[0] <= 'M')
-					 return 'From A - M';
-
-			 if (item.name[0] >= 'N' && item.name[0] <= 'Z')
-					 return 'From N - Z';
-
+			 if (item.suburb[0] >= 'A' && item.suburb[0] <= 'M')
+					return 'From A - M';
+			 if (item.suburb[0] >= 'N' && item.suburb[0] <= 'Z')
+					return 'From N - Z';
 			 };
+			/***************get the value from the input***********************************/
+			function unique(arr) {
+						var comparer = function compareObject(a, b) {
+								if (a.suburb == b.suburb) {
+										if (a.postcode < b.postcode) {
+												return -1;
+										} else if (a.postcode > b.postcode) {
+												return 1;
+										} else {
+												return 0;
+										}
+								} else {
+										if (a.suburb < b.suburb) {
+												return -1;
+										} else {
+												return 1;
+										}
+								}
+						}
 
+						arr.sort(comparer);
+						console.log("Sorted: " + JSON.stringify(arr));
+						for (var i = 0; i < arr.length - 1; ++i) {
+								if (comparer(arr[i], arr[i+1]) === 0) {
+										arr.splice(i, 1);
+										console.log("Splicing: " + JSON.stringify(arr));
+								}
+						}
+						return arr;
+				}
+			 $scope.fn = function(search) {
+					//do something with search
+					console.log(search);
+					data.inputStr = search;
+					if(data.inputStr && data.inputStr.length > 2) {
+					 $http.post('/customer/filt_address', data)
+						.then(function(r) {
+						 console.log('search===>',search);
+						 console.log('r===>',r);
+						 $scope.dataResults = unique(r.data);
+						console.log('$scope.dataResults===>',$scope.dataResults);
+						 console.log($scope.dataResults);
+						}, function(e) {
+						 console.log("数据有误"+ e);
+						})
+					} else {
 
-
-
-
-			 $scope.counter = 0;
-			 $scope.someFunction = function (item, model){
-			 $scope.counter++;
-			 $scope.eventResult = {item: item, model: model};
-			 };
-
-			 $scope.removed = function (item, model) {
-			 $scope.lastRemoved = {
-					 item: item,
-					 model: model
-			 };
-			 };
-
-			 $scope.person = {};
-			 $scope.people = [
-			 { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
-			 { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
-			 { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
-			 { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
-			 { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
-			 { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
-			 { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
-			 { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
-			 { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
-			 { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
-			 ];
-
-
-
-			 $scope.multipleDemo = {};
-			 $scope.multipleDemo.colors = ['Blue','Red'];
-			 $scope.multipleDemo.selectedPeople = [$scope.people[5], $scope.people[4]];
-			 $scope.multipleDemo.selectedPeopleWithGroupBy = [$scope.people[8], $scope.people[6]];
-			 $scope.multipleDemo.selectedPeopleSimple = ['samantha@email.com','wladimir@email.com'];
+					}
+			}
 /*******************multiple-ui-select ends***************************************/
 
 	        /*the other filter attributes*/
@@ -631,35 +622,33 @@
 					}
 					var features = arr_features.join('');
 					var descriptions = arr_descriptions.join('');
-					/*if($scope.inputaddr!=" " || $scope.inputaddr!="") {
-						var address = $scope.inputaddr.split(",");
-						console.log("xxx", address);
-						entireData = {
-							ER_Suburb: address[0],
-							ER_Region: address[1],
-							ER_Type: $scope.myPropertyType,
-							ER_PriceMin: $scope.myMinPrice,
-							ER_PriceMax: $scope.myMaxPrice,
-							ER_BedRoomMin: $scope.minBedNum,
-							ER_BedRoomMax: $scope.maxBedNum,
-							ER_BathRoomMin: $scope.minBathNum,
-							ER_BathRoomMax: $scope.maxBathNum,
-							ER_ParkingMin: $scope.minParkingNum,
-							ER_ParkingMax: $scope.maxParkingNum,
-							ER_AreaMin: $scope.minArea,
-							ER_AreaMax: $scope.maxArea,
-							ER_AvailableDate: utilConvertDateToString.getDateToString($scope.dt,"yyyy-MM-dd") +'',
-							ER_Description: descriptions,
-							ER_Feature:features
-						};
-					} else {*/
 					$http.get('/customer/profile')
 		      .then(function(r) {
 					 if(r.data.customer_login_status){
+						 var regionArr = [];
+						 var result = [];
+						 var suburb = "";
+						 var region = "";
+						 var station = ""
+						console.log($scope.multipleLocationDemo.selectedLocationWithGroupBy);
+						//selected items which are an array
+						for (var i = 0; i < $scope.multipleLocationDemo.selectedLocationWithGroupBy.length; i++) {
+							suburb = "%"+$scope.multipleLocationDemo.selectedLocationWithGroupBy[i].suburb+";"+suburb;
+							regionArr[regionArr.length] = $scope.multipleLocationDemo.selectedLocationWithGroupBy[i].region;
+						}
+						 regionArr.forEach(function(item) {
+									if(result.indexOf(item) < 0) {
+											result.push(item);
+									}
+						 });
+						 regionArr = result;
+						 for (var i = 0; i < regionArr.length; i++) {
+								 region = "%"+regionArr[i]+";";
+						 }
 						entireData = {
 							CID:r.data.CID,
-							ER_Suburb: '',
-							ER_Region: '',
+							ER_Suburb: suburb,
+							ER_Region: region,
 							ER_Type: $scope.myPropertyType,
 							ER_PriceMin: $scope.myMinPrice,
 							ER_PriceMax: $scope.myMaxPrice,
@@ -689,12 +678,12 @@
 
                 $http.post('/customer/filt/entire/tenant', entireData)
                  .then(function(r) {
-                  //  alert("entire login")
+                  // alert("entire login");
                   SearchService.set(r);
                   updateService.set(entireData);
 									if(r.data.length > 0) {
-												// alert("刷新吧");
-										/***resolve the data passed through factory service from home page**********************/
+									// alert("刷新吧");
+								 /***resolve the data passed through factory service from home page**********************/
 									 if(JSON.stringify(SearchService.get()) != "{}"){
 											$localStorage.settings = SearchService.get().data;
 											console.log('$localStorage.settings',$localStorage.settings);
@@ -817,7 +806,7 @@
 													switch (dataresults[i])
 													{
 															 case "train_station":
-																data.train_station = true;
+															data.train_station = true;
 															 break;
 															 case "backpack":
 															data.backpack = true;
@@ -868,9 +857,29 @@
                console.log("error" + error);
              });
 					}else {
+						var regionArr = [];
+						var result = [];
+						var suburb = "";
+						var region = "";
+						var station = ""
+					 console.log($scope.multipleLocationDemo.selectedLocationWithGroupBy);
+					 //selected items which are an array
+					 for (var i = 0; i < $scope.multipleLocationDemo.selectedLocationWithGroupBy.length; i++) {
+						 suburb = "%"+$scope.multipleLocationDemo.selectedLocationWithGroupBy[i].suburb+";"+suburb;
+						 regionArr[regionArr.length] = $scope.multipleLocationDemo.selectedLocationWithGroupBy[i].region;
+					 }
+						regionArr.forEach(function(item) {
+								 if(result.indexOf(item) < 0) {
+										 result.push(item);
+								 }
+						});
+						regionArr = result;
+						for (var i = 0; i < regionArr.length; i++) {
+								region = "%"+regionArr[i]+";";
+						}
 						entireData = {
-						 ER_Suburb: '',
-						 ER_Region: '',
+						 ER_Suburb: suburb,
+						 ER_Region: region,
 						 include_area:$scope.include_area,
 						 ER_Type: $scope.myPropertyType,
 						 ER_PriceMin: $scope.myMinPrice,
@@ -887,7 +896,6 @@
 						 ER_Description: descriptions,
 						 ER_Feature: features
 						};
-					 // $state.go('app.googlemap');
 					 console.log(entireData);
 					 getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
 								$scope.data = result;
@@ -930,7 +938,7 @@
 						 							  $scope.datafromhome=datafromhome;
 						 						/******************display the features data passed through home*****************/
 						 							 if(datafromhome.ER_Feature!=""){
-						 							 	ER_Feature = datafromhome.ER_Feature.split(";");
+						 							 ER_Feature = datafromhome.ER_Feature.split(";");
 						 							 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
 						 							 for (var j = 0; j<ER_Feature.length;j++) {
 						 							 	switch (ER_Feature[j])
@@ -1031,7 +1039,7 @@
 						 									switch (dataresults[i])
 						 									{
 						 									     case "train_station":
-						 									     	data.train_station = true;
+						 									    data.train_station = true;
 						 									   	 break;
 						 									     case "backpack":
 						 											data.backpack = true;
