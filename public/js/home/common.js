@@ -88,11 +88,11 @@
                 }
 
                 arr.sort(comparer);
-                console.log("Sorted: " + JSON.stringify(arr));
+                // console.log("Sorted: " + JSON.stringify(arr));
                 for (var i = 0; i < arr.length - 1; ++i) {
                     if (comparer(arr[i], arr[i+1]) === 0) {
                         arr.splice(i, 1);
-                        console.log("Splicing: " + JSON.stringify(arr));
+                        // console.log("Splicing: " + JSON.stringify(arr));
                     }
                 }
                 return arr;
@@ -115,13 +115,12 @@
                           }
                       }
                   }
-
                   arr.sort(comparer);
-                  console.log("Sorted: " + JSON.stringify(arr));
+                  // console.log("Sorted: " + JSON.stringify(arr));
                   for (var i = 0; i < arr.length - 1; ++i) {
                       if (comparer(arr[i], arr[i+1]) === 0) {
                           arr.splice(i, 1);
-                          console.log("Splicing: " + JSON.stringify(arr));
+                          // console.log("Splicing: " + JSON.stringify(arr));
                       }
                   }
                   return arr;
@@ -1804,7 +1803,7 @@
             console.log($scope.multipleLocationDemo.selectedLocationWithGroupBy);
             //selected items which are an array
             for (var i = 0; i < $scope.multipleLocationDemo.selectedLocationWithGroupBy.length; i++) {
-              suburb = "%"+$scope.multipleLocationDemo.selectedLocationWithGroupBy[i].suburb+";"+suburb;
+              suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[i].suburb+","+suburb;
               regionArr[regionArr.length] = $scope.multipleLocationDemo.selectedLocationWithGroupBy[i].region;
             }
              regionArr.forEach(function(item) {
@@ -1814,7 +1813,7 @@
              });
              regionArr = result;
              for (var i = 0; i < regionArr.length; i++) {
-                 region = "%"+regionArr[i]+";";
+                 region = regionArr[i] + region;
              }
              entireData = {
               CID:r.data.CID,
@@ -1851,9 +1850,9 @@
                 $http.post('/customer/filt/entire/tenant', entireData)
                  .then(function(r) {
                   //  alert("entire login")
-                  entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
-                  entireData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
-                  entireData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                  // entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                  entireData.ER_Suburb = suburb;
+                  entireData.ER_Region = region;
                   SearchService.set(r);
                   updateService.set(entireData);
                   console.log('r===>', r);
@@ -1876,7 +1875,7 @@
             var station = "";
             //selected items which are an array
             for (var i = 0; i < $scope._multipleLocationDemo._selectedLocationWithGroupBy.length; i++) {
-              suburb = "%"+$scope._multipleLocationDemo._selectedLocationWithGroupBy[i].suburb+";"+suburb;
+              suburb = $scope._multipleLocationDemo._selectedLocationWithGroupBy[i].suburb+","+suburb;
               regionArr[regionArr.length] = $scope._multipleLocationDemo._selectedLocationWithGroupBy[i].region;
             }
              regionArr.forEach(function(item) {
@@ -1886,7 +1885,7 @@
              });
              regionArr = result;
              for (var i = 0; i < regionArr.length; i++) {
-                 region = "%"+regionArr[i]+";";
+                 region = regionArr[i]+ region;
              }
              shareData = {
               CID:r.data.CID,
@@ -1917,10 +1916,9 @@
 
                 $http.post('/customer/filt/share/tenant', shareData)
                  .then(function(r) {
-                  //  alert("entire login")
-                  shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
-                  shareData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
-                  shareData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                  // shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                  shareData.ER_Suburb = suburb;
+                  shareData.ER_Region = region;
                   SearchService.set(r);
                   updateService.set(shareData);
                   console.log('r===>', r);
@@ -1945,10 +1943,10 @@
               if ($scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb.indexOf(" ")>=0) {
                 arrsuburbs = $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb.split(" ");
                 for (var j = 0; j < arrsuburbs.length; j++) {
-                  suburb = "%" + arrsuburbs[j] + ";" + suburb;
+                  suburb =  arrsuburbs[j] + "," + suburb;
                 }
               }else {
-                suburb = "%" + $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb + ";" + suburb;
+                suburb = $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb + "," + suburb;
               }
             }
             station = suburb;
@@ -1984,13 +1982,11 @@
               entireData.OrderBy = 'ER_AvailableDate';
               entireData.PageID = 0;
               console.log(entireData);
-
                $http.post('/customer/filt/entire/tenant', entireData)
                 .then(function(r) {
-                 //  alert("entire login")
-                 entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
-                 entireData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
-                 entireData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                //  entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                 entireData.ER_Suburb = suburb;
+                 entireData.ER_Region = region;
                  SearchService.set(r);
                  updateService.set(entireData);
                  console.log('r===>', r);
@@ -2013,10 +2009,10 @@
               if ($scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb.indexOf(" ")>=0) {
                 arrsuburbs = $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb.split(" ");
                 for (var j = 0; j < arrsuburbs.length; j++) {
-                  suburb = "%" + arrsuburbs[j] + ";" + suburb;
+                  suburb = arrsuburbs[j] + "," + suburb;
                 }
               }else {
-                suburb = "%" + $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb + ";" + suburb;
+                suburb = $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb + "," + suburb;
               }
             }
              station = suburb;
@@ -2046,13 +2042,12 @@
                shareData.OrderBy = 'SRAvailableDate';
                shareData.PageID = 0;
                console.log(shareData);
-
                 $http.post('/customer/filt/share/tenant', shareData)
                  .then(function(r) {
                   //  alert("entire login")
-                  shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
-                  shareData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
-                  shareData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                  // shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                  shareData.ER_Suburb = suburb;
+                  shareData.ER_Region = region;
                   SearchService.set(r);
                   updateService.set(shareData);
                   console.log('r===>', r);
@@ -2078,7 +2073,7 @@
              console.log($scope.multipleLocationDemo.selectedLocationWithGroupBy);
              //selected items which are an array
              for (var i = 0; i < $scope.multipleLocationDemo.selectedLocationWithGroupBy.length; i++) {
-               suburb = "%"+$scope.multipleLocationDemo.selectedLocationWithGroupBy[i].suburb+";"+suburb;
+               suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[i].suburb+","+suburb;
                regionArr[regionArr.length] = $scope.multipleLocationDemo.selectedLocationWithGroupBy[i].region;
              }
               regionArr.forEach(function(item) {
@@ -2088,7 +2083,7 @@
               });
               regionArr = result;
               for (var i = 0; i < regionArr.length; i++) {
-                  region = "%"+regionArr[i]+";";
+                  region = regionArr[i]+region;
               }
               entireData = {
                ER_Suburb: suburb,
@@ -2124,9 +2119,9 @@
 
                  $http.post('/customer/filt/entire', entireData)
                   .then(function(r) {
-                    entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
-                    entireData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
-                    entireData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                  //  entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                   entireData.ER_Suburb = suburb;
+                   entireData.ER_Region = region;
                    SearchService.set(r);
                    updateService.set(entireData);
                    console.log('r===>', r);
@@ -2139,7 +2134,7 @@
               });
 
             }
-            /****************entire search without login ends***********************/
+            /****************entire search without login ends******************************/
 
             /***************share rooms search without login starts************************/
             $scope.shareLocationSearch = function(theme){
@@ -2150,7 +2145,7 @@
               var station = "";
               //selected items which are an array
               for (var i = 0; i < $scope._multipleLocationDemo._selectedLocationWithGroupBy.length; i++) {
-                suburb = "%"+$scope._multipleLocationDemo._selectedLocationWithGroupBy[i].suburb+";"+suburb;
+                suburb = $scope._multipleLocationDemo._selectedLocationWithGroupBy[i].suburb+","+suburb;
                 regionArr[regionArr.length] = $scope._multipleLocationDemo._selectedLocationWithGroupBy[i].region;
               }
                regionArr.forEach(function(item) {
@@ -2160,7 +2155,7 @@
                });
                regionArr = result;
                for (var i = 0; i < regionArr.length; i++) {
-                   region = "%"+regionArr[i]+";";
+                   region = regionArr[i] + region;
                }
                shareData = {
                 ER_Suburb: suburb,
@@ -2191,9 +2186,9 @@
 
                   $http.post('/customer/filt/share', shareData)
                    .then(function(r) {
-                     shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
-                     shareData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
-                     shareData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                    //  shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                     shareData.ER_Suburb = suburb;
+                     shareData.ER_Region = region;
                     SearchService.set(r);
                     updateService.set(shareData);
                     console.log('r===>', r);
@@ -2205,7 +2200,7 @@
                  console.log("error" + error);
                });
             }
-            /************share rooms data filter get ends**************/
+            /**************************share rooms data filter get ends**************************/
 
             /*******************entire station search without login starts***********************/
             //search for the results of properties
@@ -2219,10 +2214,10 @@
                   if ($scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb.indexOf(" ")>=0) {
                     arrsuburbs = $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb.split(" ");
                     for (var j = 0; j < arrsuburbs.length; j++) {
-                      suburb = "%" + arrsuburbs[j] + ";" + suburb;
+                      suburb =  arrsuburbs[j] + "," + suburb;
                     }
                   }else {
-                    suburb = "%" + $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb + ";" + suburb;
+                    suburb =  $scope.multipleDemo.selectedPeopleWithGroupBy[i].suburb + "," + suburb;
                   }
                 }
                 station = suburb;
@@ -2260,9 +2255,9 @@
 
                    $http.post('/customer/filt/entire', entireData)
                     .then(function(r) {
-                      entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
-                      entireData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
-                      entireData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                      // entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                      entireData.ER_Suburb = suburb;
+                      entireData.ER_Region = region;
                      SearchService.set(r);
                      updateService.set(entireData);
                      console.log('r===>', r);
@@ -2288,10 +2283,10 @@
                 if ($scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb.indexOf(" ")>=0) {
                   arrsuburbs = $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb.split(" ");
                   for (var j = 0; j < arrsuburbs.length; j++) {
-                    suburb = "%" + arrsuburbs[j] + ";" + suburb;
+                    suburb = arrsuburbs[j] + "," + suburb;
                   }
                 }else {
-                  suburb = "%" + $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb + ";" + suburb;
+                  suburb = $scope._multipleDemo._selectedPeopleWithGroupBy[i].suburb + "," + suburb;
                 }
               }
               station = suburb;
@@ -2324,9 +2319,9 @@
 
                   $http.post('/customer/filt/share', shareData)
                    .then(function(r) {
-                     shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
-                     shareData.ER_Suburb = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].suburb;
-                     shareData.ER_Region = $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].region;
+                    //  shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                    shareData.ER_Suburb = suburb;
+                    shareData.ER_Region = region;
                     SearchService.set(r);
                     updateService.set(shareData);
                     console.log('r===>', r);
