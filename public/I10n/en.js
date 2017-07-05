@@ -561,6 +561,33 @@
 			}			
 		}
 	},
+	"contact":
+	{
+		"title":"Contact Us",
+		"header":"We’d love to hear what you think! Please fill out the form with any questions or feedback you might have.",
+		"first_name":"First Name",
+		"last_name":"Last Name",
+		"type":"Service Type",
+		"email":"Email",
+		"phone":"Phone",
+		"details":"Description",
+		"submit":"Submit",
+		"register_h1": "Not a member?",
+		"register_h2":"You can create an account",
+		"here":"here",
+		"or":"OR",
+		"table1":
+		{
+			"title":"Private Advertisers",
+			"contact_detail":"Call: 1300 234 567 email: privateads@winninginvestment.com.au"
+		},
+		"table2":
+		{
+			"title":"Real Estate Agent Support",
+			"contact_detail":"Call: 1300 234 567 email: privateads@winninginvestment.com.au"
+		}		
+	},
+	
 	"conditions of use":
 	{
 		"title":"conditions of use"
