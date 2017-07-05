@@ -574,14 +574,12 @@
 							$scope.school,$scope.family,$scope.shoppingcenter,$scope.officerental];
 					var arr_descvalue = ["%train_station;","%university;","%backpack;","%park;","%school;","%big_family;"
 								,"%shopping_mall;","%offical_rental;"];
-					var arr_featurekey = [$scope.stove,$scope.dishwasher,
-							$scope.dryer,$scope.aircondition,
-							$scope.refrigerator,$scope.laundry,$scope.bed,$scope.desk,
-							$scope.wardrob,$scope.wifi,$scope.gas,$scope.no_smoking,$scope.no_pets,
-							$scope.girl_only,$scope.boy_only,$scope.no_party];
-					var arr_featurevalue = ["stove","dishwasher","dryer","aircondition","refrigerator"
-								,"laundry","bed","desk","wardrob","wifi","gas","no_smoking",
-								"no_pets","girl_only","boy_only","no_party"];
+					var arr_featurekey = [$scope.girl_only,$scope.boy_only,
+			        $scope.furniture,$scope.laundry,
+			        $scope.fullkitchen,$scope.coffee,$scope.aircondition,$scope.media,
+			        $scope.no_smoking,$scope.no_pets];
+					var arr_featurevalue = ["girl_only","boy_only","furniture","laundry","full_kitchen"
+			         ,"coffee_bar","aircondition","media","no_smoking","no_pets"];
 					var arr_features = [];
 					var arr_descriptions = [];
 					/**************descriptions package***********************/
@@ -654,14 +652,12 @@
                entireData.OrderBy = 'SRAvailableDate';
                entireData.PageID = 0;
                console.log(entireData);
-
                 $http.post('/customer/filt/share/tenant', entireData)
                  .then(function(r) {
                   //  alert("entire login")
                   SearchService.set(r);
                   updateService.set(entireData);
 									if(r.data.length > 0) {
-												// alert("刷新吧");
 										/***resolve the data passed through factory service from home page**********************/
 									 if(JSON.stringify(SearchService.get()) != "{}"){
 											$localStorage.settings = SearchService.get().data;
@@ -689,51 +685,36 @@
 											 for (var j = 0; j<ER_Feature.length;j++) {
 												switch (ER_Feature[j])
 													{
-															 case "%stove":
-																$scope.stove = true;
-															 break;
-															 case "%dishwasher":
-															$scope.dishwasher = true;
+														case "girl_only":
+														 $scope.girl_only = true;
+														break;
+														case "boy_only":
+													 $scope.boy_only = true;
+													 break;
+														case "furniture":
+													 $scope.furniture = true;
+													 break;
+														case "laundry":
+													 $scope.laundry = true;
+													 break;
+														case "full_kitchen":
+													 $scope.full_kitchen = true;
+													 break;
+														case "coffee_bar":
+													 $scope.coffee_bar = true;
+													 break;
+														case "aircondition":
+													 $scope.aircondition = true;
+													 break;
+													 case "media":
+														 $scope.media = true;
+														break;
+													 case "no_smoking":
+														 $scope.no_smoking = true;
 															break;
-															 case "%dryer":
-															$scope.dryer = true;
-															break;
-															 case "%aircondition":
-															$scope.aircondition = true;
-															break;
-															 case "%refrigerator":
-															$scope.refrigerator = true;
-															break;
-															 case "%laundry":
-															$scope.laundry = true;
-															break;
-															 case "%bed":
-															$scope.bed = true;
-															break;
-															case "%desk":
-																$scope.desk = true;
-															 break;
-															case "%wardrob":
-																$scope.wardrob = true;
-																 break;
-																case "%wifi":
-																		$scope.wifi = true;
-																break;
-																case "%gas":
-																$scope.gas = true;
-																 break;
-																case "%no_pets":
-																$scope.no_pets = true;
-																break;
-																case "%girl_only":
-																$scope.girl_only = true;
-																break;
-															case "%boy_only":
-																$scope.boy_only = true;
-																break;
-															case "%no_party":
-																$scope.no_party = true;
-																break;
+														 case "no_pets":
+																 $scope.no_pets = true;
+														 break;
 													}
 												 }
 											 }
@@ -913,55 +894,40 @@
 						 						/******************display the features data passed through home*****************/
 						 							 if(datafromhome.ER_Feature!=""){
 						 							 	ER_Feature = datafromhome.ER_Feature.split(";");
-						 							 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
+													 //  ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
 						 							 for (var j = 0; j<ER_Feature.length;j++) {
 						 							 	switch (ER_Feature[j])
 						 									{
-						 									     case "%stove":
-						 									     	$scope.stove = true;
-						 									   	 break;
-						 									     case "%dishwasher":
-						 											$scope.dishwasher = true;
-						 									    break;
-						 									     case "%dryer":
-						 											$scope.dryer = true;
-						 									    break;
-						 									     case "%aircondition":
-						 											$scope.aircondition = true;
-						 									    break;
-						 									     case "%refrigerator":
-						 											$scope.refrigerator = true;
-						 									    break;
-						 									     case "%laundry":
-						 											$scope.laundry = true;
-						 									    break;
-						 									     case "%bed":
-						 											$scope.bed = true;
-						 									    break;
-						 									    case "%desk":
-						 									     	$scope.desk = true;
-						 									     break;
-						 									    case "%wardrob":
-						 									    	$scope.wardrob = true;
-						 									    	 break;
-						 							    	    case "%wifi":
-						 							    	        $scope.wifi = true;
-						 							    	 		break;
-						 							    	    case "%gas":
-						 							    			$scope.gas = true;
-						 							    			 break;
-						 							    	    case "%no_pets":
-						 							    			$scope.no_pets = true;
-						 							    	 		break;
-						 							    	    case "%girl_only":
-						 							    			$scope.girl_only = true;
-						 							    	 		break;
-						 							    	 	case "%boy_only":
-						 							    			$scope.boy_only = true;
-						 							    	 		break;
-						 							    	 	case "%no_party":
-						 							    			$scope.no_party = true;
-						 							    	 		break;
+																case "girl_only":
+																$scope.girl_only = true;
+															 break;
+															 case "boy_only":
+															$scope.boy_only = true;
+															break;
+															 case "furniture":
+															$scope.furniture = true;
+															break;
+															 case "laundry":
+															$scope.laundry = true;
+															break;
+															 case "full_kitchen":
+															$scope.full_kitchen = true;
+															break;
+															 case "coffee_bar":
+															$scope.coffee_bar = true;
+															break;
+															 case "aircondition":
+															$scope.aircondition = true;
+															break;
+															case "media":
+																$scope.media = true;
+															 break;
+															case "no_smoking":
+																$scope.no_smoking = true;
+																 break;
+																case "no_pets":
+																		$scope.no_pets = true;
+																break;
 						 									}
 						 								 }
 						 							 }
@@ -1102,9 +1068,9 @@
 			 .then(function(r) {
 				 console.log(r);
 				 if(r.data.customer_login_status){
-					 	if ($scope.favorsave) {
+						// 	if ($scope.favorsave) {
 							 shortlistInsert.CID =r.data.CID;
-							 shortlistInsert.CLType="FavorSave";
+							 shortlistInsert.CLType="ShareSave";
 							 shortlistInsert.CLDetail=$scope.entireData[$index].ER_ID;
 							 shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
 							 console.log("shortlistInsert",shortlistInsert);
@@ -1114,21 +1080,21 @@
 								 },function(e){
 									 console.log("数据有误");
 								 });
-					 	}else {
+						// 	}else {
 							/*******************delete from shortlist*********************************************/
-										console.log(r);
-										shortlistDelete.CID = r.data.CID;
-										shortlistDelete.CLType="FavorSave";
-										shortlistDelete.CLDetail= $scope.entireData[$index].ER_ID;;
-										//	$scope.shortlistDelete.CLTime="";
-										$http.post('/customer/shortlist/delete',shortlistDelete)
-												.then(function(r){
-													// 	$scope.shortlistData = r.data;
-													console.log("shortlistDelete",r);
-												},function(e){
-													console.log("数据有误"+e);
-												});
-							}
+										// console.log(r);
+										// shortlistDelete.CID = r.data.CID;
+										// shortlistDelete.CLType="FavorSave";
+										// shortlistDelete.CLDetail= $scope.entireData[$index].ER_ID;;
+										// //	$scope.shortlistDelete.CLTime="";
+										// $http.post('/customer/shortlist/delete',shortlistDelete)
+										// 		.then(function(r){
+										// 			// 	$scope.shortlistData = r.data;
+										// 			console.log("shortlistDelete",r);
+										// 		},function(e){
+										// 			console.log("数据有误"+e);
+										// 		});
+							// }
 							/*************************shortlist check selection ends************************************************/
 				 }else{
 					 $state.go('app.login');
@@ -1167,7 +1133,7 @@ $scope.$watch(function(){
 			 console.log(r);
 			 if(r.data.customer_login_status){
 				 shortlistcheckdata.CID = r.data.CID;
-				 shortlistcheckdata.CLType = 'FavorSave';
+				 shortlistcheckdata.CLType = 'ShareSave';
 				 $http.post('/customer/shortlist', shortlistcheckdata)
 						 .then(function(r){
 							 shortlistData = r.data;

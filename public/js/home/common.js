@@ -228,239 +228,35 @@
      /**
       * features update code starts
       */
-     //all_requirements
-     // colum1
      $scope.nosmoking = function (){
       $scope.no_smoking = !$scope.no_smoking;
-      if($scope.no_smoking==true &&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
-      {
-       $scope.all_requirements = true;
-      }else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
-       $scope.all_requirements = false;
-      }
      }
      $scope.nopets = function (){
       $scope.no_pets = !$scope.no_pets;
-      if($scope.no_smoking==true&&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
-      {
-       $scope.all_requirements = true;
-      }else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
-       $scope.all_requirements = false;
-      }
      }
      $scope.girlonly = function (){
       $scope.girl_only = !$scope.girl_only;
-      if($scope.no_smoking==true&&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
-      {
-       $scope.all_requirements = true;
-      }else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
-       $scope.all_requirements = false;
-      }
      }
      $scope.boyonly = function (){
       $scope.boy_only = !$scope.boy_only;
-      if($scope.no_smoking==true&&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
-      {
-       $scope.all_requirements = true;
-      }else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
-       $scope.all_requirements = false;
-      }
      }
-     $scope.noparty = function (){
-      $scope.no_party = !$scope.no_party;
-      if($scope.no_smoking==true&&$scope.no_pets==true&&$scope.girl_only==true&&$scope.boy_only==true&&$scope.no_party==true)
-      {
-       $scope.all_requirements = true;
-      }else if($scope.no_smoking==false || $scope.no_pets==false || $scope.girl_only==false || $scope.boy_only==false || $scope.no_party==false){
-       $scope.all_requirements = false;
-      }
+     $scope.full_kitchen = function (){
+      $scope.fullkitchen = !$scope.fullkitchen;
      }
-
-     $scope.col_requirements = function(){
-      $scope.all_requirements = !$scope.all_requirements;
-
-      if($scope.all_requirements)
-      {
-       $scope.no_smoking = true;
-       $scope.no_pets = true;
-       $scope.girl_only = true;
-       $scope.boy_only = true;
-       $scope.no_party = true;
-      }
-      else{
-       $scope.no_smoking = false;
-       $scope.no_pets = false;
-       $scope.girl_only = false;
-       $scope.boy_only = false;
-       $scope.no_party = false;
-      }
-
-     }
-     // colum2
-     //appliances
-     $scope.stove_click = function (){
-      $scope.stove = !$scope.stove;
-      if($scope.stove==true &&$scope.dishwasher==true&&$scope.dryer==true&&$scope.aircondition==true)
-      {
-       $scope.appliances = true;
-      }else if($scope.stove==false || $scope.dishwasher==false || $scope.dryer==false || $scope.aircondition==false){
-       $scope.appliances = false;
-      }
-     }
-     $scope.dishwasher_click = function (){
-      $scope.dishwasher = !$scope.dishwasher;
-      if($scope.stove==true &&$scope.dishwasher==true&&$scope.dryer==true&&$scope.aircondition==true)
-      {
-       $scope.appliances = true;
-      }else if($scope.stove==false || $scope.dishwasher==false || $scope.dryer==false || $scope.aircondition==false){
-       $scope.appliances = false;
-      }
-     }
-     $scope.dryer_click = function (){
-      $scope.dryer = !$scope.dryer;
-      if($scope.stove==true &&$scope.dishwasher==true&&$scope.dryer==true&&$scope.aircondition==true)
-      {
-       $scope.appliances = true;
-      }else if($scope.stove==false || $scope.dishwasher==false || $scope.dryer==false || $scope.aircondition==false){
-       $scope.appliances = false;
-      }
+     $scope.coffee_bar = function (){
+      $scope.coffee = !$scope.coffee;
      }
      $scope.aircondition_click = function (){
       $scope.aircondition = !$scope.aircondition;
-      if($scope.stove==true &&$scope.dishwasher==true&&$scope.dryer==true&&$scope.aircondition==true)
-      {
-       $scope.appliances = true;
-      }else if($scope.stove==false || $scope.dishwasher==false || $scope.dryer==false || $scope.aircondition==false){
-       $scope.appliances = false;
-      }
      }
-
-     $scope.col_appliances = function(){
-      $scope.appliances = !$scope.appliances;
-      if($scope.appliances)
-      {
-       $scope.stove = true;
-       $scope.dishwasher = true;
-       $scope.dryer = true;
-       $scope.aircondition = true;
-      }
-      else{
-       $scope.stove = false;
-       $scope.dishwasher = false;
-       $scope.dryer = false;
-       $scope.aircondition = false;
-      }
- //					$scope.appliances = $scope.stove&&$scope.dishwasher&&$scope.dryer;
-     }
-     //furniture
-     // colum3
-     $scope.bed_click = function (){
-      $scope.bed = !$scope.bed;
-      if($scope.bed==true &&$scope.desk==true&&$scope.wardrob==true)
-      {
-       $scope.furniture = true;
-      }else if($scope.bed==false || $scope.desk==false || $scope.wardrob==false){
-       $scope.furniture = false;
-      }
-     }
-     $scope.desk_click = function (){
-      $scope.desk = !$scope.desk;
-      if($scope.bed==true &&$scope.desk==true&&$scope.wardrob==true)
-      {
-       $scope.furniture = true;
-      }else if($scope.bed==false || $scope.desk==false || $scope.wardrob==false){
-       $scope.furniture = false;
-      }
-     }
-     $scope.wardrob_click = function (){
-      $scope.wardrob = !$scope.wardrob;
-      if($scope.bed==true &&$scope.desk==true&&$scope.wardrob==true)
-      {
-       $scope.furniture = true;
-      }else if($scope.bed==false || $scope.desk==false || $scope.wardrob==false){
-       $scope.furniture = false;
-      }
-     }
-
-     $scope.col_furniture = function(){
-      $scope.furniture = !$scope.furniture;
-      if($scope.furniture)
-      {
-       $scope.bed = true;
-       $scope.desk = true;
-       $scope.wardrob = true;
-      }
-      else{
-       $scope.bed = false;
-       $scope.desk = false;
-       $scope.wardrob = false;
-      }
-     }
-     // colum4
-     //other_appliance
-     $scope.refrigerator_click = function (){
-      $scope.refrigerator = !$scope.refrigerator;
-      if($scope.refrigerator==true &&$scope.laundry==true)
-      {
-       $scope.other_appliance = true;
-      }else if($scope.refrigerator==false || $scope.laundry==false){
-       $scope.other_appliance = false;
-      }
+     $scope.media_click = function (){
+      $scope.media = !$scope.media;
      }
      $scope.laundry_click = function (){
       $scope.laundry = !$scope.laundry;
-      if($scope.refrigerator==true &&$scope.laundry==true)
-      {
-       $scope.other_appliance = true;
-      }else if($scope.refrigerator==false || $scope.laundry==false){
-       $scope.other_appliance = false;
-      }
      }
-
-
-     $scope.col_other_appliance = function(){
-      $scope.other_appliance = !$scope.other_appliance;
-      if($scope.other_appliance)
-      {
-       $scope.refrigerator = true;
-       $scope.laundry = true;
-      }
-      else{
-       $scope.refrigerator = false;
-       $scope.laundry = false;
-      }
-     }
-     // colum5
-     //other_essential
-     $scope.wifi_click = function (){
-      $scope.wifi = !$scope.wifi;
-      if($scope.wifi==true &&$scope.gas==true)
-      {
-       $scope.other_essential = true;
-      }else if($scope.wifi==false || $scope.gas==false){
-       $scope.other_essential = false;
-      }
-     }
-     $scope.gas_click = function (){
-      $scope.gas = !$scope.gas;
-      if($scope.wifi==true &&$scope.gas==true)
-      {
-       $scope.other_essential = true;
-      }else if($scope.wifi==false || $scope.gas==false){
-       $scope.other_essential = false;
-      }
-     }
-     $scope.col_other_essential = function(){
-      $scope.other_essential = !$scope.other_essential;
-      if($scope.other_essential)
-      {
-       $scope.wifi = true;
-       $scope.gas = true;
-      }
-      else{
-       $scope.wifi = false;
-       $scope.gas = false;
-      }
+     $scope.col_furniture = function (){
+      $scope.furniture = !$scope.furniture;
      }
 
 
@@ -471,19 +267,17 @@
     *******************************************************************************************/
    $scope.features_Submit = function(){
  //			alert($scope.wardrob);
-    var arr_key = [$scope.stove,$scope.dishwasher,
-        $scope.dryer,$scope.aircondition,
-        $scope.refrigerator,$scope.laundry,$scope.bed,$scope.desk,
-        $scope.wardrob,$scope.wifi,$scope.gas,$scope.no_smoking,$scope.no_pets,
-        $scope.girl_only,$scope.boy_only,$scope.no_party];
-    var arr_value = ["full_kitchen","dishwasher","dryer","aircondition","refrigerator"
-         ,"laundry","bed","desk","wardrob","wifi","gas","no_smoking",
-         "no_pets","girl_only","boy_only","no_party"];
+    var arr_key = [$scope.girl_only,$scope.boy_only,
+        $scope.furniture,$scope.laundry,
+        $scope.fullkitchen,$scope.coffee,$scope.aircondition,$scope.media,
+        $scope.no_smoking,$scope.no_pets];
+    var arr_value = ["girl_only","boy_only","furniture","laundry","full_kitchen"
+         ,"coffee_bar","aircondition","media","no_smoking","no_pets"];
     var arr_features = [];
     for(var i=0;i<arr_key.length;i++){
-     if(arr_key[i]){
-      arr_features.push("%"+arr_value[i]+";");
-     }
+       if(arr_key[i]){
+        arr_features.push("%"+arr_value[i]+";");
+       }
     }
     if(arr_features.length==0){
      arr_features.push("");
@@ -524,68 +318,6 @@
          console.log('r===>', e);
        });
    }
-
-
-   /*****************theme title search********************************************************/
-    //  $scope.search = function(keywords) {
-     //
-    //   if($scope.x) {
-    //    var address = $scope.x[0].split(",");
-    //    entireData = {
-    //     ER_Suburb: address[0],
-    //     ER_Region: address[1],
-    //     ER_Type: $scope.myPropertyType,
-    //     ER_PriceMin: $scope.myMinPrice,
-    //     ER_PriceMax: $scope.myMaxPrice,
-    //     ER_BedRoomMin: $scope.minBedNum,
-    //     ER_BedRoomMax: $scope.maxBedNum,
-    //     ER_BathRoomMin: $scope.minBathNum,
-    //     ER_BathRoomMax: 5,
-    //     ER_ParkingMin: $scope.myParkingNum,
-    //     ER_ParkingMax: 5,
-    //     ER_AreaMin: 0,
-    //     ER_AreaMax: 5000,
-    //     ER_AvailableDate: '2020-01-01',
-    //     ER_Description:'%'+keywords+';',
-    //     ER_Feature: ER_Feature
-    //    };
-    //   } else {
-    //    entireData = {
-    //     ER_Suburb: '',
-    //     ER_Region: '',
-    //     ER_Type: $scope.myPropertyType,
-    //     ER_PriceMin: $scope.myMinPrice,
-    //     ER_PriceMax: $scope.myMaxPrice,
-    //     ER_BedRoomMin: $scope.minBedNum,
-    //     ER_BedRoomMax: $scope.maxBedNum,
-    //     ER_BathRoomMin: $scope.minBathNum,
-    //     ER_BathRoomMax: 5,
-    //     ER_ParkingMin: $scope.myParkingNum,
-    //     ER_ParkingMax: 5,
-    //     ER_AreaMin: 0,
-    //     ER_AreaMax: 5000,
-    //     ER_AvailableDate: '2020-01-01',
-    //     ER_Description:'%'+keywords+';',
-    //     ER_Feature: ER_Feature
-    //    }
-    //   }
-     //
-     //
-    //   console.log(entireData);
-    //   $http.post('/customer/filt/entire', entireData)
-    //    .then(function(r) {
-    //     SearchService.set(r);
-    //     updateService.set(entireData);
-    //     console.log('r===>', r);
-    //     if(r.data.length > 0) {
-    //      $state.go('app.listpage');
-    //     }
-     //
-    //    }, function(e) {
-     //
-    //    });
-    //  }
-   /*****************theme title search ends********************************************************/
 
 
    /**************************************商家专区 starts****************************************************/
@@ -2063,13 +1795,13 @@
           /**********************entire property station search ends*************************************/
 
         }else {
-          //search for the results of properties
+            //search for the results of properties
             $scope.entireLocationSearch = function(theme) {
-              var regionArr = [];
-              var result = [];
-              var suburb = "";
-              var region = "";
-              var station = "";
+            var regionArr = [];
+            var result = [];
+            var suburb = "";
+            var region = "";
+            var station = "";
              console.log($scope.multipleLocationDemo.selectedLocationWithGroupBy);
              //selected items which are an array
              for (var i = 0; i < $scope.multipleLocationDemo.selectedLocationWithGroupBy.length; i++) {
@@ -2122,6 +1854,13 @@
                   //  entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
                    entireData.ER_Suburb = suburb;
                    entireData.ER_Region = region;
+                   if (typeof(entireData.ER_Description) != "undefined") {
+                      entireData.theme = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
+                   }else {
+                      entireData.ER_Suburb = suburb;
+                      entireData.ER_Region = region;
+                   }
+
                    SearchService.set(r);
                    updateService.set(entireData);
                    console.log('r===>', r);
@@ -2255,7 +1994,7 @@
 
                    $http.post('/customer/filt/entire', entireData)
                     .then(function(r) {
-                      // entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                      //entireData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
                       entireData.ER_Suburb = suburb;
                       entireData.ER_Region = region;
                      SearchService.set(r);
@@ -2268,7 +2007,6 @@
                 },function(error){
                   console.log("error" + error);
                 });
-
               }
             /*******************entire room station search without login ends*************************/
 
@@ -2316,10 +2054,9 @@
                  shareData.OrderBy = 'SRAvailableDate';
                  shareData.PageID = 0;
                  console.log(shareData);
-
                   $http.post('/customer/filt/share', shareData)
                    .then(function(r) {
-                    //  shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
+                    //shareData.postcode =  $scope.multipleLocationDemo.selectedLocationWithGroupBy[0].postcode;
                     shareData.ER_Suburb = suburb;
                     shareData.ER_Region = region;
                     SearchService.set(r);

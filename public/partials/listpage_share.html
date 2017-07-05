@@ -24,226 +24,248 @@
 			    </fieldset>
 			  </form>
 			  <div style="border-bottom: 3px solid rgba(117, 0, 98, 0.74); width: 100%;"></div>
- 			  <div class=" wrapper w-full  cust-m-t">
-	              <div class="row">
-	                <div class="b-light">
-	                  <div class="row">
-	                    <div class="col-xs-6 left-li">
-	                    	<label style="margin-left: 115px;margin-bottom: 10px">min</label>
-	                      <ul class="list-unstyled l-h-2x">
-	                        <li class="m-b-md">
-	                         <label translate="listpage.filter.price">Price</label>
-													 <select ng-model="myMinPrice" class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-options="minPrice.price as minPrice.price for minPrice in minPrices">
-	 												</select>
-	                        </li>
-	                        <li class="m-b-md">
-	                          <label translate="listpage.filter.beds">Beds</label>
-							  						<select class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
-	                          </select>
-	                        </li>
-	                        <li class="m-b-md">
-	                          <label translate="listpage.filter.baths">Baths</label>
-										        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 16px;" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum">
-										        </select>
-	                        </li>
-
-	                      </ul>
-	                    </div>
-	                    <div class="col-xs-6 right-li">
-	                    	<label style="margin-left: 60px; margin-bottom: 10px;">max</label>
-	                      <ul class="list-unstyled l-h-2x">
-	                        <li class="m-b-md">
-														<select ng-model="myMaxPrice" class="input-sm form-control w-sm inline v-middle" ng-options="maxPrice.price as maxPrice.price for maxPrice in maxPrices">
-														</select>
-	                        </li>
-	                        <li class="m-b-md">
-							  						<select class="input-sm form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
-	                          </select>
-	                        </li>
-	                        <li class="m-b-md">
-									        <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
-									        </select>
-	                        </li>
-	                      </ul>
-	                    </div>
-	                  </div>
-	                </div>
-	                <div class="b-light">
-	                  <div class="row">
-	                    <div class="col-xs-6 left-li">
-	                      <ul class="list-unstyled l-h-2x">
-	                        <li class="m-b-md">
-	                          <label translate="listpage.filter.parking">Parking</label>
-										        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 5px;"ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-										        </select>
-	                        </li>
-	                         <!-- <li class="m-b-md">
-	                         <label translate="listpage.filter.area">Area</label>
-							 <input type="text" ng-model="minArea" style="width: 149px;height: 40px; margin-left: 23px;" class="form-control input-sm inline" placeholder="minArea" aria-describedby="basic-addon1">
-	                        </li> -->
-	                        <li class="m-b-md">
-	                          	<label translate="listpage.filter.type">Type</label>
-											        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 19px;" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
-											        </select>
-	                        </li>
-	                       <!-- <li>
-	                          <label>minArea</label>
-						        <select class="input-lg form-control w-sm inline v-middle" ng-model="myArea" ng-options="parking.num as parking.num for parking in parkingsNum" >
-						        </select>
-	                        </li>-->
-	                       <!-- <li>
-	                          	<label>features</label>
-								<input type="text" class="form-control input-lg" ng-model="features" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
-	                        </li>-->
-	                        <li ng-show="hello">
-	                         	<label class="m-t-xxs pull-left" translate="listpage.filter.available">Available:</label>
-									            <p class="input-group inline">
-									              <input type="text" class="form-control input-sm" style="width: 127px;height: 34px; margin-left: 53px;" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
-									              <span class="input-group-btn">
-									                <button type="button" class="btn btn-default btn-md" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-									              </span>
-									            </p>
-	                        </li>
-	                          <li ng-show="hello">
-	                          	<label class="m-t-xxs" translate="listpage.filter.description.title">Descriptions:</label>
-	                          	<ul class="descriptions" style="list-style: none; padding:0;">
-	                          		<li>
-	                          			<a class="" title="near train station" ng-click="train=!train">
-	                          				<i ng-show="train" class="flaticon-train-on-railroad30" style="color: orange;" aria-hidden="true"></i>
-	                          				<i ng-show="!train" class="flaticon-train-on-railroad30" aria-hidden="true"></i>
-	                          			</a>
-																	<a>train</a>
-																</li>
-																<li>
-																	<a class="" title="near university" ng-click="university=!university">
-			                          		<i ng-show="university" class="flaticon-college-graduation30" style="color: chocolate;" aria-hidden="true"></i>
-			                          		<i ng-show="!university" class="flaticon-college-graduation30" aria-hidden="true"></i>
-			                          	</a>
-																	<a>university</a>
-																</li>
-		                          	<li>
-																	<a class="" title="near hotel YHA" ng-click="backpack=!backpack">
-			                          		<i ng-show="backpack" class="flaticon-backpack30" style="color: greenyellow;" aria-hidden="true"></i>
-			                          		<i ng-show="!backpack" class="flaticon-backpack30" aria-hidden="true"></i>
-			                          	</a>
-																	<a>backpack</a>
-																</li>
-			                          <li>
-			                          	<a class="" title="near park" ng-click="park=!park">
-			                          		<i ng-show="park" class="flaticon-green-park-city-space30" style="color: green;" aria-hidden="true"></i>
-			                          		<i ng-show="!park" class="flaticon-green-park-city-space30" aria-hidden="true"></i>
-			                          	</a>
-																	<a>park</a>
-	                          		</li>
-	                          	</ul>
-	                        </li>
-	                      </ul>
-	                    </div>
-	                    <div class="col-xs-6 right-li">
-	                      <ul class="list-unstyled l-h-2x">
-	                        <li style="margin-bottom: 22px;">
-	                         <select class="input-sm form-control w-sm inline v-middle" ng-model="maxParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-							 					 	 </select>
-	                        </li>
-	                        <!-- <li class="m-b-md">
-															<input type="text" class="form-control input-sm" ng-model="maxArea" style="width: 149px;height: 40px;" placeholder="maxArea" aria-describedby="basic-addon1">
-	                        </li> -->
-	                        <li ng-show="hello" style="list-style: none; margin-top: 194px; padding-left: 0;">
-														<ul class="descriptions" style="list-style: none; padding:0;">
-	                          		<li>
-	                          			<a class="" title="near school" ng-click="school=!school">
-	                          				<i ng-show="school" class="flaticon-open-book30" style="color: yellow;" aria-hidden="true"></i>
-	                          				<i ng-show="!school" class="flaticon-open-book30" aria-hidden="true"></i>
-	                          			</a>
-																	<a>near school</a>
-																</li>
-																<li>
-																	<a class="" title="big family" ng-click="family=!family">
-	                          				<i ng-show="family" class="flaticon-people30" style="color: pink;" aria-hidden="true"></i>
-	                          				<i ng-show="!family" class="flaticon-people30" aria-hidden="true"></i>
-	                          			</a>
-																	<a>big family</a>
-																</li>
-                          			<li>
-																	<a class="" title="near shoppingcenter" ng-click="shoppingcenter=!shoppingcenter">
-			                          		<i ng-show="shoppingcenter" class="flaticon-shopping-cart30" style="color: darkred;" aria-hidden="true"></i>
-			                          		<i ng-show="!shoppingcenter" class="flaticon-shopping-cart30" aria-hidden="true"></i>
-			                          	</a>
-																	<a>shoppingcenter</a>
-																</li>
-		                          	<li>
-			                          	<a class="" title="officerental" ng-click="officerental=!officerental">
-			                          		<i ng-show="officerental" class="flaticon-business30" style="color: blue;" aria-hidden="true"></i>
-			                          		<i ng-show="!officerental" class="flaticon-business30" aria-hidden="true"></i>
-			                          	</a>
-																	<a>officerental</a>
-                          			</li>
-	                          	</ul>
-														</li>
-	                      </ul>
-	                    </div>
-	                  </div>
-	                </div>
-	                <div class=" m-l-n-xxs" ng-show="hello">
-	                  <label translate="listpage.filter.feature.title">Features:</label>
-	                   <div class="row">
-											  <div class="col-xs-6">
-													<ul class="list-unstyled descriptions">
-														<li>
-															<a title="girl_only" ng-click="girlonly()" >
-																	<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette30"></i>
-																	<i ng-show="!girl_only" class="flaticon-female-silhouette30"></i>&nbsp;&nbsp;&nbsp;
-															</a>
-															<a translate="listpage.filter.feature.girl"></a>
-														</li>
-														<li>
-																<a title="boy_only" ng-click="boyonly()">
-																	<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up30"></i>
-																	<i ng-show="!boy_only" class="flaticon-man-standing-up30"></i>&nbsp;&nbsp;&nbsp;
-																</a>
-																<a translate="listpage.filter.feature.boy"></a>
-														</li>
-														<li>
-																<a title="aircondition" ng-click="aircondition_click()">
-																	<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit30"></i>
-																	<i ng-show="!aircondition" class="flaticon-minisplit30"></i>&nbsp;&nbsp;&nbsp;
-																</a>
-																<a translate="listpage.filter.feature.aircondition"></a>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-6">
-													<ul class="list-unstyled descriptions right-li">
-															<li>
-																	<a title="laundry" ng-click="laundry_click()">
-																		<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine30"></i>
-																		<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;
-																	</a>
-																	<a translate="listpage.filter.feature.laundry"></a>
-															</li>
-															<li>
-																	<a title="stove" ng-click="stove_click()">
-																		<i ng-show="stove" style="color: purple;" class="flaticon-stove30"></i>
-																		<i ng-show="!stove" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;
-																	</a>
-																	<a translate="listpage.filter.feature.kitchen"></a>
-															</li>
-															<li></li>
-													</ul>
-												</div>
-										 </div>
-	                </div>
-	              </div>
-	            </div>
-				  		<div class="row more-options">
-					    	<div class="col-sm-8"></div>
-					    	<div class="col-sm-4">
-					    		<a style="color: rgb(150, 65, 137); display: block; width: 100px;height: 20px;" ng-click="hello = !hello">
-					    			<span ng-show="!hello"><i translate="listpage.filter.option.more"></i>&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-					    			<span ng-show="hello"><i translate="listpage.filter.option.less"></i>&nbsp;<i class="fa fa-chevron-circle-up"></i></span>
-					    		</a>
-					    	</div>
-			      	</div>
+				<div class=" wrapper w-full  cust-m-t">
+						<div class="row">
+							<div class="b-light">
+								<div class="row">
+								 <div class="col-xs-2 left-li">
+										<label style="margin-left: 115px;margin-bottom: 10px;visibility: hidden;">min</label>
+										<ul class="list-unstyled l-h-2x">
+										<li class="m-b-md">
+										 <label translate="listpage.filter.price">Price</label>
+										</li>
+										<li class="m-b-md">
+											<label translate="listpage.filter.beds">Beds</label>
+										</li>
+										<li class="m-b-md">
+											<label translate="listpage.filter.baths">Baths</label>
+										</li>
+										<li class="m-b-md">
+											<label translate="listpage.filter.parking">Parking</label>
+									 </li>
+									</ul>
+								 </div>
+									<div class="col-xs-5 left-li">
+									 <label style="margin-left: 65px;margin-bottom: 10px">min</label>
+										<ul class="list-unstyled l-h-2x">
+											<li class="m-b-md">
+											<select ng-model="myMinPrice" class="input-sm form-control w-sm inline v-middle"  ng-options="minPrice.price as minPrice.price for minPrice in minPrices">
+											 </select>
+											</li>
+											<li class="m-b-md">
+											 <select class="input-sm form-control w-sm inline v-middle"  ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
+												</select>
+											</li>
+											<li class="m-b-md">
+											 <select class="input-sm form-control w-sm inline v-middle"  ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum">
+											 </select>
+											</li>
+										 <li class="m-b-md">
+											 <select class="input-sm form-control w-sm inline v-middle" ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+											 </select>
+											</li>
+										</ul>
+									</div>
+									<div class="col-xs-5 right-li">
+									 <label style="margin-left: 60px; margin-bottom: 10px;">max</label>
+										<ul class="list-unstyled l-h-2x">
+											<li class="m-b-md">
+											 <select ng-model="myMaxPrice" class="input-sm form-control w-sm inline v-middle" ng-options="maxPrice.price as maxPrice.price for maxPrice in maxPrices">
+											 </select>
+											</li>
+											<li class="m-b-md">
+											 <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
+												</select>
+											</li>
+											<li class="m-b-md">
+										 <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
+										 </select>
+											</li>
+										 <li class="m-b-md">
+										 <select class="input-sm form-control w-sm inline v-middle" ng-model="maxParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+											 </select>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="b-light">
+								<div class="row">
+									<div class="col-sm-4 left-li">
+											 <ul class="list-unstyled l-h-2x">
+												 <li class="m-b-md">
+													 <label translate="listpage.filter.available">Available:</label>
+												 </li>
+												 <li class="m-b-md">
+														 <label translate="listpage.filter.type">Type</label>
+												 </li>
+											 </ul>
+									</div>
+									<div class="col-sm-8 right-li">
+									 <ul class="list-unstyled l-h-2x">
+										 <li class="m-b-md">
+												 <select class="input-sm form-control w-sm inline v-middle" style="width:166px;" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
+												 </select>
+										 </li>
+										 <li class="m-b-md">
+											 <p class="input-group inline">
+												 <input type="text" class="form-control input-sm" style="width: 127px;height: 34px;" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+												 <span class="input-group-btn">
+													 <button type="button" class="btn btn-default btn-md" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+												 </span>
+											 </p>
+										 </li>
+									 </ul>
+									</div>
+								</div>
+							</div>
+						 <div class="b-light m-b-md" ng-show="hello">
+							 <label class="m-t-xxs m-b-md" translate="listpage.filter.description.title">Descriptions:</label>
+							 <ul class="descriptions" style="list-style: none; padding:0;">
+								 <li>
+									 <a class="" title="near train station" ng-click="train=!train">
+										 <i ng-show="train" class="flaticon-train-on-railroad30" style="color: orange;" aria-hidden="true"></i>
+										 <i ng-show="!train" class="flaticon-train-on-railroad30" aria-hidden="true"></i>
+									 </a>
+									 <a translate="listpage.filter.description.train_station">train</a>
+								 </li>
+								 <li>
+									 <a class="" title="near university" ng-click="university=!university">
+										 <i ng-show="university" class="flaticon-college-graduation30" style="color: chocolate;" aria-hidden="true"></i>
+										 <i ng-show="!university" class="flaticon-college-graduation30" aria-hidden="true"></i>
+									 </a>
+									 <a translate="listpage.filter.description.uni">university</a>
+								 </li>
+								 <li>
+									 <a class="" title="near hotel YHA" ng-click="backpack=!backpack">
+										 <i ng-show="backpack" class="flaticon-backpack30" style="color: greenyellow;" aria-hidden="true"></i>
+										 <i ng-show="!backpack" class="flaticon-backpack30" aria-hidden="true"></i>
+									 </a>
+									 <a translate="listpage.filter.description.backpack">backpack</a>
+								 </li>
+								 <li>
+									 <a class="" title="near park" ng-click="park=!park">
+										 <i ng-show="park" class="flaticon-green-park-city-space30" style="color: green;" aria-hidden="true"></i>
+										 <i ng-show="!park" class="flaticon-green-park-city-space30" aria-hidden="true"></i>
+									 </a>
+									 <a translate="listpage.filter.description.park">park</a>
+								 </li>
+								 <li>
+									 <a class="" title="near school" ng-click="school=!school">
+										 <i ng-show="school" class="flaticon-open-book30" style="color: yellow;" aria-hidden="true"></i>
+										 <i ng-show="!school" class="flaticon-open-book30" aria-hidden="true"></i>
+									 </a>
+									 <a translate="listpage.filter.description.school">near school</a>
+								 </li>
+								 <li>
+									 <a class="" title="big family" ng-click="family=!family">
+										 <i ng-show="family" class="flaticon-people30" style="color: pink;" aria-hidden="true"></i>
+										 <i ng-show="!family" class="flaticon-people30" aria-hidden="true"></i>
+									 </a>
+									 <a translate="listpage.filter.description.big_family">big family</a>
+								 </li>
+								 <li>
+									 <a class="" title="near shoppingcenter" ng-click="shoppingcenter=!shoppingcenter">
+										 <i ng-show="shoppingcenter" class="flaticon-shopping-cart30" style="color: darkred;" aria-hidden="true"></i>
+										 <i ng-show="!shoppingcenter" class="flaticon-shopping-cart30" aria-hidden="true"></i>
+									 </a>
+									 <a translate="listpage.filter.description.shopping_mall">shoppingcenter</a>
+								 </li>
+								 <li>
+									 <a class="" title="officerental" ng-click="officerental=!officerental">
+										 <i ng-show="officerental" class="flaticon-business30" style="color: blue;" aria-hidden="true"></i>
+										 <i ng-show="!officerental" class="flaticon-business30" aria-hidden="true"></i>
+									 </a>
+									 <a translate="listpage.filter.description.office_rental">officerental</a>
+								 </li>
+							 </ul>
+						 </div>
+							<div class="b-light" ng-show="hello">
+								<label class="m-b-md" translate="listpage.filter.feature.title">Features:</label>
+								<ul class="list-unstyled descriptions">
+									<li>
+										<a title="girl_only" ng-click="girlonly()" >
+												<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette30"></i>
+												<i ng-show="!girl_only" class="flaticon-female-silhouette30"></i>&nbsp;&nbsp;&nbsp;
+										</a>
+										<a translate="listpage.filter.feature.girl"></a>
+									</li>
+									<li>
+											<a title="boy_only" ng-click="boyonly()">
+												<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up30"></i>
+												<i ng-show="!boy_only" class="flaticon-man-standing-up30"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a translate="listpage.filter.feature.boy"></a>
+									</li>
+									<li>
+											<a title="furniture" ng-click="col_furniture()">
+												<i ng-show="furniture" style="color: purple;" class="flaticon-cabinet30"></i>
+												<i ng-show="!furniture" class="flaticon-cabinet30"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a>furniture</a>
+									</li>
+									<li>
+											<a title="laundry" ng-click="laundry_click()">
+												<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine30"></i>
+												<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a translate="listpage.filter.feature.laundry"></a>
+									</li>
+									<li>
+											<a title="full_kitchen" ng-click="full_kitchen()">
+												<i ng-show="fullkitchen" style="color: purple;" class="flaticon-stove30"></i>
+												<i ng-show="!fullkitchen" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a translate="listpage.filter.feature.kitchen"></a>
+									</li>
+									<li>
+											<a title="coffee_bar" ng-click="coffee_bar()">
+												<i ng-show="coffee" style="color: purple; font-size:30px;" class="fa fa-coffee"></i>
+												<i ng-show="!coffee" style="font-size:30px;" class="fa fa-coffee"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a>coffee_bar</a>
+									</li>
+									<li>
+											<a title="aircondition" ng-click="aircondition_click()">
+												<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit30"></i>
+												<i ng-show="!aircondition" class="flaticon-minisplit30"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a translate="listpage.filter.feature.aircondition"></a>
+									</li>
+									<li>
+											<a title="media" ng-click="media_click()">
+												<i ng-show="media" style="color: purple;" class="flaticon-man-in-office-desk-with-computer30"></i>
+												<i ng-show="!media" class="flaticon-man-in-office-desk-with-computer30"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a>media</a>
+									</li>
+									<li>
+											<a title="no_smoking" ng-click="nosmoking()">
+												<i ng-show="no_smoking" style="color: purple;" class="flaticon-no-smoking-sign30"></i>
+												<i ng-show="!no_smoking" class="flaticon-no-smoking-sign30"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a>no_smoking</a>
+									</li>
+									<li>
+											<a title="no_pets" ng-click="nopets()">
+												<i ng-show="no_pets" style="color: purple;" class="flaticon-no-dogs30"></i>
+												<i ng-show="!no_pets" class="flaticon-no-dogs30"></i>&nbsp;&nbsp;&nbsp;
+											</a>
+											<a>nopets</a>
+									</li>
+								</ul>
+						 </div>
+						 </div>
+				</div>
+	  		<div class="row more-options">
+		    	<div class="col-sm-8"></div>
+		    	<div class="col-sm-4">
+		    		<a style="color: rgb(150, 65, 137); display: block; width: 100px;height: 20px;" ng-click="hello = !hello">
+		    			<span ng-show="!hello"><span translate="listpage.filter.option.more"></span>&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+		    			<span ng-show="hello"><span translate="listpage.filter.option.less"></span>&nbsp;<i class="fa fa-chevron-circle-up"></i></span>
+		    		</a>
+		    	</div>
+      	</div>
 			  <button type="submit" class="btn-success plusplus" ng-click="update()" tabindex="23"><span translate="listpage.filter.search">Update search</span></button>
 			</div>
 		</div>
@@ -257,7 +279,7 @@
 	          	<!--<div>features:</div>-->
 		        <div class="btn-group btn-group-justified features-filter">
 		          <a href class="btn btn-success" ng-click="sortBy('SRPrice')">
-	          		  <i translate="listpage.list.orderBy.price"></i>
+	          		  <span translate="listpage.list.orderBy.price"></span>
 		          		&nbsp;
 	          		  <span ng-if="orderleft">
 	             		<i ng-show="sortPrice" class="fa fa-caret-down"></i>
@@ -265,7 +287,7 @@
 	          		  </span>
 		          </a>
 		          <a href class="btn btn-primary" ng-click="sortBy('SRAvailableDate')">
-		          		<i translate="listpage.list.orderBy.time"></i>
+		          		<span translate="listpage.list.orderBy.time"></span>
 		          		&nbsp;
 		          		<span ng-if="orderright">
 			          		<i ng-show="sortDate" class="fa fa-caret-down"></i>
@@ -277,10 +299,10 @@
 	          <div class="clear pagination-top">
 		          	<div class="pull-left">
 		          		<a style="color: purple; border-bottom: 3px solid rgb(150, 65, 137);">
-		          			<i  class="fa fa-lg fa-list"></i>&nbsp;<i translate="listpage.list.switch.list"></i>
+		          			<i  class="fa fa-lg fa-list"></i>&nbsp;<span translate="listpage.list.switch.list"></span>
 		          		</a>
 		          		<a ui-sref="googlemapShare">
-		          			<i class="fa fa-lg fa-map-marker" ></i>&nbsp;<i translate="listpage.list.switch.map"></i>
+		          			<i class="fa fa-lg fa-map-marker" ></i>&nbsp;<span translate="listpage.list.switch.map"></span>
 		          		</a>
 		          	</div>
 	          	 <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm m-r-lg pull-right" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
@@ -392,19 +414,19 @@
                   </a>
 								</div>
 								<div class="price">
-									<span class="num">$[:property.SRPrice:]<span class="period"><i translate="listpage.list.row.price_unit"></i></span></span>
-									<span class="available"><i translate="listpage.list.row.time"></i>:&nbsp;&nbsp;<i style="color: darkred; font-size: 12px;">[:property.ER_AvailableDate:]</i></span>
+									<span class="num">$[:property.SRPrice:]<span class="period"><span translate="listpage.list.row.price_unit"></span></span></span>
+									<span class="available"><span translate="listpage.list.row.time"></span>:&nbsp;&nbsp;<span style="color: darkred; font-size: 12px;">[:property.ER_AvailableDate:]</span></span>
 								</div>
 								<div class="view" ui-sref="app.detailsShare({id:property.SRID,name:property.ER_No+' '+property.ER_St+' '+property.ER_Suburb+' '+property.ER_Region})">
-									<span class="view-num"><i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right" aria-hidden="true"></i></span>
+									<span class="view-num"><span translate="listpage.list.row.details"></span> <i class="fa fa-angle-right" aria-hidden="true"></i></span>
 								</div>
 								<div class="room-type">
 									<span class="room-size">[:property.SRName:]<i>&nbsp;room</i></span>
 								</div>
 								<div class="save">
 									<a class="save-delete-shortlist" ng-click="save2shortlist($index);shortlist=!shortlist">
-										<i ng-show="shortlist" style="color: pink;" class="fa fa-lg fa-heart">&nbsp;<i translate="listpage.list.row.save"></i></i>
-										<i ng-show="!shortlist" class="fa fa-lg fa-heart-o">&nbsp;<i translate="listpage.list.row.save"></i></i>
+										<i ng-show="shortlist" style="color: pink;" class="fa fa-lg fa-heart">&nbsp;<span translate="listpage.list.row.save"></span></i>
+										<i ng-show="!shortlist" class="fa fa-lg fa-heart-o">&nbsp;<span translate="listpage.list.row.save"></span></i>
 									</a>
 								</div>
 							</div>

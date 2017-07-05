@@ -10,15 +10,12 @@
 		$scope.no_pets=false;
 		$scope.girl_only=false;
 		$scope.boy_only=false;
-		$scope.stove=false;
-		$scope.dishwasher=false;
-		$scope.aircondition=false;
-		$scope.bed=false;
-		$scope.desk=false;
-		$scope.wardrob=false;
-		$scope.refrigerator=false;
+		$scope.furniture=false;
 		$scope.laundry=false;
-		$scope.wifi=false;
+		$scope.fullkitchen=false;
+		$scope.coffee=false;
+		$scope.aircondition=false;
+		$scope.media=false;
 		var ER_Feature = [];
 		$(window).scrollTop(0,0);//回到顶部
 		$animate.enabled(false);//消除carousel bug
@@ -77,54 +74,36 @@
 				//  console.log(ER_Feature[j]);
 				switch (ER_Feature[j])
 					{
-							 case "stove":
-								$scope.stove = true;
-							 break;
-							 case "dishwasher":
-							$scope.dishwasher = true;
+						case "girl_only":
+						 $scope.girl_only = true;
+						break;
+						case "boy_only":
+					 $scope.boy_only = true;
+					 break;
+						case "furniture":
+					 $scope.furniture = true;
+					 break;
+						case "laundry":
+					 $scope.laundry = true;
+					 break;
+						case "full_kitchen":
+					 $scope.full_kitchen = true;
+					 break;
+						case "coffee_bar":
+					 $scope.coffee_bar = true;
+					 break;
+						case "aircondition":
+					 $scope.aircondition = true;
+					 break;
+					 case "media":
+						 $scope.media = true;
+						break;
+					 case "no_smoking":
+						 $scope.no_smoking = true;
 							break;
-							 case "dryer":
-							$scope.dryer = true;
-							break;
-							 case "aircondition":
-							$scope.aircondition = true;
-							break;
-							 case "refrigerator":
-							$scope.refrigerator = true;
-							break;
-							 case "laundry":
-							$scope.laundry = true;
-							break;
-							 case "bed":
-							$scope.bed = true;
-							break;
-							case "desk":
-								$scope.desk = true;
-							 break;
-							case "wardrob":
-								$scope.wardrob = true;
-								 break;
-								case "wifi":
-										$scope.wifi = true;
-								break;
-								case "gas":
-								$scope.gas = true;
-								 break;
-								case "no_pets":
-								$scope.no_pets = true;
-								break;
-								case "girl_only":
-								$scope.girl_only = true;
-								break;
-							case "boy_only":
-								$scope.boy_only = true;
-								break;
-							case "no_party":
-								$scope.no_party = true;
-								break;
-								case "no_smoking":
-									$scope.no_smoking = true;
-									break;
+						 case "no_pets":
+								 $scope.no_pets = true;
+						 break;
 					}
 				 }
 			 }
