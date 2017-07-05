@@ -1055,7 +1055,7 @@ class CustomerController extends Controller
 		$sql = "call $proc_Name({$idMsg_sr})";
 
 		$result = DB::update($sql);
-		return $result;
+		return json_encode($result);
 	}
 
 	public function msg_received(Request $request)

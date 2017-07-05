@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: wirent-env
+    environment: lumen-env
 environment-defaults:
   wirent-env:
     branch: null
