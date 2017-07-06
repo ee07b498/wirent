@@ -21,6 +21,7 @@
 				var datafromhome = {};
 				var ER_Feature = [];
 				var vm = this;
+				$scope.descriptionlabel = "";
 				NgMap.getMap().then(function(map) {
 					vm.map = map;
 
@@ -29,6 +30,69 @@
 					alert('Clicked a link inside infoWindow');
 				};
 				$animate.enabled(false);//消除carousel bug
+				$scope.location = {};
+				$scope.dataResults = [];
+				$scope.location.postcode = "";
+				$scope.location.region = "";
+				$scope.location.suburb = "";
+				$scope.dataResults.push( $scope.location);
+				$scope.multipleLocationDemo = {};
+				$scope.multipleLocationDemo.selectedLocationWithGroupBy = [];
+				$scope.someGroupFn = function (item){
+				if (item.suburb[0] >= 'A' && item.suburb[0] <= 'M')
+					 return 'From A - M';
+				if (item.suburb[0] >= 'N' && item.suburb[0] <= 'Z')
+					 return 'From N - Z';
+				};
+			 /***************get the value from the input***********************************/
+			 function unique(arr) {
+						 var comparer = function compareObject(a, b) {
+								 if (a.suburb == b.suburb) {
+										 if (a.postcode < b.postcode) {
+												 return -1;
+										 } else if (a.postcode > b.postcode) {
+												 return 1;
+										 } else {
+												 return 0;
+										 }
+								 } else {
+										 if (a.suburb < b.suburb) {
+												 return -1;
+										 } else {
+												 return 1;
+										 }
+								 }
+						 }
+
+						 arr.sort(comparer);
+						 console.log("Sorted: " + JSON.stringify(arr));
+						 for (var i = 0; i < arr.length - 1; ++i) {
+								 if (comparer(arr[i], arr[i+1]) === 0) {
+										 arr.splice(i, 1);
+										 console.log("Splicing: " + JSON.stringify(arr));
+								 }
+						 }
+						 return arr;
+				 }
+					$scope.fn = function(search) {
+					 //do something with search
+					 console.log(search);
+					 data.inputStr = search;
+					 if(data.inputStr && data.inputStr.length > 2) {
+						$http.post('/customer/filt_address', data)
+						 .then(function(r) {
+							console.log('search===>',search);
+							console.log('r===>',r);
+							$scope.dataResults = unique(r.data);
+						 console.log('$scope.dataResults===>',$scope.dataResults);
+							console.log($scope.dataResults);
+						 }, function(e) {
+							console.log("数据有误"+ e);
+						 })
+					 } else {
+
+					 }
+			 }
 				/*
 				 * when SearchService.get() has children, set the result to localstorage,
 				 * when searchservice has no child, the localstorage will keep the previous
@@ -60,6 +124,11 @@
 				 }else{
 				 	datafromhome=$localStorage.datafromhome;
 				 	console.log('$localStorage.datafromhome',datafromhome);
+				 }
+				 if (datafromhome.ER_Region === "") {
+						$scope.descriptionlabel = datafromhome.ER_Description;
+				 }else {
+						$scope.descriptionlabel = datafromhome.ER_Suburb +" " + datafromhome.ER_Region;
 				 }
 		/****************************************************************************
 		 ****update the information passed from previous page starts** see the different in filter page

@@ -1,6 +1,6 @@
 'use strict';
 	angular.module('andy')
-	.controller('ModalCancelCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
+	.controller('ModalCancelCtrl', ['$http','$scope','$state', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $state,$modalInstance,items,utilConvertDateToString) {
 				$scope.shortlistDelete = {};
 				$scope.ok = function () {
 				$http.get('/customer/profile')
@@ -14,6 +14,7 @@
 						$http.post('/customer/shortlist/delete',$scope.shortlistDelete)
 								.then(function(r){
 									console.log("r=====>>"+r);
+									$modalInstance.dismiss('cancel');
 									$state.reload();
 								},function(e){
 										console.log(e);

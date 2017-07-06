@@ -132,7 +132,9 @@
 				$scope.showDetail = function() {
 						$scope.center = $scope.locations[1].center;
 				};
-
+				$scope.goback = function() {
+						$scope.center = $scope.locations[0].center;
+				};
 				$scope.gotoAnchor = function(company) {
 	      var newHash = company;
 	      if ($location.hash() !== newHash) {

@@ -1,8 +1,8 @@
 'use strict';
 	angular.module('andy')
-		.controller('listPageCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString','getDataService',
+		.controller('listPageCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$window','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString','getDataService',
 			function($scope,$animate,$log,$timeout,
-			$http,$state,$cookies,$rootScope,
+			$http,$state,$cookies,$window,$rootScope,
 			$localStorage,SearchService,
 			updateService,utilConvertDateToString,getDataService) {
 			var entireData = {};
@@ -14,6 +14,7 @@
 			// $scope.totalItems = 64;
 		  //   $scope.currentPage = 4;
 		  $animate.enabled(false);//消除carousel bug
+			$(window).scrollTop(0,0);
 		    var ER_Feature = [];
 		    // $scope.setPage = function (pageNo) {
 		    //   $scope.currentPage = pageNo;
@@ -199,12 +200,11 @@
 				 	console.log('$localStorage.datafromhome',datafromhome);
 				 }
 				  $scope.datafromhome=datafromhome;
-					if (typeof($scope.datafromhome.ER_Description) != "undefined") {
-						 $scope.descriptionlabel = $scope.datafromhome.ER_Description.slice(1,$scope.datafromhome.ER_Description.length-1);
+					if ($scope.datafromhome.ER_Region === "") {
+						 $scope.descriptionlabel = $scope.datafromhome.ER_Description;
 					}else {
 						 $scope.descriptionlabel = $scope.datafromhome.ER_Suburb +" " + $scope.datafromhome.ER_Region;
 					}
-
 			/******************display the features data passed through home*****************/
 				 if(datafromhome.ER_Feature!=""){
 				 	ER_Feature = datafromhome.ER_Feature.split(";");

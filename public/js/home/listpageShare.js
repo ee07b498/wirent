@@ -1,18 +1,20 @@
 'use strict';
 	angular.module('andy')
-		.controller('listPageShareCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString','getDataService',
+		.controller('listPageShareCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','$window','SearchService','updateService','utilConvertDateToString','getDataService',
 			function($scope,$animate,$log,$timeout,
 			$http,$state,$cookies,$rootScope,
-			$localStorage,SearchService,
+			$localStorage,$window,SearchService,
 			updateService,utilConvertDateToString,getDataService) {
-			var entireData = {};
-			var datafromhome = {};
-			var data = {};
-			$scope.favorsave = false;
-			$scope.shortlistInsert = {};
+			 var entireData = {};
+			 var datafromhome = {};
+			 var data = {};
+			 $scope.favorsave = false;
+			 $scope.shortlistInsert = {};
+			 $scope.descriptionlabel = "";
 			// $scope.totalItems = 64;
 		  //   $scope.currentPage = 4;
-		     $animate.enabled(false);//消除carousel bug
+	     $animate.enabled(false);//消除carousel bug
+			 $(window).scrollTop(0,0);
 		    var ER_Feature = [];
 				$scope.location = {};
 				$scope.dataResults = [];
@@ -181,6 +183,12 @@
 				 	console.log('$localStorage.datafromhome',datafromhome);
 				 }
 				  $scope.datafromhome=datafromhome;
+					if ($scope.datafromhome.ER_Region === "") {
+						 $scope.descriptionlabel = $scope.datafromhome.ER_Description;
+					}else {
+						 $scope.descriptionlabel = $scope.datafromhome.ER_Suburb +" " + $scope.datafromhome.ER_Region;
+					}
+					console.log($scope.descriptionlabel);
 			/******************display the features data passed through home*****************/
 				 if(datafromhome.ER_Feature!=""){
 				 	ER_Feature = datafromhome.ER_Feature.split(";");

@@ -1,6 +1,6 @@
   'use strict';
   angular.module('andy')
-   .controller('searchController', [
+   .controller('HomeController', [
     '$cookies',
     '$rootScope',
     '$state',

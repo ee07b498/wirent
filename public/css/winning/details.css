@@ -794,7 +794,26 @@
 	display: block
 }
 /*dream homes end*/
-
+.details-page .goback {
+  position: relative;
+  padding: 0 16px;
+  bottom: 230px;
+  width: 100px;
+  height: 30px;
+  top: -290px;
+  left: 1000px;
+  z-index: 99;
+  background-color: #fff;
+	box-shadow: 0 4px 12px 0 rgba(7, 17, 27, .1);
+}
+.details-page .goback a {
+  color: blue;
+  font-size: 16px;
+  line-height: 30px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
 /************************************/
 /*.introduction-head {
   width: 880px;

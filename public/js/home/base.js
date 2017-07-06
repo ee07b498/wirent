@@ -30,19 +30,34 @@ angular.module('andy', [
    .state('app.home', {
     url: '/home',
     //template:'<h1>homePage</h1>'
-    templateUrl: '/partials/search.html', //localhost:8080/home.tpl
+    templateUrl: '/partials/home.html', //localhost:8080/home.tpl
     controller: 'HomeController',
     resolve: {
         deps: ['$ocLazyLoad',
           function ($ocLazyLoad) {
             return $ocLazyLoad.load('ui.select').then(
                 function () {
-                    return $ocLazyLoad.load('js/home/common.js');
+                    return $ocLazyLoad.load('js/home/home.js');
                   }
             );
           }, ],
       },
   })
+  .state('app.search', {
+   url: '/search',
+   templateUrl: '/partials/search.html',
+   controller: 'searchController',
+   resolve: {
+       deps: ['$ocLazyLoad',
+         function ($ocLazyLoad) {
+           return $ocLazyLoad.load('ui.select').then(
+               function () {
+                   return $ocLazyLoad.load('js/home/common.js');
+                 }
+           );
+         }, ],
+     },
+ })
    .state('app.googlemap', {
     url: '/googlemap',
     //template:'<h1>homePage</h1>'
@@ -73,25 +88,6 @@ angular.module('andy', [
    .state('user', {
     url: '/user/:id',
     templateUrl: '/tpl/page/user',
-  })
-//				.state('app.search',{
-//					url:'/search',
-//					templateUrl:'/partials/search.html'
-//				})
-   .state('app.search', {
-    url: '/search',
-    templateUrl: '/partials/search.html',
-    controller: 'HomeController',
-    resolve: {
-        deps: ['$ocLazyLoad',
-          function ($ocLazyLoad) {
-            return $ocLazyLoad.load('ui.select').then(
-                function () {
-                    return $ocLazyLoad.load('js/home/listpage.js');
-                  }
-            );
-          }, ],
-      },
   })
    .state('app.businessDetails', {
     url: '/businessDetails',
@@ -168,11 +164,11 @@ angular.module('andy', [
     templateUrl: '/partials/newsDetail.html',
   })
   .state('app.contact', {
-   url: '/contactus',
-   templateUrl: '/partials/contact.html',
- })
-   .state('app.trainmap', {
-                url: '/trainmap',
-                templateUrl: '/partials/trainmap.html',
-              });
+    url: '/contactus',
+    templateUrl: '/partials/contact.html',
+  })
+  .state('app.trainmap', {
+    url: '/trainmap',
+    templateUrl: '/partials/trainmap.html',
+  });
 });

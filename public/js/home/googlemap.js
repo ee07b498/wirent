@@ -22,6 +22,7 @@
 				var ER_Feature = [];
 				var data = {};
 				var vm = this;
+				$scope.descriptionlabel = "";
 				NgMap.getMap().then(function(map) {
 					vm.map = map;
 
@@ -124,6 +125,11 @@
 				 }else{
 				 	datafromhome=$localStorage.datafromhome;
 				 	console.log('$localStorage.datafromhome',datafromhome);
+				 }
+				 if (datafromhome.ER_Region === "") {
+						$scope.descriptionlabel = datafromhome.ER_Description;
+				 }else {
+						$scope.descriptionlabel = datafromhome.ER_Suburb +" " + datafromhome.ER_Region;
 				 }
 		/****************************************************************************
 		 ****update the information passed from previous page starts** see the different in filter page

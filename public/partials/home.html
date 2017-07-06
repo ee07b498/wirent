@@ -1,698 +1,290 @@
-<div ng-controller="HomeController"> 
-	<div class="hero-wrap clear" style="background: url(img/Evergrand1366x614Tiny.jpg) no-repeat; height: 300px;">
-	 <div>
-			<div class="search-banner">
-			<div class="search-options clearfix">
-				<div id="search-tabs">
-					<div>
-						<div id="accommodation-offer" class="btn-group btn-group-justified" style="width:980px;margin:0 auto; border-radius:4px;background:rgba(100,100,100,0.2);">
-							<a ng-click="switchCheckBox1()" role="button" ng-class="{'active':active1}" class="btn no" style="border-radius:4px;">I need accommodation</a>
-							<a ng-click="switchCheckBox2()" role="button" ng-class="{'active':active2}" class="btn yes" style="border-radius:4px;">I need a flatmate</a>
+<div class="banner-search" ng-controller="HomeController">
+	<div class="clear">
+		<div class="header" data-stellar-background-ratio="0.07">
+			<div class="free-advs clear">
+				<ul>
+					<li ui-sref="app.search">
+						<h2 style="margin-bottom: -10px!important;">Need a room?</h2>
+						<span><i class="flaticon-properties-information2" ></i></span>
+						<!--<p>Place a free Room Wanted ad and make sure people with rooms can find you.</p>-->
+						<br />
+						<button class="btn-warning btn-lg" style="opacity: 1!important; width:100px">Go</button>
+					</li>
+					<li  ui-sref="app.search">
+						<h2 style="margin-bottom: -10px!important;">Get a room to let?</h2>
+						<!--<p>Place a free ad and rent your room in days find out more.</p>-->
+						<span><i class="flaticon-banknote2"></i></span>
+						<br />
+						<button class="btn-warning btn-lg" style="opacity: 1!important;width:100px">Go</button>
+					</li>
+				</ul>
+			</div>
+			<div class="cover-header"></div>
+
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div style="width:100%;" class="clear">
+		<div class="theme-section">
+			<section class="theme-specification">
+				<div class="top-cities clear">
+					<header class="latest-news-header">
+						<a class="latest-news-title-link">
+							<h1 class="latest-news-title h1 h1-left"  translate="tips.descriptions.title">主题专区</h1>
+						</a>
+					</header>
+					<div class="pics pics1 clear">
+						<div class="left1">
+							<div class="wh city-pic" ng-click="entireLocationSearch('%university;')" >
+								<a ng-click="entireLocationSearch('%university;')">
+									<a class="cover-img"></a>
+									<img src="../img/uni.jpg">
+									<span class="flaticon-college-graduation2" style="opacity: 1; color: lightblue;"></span>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<span class="flaticon-college-graduation2" style="opacity: 1; color: chocolate;"></span>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%university;')"><em translate='tips.descriptions.uni'></em></a>
+									</p>
+								</div>
+							</div>
+							<div class="w city-pic railroad" ng-click="entireLocationSearch('%train_station;')" >
+								<a ng-click="entireLocationSearch('%train_station;')">
+									<img src="img/station01Warm.jpg">
+									<i class="flaticon-train-on-railroad"></i>
+								</a>
+								<div class="holder1">
+									<p class="desTile1">
+										<i class="flaticon-train-on-railroad2" style="opacity: 1; color: orange;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%train_station;')"><em translate='tips.descriptions.station'>火车站</em></a>
+									</p>
+								</div>
+							</div>
+							<div class="wh city-pic graduation" ng-click="entireLocationSearch('%backpack;')">
+								<a ng-click="entireLocationSearch('%backpack;')" >
+									<img src="../img/backpacker02Warm.jpg">
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-backpack2" style="opacity: 1; color: greenyellow;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%backpack;')" ><em translate='tips.descriptions.backpack'>背包客</em></a>
+									</p>
+								</div>
+							</div>
+							<div class="wh city-pic park-city-space" ng-click="entireLocationSearch('%park;')" >
+								<a ng-click="entireLocationSearch('%park;')" >
+									<img src="../img/park01Warm.jpg">
+									<i class="flaticon-green-park-city-space"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-green-park-city-space2" style="opacity: 1; color: green;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%park;')" ><em translate='tips.descriptions.park'>近公园绿地</em></a>
+									</p>
+								</div>
+							</div>
+							<div class="wh city-pic open-book" ng-click="entireLocationSearch('%school;')" >
+								<a ng-click="entireLocationSearch('%school;')" >
+									<img src="img/schoolzone02Warm.jpg" >
+									<i class="flaticon-open-book"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-open-book2" style="opacity: 1; color: yellow;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%school;')" ><em translate='tips.descriptions.school'>学区房</em></a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="left1 clear">
+							<div class="wh city-pic flaticonpeople" ng-click="entireLocationSearch('%big_family;')" >
+								<a ng-click="entireLocationSearch('%big_family;')">
+									<img src="img/grand-front-yard-entranceWarm.jpg">
+									<i class="flaticon-people"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-people2" style="opacity: 1; color: pink;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%big_family;')"><em translate='tips.descriptions.bigfamily'>大庭院</em></a>
+									</p>
+								</div>
+								<!--<h3 class="title">清洁服务</h3>-->
+							</div>
+							<div class="wh city-pic shoppingcart" ng-click="entireLocationSearch('%shopping_mall;')" >
+								<a ng-click="entireLocationSearch('%shopping_mall;')">
+									<img src="img/Westfield_shopping_centre02Warm.jpg">
+									<i class="flaticon-shopping-cart"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+											<i class="flaticon-shopping-cart2" style="opacity: 1; color: darkred;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%shopping_mall;')"><em translate='tips.descriptions.shop'>购物商场</em></a>
+									</p>
+								</div>
+							</div>
+							<div class="right1 city-pic business-rental" ng-click="entireLocationSearch('%offical_rental;')" >
+								<a ng-click="entireLocationSearch('%offical_rental;')">
+									<img src="/img/officerental02Warm.jpg">
+									<i class="flaticon-business"></i>
+								</a>
+								<div class="holder1">
+									<i></i>
+									<p class="desTile1">
+										<i class="flaticon-business2" style="opacity: 1; color: blue;"></i>
+										<a class="city-title" rel="nofollow" ng-click="entireLocationSearch('%offical_rental;')"><em translate='tips.descriptions.office'>Office Rental</em></a>
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 		</div>
-<form  ng-show="active1" novalidate class="form-horizontal container form-container">
- 
- <div class="panel panel-default form-container form-panel" >
-    
-	<div class="row wrapper" >
-		<!--<div class="col-sm-1">
-      </div>-->
-      <div class="col-sm-2 m-b-xs m-l-xl">
-       		<select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
-        </select>
-    	</div>
-      
-      <div class="col-sm-8">
-        <div class="input-group">
-        <select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search> 
-          <!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-          <span class="input-group-btn">
-            <button class="btn btn-lg btn-success" ng-click="entireSearch()"  type="button">Search&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
-          </span>
-           
-        </div>
-      </div>
-      <div class="col-sm-2">
-      </div>
-    </div>
-    <div class="row wrapper">
-    	<!--<div class="form-col-sm-1 m-b-xs m-l-xl">
-    		<label class="m-t-xxl"></label>
-    		<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
-    	</div>
-    	<div class="form-col-sm-2  no-indent m-t-xs">
-    		<label class="m-t-lg"></label>
-    		<input type="text" class="form-control input-lg" placeholder="minPrice" aria-describedby="basic-addon1">
-    	</div>-->
-    	
-    	<div class="col-sm-3 no-indent m-l-xl">
-    		<label>minPrice</label>
-    		<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1" style="background: #487547; border-color: #216722;">
-			  	<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
-			  </span>
-			  <input type="text" class="form-control input-lg" placeholder="minPrice" ng-model="myMinPrice" aria-describedby="basic-addon1">
-			</div>
-    	</div>
-    	<!--<div class="form-col-sm-1 m-b-xs m-l-md">
-    		<label class="m-t-xxl"></label>
-    		<a style="color: white;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
-    	</div>
-    	<div class="form-col-sm-2  m-t-xs">
-    		<label class="m-t-md"></label>
-    		<input type="text" class="form-control input-lg" placeholder="maxPrice" aria-describedby="basic-addon1">
-    	</div>-->
-    	<div class="col-sm-3 no-indent">
-    		<label>maxPrice</label>
-    		<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1" style="background: #00de04; border-color: #00de04;">
-			  	<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
-			  </span>
-			  <input type="text" class="form-control input-lg" placeholder="maxPrice" ng-model="myMaxPrice" aria-describedby="basic-addon1">
-			</div>
-    	</div>
-    	
-    	<!--<div class="form-col-sm-1 m-b-xs m-l-xxl">
-    		<label class="m-t-xxl"></label>
-    		<a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a>
-    	</div>
-       <div class="col-sm-2 m-b-xs">
-       	<label class="m-t-sm">minBeds</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
-         
-        </select>
-       </div>-->
-       <div class="col-sm-1"></div>
-       <div class="col-sm-2">
-       	<label>minBeds</label>
-	       <div class="input-group">
-			  <select class="input-lg form-control w-sm inline v-middle" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
-         
-        	  </select>
-			  <span class="input-group-addon" style="background: #024a4c; border-color: #024a4c;"><a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a></span>
-		   </div>
-	   </div>
-	    <div class="col-sm-2">
-	    	<label>maxBeds</label>
-	       <div class="input-group">
-			 <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
-        
-        	</select>
-			  <span class="input-group-addon" style="background: #0a7e96; border-color:#0a7e96;"><a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a></span>
-		   </div>
-	   </div>
-      <!-- <div class="form-col-sm-1 m-b-xs">
-    		<label class="m-t-lg"></label>
-    		<a style="color: white; margin:0 15px;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
-    	</div>
-        <div class="col-sm-2 m-b-xs">
-        <label class="m-t-sm">maxBeds</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
-        
-        </select>
-       </div>-->
-    </div>
-   <!-- <div ng-show="hello" class="row wrapper">
-    	<div class="col-sm-3 m-b-xs"></div>
-       <div class="form-col-sm-1 m-b-xs">
-    		<label class="m-t-lg"></label>
-    		<a style="color: white;"><i class="fa fa-bed fa-lg" aria-hidden="true"></i></a>
-    	</div>
-       <div class="col-sm-2 m-b-xs">
-       	<label>minBeds</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
-         
-        </select>
-       </div>
-       <div class="form-col-sm-1 m-b-xs">
-    		<label class="m-t-lg"></label>
-    		<a style="color: white; margin:0 15px;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
-    	</div>
-        <div class="col-sm-2 m-b-xs">
-        <label>maxBeds</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
-        
-        </select>
-       </div>
-      	<div class="col-sm-1 m-b-xs"></div>
-    </div>
- -->   
-     <div ng-show="hello" class="row wrapper" >
-     	<div class="col-sm-4 m-b-xs">
-     		<label>descriptions</label>
-     		<div class="dropdown">
-     			<button type="button"  class="dropdown-toggle form-control input-lg" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="true" style="background: blueviolet;">Dropdown trigger<a></a></button>  
-	     		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton" style="margin-top: -2px;">
-				  <li class="dropdown-item">
-					  	<div class="input-group">
-					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
-					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
-					      </span>
-					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
-					    </div>
-				  </li>
-				  <li class="dropdown-item">
-				  		<div class="input-group">
-					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
-					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
-					      </span>
-					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
-					    </div>
-				  </li>
-				  <li class="dropdown-item">
-				  		<div class="input-group">
-					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
-					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
-					      </span>
-					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
-					    </div>
-				  </li>
-				  <li class="dropdown-item">
-				  		<div class="input-group">
-					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
-					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
-					      </span>
-					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
-					    </div>
-				  </li>
-				  <li class="dropdown-item">
-				  		<div class="input-group">
-					      <span class="input-group-addon" style="padding: 0 0 1px 5px;">
-					        <input type="checkbox" aria-label="Checkbox for following text input" style="width: 20px; height: 20px; font: 100;">
-					      </span>
-					      <input type="text" class="form-control" readonly="readonly" aria-label="Text input with checkbox">
-					    </div>
-				  </li>
-				</ul>
-     		</div>
-     	</div>
-    	<div class="col-sm-3 m-b-xs">
-    		<label class="m-t-xxs">Available Time:</label>
-            <p class="input-group">
-              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default btn-lg" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>       
-        </div>
-       <div class="col-sm-2 m-b-xs">
-       	<label>minBathRoom</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum"  >
-         
-        </select>
-       </div>
-     <!--  <div class="col-sm-2 m-b-xs">
-       	<label>maxBathRoom</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
-          
-        </select>
-       </div>-->
-       <div class="col-sm-2 m-b-xs">
-       	<label>minParking</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-         
-        </select>
-       </div>
-        <!--<div class="col-sm-2 m-b-xs">
-        <label>maxParking</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-        
-        </select>
-       </div>-->
-      	<div class="col-sm-1 m-b-xs"></div>
-    </div>
-     <div ng-show="hello" class="row wrapper" >
-     	<div class="col-sm-2 m-b-xs">
-        <label>minArea</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-        
-        </select>
-       </div>
-       <div class="col-sm-2 m-b-xs">
-        <label>maxArea</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-        
-        </select>
-       </div>
-     	<div class="col-sm-4 m-b-xs">
-     		<label>features</label>
-    		<input type="text" class="form-control input-lg" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
-     	</div>
-     	<div class="col-sm-4 m-b-xs">
-     		<label>descriptions</label>
-    		<input type="text" class="form-control input-lg" placeholder="keyword description" ng-modle="keywords" aria-describedby="basic-addon1">
-     	</div>
-     </div>
-    <div class="row wrapper" >
-    	<div class="col-sm-10"></div>
-    	<div class="col-sm-2">
-    		<a style="color: gold; display: block; " ng-click="hello = !hello">
-    			<span ng-show="!hello">more options&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-    			<span ng-show="hello">less option&nbsp;<i class="fa fa-chevron-circle-up"></i></span>			
-    		</a>
-    	</div>
-    	
-    </div>
-</div>
-
-</form>
-
-
- <form  ng-show="active2" novalidate class="form-horizontal container form-container" >
- 
- <div class="panel panel-default form-container form-panel" >
-    
-	<div class="row wrapper">
-      <div class="form-col-sm-2  m-b-xs">
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myMode" ng-options="mode.name as mode.name for mode in Modes" >
-          
-        </select>
-       </div>
-      
-      <div class="col-sm-8">
-        <div class="input-group">
-          <input type="text" class="input-lg form-control" placeholder="Search">
-          <span class="input-group-btn">
-            <button class="btn btn-lg btn-success" type="button">Search&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
-          </span>
-        </div>
-      </div>
-      <div class="col-sm-2">
-      </div>
-    </div>
-     <div class="row wrapper">
-    	<div class="col-sm-3 m-b-xs">
-    		<label>Property type</label>
-       		<select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
-        </select>
-    	</div>
-    	<div class="form-col-sm-1 m-b-xs">
-    		<label class="m-t-xxl"></label>
-    		<a style="color: white;"><i class="fa fa-usd fa-lg" aria-hidden="true"></i></a>
-    	</div>
-    	<div class="form-col-sm-2 m-b-xs no-indent">
-    		<label class="m-t-lg"></label>
-    		<input type="text" class="form-control input-lg" placeholder="minPrice" aria-describedby="basic-addon1">
-    	</div>
-    	<div class="form-col-sm-1 m-b-xs">
-    		<label class="m-t-xxl"></label>
-    		<a style="color: white;"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></a>
-    	</div>
-    	<div class="form-col-sm-2 m-b-xs">
-    		<label class="m-t-md"></label>
-    		<input type="text" class="form-control input-lg" placeholder="maxPrice" aria-describedby="basic-addon1">
-    	</div>
-    	<div class="col-sm-3 m-b-xs">
-    		<label class="m-t-xs">Available Time:</label>
-            <p class="input-group">
-              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-lg btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>       
-        </div>
-    </div>
-    
-    <div class="row wrapper" ng-show="hello1">
-     	<div class="col-sm-2 m-b-xs">
-        <label>minArea</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-        
-        </select>
-       </div>
-       <div class="col-sm-2 m-b-xs">
-        <label>maxArea</label>
-        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-        
-        </select>
-       </div>
-     	<div class="col-sm-4 m-b-xs">
-     		<label>features</label>
-    		<input type="text" class="form-control input-lg" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
-     	</div>
-     	<div class="col-sm-4 m-b-xs">
-     		<label>descriptions</label>
-    		<input type="text" class="form-control input-lg" placeholder="keyword description" aria-describedby="basic-addon1">
-     	</div>
-     </div>
-   <div class="row wrapper" >
-    	<div class="col-sm-10"></div>
-    	<div class="col-sm-2">
-    		<a style="color: gold; display: block;" ng-click="hello1 = !hello1">
-    			more options&nbsp;<i class="fa fa-angle-double-right" ng-show="!hello1"></i>
-    						<i class="fa fa-angle-double-down" ng-show="hello1"></i>
-    		</a>
-    	</div>
-    	
-    </div>
-	</div>
-</form>
-
-	  </div>  
-	  <div class="ads"></div>
-	  
-	</div>
-<!--	<div class="clear">
-			<section class="content-wrap main-area redesign" id="main-area">
-				<section class="latest-news">
-					<div class="latest-news-inner-wrap cfix">
+		<div class="clear"></div>
+			<div class="theme-section" id="businessSection">
+				<section class="theme-specification">
+					<div class="top-cities clear">
 						<header class="latest-news-header">
-							<a href="#" class="latest-news-title-link">
-								<h2 class="latest-news-title">latest news</h2></a>
+							<a class="latest-news-title-link">
+								<h1 class="latest-news-title h1 h1-right" translate='tips.business.title'>商家专区</h1></a>
 						</header>
-						<article class="latest-news-item">
-							<div class="media-wrap">
-								<a href="#">
-									<img src="https://strap.domain.com.au/domain-homepage/DomainHomePage-17-04-05-03-32-28-0.jpg" alt="After the boom: What it looks like when a bubble bursts">
+						<div class="pics clear">
+							<div class="left">
+								<div class="wh city-pic moveicon" ng-click="businessSearch('move')">
+									<a ng-click="businessSearch('move')">
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">-->
+										<i class="flaticon-moving-home-transport-for-boxes"></i>
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" ><em translate='tips.business.move.title'>搬家服务</em></a>
+											<!-- <a ng-click="businessSearch('move')"><span><strong translate='tips.business.move.tip_1'>长途搬家</strong></span></a>
+											<a ng-click="businessSearch('move')"><span><strong translate='tips.business.move.tip_2'>短途搬家</strong></span></a> -->
+										</p>
+									</div>
+									<!--<h3 class="title">搬家服务</h3>-->
+								</div>
+								<div class="wh city-pic paintingicon" ng-click="businessSearch('painting')">
+									<a ng-click="businessSearch('painting')">
+										<i class="flaticon-paintbrush"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="painting">-->
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')"><em translate='tips.business.painting.title'>painting</em></a>
+											<!-- <a ng-click="businessSearch('painting')"><span><strong translate='tips.business.painting.tip_1'>房屋粉刷</strong></span></a>
+											<a ng-click="businessSearch('painting')"><span><strong translate='tips.business.painting.tip_2'>局部装修</strong></span></a> -->
+										</p>
+									</div>
+									<!--<h3 class="title">painting</h3>-->
+								</div>
+								<div class="wh city-pic storageicon" ng-click="businessSearch('storage')">
+									<a ng-click="businessSearch('storage')">
+										<i class="flaticon-factory-stock-house"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="仓储">-->
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')"><em translate='tips.business.store.title'>仓储</em></a>
+											<!-- <a ng-click="businessSearch('storage')"><span><strong translate='tips.business.store.tip_1'>仓储</strong></span></a>
+											<a ng-click="businessSearch('storage')"><span><strong translate='tips.business.store.tip_2'>仓储</strong></span></a> -->
+										</p>
+									</div>
+									<!--<h3 class="title">仓储</h3>-->
+								</div>
+								<div class="wh city-pic handymanicon" ng-click="businessSearch('handyman')">
+									<a ng-click="businessSearch('handyman')">
+										<i class="flaticon-handyman-tools"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="Handyman">-->
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')"><em translate='tips.business.handyman.title'>Handyman</em></a>
+											<!-- <a ng-click="businessSearch('handyman')" ><span><strong translate='tips.business.handyman.tip_1'>pulumber</strong></span></a>
+											<a ng-click="businessSearch('handyman')"><span><strong translate='tips.business.handyman.tip_2'> 水工</strong></span></a> -->
+										</p>
+									</div>
+									<!--<h3 class="title">Handyman</h3>-->
+								</div>
+								<div class="wh city-pic cleanicon" ng-click="businessSearch('clean')">
+									<a ng-click="businessSearch('clean')">
+										<i class="flaticon-vacuum"></i>
+										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/tj.jpg?_v=20170515195947" alt="清洁服务">-->
+									</a>
+									<div class="holder">
+										<i></i>
+										<p class="desTile">
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')"><em translate='tips.business.clean.title'>清洁服务</em></a>
+											<!-- <a ng-click="businessSearch('clean')"><span><strong translate='tips.business.clean.tip_1'>上门服务</strong></span></a>
+											<a ng-click="businessSearch('clean')"><span><strong translate='tips.business.clean.tip_2'>电话预约</strong></span></a> -->
+										</p>
+									</div>
+									<!--<h3 class="title">清洁服务</h3>-->
+								</div>
+								<div class="wh city-pic applianceicon" ng-click="businessSearch('appliance')">
+								<a ng-click="businessSearch('appliance')">
+									<i class="flaticon-socket"></i>
+									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="家电维修">-->
 								</a>
+								<div class="holder">
+									<i></i>
+									<p class="desTile">
+										<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')"><em translate='tips.business.app.title'>家电</em></a>
+										<!-- <a ng-click="businessSearch('appliance')"><span><strong translate='tips.business.app.tip_1'>家电</strong></span></a>
+										<a ng-click="businessSearch('appliance')"><span><strong translate='tips.business.app.tip_2'> 电话预约</strong></span></a> -->
+									</p>
+								</div>
+								<!--<h3 class="title">家电</h3>-->
 							</div>
-							<a class="latest-news-item-title" href="">After the boom: What it looks like when a bubble bursts</a>
-						</article>
-						<article class="latest-news-item">
-							<div class="media-wrap">
-								<a href="#">
-									<img src="https://strap.domain.com.au/domain-homepage/DomainHomePage-17-04-05-03-32-29-1.jpg" alt="Buying property? You shouldn&amp;#39;t listen to family and friends">
+							</div>
+							<div class="wh city-pic take_awayicon" ng-click="businessSearch('take_away')">
+								<a ng-click="businessSearch('take_away')">
+									<i class="flaticon-food"></i>
+									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="外卖">-->
 								</a>
+								<div class="holder">
+									<i></i>
+									<p class="desTile">
+										<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')"><em translate='tips.business.food.title'>外卖</em></a>
+										<!-- <a ng-click="businessSearch('take_away')"><span><strong translate='tips.business.food.tip_1'>外卖</strong></span></a>
+										<a ng-click="businessSearch('take_away')"><span><strong translate='tips.business.food.tip_2'>外卖</strong></span></a> -->
+									</p>
+								</div>
+								<!--<h3 class="title">外卖</h3>-->
 							</div>
-							<a class="latest-news-item-title" href="#">Buying property? You shouldn&#39;t listen to family and friends</a>
-						</article>
-						<article class="latest-news-item">
-							<div class="media-wrap">
-								<a href="#">
-									<img src="https://strap.domain.com.au/domain-homepage/DomainHomePage-17-04-05-03-32-29-2.jpg" alt="$7 million cottage: Australia&amp;#39;s priciest one-bedroom house?">
+							<div class="w city-pic free_posticon" ng-click="businessSearch('free_post')">
+								<a ng-click="businessSearch('free_post')">
+									<i class="flaticon-puzzle"></i>
+									<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="freepost">-->
 								</a>
+								<div class="holder">
+									<i></i>
+									<p class="desTile">
+										<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')"><em translate='tips.business.post.title'>freepost</em></a>
+										<!-- <a ng-click="businessSearch('free_post')"><span><strong translate='tips.business.post.tip_1'>freepost</strong></span></a>
+										<a ng-click="businessSearch('free_post')"><span><strong translate='tips.business.post.tip_2'>freepost</strong></span></a> -->
+									</p>
+								</div>
+								<!--<h3 class="title">freepost</h3>-->
 							</div>
-							<a class="latest-news-item-title" href="#">$7 million cottage: Australia&#39;s priciest one-bedroom house?</a>
-						</article>
-						<article class="latest-news-item">
-							<div class="media-wrap">
-								<a href="#">
-									<img src="https://strap.domain.com.au/domain-homepage/DomainHomePage-17-04-05-03-32-29-3.jpg" alt="The kitchen items that are worth splurging on">
-								</a>
-							</div>
-							<a class="latest-news-item-title" href="#">The kitchen items that are worth splurging on</a>
-						</article>
+						</div>
 					</div>
 				</section>
-			</section>	
-		</div>
-		<div class="clearfix">
-			<div id="dream-homes-section" style="display: block; margin-top: 5px;">
-				<section class="dream-homes">
-					<h1 class="dream-homes-main-title">Dream Homes</h1>
-					<div class="content-wrap dream-homes-container is-carousel">
-						<ul class="dream-homes-list" style="width: 4497px; left: 0px;">
-							<li class="dream-homes-item " data-adid="2013482649" data-listingtype="Residential" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="2013482649" data-listingtype="Residential" data-position="1">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Fletchers  Canterbury</span>
-										<span class="dream-homes-title-suburb">Balwyn, Vic </span>
-										</h2>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class=" fa fa-bed"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-bath"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            1
-                                        </span>
-										<span class="fa fa-car"></span>
-										</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013482649.jpg" alt="Balwyn, Vic">
-							</li>
-							<li class="dream-homes-item " data-adid="2013431230" data-listingtype="Residential" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="2013431230" data-listingtype="Residential" data-position="2">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
-										<span class="dream-homes-title-suburb">Toorak, Vic </span>
-										</h2>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-bed"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-bath"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-car"></span>
-										</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013431230.jpg" alt="Toorak, Vic">
-							</li>
-							<li class="dream-homes-item " data-adid="2013160302" data-listingtype="Residential" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="2013160302" data-listingtype="Residential" data-position="3">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
-										<span class="dream-homes-title-suburb">South Yarra, Vic </span>
-										</h2>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-bed"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-bath"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-car"></span>
-										</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013160302.jpg" alt="South Yarra, Vic">
-							</li>
-							<li class="dream-homes-item is-lazy-loading" data-adid="2013336062" data-listingtype="NewDevelopment" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="2013336062" data-listingtype="NewDevelopment" data-position="4">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Lechte Corp</span>
-										<span class="dream-homes-title-suburb">Hawthorn, Vic </span>
-										</h2>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-bed"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-bath"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-car"></span>
-										</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013336062.jpg" alt="Hawthorn, Vic">
-							</li>
-							<li class="dream-homes-item is-lazy-loading" data-adid="2013260868" data-listingtype="Residential" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="2013260868" data-listingtype="Residential" data-position="5">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Marshall White Stonnington</span>
-										<span class="dream-homes-title-suburb">Glen Iris, Vic </span>
-										</h2>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-bed"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-bath"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-car"></span>
-										</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013260868.jpg" alt="Glen Iris, Vic">
-							</li>
-							<li class="dream-homes-item is-lazy-loading" data-adid="2013498866" data-listingtype="NewDevelopment" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="2013498866" data-listingtype="NewDevelopment" data-position="6">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Trenerry Property Group  Pty Ltd</span>
-										<span class="dream-homes-title-suburb">West Melbourne, Vic </span>
-										</h2>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-bed"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-bath"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-car"></span>
-										</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013498866.jpg" alt="West Melbourne, Vic">
-							</li>
-							<li class="dream-homes-item is-lazy-loading" data-adid="2013483343" data-listingtype="Residential" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="2013483343" data-listingtype="Residential" data-position="7">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Fletchers  Canterbury</span>
-										<span class="dream-homes-title-suburb">Surrey Hills, Vic </span>
-										</h2>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            5
-                                        </span>
-										<span class="fa fa-bed"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            4
-                                        </span>
-										<span class="fa fa-bath"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-car"></span>
-										</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013483343.jpg" alt="Surrey Hills, Vic">
-							</li>
-							<li class="dream-homes-item is-lazy-loading" data-adid="1785" data-listingtype="Project" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="1785" data-listingtype="Project" data-position="8">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-project-name">Collins Arch</span>
-										<span class="dream-homes-title-suburb">Melbourne, Vic </span>
-										</h2>
-										<span class="dream-homes-project-agency-name">Colliers l Collins Arch</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes1785.jpg" alt="Melbourne, Vic">
-							</li>
-							<li class="dream-homes-item is-lazy-loading" data-adid="2013491279" data-listingtype="NewDevelopment" style="width: 499.667px;">
-								<a href="#" class="dream-homes-item-link" data-adid="2013491279" data-listingtype="NewDevelopment" data-position="9">
-									<header class="dream-homes-item-header">
-										<span class="dream-homes-item-header-wrap">
-                                <h2 class="dream-homes-title">
-                                        <span class="dream-homes-title-agency-name">Protec Property Group | Illusso</span>
-										<span class="dream-homes-title-suburb">Kew, Vic </span>
-										</h2>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            3
-                                        </span>
-										<span class="fa fa-bed"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-bath"></span>
-										</span>
-										<span class="f-icon with-text">
-                                        <span class="copy">
-                                            2
-                                        </span>
-										<span class="fa fa-car"></span>
-										</span>
-										</span>
-									</header>
-								</a>
-								<img class="dream-homes-item-img" data-lazy-src="https://strap.domain.com.au/dream-homes-vic/DreamHomes2013491279.jpg" alt="Kew, Vic">
-							</li>
-						</ul>
-						<a href="javascript:;" class="dream-homes-prev-btn" style="display: none;">
-							<span class="icon fa fa-chevron-circle-left"></span><span class="hide-visually">previous</span>
-						</a>
-						<a href="javascript:;" class="dream-homes-next-btn" style="display: block;">
-							<span class="icon fa fa-chevron-circle-right"></span><span class="hide-visually">next</span>
-						</a>
-					</div>
-				</section>
-
-				<script src="js/index.js"></script>
 			</div>
-			<div id="adspot-970x250_728x90-pos-1" class="btf-ad ad">
-				<script type="text/javascript">
-					var titan = window.titan || {};
-					if(false) {
-						titan.requestConditionalAd = titan.requestConditionalAd || [];
-						titan.requestConditionalAd.push("adspot-970x250_728x90-pos-1");
-					} else {
-						titan.requestAd = titan.requestAd || [];
-						titan.requestAd.push("adspot-970x250_728x90-pos-1");
-					}
-				</script>
-			</div>
-	
-			
+	</div>
+		<div class="clear">
+			<section hotrent class="dream-homes">
+			</section>
 		</div>
--->
 </div>

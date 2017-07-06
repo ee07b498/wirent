@@ -1,8 +1,9 @@
 ;(function () {
   'use strict';
-  angular.module('andy').controller('businessCtrl', ['$scope', '$http', '$cookies', '$rootScope', '$localStorage', 'SearchService', 'updateService','pagerService', function ($scope, $http, $cookies, $rootScope, $localStorage, SearchService, updateService,pagerService) {
+  angular.module('andy').controller('businessCtrl', ['$scope', '$http', '$cookies', '$rootScope', '$localStorage','$window', 'SearchService', 'updateService','pagerService', function ($scope, $http, $cookies, $rootScope, $localStorage,$window, SearchService, updateService,pagerService) {
     var businessData = {};
     var datafromhome = {};
+     $(window).scrollTop(0,0);
     $scope.datafromhome = '';
     if (JSON.stringify(SearchService.get()) != '{}') {
       $localStorage.businessData = SearchService.get().data;
