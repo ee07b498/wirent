@@ -1855,6 +1855,12 @@
                ER_Feature: ER_Feature
               };
              console.log(entireData);
+             if (entireData.ER_Region === "") {
+                entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
+             }else {
+                entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
+                entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
+             }
              getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
                   $scope.data = result;
                   console.log($scope.data);
@@ -1865,17 +1871,10 @@
                 result = Math.ceil(result/20);
                 entireData.OrderBy = 'ER_AvailableDate';
                 entireData.PageID = 0;
-                entireData.ER_Suburb = suburb;
-                entireData.ER_Region = region;
                  console.log(entireData);
                  $http.post('/customer/filt/entire', entireData)
                   .then(function(r) {
-                    if (entireData.ER_Region === "") {
-                       entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
-                    }else {
-                       entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
-                       entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
-                    }
+
                    SearchService.set(r);
                    updateService.set(entireData);
                    console.log('r===>', r);
@@ -1926,6 +1925,12 @@
                 ER_Feature: ER_Feature
                };
               console.log(shareData);
+              if (shareData.ER_Region === "") {
+                 shareData.ER_Description = shareData.ER_Description.slice(1,shareData.ER_Description.length-1);
+              }else {
+                 shareData.ER_Suburb = suburb.slice(0,shareData.ER_Suburb.length-1);
+                 shareData.ER_Region = region.slice(0,shareData.ER_Region.length-1);
+              }
               getDataService.getDataRequests('/customer/filt/share/count',shareData).then(function(result){
                    $scope.data = result;
                    console.log($scope.data);
@@ -1940,12 +1945,7 @@
 
                   $http.post('/customer/filt/share', shareData)
                    .then(function(r) {
-                   if (shareData.ER_Region === "") {
-                      shareData.ER_Description = shareData.ER_Description.slice(1,shareData.ER_Description.length-1);
-                   }else {
-                      shareData.ER_Suburb = suburb.slice(0,shareData.ER_Suburb.length-1);
-                      shareData.ER_Region = region.slice(0,shareData.ER_Region.length-1);
-                   }
+
                     SearchService.set(r);
                     updateService.set(shareData);
                     console.log('r===>', r);
