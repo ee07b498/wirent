@@ -69,7 +69,7 @@
 		.controller('shortlistCtrl',['$scope','$http','$state','$modal','$log','SearchService',function($scope,$http,$state,$modal,$log,SearchService){
 			// $scope.shortlistData=SearchService.get();
 			 $scope.shortlistcheckdata = {};
-
+			 $scope.shortlistData = [];
 			$http.get('/customer/profile')
 			.then(function(r) {
 				console.log(r);
@@ -78,15 +78,78 @@
 					$scope.shortlistcheckdata.CLType = 'FavorSave';
 					$http.post('/customer/shortlist', $scope.shortlistcheckdata)
 							.then(function(r){
-								$scope.shortlistData = r.data;
-								console.log('r',r);
+								for (var i = 0; i < r.data.length; i++) {
+									$scope.shortlistData[$scope.shortlistData.length] = r.data[i][0];
+								}
+								console.log('$scope.shortlistData',$scope.shortlistData);
 							},function(e){
 								console.log("数据有误");
 							});
 				}
 
 			});
+			$scope.entireCheck = function(){
+				$http.get('/customer/profile')
+				.then(function(r) {
+					console.log(r);
+					if(r.data.customer_login_status){
+						$scope.shortlistcheckdata.CID = r.data.CID;
+						$scope.shortlistcheckdata.CLType = 'FavorSave';
+						$http.post('/customer/shortlist', $scope.shortlistcheckdata)
+								.then(function(r){
+									for (var i = 0; i < r.data.length; i++) {
+										$scope.shortlistData[$scope.shortlistData.length] = r.data[i][0];
+									}
+									console.log('$scope.shortlistData',$scope.shortlistData);
+								},function(e){
+									console.log("数据有误");
+								});
+					}
 
+				});
+			}
+			$scope.shareCheck = function(){
+				$http.get('/customer/profile')
+				.then(function(r) {
+					console.log(r);
+					if(r.data.customer_login_status){
+						$scope.shortlistcheckdata.CID = r.data.CID;
+						$scope.shortlistcheckdata.CLType = 'ShareSave';
+						$http.post('/customer/shortlist', $scope.shortlistcheckdata)
+								.then(function(r){
+									for (var i = 0; i < r.data.length; i++) {
+										$scope.shortlistData[$scope.shortlistData.length] = r.data[i][0];
+									}
+									console.log('$scope.shortlistData',$scope.shortlistData);
+								},function(e){
+									console.log("数据有误");
+								});
+					}
+
+				});
+			}
+			function orderObjectBy(items, field, reverse) {
+							// Build array
+							var filtered = [];
+							for (var key in items) {
+									if (field === 'ER_Price')
+											filtered.push(items[key]);
+									else
+											filtered.push(items[key]);
+							}
+							// Sort array
+							filtered.sort(function (a, b) {
+									if (field === 'ER_Price')
+											return (a[field] > b[field] ? 1 : -1);
+									else
+											return (a[field] > b[field] ? 1 : -1);
+							});
+							// Reverse array
+							if (reverse)
+									filtered.reverse();
+							return filtered;
+
+				}
 				$scope.remove = function (index) {
 					var modalInstance = $modal.open({
 						templateUrl: 'myModalCancel.html',
@@ -94,7 +157,7 @@
 						size: 'sm',
 						resolve: {
 							items: function () {
-								return $scope.shortlistData[index][0].ER_ID;
+								return $scope.shortlistData[index].ER_ID;
 							}
 						}
 					});
@@ -106,7 +169,6 @@
 		}
 			/*********************sortby*********************************************/
 			$scope.sortBy = function(orderName){
-				alert(777);
 				if(orderName==='ER_Price'){
 					$scope.orderright = false;
 					$scope.orderleft = true;
@@ -116,10 +178,9 @@
 					$scope.orderright = true;
 					$scope.sortDate=!$scope.sortDate;
 				}
-
 				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
-					$scope.orderName = orderName;
-			//				$scope.orderName = order+'';
+					$scope.orderName = orderName +'';
+				$scope.shortlistData = orderObjectBy($scope.shortlistData,orderName,$scope.reverse);
 			}
 			/*********************sortby ends*********************************************/
 
@@ -136,7 +197,6 @@
 								}
 							}
 						});
-
 						modalInstance.result.then(function (selectedItem) {
 							$scope.selected = selectedItem;
 						}, function () {

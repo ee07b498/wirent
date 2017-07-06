@@ -19,7 +19,7 @@
 								<div class="box1" ng-show="boxshow1">
 									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
 										<div class="searchbar1">
-											<ui-select multiple ng-model="_multipleLocationDemo._selectedLocationWithGroupBy" key-bind="{ enter: 'shareLocationSearch()'}" theme="bootstrap">
+											<ui-select multiple ng-model="_multipleLocationDemo._selectedLocationWithGroupBy" key-bind="{ enter: 'shareLocationSearch()'}" theme="bootstrap" style="text-overflow:ellipsis;">
 												 <ui-select-match placeholder="Select location...">[:$item.suburb+" "+$item.region+" "+$item.postcode:]</ui-select-match>
 												 <ui-select-choices group-by="someGroupFn" refresh="_fn($select.search)" refresh-delay="100" repeat="_location in _dataResults track by $index | propsFilter: {suburb: $select.search, postcode: $select.search}">
 													 <div ng-bind-html="_location.region | highlight: $select.search"></div>
@@ -47,7 +47,7 @@
 										<!-- <select-search1 datas1="datas1" get-data1="getData1(searchField1)" change1="change1(x1)" bind="searchField1" x1="x1"></select-search1> -->
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
 										<div class="searchbar1">
-											<ui-select multiple ng-model="_multipleDemo._selectedPeopleWithGroupBy" theme="bootstrap" key-bind="{ enter: 'shareStationSearch(%station;)'}">
+											<ui-select multiple ng-model="_multipleDemo._selectedPeopleWithGroupBy" theme="bootstrap" key-bind="{ enter: 'shareStationSearch(%station;)'}" >
 											 <ui-select-match placeholder="Select train station...">[:$item.station:]</ui-select-match>
 											 <ui-select-choices group-by="someGroupFnStation" repeat="_person in _people | propsFilter: {station: $select.search, suburb: $select.search}">
 												 <div ng-bind-html="_person.station | highlight: $select.search"></div>
@@ -232,7 +232,7 @@
 												<div class="sc-course-cart" ng-click="_get_Lidcome_T2()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Lidcome_T2">
-															Lidcome
+															Lidcombe
 														</div>
 
 													</div>
@@ -966,7 +966,7 @@
 												<div class="sc-course-cart" ng-click="get_Lidcome_T2()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Lidcome_T2">
-															Lidcome
+															Lidcombe
 														</div>
 
 													</div>

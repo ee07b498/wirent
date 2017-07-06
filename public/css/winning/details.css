@@ -373,7 +373,8 @@
     display: inline-block;
     width: 808px;
     vertical-align: top;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
+    margin-top: 20px;
 }
 .details-page .introduction-wrapper .introduction .name {
     font-size: 16px;
@@ -412,6 +413,7 @@
 }
 /*********************features section start********************************/
 .details-page .introduction-wrapper .introduction .introContent .content ul li.list-features {
+    margin-bottom: 15px;
     width: 25%;
 }
 .details-page .introduction-wrapper .introduction .introContent .content ul li .features {
@@ -434,7 +436,7 @@
     text-shadow: none;
 }
 .details-page .introduction-wrapper .introduction .feature {
-    margin-top: 34px;
+    margin-top: 30px;
 }
 .details-page .introduction-wrapper .introduction .feature .featureContent {
     padding-top: 25px;
@@ -442,6 +444,13 @@
     line-height: 28px;
     overflow: hidden;
     max-height: 411px;
+}
+.details-page .introduction-wrapper .introduction .feature .featureContent p {
+  padding-left: 40px;
+}
+.details-page .introduction-wrapper .introduction .feature .featureContent ul li {
+  padding-left: 0;
+  text-align: left;
 }
 .details-page .introduction-wrapper .introduction .feature .featureContent span {
     display: table-cell;
