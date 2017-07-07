@@ -1079,7 +1079,7 @@
 						// 	if ($scope.favorsave) {
 							 shortlistInsert.CID =r.data.CID;
 							 shortlistInsert.CLType="ShareSave";
-							 shortlistInsert.CLDetail=$scope.entireData[$index].ER_ID;
+							 shortlistInsert.CLDetail=$scope.entireData[$index].SRID;
 							 shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
 							 console.log("shortlistInsert",shortlistInsert);
 							 $http.post('/customer/shortlist/insert', shortlistInsert)

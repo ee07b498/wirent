@@ -85,6 +85,8 @@
 	<script src="/js/home/footer.js"></script>
 	<script src="/js/home/contact.js"></script>
 	<script src="/js/home/home.js"></script>
+	<script src="/js/home/landlord.js"></script>
+	<script src="/js/home/ui-nav.js"></script>
 </body>
 
 </html>

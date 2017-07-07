@@ -233,6 +233,7 @@
     line-height: 42px;
     color: #fff;
     font-size: 22px;
+		display: inline;
 }
 .my-shortlist .truncate-single {
     white-space: nowrap;

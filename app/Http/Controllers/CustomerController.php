@@ -218,17 +218,17 @@ class CustomerController extends Controller
 		$data = array();
 		if ($include_area==true)
 		{
-			$proc_name = 'include_area';
-			$sql = "call $proc_name('{$ER_Suburb}')";
-			$SuburbSet = DB::select($sql);
-
-			$ER_Suburb = '';
-			foreach($SuburbSet as $Suburb)
-			{
-				$ER_Suburb = $ER_Suburb.','.$Suburb->suburb;
-			}
+			// $proc_name = 'include_area';
+			// $sql = "call $proc_name('{$ER_Suburb}')";
+			// $SuburbSet = DB::select($sql);
+      //
+			// $ER_Suburb = '';
+			// foreach($SuburbSet as $Suburb)
+			// {
+			// 	$ER_Suburb = $ER_Suburb.','.$Suburb->suburb;
+			// }
       // return $ER_Suburb;
-			$proc_name = 'filt_Check_EntireRent_Count';
+			$proc_name = 'filt_er_count';
 			$sql = "call $proc_name(
 									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
 									'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
@@ -407,14 +407,14 @@ class CustomerController extends Controller
 		try{
 			if ($include_area==true)
 				{
-					$proc_name = 'include_area';
-					$sql = "call $proc_name('{$ER_Suburb}')";
-					$SuburbSet = DB::select($sql);
-					$ER_Suburb = '';
-					foreach($SuburbSet as $Suburb)
-					{
-						$ER_Suburb = $ER_Suburb.','.$Suburb->suburb;
-					}
+					// $proc_name = 'include_area';
+					// $sql = "call $proc_name('{$ER_Suburb}')";
+					// $SuburbSet = DB::select($sql);
+					// $ER_Suburb = '';
+					// foreach($SuburbSet as $Suburb)
+					// {
+					// 	$ER_Suburb = $ER_Suburb.','.$Suburb->suburb;
+					// }
 
 					$proc_name = 'filt_Check_EntireRent';
 					$sql = "call $proc_name(

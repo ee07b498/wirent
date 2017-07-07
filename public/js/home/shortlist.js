@@ -66,10 +66,12 @@
 				});
 
 			}])
-		.controller('shortlistCtrl',['$scope','$http','$state','$modal','$log','SearchService',function($scope,$http,$state,$modal,$log,SearchService){
+		.controller('shortlistCtrl',['$scope','$http','$state','$modal','$log','SearchService','getDataCommonService',function($scope,$http,$state,$modal,$log,SearchService,getDataCommonService){
 			// $scope.shortlistData=SearchService.get();
 			 $scope.shortlistcheckdata = {};
 			 $scope.shortlistData = [];
+			 $scope.entireshow = true;
+			 $scope.shareshow = false;
 			$http.get('/customer/profile')
 			.then(function(r) {
 				console.log(r);
@@ -78,9 +80,11 @@
 					$scope.shortlistcheckdata.CLType = 'FavorSave';
 					$http.post('/customer/shortlist', $scope.shortlistcheckdata)
 							.then(function(r){
+
 								for (var i = 0; i < r.data.length; i++) {
 									$scope.shortlistData[$scope.shortlistData.length] = r.data[i][0];
 								}
+								getDataCommonService.set($scope.shortlistData,'FavorSave')
 								console.log('$scope.shortlistData',$scope.shortlistData);
 							},function(e){
 								console.log("数据有误");
@@ -89,6 +93,7 @@
 
 			});
 			$scope.entireCheck = function(){
+
 				$http.get('/customer/profile')
 				.then(function(r) {
 					console.log(r);
@@ -101,7 +106,10 @@
 									for (var i = 0; i < r.data.length; i++) {
 										$scope.shortlistData[$scope.shortlistData.length] = r.data[i][0];
 									}
+									getDataCommonService.set($scope.shortlistData,'FavorSave')
 									console.log('$scope.shortlistData',$scope.shortlistData);
+									$scope.entireshow = true;
+				 				 $scope.shareshow = false;
 								},function(e){
 									console.log("数据有误");
 								});
@@ -110,6 +118,7 @@
 				});
 			}
 			$scope.shareCheck = function(){
+
 				$http.get('/customer/profile')
 				.then(function(r) {
 					console.log(r);
@@ -118,11 +127,14 @@
 						$scope.shortlistcheckdata.CLType = 'ShareSave';
 						$http.post('/customer/shortlist', $scope.shortlistcheckdata)
 								.then(function(r){
-									// $scope.shortlistData = [];
+									$scope.shortlistData = [];
 									for (var i = 0; i < r.data.length; i++) {
 										$scope.shortlistData[$scope.shortlistData.length] = r.data[i][0];
 									}
+									getDataCommonService.set($scope.shortlistData,'ShareSave')
 									console.log('$scope.shortlistData',$scope.shortlistData);
+									$scope.entireshow = false;
+									$scope.shareshow = true;
 								},function(e){
 									console.log("数据有误");
 								});

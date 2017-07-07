@@ -1,0 +1,162 @@
+<div class="tab-pane tabPanel active profile-detail" ng-class="{'active': tabs[0]}">
+  <div class="tab-pane tabPanel active" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
+    <div class="card">
+      <div class="inner-wrap clear">
+        <header>
+          <h3 translate="profile.SECTION.Profile.header"></h3>
+        </header>
+        <!--file upload to s3 first and display real path in input label with path upload to db-->
+        <div class="content-wrap">
+          <div class="frm-main no-indent">
+            <div class="inner-wrap">
+              <img ng-src="[:data.CPhoto:]">
+              <a id="myBtn" class="btn lowlight" translate="profile.SECTION.Profile.photo_upload"></a>
+            </div>
+          </div>
+        </div>
+        <!--end-->
+        <div class="content-wrap profile-detail clear">
+          <div class="half">
+            <fieldset>
+              <!--readonly part-->
+              <div class="frm-main no-indent" ng-show="he">
+                <label for="CID">CID</label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="CID" name="CID" ng-readonly="readonly" type="text" ng-model="data.CID">
+                </div>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="EmailAddress" translate="profile.SECTION.Profile.table.email"></label>
+                <div class="inner-wrap">
+                  <input aria-required="true" id="EmailAddress" name="EmailAddress" ng-readonly="readonly" type="text" ng-model="data.CEmail">
+                </div>
+              </div>
+              <!--readonly end-->
+
+              <div class="frm-main no-indent">
+                <label for="Password" translate="profile.SECTION.Profile.table.password"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="Password" name="Password" ng-readonly="readonly" value="123456" type="password" ng-model="data.CPassword">
+                </div>
+              </div>
+
+              <div class="frm-main no-indent">
+                <label for="FirstName" translate="profile.SECTION.Profile.table.name"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="FirstName" name="FirstName" ng-readonly="readonly" type="text" ng-model="data.CName">
+                </div>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="Phone" translate="profile.SECTION.Profile.table.phone"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="Phone" name="Phone" ng-readonly="readonly" type="text" ng-model="data.CPhone">
+                </div>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="CurrStat" translate="profile.SECTION.Profile.table.currentStatus"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="CurrStat" name="CurrStat" ng-readonly="readonly" type="text" ng-model="data.CCurrStat">
+                </div>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="IDType" translate="profile.SECTION.Profile.table.idType.title"></label>
+                <div class="inner-wrap">
+                  <select ng-model="data.CIDType">
+                    <option value="Citizen" translate="profile.SECTION.Profile.table.idType.option_1"></option>
+                    <option value="Permanent Resident" translate="profile.SECTION.Profile.table.idType.option_2"></option>
+                    <option value="Overseas" translate="profile.SECTION.Profile.table.idType.option_3"></option>
+                  </select>
+                  <input aria-required="false" id="CIDProfile" ng-readonly="readonly" type="text" ng-model="data.CIDProfile" style="width: 308px; display: inline-block;">
+                  <button id="btn_CIDProfile" class="flaticon-banknote20 inline"></button>
+                </div>
+              </div>
+
+              <!--income|save file upload to s3 first and display real path in input label with path upload to db-->
+              <div class="frm-main no-indent">
+                <label for="Income" translate="profile.SECTION.Profile.table.incomeProfile"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="Income" name="Income" ng-readonly="readonly" type="text" ng-model="data.CIncomeProfile">
+                  <button id="Income" class="flaticon-banknote20 inline" ng-model="data.CIncomeProfile"></button>
+                </div>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="Saving" translate="profile.SECTION.Profile.table.savingProfile"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="Saving" name="Saving" ng-readonly="readonly" type="text" ng-model="data.CSavingProfile" />
+                  <button id="Income" class="flaticon-banknote20 inline" ng-model="data.CSavingProfile"></button>
+                </div>
+              </div>
+              <!--end-->
+            </fieldset>
+          </div>
+
+          <div class="half">
+            <fieldset>
+              <div class="frm-main no-indent">
+                <label for="PartenerID" translate="profile.SECTION.Profile.table.partnerID"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="PartenerID" name="PartenerID" ng-readonly="readonly" type="text" ng-model="data.CPartenerID">
+                </div>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="CLastContDate" translate="profile.SECTION.Profile.table.lastContactDate"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="CLastContDate" ng-readonly="readonly" type="text" ng-model="data.CLastContDate" />
+                </div>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="Gender" translate="profile.SECTION.Profile.table.gender.title"></label>
+                <select ng-model="data.CSex">
+                  <option value="Female" translate="profile.SECTION.Profile.table.gender.option_2"></option>
+                  <option value="Male" translate="profile.SECTION.Profile.table.gender.option_1"></option>
+                </select>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="Age" translate="profile.SECTION.Profile.table.age"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="Age" name="Age" ng-readonly="readonly" type="text" ng-model="data.CAge">
+                </div>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="Work" translate="profile.SECTION.Profile.table.work.title"></label>
+                <select ng-model="data.CWorking">
+                  <option value="Yes" translate="profile.SECTION.Profile.table.work.option_1"></option>
+                  <option value="Not yet" translate="profile.SECTION.Profile.table.work.option_2"></option>
+                  <option value="Retired" translate="profile.SECTION.Profile.table.work.option_3"></option>
+                </select>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="Pet" translate="profile.SECTION.Profile.table.pet.title"></label>
+                <select ng-model="data.CPet">
+                  <option value="No" translate="profile.SECTION.Profile.table.pet.option_1"></option>
+                  <option value="Yes" translate="profile.SECTION.Profile.table.pet.option_2"></option>
+                </select>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="Smoking" translate="profile.SECTION.Profile.table.smoking.title"></label>
+                <select ng-model="data.CSmoking">
+                  <option value="No" translate="profile.SECTION.Profile.table.smoking.option_1"></option>
+                  <option value="Yes" translate="profile.SECTION.Profile.table.smoking.option_2"></option>
+                </select>
+              </div>
+              <div class="frm-main no-indent">
+                <label for="Budget" translate="profile.SECTION.Profile.table.budget"></label>
+                <div class="inner-wrap">
+                  <input aria-required="false" id="Budget" name="Budget" ng-readonly="readonly" type="text" ng-model="data.CBudget">
+                </div>
+              </div>
+
+              <div class="frm-main no-indent">
+                <div class="inner-wrap">
+                  <a class="btn lowlight " ng-click="readonly=!readonly" translate="profile.SECTION.Profile.table.reset"></a>
+                  <a class="btn lowlight" ng-click="saveProfile()" translate="profile.SECTION.Profile.table.save"></a>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

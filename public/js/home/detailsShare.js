@@ -2,8 +2,9 @@
 (function() {
 	'use strict';
 	angular.module('andy')
-	.controller('detailsShareController',function ($anchorScroll,$animate,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
+	.controller('detailsShareController',function ($anchorScroll,$animate,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService,getDataCommonService){
 		var datapackage = {};
+		var _Data = {};
 		$scope.detailsData = {};
 		$scope.shortlistInsert = {};
 		$scope.no_smoking=false;
@@ -29,14 +30,28 @@
 		 	datapackage = $localStorage.settings;
 		 	console.log('$localStorage.settings',$localStorage.settings);
 		 }
-		 angular.forEach(datapackage, function(data,index,array){
-				 //data等价于array[index]
-				 console.log($stateParams.id+"======"+data);
-				 console.log("SRID",data.SRID);
-				 if($stateParams.id==data.SRID){
-					 $scope.detailsData = data;
-				 }
-			 });
+		 _Data = getDataCommonService.get();
+		 if (_Data.id ==='ShareSave') {
+			 $scope.datapackage = _Data.data;
+			console.log("=====datapackage=====",datapackage);
+		 angular.forEach($scope.datapackage, function(data,index,array){
+					//data等价于array[index]
+					console.log("ER_ID",data.SRID);
+					if($stateParams.id==data.SRID){
+						$scope.detailsData = data;
+					}
+				});
+		 }else {
+			 angular.forEach(datapackage, function(data,index,array){
+  				 //data等价于array[index]
+  				 console.log($stateParams.id+"======"+data);
+  				 console.log("SRID",data.SRID);
+  				 if($stateParams.id==data.SRID){
+  					 $scope.detailsData = data;
+  				 }
+  			 });
+		 }
+
 //		 $scope.datapackage = datapackage;
 		 console.log("=====datapackage=====",datapackage);
 		 console.log($stateParams.id +"<======>"+$stateParams.name);
@@ -181,8 +196,8 @@
 					console.log(r);
 					if(r.data.customer_login_status){
 						$scope.shortlistInsert.CID = $scope.detailsData.CID;
-						$scope.shortlistInsert.CLType="FavorSave";
-						$scope.shortlistInsert.CLDetail=$scope.detailsData.ER_ID+'';
+						$scope.shortlistInsert.CLType="ShareSave";
+						$scope.shortlistInsert.CLDetail=$scope.detailsData.SRID+'';
 						$scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
 						console.log("shortlistInsert",$scope.shortlistInsert);
 						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
@@ -443,7 +458,7 @@
 			}
 		}
 	}])
-.directive('lunboShare',['SearchService','$timeout','$localStorage','$stateParams','mouseEvent' ,'hotRentService',function (SearchService,$timeout,$localStorage,$stateParams,mouseEvent,hotRentService) {
+.directive('lunboShare',['SearchService','getDataCommonService','$timeout','$localStorage','$stateParams','mouseEvent' ,'hotRentService',function (SearchService,getDataCommonService,$timeout,$localStorage,$stateParams,mouseEvent,hotRentService) {
   return{
    restrict:'EA',
    templateUrl:'/partials/mydirectives/directive-lunboShare.html',
@@ -451,6 +466,7 @@
    scope:{},
    link: function (scope, element, attr) {
     var datapackage = {};
+		var _Data = {};
 	scope.detailsData = {};
 	scope.indexNum = 0;
 	if(JSON.stringify(SearchService.get()) != "{}"){
@@ -462,17 +478,33 @@
 	 	datapackage = $localStorage.settings;
 	 	console.log('$localStorage.settings',$localStorage.settings);
 	 }
-	 scope.datapackage = datapackage;
-	 console.log($stateParams.id +"<======>"+$stateParams.name);
-	  console.log("scope.datapackage" +"<======>"+scope.datapackage);
-	 angular.forEach(datapackage, function(data,index,array){
-		//data等价于array[index]
-		//console.log("ER_ID",data.ER_ID);
-		if($stateParams.id==data.SRID){
-			scope.detailsData = data;
-		//alert($stateParams.id);
-		}
-	});
+	 _Data = getDataCommonService.get();
+	 console.log(_Data);
+	if (_Data.id ==='ShareSave') {
+		scope.datapackage = _Data.data;
+	 console.log("=====datapackage=====",datapackage);
+	angular.forEach(scope.datapackage, function(data,index,array){
+			 //data等价于array[index]
+			 console.log("ER_ID",data.SRID);
+			 if($stateParams.id==data.SRID){
+				 scope.detailsData = data;
+			 }
+		 });
+		 console.log( scope.detailsData );
+	}else {
+		scope.datapackage = datapackage;
+		console.log($stateParams.id +"<======>"+$stateParams.name);
+		 console.log("scope.datapackage" +"<======>"+scope.datapackage);
+		angular.forEach(datapackage, function(data,index,array){
+		 //data等价于array[index]
+		 //console.log("ER_ID",data.ER_ID);
+		 if($stateParams.id==data.SRID){
+			 scope.detailsData = data;
+		 alert($stateParams.id);
+		 }
+	 });
+	}
+
 	var step = 0;
 	var time = null;
 	var stepFun = function() {

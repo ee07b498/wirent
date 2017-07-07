@@ -7,112 +7,104 @@
             	</div>
 			</div>
 			<div class="row">
-                <div class="col-sm-12 feedback success fadeInUp" role="alert" ng-show="success">
-                    <h4>Success</h4>
-                    <p>Your profile has been updated.</p>
-                </div>
-                <div class="col-sm-12 w-full feedback error" role="alert" ng-show="error">
-                    <h4>That didn't work</h4>
+          <div class="col-sm-12 feedback success fadeInUp" role="alert" ng-show="success">
+              <h4>Success</h4>
+              <p>Your profile has been updated.</p>
+          </div>
+          <div class="col-sm-12 w-full feedback error" role="alert" ng-show="error">
+              <h4>That didn't work</h4>
 
-                    <p>Your preferences have not been updated, please try again.</p>
-                </div>
-            </div>
-            <div class="row">
-            	<div class="col-sm-3 profile-nav">
-                    <ul class="tabNav" role="tablist">
-                        <li ng-class="{'selected': tabs[0]}" class="active selected" role="presentation">
-                            <a href ng-click="tab(0);" class="f-icon with-text " id="tab-myProfile" role="tab" aria-active="true" tabindex="0">
-                                <span class="icon flaticon-man-user1"></span>
-                                <span class="copy">My profile</span>
-                            </a>
-                        </li>
-                        <li ng-class="{'selected': tabs[1]}" role="presentation">
-                            <a href ng-click="tab(1);myPayment()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="flaticon-banknote1" aria-hidden="true"></i></span>
-                                <span class="copy">My Payments</span>
-                            </a>
-                        </li>
-                         <li ng-class="{'selected': tabs[2]}" role="presentation">
-                            <a href ng-click="tab(2);propMgm()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="flaticon-properties-information1" aria-hidden="true"></i></span>
-                                <span class="copy">Property Management</span>
-                            </a>
-                        </li>
-                        <li ng-class="{'selected': tabs[3]}" role="presentation">
-                            <a href ng-click="tab(3);mtApply()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="flaticon-tool1" aria-hidden="true"></i></span>
-                                <span class="copy">Maintenance&nbsp;Apply</span>
-                            </a>
-                        </li>
-                        <li ng-class="{'selected': tabs[4]}" role="presentation">
-                            <a href ng-click="tab(4);mtCheck()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="flaticon-spanner1" aria-hidden="true"></i></span>
-                                <span class="copy">Maintenance&nbsp;History</span>
-                            </a>
-                        </li>
-                        <li ng-class="{'selected': tabs[5]}" role="presentation">
-                            <a href ng-click="tab(5)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="flaticon-businesswoman1" aria-hidden="true"></i></span>
-                                <span class="copy">Service&nbsp;Apply</span>
-                            </a>
-                        </li>
+              <p>Your preferences have not been updated, please try again.</p>
+          </div>
+      </div>
+	<div class="row">
+		<div class="col-sm-3 profile-nav">
+	        <ul class="tabNav" role="tablist">
+	            <li ng-class="{'selected': tabs[0]}" class="active selected" role="presentation">
+	                <a href ng-click="tab(0);" class="f-icon with-text " id="tab-myProfile" role="tab" aria-active="true" tabindex="0">
+	                    <span class="icon flaticon-man-user1"></span>
+	                    <span class="copy">My profile</span>
+	                </a>
+	            </li>
+	            <li ng-class="{'selected': tabs[1]}" role="presentation">
+	                <a href ng-click="tab(1);myPayment()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+	                    <span class="icon "><i class="flaticon-banknote1" aria-hidden="true"></i></span>
+	                    <span class="copy">My Payments</span>
+	                </a>
+	            </li>
+	             <li ng-class="{'selected': tabs[2]}" role="presentation">
+	                <a href ng-click="tab(2);propMgm()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+	                    <span class="icon "><i class="flaticon-properties-information1" aria-hidden="true"></i></span>
+	                    <span class="copy">Property Management</span>
+	                </a>
+	            </li>
+	            <li ng-class="{'selected': tabs[3]}" role="presentation">
+	                <a href ng-click="tab(3);mtApply()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+	                    <span class="icon "><i class="flaticon-tool1" aria-hidden="true"></i></span>
+	                    <span class="copy">Maintenance&nbsp;Apply</span>
+	                </a>
+	            </li>
+	            <li ng-class="{'selected': tabs[4]}" role="presentation">
+	                <a href ng-click="tab(4);mtCheck()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+	                    <span class="icon "><i class="flaticon-spanner1" aria-hidden="true"></i></span>
+	                    <span class="copy">Maintenance&nbsp;History</span>
+	                </a>
+	            </li>
+	            <li ng-class="{'selected': tabs[5]}" role="presentation">
+	                <a href ng-click="tab(5)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+	                    <span class="icon "><i class="flaticon-businesswoman1" aria-hidden="true"></i></span>
+	                    <span class="copy">Service&nbsp;Apply</span>
+	                </a>
+	            </li>
 						 <li ng-class="{'selected': tabs[6]}" role="presentation">
-                            <a href ng-click="tab(6);svHistory()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="flaticon-conversation1" aria-hidden="true"></i></span>
-                                <span class="copy">Service&nbsp;History</span>
-                            </a>
-                        </li>
-                        <li ng-class="{'selected': tabs[7]}" role="presentation" id="messages">
-                            <a href ng-click="tab(7);msg()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="flaticon-close-envelope1" aria-hidden="true"></i></span>
-                                <span class="copy">Message</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <a href ng-click="tab(6);svHistory()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                        <span class="icon "><i class="flaticon-conversation1" aria-hidden="true"></i></span>
+                        <span class="copy">Service&nbsp;History</span>
+                    </a>
+                </li>
+                <li ng-class="{'selected': tabs[7]}" role="presentation" id="messages">
+                    <a href ng-click="tab(7);msg()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                        <span class="icon "><i class="flaticon-close-envelope1" aria-hidden="true"></i></span>
+                        <span class="copy">Message</span>
+                    </a>
+                </li>
+            </ul>
                 </div>
-
                <div class="col-sm-9 tab-content " >
                 <div class="tab-pane tabPanel active profile-detail" ng-class="{'active': tabs[0]}">
                     <div class="tab-pane tabPanel active" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
                     <div class="card">
                         <div class="inner-wrap clear">
-
                             <header>
                                 <h3>My profile</h3>
-
                             </header>
-
                             <div class="content-wrap">
                                 <div class="frm-main no-indent">
                                     <div class="inner-wrap">
                                         <a id="myBtn" class="btn lowlight">Edit Profile</a>
                                     </div>
                                     <!-- The Modal -->
-									<div id="myModal" class="modal">
+													<div id="myModal" class="modal">
+													  <!-- Modal content -->
+													  <div class="modal-content">
+													    <div class="modal-header">
+													      <span class="close">&times;</span>
+													      <h2>Modal Header</h2>
+													    </div>
+													    <div class="modal-body">
+													      <p>Some text in the Modal Body</p>
+													      <p>Some other text...</p>
+													    </div>
+													    <div class="modal-footer">
+													      <h3>Modal Footer</h3>
+													    </div>
+													  </div>
 
-									  <!-- Modal content -->
-									  <div class="modal-content">
-									    <div class="modal-header">
-									      <span class="close">&times;</span>
-									      <h2>Modal Header</h2>
-									    </div>
-									    <div class="modal-body">
-									      <p>Some text in the Modal Body</p>
-									      <p>Some other text...</p>
-									    </div>
-									    <div class="modal-footer">
-									      <h3>Modal Footer</h3>
-									    </div>
-									  </div>
-
-									</div>
+													</div>
                                 </div>
                             </div>
-
                             <div class="content-wrap profile-detail clear">
-
                                 <div class="half">
-
                                     <fieldset>
                                     	<div class="frm-main no-indent" ng-show="he">
                                             <label for="CID">CID</label>
@@ -253,7 +245,6 @@
 									<h3 ng-bind="payment.BillDateMin" ng-show="false"></h3>
 									<h3 ng-bind="payment.BillDateMax" ng-show="false"></h3>
 								</header>
-
 								<div class="content-wrap clear">
 									<div class="wrapper-md">
 								  <div class="panel panel-default">

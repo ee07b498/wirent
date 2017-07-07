@@ -89,6 +89,24 @@ angular.module('andy')
 		};
 
 })
+.factory('getDataCommonService', function () {
+	var savedData = {};
+
+	function set(data,id) {
+	savedData.id = id;
+	savedData.data = data;
+	}
+
+	function get() {
+	return savedData;
+	}
+
+	return {
+	set: set,
+	get: get,
+	};
+
+})
 	.factory('hotRentService', function () {
 		var savedData = {};
 

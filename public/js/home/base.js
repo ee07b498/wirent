@@ -63,6 +63,17 @@ angular.module('andy', [
     //template:'<h1>homePage</h1>'
     templateUrl: '/partials/googlemap.html', //localhost:8080/home.tpl
   })
+  .state('app.landlord', {
+   url: '/landlord',
+   //template:'<h1>homePage</h1>'
+   templateUrl: '/partials/profileLandlord.html', //localhost:8080/home.tpl
+   redirectTo: 'app.landlord.profile'
+ })
+ .state('app.landlord.profile', {
+  url: '/landlord/profile',
+  //template:'<h1>homePage</h1>'
+  templateUrl: '/partials/landlord_tpl/profile.html', //localhost:8080/home.tpl
+})
   .state('googlemap', {
    url: '/googlemap',
    //template:'<h1>homePage</h1>'

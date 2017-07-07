@@ -1593,7 +1593,6 @@
                console.log(entireData);
                 $http.post('/customer/filt/entire/tenant', entireData)
                  .then(function(r) {
-
                   SearchService.set(r);
                   updateService.set(entireData);
                   console.log('r===>', r);
@@ -1882,7 +1881,6 @@
                  console.log(entireData);
                  $http.post('/customer/filt/entire', entireData)
                   .then(function(r) {
-
                    SearchService.set(r);
                    updateService.set(entireData);
                    console.log('r===>', r);
