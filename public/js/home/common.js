@@ -1545,7 +1545,7 @@
              });
              regionArr = result;
              for (var i = 0; i < regionArr.length; i++) {
-                 region = regionArr[i] + region;
+                 region = regionArr[i] +","+ region;
              }
              entireData = {
               CID:r.data.CID,
@@ -1568,25 +1568,30 @@
               ER_Feature: ER_Feature
              };
             console.log(entireData);
-            getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
-                 $scope.data = result;
-                 console.log($scope.data);
-                 return result;
-             },function(error){
-               console.log("error" + error);
-             }).then(function(result){
-               result = Math.ceil(result/20);
+            if (entireData.ER_Region === "") {
+               entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
+            }else {
+               entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
+               entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
+            }
+              console.log(entireData);
+            // getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
+            //   console.log(result);
+            //      $scope.data = result;
+            //      console.log($scope.data);
+            //      return result;
+            //  },function(error){
+            //    console.log("error" + error);
+            //  })
+            $http.post('/customer/filt/entire/count',entireData).then(function(result){
+               console.log(result);
+              //  result = Math.ceil(result/20);
                entireData.OrderBy = 'ER_AvailableDate';
                entireData.PageID = 0;
                console.log(entireData);
                 $http.post('/customer/filt/entire/tenant', entireData)
                  .then(function(r) {
-                   if (entireData.ER_Region === "") {
-                      entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
-                   }else {
-                      entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
-                      entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
-                   }
+
                   SearchService.set(r);
                   updateService.set(entireData);
                   console.log('r===>', r);
@@ -1643,6 +1648,7 @@
              },function(error){
                console.log("error" + error);
              }).then(function(result){
+               console.log(result);
                result = Math.ceil(result/20);
                shareData.OrderBy = 'SRAvailableDate';
                shareData.PageID = 0;
@@ -1661,7 +1667,7 @@
                   console.log('r===>', r);
                    $state.go('app.listpageShare');
                  }, function(e) {
-
+                    console.log("error" + error);
                  });
              },function(error){
                console.log("error" + error);

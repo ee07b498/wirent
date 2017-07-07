@@ -196,6 +196,7 @@ class CustomerController extends Controller
 
 	public function filt_entire_count(Request $request)
 	{
+
 		$include_area = $request->input('include_area');
 		$ER_Suburb = $request->input('ER_Suburb');				//检查房源所在区被包含在客户选择的多个区拼接成中 i.e. 'epping,eastwood' 注意分隔符为逗号
 		$ER_Region = $request->input('ER_Region');
@@ -215,12 +216,12 @@ class CustomerController extends Controller
 		$ER_AvailableDate = $request->input('ER_AvailableDate');
 
 		$data = array();
-
 		if ($include_area==true)
 		{
 			$proc_name = 'include_area';
 			$sql = "call $proc_name('{$ER_Suburb}')";
 			$SuburbSet = DB::select($sql);
+
 			$ER_Suburb = '';
 			foreach($SuburbSet as $Suburb)
 			{
@@ -413,6 +414,7 @@ class CustomerController extends Controller
 					{
 						$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;
 					}
+
 					$proc_name = 'filt_Check_EntireRent';
 					$sql = "call $proc_name(
 											'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
