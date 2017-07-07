@@ -118,7 +118,7 @@
 						$scope.shortlistcheckdata.CLType = 'ShareSave';
 						$http.post('/customer/shortlist', $scope.shortlistcheckdata)
 								.then(function(r){
-									$scope.shortlistData = [];
+									// $scope.shortlistData = [];
 									for (var i = 0; i < r.data.length; i++) {
 										$scope.shortlistData[$scope.shortlistData.length] = r.data[i][0];
 									}

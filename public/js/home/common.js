@@ -1568,6 +1568,8 @@
               ER_Feature: ER_Feature
              };
             console.log(entireData);
+            delete entireData.OrderBy;
+            delete entireData.PageID;
             if (entireData.ER_Region === "") {
                entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
             }else {

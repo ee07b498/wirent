@@ -225,8 +225,9 @@ class CustomerController extends Controller
 			$ER_Suburb = '';
 			foreach($SuburbSet as $Suburb)
 			{
-				$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;
+				$ER_Suburb = $ER_Suburb.','.$Suburb->suburb;
 			}
+      // return $ER_Suburb;
 			$proc_name = 'filt_Check_EntireRent_Count';
 			$sql = "call $proc_name(
 									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
@@ -412,7 +413,7 @@ class CustomerController extends Controller
 					$ER_Suburb = '';
 					foreach($SuburbSet as $Suburb)
 					{
-						$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;
+						$ER_Suburb = $ER_Suburb.','.$Suburb->suburb;
 					}
 
 					$proc_name = 'filt_Check_EntireRent';
