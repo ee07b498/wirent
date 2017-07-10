@@ -87,6 +87,7 @@
 	<script src="/js/home/home.js"></script>
 	<script src="/js/home/landlord.js"></script>
 	<script src="/js/home/ui-nav.js"></script>
+	<script src="/js/home/updateProperty.js"></script>
 </body>
 
 </html>

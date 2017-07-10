@@ -48,35 +48,35 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="text"  class="form-control" placeholder="Email">
+                    <input type="text"  class="form-control m-b" placeholder="Email">
                   </div>
                 </div>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Password</label>
                   <div class="col-sm-10">
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" name="password" class="form-control m-b">
                   </div>
                 </div>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Name</label>
                   <div class="col-sm-10">
-                    <input type="text"  class="form-control" placeholder="Name">
+                    <input type="text"  class="form-control m-b" placeholder="Name">
                   </div>
                 </div>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Phone</label>
                   <div class="col-sm-10">
-                    <input type="phone"  class="form-control" placeholder="Phone">
+                    <input type="phone"  class="form-control m-b" placeholder="Phone">
                   </div>
                 </div>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Current Status</label>
                   <div class="col-sm-10">
-                    <input type="text"  class="form-control" placeholder="Current Status">
+                    <input type="text"  class="form-control m-b" placeholder="Current Status">
                   </div>
                 </div>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -118,14 +118,14 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Email</label>
               <div class="col-sm-10">
-                <input type="text"  class="form-control" placeholder="Email">
+                <input type="text"  class="form-control m-b" placeholder="Email">
               </div>
             </div>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Datepicker</label>
-              <div class="col-sm-10" ng-controller="DatepickerDemoCtrl">
-                <div class="input-group w-md">
+              <div class="col-sm-10">
+                <div class="input-group w-md m-b">
                   <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -135,26 +135,45 @@
             </div>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-               <label class="col-sm-2 control-label">ID Type</label>
+               <label class="col-sm-2 control-label">Gender</label>
                <div class="col-sm-10">
                  <select name="account" class="form-control m-b">
-                   <option>option 1</option>
-                   <option>option 2</option>
-                   <option>option 3</option>
-                   <option>option 4</option>
+                   <option>male</option>
+                   <option>female</option>
                  </select>
                </div>
             </div>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Email</label>
+              <label class="col-sm-2 control-label">Age</label>
               <div class="col-sm-10">
-                <input type="text"  class="form-control" placeholder="Email">
+                <input type="text"  class="form-control m-b" placeholder="Email">
               </div>
             </div>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-               <label class="col-sm-2 control-label">ID Type</label>
+               <label class="col-sm-2 control-label">Work</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>yes</option>
+                   <option>not yet</option>
+                   <option>retired</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">pet</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>Yes</option>
+                   <option>No</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Smoking</label>
                <div class="col-sm-10">
                  <select name="account" class="form-control m-b">
                    <option>option 1</option>
@@ -166,31 +185,7 @@
             </div>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-               <label class="col-sm-2 control-label">ID Type</label>
-               <div class="col-sm-10">
-                 <select name="account" class="form-control m-b">
-                   <option>option 1</option>
-                   <option>option 2</option>
-                   <option>option 3</option>
-                   <option>option 4</option>
-                 </select>
-               </div>
-            </div>
-            <div class="line line-dashed b-b line-lg pull-in"></div>
-            <div class="form-group">
-               <label class="col-sm-2 control-label">ID Type</label>
-               <div class="col-sm-10">
-                 <select name="account" class="form-control m-b">
-                   <option>option 1</option>
-                   <option>option 2</option>
-                   <option>option 3</option>
-                   <option>option 4</option>
-                 </select>
-               </div>
-            </div>
-            <div class="line line-dashed b-b line-lg pull-in"></div>
-            <div class="form-group">
-               <label class="col-sm-2 control-label">ID Type</label>
+               <label class="col-sm-2 control-label">Budget</label>
                <div class="col-sm-10">
                  <select name="account" class="form-control m-b">
                    <option>option 1</option>
