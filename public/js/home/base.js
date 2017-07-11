@@ -84,6 +84,17 @@ angular.module('andy', [
         url: '/landlord/progress',
         //template:'<h1>homePage</h1>'
         templateUrl: '/partials/landlord_tpl/progress.html', //localhost:8080/home.tpl
+        resolve: {
+          deps: ['$ocLazyLoad',
+            function($ocLazyLoad) {
+              return $ocLazyLoad.load('ui.select').then(
+                function() {
+                  return $ocLazyLoad.load('js/home/propmgm.js');
+                }
+              );
+            },
+          ],
+        },
       })
       .state('app.landlord.update_propertyinfo', {
         url: '/landlord/update_propertyinfo',

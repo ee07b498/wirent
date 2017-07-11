@@ -2,7 +2,7 @@
   "mails":[
     {
       "id": 10,
-      "subject": "Angular is Awesome",
+      "subject": "rental bill is Awesome",
       "from": "james@gmail.com",
       "avatar": "img/a10.jpg",
       "to":[
@@ -14,12 +14,12 @@
         {"name":"c3.jpg", "url":"img/c3.jpg"}
       ],
       "date":"12:20 7/23/2014",
-      "label":"angular",
+      "label":"rental bill",
       "fold":"important"
     },
     {
       "id": 9,
-      "subject": "Bootstrap components written in pure AngularJS",
+      "subject": "inspection report components written in pure AngularJS",
       "from": "james@gmail.com",
       "avatar": "img/a9.jpg",
       "to":[
@@ -27,12 +27,12 @@
       ],
       "content":"Retur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.",
       "date":"12:20 7/23/2014",
-      "label":"bootstrap",
+      "label":"inspection report",
       "fold":"important"
     },
     {
       "id": 8,
-      "subject": "Nesting view in Angular",
+      "subject": "Nesting view in rental bill",
       "from": "jessica@gmail.com",
       "avatar": "img/a1.jpg",
       "to":[
@@ -43,12 +43,12 @@
         {"name":"c0.jpg", "url":"img/c0.jpg"}
       ],
       "date":"16:20 7/22/2014",
-      "label":"angular",
+      "label":"rental bill",
       "fold":"important"
     },
     {
       "id": 7,
-      "subject": "Lazy loading Angular controllers, directives and services",
+      "subject": "Lazy loading rental bill controllers, directives and services",
       "from": "lucy@hotmail.com",
       "avatar": "img/a2.jpg",
       "to":[
@@ -56,7 +56,7 @@
       ],
       "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.",
       "date":"10:20 7/22/2014",
-      "label":"angular",
+      "label":"rental bill",
       "fold":"sent",
       "state":"unread"
     },
