@@ -1,87 +1,209 @@
 <div class="hbox hbox-auto-xs hbox-auto-sm">
-  <div class="row">
+  <div class="col">
     <div style="background:url(img/c4.jpg) center center; background-size:cover">
       <div class="wrapper-lg bg-white-opacity">
         <div class="row m-t">
           <div class="col-sm-7">
             <a href class="thumb-lg pull-left m-r">
-              <img src="../img/andy.jpg" class="img-circle">
+              <img src="img/a0.jpg" class="img-circle">
             </a>
-            <div class="clear m-b">
+            <div class="clear m-b pull-in">
               <div class="m-b m-t-sm">
-                <span class="h3 text-black">Andy.Sun</span>
+                <span class="h3 text-black">Libin.Zhang</span>
                 <small class="m-l">Sydney, Australia</small>
               </div>
               <p class="m-b">
-                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-twitter"></i></a>
-                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-facebook"></i></a>
-                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-google-plus"></i></a>
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
+                <a>yiensuen@gmail.com</a>
+              </p>
+              <p class="m-b">
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-phone"></i></a>
+                <a>02-80021739</a>
+              </p>
+              <p class="m-b">
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+                <a>0424909328</a>
               </p>
               <a href class="btn btn-sm btn-success btn-rounded">Edit</a>
             </div>
           </div>
           <div class="col-sm-5">
-          	
+            <div class="pull-right pull-none-xs text-center">
+              <a href class="m-b-md inline m">
+                <span class="h3 block font-bold">Company</span>
+                <small>Winning Investment Inc.</small>
+              </a>
+              <a href class="m-b-md inline m">
+                <span class="h3 block font-bold">work</span>
+                <small>Software Engineer</small>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-</div>
-<div class="row full-screen">
-	<div class="bg-light lter b-b wrapper-md">
-  <h1 class="m-n font-thin h3">My Profile</h1>
-</div>
-<div class="wrapper full-screen" ng-controller="MyProfileCtrl">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading font-bold">Basic form</div>
-        <div class="panel-body">
-          <form role="form">
+    <div class="wrapper bg-white b-b">
+      <ul class="nav nav-pills nav-sm">
+        <li class="active"><a href>Stream</a></li>
+        <li><a href>Profile</a></li>
+        <li><a href>Messages</a></li>
+      </ul>
+    </div>
+    <div class="wrapper bg-white b-b">
+        <div class="row m-t">
+          <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control m-b" placeholder="Email">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control m-b">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control m-b" placeholder="Name">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Phone</label>
+                  <div class="col-sm-10">
+                    <input type="phone"  class="form-control m-b" placeholder="Phone">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Current Status</label>
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control m-b" placeholder="Current Status">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                   <label class="col-sm-2 control-label">ID Type</label>
+                   <div class="col-sm-10">
+                     <select name="account" class="form-control m-b">
+                       <option>option 1</option>
+                       <option>option 2</option>
+                       <option>option 3</option>
+                       <option>option 4</option>
+                     </select>
+                   </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Upload File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Income File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Saving File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+
+          </div>
+          <div class="col-sm-6">
             <div class="form-group">
-              <label>User Name</label>
-              <input type="text" class="form-control" ng-module="staffProfile" id="SUername" name="SUername" placeholder="SUername" readonly="true">
+              <label class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="text"  class="form-control m-b" placeholder="Email">
+              </div>
             </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-              <label>Password</label>
-              <input type="password" class="form-control" ng-module="staffProfile" id="Password" name="Password" placeholder="Password" readonly="true">
-              <button type="reset" class="btn btn-sm btn-primary">Reset</button>	
+              <label class="col-sm-2 control-label">Datepicker</label>
+              <div class="col-sm-10">
+                <div class="input-group w-md m-b">
+                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </div>
+              </div>
             </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-              <label>RankName</label>
-              <input type="text" class="form-control" ng-module="staffProfile" id="SRank" name="SRank" placeholder="SRank" readonly="true">
-            </div>     
+               <label class="col-sm-2 control-label">Gender</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>male</option>
+                   <option>female</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-              <label>My Name</label>
-              <input type="text" class="form-control" ng-module="staffProfile" id="SName" name="SName" placeholder="SName">
-            </div>            
+              <label class="col-sm-2 control-label">Age</label>
+              <div class="col-sm-10">
+                <input type="text"  class="form-control m-b" placeholder="Email">
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-              <label>Phone</label>
-              <input type="text" class="form-control" ng-module="staffProfile" id="SPhone" name="SPhone" placeholder="SPhone">
-            </div> 
+               <label class="col-sm-2 control-label">Work</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>yes</option>
+                   <option>not yet</option>
+                   <option>retired</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" class="form-control" ng-module="staffProfile" id="SEamil" name="SEamil" placeholder="SEamil">
-            </div>             
+               <label class="col-sm-2 control-label">pet</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>Yes</option>
+                   <option>No</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-              <label>WorkStat</label>
-              <input type="text" class="form-control" ng-module="staffProfile" id="SWorkStat" name="SWorkStat" placeholder="SWorkStat" readonly="true">
-            </div>            
+               <label class="col-sm-2 control-label">Smoking</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>option 1</option>
+                   <option>option 2</option>
+                   <option>option 3</option>
+                   <option>option 4</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
             <div class="form-group">
-              <label>CurrLoc</label>
-              <input type="text" class="form-control" ng-module="staffProfile" id="SCurrLoc" name="SCurrLoc" placeholder="SCurrLoc">
-            </div> 
-            <div class="form-group">
-              <label>Self Introduction</label></br>
-              <input type="text" class="form-control" ng-module="staffProfile" id="SComment" name="SComment" placeholder="SComment" style="overflow:scroll;height:100px;max-height:200px">
-            </div>            
-            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-          </form>
+               <label class="col-sm-2 control-label">Budget</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>option 1</option>
+                   <option>option 2</option>
+                   <option>option 3</option>
+                   <option>option 4</option>
+                 </select>
+               </div>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
   </div>
-</div>
-
-</div>
 </div>
