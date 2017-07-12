@@ -100,7 +100,8 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/shortlist',			['middleware' => 'cus','uses'=>'CustomerController@shortlist_check']);
 	$app->post('/shortlist/delete',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_delete']);
 	$app->post('/shortlist/insert',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_insert']);
-
+	
+	$app->get('/test', 			'CustomerController@multi_suburb_surrounding');
 
 	$app->group(['prefix' => 'msg'], function () use ($app){
 		$app->post('/notice',		['middleware' => 'cus','uses'=>'CustomerController@msg_notice']);

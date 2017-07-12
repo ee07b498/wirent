@@ -243,13 +243,13 @@
 			"description":
 			{
 				"title":"Descriptions",
-				"train_station"	:"train_station nearby  ",
+				"train_station"	:"train_station",
 				"uni"			:"uni nearby            ",
 				"backpack"		:"backpack              ",
 				"park"			:"park nearby           ",
 				"school"		:"school nearby         ",
-				"big_family"	:"big_family compatible ",
-				"shopping_mall"	:"shopping_centre nearby",
+				"big_family"	:"big_family",
+				"shopping_mall"	:"shop nearby",
 				"office_rental"	:"office_rental         "
 			},
 			"feature":
