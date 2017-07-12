@@ -1,0 +1,97 @@
+<div>
+   <div class="inner-wrap clear">
+    <header>
+      <h3 translate="profile.SECTION.Bill.title"></h3>
+    </header>
+
+    <div class="content-wrap clear">
+      <div class="wrapper-md">
+      <div class="panel panel-default">
+        <div class="panel-body b-b b-light" translate="profile.SECTION.Bill.search.title">
+          <!--billdate filter BillDateMin|BillDateMax need to build model for calenders-->
+          <div class="col-sm-4">
+                          <p class="input-group">
+                    <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="billSearchStart.dt" is-open="opened" min-date="'2017-06-01'" max-date="maxDate" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-lg btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </p>
+                        </div>
+          <div class="col-sm-4">
+                          <p class="input-group">
+                    <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="billSearchEnd.dt" is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-lg btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </p>
+                        </div>
+                        <!--end date filter-->
+        </div>
+        <div class="table-responsive">
+          <table class="table m-b-none"  data-filter="#filter" data-page-size="5" >
+          <thead>
+            <tr>
+                <th ng-show="false">
+               BLID
+              </th>
+              <th ng-show="false">
+               CID
+              </th>
+              <th ng-show="false">
+               ER_ID
+              </th>
+
+              <th translate="profile.SECTION.Bill.table.col1"></th>
+              <th translate="profile.SECTION.Bill.table.col2"></th>
+              <th translate="profile.SECTION.Bill.table.col3"></th>
+              <th translate="profile.SECTION.Bill.table.col4"></th>
+              <th translate="profile.SECTION.Bill.table.col5"></th>
+              <th translate="profile.SECTION.Bill.table.col6"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  ng-show="false">[:payment.BLID:]</td>
+              <td  ng-show="false">[:payment.CID:]</td>
+              <td  ng-show="false">[:payment.ER_ID:]</td>
+              <td>[:payment.BillType:]</td>
+              <td>[:payment.BillAmount:]</td>
+              <td><span>[:payment.BillCopy:]</span></td>
+              <td>[:payment.BillDate:]</td>
+              <td>[:payment.BillReceipt:]</td>
+              <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
+            </tr>
+          </tbody>
+          <tfoot class="hide-if-no-paging">
+            <tr>
+              <td colspan="5" class="text-center">
+                <ul class="pagination">
+                  <li class="footable-page-arrow">
+                  <a data-page="first" href="#first">«</a>
+                </li>
+                <li class="footable-page-arrow">
+                  <a data-page="prev" href="#prev">‹</a>
+                </li>
+                <li class="footable-page">
+                  <a data-page="0" href="#">1</a>
+                </li>
+                <li class="footable-page active">
+                  <a data-page="1" href="#">2</a>
+                </li>
+                <li class="footable-page-arrow disabled">
+                  <a data-page="next" href="#next">›</a>
+                </li>
+                <li class="footable-page-arrow disabled">
+                  <a data-page="last" href="#last">»</a>
+                </li>
+                </ul>
+              </td>
+            </tr>
+          </tfoot>
+          </table>
+        </div>
+        </div>
+      </div>
+    </div>
+   </div>
+</div>

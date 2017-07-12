@@ -1,162 +1,209 @@
-<div class="tab-pane tabPanel active profile-detail" ng-class="{'active': tabs[0]}">
-  <div class="tab-pane tabPanel active" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
-    <div class="card">
-      <div class="inner-wrap clear">
-        <header>
-          <h3 translate="profile.SECTION.Profile.header"></h3>
-        </header>
-        <!--file upload to s3 first and display real path in input label with path upload to db-->
-        <div class="content-wrap">
-          <div class="frm-main no-indent">
-            <div class="inner-wrap">
-              <img ng-src="[:data.CPhoto:]">
-              <a id="myBtn" class="btn lowlight" translate="profile.SECTION.Profile.photo_upload"></a>
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+  <div class="col">
+    <div style="background:url(img/c4.jpg) center center; background-size:cover">
+      <div class="wrapper-lg bg-white-opacity">
+        <div class="row m-t">
+          <div class="col-sm-7">
+            <a href class="thumb-lg pull-left m-r">
+              <img src="img/a0.jpg" class="img-circle">
+            </a>
+            <div class="clear m-b">
+              <div class="m-b m-t-sm">
+                <span class="h3 text-black">Libin.Zhang</span>
+                <small class="m-l">Sydney, Australia</small>
+              </div>
+              <p class="m-b">
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
+                <a>yiensuen@gmail.com</a>
+              </p>
+              <p class="m-b">
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-phone"></i></a>
+                <a>02-80021739</a>
+              </p>
+              <p class="m-b">
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+                <a>0424909328</a>
+              </p>
+              <a href class="btn btn-sm btn-success btn-rounded">Edit</a>
             </div>
           </div>
-        </div>
-        <!--end-->
-        <div class="content-wrap profile-detail clear">
-          <div class="half">
-            <fieldset>
-              <!--readonly part-->
-              <div class="frm-main no-indent" ng-show="he">
-                <label for="CID">CID</label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="CID" name="CID" ng-readonly="readonly" type="text" ng-model="data.CID">
-                </div>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="EmailAddress" translate="profile.SECTION.Profile.table.email"></label>
-                <div class="inner-wrap">
-                  <input aria-required="true" id="EmailAddress" name="EmailAddress" ng-readonly="readonly" type="text" ng-model="data.CEmail">
-                </div>
-              </div>
-              <!--readonly end-->
-
-              <div class="frm-main no-indent">
-                <label for="Password" translate="profile.SECTION.Profile.table.password"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="Password" name="Password" ng-readonly="readonly" value="123456" type="password" ng-model="data.CPassword">
-                </div>
-              </div>
-
-              <div class="frm-main no-indent">
-                <label for="FirstName" translate="profile.SECTION.Profile.table.name"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="FirstName" name="FirstName" ng-readonly="readonly" type="text" ng-model="data.CName">
-                </div>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="Phone" translate="profile.SECTION.Profile.table.phone"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="Phone" name="Phone" ng-readonly="readonly" type="text" ng-model="data.CPhone">
-                </div>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="CurrStat" translate="profile.SECTION.Profile.table.currentStatus"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="CurrStat" name="CurrStat" ng-readonly="readonly" type="text" ng-model="data.CCurrStat">
-                </div>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="IDType" translate="profile.SECTION.Profile.table.idType.title"></label>
-                <div class="inner-wrap">
-                  <select ng-model="data.CIDType">
-                    <option value="Citizen" translate="profile.SECTION.Profile.table.idType.option_1"></option>
-                    <option value="Permanent Resident" translate="profile.SECTION.Profile.table.idType.option_2"></option>
-                    <option value="Overseas" translate="profile.SECTION.Profile.table.idType.option_3"></option>
-                  </select>
-                  <input aria-required="false" id="CIDProfile" ng-readonly="readonly" type="text" ng-model="data.CIDProfile" style="width: 308px; display: inline-block;">
-                  <button id="btn_CIDProfile" class="flaticon-banknote20 inline"></button>
-                </div>
-              </div>
-
-              <!--income|save file upload to s3 first and display real path in input label with path upload to db-->
-              <div class="frm-main no-indent">
-                <label for="Income" translate="profile.SECTION.Profile.table.incomeProfile"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="Income" name="Income" ng-readonly="readonly" type="text" ng-model="data.CIncomeProfile">
-                  <button id="Income" class="flaticon-banknote20 inline" ng-model="data.CIncomeProfile"></button>
-                </div>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="Saving" translate="profile.SECTION.Profile.table.savingProfile"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="Saving" name="Saving" ng-readonly="readonly" type="text" ng-model="data.CSavingProfile" />
-                  <button id="Income" class="flaticon-banknote20 inline" ng-model="data.CSavingProfile"></button>
-                </div>
-              </div>
-              <!--end-->
-            </fieldset>
-          </div>
-
-          <div class="half">
-            <fieldset>
-              <div class="frm-main no-indent">
-                <label for="PartenerID" translate="profile.SECTION.Profile.table.partnerID"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="PartenerID" name="PartenerID" ng-readonly="readonly" type="text" ng-model="data.CPartenerID">
-                </div>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="CLastContDate" translate="profile.SECTION.Profile.table.lastContactDate"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="CLastContDate" ng-readonly="readonly" type="text" ng-model="data.CLastContDate" />
-                </div>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="Gender" translate="profile.SECTION.Profile.table.gender.title"></label>
-                <select ng-model="data.CSex">
-                  <option value="Female" translate="profile.SECTION.Profile.table.gender.option_2"></option>
-                  <option value="Male" translate="profile.SECTION.Profile.table.gender.option_1"></option>
-                </select>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="Age" translate="profile.SECTION.Profile.table.age"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="Age" name="Age" ng-readonly="readonly" type="text" ng-model="data.CAge">
-                </div>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="Work" translate="profile.SECTION.Profile.table.work.title"></label>
-                <select ng-model="data.CWorking">
-                  <option value="Yes" translate="profile.SECTION.Profile.table.work.option_1"></option>
-                  <option value="Not yet" translate="profile.SECTION.Profile.table.work.option_2"></option>
-                  <option value="Retired" translate="profile.SECTION.Profile.table.work.option_3"></option>
-                </select>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="Pet" translate="profile.SECTION.Profile.table.pet.title"></label>
-                <select ng-model="data.CPet">
-                  <option value="No" translate="profile.SECTION.Profile.table.pet.option_1"></option>
-                  <option value="Yes" translate="profile.SECTION.Profile.table.pet.option_2"></option>
-                </select>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="Smoking" translate="profile.SECTION.Profile.table.smoking.title"></label>
-                <select ng-model="data.CSmoking">
-                  <option value="No" translate="profile.SECTION.Profile.table.smoking.option_1"></option>
-                  <option value="Yes" translate="profile.SECTION.Profile.table.smoking.option_2"></option>
-                </select>
-              </div>
-              <div class="frm-main no-indent">
-                <label for="Budget" translate="profile.SECTION.Profile.table.budget"></label>
-                <div class="inner-wrap">
-                  <input aria-required="false" id="Budget" name="Budget" ng-readonly="readonly" type="text" ng-model="data.CBudget">
-                </div>
-              </div>
-
-              <div class="frm-main no-indent">
-                <div class="inner-wrap">
-                  <a class="btn lowlight " ng-click="readonly=!readonly" translate="profile.SECTION.Profile.table.reset"></a>
-                  <a class="btn lowlight" ng-click="saveProfile()" translate="profile.SECTION.Profile.table.save"></a>
-                </div>
-              </div>
-            </fieldset>
+          <div class="col-sm-5">
+            <div class="pull-right pull-none-xs text-center">
+              <a href class="m-b-md inline m">
+                <span class="h3 block font-bold">Company</span>
+                <small>Winning Investment Inc.</small>
+              </a>
+              <a href class="m-b-md inline m">
+                <span class="h3 block font-bold">work</span>
+                <small>Software Engineer</small>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="wrapper bg-white b-b">
+      <ul class="nav nav-pills nav-sm">
+        <li class="active"><a href>Stream</a></li>
+        <li><a href>Profile</a></li>
+        <li><a href>Messages</a></li>
+      </ul>
+    </div>
+    <div class="wrapper bg-white b-b">
+        <div class="row m-t">
+          <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control m-b" placeholder="Email">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control m-b">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control m-b" placeholder="Name">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Phone</label>
+                  <div class="col-sm-10">
+                    <input type="phone"  class="form-control m-b" placeholder="Phone">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Current Status</label>
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control m-b" placeholder="Current Status">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                   <label class="col-sm-2 control-label">ID Type</label>
+                   <div class="col-sm-10">
+                     <select name="account" class="form-control m-b">
+                       <option>option 1</option>
+                       <option>option 2</option>
+                       <option>option 3</option>
+                       <option>option 4</option>
+                     </select>
+                   </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Upload File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Income File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Saving File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
 
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="text"  class="form-control m-b" placeholder="Email">
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Datepicker</label>
+              <div class="col-sm-10">
+                <div class="input-group w-md m-b">
+                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Gender</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>male</option>
+                   <option>female</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Age</label>
+              <div class="col-sm-10">
+                <input type="text"  class="form-control m-b" placeholder="Email">
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Work</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>yes</option>
+                   <option>not yet</option>
+                   <option>retired</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">pet</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>Yes</option>
+                   <option>No</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Smoking</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>option 1</option>
+                   <option>option 2</option>
+                   <option>option 3</option>
+                   <option>option 4</option>
+                 </select>
+               </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Budget</label>
+               <div class="col-sm-10">
+                 <select name="account" class="form-control m-b">
+                   <option>option 1</option>
+                   <option>option 2</option>
+                   <option>option 3</option>
+                   <option>option 4</option>
+                 </select>
+               </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>

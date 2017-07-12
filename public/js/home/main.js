@@ -15,6 +15,36 @@ angular.module('andy')
 			capslock: 20,
 			numlock: 144
 	})
+	.directive('labelColor', function(){
+	  return function(scope, $el, attrs){
+	    $el.css({'color': attrs.color});
+	  }
+	})
+	.filter('fromNow', function() {
+	  return function(date) {
+	    return moment(date).fromNow();
+	  }
+	})
+	.factory('mails', ['$http', function ($http) {
+	  var path = '/mails.json';
+	  var mails = $http.get(path).then(function (resp) {
+	    return resp.data.mails;
+	  });
+
+	  var factory = {};
+	  factory.all = function () {
+	    return mails;
+	  };
+	  factory.get = function (id) {
+	    return mails.then(function(mails){
+	      for (var i = 0; i < mails.length; i++) {
+	        if (mails[i].id == id) return mails[i];
+	      }
+	      return null;
+	    })
+	  };
+	  return factory;
+	}])
 	.directive('keyBind', ['keyCodes', function (keyCodes) {
 			function map(obj) {
 					var mapped = {};
