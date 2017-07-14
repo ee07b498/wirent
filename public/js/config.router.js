@@ -39,23 +39,67 @@ angular.module('app')
                       ]
                   }
               })
-              .state('app.dashboard-v2', {
-                  url: '/dashboard-v2',
-                  templateUrl: 'tpl/app_dashboard_v2.html',
+              .state('app.property_add', {
+                  url: '/property_add',
+                  templateUrl: 'tpl/property/property-add.html'
+              })
+              .state('app.staff', {
+                  url: '/staff',
+                  template: '<div ui-view class="fade-in-up"></div>'
+              })
+              .state('app.staff.position_management', {
+                  url: '/position_management',
+                  templateUrl: 'tpl/staff/position_management.html',
                   resolve: {
-                    deps: ['$ocLazyLoad',
-                      function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/chart.js']);
-                    }]
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/position_management.js');
+                      }]
                   }
               })
-              .state('app.ui', {
-                  url: '/ui',
+              .state('app.staff.role_management', {
+                  url: '/role_management',
+                  templateUrl: 'tpl/staff/role_management.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/role_management.js');
+                      }]
+                  }
+              })
+              .state('app.staff.staff_management', {
+                  url: '/staff_management',
+                  templateUrl: 'tpl/staff/staff_management.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/staff_management.js');
+                      }]
+                  }
+              })
+              .state('app.customer', {
+                  url: '/customer',
                   template: '<div ui-view class="fade-in-up"></div>'
               })
-              .state('app.ui', {
-                  url: '/ui',
-                  template: '<div ui-view class="fade-in-up"></div>'
+              .state('app.customer.user', {
+                  url: '/user_management',
+                  templateUrl: 'tpl/customer/user_management.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/user_management.js');
+                      }]
+                  }
+              })
+              .state('app.customer.landlord', {
+                  url: '/landlord_management',
+                  templateUrl: 'tpl/customer/landlord_management.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/landlord_management.js');
+                      }]
+                  }
               })
               .state('app.ui.buttons', {
                   url: '/buttons',
