@@ -43,6 +43,14 @@ angular.module('app')
                   url: '/property_add',
                   templateUrl: 'tpl/property/property-add.html'
               })
+              .state('app.share_property_list', {
+                  url: '/share_property_list',
+                  templateUrl: 'tpl/property/share_property_list.html'
+              })
+              .state('app.share_property_add', {
+                  url: '/share_property_add',
+                  templateUrl: 'tpl/property/share_property_add.html'
+              })
               .state('app.staff', {
                   url: '/staff',
                   template: '<div ui-view class="fade-in-up"></div>'

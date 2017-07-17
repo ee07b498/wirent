@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="/fonts/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
@@ -22,14 +22,14 @@
 
   <!-- Angular -->
   <script src="vendor/angular/angular.js"></script>
-  
+
   <script src="vendor/angular/angular-animate/angular-animate.js"></script>
   <script src="vendor/angular/angular-cookies/angular-cookies.js"></script>
   <script src="vendor/angular/angular-resource/angular-resource.js"></script>
   <script src="vendor/angular/angular-sanitize/angular-sanitize.js"></script>
   <script src="vendor/angular/angular-touch/angular-touch.js"></script>
 <!-- Vendor -->
-  <script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script> 
+  <script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script>
   <script src="vendor/angular/ngstorage/ngStorage.js"></script>
 
   <!-- bootstrap -->
