@@ -1,7 +1,7 @@
-<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="AbnTestController">
+<div class="hbox hbox-auto-xs hbox-auto-sm">
   <div class="bg-white">
     <div class="wrapper-md bg-grey">
-      整租房信息列表
+      出售房信息列表
     </div>
     <div class="wrapper-md bg-white m-b">
       <div class="form-group text-center">
@@ -34,7 +34,7 @@
       <div class="panel-body b-b b-light">
         <div class="col-sm-7 inline">
           Filter: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r" />
-          <a class="inline" ui-sref="app.property_add">
+          <a class="inline" ui-sref="app.share_property_add">
                 <button class="btn btn-success">添加房产</button>
               </a>
         </div>
@@ -83,19 +83,16 @@
               <td data-value="78025368997">22 Jun 2017</td>
               <td data-value="1"><span class="label bg-success" title="Active">Active</span></td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -106,19 +103,16 @@
               <td data-value="78025368997">22 Jun 2017</td>
               <td data-value="2"><span class="label bg-light" title="Disabled">Disabled</span></td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -130,19 +124,16 @@
               <td data-value="3"><span class="label bg-warning" title="Suspended">Suspended</span>
               </td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -153,19 +144,16 @@
               <td data-value="78025368997">22 Jun 2017</td>
               <td data-value="1"><span class="label bg-success" title="Active">Active</span></td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -177,19 +165,16 @@
               <td data-value="3"><span class="label bg-warning" title="Suspended">Suspended</span>
               </td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -202,19 +187,16 @@
               <td data-value="78025368997">22 Jun 2017</td>
               <td data-value="2"><span class="label bg-light" title="Disabled">Disabled</span></td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -225,19 +207,16 @@
               <td data-value="78025368997">22 Jun 2017</td>
               <td data-value="2"><span class="label bg-light" title="Disabled">Disabled</span></td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -251,19 +230,16 @@
               <td data-value="3"><span class="label bg-warning" title="Suspended">Suspended</span>
               </td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -274,19 +250,16 @@
               <td data-value="78025368997">22 Jun 2017</td>
               <td data-value="1"><span class="label bg-success" title="Active">Active</span></td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
             <tr>
@@ -298,19 +271,16 @@
               <td data-value="3"><span class="label bg-warning" title="Suspended">Suspended</span>
               </td>
               <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-level-down"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="false"></i>
+                  </span>
+                <span class="m-r-lg">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
                 <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
               </td>
             </tr>
           </tbody>

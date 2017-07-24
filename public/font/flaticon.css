@@ -432,7 +432,7 @@
 .flaticon-vacuum30:before { content: "\f10f"; font-size: 30px;  margin-left: 0;}
 .flaticon-train-on-railroad30:before { content: "\f110"; font-size: 30px;  margin-left: 0;}
 .flaticon-shopping-cart30:before { content: "\f111"; font-size: 30px;  margin-left: 0;}
-.flaticon-man-standing-up30:before { content: "\f112"; font-size: 30px;  margin-left: 0;}
+.flaticon-man-standing-up30:before { content: "\f112"; font-size: 33px;  margin-left: 0;} /*this size is different from others*/
 .flaticon-double-king-size-bed30:before { content: "\f113"; font-size: 30px;  margin-left: 0;}
 .flaticon-turn-microphone-off-button30:before { content: "\f114"; font-size: 30px;  margin-left: 0;}
 .flaticon-washing-machine30:before { content: "\f115"; font-size: 30px;  margin-left: 0;}

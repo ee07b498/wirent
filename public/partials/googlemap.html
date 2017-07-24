@@ -236,10 +236,10 @@
 						<div class="col-sm-2 text-center m-t-sm" style="padding:0;">
 							<div class="m-t-xs pull-left list-map">
 									<a ui-sref="app.listpage">
-										<i  class="fa fa-lg fa-list"></i>&nbsp;<i translate="listpage.list.switch.list"></i>
+										<span  class="fa fa-lg fa-list"></span>&nbsp;<span translate="listpage.list.switch.list"></span>
 									</a>
 									<a  style="color: purple; border-bottom: 3px solid rgb(150, 65, 137); margin-right: 10px;">
-										<i class="fa fa-lg fa-map-marker" ></i>&nbsp;<i translate="listpage.list.switch.map"></i>
+										<span class="fa fa-lg fa-map-marker" ></span>&nbsp;<span translate="listpage.list.switch.map"></span>
 									</a>
 							</div>
 
@@ -254,22 +254,22 @@
 										<ul class="dropdown-menu" role="menu">
 												<li>
 													<a ng-click="sortBy('ER_Price')">
-														<i translate="listpage.list.orderBy.price"></i>
+														<span translate="listpage.list.orderBy.price"></span>
 													&nbsp;
 														<span ng-if="orderleft">
-															<i ng-show="sortPrice" class="fa fa-caret-down"></i>
-															<i ng-show="!sortPrice" class="fa fa-caret-up"></i>
+															<span ng-show="sortPrice" class="fa fa-caret-down"></span>
+															<span ng-show="!sortPrice" class="fa fa-caret-up"></span>
 													</span>
 													</a>
 												</li>
 												<li class="divider"></li>
 												<li>
 														<a ng-click="sortBy('ER_AvailableDate')">
-															<i translate="listpage.list.orderBy.time"></i>
+															<span translate="listpage.list.orderBy.time"></span>
 															&nbsp;
 															<span ng-if="orderright">
-														<i ng-show="sortDate" class="fa fa-caret-down"></i>
-																<i ng-show="!sortDate" class="fa fa-caret-up"></i>
+														<span ng-show="sortDate" class="fa fa-caret-down"></span>
+																<span ng-show="!sortDate" class="fa fa-caret-up"></span>
 														</span>
 														</a>
 												</li>
@@ -298,7 +298,7 @@
 																<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="width:100px; align-content: center;">
 															</div>
 															<div class="info-right">
-																  <p class="price">$[:vm.shop.ER_Price:]<i translate="listpage.list.row.price_unit"></i></p>
+																  <p class="price">$[:vm.shop.ER_Price:]<span translate="listpage.list.row.price_unit"></span></p>
 																  <p class="address">
 																  		<a ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})">
 																  			[:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region:]
@@ -324,7 +324,7 @@
 																			<span class="icon fa fa-car"></span>
 																		</span>
 																		<span class="details" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="margin-left: 20px;">
-																			<i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i>
+																			<span translate="listpage.list.row.details"></span> <span class="fa fa-angle-right"></span>
 																		</span>
 																	</div>
 
@@ -350,8 +350,8 @@
 									<div id="arr"><span id="left"><</span><span id="right">></span></div>-->
 									 <div class="ad">
 												 <div class="shortlist-star" >
-														<a  ng-show="!star" ng-click="star=!star;vm.addShortlist()"><i class="fa fa-3x fa-heart-o" aria-hidden="true"></i></a>
-														<a style="color: pink;" ng-show="star" ng-click="star=!star;vm.deleteShortlist()"><i class="fa fa-3x fa-heart" aria-hidden="true"></i></a>
+														<a  ng-show="!star" ng-click="star=!star;vm.addShortlist()"><span class="fa fa-3x fa-heart-o" aria-hidden="true"></span></a>
+														<a style="color: pink;" ng-show="star" ng-click="star=!star;vm.deleteShortlist()"><span class="fa fa-3x fa-heart" aria-hidden="true"></span></a>
 												 </div>
 										 		 <carousel interval="myInterval" >
 									          <slide ng-repeat="slide in shop.picset" active="slide.active">
@@ -423,10 +423,10 @@
 										<div class="price">
 											<span class="num">$[:shop.ER_Price:]</span>
 											<span class="period" translate="listpage.list.row.price_unit">per week</span>
-											<span class="available"><i translate="listpage.list.row.time"></i>:&nbsp;&nbsp;<i style="color: darkred;font-size: 16px;">[:shop.ER_AvailableDate:]</i></span>
+											<span class="available"><span translate="listpage.list.row.time"></span>:&nbsp;&nbsp;<span style="color: darkred;font-size: 16px;">[:shop.ER_AvailableDate:]</span></span>
 										</div>
 										<div class="view" ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
-											<span class="view-num"><i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i></span>
+											<span class="view-num"><span translate="listpage.list.row.details"></span> <span class="fa fa-angle-right"></span></span>
 										</div>
 									</div>
 								</div>

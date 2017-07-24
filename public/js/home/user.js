@@ -1,3 +1,11 @@
+/**
+ * @Date:   2017-06-30T10:20:04+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-07-23T22:16:19+10:00
+ */
+
+
+
 ﻿;(function(){
 	'use strict';
 	angular.module('andy')
@@ -11,10 +19,10 @@
 				me.loginCheck = function(){
 					return	$http.get('/customer/profile')
 						.then(function(r){
-							return r;						
+							return r;
 						})
 				}
-				
+
 				me.signup = function(){
 					//console.log(me.signup_data);
 					$http.post('/customer/register', me.signup_data)
@@ -26,9 +34,9 @@
 								$state.go('app.login');
 							}
 						},function(e){
-							
+
 						})
-					
+
 				}
 				me.login = function(){
 					$http.post('/customer/login',me.login_data)
@@ -47,11 +55,11 @@
 								me.login_failed = true;
 							}
 						},function(){
-							
+
 						})
 				}
-				
-				
+
+
 			}])
 			.controller('SignupFormController',[
 			'$scope',
@@ -63,7 +71,7 @@
 			return UserService.signup_data;
 			console.log("111");
 		     },function(n,o){
-			
+
 		},true);
 			}])
 		.controller('UserController',[
@@ -71,13 +79,13 @@
 						'UserService',
 					function($scope,UserService){
 						//$scope.User = UserService;
-						
+
 		}])
 		.controller('SigninFormController',['$scope','UserService',function($scope,UserService){
 		$scope.name = "Winning";
 		$scope.User = UserService;
 		console.log(UserService);
-		
+
 	}])
-		
+
 })();
