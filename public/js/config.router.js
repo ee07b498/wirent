@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-07-24T15:12:02+10:00
+ * @Last modified time: 2017-07-25T17:34:42+10:00
  */
 
 
@@ -107,6 +107,26 @@ angular.module('app')
                       }]
                   }
               })
+              .state('app.staff.salesdepartment', {
+                  url: '/sales_department',
+                  templateUrl: 'tpl/staff/sales_department.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/sales_department.js');
+                      }]
+                  }
+              })
+              .state('app.staff.rentaldepartment', {
+                  url: '/rental_department',
+                  templateUrl: 'tpl/staff/rental_department.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/rental_management.js');
+                      }]
+                  }
+              })
               .state('app.staff.staff_profile', {
                   url: '/staff_profile',
                   templateUrl: 'tpl/staff/staff_profile.html',
@@ -114,6 +134,16 @@ angular.module('app')
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad){
                           return $ocLazyLoad.load('js/controllers/staff_profileCtrl.js');
+                      }]
+                  }
+              })
+              .state('app.staff.contact', {
+                  url: '/contact',
+                  templateUrl: 'tpl/apps_contact.html',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad ){
+                          return uiLoad.load( ['js/app/contact/contact.js'] );
                       }]
                   }
               })
@@ -158,6 +188,20 @@ angular.module('app')
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad){
                           return $ocLazyLoad.load('js/controllers/landlord_profileCtrl.js');
+                      }]
+                  }
+              })
+              .state('app.customer.addPic', {
+                  url: '/add_pic',
+                  templateUrl: 'tpl/customer/add_pic_landlord.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('angularFileUpload').then(
+                              function(){
+                                 return $ocLazyLoad.load('js/controllers/file-upload.js');
+                              }
+                          );
                       }]
                   }
               })

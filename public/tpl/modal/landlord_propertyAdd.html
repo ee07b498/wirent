@@ -1,0 +1,214 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">房产信息添加</h1>
+</div>
+<div class="wrapper-md">
+  <div class="panel panel-default">
+    <div class="panel-heading font-bold">
+      Property infomations
+    </div>
+    <div class="panel-body">
+      <form class="form-horizontal" method="get">
+        <div class="form-group">
+          <label class="col-sm-1 control-label">No.</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="unit no.">
+          </div>
+          <label class="col-sm-1 control-label">Street</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="street">
+          </div>
+          <label class="col-sm-1 control-label">Suburb</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="Suburb">
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group">
+          <label class="col-sm-1 control-label">Bedrooms</label>
+          <div class="col-sm-3">
+            <div class="input-group m-b">
+              <input type="text" class="form-control" placeholder="bedrooms">
+              <span class="input-group-addon"><i class="fa fa-bed"></i></span>
+            </div>
+          </div>
+          <label class="col-sm-1 control-label">Bathrooms</label>
+          <div class="col-sm-3">
+            <div class="input-group m-b">
+              <input type="text" class="form-control" placeholder="Bathrooms">
+              <span class="input-group-addon"><i class="fa fa-bath"></i></span>
+            </div>
+          </div>
+          <label class="col-sm-1 control-label">Parkings</label>
+          <div class="col-sm-3">
+            <div class="input-group m-b">
+              <input type="text" class="form-control" placeholder="parkings">
+              <span class="input-group-addon"><i class="fa fa-car"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group">
+          <label class="col-sm-1 control-label">Area</label>
+          <div class="col-sm-3">
+            <div class="input-group m-b">
+              <input type="text" class="form-control" placeholder="Area">
+              <span class="input-group-addon">m^2</span>
+            </div>
+          </div>
+          <label class="col-sm-1 control-label">Kitchen</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="Kitchen">
+          </div>
+          <label class="col-sm-1 control-label">Dinning</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="Dinning">
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group">
+          <label class="col-sm-1 control-label">Types</label>
+          <div class="col-sm-3">
+            <select ui-jq="chosen" class="w-sm">
+                <optgroup label="房屋类型">
+                  <option value="AK">Unit</option>
+                  <option value="HI">Apartment</option>
+                  <option value="CA">Studio</option>
+                  <option value="NV">Townhouse</option>
+                  <option value="WA">House</option>
+                </optgroup>
+            </select>
+          </div>
+          <label class="col-sm-1 control-label">Price</label>
+          <div class="col-sm-3">
+            <div class="input-group m-b">
+              <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Price">
+            </div>
+          </div>
+          <label class="col-sm-1 control-label">Features</label>
+          <div class="col-sm-3">
+            <select ui-jq="chosen" multiple class="w-sm">
+              <option value="GO">Girls Only</option>
+              <option value="BO">Boys Only</option>
+              <option value="NP">No pets</option>
+              <option value="NS">No Smoking</option>
+              <option value="AL">Furniture</option>
+              <option value="AR">Laundry</option>
+              <option value="IL">Full Kitchen</option>
+              <option value="IA">Coffe Bar</option>
+              <option value="KS">Aircondition</option>
+              <option value="KY">Media</option>
+            </select>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group">
+          <label class="col-sm-1 control-label">Available</label>
+          <div class="col-sm-3" ng-controller="DatepickerDemoCtrl">
+            <div class="input-group w-sm">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+          <label class="col-sm-1 control-label">Status</label>
+          <div class="col-sm-3">
+            <select name="account" class="form-control m-b">
+              <option>Pending</option>
+              <option>Published</option>
+              <option>Processing</option>
+              <option>delete</option>
+            </select>
+          </div>
+          <label class="col-sm-1 control-label">Describe</label>
+          <div class="col-sm-3">
+            <select ui-jq="chosen" multiple class="w-sm">
+              <option value="GO">university</option>
+              <option value="BO">train station</option>
+              <option value="NP">Back pack</option>
+              <option value="NS">Park</option>
+              <option value="AL">School</option>
+              <option value="AR">Big family</option>
+              <option value="IL">Shopping mall</option>
+              <option value="IA">Office rental</option>
+            </select>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group">
+          <label class="col-sm-1 control-label">Describe:</label>
+          <div class="col-sm-11">
+            <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
+              <div class="btn-group dropdown" dropdown>
+                <a class="btn btn-default" dropdown-toggle tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li>
+                  <li><a href data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+                  <li><a href data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
+              </div>
+              <div class="btn-group dropdown" dropdown>
+                <a class="btn btn-default" dropdown-toggle data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
+                  <li><a href data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
+                  <li><a href data-edit="fontSize 1" style="font-size:14px">Small</a></li>
+                </ul>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
+                <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
+                <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+                <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+                <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+                <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+              </div>
+              <div class="btn-group dropdown" dropdown>
+                <a class="btn btn-default" dropdown-toggle tooltip="Hyperlink"><i class="fa fa-link"></i></a>
+                <div class="dropdown-menu">
+                  <div class="input-group m-l-xs m-r-xs">
+                    <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink"/>
+                    <div class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Add</button>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+              </div>
+
+              <div class="btn-group">
+                <a class="btn btn-default" tooltip="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+                <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px" />
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+                <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+              </div>
+            </div>
+            <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px">
+              Go ahead&hellip;
+            </div>
+          </div>
+        </div>
+
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group text-center">
+          <div class="col-sm-4 col-sm-offset-4">
+            <button type="submit" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-success">Add property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

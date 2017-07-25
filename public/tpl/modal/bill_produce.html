@@ -1,0 +1,143 @@
+<div class="bg-light lter b-b wrapper-md hidden-print">
+  <a href class="btn btn-sm btn-info pull-right" ng-click="printBill('billProduce');">Print</a>
+  <h1 class="m-n font-thin h3">Rental Bill</h1>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading font-bold">
+    角色修改
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>地址选择：</label>
+          <div class="col-sm-10">
+            <select name="account" class="form-control m-b">
+              <option>9/20 harbourne road kingsford, NSW</option>
+              <option>21/76 Anzac Pde Kensington, NSW</option>
+            </select>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>房屋类型：</label>
+        <div class="col-sm-10">
+          <label class="control-label" for="input-id-1"><i style="color:red">整租</i></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>姓名：</label>
+        <div class="col-sm-10">
+          <label class="control-label" for="input-id-1"><i style="color:red">Libin Zhang</i></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>电话：</label>
+        <div class="col-sm-10">
+          <label class="control-label" for="input-id-1"><i style="color:red">0424909328</i></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>邮件：</label>
+        <div class="col-sm-10">
+          <label class="control-label" for="input-id-1"><i style="color:red">yiensuen@gmail.com</i></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>Due Date：</label>
+        <div class="col-sm-10" ng-controller="DatepickerDemoCtrl">
+            <div class="input-group w-md">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>Bill：</label>
+        <div class="col-sm-10">
+          <div class="input-group m-b">
+            <input type="text" class="form-control" ng-model="bilNum"placeholder="Bill">
+            <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="wrapper-md" id="billProduce" style="display:none;">
+  <div>
+    <img src="/img/logo.png" style="width:200px;height150px;"/>
+    <div class="row">
+      <div class="col-xs-6">
+        <h4><a ng-href="http://www.winningInvestment.com">Winning Investment Inc.</a></h4>
+        <p>84 PITT ST <br>
+          Sydney, NSW<br>
+          Australia
+        </p>
+        <p>
+          Telephone:  +61-2-8002 1739<br>
+          Mobile:  +61-4 3139 6515
+        </p>
+      </div>
+      <div class="col-xs-6 text-right">
+        <p class="h4">9/20 harbourne road kingsford</p>
+        <h5>{{dt}}</h5>
+      </div>
+    </div>
+    <div class="well m-t bg-light lt">
+      <div class="row">
+        <div class="col-xs-12">
+          <strong>TO:</strong>
+          <h4>Linbin Zhang</h4>
+          <p>
+            9/20<br>
+            harbourne kingsford, NSW<br>
+            Australia<br>
+            Phone: 0424909328<br>
+            Email: yiensuen@gmail.com<br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="m-t m-b">Due date: <strong>{{dt}}</strong><br>
+        Bill status: <span class="label bg-success">Unpaid</span><br>
+        Bill ID: <strong>#9399034</strong>
+    </p>
+    <div class="line"></div>
+    <table class="table table-striped bg-white b-a">
+      <thead>
+        <tr>
+          <th style="width: 60px">ID</th>
+          <th>DESCRIPTION</th>
+          <th style="width: 140px">UNIT PRICE</th>
+          <th style="width: 90px">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>9/20 harbourne road Kingsford, NSW</td>
+          <td>${{bilNum}}</td>
+          <td>${{bilNum}}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right"><strong>Subtotal</strong></td>
+          <td>${{bilNum}}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right no-border"><strong>VAT Included in Total</strong></td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right no-border"><strong>Total</strong></td>
+          <td><strong>${{bilNum}}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

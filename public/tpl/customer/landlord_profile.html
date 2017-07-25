@@ -74,85 +74,85 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">First Name</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="First Name">
+                  <input type="text" class="form-control m-b" placeholder="First Name">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Last Name</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Last Name">
+                  <input type="text" class="form-control m-b" placeholder="Last Name">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Email">
+                  <input type="text" class="form-control m-b" placeholder="Email">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Phone</label>
                 <div class="col-sm-10">
-                  <input type="phone"  class="form-control m-b" placeholder="Phone">
+                  <input type="phone" class="form-control m-b" placeholder="Phone">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Current Status</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Current Status">
+                  <input type="text" class="form-control m-b" placeholder="Current Status">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                 <label class="col-sm-2 control-label">Position</label>
-                 <div class="col-sm-10">
-                   <select name="account" class="form-control m-b">
+                <label class="col-sm-2 control-label">Position</label>
+                <div class="col-sm-10">
+                  <select name="account" class="form-control m-b">
                      <option>option 1</option>
                      <option>option 2</option>
                      <option>option 3</option>
                      <option>option 4</option>
                    </select>
-                 </div>
+                </div>
               </div>
             </div>
 
             <div class="tab-content" ng-show="selectedTab == 2">
-                <img src="img/andy.jpg"/>
-                <div class="line line-dashed b-b line-lg pull-in"></div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Upload File</label>
-                  <div class="col-sm-10">
-                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
-                  </div>
+              <img src="img/andy.jpg" />
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Upload File</label>
+                <div class="col-sm-10">
+                  <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
                 </div>
-                <div class="line line-dashed b-b line-lg pull-in"></div>
-                <div>
-                  <button class="btn btn-success m-r">submit</button><button class="btn btn-error">cancel</button>
-                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div>
+                <button class="btn btn-success m-r">submit</button><button class="btn btn-error">cancel</button>
+              </div>
             </div>
 
             <div class="tab-content" ng-show="selectedTab == 3">
               <div class="form-group">
                 <label class="col-sm-2 control-label">Current password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="Current password">
+                  <input type="password" class="form-control m-b" placeholder="Current password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">New password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="New password">
+                  <input type="password" class="form-control m-b" placeholder="New password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Retype New password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="Retype New password">
+                  <input type="password" class="form-control m-b" placeholder="Retype New password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -168,157 +168,228 @@
       </div>
     </tab>
     <tab heading="My Property">
-      <div class="table-responsive">
-        <table class="table table-striped b-t b-light">
-          <thead>
-            <tr>
-              <th style="width:20px;">
-                <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-              </th>
-              <th>ID</th>
-              <th>用户列表</th>
-              <th>业务关系</th>
-              <th>房产信息</th>
-              <th>状态</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>1</td>
-              <td><a ui-sref="app.customer.userprofile">admin</a></td>
-              <td>整租用户</td>
-              <td>9/20 harbourne road kingsford</td>
-              <td>
-                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-              </td>
-              <td>
-                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                <a href class="active"><i class="fa fa-trash"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>2</td>
-              <td><a ui-sref="app.customer.userprofile">张三</a></td>
-              <td>整租用户</td>
-              <td>9/20 harbourne road kingsford</td>
-              <td>
-                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-              </td>
-              <td>
-                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                <a href class="active"><i class="fa fa-trash"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>3</td>
-              <td><a ui-sref="app.customer.userprofile">李四</a></td>
-              <td>分租用户</td>
-              <td>9/20 harbourne road kingsford</td>
-              <td>
-                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-              </td>
-              <td>
-                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                <a href class="active"><i class="fa fa-trash"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>4</td>
-              <td><a ui-sref="app.customer.userprofile">钱七</a></td>
-              <td>分租用户</td>
-              <td>9/20 harbourne road kingsford</td>
-              <td>
-                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-              </td>
-              <td>
-                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                <a href class="active"><i class="fa fa-trash"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>5</td>
-              <td>赵六</td>
-              <td>分租用户</td>
-              <td>9/20 harbourne road kingsford</td>
-              <td>
-                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-              </td>
-              <td>
-                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                <a href class="active"><i class="fa fa-trash"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>6</td>
-              <td>钱七</td>
-              <td>买房用户</td>
-              <td>9/20 harbourne road kingsford</td>
-              <td>
-                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-              </td>
-              <td>
-                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                <a href class="active"><i class="fa fa-trash"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>7</td>
-              <td>钱七</td>
-              <td>买房用户</td>
-              <td>9/20 harbourne road kingsford</td>
-              <td>
-                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-              </td>
-              <td>
-                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                <a href class="active"><i class="fa fa-trash"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>8</td>
-              <td>赵六</td>
-              <td>买房用户</td>
-              <td>9/20 harbourne road kingsford</td>
-              <td>
-                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-              </td>
-              <td>
-                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                <a href class="active"><i class="fa fa-trash"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <footer class="panel-footer">
-        <div class="row">
-          <div class="col-sm-6 text-left">
-            <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <script type="text/ng-template" id="landlordPropertyAdd.html">
+            <div ng-include="'/tpl/modal/landlord_propertyAdd.html'"></div>
+          </script>
+          <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+          <button class="btn btn-info" ng-click="landlord_propertyAdd('lg')"><i class="fa fa-plus"></i>房产添加</button>
+        </div>
+        <div class="row wrapper">
+          <div class="col-sm-3 m-b-xs">
+            <select class="input-sm form-control w-sm inline v-middle">
+              <option value="0">整租</option>
+              <option value="1">分租</option>
+              <option value="2">二手房购买</option>
+              <option value="3">房产投资</option>
+          </select>
+            <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
           </div>
-          <div class="col-sm-6 text-right text-center-xs">
-            <ul class="pagination pagination-sm m-t-none m-b-none">
-              <li><a href><i class="fa fa-chevron-left"></i></a></li>
-              <li><a href>1</a></li>
-              <li><a href>2</a></li>
-              <li><a href>3</a></li>
-              <li><a href>4</a></li>
-              <li><a href>5</a></li>
-              <li><a href><i class="fa fa-chevron-right"></i></a></li>
-            </ul>
+          <div class="col-sm-5">
+            <div class="input-group">
+              <input type="text" class="input-sm form-control" placeholder="Search">
+              <span class="input-group-btn">
+              <button class="btn btn-sm btn-default" type="button">Go!</button>
+            </span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
           </div>
         </div>
-      </footer>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th style="width:20px;">
+                  <label class="i-checks m-b-none">
+                  <input type="checkbox"><i></i>
+                </label>
+                </th>
+                <th>ID</th>
+                <th>用户列表</th>
+                <th>房屋类型</th>
+                <th>房产信息</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>1</td>
+                <td>Libin</td>
+                <td>整租</td>
+                <td>9/20 harbourne road kingsford</td>
+                <td>
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <td>
+                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>2</td>
+                <td>Libin</td>
+                <td>整租</td>
+                <td>9/20 harbourne road kingsford</td>
+                <td>
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <td>
+                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>3</td>
+                <td>Libin</td>
+                <td>分租</td>
+                <td>9/20 harbourne road kingsford</td>
+                <td>
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <td>
+                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>4</td>
+                <td>Libin</td>
+                <td>分租</td>
+                <td>9/20 harbourne road kingsford</td>
+                <td>
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <td>
+                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>5</td>
+                <td>Libin</td>
+                <td>分租</td>
+                <td>9/20 harbourne road kingsford</td>
+                <td>
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <td>
+                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>6</td>
+                <td>Libin</td>
+                <td>整租</td>
+                <td>9/20 harbourne road kingsford</td>
+                <td>
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <td>
+                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>7</td>
+                <td>Libin</td>
+                <td>整租</td>
+                <td>9/20 harbourne road kingsford</td>
+                <td>
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <td>
+                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>8</td>
+                <td>Libin</td>
+                <td>整租</td>
+                <td>9/20 harbourne road kingsford</td>
+                <td>
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <td>
+                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+              <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+            </div>
+            <div class="col-sm-6 text-right text-center-xs">
+              <ul class="pagination pagination-sm m-t-none m-b-none">
+                <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                <li><a href>1</a></li>
+                <li><a href>2</a></li>
+                <li><a href>3</a></li>
+                <li><a href>4</a></li>
+                <li><a href>5</a></li>
+                <li><a href><i class="fa fa-chevron-right"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
     </tab>
   </tabset>
 </div>
