@@ -9,17 +9,37 @@
       <span class="font-bold">Profile</span>
     </a>
   </li>
-  <li ui-sref-active="active">
-    <a ui-sref="landlord.balance">
-      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-      <span class="font-bold">Balance</span>
-    </a>
-  </li>
-  <li ui-sref-active="active">
-    <a ui-sref="landlord.propertyManagement">
-      <i class="fa fa-address-book icon text-info-lter"></i>
-      <span class="font-bold">Property management</span>
-    </a>
+  <li>
+    <a href class="auto">
+       <span class="pull-right text-muted">
+         <i class="fa fa-fw fa-angle-right text"></i>
+         <i class="fa fa-fw fa-angle-down text-active"></i>
+       </span>
+       <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+       <span class="font-bold" >房产管理</span>
+     </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+           <span>房产管理</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="landlord.propertyManagement">
+           <span>整租房列表</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="landlord.balance">
+           <span>Balance</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="landlord.contract">
+           <span>Contract</span>
+         </a>
+      </li>
+    </ul>
   </li>
   <li ui-sref-active="active">
     <a ui-sref="landlord.mail.list">

@@ -2,154 +2,90 @@
   <div class="bg-light lter b-b wrapper-md">
     <h1 class="m-n font-thin h3">property management</h1>
   </div>
-  <div class="wrapper-md">
-    <div class="panel panel-default">
-      <script type="text/ng-template" id="propertyAdd.html">
-            <div ng-include="'/partials/tpl/propertyAdd.html'"></div>
-      </script>
+  <div class="panel panel-default">
       <div class="panel-heading">
-        Here is the list of your properties <button class="btn btn-success m-l-xl" ng-click="open('lg')">添加房产</button>
+        <script type="text/ng-template" id="propertyAdd.html">
+              <div ng-include="'/partials/tpl/propertyAdd.html'"></div>
+        </script>
+      <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+      <button class="btn btn-info" ng-click="open('lg')"><i class="fa fa-plus"></i>房东添加</button>
       </div>
+      <div class="row wrapper">
+        <div class="col-sm-3 m-b-xs">
+          <select class="input-sm form-control w-sm inline v-middle">
+          <option value="0">整租房业主</option>
+          <option value="1">分租房业主</option>
+          <option value="2">二手房业主</option>
+          <option value="3">开发商</option>
+        </select>
+          <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+        </div>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <input type="text" class="input-sm form-control" placeholder="Search">
+            <span class="input-group-btn">
+            <button class="btn btn-sm btn-default" type="button">Go!</button>
+          </span>
+          </div>
+        </div>
 
-      <div class="panel-body b-b b-light">
-        Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r" />
+        <div class="col-sm-4">
+        </div>
       </div>
-      <div>
-        <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="5">
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
           <thead>
             <tr>
-              <th data-toggle="true">
-                First Name
+              <th style="width:20px;">
+                <label class="i-checks m-b-none">
+                <input type="checkbox"><i></i>
+              </label>
               </th>
-              <th>
-                Last Name
-              </th>
-              <th data-hide="phone,tablet">
-                Address
-              </th>
-              <th data-hide="phone,tablet" data-name="Date Of Birth">
-                Contract Expire Date
-              </th>
-              <th data-hide="phone">
-                Status
-              </th>
+              <th>ID</th>
+              <th>用户列表</th>
+              <th>业务负责</th>
+              <th>房产信息</th>
+              <th>业主</th>
+              <th>状态</th>
+              <th>操作</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Isidra</td>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>1</td>
+              <td><a ui-sref="landlord.profile">Libin.Zhang</a></td>
+              <td>Andy</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>整租</td>
               <td>
-                <a href>Boudreaux</a>
-              </td>
-              <td>Traffic Court Referee</td>
-              <td data-value="78025368997">22 Jun 1972</td>
-              <td data-value="1"><span class="label bg-success" title="Active">Succeed</span></td>
-            </tr>
-            <tr>
-              <td>Shona</td>
-              <td>Woldt</td>
-              <td>
-                <a href>Airline Transport Pilot</a>
-              </td>
-              <td data-value="370961043292">3 Oct 1981</td>
-              <td data-value="2"><span class="label bg-light" title="Disabled">Expired</span></td>
-            </tr>
-            <tr>
-              <td>Granville</td>
-              <td>Leonardo</td>
-              <td>Business Services Sales Representative</td>
-              <td data-value="-22133780420">19 Apr 1969</td>
-              <td data-value="3"><span class="label bg-warning" title="Suspended">Pending</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Easer</td>
-              <td>Dragoo</td>
-              <td>Drywall Stripper</td>
-              <td data-value="250833505574">13 Dec 1977</td>
-              <td data-value="1"><span class="label bg-success" title="Active">Succeed</span></td>
-            </tr>
-            <tr>
-              <td>Maple</td>
-              <td>Halladay</td>
-              <td>Aviation Tactical Readiness Officer</td>
-              <td data-value="694116650726">30 Dec 1991</td>
-              <td data-value="3"><span class="label bg-warning" title="Suspended">Pending</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Maxine</td>
-              <td>
-                <a href>Woldt</a>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
               </td>
               <td>
-                <a href>Business Services Sales Representative</a>
-              </td>
-              <td data-value="561440464855">17 Oct 1987</td>
-              <td data-value="2"><span class="label bg-light" title="Disabled">Expired</span></td>
-            </tr>
-            <tr>
-              <td>Lorraine</td>
-              <td>Mcgaughy</td>
-              <td>Hemodialysis Technician</td>
-              <td data-value="437400551390">11 Nov 1983</td>
-              <td data-value="2"><span class="label bg-light" title="Disabled">Expired</span></td>
-            </tr>
-            <tr>
-              <td>Lizzee</td>
-              <td>
-                <a href>Goodlow</a>
-              </td>
-              <td>Technical Services Librarian</td>
-              <td data-value="-257733999319">1 Nov 1961</td>
-              <td data-value="3"><span class="label bg-warning" title="Suspended">Pending</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Judi</td>
-              <td>Badgett</td>
-              <td>Electrical Lineworker</td>
-              <td data-value="362134712000">23 Jun 1981</td>
-              <td data-value="1"><span class="label bg-success" title="Active">Succeed</span></td>
-            </tr>
-            <tr>
-              <td>Lauri</td>
-              <td>Hyland</td>
-              <td>Blackjack Supervisor</td>
-              <td data-value="500874333932">15 Nov 1985</td>
-              <td data-value="3"><span class="label bg-warning" title="Suspended">Pending</span>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
               </td>
             </tr>
           </tbody>
-          <tfoot class="hide-if-no-paging">
-            <tr>
-              <td colspan="5" class="text-center">
-                <ul class="pagination">
-                  <li class="footable-page-arrow">
-                    <a data-page="first" href="#first">«</a>
-                  </li>
-                  <li class="footable-page-arrow">
-                    <a data-page="prev" href="#prev">‹</a>
-                  </li>
-                  <li class="footable-page">
-                    <a data-page="0" href="#">1</a>
-                  </li>
-                  <li class="footable-page active">
-                    <a data-page="1" href="#">2</a>
-                  </li>
-                  <li class="footable-page-arrow disabled">
-                    <a data-page="next" href="#next">›</a>
-                  </li>
-                  <li class="footable-page-arrow disabled">
-                    <a data-page="last" href="#last">»</a>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tfoot>
         </table>
       </div>
+      <footer class="panel-footer">
+        <div class="row">
+          <div class="col-sm-6 text-left">
+            <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          </div>
+          <div class="col-sm-6 text-right text-center-xs">
+            <ul class="pagination pagination-sm m-t-none m-b-none">
+              <li><a href><i class="fa fa-chevron-left"></i></a></li>
+              <li><a href>1</a></li>
+              <li><a href>2</a></li>
+              <li><a href>3</a></li>
+              <li><a href>4</a></li>
+              <li><a href>5</a></li>
+              <li><a href><i class="fa fa-chevron-right"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
-  </div>
-
 </div>

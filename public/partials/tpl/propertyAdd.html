@@ -6,41 +6,35 @@
       <h4>application Form</h4>
       <form name="step1" class="form-validation">
         <div class="form-group pull-in clearfix">
-          <div class="row">
-            <div class="col-sm-4">
-              <label>Fist Name</label>
-              <input type="text" class="form-control" name="firstname" ng-model="firstname">
+            <div class="col-sm-6">
+              <label>Name</label>
+              <input type="text" class="form-control" name="firstname" ng-model="name">
             </div>
-            <div class="col-sm-4">
-              <label>Middle Name</label>
-              <input type="text" class="form-control" name="middle name" ng-model="middleName">
-            </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <label>Surname</label>
               <input type="text" class="form-control" name="confirm_password" ng-model="surname">
             </div>
-          </div>
         </div>
         <div class="form-group pull-in clearfix">
           <div class="col-sm-6">
             <label>Property NO</label>
-            <input type="number" class="form-control" name="password" ng-model="password" required>
+            <input type="text" class="form-control" name="property no" ng-model="no" required>
             <label>street</label>
-            <input type="text" class="form-control" name="confirm_password" required ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
+            <input type="text" class="form-control" name="street" required ng-model="street" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
             <span ng-show='form.confirm_password.$error.validator'>Passwords do not match!</span>
           </div>
           <div class="col-sm-6">
             <label>suburb</label>
-            <input type="text" class="form-control" name="confirm_password" required ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
+            <input type="text" class="form-control" name="suburb" required ng-model="suburb" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
             <label>region</label>
-            <input type="text" class="form-control" name="confirm_password" required ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
+            <input type="text" class="form-control" name="region" required ng-model="region" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
             <span ng-show='form.confirm_password.$error.validator'>Passwords do not match!</span>
           </div>
         </div>
         <p>Your email:</p>
         <input type="email" name="email" class="form-control" ng-model="email" required ng-change="step1.email.$valid ? (steps.percent=30) : (steps.percent=20)">
         <p class="m-t">Your Phone:</p>
-        <input type="phone" name="url" placeholder="042..." class="form-control" ng-model="website" required>
+        <input type="phone" name="url" placeholder="042..." class="form-control" ng-model="phone" required>
         <div class="m-t m-b">
           <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step2=true">Next</button>
         </div>

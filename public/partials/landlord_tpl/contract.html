@@ -1,4 +1,4 @@
-<div ng-controller="balanceCtrl">
+<div ng-controller="contractCtrl">
   <div class="inner-wrap clear">
     <header>
       <h3 translate="profile.SECTION.Bill.title"></h3>
@@ -12,7 +12,7 @@
                 <div ng-include="'/tpl/modal/inspection_add.html'"></div>
           </script>
           <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-          <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Balance添加</button>
+          <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Contract添加</button>
           </div>
           <div class="row wrapper">
             <div class="col-sm-4 m-b-xs">
@@ -46,9 +46,11 @@
                   </label>
                   </th>
                     <th style="width:250px;">ER_ID</th>
-                    <th style="width:150px;">BillType</th>
-                    <th style="width:150px;">BillDateMin</th>
-                    <th style="width:150px;">BillDateMax</th>
+                    <th style="width:100px;">CLType</th>
+                    <th style="width:50px;">CID</th>
+                    <th style="width:150px;">CLDateMin</th>
+                    <th style="width:150px;">CLDateMax</th>
+                    <th>ContractComment</th>
                   <th style="width:150px;">Manipulate</th>
                 </tr>
               </thead>
@@ -59,9 +61,11 @@
                   </script>
                   <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
                   <td><a ng-click="openDetails('lg')">9/20 harbourne road kingsford</a></td>
-                  <td>Monthly</td>
+                  <td>promotion</td>
+                  <td>2</td>
                   <td><span>26/04/2017</span></td>
                   <td>10/05/2017</td>
+                  <td>这是一个一年的合同</td>
                   <td>
                     <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
                     <a href class="active m-r-md"><i class="fa fa-trash"></i></a>

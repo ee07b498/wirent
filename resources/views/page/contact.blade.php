@@ -1,3 +1,0 @@
-<div>
-	contact us
-</div>

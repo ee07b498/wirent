@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-07-26T11:32:50+10:00
+ * @Last modified time: 2017-07-26T13:23:58+10:00
  */
 
 
@@ -95,8 +95,23 @@ angular.module('andy', [
       })
       .state('landlord.balance', {
         url: '/balance',
-        //template:'<h1>homePage</h1>'
         templateUrl: '/partials/landlord_tpl/balance.html', //localhost:8080/home.tpl
+        resolve: {
+            deps: ['$ocLazyLoad',
+              function( $ocLazyLoad){
+                return $ocLazyLoad.load('js/home/balanceCtrl.js');
+            }]
+        }
+      })
+      .state('landlord.contract', {
+        url: '/contract',
+        templateUrl: '/partials/landlord_tpl/contract.html', //localhost:8080/home.tpl
+        resolve: {
+            deps: ['$ocLazyLoad',
+              function( $ocLazyLoad){
+                return $ocLazyLoad.load('js/home/contractCtrl.js');
+            }]
+        }
       })
       .state('landlord.propertyManagement', {
         url: '/propertyManagement',
