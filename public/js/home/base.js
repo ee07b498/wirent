@@ -1,3 +1,11 @@
+/**
+ * @Date:   2017-06-30T10:20:04+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-07-26T11:32:50+10:00
+ */
+
+
+
 'use strict';
 angular.module('andy', [
     'ngAnimate',
@@ -64,73 +72,86 @@ angular.module('andy', [
         //template:'<h1>homePage</h1>'
         templateUrl: '/partials/googlemap.html', //localhost:8080/home.tpl
       })
-      .state('app.landlord', {
+      .state('landlord', {
         url: '/landlord',
         //template:'<h1>homePage</h1>'
-        templateUrl: '/partials/profileLandlord.html', //localhost:8080/home.tpl
-        redirectTo: 'app.landlord.profile'
+        templateUrl: '/partials/profileLandlord.html',
+        resolve: {
+          deps: ['$ocLazyLoad',
+            function($ocLazyLoad) {
+              return $ocLazyLoad.load('angularFileUpload').then(
+                function() {
+                  return $ocLazyLoad.load('js/home/landlordProfile.js');
+                }
+              );
+            }
+          ]
+        }
       })
-      .state('app.landlord.profile', {
-        url: '/landlord/profile',
+      .state('landlord.profile', {
+        url: '/profile',
         //template:'<h1>homePage</h1>'
         templateUrl: '/partials/landlord_tpl/profile.html', //localhost:8080/home.tpl
       })
-      .state('app.landlord.balance', {
-        url: '/landlord/balance',
+      .state('landlord.balance', {
+        url: '/balance',
         //template:'<h1>homePage</h1>'
         templateUrl: '/partials/landlord_tpl/balance.html', //localhost:8080/home.tpl
       })
-      .state('app.landlord.progress', {
-        url: '/landlord/progress',
+      .state('landlord.propertyManagement', {
+        url: '/propertyManagement',
         //template:'<h1>homePage</h1>'
-        templateUrl: '/partials/landlord_tpl/progress.html', //localhost:8080/home.tpl
+        templateUrl: '/partials/landlord_tpl/propertyManagement.html', //localhost:8080/home.tpl
+        controller: 'propertymgmCtrl',
         resolve: {
           deps: ['$ocLazyLoad',
             function($ocLazyLoad) {
               return $ocLazyLoad.load('ui.select').then(
                 function() {
-                  return $ocLazyLoad.load('js/home/propmgm.js');
+                  return $ocLazyLoad.load('js/home/propertyManagement.js');
                 }
               );
             },
           ],
         },
       })
-      .state('app.landlord.update_propertyinfo', {
-        url: '/landlord/update_propertyinfo',
+      .state('landlord.update_propertyinfo', {
+        url: '/update_propertyinfo',
         //template:'<h1>homePage</h1>'
         templateUrl: '/partials/landlord_tpl/update_propertyinfo.html', //localhost:8080/home.tpl
       })
       // mail
-    .state('app.landlord.mail', {
+      .state('landlord.mail', {
         abstract: true,
-        url: '/landlord/mail',
+        url: '/mail',
         templateUrl: '/partials/landlord_tpl/mail.html',
         // use resolve to load other dependences
         resolve: {
-            deps: ['uiLoad',
-              function( uiLoad ){
-                return uiLoad.load( ['js/home/mail/mail.js',
-                                     'js/home/mail/maillist.js',
-                                     'js/home/mail/maildetail.js',
-                                     'js/home/mail/mailnew.js',
-                                     'js/home/mail/mail-service.js',
-                                     'vendor/libs/moment.min.js'] );
-            }]
+          deps: ['uiLoad',
+            function(uiLoad) {
+              return uiLoad.load(['js/home/mail/mail.js',
+                'js/home/mail/maillist.js',
+                'js/home/mail/maildetail.js',
+                'js/home/mail/mailnew.js',
+                'js/home/mail/mail-service.js',
+                'vendor/libs/moment.min.js'
+              ]);
+            }
+          ]
         }
-    })
-    .state('app.landlord.mail.list', {
+      })
+      .state('landlord.mail.list', {
         url: '/inbox/{fold}',
         templateUrl: '/partials/landlord_tpl/mail.list.html'
-    })
-    .state('app.landlord.mail.detail', {
+      })
+      .state('landlord.mail.detail', {
         url: '/{mailId:[0-9]{1,4}}',
         templateUrl: '/partials/landlord_tpl/mail.detail.html'
-    })
-    .state('app.landlord.mail.compose', {
+      })
+      .state('landlord.mail.compose', {
         url: '/compose',
         templateUrl: '/partials/landlord_tpl/mail.new.html'
-    })
+      })
       .state('googlemap', {
         url: '/googlemap',
         //template:'<h1>homePage</h1>'

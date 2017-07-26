@@ -3,82 +3,31 @@
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span>Navigation</span>
   </li>
-  <li>
-    <a href class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-      <span class="font-bold">Dashboard</span>
+  <li ui-sref-active="active">
+    <a ui-sref="landlord.profile">
+      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+      <span class="font-bold">Profile</span>
     </a>
-    <ul class="nav nav-sub dk">
-      <li class="nav-sub-header">
-        <a href>
-          <span>Dashboard</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.landlord.profile">
-          <span>profile</span>
-        </a>
-      </li>
-      <!-- <li ui-sref-active="active">
-        <a ui-sref="app.dashboard-v2">
-          <b class="label bg-info pull-right">N</b>
-          <span>Dashboard v2</span>
-        </a>
-      </li> -->
-    </ul>
   </li>
   <li ui-sref-active="active">
-    <a ui-sref="app.landlord.balance">
+    <a ui-sref="landlord.balance">
       <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
       <span class="font-bold">Balance</span>
     </a>
   </li>
   <li ui-sref-active="active">
-    <a ui-sref="app.landlord.progress">
+    <a ui-sref="landlord.propertyManagement">
       <i class="fa fa-address-book icon text-info-lter"></i>
       <span class="font-bold">Property management</span>
     </a>
   </li>
   <li ui-sref-active="active">
-    <a ui-sref="app.landlord.mail.list">
+    <a ui-sref="landlord.mail.list">
       <b class="badge bg-info pull-right">9</b>
       <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
       <span class="font-bold">Message</span>
     </a>
   </li>
   <li class="line dk"></li>
-
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span>Components</span>
-  </li>
-  <li ui-sref-active="active">
-    <a ui-sref="app.landlord.update_propertyinfo">
-      <i class="glyphicon glyphicon-signal"></i>
-      <span>update propertyinfo</span>
-    </a>
-  </li>
-
-  <li class="line dk hidden-folded"></li>
-
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span>Your Stuff</span>
-  </li>
-  <li>
-    <a ui-sref="app.landlord.profile">
-      <i class="icon-user icon text-success-lter"></i>
-      <b class="badge bg-success pull-right">30%</b>
-      <span>Profile</span>
-    </a>
-  </li>
-  <li>
-    <a ui-sref="#">
-      <i class="icon-question icon"></i>
-      <span>Documents</span>
-    </a>
-  </li>
 </ul>
 <!-- / list -->
