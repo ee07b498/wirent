@@ -1,0 +1,53 @@
+<!-- list -->
+<ul class="nav">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span>Navigation</span>
+  </li>
+  <li ui-sref-active="active">
+    <a ui-sref="customer.profile">
+      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+      <span class="font-bold">Profile</span>
+    </a>
+  </li>
+  <li>
+    <a href class="auto">
+       <span class="pull-right text-muted">
+         <i class="fa fa-fw fa-angle-right text"></i>
+         <i class="fa fa-fw fa-angle-down text-active"></i>
+       </span>
+       <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+       <span class="font-bold" >房产管理</span>
+     </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+           <span>房产管理</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="customer.propertyManagement">
+           <span>整租房列表</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="landlord.balance">
+           <span>Balance</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="landlord.contract">
+           <span>Contract</span>
+         </a>
+      </li>
+    </ul>
+  </li>
+  <li ui-sref-active="active">
+    <a ui-sref="landlord.mail.list">
+      <b class="badge bg-info pull-right">9</b>
+      <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
+      <span class="font-bold">Message</span>
+    </a>
+  </li>
+  <li class="line dk"></li>
+</ul>
+<!-- / list -->

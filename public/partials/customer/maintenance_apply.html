@@ -1,0 +1,97 @@
+<div ng-controller="contractCtrl">
+  <div class="inner-wrap clear">
+    <header>
+      <h3 translate="profile.SECTION.Bill.title"></h3>
+    </header>
+
+    <div class="content-wrap clear">
+      <div class="wrapper-md">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <script type="text/ng-template" id="inspectionAdd.html">
+              <div ng-include="'/tpl/modal/inspection_add.html'"></div>
+            </script>
+            <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+            <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Contract添加</button>
+          </div>
+          <div class="row wrapper">
+            <div class="col-sm-4 m-b-xs">
+              <select class="input-sm form-control w-sm inline v-middle">
+                <option value="0">整租</option>
+                <option value="1">分租</option>
+                <option value="2">二手房购买</option>
+                <option value="3">房产投资</option>
+              </select>
+              <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+            </div>
+            <div class="col-sm-6">
+              <div class="input-group">
+                <input type="text" class="input-sm form-control" placeholder="Search">
+                <span class="input-group-btn">
+                <button class="btn btn-sm btn-default" type="button">Go!</button>
+              </span>
+              </div>
+            </div>
+
+            <div class="col-sm-2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control m-b" placeholder="Name">
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Property address</label>
+              <div class="col-sm-10">
+                <input type="phone" class="form-control m-b" placeholder="address">
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Phone</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control m-b" placeholder="Phone">
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control m-b" placeholder="Email">
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Type</label>
+              <div class="col-sm-10">
+                <select name="account" class="form-control m-b">
+                   <option>option 1</option>
+                   <option>option 2</option>
+                   <option>option 3</option>
+                   <option>option 4</option>
+                 </select>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Features</label>
+              <div class="col-sm-10">
+                <select name="account" class="form-control m-b">
+                   <option>option 1</option>
+                   <option>option 2</option>
+                   <option>option 3</option>
+                   <option>option 4</option>
+                 </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

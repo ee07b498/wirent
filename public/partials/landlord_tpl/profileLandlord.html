@@ -1,0 +1,21 @@
+<!-- navbar -->
+<div ng-include="'/partials/header.html'" class="app-header navbar">
+</div>
+
+<div ng-controller="landlordCtrl">
+  <div data-ng-include=" 'partials/landlord_tpl/aside.html' " class="app-aside hidden-xs [:app.settings.asideColor:]">
+ </div>
+ <!-- content -->
+ <div class="app-content">
+   <div ui-butterbar></div>
+   <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+   <div class="app-content-body fade-in-up" ui-view></div>
+ </div>
+ <!-- /content -->
+ <!-- footer -->
+ <div class=" wrapper b-t bg-light text-center">
+   <!-- <span class="pull-right">{{app.version}} <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span> -->
+   Copyright © 2016 Winning Investment Group Pty Ltd
+ </div>
+ <!-- / footer -->
+</div>

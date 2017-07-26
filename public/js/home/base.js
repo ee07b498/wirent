@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-07-26T13:23:58+10:00
+ * @Last modified time: 2017-07-26T16:13:58+10:00
  */
 
 
@@ -75,7 +75,7 @@ angular.module('andy', [
       .state('landlord', {
         url: '/landlord',
         //template:'<h1>homePage</h1>'
-        templateUrl: '/partials/profileLandlord.html',
+        templateUrl: '/partials/landlord_tpl/profileLandlord.html',
         resolve: {
           deps: ['$ocLazyLoad',
             function($ocLazyLoad) {
@@ -167,6 +167,26 @@ angular.module('andy', [
         url: '/compose',
         templateUrl: '/partials/landlord_tpl/mail.new.html'
       })
+      // table
+      .state('customer', {
+          url: '/customer',
+          templateUrl: '/partials/customer/profile_customer.html',
+          resolve: {
+            deps: ['$ocLazyLoad',
+              function($ocLazyLoad) {
+                return $ocLazyLoad.load('angularFileUpload').then(
+                  function() {
+                    return $ocLazyLoad.load('js/home/customerCtrl.js');
+                  }
+                );
+              }
+            ]
+          }
+      })
+      .state('customer.profile', {
+          url: '/profile',
+          templateUrl: '/partials/customer/profile.html'
+      })
       .state('googlemap', {
         url: '/googlemap',
         //template:'<h1>homePage</h1>'
@@ -188,10 +208,6 @@ angular.module('andy', [
       .state('app.profile', {
         url: '/profile',
         templateUrl: '/tpl/page/profile',
-      })
-      .state('user', {
-        url: '/user/:id',
-        templateUrl: '/tpl/page/user',
       })
       .state('app.businessDetails', {
         url: '/businessDetails',

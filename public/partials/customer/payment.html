@@ -1,0 +1,100 @@
+<div>
+  <div class="inner-wrap clear">
+    <header>
+      <h3 translate="profile.SECTION.Bill.title"></h3>
+    </header>
+
+    <div class="content-wrap clear">
+      <div class="wrapper-md">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <script type="text/ng-template" id="inspectionAdd.html">
+                <div ng-include="'/tpl/modal/inspection_add.html'"></div>
+          </script>
+          <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+          <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Contract添加</button>
+          </div>
+          <div class="row wrapper">
+            <div class="col-sm-4 m-b-xs">
+              <select class="input-sm form-control w-sm inline v-middle">
+                <option value="0">整租</option>
+                <option value="1">分租</option>
+                <option value="2">二手房购买</option>
+                <option value="3">房产投资</option>
+            </select>
+              <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+            </div>
+            <div class="col-sm-6">
+              <div class="input-group">
+                <input type="text" class="input-sm form-control" placeholder="Search">
+                <span class="input-group-btn">
+                <button class="btn btn-sm btn-default" type="button">Go!</button>
+              </span>
+              </div>
+            </div>
+
+            <div class="col-sm-2">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+              <thead>
+                <tr>
+                  <th style="width:20px;">
+                    <label class="i-checks m-b-none">
+                    <input type="checkbox"><i></i>
+                  </label>
+                  </th>
+                    <th style="width:250px;">ER_ID</th>
+                    <th style="width:100px;">CLType</th>
+                    <th style="width:50px;">CID</th>
+                    <th style="width:150px;">CLDateMin</th>
+                    <th style="width:150px;">CLDateMax</th>
+                    <th>ContractComment</th>
+                  <th style="width:150px;">Manipulate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <script type="text/ng-template" id="propertyDetails.html">
+                        <div ng-include="'/partials/tpl/propertyDetails.html'"></div>
+                  </script>
+                  <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                  <td><a ng-click="openDetails('lg')">9/20 harbourne road kingsford</a></td>
+                  <td>promotion</td>
+                  <td>2</td>
+                  <td><span>26/04/2017</span></td>
+                  <td>10/05/2017</td>
+                  <td>这是一个一年的合同</td>
+                  <td>
+                    <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                    <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
+                    <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <footer class="panel-footer">
+            <div class="row">
+              <div class="col-sm-6 text-left">
+                <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+              </div>
+              <div class="col-sm-6 text-right text-center-xs">
+                <ul class="pagination pagination-sm m-t-none m-b-none">
+                  <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                  <li><a href>1</a></li>
+                  <li><a href>2</a></li>
+                  <li><a href>3</a></li>
+                  <li><a href>4</a></li>
+                  <li><a href>5</a></li>
+                  <li><a href><i class="fa fa-chevron-right"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

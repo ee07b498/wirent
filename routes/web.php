@@ -1,4 +1,10 @@
 <?php
+# @Date:   2017-07-12T15:18:25+10:00
+# @Email:  yiensuen@gmail.com
+# @Last modified time: 2017-07-26T15:43:50+10:00
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +34,6 @@ $app->group(['prefix' => '/tpl/page'], function () use ($app){
 	$app->get('/app',function () {
 		return view('page.app');
 	});
-	$app->get('/home',function () {
-		return view('page.home');
-	});
 	$app->get('/signup',function () {
 		return view('page.signup');
 	});
@@ -40,32 +43,11 @@ $app->group(['prefix' => '/tpl/page'], function () use ($app){
 	$app->get('/login',function () {
 		return view('page.login');
 	});
-	$app->get('/result',function () {
-		return view('page.result');
-	});
-	$app->get('/aboutus',function () {
-		return view('page.aboutus');
-	});
-	$app->get('/contact',function () {
-		return view('page.contact');
-	});
-	$app->get('/news',function () {
-		return view('page.news');
-	});
 	$app->get('/profile',function () {
 		return view('page.profile');
 	});
-	$app->get('/googlemap',function () {
-		return view('page.googlemap');
-	});
-	$app->get('/details',function () {
-		return view('page.details');
-	});
 	$app->get('/shortlist',function () {
 		return view('page.shortlist');
-	});
-	$app->get('/upload',function () {
-		return view('page.upload');
 	});
 	$app->get('/admin',function () {
 		return view('page.admin');
@@ -100,7 +82,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/shortlist',			['middleware' => 'cus','uses'=>'CustomerController@shortlist_check']);
 	$app->post('/shortlist/delete',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_delete']);
 	$app->post('/shortlist/insert',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_insert']);
-	
+
 	$app->get('/test', 			'CustomerController@multi_suburb_surrounding');
 
 	$app->group(['prefix' => 'msg'], function () use ($app){

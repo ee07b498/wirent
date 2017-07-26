@@ -1,0 +1,896 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+  <!-- breadcrumb -->
+  <div>
+    <h4>Staff Profile</h4>
+    <ul class="breadcrumb bg-white b-a">
+      <li><a href><i class="fa fa-home"></i> Admin</a></li>
+      <li><a href>staff</a></li>
+      <li class="active">role management</li>
+      <li class="pull-right"><i class="fa fa-lg fa-refresh"></i></li>
+    </ul>
+  </div>
+  <!-- / breadcrumb -->
+  <tabset justified="true" class="tab-container">
+    <tab heading="Profile Information">
+      <div class="row">
+        <div class="col-sm-5">
+          <a href class="">
+            <img src="img/andy.jpg" class="img-circle">
+          </a>
+        </div>
+        <div class="col-sm-7">
+          <div class="clear m-b pull-in">
+            <div class="m-b m-t-sm">
+              <span class="h3 text-black">Libin.Zhang</span>
+              <small class="m-l">Sydney, Australia</small>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
+              <a>IT Software Developer</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
+              <a>yiensuen@gmail.com</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-phone"></i></a>
+              <a>02-80021739</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+              <a>0424909328</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+              <a>IT 部门开发人员</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Account">
+      <div class="tabbable tabs-below" ng-init="selectedTab = 1;">
+        <div class="row">
+          <div class="col-sm-2">
+            <ul class="nav nav-tabs nav-stacked">
+              <li ng-class="{active: selectedTab == 1}">
+                <a ng-click="selectedTab = 1;">Personal</a>
+              </li>
+              <li ng-class="{active: selectedTab == 2}">
+                <a ng-click="selectedTab = 2;">Avantar</a>
+              </li>
+              <li ng-class="{active: selectedTab == 3}">
+                <a ng-click="selectedTab = 3;">Change password</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-10">
+            <div class="tab-content" ng-show="selectedTab == 1">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control m-b" placeholder="Email">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control m-b">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control m-b" placeholder="Name">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Phone</label>
+                  <div class="col-sm-10">
+                    <input type="phone" class="form-control m-b" placeholder="Phone">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Current Status</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control m-b" placeholder="Current Status">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">ID Type</label>
+                  <div class="col-sm-10">
+                    <select name="account" class="form-control m-b">
+                       <option>option 1</option>
+                       <option>option 2</option>
+                       <option>option 3</option>
+                       <option>option 4</option>
+                     </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Upload File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Income File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Saving File</label>
+                  <div class="col-sm-10">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control m-b" placeholder="Email">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Datepicker</label>
+                  <div class="col-sm-10">
+                    <div class="input-group w-md m-b">
+                      <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Gender</label>
+                  <div class="col-sm-10">
+                    <select name="account" class="form-control m-b">
+                       <option>male</option>
+                       <option>female</option>
+                     </select>
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Age</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control m-b" placeholder="Email">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Work</label>
+                  <div class="col-sm-10">
+                    <select name="account" class="form-control m-b">
+                       <option>yes</option>
+                       <option>not yet</option>
+                       <option>retired</option>
+                     </select>
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">pet</label>
+                  <div class="col-sm-10">
+                    <select name="account" class="form-control m-b">
+                       <option>Yes</option>
+                       <option>No</option>
+                     </select>
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Smoking</label>
+                  <div class="col-sm-10">
+                    <select name="account" class="form-control m-b">
+                       <option>option 1</option>
+                       <option>option 2</option>
+                       <option>option 3</option>
+                       <option>option 4</option>
+                     </select>
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Budget</label>
+                  <div class="col-sm-10">
+                    <select name="account" class="form-control m-b">
+                       <option>option 1</option>
+                       <option>option 2</option>
+                       <option>option 3</option>
+                       <option>option 4</option>
+                     </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" ng-show="selectedTab == 2">
+              <img src="img/andy.jpg" />
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Upload File</label>
+                <div class="col-sm-10">
+                  <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div>
+                <button class="btn btn-success m-r">submit</button><button class="btn btn-error">cancel</button>
+              </div>
+            </div>
+
+            <div class="tab-content" ng-show="selectedTab == 3">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Current password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control m-b" placeholder="Current password">
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">New password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control m-b" placeholder="New password">
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Retype New password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control m-b" placeholder="Retype New password">
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div>
+                <button class="btn btn-success m-r">Change password</button><button class="btn btn-error">cancel</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </tab>
+    <tab heading="My Property">
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
+          <thead>
+            <tr>
+              <th style="width:20px;">
+                <label class="i-checks m-b-none">
+                <input type="checkbox"><i></i>
+              </label>
+              </th>
+              <th>ID</th>
+              <th>用户列表</th>
+              <th>业务关系</th>
+              <th>房产信息</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>1</td>
+              <td><a ui-sref="app.customer.userprofile">admin</a></td>
+              <td>整租用户</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              </td>
+              <td>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>2</td>
+              <td><a ui-sref="app.customer.userprofile">张三</a></td>
+              <td>整租用户</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              </td>
+              <td>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>3</td>
+              <td><a ui-sref="app.customer.userprofile">李四</a></td>
+              <td>分租用户</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              </td>
+              <td>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>4</td>
+              <td><a ui-sref="app.customer.userprofile">钱七</a></td>
+              <td>分租用户</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              </td>
+              <td>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>5</td>
+              <td>赵六</td>
+              <td>分租用户</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              </td>
+              <td>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>6</td>
+              <td>钱七</td>
+              <td>买房用户</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              </td>
+              <td>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>7</td>
+              <td>钱七</td>
+              <td>买房用户</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              </td>
+              <td>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>8</td>
+              <td>赵六</td>
+              <td>买房用户</td>
+              <td>9/20 harbourne road kingsford</td>
+              <td>
+                <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              </td>
+              <td>
+                <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <a href class="active"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="panel-footer">
+        <div class="row">
+          <div class="col-sm-6 text-left">
+            <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          </div>
+          <div class="col-sm-6 text-right text-center-xs">
+            <ul class="pagination pagination-sm m-t-none m-b-none">
+              <li><a href><i class="fa fa-chevron-left"></i></a></li>
+              <li><a href>1</a></li>
+              <li><a href>2</a></li>
+              <li><a href>3</a></li>
+              <li><a href>4</a></li>
+              <li><a href>5</a></li>
+              <li><a href><i class="fa fa-chevron-right"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </tab>
+    <tab heading="My Management">
+      <div class="tabbable tabs-below" ng-init="selectedTab = 1;">
+        <div class="row">
+          <div class="col-sm-2">
+            <ul class="nav nav-tabs nav-stacked">
+              <li ng-class="{active: selectedTab == 1}">
+                <a ng-click="selectedTab = 1;">Bill</a>
+              </li>
+              <li ng-class="{active: selectedTab == 2}">
+                <a ng-click="selectedTab = 2;">Contract</a>
+              </li>
+              <li ng-class="{active: selectedTab == 3}">
+                <a ng-click="selectedTab = 3;">Service</a>
+              </li>
+              <li ng-class="{active: selectedTab == 4}">
+                <a ng-click="selectedTab = 4;">Maintenance</a>
+              </li>
+              <li ng-class="{active: selectedTab == 5}">
+                <a ng-click="selectedTab = 5;">Inspection</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-10">
+            <div class="tab-content" ng-show="selectedTab == 1">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <script type="text/ng-template" id="userAdd.html">
+                    <div ng-include="'/tpl/modal/user_add.html'"></div>
+                  </script>
+                  <script type="text/ng-template" id="billProduce.html">
+                    <div ng-include="'/tpl/modal/bill_produce.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="openInvoice('lg')"><i class="fa fa-plus"></i>生成账单</button>
+                </div>
+                <div class="row wrapper">
+                  <div class="col-sm-4 m-b-xs">
+                    <select class="input-sm form-control w-sm inline v-middle">
+                      <option value="0">整租</option>
+                      <option value="1">分租</option>
+                      <option value="2">二手房购买</option>
+                      <option value="3">房产投资</option>
+                  </select>
+                    <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <input type="text" class="input-sm form-control" placeholder="Search">
+                      <span class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+                    <thead>
+                      <tr>
+                        <th style="width:20px;">
+                          <label class="i-checks m-b-none">
+                          <input type="checkbox"><i></i>
+                        </label>
+                        </th>
+                        <th class="text-center" style="width:30px">CID</th>
+                        <th class="text-center" style="width:250px">ER_ID</th>
+                        <th class="text-center" style="width:80px">BillType</th>
+                        <th class="text-center" style="width:80px">BillAmount</th>
+                        <th class="text-center" style="width:100px">BillCopy</th>
+                        <th class="text-center" style="width:100px">BillDate</th>
+                        <th class="text-center" style="width:150px">BillReceipt</th>
+                        <th class="text-center" style="width:100px">BillComment</th>
+                        <th class="text-center" style="width:150px">Manipulate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <th class="text-center">1</th>
+                        <th class="text-center">9/20 harbourne road kingsford,NSW</th>
+                        <td class="text-center">整租房</td>
+                        <td class="text-center">$595</td>
+                        <td class="text-center"><span><a>BillCopy<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></span></td>
+                        <td class="text-center">25/06/2017</td>
+                        <td class="text-center"><a>BillReceipt<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
+                        <td class="text-center">
+                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
+                          <a href class="active" title="add a bill"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <footer class="panel-footer">
+                  <div class="row">
+                    <div class="col-sm-6 text-left">
+                      <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                    </div>
+                    <div class="col-sm-6 text-right text-center-xs">
+                      <ul class="pagination pagination-sm m-t-none m-b-none">
+                        <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                        <li><a href>1</a></li>
+                        <li><a href>2</a></li>
+                        <li><a href>3</a></li>
+                        <li><a href>4</a></li>
+                        <li><a href>5</a></li>
+                        <li><a href><i class="fa fa-chevron-right"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </footer>
+              </div>
+            </div>
+            <div class="tab-content" ng-show="selectedTab == 2">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <script type="text/ng-template" id="contractAdd.html">
+                    <div ng-include="'/tpl/modal/contract_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="contract_add('lg')"><i class="fa fa-plus"></i>Contract 添加</button>
+                </div>
+                <div class="row wrapper">
+                  <div class="col-sm-4 m-b-xs">
+                    <select class="input-sm form-control w-sm inline v-middle">
+                      <option value="0">整租</option>
+                      <option value="1">分租</option>
+                      <option value="2">二手房购买</option>
+                      <option value="3">房产投资</option>
+                  </select>
+                    <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <input type="text" class="input-sm form-control" placeholder="Search">
+                      <span class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+                    <thead>
+                      <tr>
+                        <th style="width:20px;">
+                          <label class="i-checks m-b-none">
+                          <input type="checkbox"><i></i>
+                        </label>
+                        </th>
+                        <th style="width:30px">CID</th>
+                        <th style="width:250px">ER_ID</th>
+                        <th style="width:100px">CLType</th>
+                        <th style="width:100px">CLDate</th>
+                        <th style="width:150px">ContractFile</th>
+                        <th style="width:150px">ContractComment</th>
+                        <th style="width:150px">Manipulate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td>1</td>
+                        <td><span>9/20 harbourne road kingsford, NSW</span></td>
+                        <td>整租</td>
+                        <td>25/06/2017</td>
+                        <td><a href="">ContractFile <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
+                        <td>
+                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
+                          <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <footer class="panel-footer">
+                  <div class="row">
+                    <div class="col-sm-6 text-left">
+                      <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                    </div>
+                    <div class="col-sm-6 text-right text-center-xs">
+                      <ul class="pagination pagination-sm m-t-none m-b-none">
+                        <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                        <li><a href>1</a></li>
+                        <li><a href>2</a></li>
+                        <li><a href>3</a></li>
+                        <li><a href>4</a></li>
+                        <li><a href>5</a></li>
+                        <li><a href><i class="fa fa-chevron-right"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </footer>
+              </div>
+            </div>
+
+            <div class="tab-content" ng-show="selectedTab == 3">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <script type="text/ng-template" id="serviceAdd.html">
+                    <div ng-include="'/tpl/modal/service_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="service_add('lg')"><i class="fa fa-plus"></i>Service添加</button>
+                </div>
+                <div class="row wrapper">
+                  <div class="col-sm-4 m-b-xs">
+                    <select class="input-sm form-control w-sm inline v-middle">
+                      <option value="0">整租</option>
+                      <option value="1">分租</option>
+                      <option value="2">二手房购买</option>
+                      <option value="3">房产投资</option>
+                  </select>
+                    <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <input type="text" class="input-sm form-control" placeholder="Search">
+                      <span class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+                    <thead>
+                      <tr>
+                        <th style="width:20px;">
+                          <label class="i-checks m-b-none">
+                          <input type="checkbox"><i></i>
+                        </label>
+                        </th>
+                        <th style="width:30px;">CID</th>
+                        <th style="width:250px;">ER_ID</th>
+                        <th style="width:100px;">ServiceType</th>
+                        <th style="width:150px;">ServiceDateMin</th>
+                        <th style="width:150px;">ServiceDateMax</th>
+                        <th style="width:150px;">ServiceStat</th>
+                        <th style="width:150px;">Manipulate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td>1</td>
+                        <td>9/20 harbourne road kingsford, NSW</td>
+                        <td>repairment</td>
+                        <td>10/06/2017</td>
+                        <td>20/06/2017</td>
+                        <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
+                        <td>
+                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
+                          <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <footer class="panel-footer">
+                  <div class="row">
+                    <div class="col-sm-6 text-left">
+                      <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                    </div>
+                    <div class="col-sm-6 text-right text-center-xs">
+                      <ul class="pagination pagination-sm m-t-none m-b-none">
+                        <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                        <li><a href>1</a></li>
+                        <li><a href>2</a></li>
+                        <li><a href>3</a></li>
+                        <li><a href>4</a></li>
+                        <li><a href>5</a></li>
+                        <li><a href><i class="fa fa-chevron-right"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </footer>
+              </div>
+            </div>
+
+            <div class="tab-content" ng-show="selectedTab == 4">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <script type="text/ng-template" id="maintenanceAdd.html">
+                    <div ng-include="'/tpl/modal/maintenance_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="maintenance_add('lg')"><i class="fa fa-plus"></i>Maintenance添加</button>
+                </div>
+                <div class="row wrapper">
+                  <div class="col-sm-4 m-b-xs">
+                    <select class="input-sm form-control w-sm inline v-middle">
+                      <option value="0">整租</option>
+                      <option value="1">分租</option>
+                      <option value="2">二手房购买</option>
+                      <option value="3">房产投资</option>
+                  </select>
+                    <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <input type="text" class="input-sm form-control" placeholder="Search">
+                      <span class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+                    <thead>
+                      <tr>
+                        <th style="width:20px;">
+                          <label class="i-checks m-b-none">
+                          <input type="checkbox"><i></i>
+                        </label>
+                        </th>
+                        <th style="width:30px;">CID</th>
+                        <th style="width:250px;">ER_ID</th>
+                        <th style="width:100px;">MType</th>
+                        <th style="width:150px;">MApplyForm</th>
+                        <th style="width:150px;">MApplyDate</th>
+                        <th style="width:150px;">MStat</th>
+                        <th style="width:150px;">Manipulate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td>1</td>
+                        <td>9/20 harbourne road, NSW</td>
+                        <td>repairment</td>
+                        <td><a>BillReceipt<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <td>20/06/2017</td>
+                        <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
+                        <td>
+                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
+                          <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <footer class="panel-footer">
+                  <div class="row">
+                    <div class="col-sm-6 text-left">
+                      <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                    </div>
+                    <div class="col-sm-6 text-right text-center-xs">
+                      <ul class="pagination pagination-sm m-t-none m-b-none">
+                        <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                        <li><a href>1</a></li>
+                        <li><a href>2</a></li>
+                        <li><a href>3</a></li>
+                        <li><a href>4</a></li>
+                        <li><a href>5</a></li>
+                        <li><a href><i class="fa fa-chevron-right"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </footer>
+              </div>
+            </div>
+
+            <div class="tab-content" ng-show="selectedTab == 5">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <script type="text/ng-template" id="inspectionAdd.html">
+                    <div ng-include="'/tpl/modal/inspection_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Inspection添加</button>
+                </div>
+                <div class="row wrapper">
+                  <div class="col-sm-4 m-b-xs">
+                    <select class="input-sm form-control w-sm inline v-middle">
+                      <option value="0">整租</option>
+                      <option value="1">分租</option>
+                      <option value="2">二手房购买</option>
+                      <option value="3">房产投资</option>
+                  </select>
+                    <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <input type="text" class="input-sm form-control" placeholder="Search">
+                      <span class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+                    <thead>
+                      <tr>
+                        <th style="width:20px;">
+                          <label class="i-checks m-b-none">
+                          <input type="checkbox"><i></i>
+                        </label>
+                        </th>
+                        <th style="width:30px;">CID</th>
+                        <th style="width:250px;">ER_ID</th>
+                        <th style="width:150px;">MApplyDate</th>
+                        <th style="width:150px;">MStat</th>
+                        <th style="width:150px;">Manipulate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td>1</td>
+                        <td>9/20 harbourne road kingsford, NSW</td>
+                        <td>20/06/2017</td>
+                        <td data-value="1"><span class="label bg-warning" title="Active">pending</span></td>
+                        <td>
+                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
+                          <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <footer class="panel-footer">
+                  <div class="row">
+                    <div class="col-sm-6 text-left">
+                      <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                    </div>
+                    <div class="col-sm-6 text-right text-center-xs">
+                      <ul class="pagination pagination-sm m-t-none m-b-none">
+                        <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                        <li><a href>1</a></li>
+                        <li><a href>2</a></li>
+                        <li><a href>3</a></li>
+                        <li><a href>4</a></li>
+                        <li><a href>5</a></li>
+                        <li><a href><i class="fa fa-chevron-right"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+</div>
