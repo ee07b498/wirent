@@ -1,7 +1,7 @@
 <!-- list -->
 <ul class="nav">
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span>Navigation</span>
+    <span>Calendar</span>
   </li>
 
   <li ui-sref-active="active">
@@ -10,54 +10,18 @@
       <span class="font-bold">Calendar</span>
     </a>
   </li>
+  <!-- 人工管理 starts -->
   <li class="line dk"></li>
-  <li>
-    <a href class="auto">
-       <span class="pull-right text-muted">
-         <i class="fa fa-fw fa-angle-right text"></i>
-         <i class="fa fa-fw fa-angle-down text-active"></i>
-       </span>
-       <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-       <span class="font-bold" >房产管理</span>
-     </a>
-    <ul class="nav nav-sub dk">
-      <li class="nav-sub-header">
-        <a href>
-           <span>房产管理</span>
-         </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.dashboard-v1">
-           <span>整租房列表</span>
-         </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.share_property_list">
-           <span>分租房列表</span>
-         </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.buy_property_list">
-           <span>买房信息添加</span>
-         </a>
-      </li>
-    </ul>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span>人工管理</span>
   </li>
-  <li ui-sref-active="active">
-    <a>
-      <b class="badge bg-info pull-right">9</b>
-      <i class="fa fa-picture-o icon text-info-lter"></i>
-      <span class="font-bold">图片管理</span>
-    </a>
-  </li>
-  <li class="line dk"></li>
   <li>
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
-      <i class="fa fa-user icon text-success"></i>
+      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
       <span class="font-bold">管理员管理</span>
     </a>
     <ul class="nav nav-sub dk">
@@ -98,13 +62,117 @@
       </li>
     </ul>
   </li>
+  <!-- 人工管理ends -->
+
+  <!-- 房产管理starts -->
+  <li class="line dk"></li>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span>房产管理</span>
+  </li>
+  <li>
+    <a href class="auto">
+       <span class="pull-right text-muted">
+         <i class="fa fa-fw fa-angle-right text"></i>
+         <i class="fa fa-fw fa-angle-down text-active"></i>
+       </span>
+       <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+       <span class="font-bold" >房产管理</span>
+     </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+           <span>房产管理</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.dashboard-v1">
+           <span>整租房列表</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.share_property_list">
+           <span>分租房列表</span>
+         </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.buy_property_list">
+           <span>买房信息添加</span>
+         </a>
+      </li>
+    </ul>
+  </li>
+  <li ui-sref-active="active">
+    <a>
+      <b class="badge bg-info pull-right">9</b>
+      <i class="fa fa-picture-o icon text-info-lter"></i>
+      <span class="font-bold">图片管理</span>
+    </a>
+  </li>
+  <!-- 房产管理ends -->
+
+  <!-- 部门管理starts -->
+  <li class="line dk"></li>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span>部门管理</span>
+  </li>
   <li>
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
-      <i class="fa fa-user icon text-info-lter"></i>
+      <i class="fa fa-address-card icon text-success" aria-hidden="true"></i>
+      <span class="font-bold">销售部门管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>销售部门管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.staff.salesdepartment">
+          <span>销售部门</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="fa fa-address-card-o icon text-primary"></i> 
+      <span class="font-bold">租房部门管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>管理员管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.staff.rentaldepartment">
+          <span>租房部门</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!-- 部门管理ends -->
+
+  <!-- 会员管理starts -->
+  <li class="line dk"></li>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span>会员管理</span>
+  </li>
+  <li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="fa fa-users icon text-info-lter" aria-hidden="true"></i>
       <span class="font-bold">会员管理</span>
     </a>
     <ul class="nav nav-sub dk">
@@ -125,25 +193,27 @@
       </li>
     </ul>
   </li>
+  <!-- 会员管理ends -->
 
+  <!-- 站内信管理 starts -->
   <li class="line dk"></li>
-
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span>Components</span>
+    <span>站内信</span>
   </li>
-<li ui-sref-active="active">
-  <a ui-sref="app.mail.list">
+  <li ui-sref-active="active">
+    <a ui-sref="app.mail.list">
     <b class="badge bg-info pull-right">9</b>
     <i class="fa fa-envelope icon text-info-lter"></i>
     <span class="font-bold">站内信</span>
   </a>
-</li>
   </li>
+  </li>
+  <!-- 站内信管理ends -->
 
+  <!-- profile starts -->
   <li class="line dk hidden-folded"></li>
-
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span>Your Stuff</span>
+    <span>My Profile</span>
   </li>
   <li>
     <a ui-sref="app.page.profile">
