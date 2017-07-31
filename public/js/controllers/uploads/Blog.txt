@@ -1,0 +1,48 @@
+http://marcgrabanski.com/jquery-google-maps-tutorial-basics/
+http://marcgrabanski.com/jquery-google-maps-tutorial-ajax-php-mysql/
+http://visionsky.blog.51cto.com/733317/554879/    google map实例
+
+http://www.iteye.com/news/23825
+
+http://www.cnblogs.com/yincheng/p/google-map.html
+
+poplot.com.au
+http://www.pwrealty.com.au/
+easyrent.com/sign-up/landlord
+
+
+https://github.com/angular/angular.js/wiki/Projects-using-AngularJS
+
+http://blog.csdn.net/zoutongyuan/article/details/28094565 表单
+
+http://blog.csdn.net/xdevilj136/article/details/53037250?locationNum=10&fps=1   angular bootstrap表单
+http://www.cnblogs.com/Niccky/p/4164761.html   angular js 源码学习笔记
+https://blog.coding.net/blog/techniques-for-authentication-in-angular-js-applications?type=hot  angular 身份验证
+http://blog.csdn.net/iamnieo/article/details/50441806 构建angularjs 后台管理界面
+http://blog.csdn.net/iamnieo/article/details/50474399 构建angularjs 后台管理界面
+
+http://www.cnblogs.com/xing901022/p/4989847.html 国际化i18n
+
+http://rensanning.iteye.com/blog/2149056   angular UIRouter
+
+http://blog.csdn.net/yy374864125/article/details/41349417/   angularjs 博客
+http://fontawesome.dashgame.com/ fontawesome字体和图标
+http://v3.bootcss.com/components/#glyphicons bootstrap 字体和图标
+http://www.jianshu.com/p/9b6a6180f9f1  angularjs 轮播图首页
+
+
+http://blog.csdn.net/chenhua4088/article/details/51445453 angularjs checkbox
+
+https://ngmap.github.io/#/!user-editable-shapes.html
+
+http://www.bootcdn.cn/angular-google-maps/
+https://ngmap.github.io/ google 地图
+
+
+http://stackoverflow.com/questions/31783217/geocoding-service-using-angularjs    geoservice to find a place
+http://stackoverflow.com/questions/19203777/angularjs-reload-ng-include-after-user-authentication-or-a-better-way-to-solve    可以ng-include
+http://fdietz.github.io/recipes-with-angular-js/common-user-interface-patterns/editing-text-in-place-using-html5-content-editable.html  
+https://www.zhihu.com/question/24320002    瀑布流
+
+http://www.tuicool.com/articles/bQbY73   angular 文章近期读完
+http://www.doczj.com/wendang/angularjs%E8%BD%AE%E6%92%AD%E5%9B%BE%E4%BE%8B%E5%AD%90-20.html  angular文章

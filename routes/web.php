@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-07-26T15:43:50+10:00
+# @Last modified time: 2017-07-28T11:23:47+10:00
 
 
 
@@ -122,5 +122,7 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 
 //staff entrance: cms, move to another framework future with different .env config to db
 $app->group(['prefix' => 'staff'], function () use ($app){
-	$app->post('/login',			'StaffController@login');
+		$app->post('/login',			'StaffController@login');
+		$app->get('/profile', 			['uses'=>'StaffController@profile_check']);
+		$app->get('/profile', 			['uses'=>'StaffController@profile_check']);
 });
