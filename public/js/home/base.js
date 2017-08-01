@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-07-26T16:13:58+10:00
+ * @Last modified time: 2017-08-01T11:37:32+10:00
  */
 
 
@@ -135,7 +135,7 @@ angular.module('andy', [
         //template:'<h1>homePage</h1>'
         templateUrl: '/partials/landlord_tpl/update_propertyinfo.html', //localhost:8080/home.tpl
       })
-      // mail
+      // landlord mail
       .state('landlord.mail', {
         abstract: true,
         url: '/mail',
@@ -167,7 +167,7 @@ angular.module('andy', [
         url: '/compose',
         templateUrl: '/partials/landlord_tpl/mail.new.html'
       })
-      // table
+      // customer
       .state('customer', {
           url: '/customer',
           templateUrl: '/partials/customer/profile_customer.html',
@@ -186,6 +186,63 @@ angular.module('andy', [
       .state('customer.profile', {
           url: '/profile',
           templateUrl: '/partials/customer/profile.html'
+      })
+      .state('customer.myPayments', {
+          url: '/mypament',
+          templateUrl: '/partials/customer/myPament.html'
+      })
+      .state('customer.myContract', {
+          url: '/mycontract',
+          templateUrl: '/partials/customer/myContract.html'
+      })
+      .state('customer.maintenanceApply', {
+          url: '/maintenanceApply',
+          templateUrl: '/partials/customer/maintenance_apply.html'
+      })
+      .state('customer.maintenanceHistory', {
+          url: '/maintenanceHistory',
+          templateUrl: '/partials/customer/maintenance_history.html'
+      })
+      .state('customer.serviceApply', {
+          url: '/serviceApply',
+          templateUrl: '/partials/customer/service_apply.html'
+      })
+      .state('customer.serviceHistory', {
+          url: '/serviceHistory',
+          templateUrl: '/partials/customer/service_history.html'
+      })
+      //customer mail
+      // mail
+      .state('customer.mail', {
+        abstract: true,
+        url: '/mail',
+        templateUrl: '/partials/customer/mail.html',
+        // use resolve to load other dependences
+        resolve: {
+          deps: ['uiLoad',
+            function(uiLoad) {
+              return uiLoad.load(['js/home/mail/mail.js',
+                'js/home/mail/maillist.js',
+                'js/home/mail/maildetail.js',
+                'js/home/mail/mailnew.js',
+                'js/home/mail/mail-service.js',
+                'vendor/libs/moment.min.js'
+              ]);
+            }
+          ]
+        }
+      })
+      .state('customer.mail.list', {
+        url: '/inbox/{fold}',
+        templateUrl: '/partials/customer/mail.list.html'
+      })
+      .state('customer.mail.detail', {
+        url: '/{mailId:[0-9]{1,4}}',
+        templateUrl: '/partials/customer/mail.detail.html'
+      })
+      .state('customer.mail.compose', {
+        url: '/compose',
+        templateUrl: '/partials/customer/mail.new.html'
       })
       .state('googlemap', {
         url: '/googlemap',

@@ -8,11 +8,14 @@
       <div class="wrapper-md">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <script type="text/ng-template" id="inspectionAdd.html">
-                <div ng-include="'/tpl/modal/inspection_add.html'"></div>
-          </script>
-          <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-          <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Contract添加</button>
+            <script type="text/ng-template" id="userAdd.html">
+              <div ng-include="'/tpl/modal/user_add.html'"></div>
+            </script>
+            <script type="text/ng-template" id="billProduce.html">
+              <div ng-include="'/tpl/modal/bill_produce.html'"></div>
+            </script>
+            <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+            <button class="btn btn-info" ng-click="openInvoice('lg')"><i class="fa fa-plus"></i>生成账单</button>
           </div>
           <div class="row wrapper">
             <div class="col-sm-4 m-b-xs">
@@ -45,31 +48,32 @@
                     <input type="checkbox"><i></i>
                   </label>
                   </th>
-                    <th style="width:250px;">ER_ID</th>
-                    <th style="width:100px;">CLType</th>
-                    <th style="width:50px;">CID</th>
-                    <th style="width:150px;">CLDateMin</th>
-                    <th style="width:150px;">CLDateMax</th>
-                    <th>ContractComment</th>
-                  <th style="width:150px;">Manipulate</th>
+                  <th class="text-center" style="width:30px">CID</th>
+                  <th class="text-center" style="width:250px">ER_ID</th>
+                  <th class="text-center" style="width:80px">BillType</th>
+                  <th class="text-center" style="width:80px">BillAmount</th>
+                  <th class="text-center" style="width:100px">BillCopy</th>
+                  <th class="text-center" style="width:100px">BillDate</th>
+                  <th class="text-center" style="width:150px">BillReceipt</th>
+                  <th class="text-center" style="width:100px">BillComment</th>
+                  <th class="text-center" style="width:150px">Manipulate</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <script type="text/ng-template" id="propertyDetails.html">
-                        <div ng-include="'/partials/tpl/propertyDetails.html'"></div>
-                  </script>
                   <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                  <td><a ng-click="openDetails('lg')">9/20 harbourne road kingsford</a></td>
-                  <td>promotion</td>
-                  <td>2</td>
-                  <td><span>26/04/2017</span></td>
-                  <td>10/05/2017</td>
-                  <td>这是一个一年的合同</td>
-                  <td>
+                  <th class="text-center">1</th>
+                  <th class="text-center">9/20 harbourne road kingsford,NSW</th>
+                  <td class="text-center">整租房</td>
+                  <td class="text-center">$595</td>
+                  <td class="text-center"><span><a>BillCopy<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></span></td>
+                  <td class="text-center">25/06/2017</td>
+                  <td class="text-center"><a>BillReceipt<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                  <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
+                  <td class="text-center">
                     <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
                     <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
-                    <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                    <a href class="active" title="add a bill"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
                   </td>
                 </tr>
               </tbody>
