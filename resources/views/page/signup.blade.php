@@ -17,7 +17,7 @@
             <div class="wrapper text-center">
               <strong></strong>
             </div>
-            <form name="form" class="form-validation">
+            <form name="form_customer" class="form-validation">
               <div class="text-danger wrapper text-center" ng-show="authError">
 
               </div>
@@ -34,7 +34,7 @@
                   <input type="checkbox" ng-model="agree" required><i></i> Agree the <a href>terms and policy</a>
                 </label>
               </div>
-              <button type="submit" class="btn btn-lg btn-primary btn-block" style=" width:50%; margin:0 80px;" ng-click="User.customer_signup()" ng-disabled='form.$invalid' translate="header.REGIST.Regist"></button>
+              <button type="submit" class="btn btn-lg btn-primary btn-block" style=" width:50%; margin:0 80px;" ng-click="User.customer_signup()" ng-disabled='form_customer.$invalid' translate="header.REGIST.Regist"></button>
               <div class="line line-dashed"></div>
               <p class="text-center"><small translate="header.REGIST.Regist_enquiry"></small></p>
               <a ui-sref="app.login" style=" width:50%; margin:0 80px;" class="btn btn-lg btn-default btn-block" translate="header.LOGIN.Login"></a>
@@ -49,7 +49,7 @@
               <div class="wrapper text-center">
                 <strong></strong>
               </div>
-              <form name="form" class="form-validation">
+              <form name="form_landlord" class="form-validation">
                 <div class="text-danger wrapper text-center" ng-show="authError">
 
                 </div>
@@ -66,7 +66,7 @@
                     <input type="checkbox" ng-model="agree" required><i></i> Agree the <a href>terms and policy</a>
                   </label>
                 </div>
-                <button type="submit" class="btn btn-lg btn-primary btn-block" style=" width:50%; margin:0 80px;" ng-click="User.landlord_signup()" ng-disabled='form.$invalid' translate="header.REGIST.Regist"></button>
+                <button type="submit" class="btn btn-lg btn-primary btn-block" style=" width:50%; margin:0 80px;" ng-click="User.landlord_signup()" ng-disabled='form_landlord.$invalid' translate="header.REGIST.Regist"></button>
                 <div class="line line-dashed"></div>
                 <p class="text-center"><small translate="header.REGIST.Regist_enquiry"></small></p>
                 <a ui-sref="app.login" style=" width:50%; margin:0 80px;" class="btn btn-lg btn-default btn-block" translate="header.LOGIN.Login"></a>

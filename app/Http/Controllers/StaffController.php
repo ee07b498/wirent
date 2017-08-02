@@ -124,6 +124,8 @@ class StaffController extends Controller
 	/**
 	 *admin rank_rights
 	 */
+ 
+	 
 	public function admin_rankrights_add_rankname(Request $request) { //1
 		$SRankName = $request->input('SRankName');	//e.g. '物业管理员';
 		$proc_Name = 'proc_Insert_RankName';
