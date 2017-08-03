@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-07-28T09:31:59+10:00
+ * @Last modified time: 2017-08-02T11:23:30+10:00
  */
 
 
@@ -94,6 +94,16 @@ angular.module('app')
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad){
                           return $ocLazyLoad.load('js/controllers/role_management.js');
+                      }]
+                  }
+              })
+              .state('app.staff.rank_management', {
+                  url: '/rank_management',
+                  templateUrl: 'tpl/staff/rank_management.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/rank_management.js');
                       }]
                   }
               })

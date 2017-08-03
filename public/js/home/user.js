@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-01T10:30:13+10:00
+ * @Last modified time: 2017-08-03T13:14:08+10:00
  */
 
 
@@ -106,9 +106,8 @@
 				$scope.User = UserService;
 				$scope.$watch(function(){
 			return UserService.customer_signup_data;
-			console.log("111");
 		     },function(n,o){
-
+					 console.log("111");
 		},true);
 			}])
 		.controller('UserController',[

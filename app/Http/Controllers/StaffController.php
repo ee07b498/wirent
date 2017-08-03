@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-07-28T11:31:41+10:00
+# @Last modified time: 2017-08-03T11:42:50+10:00
 
 
 
@@ -55,19 +55,19 @@ class StaffController extends Controller
 		$StaffID = $request->input('StaffID');
 		if ($request->input('SPassWord')!=''){$SPassWord=password_hash($request->input('SPassWord'), PASSWORD_DEFAULT);}
 		else {$SPassWord='';}
-		$SRank = $request->input('SRank');											//不允许从个人资料更新中更新，只能在员工管理中更新
+		$SRank = $request->input('SRank');											//不允许从个人资料更新中更新,只能在员工管理中更新
 		$SLoginStat = $request->input('SLoginStat');
 		$SName = $request->input('SName');
 		$SPhone = $request->input('SPhone');
 		$SEmail = $request->input('SEmail');
-		$SWorkStat = $request->input('SWorkStat');									//不允许从个人资料更新中更新，只能在员工管理中更新
-		$SCurrLoc = $request->input('SCurrLoc');										//不允许从个人资料更新中更新，只能在员工管理中更新
+		$SWorkStat = $request->input('SWorkStat');									//不允许从个人资料更新中更新,只能在员工管理中更新
+		$SCurrLoc = $request->input('SCurrLoc');										//不允许从个人资料更新中更新,只能在员工管理中更新
 		$SComment = $request->input('SComment');
 
 		$proc_Name = 'proc_Update_StaffInfo';
 		$sql = "call $proc_Name(
-									'{$StaffID}'，'{$SPassWord}'，'{$SRank}'，'{$SLoginStat}'，'{$SName}'，'{$SPhone}',
-									'{$SEmail}'，'{$SWorkStat}'，'{$SCurrLoc}'，'{$SComment}'
+									'{$StaffID}','{$SPassWord}','{$SRank}','{$SLoginStat}','{$SName}','{$SPhone}',
+									'{$SEmail}','{$SWorkStat}','{$SCurrLoc}','{$SComment}'
 								)";
 		$result = DB::update($sql);
 		return json_encode($result) ; //0:失败或无更新；1：成功
@@ -85,7 +85,7 @@ class StaffController extends Controller
 	}
 	/**
 	 * admin staff
-	 * register|update
+	 * register|update|filt_check
 	 */
 	public function admin_staff_register(Request $request) {
 		$user_name=$request->input('user_name');
@@ -114,16 +114,54 @@ class StaffController extends Controller
 		//staff_info表更新用户信息
 		$proc_Name = 'proc_Update_StaffInfo';
 		$sql = "call $proc_Name(
-									'{$StaffID}'，'{$SPassWord}'，'{$SRank}'，'{$SLoginStat}'，'{$SName}'，'{$SPhone}',
-									'{$SEmail}'，'{$SWorkStat}'，'{$SCurrLoc}'，'{$SComment}'
+									'{$StaffID}','{$SPassWord}','{$SRank}','{$SLoginStat}','{$SName}','{$SPhone}',
+									'{$SEmail}','{$SWorkStat}','{$SCurrLoc}','{$SComment}'
 								)";
 		$result = DB::update($sql);
 		return json_encode($result) ; //0:失败或无更新；1：成功
 	}
 
+	public function admin_staff_filt_check(Request $request)
+	{
+		$SRankName = $request->input('SRankName');
+		$SLoginStat = $request->input('SLoginStat');
+		$SWorkStat = $request->input('SWorkStat');
+		$SCurrLoc = $request->input('SCurrLoc');
+		$proc_Name = 'filt_Check_StaffInfo_RankName';
+		$sql = "call $proc_Name(
+									'{$SRankName}','{$SLoginStat}','{$SWorkStat}','{$SLoginSCurrLocStat}'
+								)";
+		$result = DB::select($sql);
+		return $result;
+	}
 	/**
 	 *admin rank_rights
 	 */
+	public function admin_rankrights_check_rankname()
+	{
+		$proc_Name = 'check_RankName';
+		$sql = "call $proc_Name()";
+		$result = DB::select($sql);
+		return $result;
+	}
+
+	public function admin_rankrights_check_rightname()
+	{
+		$proc_Name = 'check_RightName';
+		$sql = "call $proc_Name()";
+		$result = DB::select($sql);
+		return $result;
+	}
+
+	public function admin_rankrights_check_rankright(Request $request)
+	{
+		$SRank = $request->input('SRank');
+		$proc_Name = 'check_rights_by_SRank';
+		$sql = "call $proc_Name()";
+		$result = DB::select($sql);
+		return $result;
+	}
+
 	public function admin_rankrights_add_rankname(Request $request) { //1
 		$SRankName = $request->input('SRankName');	//e.g. '物业管理员';
 		$proc_Name = 'proc_Insert_RankName';
@@ -191,7 +229,7 @@ class StaffController extends Controller
 		$LLEmail=$request->input('LLEmail');
 		$proc_Name = 'proc_Update_LandlordInfo';
 		$sql = "call $proc_Name(
-									'{$LLID}'，'{$LLName}'，'{$LLPassword}'，'{$LLPhone}'，'{$LLCellphone}'，'{$LLEmail}'
+									'{$LLID}','{$LLName}','{$LLPassword}','{$LLPhone}','{$LLCellphone}','{$LLEmail}'
 								)";
 		$result = DB::update($sql);
 		return json_encode($result) ; //0:失败或无更新；1：成功
@@ -433,7 +471,7 @@ class StaffController extends Controller
 	/**
 	 * admin customer
 	 */
-	public function admin_customer_check(Request $request) { //模糊查询用户信息,数据库不限制检索条件最小字段长度，由前端限制
+	public function admin_customer_check(Request $request) { //模糊查询用户信息,数据库不限制检索条件最小字段长度,由前端限制
 		$inputStr = $request->input('inputStr');
 		$proc = 'check_CustomerInfo_fuzzy';
 		$sql = "call $proc('{$inputStr}')";
@@ -773,7 +811,7 @@ class StaffController extends Controller
 //	 */
 //	public function file_upload(Request $request) {
 //		if ($request->hasFile('photo')) {
-//		    $request->photo->store($savePath, $fileName, $diskName);	//para1 必填，2可以自动生成唯一名称，3默认.env配置位置
+//		    $request->photo->store($savePath, $fileName, $diskName);	//para1 必填,2可以自动生成唯一名称,3默认.env配置位置
 //		}
 //	}
 

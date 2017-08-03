@@ -1,0 +1,209 @@
+<div ng-controller="rankManagementCtrl">
+  <div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Rank table</h1>
+  </div>
+  <div class="wrapper-md">
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Rank Table
+        </div>
+        <div class="row wrapper">
+          <div class="col-sm-9 m-b-xs">
+            <select class="input-sm form-control w-sm inline v-middle">
+            <option value="0">Bulk action</option>
+            <option value="1">Delete selected</option>
+            <option value="2">Bulk edit</option>
+            <option value="3">Export</option>
+          </select>
+            <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+          </div>
+
+          <div class="col-sm-3">
+
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th style="width:20px;">
+                  <label class="i-checks m-b-none">
+                  <input type="checkbox"><i></i>
+                </label>
+                </th>
+                <th>Rank Name</th>
+                <th style="width:30px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="rankname" ng-repeat="rankname in ranktable.rankname" ng-class="{'bg-light':hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-click="rankname_select($index)">
+                <td><label class="i-checks m-b-none"><input type="checkbox" ng-checked="rankname_checkvalue[$index]" name="post[]"><i></i></label></td>
+                <td ng-show="!rankname_flag[$index]">{{rankname.SRankName}}</td>
+                <td ng-show="rankname_flag[$index]"><input type="text" ng-model="rankname.SRankName" class="form-control" /></td>
+                <td>
+                  <a href class="active" ng-click="rankname_delete($index);$event.stopPropagation()"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="panel-footer">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <div ng-show="rankname_authError" style="color:red; text-align:center; font-size:14px">
+              <h5>数据不能为空</h5>
+            </div>
+            <button class="btn btn-danger" ng-show="rankname_editable" ng-click="rankname_save()"><i class="fa fa-trash"></i>保存数据</button>
+            <button class="btn btn-info" ng-show="!rankname_editable" ng-click="rankname_add()"><i class="fa fa-plus"></i>职位添加</button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+       Rights Table
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
+          <thead>
+            <tr>
+              <th style="width:20px;">
+                <label class="i-checks m-b-none">
+                  <input type="checkbox"><i></i>
+                </label>
+              </th>
+              <th>Rights</th>
+              <th style="width:30px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="rank_rights">
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>Idrawfast</td>
+              <td>
+                <a href class="active"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>Formasa</td>
+              <td>
+              <a href class="active"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>Avatar system</td>
+              <td>
+                <a href class="active"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>Throwdown</td>
+              <td>
+                <a href class="active"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>Idrawfast</td>
+              <td>
+                <a href class="active"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>Formasa</td>
+              <td>
+                <a href class="active"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>Avatar system</td>
+              <td>
+                <a href class="active"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>Videodown</td>
+              <td>
+                <a href class="active"><i class="fa fa-trash" aria-hidden="true"></i><a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="panel-footer">
+        <div class="row">
+
+        </div>
+      </footer>
+    </div>
+  </div>
+  <div class="col-sm-1 m-t-xxl">
+    <ul class="list-unstyled text-center">
+      <li class="m-t-lg">
+        <a><i class="fa fa-3x fa-angle-double-left" aria-hidden="true"></i></a>
+                  </li>
+                  <li class="m-t-lg">
+                    <a><i class="fa fa-3x fa-angle-double-right" aria-hidden="true"></i></a>
+                  </li>
+                  <li class="m-t-lg">
+                    <a><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a>
+                  </li>
+                  <li class="m-t-lg">
+                    <a><i class="fa fa-3x fa-angle-right" aria-hidden="true"></i></a>
+                  </li>
+                  </ul>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Rights Table
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped b-t b-light">
+                <thead>
+                  <tr>
+                    <th style="width:20px;">
+                      <label class="i-checks m-b-none">
+                  <input type="checkbox"><i></i>
+                </label>
+                    </th>
+                    <th>Rights</th>
+                    <th style="width:30px;"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="rightname" ng-repeat="rightname in ranktable.rightname" ng-class="{'bg-light':hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-click="rightname_select($index)">
+                    <td><label class="i-checks m-b-none"><input type="checkbox" ng-checked="rightname_checkvalue[$index]" name="post[]"><i></i></label></td>
+                    <td ng-show="!rightname_flag[$index]">{{rightname.Right_Name}}</td>
+                    <td ng-show="rightname_flag[$index]"><input type="text" ng-model="rightname.SRankName" class="form-control" /></td>
+                    <td>
+                      <a href class="active" ng-click="rightname_delete($index);$event.stopPropagation()"><i class="fa fa-trash" aria-hidden="true"></i><a>
+                    </td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+      <footer class="panel-footer">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <div ng-show="rightname_authError" style="color:red; text-align:center; font-size:14px">
+              <h5>数据不能为空</h5>
+            </div>
+            <button class="btn btn-danger"  ng-show="rightname_editable" ng-click="rightname_save()"><i class="fa fa-trash"></i>保存数据</button>
+            <button class="btn btn-info" ng-show="!rightname_editable" ng-click="rightname_add()"><i class="fa fa-plus"></i>权限添加</button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+</div>

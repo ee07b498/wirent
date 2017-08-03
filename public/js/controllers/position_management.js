@@ -1,12 +1,30 @@
-'use strict'
-app.controller('positionAddInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
-   $scope.items = items;
-   $scope.selected = {
-     item: $scope.items[0]
-   };
+/**
+ * @Date:   2017-07-14T11:45:22+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-08-02T10:18:58+10:00
+ */
 
+
+
+'use strict'
+app.controller('positionAddInstanceCtrl', ['$scope', '$http','$modalInstance', 'items', function($scope,$http, $modalInstance, items) {
+  //  $scope.items = items;
+  //  $scope.selected = {
+  //    item: $scope.items[0]
+  //  };
+  $scope.SRankName = "";
+  var rankrights = {};
+  rankrights.SRankName =  $scope.SRankName;
    $scope.ok = function () {
-     $modalInstance.close($scope.selected.item);
+     $http.post('/staff/rankrights_add',rankrights)
+       .then(function(r)
+       {
+         console.log('rankrights',rankrights);
+         console.log("r",r);
+       },function(e){
+          console.log("position add failed!");
+       });
+     $modalInstance.close();
    };
 
    $scope.cancel = function () {
