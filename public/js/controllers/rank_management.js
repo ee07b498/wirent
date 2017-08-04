@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-02T11:22:51+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-03T16:19:22+10:00
+ * @Last modified time: 2017-08-04T12:08:31+10:00
  */
 'use strict';
 
@@ -15,6 +15,7 @@ app.controller('rankManagementCtrl', ['$scope', '$element', '$http', function($s
   $scope.rightname_flag = [];
   $scope.rightname_editable = false;
   $scope.rightname_authError = false;
+  $scope.rankright_authError = false;
   /*rankname check*/
   $http.get('/staff/rankname')
     .then(function(response) {
@@ -27,38 +28,31 @@ app.controller('rankManagementCtrl', ['$scope', '$element', '$http', function($s
     }, function(x) {
       console.log('Server Error');
     });
-
-  /*rightname check*/
-  $http.get('/staff/rightname')
-    .then(function(response) {
-      console.log("response", response);
-      $scope.ranktable.rightname = response.data;
-      for (var j = 0; j < $scope.ranktable.rightname.length; j++) {
-        $scope.rightname_checkvalue.push(false);
-        $scope.rightname_flag.push(false);
-      }
-    }, function(x) {
-      console.log('Server Error');
-    });
+//rankname_select
   $scope.rankname_select = function($index) {
     // var element = $element.find(".rankname")[$index];
     for (var k = 0; k < $scope.ranktable.rankname.length; k++) {
       $scope.rankname_checkvalue[k] = false;
     }
     $scope.rankname_checkvalue[$index] = !$scope.rankname_checkvalue[$index];
-    console.log($scope.rankname_checkvalue);
-  }
+    $scope.ranktable.current = $index;
+    console.log($scope.ranktable.rankname[$index].SRank);
+    $http.post('/staff/rankright',{"SRank":$scope.ranktable.rankname[$index].SRank})
+      .then(function(response) {
+        $scope.ranktable.rankrights = response.data;
 
-  $scope.rightname_select = function($index) {
-    // var element = $element.find(".rankname")[$index];
-    $scope.rightname_checkvalue[$index] = !$scope.rightname_checkvalue[$index];
-    console.log($scope.rightname_checkvalue);
+      }, function(x) {
+        console.log('Server Error');
+      });
   }
+// rankname delete
   $scope.rankname_delete = function($index){
-    console.log(123);
-  }
-  $scope.rightname_delete = function($index){
-    console.log(1234);
+    $http.post('/staff/delete_rankname',{"SRankName":$scope.ranktable.rankname[$index].SRankName})
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
   }
   $scope.rankname_add = function(){
       if (!$scope.rankname_editable) {
@@ -82,14 +76,38 @@ app.controller('rankManagementCtrl', ['$scope', '$element', '$http', function($s
     }else {
       $scope.rankname_authError = true;
     }
-
   }
-  /**
-   * right name
-   */
+
+  /******************************************************************
+   ************************right name********************************
+   *****************************************************************/
+   /*rightname check*/
+   $http.get('/staff/rightname')
+     .then(function(response) {
+       console.log("response", response);
+       $scope.ranktable.rightname = response.data;
+       for (var j = 0; j < $scope.ranktable.rightname.length; j++) {
+         $scope.rightname_checkvalue.push(false);
+         $scope.rightname_flag.push(false);
+       }
+     }, function(x) {
+       console.log('Server Error');
+     });
+
+   $scope.rightname_select = function($index) {
+     // var element = $element.find(".rankname")[$index];
+     for (var l = 0; l < $scope.ranktable.rightname.length; l++) {
+       $scope.rightname_checkvalue[l] = false;
+     }
+     $scope.rightname_checkvalue[$index] = !$scope.rightname_checkvalue[$index];
+     $scope.ranktable.right_name =  $scope.ranktable.rightname[$index].Right_Name;
+     console.log($scope.rightname_checkvalue);
+   }
+
    $scope.rightname_delete = function($index){
      console.log(1234);
    }
+
    $scope.rightname_add = function(){
        if (!$scope.rightname_editable) {
          $scope.rightname_flag[$scope.ranktable.rightname.length] = true;
@@ -112,6 +130,34 @@ app.controller('rankManagementCtrl', ['$scope', '$element', '$http', function($s
      }else {
        $scope.rightname_authError = true;
      }
-
+   }
+// add rights for rank
+   $scope.rankrights_add = function(){
+     console.log($scope.ranktable.rankrights);
+     console.log($scope.ranktable.right_name);
+      $scope.rankright_authError = false;
+     for (var m = 0; m < $scope.ranktable.rankrights.length; m++) {
+       if ($scope.ranktable.right_name == $scope.ranktable.rankrights[m].Right_Name) {
+         $scope.rankright_authError = true;
+         return;
+       }
+     }
+     if (!$scope.rankright_authError) {
+       $http.post('/staff/add_rankrights',{"SRankName":$scope.ranktable.rankname[$scope.ranktable.current].SRankName,"Right_Name":$scope.ranktable.right_name})
+         .then(function(response) {
+           console.log("response", response);
+         }, function(x) {
+           console.log('Server Error');
+         });
+     }
+   }
+   //delete rights from rank
+   $scope.rankrights_delete = function($index){
+     $http.post('/staff/delete_rankrights',{"SRankName":$scope.ranktable.rankname[$scope.ranktable.current].SRankName,"Right_Name":$scope.ranktable.rankrights[$index].Right_Name})
+       .then(function(response) {
+         console.log("response", response);
+       }, function(x) {
+         console.log('Server Error');
+       });
    }
 }]);

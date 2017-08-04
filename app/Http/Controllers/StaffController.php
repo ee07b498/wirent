@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-03T17:52:06+10:00
+# @Last modified time: 2017-08-04T10:32:24+10:00
 
 
 
@@ -129,7 +129,7 @@ class StaffController extends Controller
 		$SCurrLoc = $request->input('SCurrLoc');
 		$proc_Name = 'filt_Check_StaffInfo_RankName';
 		$sql = "call $proc_Name(
-									'{$SRankName}','{$SLoginStat}','{$SWorkStat}','{$SLoginSCurrLocStat}'
+									'{$SRankName}','{$SLoginStat}','{$SWorkStat}','{$SCurrLoc}'
 								)";
 		$result = DB::select($sql);
 		return $result;
@@ -157,7 +157,7 @@ class StaffController extends Controller
 	{
 		$SRank = $request->input('SRank');
 		$proc_Name = 'check_rights_by_SRank';
-		$sql = "call $proc_Name()";
+		$sql = "call $proc_Name($SRank)";
 		$result = DB::select($sql);
 		return $result;
 	}

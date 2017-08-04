@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-03T15:44:22+10:00
+# @Last modified time: 2017-08-04T11:52:03+10:00
 
 
 
@@ -128,4 +128,7 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->get('/rightname', 			['uses'=>'StaffController@admin_rankrights_check_rightname']);
 		$app->post('/rankright', 			['uses'=>'StaffController@admin_rankrights_check_rankright']);
 		$app->post('/add_rankname', 			['uses'=>'StaffController@admin_rankrights_add_rankname']);
+		$app->post('/delete_rankname', 			['uses'=>'StaffController@admin_rankrights_delete_rankname']);
+		$app->post('/add_rankrights', 			['uses'=>'StaffController@admin_rankrights_add_rankrights']);
+		$app->post('/delete_rankrights', 			['uses'=>'StaffController@admin_rankrights_delete_rankrights']);
 });
