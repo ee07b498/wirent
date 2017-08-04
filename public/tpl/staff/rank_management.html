@@ -128,7 +128,7 @@
                   </label>
                 </th>
                 <th>Rights</th>
-                <th style="width:30px;"></th>
+                <!-- <th style="width:30px;"></th> -->
               </tr>
             </thead>
             <tbody>
@@ -136,9 +136,9 @@
                 <td><label class="i-checks m-b-none"><input type="checkbox" ng-checked="rightname_checkvalue[$index]" name="post[]"><i></i></label></td>
                 <td ng-show="!rightname_flag[$index]">{{rightname.Right_Name}}</td>
                 <td ng-show="rightname_flag[$index]"><input type="text" ng-model="rightname.SRankName" class="form-control" /></td>
-                <td>
+                <!-- <td>
                   <a href class="active" ng-click="rightname_delete($index);$event.stopPropagation()"><i class="fa fa-trash" aria-hidden="true"></i><a>
-                </td>
+                </td> -->
             </tr>
           </tbody>
         </table>

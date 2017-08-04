@@ -16,7 +16,7 @@
           <div ng-include="'/tpl/modal/staff_add.html'"></div>
     </script>
     <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-    <button class="btn btn-info" ng-click="open('lg')"><i class="fa fa-plus"></i>员工添加</button>
+    <button class="btn btn-info" ng-click="open()"><i class="fa fa-plus"></i>员工添加</button>
     </div>
     <div class="row wrapper">
       <div class="col-sm-3 m-b-xs">
@@ -50,153 +50,20 @@
             </label>
             </th>
             <th>ID</th>
-            <th>用户列表</th>
-            <th>角色名</th>
-            <th>描述</th>
+            <th>职位</th>
+            <th>工作状态</th>
+            <th>工作地点</th>
             <th>状态</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="staff_info in stafflist track by $index">
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>1</td>
-            <td><a ui-sref="app.staff.staff_profile">admin</a></td>
-            <td>超级管理员</td>
-            <td>拥有至高无上的权利</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a class="active m-r-md" ng-click="show=!show">
-                <i class="fa fa-minus-circle" aria-hidden="true" ng-if="show"></i>
-                <i class="fa fa-check-circle" aria-hidden="true" ng-if="!show"></i>
-              </a>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active m-r-md"><i class="fa fa-key" aria-hidden="true"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>2</td>
-            <td><a ui-sref="app.staff.staff_profile">张三</a></td>
-            <td>房产经理</td>
-            <td>具有添加、审核、发布、删除内容的权限</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a class="active m-r-md" ng-click="show=!show">
-                <i class="fa fa-minus-circle" aria-hidden="true" ng-if="show"></i>
-                <i class="fa fa-check-circle" aria-hidden="true" ng-if="!show"></i>
-              </a>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active m-r-md"><i class="fa fa-key" aria-hidden="true"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>3</td>
-            <td><a ui-sref="app.staff.staff_profile">李四</a></td>
-            <td>房产主管</td>
-            <td>只对所在栏目具有添加、审核、发布、删除内容的权限</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a class="active m-r-md" ng-click="show=!show">
-                <i class="fa fa-minus-circle" aria-hidden="true" ng-if="show"></i>
-                <i class="fa fa-check-circle" aria-hidden="true" ng-if="!show"></i>
-              </a>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active m-r-md"><i class="fa fa-key" aria-hidden="true"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>4</td>
-            <td><a ui-sref="app.staff.staff_profile">钱七</a></td>
-            <td>房产管理员</td>
-            <td>只对所在栏目具有添加、删除草稿等权利。</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a class="active m-r-md" ng-click="show=!show">
-                <i class="fa fa-minus-circle" aria-hidden="true" ng-if="show"></i>
-                <i class="fa fa-check-circle" aria-hidden="true" ng-if="!show"></i>
-              </a>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active m-r-md"><i class="fa fa-key" aria-hidden="true"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>5</td>
-            <td><a ui-sref="app.staff.staff_profile">赵六</a></td>
-            <td>房产管理员</td>
-            <td>只对所在栏目具有添加、删除草稿等权利。</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a class="active m-r-md" ng-click="show=!show">
-                <i class="fa fa-minus-circle" aria-hidden="true" ng-if="show"></i>
-                <i class="fa fa-check-circle" aria-hidden="true" ng-if="!show"></i>
-              </a>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active m-r-md"><i class="fa fa-key" aria-hidden="true"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>6</td>
-            <td><a ui-sref="app.staff.staff_profile">钱七</a></td>
-            <td>房产管理员</td>
-            <td>只对所在栏目具有添加、删除草稿等权利。</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a class="active m-r-md" ng-click="show=!show">
-                <i class="fa fa-minus-circle" aria-hidden="true" ng-if="show"></i>
-                <i class="fa fa-check-circle" aria-hidden="true" ng-if="!show"></i>
-              </a>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active m-r-md"><i class="fa fa-key" aria-hidden="true"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>7</td>
-            <td><a ui-sref="app.staff.staff_profile">钱七</a></td>
-            <td>房产管理员</td>
-            <td>只对所在栏目具有添加、删除草稿等权利。</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a class="active m-r-md" ng-click="show=!show">
-                <i class="fa fa-minus-circle" aria-hidden="true" ng-if="show"></i>
-                <i class="fa fa-check-circle" aria-hidden="true" ng-if="!show"></i>
-              </a>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active m-r-md"><i class="fa fa-key" aria-hidden="true"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>8</td>
-            <td><a ui-sref="app.staff.staff_profile">赵六</a></td>
-            <td>房产管理员</td>
-            <td>只对所在栏目具有添加、删除草稿等权利。</td>
+            <td>{{$index + 1}}</td>
+            <td><a ui-sref="app.staff.staff_profile">{{staff_info.SRankName}}</a></td>
+            <td>{{staff_info.SWorkStat}}</td>
+            <td>{{staff_info.SCurrLoc}}</td>
             <td>
               <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
             </td>

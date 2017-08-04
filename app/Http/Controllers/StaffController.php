@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-04T10:32:24+10:00
+# @Last modified time: 2017-08-04T14:33:06+10:00
 
 
 
@@ -127,7 +127,7 @@ class StaffController extends Controller
 		$SLoginStat = $request->input('SLoginStat');
 		$SWorkStat = $request->input('SWorkStat');
 		$SCurrLoc = $request->input('SCurrLoc');
-		$proc_Name = 'filt_Check_StaffInfo_RankName';
+		$proc_Name = 'filt_Check_StaffInfo_SRankName';
 		$sql = "call $proc_Name(
 									'{$SRankName}','{$SLoginStat}','{$SWorkStat}','{$SCurrLoc}'
 								)";

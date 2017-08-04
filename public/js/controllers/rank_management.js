@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-02T11:22:51+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-04T12:08:31+10:00
+ * @Last modified time: 2017-08-04T13:30:06+10:00
  */
 'use strict';
 
@@ -136,12 +136,15 @@ app.controller('rankManagementCtrl', ['$scope', '$element', '$http', function($s
      console.log($scope.ranktable.rankrights);
      console.log($scope.ranktable.right_name);
       $scope.rankright_authError = false;
-     for (var m = 0; m < $scope.ranktable.rankrights.length; m++) {
-       if ($scope.ranktable.right_name == $scope.ranktable.rankrights[m].Right_Name) {
-         $scope.rankright_authError = true;
-         return;
-       }
-     }
+      if ($scope.ranktable.rankrights.length) {
+        for (var m = 0; m < $scope.ranktable.rankrights.length; m++) {
+          if ($scope.ranktable.right_name == $scope.ranktable.rankrights[m].Right_Name) {
+            $scope.rankright_authError = true;
+            return;
+          }
+        }
+      }
+
      if (!$scope.rankright_authError) {
        $http.post('/staff/add_rankrights',{"SRankName":$scope.ranktable.rankname[$scope.ranktable.current].SRankName,"Right_Name":$scope.ranktable.right_name})
          .then(function(response) {
