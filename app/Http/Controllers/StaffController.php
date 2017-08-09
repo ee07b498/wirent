@@ -91,8 +91,10 @@ class StaffController extends Controller
 		$user_name=$request->input('user_name');
 		$password=password_hash($request->input('password'), PASSWORD_DEFAULT);
 		$rankname = $request->input('rankname');
+		$SWorkStat = $request->input('SWorkStat');
+		$SCurrLoc = $request->input('SCurrLoc');		
 		$proc_Name = 'proc_Insert_StaffInfo';
-		$sql = "call $proc_Name('{$user_name}','{$password}','{$rankname}')";
+		$sql = "call $proc_Name('{$user_name}','{$password}','{$rankname}'),'{$SWorkStat}','{$SCurrLoc}";
 		$result = DB::insert($sql);
 		return json_encode($result) ; //0:失败或无添加；1：成功
 	}
@@ -285,7 +287,35 @@ class StaffController extends Controller
 		}
 		else{return false;} 		//该地址已注册
 	}
-
+	
+	public function admin_landlord_er_form_insert(Request $request)
+	{
+		$ER_ID = $request->input('ER_ID');
+		$er_including = $request->input('er_including');
+		$facility=$request->input('facility');
+		$train_station = $request->input('train_station');
+		$bus_stop = $request->input('bus_stop');
+		$ferry = $request->input('ferry');
+		$light_rail = $request->input('light_rail');
+		$shops = $request->input('shops');
+		$school = $request->input('school');
+		$others = $request->input('others');
+		$description_en = $request->input('description_en');
+		$description_ch = $request->input('description_ch');
+		$description_zh = $request->input('description_zh');
+		$comment = $request->input('comment');
+		
+		$proc_name = 'proc_Insert_ERForm';
+		$sql = "call $proc_name(
+							'{$ER_ID}','{$er_including}','{$facility}','{$train_station}',{$bus_stop},
+							{$ferry},{$light_rail},{$shops},{$school},
+							{$others},{$description_en},{$description_ch},'{$description_zh}',
+							'{$comment}'
+							)";
+		$result = DB::insert($sql);
+		return json_encode($result);		
+	}
+	
 	public function admin_landlord_er_update(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$ER_No = $request->input('ER_No');
@@ -319,10 +349,47 @@ class StaffController extends Controller
 		return json_encode($result);
 	}
 
+	public function admin_landlord_er_form_update(Request $request)
+	{
+		$identirerent_form = $request->input('identirerent_form');
+		$ER_ID = $request->input('ER_ID');
+		$er_including = $request->input('er_including');
+		$facility=$request->input('facility');
+		$train_station = $request->input('train_station');
+		$bus_stop = $request->input('bus_stop');
+		$ferry = $request->input('ferry');
+		$light_rail = $request->input('light_rail');
+		$shops = $request->input('shops');
+		$school = $request->input('school');
+		$others = $request->input('others');
+		$description_en = $request->input('description_en');
+		$description_ch = $request->input('description_ch');
+		$description_zh = $request->input('description_zh');
+		$comment = $request->input('comment');
+		
+		$proc_name = 'proc_Update_ERForm';
+		$sql = "call $proc_name(
+							'{$identirerent_form}',{$ER_ID},'{$er_including}','{$facility}','{$train_station}',{$bus_stop},
+							{$ferry},{$light_rail},{$shops},{$school},
+							{$others},{$description_en},{$description_ch},'{$description_zh}',
+							'{$comment}'
+							)";
+		$result = DB::update($sql);
+		return json_encode($result);		
+	}	
+
 	public function admin_landlord_er_delete(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$proc = 'proc_Delete_ER';
 		$sql = 'call $proc($ER_ID)';
+		$result = DB::delete($sql);
+		return json_encode($result);
+	}
+
+	public function admin_landlord_er_form_delete(Request $request) {
+		$identirerent_form = $request->input('identirerent_form');
+		$proc = 'proc_Delete_ERForm';
+		$sql = 'call $proc($identirerent_form)';
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
@@ -339,7 +406,30 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+	
+	public function admin_er_form_check()
+	{
+		$ER_ID = $request->input('ER_ID');
+		$proc_Name = 'check_EntireRentInfo_by_ERID';
+		$sql = "call $proc_Name({$ER_ID})";
+		$data = DB::select($sql);
 
+		//循环查询图片库及编辑文字叙述部分
+		$proc_Name = 'check_EntireRentPicture_by_ERID';
+		$proc_Name1 = 'check_EntireRentDetail_by_ERID';
+		foreach($data as $item)
+		{
+			$ER_ID = $item->ER_ID;
+			$sql = "call $proc_Name('{$ER_ID}')";
+			$sql1 = "call $proc_Name1('{$ER_ID}')";
+			$itempic = DB::select($sql);
+			$itemdetail = DB::select($sql1);
+			$item->picset = $itempic;
+			$item->details = $itemdetail;
+		}
+		return $data;
+	}
+	
 	public function admin_er_landlord_check(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$proc = 'check_LandlordInfo_by_ERID';
@@ -360,6 +450,8 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+	
+	
 
 	public function admin_sr_insert(Request $request) {
 		$ER_ID = $request->input('ER_ID');
