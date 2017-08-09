@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-04T14:06:30+10:00
+# @Last modified time: 2017-08-09T15:44:00+10:00
 
 
 
@@ -133,4 +133,9 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/delete_rankrights', 			['uses'=>'StaffController@admin_rankrights_delete_rankrights']);
 		$app->post('/staff_register', 			['uses'=>'StaffController@admin_staff_register']);
 		$app->post('/staff_filt_check', 			['uses'=>'StaffController@admin_staff_filt_check']);
+		$app->post('/admin_staff_update', 			['uses'=>'StaffController@admin_staff_update']);
+		$app->post('/admin_landlord_check', 			['uses'=>'StaffController@admin_landlord_check']);
+		$app->post('/admin_landlord_insert', 			['uses'=>'StaffController@admin_landlord_insert']);
+		$app->post('/admin_landlord_update', 			['uses'=>'StaffController@admin_landlord_update']);
+		$app->post('/admin_landlord_er_check', 			['uses'=>'StaffController@admin_landlord_er_check']);
 });

@@ -50,6 +50,7 @@
             </label>
             </th>
             <th>ID</th>
+            <th>用户名</th>
             <th>职位</th>
             <th>工作状态</th>
             <th>工作地点</th>
@@ -59,9 +60,28 @@
         </thead>
         <tbody>
           <tr ng-repeat="staff_info in stafflist track by $index">
+            <!-- <script type="text/ng-template" id="staffAdd.html">
+                  <div ng-include="'/tpl/modal/staff_add.html'"></div>
+            </script>
+            <script type="text/ng-template" id="staffAdd.html">
+                  <div ng-include="'/tpl/modal/staff_add.html'"></div>
+            </script> -->
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td>{{$index + 1}}</td>
-            <td><a ui-sref="app.staff.staff_profile">{{staff_info.SRankName}}</a></td>
+            <td><a ui-sref="app.staff.staff_profile({SComment:staff_info.SComment,
+                                                     SCurrLoc:staff_info.SCurrLoc,
+                                                     SEmail:staff_info.SEmail,
+                                                     SLoginStat:staff_info.SLoginStat,
+                                                     SName:staff_info.SName,
+                                                     SPassWord:staff_info.SPassWord,
+                                                     SPhone:staff_info.SPhone,
+                                                     SRank:staff_info.SRank,
+                                                     SRankName:staff_info.SRankName,
+                                                     SUserName:staff_info.SUserName,
+                                                     SWorkStat:staff_info.SWorkStat,
+                                                     StaffID:staff_info.StaffID
+                                                      })">{{staff_info.SUserName}}</a></td>
+            <td>{{staff_info.SRankName}}</td>
             <td>{{staff_info.SWorkStat}}</td>
             <td>{{staff_info.SCurrLoc}}</td>
             <td>

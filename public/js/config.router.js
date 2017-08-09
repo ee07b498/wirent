@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-02T11:23:30+10:00
+ * @Last modified time: 2017-08-09T15:05:57+10:00
  */
 
 
@@ -138,7 +138,7 @@ angular.module('app')
                   }
               })
               .state('app.staff.staff_profile', {
-                  url: '/staff_profile',
+                  url: '/staff_profile?StaffID&SWorkStat&SUserName&SRankName&SRank&SPhone&SPassWord&SName&SLoginStat&SEmail&SCurrLoc&SComment',
                   templateUrl: 'tpl/staff/staff_profile.html',
                   resolve: {
                       deps: ['$ocLazyLoad',
@@ -192,7 +192,7 @@ angular.module('app')
                   }
               })
               .state('app.customer.landlordprofile', {
-                  url: '/landlord_profile',
+                  url: '/landlord_profile?LLEmail&LLID&LLName&LLPassword&LLPhone&LLCellphone',
                   templateUrl: 'tpl/customer/landlord_profile.html',
                   resolve: {
                       deps: ['$ocLazyLoad',
