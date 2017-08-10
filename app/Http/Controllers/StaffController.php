@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-09T18:04:22+10:00
+# @Last modified time: 2017-08-10T17:07:33+10:00
 namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
@@ -579,7 +579,7 @@ class StaffController extends Controller
 	public function admin_customer_er_check(Request $request) {
 		$CID = $request->input('CID');
 		$proc = 'check_ERAddr_by_CID';
-		$sql = 'call $proc({$CID})';
+		$sql = "call $proc({$CID})";
 		$result = DB::select($sql);
 		return $result;
 	}

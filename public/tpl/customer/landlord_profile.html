@@ -177,7 +177,7 @@
             <div class="input-group">
               <input type="text" class="input-sm form-control" placeholder="Search">
               <span class="input-group-btn">
-              <button class="btn btn-sm btn-default" type="button">Go!</button>
+              <button class="btn btn-sm btn-default" type="button" ng-click="admin_er_check()">Go!</button>
             </span>
             </div>
           </div>
@@ -194,36 +194,44 @@
                   <input type="checkbox"><i></i>
                 </label>
                 </th>
-                <th style="width:30px;">ID</th>
-                <th style="width:100px;">房屋类型</th>
-                <th style="width:50px;">No</th>
-                <th style="width:100px;">地址</th>
-                <th style="width:100px;">所属区</th>
-                <th style="width:100px;">所属州</th>
-                <th style="width:100px;">房屋状态</th>
-                <th style="width:100px;">可租时间</th>
-                <th style="width:100px;">看房时间</th>
-                <th style="width:100px;">状态</th>
-                <th style="width:200px;">操作</th>
+                <th style="width:30px;" class="text-center">ID</th>
+                <th style="width:100px;" class="text-center">房屋类型</th>
+                <th style="width:50px;" class="text-center">No</th>
+                <th style="width:100px;" class="text-center">地址</th>
+                <th style="width:100px;" class="text-center">所属区</th>
+                <th style="width:100px;" class="text-center">所属州</th>
+                <th style="width:100px;" class="text-center">房屋状态</th>
+                <th style="width:100px;" class="text-center">可租时间</th>
+                <th style="width:100px;" class="text-center">看房时间</th>
+                <th style="width:100px;" class="text-center">Details</th>
+                <th style="width:100px;" class="text-center">状态</th>
+                <th style="width:200px;" class="text-center">操作</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="property in properties track by $index">
-                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                <td>{{$index}}</td>
-                <td>{{property.ER_Type}}</td>
-                <td>{{property.ER_No}}</td>
-                <td>{{property.ER_St}}</td>
-                <td>{{property.ER_Suburb}}</td>
-                <td>{{property.ER_Region}}</td>
-                <td>{{property.ER_Stat}}</td>
-                <td>{{property.ER_AvailableDate}}</td>
-                <td>{{property.ER_InspRep}}</td>
-                <td>
+                <td class="text-center"><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td class="text-center">{{$index}}</td>
+                <td class="text-center">{{property.ER_Type}}</td>
+                <td class="text-center">{{property.ER_No}}</td>
+                <td class="text-center">{{property.ER_St}}</td>
+                <td class="text-center">{{property.ER_Suburb}}</td>
+                <td class="text-center">{{property.ER_Region}}</td>
+                <td class="text-center">{{property.ER_Stat}}</td>
+                <td class="text-center">{{property.ER_AvailableDate}}</td>
+                <td class="text-center">{{property.ER_InspRep}}</td>
+                <script type="text/ng-template" id="propertyDetails.html">
+                  <div ng-include="'/tpl/modal/property_details.html'"></div>
+                </script>
+                <td class="text-center"><a ng-click="openDetails('lg',$index)">Details&nbsp;&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></td>
+                <td class="text-center">
                   <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
                 </td>
-                <td>
-                  <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                <script type="text/ng-template" id="propertyDetailsEdit.html">
+                  <div ng-include="'/tpl/modal/property_details_modify.html'"></div>
+                </script>
+                <td class="text-center">
+                  <a href class="active m-r-md" ng-click="details_Edit('lg',$index)"><i class="fa fa-pencil"></i></a>
                   <a href class="active m-r-md" ng-click="check=!check">
                     <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
                     <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>

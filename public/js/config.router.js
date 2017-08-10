@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-09T15:05:57+10:00
+ * @Last modified time: 2017-08-10T16:03:52+10:00
  */
 
 
@@ -182,7 +182,7 @@ angular.module('app')
                   }
               })
               .state('app.customer.userprofile', {
-                  url: '/user_profile',
+                  url: '/user_profile?CID',
                   templateUrl: 'tpl/customer/user_profile.html',
                   resolve: {
                       deps: ['$ocLazyLoad',
