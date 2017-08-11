@@ -1,10 +1,14 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-11T11:18:29+10:00
+# @Last modified time: 2017-08-11T11:50:52+10:00
+
+
+
 namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
+
 /**
  * staff may has rights to delete inval items from db
  * but will add records to stafflogbook at the same time
@@ -21,7 +25,10 @@ class StaffController extends Controller
 	public function login(Request $request) {
         $user_name = $request->input('user_name');
 		$password = $request->input('password');
-        $getPassword = DB::select("call login_Staff('{$user_name}')");
+		$sql = "call login_Staff('{$user_name}')";
+        $getPassword = DB::select($sql);
+//		return $getPassword;
+
 		if(password_verify($password,$getPassword[0]->SPassWord))
 		{
 			$staffInfo = DB::select("call check_StaffInfo_by_SUserName('{$user_name}')");
@@ -36,13 +43,16 @@ class StaffController extends Controller
 		}
         return 0;
 	}
+
 	public function logout() {
 		app('session')->flush();
 		return 0;
 	}
+
 	public function profile_check(Request $request) {
 		return app('session')->all();
 	}
+
 	public function profile_update(Request $request) {
 		//声明及获取参数
 		$StaffID = $request->input('StaffID');
@@ -56,6 +66,7 @@ class StaffController extends Controller
 		$SWorkStat = $request->input('SWorkStat');									//不允许从个人资料更新中更新,只能在员工管理中更新
 		$SCurrLoc = $request->input('SCurrLoc');										//不允许从个人资料更新中更新,只能在员工管理中更新
 		$SComment = $request->input('SComment');
+
 		$proc_Name = 'proc_Update_StaffInfo';
 		$sql = "call $proc_Name(
 									'{$StaffID}','{$SPassWord}','{$SRank}','{$SLoginStat}','{$SName}','{$SPhone}',
@@ -64,6 +75,7 @@ class StaffController extends Controller
 		$result = DB::update($sql);
 		return json_encode($result) ; //0:失败或无更新；1：成功
 	}
+
 	public function logbook(Request $request) {
 		$StaffID = $request->input('StaffID');
 		$SLType = $request->input('SLType');
@@ -85,10 +97,11 @@ class StaffController extends Controller
 		$SWorkStat = $request->input('SWorkStat');
 		$SCurrLoc = $request->input('SCurrLoc');
 		$proc_Name = 'proc_Insert_StaffInfo';
-		$sql = "call $proc_Name('{$user_name}','{$password}','{$rankname}'),'{$SWorkStat}','{$SCurrLoc}";
+		$sql = "call $proc_Name('{$user_name}','{$password}','{$rankname}','{$SWorkStat}','{$SCurrLoc}')";
 		$result = DB::insert($sql);
 		return json_encode($result) ; //0:失败或无添加；1：成功
 	}
+
 	public function admin_staff_update(Request $request) {
 		//声明及获取参数
 		$StaffID = $request->input('StaffID');
@@ -102,6 +115,7 @@ class StaffController extends Controller
 		$SWorkStat = $request->input('SWorkStat');
 		$SCurrLoc = $request->input('SCurrLoc');
 		$SComment = $request->input('SComment');
+
 		//staff_info表更新用户信息
 		$proc_Name = 'proc_Update_StaffInfo';
 		$sql = "call $proc_Name(
@@ -111,6 +125,7 @@ class StaffController extends Controller
 		$result = DB::update($sql);
 		return json_encode($result) ; //0:失败或无更新；1：成功
 	}
+
 	public function admin_staff_filt_check(Request $request)
 	{
 		$SRankName = $request->input('SRankName');
@@ -134,6 +149,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
 	public function admin_rankrights_check_rightname()
 	{
 		$proc_Name = 'check_RightName';
@@ -141,6 +157,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
 	public function admin_rankrights_check_rankright(Request $request)
 	{
 		$SRank = $request->input('SRank');
@@ -149,6 +166,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
 	public function admin_rankrights_add_rankname(Request $request) { //1
 		$SRankName = $request->input('SRankName');	//e.g. '物业管理员';
 		$proc_Name = 'proc_Insert_RankName';
@@ -156,6 +174,7 @@ class StaffController extends Controller
 		$result = DB::insert($sql);
 		return json_encode($result) ; 							//0:失败或无添加；1：成功
 	}
+
 	public function admin_rankrights_delete_rankname(Request $request) {
 		$SRankName = $request->input('SRankName');
 		$proc_Name = 'proc_Delete_RankName';
@@ -163,6 +182,7 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return json_encode($result) ;
 	}
+
 	public function admin_rankrights_add_rankrights(Request $request) {//2
 		$SRankName = $request->input('SRankName');
 		$Right_Name = $request->input('Right_Name');
@@ -171,6 +191,7 @@ class StaffController extends Controller
 		$result = DB::insert($sql);
 		return json_encode($result) ;
 	}
+
 	public function admin_rankrights_delete_rankrights(Request $request) {
 		$SRankName = $request->input('SRankName');
 		$Right_Name = $request->input('Right_Name');
@@ -179,6 +200,7 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return json_encode($result) ;
 	}
+
 	/**
 	 * admin landlord|properties info
 	 * manage properties info
@@ -190,6 +212,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
 	public function admin_landlord_insert(Request $request) {
 		$LLName = $request->input('LLName');
 		$LLPhone = $request->input('LLPhone');
@@ -200,6 +223,7 @@ class StaffController extends Controller
 		$result = DB::insert("call $proc_Name('{$LLName}','{$LLPassword}','{$LLPhone}','{$LLCellphone}','{$LLEmail}')");
 		return json_encode($result);
 	}
+
 	public function admin_landlord_update(Request $request) {
 		$LLID=$request->input('LLID');
 		$LLName=$request->input('LLName');
@@ -217,7 +241,9 @@ class StaffController extends Controller
 	}
 	//requirements to define inval landlord
 	public function admin_landlord_delete(Request $request) {
+
 	}
+
 	public function admin_landlord_er_check(Request $request) {
 		$LLID = $request->input('LLID');
 		$proc = 'check_EntireRentInfo_by_LLID';
@@ -225,6 +251,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
 	public function admin_landlord_er_insert(Request $request) {
 		//赋值参数
 		$ER_No = $request->input('ER_No');
@@ -244,6 +271,7 @@ class StaffController extends Controller
 		$ER_Type = $request->input('ER_Type');
 		$ER_Feature = $request->input('ER_Feature');
 		$ER_Stat = 'Pending';
+
 		$proc_check = 'check_EntireRentInfo_by_ERAddress';
 		$check_sql = "call $proc_check('{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}')";
 		$check_result = DB::select($check_sql);
@@ -311,6 +339,7 @@ class StaffController extends Controller
 		$ER_Description = $request->input('ER_Description');
 		$ER_Type = $request->input('ER_Type');
 		$ER_Feature = $request->input('ER_Feature');
+
 		$proc_name = 'proc_Update_ERInfo';
 		$sql = "call $proc_name(
 							'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}',{$postcode},
@@ -427,7 +456,6 @@ class StaffController extends Controller
 
 
 
-
 	public function admin_sr_insert(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$SRArea= $request->input('SRArea');
@@ -440,6 +468,7 @@ class StaffController extends Controller
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
+
 	public function admin_sr_update(Request $request) {
 		$SRID = $request->input('SRID');
 		$ER_ID = $request->input('ER_ID');
@@ -455,7 +484,9 @@ class StaffController extends Controller
 	}
 	//requirements to inval sr
 	public function admin_sr_delete(Request $request) {
+
 	}
+
 	//picLibrary
 	//upload and view pic only after insp
 	//after pic file upload, pic relative path record into|delete from db
@@ -481,6 +512,7 @@ class StaffController extends Controller
 	public function admin_er_bill_check(Request $request) {
 		$this->admin_bill_check($request);
 	}
+
 	public function admin_er_bill_insert(Request $request) {
 		$CID = $request->input('CID');
 		$ER_ID = $request->input('ER_ID');
@@ -490,11 +522,13 @@ class StaffController extends Controller
 		$BillAmount = $request->input('BillAmount');
 		$BillReceipt = $request->input('BillReceipt');
         $BillComment = $request->input('BillComment');
+
 		$proc = 'proc_Insert_BillLibrary';
 		$sql = "call $proc({$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
+
 	public function admin_er_bill_update(Request $request) {
 		$BLID = $request->input('BLID');
 		$CID = $request->input('CID');
@@ -505,11 +539,13 @@ class StaffController extends Controller
 		$BillAmount = $request->input('BillAmount');
 		$BillReceipt = $request->input('BillReceipt');
         $BillComment = $request->input('BillComment');
+
 		$proc = 'proc_Update_BillLibrary';
 		$sql = "call $proc({$BLID},{$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
+
 	public function admin_er_bill_delete(Request $request) {
 		$BLID = $request->input('BLID');
 		$proc = 'proc_Delete_BillLibrary';
@@ -523,7 +559,10 @@ class StaffController extends Controller
 	}
 	//定期查房
 	public function admin_er_regularly_insp(Request $request) {
+
 	}
+
+
 	/**
 	 * admin customer
 	 */
@@ -534,6 +573,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
 	public function admin_customer_insert(Request $request) {
 		$CEmail = $request->input('CEmail');
 		$CPassword = password_hash($request->input('CPassword'),PASSWORD_DEFAULT);
@@ -543,6 +583,7 @@ class StaffController extends Controller
 		$result = DB::insert("call $proc_Name('','{$CPassword}','','{$CEmail}','{$status}','{$today}','1','0')");
 		return json_encode($result);
 	}
+
 	public function admin_customer_update(Request $request) {
 		$CID=$request->input('CID');  	//不允许用户修改
 		$CName=$request->input('CName');
@@ -564,6 +605,7 @@ class StaffController extends Controller
 		$CSmoking=$request->input('CSmoking');
 		$CPhoto=$request->input('CPhoto');
 		$CBudget=$request->input('CBudget');
+
 		$proc_Name = 'proc_Update_CustomerInfo';
 		$sql = "call $proc_Name(
 							{$CID},'{$CName}','{$CPassword}','{$CPhone}','{$CEmail}','{$CCurrStat}',
@@ -583,10 +625,11 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
+
 	public function admin_customer_er_check(Request $request) {
 		$CID = $request->input('CID');
 		$proc = 'check_ERAddr_by_CID';
-		$sql = "call $proc({$CID})";
+		$sql = 'call $proc({$CID})';
 		$result = DB::select($sql);
 		return $result;
 	}
@@ -594,6 +637,7 @@ class StaffController extends Controller
 	public function admin_customer_er_insert(Request $request) {
 		$this->admin_customer_contract_insert($request);
 	}
+
 	public function admin_customer_contract_insert(Request $request) {
 		$ER_ID= $request->input('ER_ID');
 		$CLType= $request->input('CLType');
@@ -601,11 +645,13 @@ class StaffController extends Controller
 		$CLDate= $request->input('CLDate');
 		$ContractFile= $request->input('ContractFile');
 		$ContractComment= $request->input('ContractComment');
+
 		$proc = 'proc_Insert_ContractLibrary';
 		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{$CLDate}','{$ContractFile}','{$ContractComment}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
+
 	public function admin_customer_contract_delete(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$CLType = $request->input('CLType');
@@ -618,23 +664,29 @@ class StaffController extends Controller
 	}
 	//rent success and all info recorded into db, send msg to customer for another record
 	public function admin_customer_er_notice(Request $request) {
+
 	}
 	//customer rent bill management
 	public function admin_customer_bill_check(Request $request) {
 		$this->admin_bill_check($request);
 	}
+
 	public function admin_customer_bill_insert(Request $request) {
 		$this->admin_bill_insert($request);
 	}
+
 	public function admin_customer_bill_update(Request $request) {
 		$this->admin_bill_update($request);
 	}
+
 	public function admin_customer_bill_delete(Request $request) {
 		$this->admin_bill_delete($request);
 	}
 	//sent msg to notice customer for payment
 	public function admin_customer_bill_notice(Request $request) {
+
 	}
+
 	//customer service management
 	public function admin_customer_service_check(Request $request) {
 		$CID = $request->input('CID');
@@ -658,6 +710,7 @@ class StaffController extends Controller
 			return $e;
 		}
 	}
+
 	public function admin_customer_service_insert(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$CID = $request->input('CID');
@@ -666,11 +719,13 @@ class StaffController extends Controller
 		$ServiceComment = $request->input('ServiceComment');
 		$ServiceDate = $request->input('ServiceDate');
 		$ServiceStat = $request->input('ServiceStat');
+
 		$proc = 'proc_Insert_ServiceLibrary';
 		$sql = "call $proc({$ER_ID},{$CID},'{$ServiceType}','{$ServiceFile}','{$ServiceComment}','{$ServiceDate}','{$ServiceStat}')";
 		$result = DB::insert($sql);
 		return $result;
 	}
+
 	public function admin_customer_service_update(Request $request) {
 		$SLID = $request->input('SLID');
 		$ER_ID = $request->input('ER_ID');
@@ -680,11 +735,13 @@ class StaffController extends Controller
 		$ServiceComment = $request->input('ServiceComment');
 		$ServiceDate = $request->input('ServiceDate');
 		$ServiceStat = $request->input('ServiceStat');
+
 		$proc = 'proc_Update_ServiceLibrary';
 		$sql = "call $proc({$SLID},{$ER_ID},{$CID},'{$ServiceType}','{$ServiceFile}','{$ServiceComment}','{$ServiceDate}','{$ServiceStat}')";
 		$result = DB::update($sql);
 		return $result;
 	}
+
 	public function admin_customer_service_delete(Request $request) {
 		$SLID = $request->input('SLID');
 		$proc = 'proc_Delete_ServiceLibrary';
@@ -692,8 +749,11 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return $result;
 	}
+
 	public function admin_customer_service_notice(Request $request) {
+
 	}
+
 	//customer maintenance management
 	public function admin_customer_maintenance_check(Request $request) {
 		//赋值参数
@@ -703,6 +763,7 @@ class StaffController extends Controller
 		$MStat = $request->input('MStat');
 		$MApplyDateMin = $request->input('MApplyDateMin');
 		$MApplyDateMax = $request->input('MApplyDateMax');
+
 		//执行存储过程
 		try
 		{
@@ -719,6 +780,7 @@ class StaffController extends Controller
 			return $e;
 		}
 	}
+
 	public function admin_customer_maintenance_insert(Request $request) {
 		//赋值参数
 		$CID = $request->input('CID');
@@ -727,6 +789,7 @@ class StaffController extends Controller
 		$MStat = $request->input('MStat');
 		$MApplyForm = $request->input('MApplyForm');
 		$MApplyDate = $request->input('MApplyDate');
+
 		//执行存储过程
 		try
 		{
@@ -740,6 +803,7 @@ class StaffController extends Controller
 			return $e;
 		}
 	}
+
 	public function admin_customer_maintenance_update(Request $request) {
 		$MLID = $request->input('MLID');
 		$CID = $request->input('CID');
@@ -748,11 +812,13 @@ class StaffController extends Controller
 		$MStat = $request->input('MStat');
 		$MApplyForm = $request->input('MApplyForm');
 		$MConfirm = $request->input('MConfirm');
+
 		$proc_name = 'proc_Insert_MaintenanceLibrary';
 		$sql = "call $proc_name({$MLID},'{$MType}',{$ER_ID},{$CID},'{$MApplyForm}','{$MStat}','{$MConfirm}')";
 		$result = DB::update($sql);
 		return json_encode($result);
 	}
+
 	public function admin_customer_maintenance_delete(Request $request) {
 		$MLID = $request->input('MLID');
 		$proc_name = 'proc_Delete_MaintenanceLibrary';
@@ -760,15 +826,20 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
+
 	public function admin_customer_maintenance_notice(Request $request) {
+
 	}
+
 	/**
 	 * admin thirdparty
 	 */
+
 	/**
 	 * admin bill
 	 * convenient method to notice unpaid bill to payment role
 	 */
+
 	public function admin_bill_check(Request $request) {
 		$CID = $request->input('CID');
 		$ER_ID = $request->input('ER_ID');
@@ -787,6 +858,7 @@ class StaffController extends Controller
 			return $e;
 		}
 	}
+
 	public function admin_bill_insert(Request $request) {
 		$CID = $request->input('CID');
 		$ER_ID = $request->input('ER_ID');
@@ -796,11 +868,13 @@ class StaffController extends Controller
 		$BillAmount = $request->input('BillAmount');
 		$BillReceipt = $request->input('BillReceipt');
         $BillComment = $request->input('BillComment');
+
 		$proc = 'proc_Insert_BillLibrary';
 		$sql = "call $proc({$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
+
 	public function admin_bill_update(Request $request) {
 		$BLID = $request->input('BLID');
 		$CID = $request->input('CID');
@@ -811,11 +885,13 @@ class StaffController extends Controller
 		$BillAmount = $request->input('BillAmount');
 		$BillReceipt = $request->input('BillReceipt');
         $BillComment = $request->input('BillComment');
+
 		$proc = 'proc_Update_BillLibrary';
 		$sql = "call $proc({$BLID},{$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
+
 	public function admin_bill_delete(Request $request) {
 		$BLID = $request->input('BLID');
 		$proc = 'proc_Delete_BillLibrary';
@@ -823,6 +899,8 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
+
+
 //	/**
 //	 * file upload use front end angularJs upload file to server and return the store path to request for db update
 //	 */
@@ -831,6 +909,8 @@ class StaffController extends Controller
 //		    $request->photo->store($savePath, $fileName, $diskName);	//para1 必填,2可以自动生成唯一名称,3默认.env配置位置
 //		}
 //	}
+
+
 	/**
 	 * msg
 	 */
@@ -842,15 +922,18 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
 	public function msg_confirm(Request $request) {
 	//声明及获取参数
 		$idMsg_sr = $request->input('idMsg_sr');
 	//已读
 		$proc_Name = 'msg_readconfirm';
 		$sql = "call $proc_Name({$idMsg_sr})";
+
 		$result = DB::update($sql);
 		return json_encode($result);
 	}
+
 	public function msg_received(Request $request) {
 		$IdReceiver=$request->input('StaffID');
 		$msg_direct_comment = $request->input('msg_direct_comment');
@@ -859,6 +942,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
 	public function msg_write(Request $request) {
 		$title = $request->input('title');
 		$content = $request->input('content');
@@ -871,5 +955,6 @@ class StaffController extends Controller
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
+
 }
 ?>
