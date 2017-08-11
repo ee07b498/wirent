@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-10T17:07:33+10:00
+# @Last modified time: 2017-08-11T11:18:29+10:00
 namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
@@ -322,6 +322,7 @@ class StaffController extends Controller
 		$result = DB::update($sql);
 		return json_encode($result);
 	}
+
 	public function admin_landlord_er_form_update(Request $request)
 	{
 		$identirerent_form = $request->input('identirerent_form');
@@ -350,6 +351,7 @@ class StaffController extends Controller
 		$result = DB::update($sql);
 		return json_encode($result);
 	}
+
 	public function admin_landlord_er_delete(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$proc = 'proc_Delete_ER';
@@ -357,6 +359,7 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
+
 	public function admin_landlord_er_form_delete(Request $request) {
 		$identirerent_form = $request->input('identirerent_form');
 		$proc = 'proc_Delete_ERForm';
@@ -364,6 +367,7 @@ class StaffController extends Controller
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
+
 	/**
 	 * admin properties
 	 * manage properties service such as bill|insp|check via properties' id
@@ -383,6 +387,7 @@ class StaffController extends Controller
 		$proc_Name = 'check_EntireRentInfo_by_ERID';
 		$sql = "call $proc_Name({$ER_ID})";
 		$data = DB::select($sql);
+
 		//循环查询图片库及编辑文字叙述部分
 		$proc_Name = 'check_EntireRentPicture_by_ERID';
 		$proc_Name1 = 'check_EntireRentDetail_by_ERID';
@@ -419,6 +424,8 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
+
+
 
 
 	public function admin_sr_insert(Request $request) {
