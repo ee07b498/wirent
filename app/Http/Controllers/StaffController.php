@@ -25,7 +25,10 @@ class StaffController extends Controller
 	public function login(Request $request) {
         $user_name = $request->input('user_name');
 		$password = $request->input('password');
-        $getPassword = DB::select("call login_Staff('{$user_name}')");
+		$sql = "call login_Staff('{$user_name}')";
+        $getPassword = DB::select($sql);
+//		return $getPassword;
+		
 		if(password_verify($password,$getPassword[0]->SPassWord))
 		{
 			$staffInfo = DB::select("call check_StaffInfo_by_SUserName('{$user_name}')");
@@ -94,7 +97,7 @@ class StaffController extends Controller
 		$SWorkStat = $request->input('SWorkStat');
 		$SCurrLoc = $request->input('SCurrLoc');		
 		$proc_Name = 'proc_Insert_StaffInfo';
-		$sql = "call $proc_Name('{$user_name}','{$password}','{$rankname}'),'{$SWorkStat}','{$SCurrLoc}";
+		$sql = "call $proc_Name('{$user_name}','{$password}','{$rankname}','{$SWorkStat}','{$SCurrLoc}')";
 		$result = DB::insert($sql);
 		return json_encode($result) ; //0:失败或无添加；1：成功
 	}
