@@ -1,4 +1,4 @@
-<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="AbnTestController">
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="propertyManagementCtrl">
   <div class="bg-white">
     <div class="wrapper-md bg-grey">
       整租房信息列表
@@ -7,7 +7,7 @@
       <div class="form-group text-center">
         <div class="col-sm-12 col-sm-offset-2">
           <label class="col-sm-1 control-label">Available</label>
-          <div class="col-sm-3" ng-controller="DatepickerDemoCtrl">
+          <div class="col-sm-3">
             <div class="input-group w-md">
               <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
               <span class="input-group-btn">
@@ -16,7 +16,7 @@
             </div>
           </div>
           <label class="col-sm-1 control-label">To</label>
-          <div class="col-sm-3" ng-controller="DatepickerDemoCtrl">
+          <div class="col-sm-3">
             <div class="input-group w-md">
               <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
               <span class="input-group-btn">
@@ -61,222 +61,42 @@
             <tr>
               <th style="width:20px;">
                 <label class="i-checks m-b-none">
-            <input type="checkbox"><i></i>
-          </label>
+                  <input type="checkbox"><i></i>
+                </label>
               </th>
-              <th>
-                Landlord
-              </th>
-              <th>
-                Agent
-              </th>
-              <th>
-                Property address
-              </th>
-              <th>
-                Available Date
-              </th>
-              <th>
-                Allocation
-              </th>
-              <th>
-                Status
-              </th>
-              <th>
-                Manipulate
-              </th>
+              <th>ID</th>
+              <th>房东</th>
+              <th>用户</th>
+              <th>地址</th>
+              <th>Available Date</th>
+              <th>价格</th>
+              <th>Allocation</th>
+              <th>Status</th>
+              <th>Manipulate</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr ng-repeat="entireItem in entireProperties track by $index">
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>Isidra</td>
+              <td>{{$index + 1}}</td>
+              <td><a ui-sref="app.customer.landlordprofile({LLEmail:entireItem.landlord.LLEmail,
+                                                         LLID:entireItem.landlord.LLID,
+                                                         LLName:entireItem.landlord.LLName,
+                                                         LLPassword:entireItem.landlord.LLPassword,
+                                                         LLPhone:entireItem.landlord.LLPhone,
+                                                         LLCellphone:entireItem.landlord.LLCellphone
+                                                          })">{{entireItem.landlord.LLName}}</a></td>
               <td>
                 <a href>Boudreaux</a>
               </td>
-              <td><a>9/20 harbourne road Kingsford</a></td>
-              <td data-value="78025368997">22 Jun 2017</td>
-              <td data-value="1"><span class="label bg-success" title="Active">已分配</span></td>
-              <td data-value="1"><span class="label bg-success" title="Active">Active</span></td>
-              <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md" ng-click="user=!user">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
-                  <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
-                <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>Shona</td>
-              <td>Woldt</td>
-              <td><a>9/20 harbourne road Kingsford</a></td>
-              <td data-value="78025368997">22 Jun 2017</td>
-              <td data-value="1"><span class="label bg-success" title="Active">已分配</span></td>
-              <td data-value="2"><span class="label bg-light" title="Disabled">Disabled</span></td>
-              <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-              </span>
-                <span class="m-r-md" ng-click="user=!user">
-                <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
-                <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
-              </span>
-                <span class="m-r-md">
-                <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-              </span>
-                <span>
-                <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-              </span>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>Granville</td>
-              <td>Leonardo</td>
-              <td><a>9/20 harbourne road Kingsford</a></td>
-              <td data-value="78025368997">22 Jun 2017</td>
-              <td data-value="1"><span class="label bg-success" title="Active">已分配</span></td>
-              <td data-value="3"><span class="label bg-warning" title="Suspended">Suspended</span></td>
-              <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-              </span>
-                <span class="m-r-md" ng-click="user=!user">
-                <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
-                <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
-              </span>
-                <span class="m-r-md">
-                <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-              </span>
-                <span>
-                <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-              </span>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>Maple</td>
-              <td>Halladay</td>
-              <td><a>9/20 harbourne road Kingsford</a></td>
-              <td data-value="78025368997">22 Jun 2017</td>
-              <td data-value="1"><span class="label bg-success" title="Active">已分配</span></td>
-              <td data-value="3"><span class="label bg-warning" title="Suspended">Suspended</span></td>
-              <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md" ng-click="user=!user">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
-                  <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
-                <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>Maxine</td>
-              <td>
-                <a href>Woldt</a>
-              </td>
-              <td><a>9/20 harbourne road Kingsford</a></td>
-              <td data-value="78025368997">22 Jun 2017</td>
-              <td data-value="1"><span class="label bg-success" title="Active">已分配</span></td>
-              <td data-value="2"><span class="label bg-light" title="Disabled">Disabled</span></td>
-              <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md" ng-click="user=!user">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
-                  <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
-                <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>Lorraine</td>
-              <td>Mcgaughy</td>
-              <td><a>9/20 harbourne road Kingsford</a></td>
-              <td data-value="78025368997">22 Jun 2017</td>
-              <td data-value="1"><span class="label bg-success" title="Active">已分配</span></td>
-              <td data-value="2"><span class="label bg-light" title="Disabled">Disabled</span></td>
-              <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md" ng-click="user=!user">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
-                  <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
-                <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>Lizzee</td>
-              <td>
-                <a href>Goodlow</a>
-              </td>
-              <td><a>9/20 harbourne road Kingsford</a></td>
-              <td data-value="78025368997">22 Jun 2017</td>
-              <td data-value="1"><span class="label bg-success" title="Active">已分配</span></td>
-              <td data-value="3"><span class="label bg-warning" title="Suspended">Suspended</span></td>
-              <td class="text-center">
-                <span class="m-r-md" ng-click="show=!show">
-                  <i class="fa fa-level-down" ng-if="show" title="下架"></i>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
-                </span>
-                <span class="m-r-md" ng-click="user=!user">
-                  <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
-                  <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
-                </span>
-                <span class="m-r-md">
-                  <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
-                </span>
-                <span>
-                  <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>Judi</td>
-              <td>Badgett</td>
-              <td><a>9/20 harbourne road Kingsford</a></td>
-              <td data-value="78025368997">22 Jun 2017</td>
-              <td data-value="1"><span class="label bg-success" title="Active">已分配</span></td>
-              <td data-value="1"><span class="label bg-success" title="Active">Active</span></td>
+              <script type="text/ng-template" id="propertyDetails.html">
+                <div ng-include="'/tpl/modal/property_details.html'"></div>
+              </script>
+              <td><a ng-click="openDetails('lg',$index)">{{entireItem.ER_No + " " + entireItem.ER_St +" " + entireItem.ER_Suburb +","+ entireItem.ER_Region}}</a></td>
+              <td>{{entireItem.ER_AvailableDate}}</td>
+              <td><span><i class="fa fa-usd"></i></span>{{entireItem.ER_Price}}</td>
+              <td><span class="label bg-success" title="Active">已分配</span></td>
+              <td><span class="label bg-success" title="Active">Active</span></td>
               <td class="text-center">
                 <span class="m-r-md" ng-click="show=!show">
                   <i class="fa fa-level-down" ng-if="show" title="下架"></i>
@@ -317,5 +137,4 @@
       </footer>
     </div>
   </div>
-</div>
 </div>

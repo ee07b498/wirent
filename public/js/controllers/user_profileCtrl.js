@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-10T17:10:15+10:00
+ * @Last modified time: 2017-08-11T11:11:42+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -149,6 +149,7 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
     };
     //////////////////update customer info///////////////////////
     $scope.update_customer_info = function(){
+      console.log($scope.customerItem);
       $http.post('/staff/admin_landlord_update', $scope.customerItem)
         .then(function(response) {
           console.log("response", response);
