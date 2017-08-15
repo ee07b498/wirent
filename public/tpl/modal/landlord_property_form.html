@@ -1,0 +1,126 @@
+<div class="panel panel-default">
+  <div class="panel-heading font-bold">
+    房产信息修改
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" method="get">
+      <div class="form-group">
+        <label class="col-sm-1 control-label">Address</label>
+        <div class="col-sm-4">
+          <select ng-model="propertyItem.address" class="input form-control inline v-middle m-b" ng-options="propertyItem.address as propertyItem.address for propertyItem in propertyItems">
+          </select>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">nearby</label>
+        <div class="col-sm-4">
+          <label class="i-switch m-t-xs m-r">
+              <input type="checkbox" ng-model="propertyForm.er_including" checked>
+              <i></i>
+            </label>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">Family</label>
+        <div class="col-sm-11">
+          <input type="text" class="form-control" ng-model="propertyForm.facility" placeholder="facility">
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">Station</label>
+        <div class="col-sm-11">
+          <input type="text" class="form-control" ng-model="propertyForm.train_station" placeholder="station">
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">Bus Stop</label>
+        <div class="col-sm-11">
+          <input type="text" class="form-control" ng-model="propertyForm.bus_stop" placeholder="bus stop">
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">ferry</label>
+        <div class="col-sm-11">
+          <div class="input-group m-b">
+            <input type="text" class="form-control" ng-model="propertyForm.ferry" placeholder="ferry">
+            <span class="input-group-addon"><i class="fa fa-bath"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">light rail</label>
+        <div class="col-sm-11">
+          <div class="input-group m-b">
+            <input type="text" class="form-control" ng-model="propertyForm.light_rail" placeholder="light_rail">
+            <span class="input-group-addon"><i class="fa fa-bed"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">shops</label>
+        <div class="col-sm-11">
+          <div class="input-group m-b">
+            <input type="text" class="form-control" ng-model="propertyForm.shops" placeholder="shops">
+            <span class="input-group-addon"><i class="fa fa-car"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">school</label>
+        <div class="col-sm-11">
+            <input type="text" class="form-control" ng-model="propertyForm.school" placeholder="school">
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">others</label>
+        <div class="col-sm-11">
+          <input type="text" class="form-control" ng-model="propertyForm.others" placeholder="others">
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">description en</label>
+        <div class="col-sm-11">
+          <textarea class="form-control" rows="6" ng-model="propertyForm.description_en" placeholder="description en version"></textarea>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">description ch</label>
+        <div class="col-sm-11">
+          <textarea class="form-control" rows="6" ng-model="propertyForm.description_ch" placeholder="description ch version"></textarea>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">description zh</label>
+        <div class="col-sm-11">
+          <textarea class="form-control" rows="6" ng-model="propertyForm.description_zh" placeholder="description zh version"></textarea>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">comment</label>
+        <div class="col-sm-11">
+          <textarea class="form-control" rows="6" ng-model="propertyForm.comment" placeholder="type in comment"></textarea>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg"></div>
+      <div class="form-group text-center">
+        <div class="col-sm-4 col-sm-offset-4">
+          <button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
+          <button type="submit" class="btn btn-success" ng-click="ok()">Add property</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+  <div class="panel-heading font-bold">
+    房东更新
+  </div>
+  <div class="panel-body">
+    <div class="wrapper bg-white">
+      <div class="row m-t">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control m-b" ng-model="landlord_update_info.LLName" placeholder="Name">
+          </div>
+        </div>
+        <!-- <div class="line line-dashed b-b line-lg "></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control m-b" ng-model="landlord_update_info.LLPassword" placeholder="password">
+          </div>
+        </div> -->
+        <div class="line line-dashed b-b line-lg "></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
+            <input type="text" name="text" class="form-control m-b" ng-model="landlord_update_info.LLEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg "></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Phone</label>
+          <div class="col-sm-10">
+            <div class="row">
+              <!-- <div class="col-sm-3">
+                <input type="phone" class="form-control m-b" placeholder="+61">
+              </div> -->
+              <div class="col-sm-12">
+                <input type="phone" class="form-control m-b" ng-model="landlord_update_info.LLCellphone" placeholder="249093280">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg "></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Mobile</label>
+          <div class="col-sm-10">
+            <input type="phone" class="form-control m-b" ng-model="landlord_update_info.LLPhone" placeholder="0424909328">
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group text-center">
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+          <button class="btn btn-primary" ng-click="ok()">OK</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -241,7 +241,7 @@
               </div>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="text-center">
-                <button class="btn btn-success m-r" ng-click="update_customer_info()">Change password</button>
+                <button class="btn btn-success m-r" ng-click="update_customer_info()">update submit</button>
               </div>
             </div>
 
@@ -372,14 +372,18 @@
             <div class="tab-content" ng-show="selectedTab == 1">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                <script type="text/ng-template" id="userAdd.html">
+                <!-- <script type="text/ng-template" id="userAdd.html">
                       <div ng-include="'/tpl/modal/user_add.html'"></div>
-                </script>
+                </script> -->
                 <script type="text/ng-template" id="billProduce.html">
                       <div ng-include="'/tpl/modal/bill_produce.html'"></div>
                 </script>
+                <script type="text/ng-template" id="billAdd.html">
+                      <div ng-include="'/tpl/modal/bill_add.html'"></div>
+                </script>
                 <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
                 <button class="btn btn-info" ng-click="openInvoice('lg')"><i class="fa fa-plus"></i>生成账单</button>
+                <button class="btn btn-info" ng-click="addBill('')"><i class="fa fa-plus"></i>添加账单</button>
                 </div>
                 <div class="row wrapper">
                   <div class="col-sm-4 m-b-xs">
@@ -578,7 +582,6 @@
                     </span>
                     </div>
                   </div>
-
                   <div class="col-sm-2">
                   </div>
                 </div>

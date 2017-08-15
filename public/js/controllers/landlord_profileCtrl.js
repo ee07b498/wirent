@@ -1,11 +1,8 @@
 /**
  * @Date:   2017-07-24T13:55:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-10T15:09:11+10:00
+ * @Last modified time: 2017-08-15T15:59:42+10:00
  */
-
-
-
 'use strict'
 
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -20,7 +17,59 @@ app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'item
     $modalInstance.dismiss('cancel');
   };
 }]);
-app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+app.controller('propertyFormsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+  $scope.propertyForm = {};
+  $scope.propertyItems = [];
+  $scope.propertyItem = {};
+  $scope.propertyForm.er_including = false,
+    $scope.propertyForm.facility = "",
+    $scope.propertyForm.train_station = "",
+    $scope.propertyForm.bus_stop = "",
+    $scope.propertyForm.ferry = "",
+    $scope.propertyForm.light_rail = "",
+    $scope.propertyForm.shops = "",
+    $scope.propertyForm.school = "",
+    $scope.propertyForm.others = "",
+    $scope.propertyForm.description_en = "",
+    $scope.propertyForm.description_ch = "",
+    $scope.propertyForm.description_zh = "",
+    $scope.propertyForm.comment = "";
+  for (var i = 0; i < items.length; i++) {
+    $scope.propertyItem.ER_ID = items[i].ER_ID;
+    $scope.propertyItem.address = items[i].ER_No + " " + items[i].ER_St + " " + items[i].ER_Suburb + "," + items[i].ER_Region;
+    $scope.propertyItems.push($scope.propertyItem);
+    $scope.propertyItem = {};
+  }
+  $scope.propertyItem.address = $scope.propertyItems[0].address;
+  $scope.ok = function() {
+    angular.forEach($scope.propertyItems, function(value, key) {
+      if (value.address === $scope.propertyItem.address) {
+        $scope.propertyForm.ER_ID = value.ER_ID;
+      }
+    });
+    console.log($scope.propertyItem.address);
+    console.log($scope.propertyItems);
+    console.log($scope.propertyForm);
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+  $scope.propertyItem = {};
+  $scope.propertyItem = items;
+  $scope.ok = function() {
+    console.log($scope.propertyItem);
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', function($scope, $http, $modalInstance, items) {
   $scope.propertyItem = {};
   /**
    * datepicker - change the date
@@ -62,7 +111,6 @@ app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$modalInstance', '
   $scope.initDate = getStringToDate($scope.propertyItem.ER_AvailableDate);
   $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
-
   $scope.propertyItem = items;
 
   /**
@@ -71,22 +119,22 @@ app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$modalInstance', '
    * @param  {String} string date string
    * @return {date}        date result
    */
-  function getStringToDate (string) {
-      if (angular.isString(string)) {
-          return new Date(string.replace(/-/g, "-"));
-      }
+  function getStringToDate(string) {
+    if (angular.isString(string)) {
+      return new Date(string.replace(/-/g, "-"));
+    }
   }
 
   $scope.ok = function() {
+
     console.log($scope.propertyItem);
-    /*$http.post('/staff/admin_landlord_er_update', $scope.propertyItem)
+    $http.post('/staff/admin_landlord_er_update', $scope.propertyItem)
       .then(function(response) {
         console.log("response", response);
-        
         $modalInstance.close();
       }, function(x) {
         console.log('Server Error');
-      });*/
+      });
 
   };
 
@@ -151,7 +199,7 @@ app.controller('landlordPropertyAddInstanceCtrl', ['$scope', '$modalInstance', '
     startingDay: 1,
     class: 'datepicker'
   };
-  $scope.initDate = new Date('2016-15-20');
+  $scope.initDate = new Date('2016-5-20');
   $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
   /*************************************************************************************/
@@ -290,7 +338,7 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
 
 
   //////////////////////////show the details about the property///////////////////////////////////////////////
-  $scope.openDetails = function(size,$index) {
+  $scope.openDetails = function(size, $index) {
     var modalInstance = $modal.open({
       templateUrl: 'propertyDetails.html',
       controller: 'propertyDetailsInstanceCtrl',
@@ -327,7 +375,7 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
     });
   };
   /************************details edit***********************************/
-  $scope.details_Edit = function(size,$index) {
+  $scope.details_Edit = function(size, $index) {
     var modalInstance = $modal.open({
       templateUrl: 'propertyDetailsEdit.html',
       controller: 'propertyDetailsEditInstanceCtrl',
@@ -346,22 +394,39 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
     });
   };
   /*****************admin entire properties check*****************************/
-   $scope.inputStr = "";
-   $http.post('/staff/admin_er_check', $scope.inputStr)
-     .then(function(response) {
-       $scope.propertyDetails = response.data;
-       console.log("response", response);
-     }, function(x) {
-       console.log('Server Error');
-     });
-  /* $scope.admin_er_check = function(){
-     $http.post('/staff/admin_er_check', $scope.inputStr)
-       .then(function(response) {
-         $scope.propertyDetails = response.data;
-         console.log("response", response);
-       }, function(x) {
-         console.log('Server Error');
-       });
-   }*/
+  $scope.inputStr = "";
+  $http.post('/staff/admin_er_check', $scope.inputStr)
+    .then(function(response) {
+      $scope.propertyDetails = response.data;
+      console.log("response", response);
+    }, function(x) {
+      console.log('Server Error');
+    });
+  /*****************admin er form add***********************************************************/
+  $scope.landlord_propertyFormAdd = function(size) {
+    var modalInstance = $modal.open({
+      templateUrl: 'propertyForms.html',
+      controller: 'propertyFormsInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.properties;
+        }
+      }
+    });
+  }
+  /**************admin landlord entire property delete**********************************************************/
+
+  $scope.er_delete = function(ER_ID) {
+    console.log(ER_ID);
+    $http.post('/staff/admin_landlord_er_delete', {'ER_ID':ER_ID})
+      .then(function(response) {
+        console.log("response", response);
+        /**************关闭当前modal********************/
+        $modalInstance.close();
+      }, function(x) {
+        console.log('Server Error');
+      });
+  }
 
 }]);
