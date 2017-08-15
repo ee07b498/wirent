@@ -12,11 +12,11 @@
   <!-- / breadcrumb -->
   <div class="panel panel-default">
     <div class="panel-heading">
-    <script type="text/ng-template" id="userAdd.html">
-          <div ng-include="'/tpl/modal/user_add.html'"></div>
-    </script>
-    <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-    <button class="btn btn-info" ng-click="open('lg')"><i class="fa fa-plus"></i>用户添加</button>
+      <script type="text/ng-template" id="landlordPropertyAdd.html">
+        <div ng-include="'/tpl/modal/landlord_propertyAdd.html'"></div>
+      </script>
+      <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+      <button class="btn btn-info" ng-click="landlord_propertyAdd('lg')"><i class="fa fa-plus"></i>整租添加</button>
     </div>
     <div class="row wrapper">
       <div class="col-sm-3 m-b-xs">
@@ -79,9 +79,12 @@
             <td class="text-center">
               <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
             </td>
+            <script type="text/ng-template" id="updateCustomer.html">
+              <div ng-include="'/tpl/modal/customer_update.html'"></div>
+            </script>
             <td class="text-center">
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
+              <a href class="active m-r-md" ng-click="updateCustomerItem('',$index)"><i class="fa fa-pencil"></i></a>
+              <a href class="active" ng-click="deleteUserItem(customer.CID)"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
         </tbody>

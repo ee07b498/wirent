@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-10T16:03:52+10:00
+ * @Last modified time: 2017-08-15T14:22:18+10:00
  */
 
 
@@ -63,7 +63,13 @@ angular.module('app')
               })
               .state('app.share_property_list', {
                   url: '/share_property_list',
-                  templateUrl: 'tpl/property/share_property_list.html'
+                  templateUrl: 'tpl/property/share_property_list.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/share_propertyCtrl.js');
+                      }]
+                  }
               })
               .state('app.buy_property_list', {
                   url: '/buy_property_list',

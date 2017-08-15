@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-11T11:50:52+10:00
+# @Last modified time: 2017-08-15T14:42:19+10:00
 
 
 
@@ -337,7 +337,7 @@ class StaffController extends Controller
 		$ER_Description = $request->input('ER_Description');
 		$ER_Type = $request->input('ER_Type');
 		$ER_Feature = $request->input('ER_Feature');
-
+		$postcode = $request->input('postcode');
 		$proc_name = 'proc_Update_ERInfo';
 		$sql = "call $proc_name(
 							'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}',{$postcode},
@@ -400,6 +400,7 @@ class StaffController extends Controller
 	 * manage properties service such as bill|insp|check via properties' id
 	 */
 	//search er by partial addr like google map
+
 	public function admin_er_check(Request $request) {
 		$inputStr = $request->input('inputStr');
 		$proc = 'check_EntireRentInfo_by_partialAddr';
@@ -627,7 +628,7 @@ class StaffController extends Controller
 	public function admin_customer_er_check(Request $request) {
 		$CID = $request->input('CID');
 		$proc = 'check_ERAddr_by_CID';
-		$sql = 'call $proc({$CID})';
+		$sql = "call $proc({$CID})";
 		$result = DB::select($sql);
 		return $result;
 	}

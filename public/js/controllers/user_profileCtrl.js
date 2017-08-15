@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-11T11:11:42+10:00
+ * @Last modified time: 2017-08-15T16:58:15+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -18,14 +18,70 @@ app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'item
     $modalInstance.dismiss('cancel');
   };
 }]);
-app.controller('billProduceInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
+app.controller('billProduceInstanceCtrl', ['$scope', '$modalInstance', 'items', 'properties', function($scope, $modalInstance, items, properties) {
+  $scope.customer = items;
+  $scope.propertyItem = {};
+  $scope.properties = properties;
+  $scope.propertyItem.address = properties[0].address;
+  /**
+   * datepicker - change the date
+   *
+   * here in the modal if we use $scope.opened for is open, which will
+   * wrok only for the first time. Then add $parent.opened to is-opened
+   * so, the datepicker will work correctly
+   */
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.clear = function() {
+    $scope.dt = null;
   };
 
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+  };
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened = !$scope.opened;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1,
+    class: 'datepicker'
+  };
+  $scope.initDate = new Date('2017-5-20');
+  $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+
+  /**
+   * getDateToString - convert date formate data into string data
+   *
+   * @param  {date} date   date
+   * @param  {string} format format
+   * @return {string}        string date
+   */
+  function getDateToString(date, format) {
+    if (angular.isDate(date) && angular.isString(format)) {
+      return $filter('date')(date, format);
+    }
+  }
+
   $scope.ok = function() {
-    $modalInstance.close($scope.selected.item);
+    // $scope.customer.BillDate =  getDateToString($scope.dt, "yyyy-MM-dd");
+    console.log($scope.items);
+    console.log($scope.customer);
+    $modalInstance.close();
   };
 
   $scope.cancel = function() {
@@ -55,6 +111,19 @@ app.controller('billProduceInstanceCtrl', ['$scope', '$modalInstance', 'items', 
     popupWin.document.close();
   }
 }]);
+
+app.controller('billAddInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+  $scope.items = items;
+  $scope.ok = function() {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+
+
 app.controller('contractAddInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
   $scope.items = items;
   $scope.selected = {
@@ -130,25 +199,12 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
     }, function(x) {
       console.log('Server Error');
     });
-    //////////////////change password///////////////////////
-    $scope.update_customer_password = function() {
-      console.log($scope.changePassword);
-      $scope.authorError = false;
-      if ($scope.changePassword.newPassword !== "" && $scope.changePassword.retypePassword !== "" && $scope.changePassword.newPassword === $scope.changePassword.retypePassword) {
-        $scope.customerItem.CPassword = $scope.changePassword.retypePassword;
-        console.log($scope.customerItem);
-        $http.post('/staff/admin_landlord_update', $scope.customerItem)
-          .then(function(response) {
-            console.log("response", response);
-          }, function(x) {
-            console.log('Server Error');
-          });
-      } else if ($scope.changePassword.newPassword !== $scope.changePassword.retypePassword) {
-        $scope.authorError = true;
-      }
-    };
-    //////////////////update customer info///////////////////////
-    $scope.update_customer_info = function(){
+  //////////////////change password///////////////////////
+  $scope.update_customer_password = function() {
+    console.log($scope.changePassword);
+    $scope.authorError = false;
+    if ($scope.changePassword.newPassword !== "" && $scope.changePassword.retypePassword !== "" && $scope.changePassword.newPassword === $scope.changePassword.retypePassword) {
+      $scope.customerItem.CPassword = $scope.changePassword.retypePassword;
       console.log($scope.customerItem);
       $http.post('/staff/admin_landlord_update', $scope.customerItem)
         .then(function(response) {
@@ -156,17 +212,46 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
         }, function(x) {
           console.log('Server Error');
         });
+    } else if ($scope.changePassword.newPassword !== $scope.changePassword.retypePassword) {
+      $scope.authorError = true;
     }
-      //////////////////customer entire rental check///////////////////////
-      $http.post('/staff/admin_customer_er_check', {'CID': $stateParams.CID})
-        .then(function(response) {
-          $scope.customerProperties = response.data;
-          console.log("customer er list", response);
-        }, function(x) {
-          console.log('Server Error');
-        });
+  };
+  //////////////////update customer info///////////////////////
+  $scope.update_customer_info = function() {
+    console.log($scope.customerItem);
+    $http.post('/staff/admin_landlord_update', $scope.customerItem)
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
+  }
+  //////////////////customer entire rental check///////////////////////
+  $http.post('/staff/admin_customer_er_check', {
+      'CID': $stateParams.CID
+    })
+    .then(function(response) {
+      $scope.customerProperties = response.data;
+      console.log("customer er list", response);
+    }, function(x) {
+      console.log('Server Error');
+    });
+  ///////////////////////////////admin customer bil check/////////////////////////////////////////////////////
+  $http.get('/staff/admin_customer_bill_check')
+    .then(function(response) {
+      console.log("customer er list", response);
+    }, function(x) {
+      console.log('Server Error');
+    });
+  /////////////////////////service check///////////////////////////
+  $scope.service_check = {};
 
-
+  $http.get('/staff/admin_customer_bill_check')
+    .then(function(response){
+      console.log("customer er list", response);
+    }, function(x) {
+      console.log('Server Error');
+    });
   $scope.open = function(size) {
     var modalInstance = $modal.open({
       templateUrl: 'propertyDetails.html',
@@ -177,12 +262,6 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
           return $scope.items;
         }
       }
-    });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
     });
   };
 
@@ -196,17 +275,28 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
       size: size,
       resolve: {
         items: function() {
+          return $scope.customerItem;
+        },
+        properties: function() {
+          return $scope.customerProperties;
+        }
+      }
+    });
+  };
+  /***********add bill********************/
+  $scope.addBill = function(size) {
+    var modalInstance = $modal.open({
+      templateUrl: 'billAdd.html',
+      controller: 'billAddInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function() {
           return $scope.items;
         }
       }
     });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
   };
+
 
   $scope.contract_add = function(size) {
     var modalInstance = $modal.open({
@@ -282,6 +372,7 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
+  /***********add inspection info********************/
   $scope.inspection_add = function(size) {
     var modalInstance = $modal.open({
       templateUrl: 'inspectionAdd.html',
@@ -292,12 +383,6 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
           return $scope.items;
         }
       }
-    });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
     });
   };
 

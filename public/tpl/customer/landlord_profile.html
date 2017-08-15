@@ -160,8 +160,12 @@
           <script type="text/ng-template" id="landlordPropertyAdd.html">
             <div ng-include="'/tpl/modal/landlord_propertyAdd.html'"></div>
           </script>
+          <script type="text/ng-template" id="propertyForms.html">
+            <div ng-include="'/tpl/modal/landlord_property_form.html'"></div>
+          </script>
           <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
           <button class="btn btn-info" ng-click="landlord_propertyAdd('lg')"><i class="fa fa-plus"></i>整租添加</button>
+          <button class="btn btn-info" ng-click="landlord_propertyFormAdd('lg')"><i class="fa fa-plus"></i>表格信息添加</button>
         </div>
         <div class="row wrapper">
           <div class="col-sm-3 m-b-xs">
@@ -237,7 +241,7 @@
                     <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
                   </a>
                   <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
-                  <a href><i class="fa fa-trash"></i></a>
+                  <a href><i class="fa fa-trash" ng-click="er_delete(property.ER_ID)"></i></a>
                 </td>
               </tr>
             </tbody>
