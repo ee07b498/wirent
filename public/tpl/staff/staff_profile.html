@@ -21,33 +21,38 @@
         <div class="col-sm-7">
           <div class="clear m-b pull-in">
             <div class="m-b m-t-sm">
-              <span class="h3 text-black">Libin.Zhang</span>
-              <small class="m-l">Sydney, Australia</small>
+              <span class="h3 text-black">{{staff_info.SName}}</span>
+              <small class="m-l">{{staff_info.SCurrLoc}}</small>
             </div>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
-              <a>IT Software Developer</a>
+              <a>{{staff_info.SRankName}}</a>
             </p>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
-              <a>yiensuen@gmail.com</a>
-            </p>
-            <div class="line line-dashed b-b line-lg pull-in"></div>
-            <p class="m-b">
-              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-phone"></i></a>
-              <a>02-80021739</a>
+              <a>{{staff_info.SEmail}}</a>
             </p>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
-              <a>0424909328</a>
+              <a>{{staff_info.SPhone}}</a>
             </p>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
-              <a>IT 部门开发人员</a>
+              <a>{{staff_info.SLoginStat}}</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+              <a>{{staff_info.SWorkStat}}</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+              <a>{{staff_info.SComment}}</a>
             </p>
           </div>
         </div>
@@ -72,93 +77,109 @@
           <div class="col-sm-7">
             <div class="tab-content" ng-show="selectedTab == 1">
               <div class="form-group">
-                <label class="col-sm-2 control-label">First Name</label>
+                <label class="col-sm-2 control-label">UserName</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="First Name">
+                  <input type="text" class="form-control m-b" ng-model="staff_info_mod.SUserName" placeholder="UserName">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">Last Name</label>
+                <label class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Last Name">
+                  <input type="text" class="form-control m-b" ng-model="staff_info_mod.SName" placeholder="Name">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Email">
+                  <input type="text" class="form-control m-b" ng-model="staff_info_mod.SEmail" placeholder="Email">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Phone</label>
                 <div class="col-sm-10">
-                  <input type="phone"  class="form-control m-b" placeholder="Phone">
+                  <input type="phone" class="form-control m-b" ng-model="staff_info_mod.SPhone" placeholder="Phone">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">Current Status</label>
+                <label class="col-sm-2 control-label">Login Status</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Current Status">
+                  <input type="text" class="form-control m-b" ng-model="staff_info_mod.SLoginStat" placeholder="Login Status">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                 <label class="col-sm-2 control-label">Position</label>
-                 <div class="col-sm-10">
-                   <select name="account" class="form-control m-b">
-                     <option>option 1</option>
-                     <option>option 2</option>
-                     <option>option 3</option>
-                     <option>option 4</option>
-                   </select>
-                 </div>
+                <label class="col-sm-2 control-label">Current Location</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control m-b" ng-model="staff_info_mod.SCurrLoc" placeholder="Current Location">
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">SRank</label>
+                <div class="col-sm-10">
+                  <select ng-model="staff_info_mod.SRankName" class="input form-control inline v-middle m-b"  ng-options="myrankname.SRankName as myrankname.SRankName for myrankname in ranknames">
+                  </select>
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Comment</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" rows="6" ng-model="staff_info_mod.SComment" placeholder="Type your message"></textarea>
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="text-center">
+                <button class="btn btn-success m-r" ng-click="update_staff_profile()">submit</button>
               </div>
             </div>
 
             <div class="tab-content" ng-show="selectedTab == 2">
-                <img src="img/andy.jpg"/>
-                <div class="line line-dashed b-b line-lg pull-in"></div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Upload File</label>
-                  <div class="col-sm-10">
-                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
-                  </div>
+              <img src="img/andy.jpg" />
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Upload File</label>
+                <div class="col-sm-10">
+                  <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
                 </div>
-                <div class="line line-dashed b-b line-lg pull-in"></div>
-                <div>
-                  <button class="btn btn-success m-r">submit</button><button class="btn btn-error">cancel</button>
-                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div>
+                <button class="btn btn-success m-r">submit</button><button class="btn btn-error">cancel</button>
+              </div>
             </div>
 
             <div class="tab-content" ng-show="selectedTab == 3">
               <div class="form-group">
                 <label class="col-sm-2 control-label">Current password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="Current password">
+                  <input type="password" class="form-control m-b" ng-model="staff_info_mod.SPassWord" placeholder="Current password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">New password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="New password">
+                  <input type="password" ng-model="changePassword.newPassword" class="form-control m-b" placeholder="New password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Retype New password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="Retype New password">
+                  <input type="password" ng-model="changePassword.retypePassword" class="form-control m-b" placeholder="Retype New password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
-              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div ng-show="authorError" class="text-center" style="color:red; font-size:14px;">
+                  前后密码不一致
+              </div>
               <div>
-                <button class="btn btn-success m-r">Change password</button><button class="btn btn-error">cancel</button>
+                <button class="btn btn-success m-r text-center" ng-click="update_staff_password()">Change password</button>
               </div>
             </div>
 

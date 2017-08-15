@@ -1,25 +1,21 @@
-<div class="bg-light lter b-b wrapper-md">
-  <h1 class="m-n font-thin h3">房产信息添加</h1>
-</div>
-<div class="wrapper-md">
   <div class="panel panel-default">
     <div class="panel-heading font-bold">
-      Property infomations
+      房产信息添加
     </div>
     <div class="panel-body">
       <form class="form-horizontal" method="get">
         <div class="form-group">
           <label class="col-sm-1 control-label">No.</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" placeholder="unit no.">
+            <input type="text" class="form-control" ng-model="property_info.ER_No" placeholder="unit no.">
           </div>
           <label class="col-sm-1 control-label">Street</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" placeholder="street">
+            <input type="text" class="form-control" ng-model="property_info.ER_St" placeholder="street">
           </div>
           <label class="col-sm-1 control-label">Suburb</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" placeholder="Suburb">
+            <input type="text" class="form-control" ng-model="property_info.ER_Suburb" placeholder="Suburb">
           </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
@@ -27,21 +23,21 @@
           <label class="col-sm-1 control-label">Bedrooms</label>
           <div class="col-sm-3">
             <div class="input-group m-b">
-              <input type="text" class="form-control" placeholder="bedrooms">
+              <input type="text" class="form-control" ng-model="property_info.ER_BedRoom" placeholder="bedrooms">
               <span class="input-group-addon"><i class="fa fa-bed"></i></span>
             </div>
           </div>
           <label class="col-sm-1 control-label">Bathrooms</label>
           <div class="col-sm-3">
             <div class="input-group m-b">
-              <input type="text" class="form-control" placeholder="Bathrooms">
+              <input type="text" class="form-control" ng-model="property_info.ER_BathRoom" placeholder="Bathrooms">
               <span class="input-group-addon"><i class="fa fa-bath"></i></span>
             </div>
           </div>
           <label class="col-sm-1 control-label">Parkings</label>
           <div class="col-sm-3">
             <div class="input-group m-b">
-              <input type="text" class="form-control" placeholder="parkings">
+              <input type="text" class="form-control" ng-model="property_info.ER_Parking" placeholder="parkings">
               <span class="input-group-addon"><i class="fa fa-car"></i></span>
             </div>
           </div>
@@ -51,30 +47,30 @@
           <label class="col-sm-1 control-label">Area</label>
           <div class="col-sm-3">
             <div class="input-group m-b">
-              <input type="text" class="form-control" placeholder="Area">
+              <input type="text" class="form-control" ng-model="property_info.ER_Area" placeholder="Area">
               <span class="input-group-addon">m^2</span>
             </div>
           </div>
           <label class="col-sm-1 control-label">Kitchen</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" placeholder="Kitchen">
+            <input type="text" class="form-control" ng-model="property_info.ER_Kitchen" placeholder="Kitchen">
           </div>
           <label class="col-sm-1 control-label">Dinning</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" placeholder="Dinning">
+            <input type="text" class="form-control" ng-model="property_info.ER_Dining" placeholder="Dinning">
           </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
         <div class="form-group">
           <label class="col-sm-1 control-label">Types</label>
           <div class="col-sm-3">
-            <select ui-jq="chosen" class="w-sm">
+            <select ui-jq="chosen" ng-model="property_info.ER_Type" class="w-sm">
                 <optgroup label="房屋类型">
-                  <option value="AK">Unit</option>
-                  <option value="HI">Apartment</option>
-                  <option value="CA">Studio</option>
-                  <option value="NV">Townhouse</option>
-                  <option value="WA">House</option>
+                  <option value="unit">Unit</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="studio">Studio</option>
+                  <option value="townhouse">Townhouse</option>
+                  <option value="house">House</option>
                 </optgroup>
             </select>
           </div>
@@ -82,31 +78,32 @@
           <div class="col-sm-3">
             <div class="input-group m-b">
               <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Price">
+              <input type="text" class="form-control" ng-model="property_info.ER_Price" placeholder="Price">
+              <span class="input-group-addon"><span style="font-size:12px;">per/week</span></span>
             </div>
           </div>
           <label class="col-sm-1 control-label">Features</label>
           <div class="col-sm-3">
-            <select ui-jq="chosen" multiple class="w-sm">
-              <option value="GO">Girls Only</option>
-              <option value="BO">Boys Only</option>
-              <option value="NP">No pets</option>
-              <option value="NS">No Smoking</option>
-              <option value="AL">Furniture</option>
-              <option value="AR">Laundry</option>
-              <option value="IL">Full Kitchen</option>
-              <option value="IA">Coffe Bar</option>
-              <option value="KS">Aircondition</option>
-              <option value="KY">Media</option>
+            <select ui-jq="chosen" ng-model="property_info.ER_Feature" multiple class="w-sm">
+              <option value="girls_only">girls_only</option>
+              <option value="boys_only">boys_only</option>
+              <option value="no_pets">no_pets</option>
+              <option value="no_smoking">no_smoking</option>
+              <option value="furniture">furniture</option>
+              <option value="laundry">laundry</option>
+              <option value="full_kitchen">full_kitchen</option>
+              <option value="coffe_bar">coffe_bar</option>
+              <option value="aircondition">aircondition</option>
+              <option value="media">media</option>
             </select>
           </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
         <div class="form-group">
           <label class="col-sm-1 control-label">Available</label>
-          <div class="col-sm-3" ng-controller="DatepickerDemoCtrl">
+          <div class="col-sm-3">
             <div class="input-group w-sm">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="$parent.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions"  close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -114,28 +111,55 @@
           </div>
           <label class="col-sm-1 control-label">Status</label>
           <div class="col-sm-3">
-            <select name="account" class="form-control m-b">
-              <option>Pending</option>
-              <option>Published</option>
-              <option>Processing</option>
-              <option>delete</option>
+            <select name="account" ng-model="property_info.ER_Stat" class="form-control m-b">
+              <option value="Pending">Pending</option>
+              <option value="Published">Published</option>
+              <option value="Processing">Processing</option>
+              <option value="delete">delete</option>
             </select>
           </div>
           <label class="col-sm-1 control-label">Describe</label>
           <div class="col-sm-3">
-            <select ui-jq="chosen" multiple class="w-sm">
-              <option value="GO">university</option>
-              <option value="BO">train station</option>
-              <option value="NP">Back pack</option>
-              <option value="NS">Park</option>
-              <option value="AL">School</option>
-              <option value="AR">Big family</option>
-              <option value="IL">Shopping mall</option>
-              <option value="IA">Office rental</option>
+            <select ui-jq="chosen" ng-model="property_info.ER_Description" multiple class="w-sm">
+              <option value="university">university</option>
+              <option value="train_station">train_station</option>
+              <option value="backpack">backpack</option>
+              <option value="park">park</option>
+              <option value="school">school</option>
+              <option value="big_family">big_family</option>
+              <option value="shopping_mall">shopping_mall</option>
+              <option value="office_rental">office_rental</option>
             </select>
           </div>
         </div>
-        <div class="line line-dashed b-b line-lg"></div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <div class="form-group">
+          <label class="col-sm-1 control-label">university</label>
+          <div class="col-sm-5">
+            <select ui-jq="chosen" ng-model="university.selected" class="w-lg">
+                <optgroup label="university">
+                  <option value="Univertity of Sydney">Univertity of Sydney</option>
+                  <option value="Univertity of Sydney">Univertity of New South Wales</option>
+                  <option value="Univertity of Sydney">Univertity of Technology Sydney</option>
+                  <option value="Macquaire Univertity">Macquaire Univertity</option>
+                  <option value="Univertity of Sydney">Univertity of Sydney</option>
+                </optgroup>
+                <optgroup label="college">
+                    <option value="CA">Nacture Care College</option>
+                    <option value="NV">International College of Management</option>
+                    <option value="OR">Moore Theological College</option>
+                    <option value="WA">Washington</option>
+                </optgroup>
+                <optgroup label="others">
+                    <option value="others">others</option>
+                </optgroup>
+                <optgroup label="">
+                    <option value=""></option>
+                </optgroup>
+            </select>
+          </div>
+        </div>
+    <!--    <div class="line line-dashed b-b line-lg"></div>
         <div class="form-group">
           <label class="col-sm-1 control-label">Describe:</label>
           <div class="col-sm-11">
@@ -200,15 +224,14 @@
             </div>
           </div>
         </div>
-
+-->
         <div class="line line-dashed b-b line-lg"></div>
         <div class="form-group text-center">
           <div class="col-sm-4 col-sm-offset-4">
-            <button type="submit" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-success">Add property</button>
+            <button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="ok()">Add property</button>
           </div>
         </div>
       </form>
     </div>
   </div>
-</div>

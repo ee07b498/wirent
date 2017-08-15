@@ -10,8 +10,8 @@
                   <label class="col-sm-2 control-label">Address</label>
                   <div class="col-sm-10">
                     <div class="m-b m-t-sm">
-                      <span class="h3 text-black">9/20 harbourne road </span>
-                      <small class="m-l">Kingsford,NSW</small>
+                      <span class="h3 text-black">{{propertyItem.ER_No +" "+propertyItem.ER_St}}</span><br />
+                      <small class="h5">{{propertyItem.ER_Suburb +", "+propertyItem.ER_Region}}</small>
                     </div>
                   </div>
                 </div>
@@ -20,7 +20,7 @@
                   <label class="col-sm-2 control-label">Bedrooms</label>
                   <div class="col-sm-10">
                     <p class="m-b">
-                      <a>2</a>
+                      <a>{{propertyItem.ER_BedRoom}}</a>
                       <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-bed"></i></a>
                     </p>
                   </div>
@@ -31,7 +31,7 @@
                   <label class="col-sm-2 control-label">Bathroom</label>
                   <div class="col-sm-10">
                     <p class="m-b">
-                      <a>2</a>
+                      <a>{{propertyItem.ER_BathRoom}}</a>
                       <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-bath"></i></a>
                     </p>
                   </div>
@@ -42,7 +42,7 @@
                    <label class="col-sm-2 control-label">Parking</label>
                    <div class="col-sm-10">
                      <p class="m-b">
-                       <a>2</a>
+                       <a>{{propertyItem.ER_Parking}}</a>
                        <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-car"></i></a>
                      </p>
                    </div>
@@ -52,7 +52,16 @@
                    <label class="col-sm-2 control-label">Area</label>
                    <div class="col-sm-10">
                      <p class="m-b">
-                       <a>200 m^2</a>
+                       <a>{{propertyItem.ER_Area}} m^2</a>
+                     </p>
+                   </div>
+                </div>
+                <div class="line line-dashed b-b line-lg "></div>
+                <div class="form-group">
+                   <label class="col-sm-2 control-label">Inspection</label>
+                   <div class="col-sm-10">
+                     <p class="m-b">
+                       <a>{{propertyItem.ER_InspRep}}</a>
                      </p>
                    </div>
                 </div>
@@ -62,7 +71,7 @@
               <label class="col-sm-2 control-label">Kitchen</label>
               <div class="col-sm-10">
                 <p class="m-b">
-                  <a>full kitchen</a>
+                  <a>{{propertyItem.ER_Kitchen}}</a>
                 </p>
               </div>
             </div>
@@ -72,7 +81,7 @@
               <label class="col-sm-2 control-label">Dinning</label>
               <div class="col-sm-10">
                 <p class="m-b">
-                  <a>spacious dinning room</a>
+                  <a>{{propertyItem.ER_Dining}}</a>
                 </p>
               </div>
             </div>
@@ -81,7 +90,7 @@
               <label class="col-sm-2 control-label">Type</label>
               <div class="col-sm-10">
                 <p class="m-b">
-                  <a>Apartment</a>
+                  <a>{{propertyItem.ER_Type}}</a>
                 </p>
               </div>
             </div>
@@ -90,7 +99,7 @@
                <label class="col-sm-2 control-label">Price</label>
                <div class="col-sm-10">
                  <p class="m-b">
-                   <a>$585/per week</a>
+                   <a>${{propertyItem.ER_Price}}/per week</a>
                  </p>
                </div>
             </div>
@@ -99,7 +108,7 @@
                <label class="col-sm-2 control-label">Features</label>
                <div class="col-sm-10">
                  <p class="m-b">
-                   <a>Girls Only</a>
+                   <a>{{propertyItem.ER_Feature}}</a>
                  </p>
                </div>
             </div>
@@ -108,7 +117,7 @@
                <label class="col-sm-2 control-label">Available date</label>
                <div class="col-sm-10">
                  <p class="m-b">
-                   <a>Available now</a>
+                   <a>{{propertyItem.ER_AvailableDate}}</a>
                  </p>
                </div>
             </div>
@@ -117,7 +126,7 @@
                <label class="col-sm-2 control-label">Status</label>
                <div class="col-sm-10">
                  <p class="m-b">
-                   <a>Rent</a>
+                   <a>{{propertyItem.ER_Stat}}</a>
                  </p>
                </div>
             </div>
@@ -126,10 +135,17 @@
                <label class="col-sm-2 control-label">Description</label>
                <div class="col-sm-10">
                  <p class="m-b">
-                   <a> near university...</a>
+                   <a> {{propertyItem.ER_Description}}</a>
                  </p>
                </div>
             </div>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group text-center">
+          <div class="col-sm-4 col-sm-offset-4">
+            <button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="ok()">Submit</button>
           </div>
         </div>
     </div>

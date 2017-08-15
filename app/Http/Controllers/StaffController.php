@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-04T14:33:06+10:00
+# @Last modified time: 2017-08-11T11:50:52+10:00
 
 
 
@@ -27,8 +27,6 @@ class StaffController extends Controller
 		$password = $request->input('password');
 		$sql = "call login_Staff('{$user_name}')";
         $getPassword = DB::select($sql);
-//		return $getPassword;
-		
 		if(password_verify($password,$getPassword[0]->SPassWord))
 		{
 			$staffInfo = DB::select("call check_StaffInfo_by_SUserName('{$user_name}')");
@@ -95,7 +93,7 @@ class StaffController extends Controller
 		$password=password_hash($request->input('password'), PASSWORD_DEFAULT);
 		$rankname = $request->input('rankname');
 		$SWorkStat = $request->input('SWorkStat');
-		$SCurrLoc = $request->input('SCurrLoc');		
+		$SCurrLoc = $request->input('SCurrLoc');
 		$proc_Name = 'proc_Insert_StaffInfo';
 		$sql = "call $proc_Name('{$user_name}','{$password}','{$rankname}','{$SWorkStat}','{$SCurrLoc}')";
 		$result = DB::insert($sql);
@@ -290,7 +288,7 @@ class StaffController extends Controller
 		}
 		else{return false;} 		//该地址已注册
 	}
-	
+
 	public function admin_landlord_er_form_insert(Request $request)
 	{
 		$ER_ID = $request->input('ER_ID');
@@ -307,7 +305,7 @@ class StaffController extends Controller
 		$description_ch = $request->input('description_ch');
 		$description_zh = $request->input('description_zh');
 		$comment = $request->input('comment');
-		
+
 		$proc_name = 'proc_Insert_ERForm';
 		$sql = "call $proc_name(
 							'{$ER_ID}','{$er_including}','{$facility}','{$train_station}',{$bus_stop},
@@ -316,9 +314,9 @@ class StaffController extends Controller
 							'{$comment}'
 							)";
 		$result = DB::insert($sql);
-		return json_encode($result);		
+		return json_encode($result);
 	}
-	
+
 	public function admin_landlord_er_update(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$ER_No = $request->input('ER_No');
@@ -369,7 +367,7 @@ class StaffController extends Controller
 		$description_ch = $request->input('description_ch');
 		$description_zh = $request->input('description_zh');
 		$comment = $request->input('comment');
-		
+
 		$proc_name = 'proc_Update_ERForm';
 		$sql = "call $proc_name(
 							'{$identirerent_form}',{$ER_ID},'{$er_including}','{$facility}','{$train_station}',{$bus_stop},
@@ -378,8 +376,8 @@ class StaffController extends Controller
 							'{$comment}'
 							)";
 		$result = DB::update($sql);
-		return json_encode($result);		
-	}	
+		return json_encode($result);
+	}
 
 	public function admin_landlord_er_delete(Request $request) {
 		$ER_ID = $request->input('ER_ID');
@@ -409,7 +407,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
-	
+
 	public function admin_er_form_check()
 	{
 		$ER_ID = $request->input('ER_ID');
@@ -432,7 +430,7 @@ class StaffController extends Controller
 		}
 		return $data;
 	}
-	
+
 	public function admin_er_landlord_check(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$proc = 'check_LandlordInfo_by_ERID';
@@ -453,8 +451,8 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
-	
-	
+
+
 
 	public function admin_sr_insert(Request $request) {
 		$ER_ID = $request->input('ER_ID');
@@ -612,7 +610,7 @@ class StaffController extends Controller
 							'{$CLastContDate}','{$CIDType}','{$CIDProfile}','{$CIncomeProfile}','{$CSavingProfile}',{$CPartenerID},
 							'{$CSex}',{$CAge},'{$CWorking}','{$CPet}','{$CSmoking}','{$CPhoto}',
 							{$CBudget}
-						);";
+						)";
 		$result = DB::update($sql);
 		return json_encode($result); //0:失败或无更新；1：成功
 	}

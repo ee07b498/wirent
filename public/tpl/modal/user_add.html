@@ -4,94 +4,53 @@
   </div>
   <div class="panel-body">
     <div class="wrapper bg-white">
-        <div class="row m-t">
-          <div class="col-sm-6">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">FirstName</label>
-                  <div class="col-sm-10">
-                    <input type="text"  class="form-control m-b" placeholder="FirstName">
-                  </div>
-                </div>
-                <div class="line line-dashed b-b line-lg "></div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Email</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="text" class="form-control m-b" placeholder="Email">
-                  </div>
-                </div>
-
-                <div class="line line-dashed b-b line-lg "></div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Phone</label>
-                  <div class="col-sm-10">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <input type="phone"  class="form-control m-b" placeholder="+61">
-                        </div>
-
-                        <div class="col-sm-9">
-                            <input type="phone"  class="form-control m-b" placeholder="0424909328">
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="line line-dashed b-b line-lg "></div>
-                <div class="form-group">
-                   <label class="col-sm-2 control-label">Gender</label>
-                   <div class="col-sm-10">
-                     <select name="account" class="form-control m-b">
-                       <option>male</option>
-                       <option>female</option>
-                       <option>other</option>
-                     </select>
-                   </div>
-                </div>
-
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Surname</label>
-              <div class="col-sm-10">
-                <input type="text"  class="form-control m-b" placeholder="Surname">
-              </div>
-            </div>
-            <div class="line line-dashed b-b line-lg "></div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Password</label>
-              <div class="col-sm-10">
-                <input type="password"  class="form-control m-b" placeholder="password">
-              </div>
-            </div>
-            <div class="line line-dashed b-b line-lg "></div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Mobile</label>
-              <div class="col-sm-10">
-                <input type="phone"  class="form-control m-b" placeholder="Mobile">
-              </div>
-            </div>
-            <div class="line line-dashed b-b line-lg"></div>
-            <div class="form-group">
-               <label class="col-sm-2 control-label">Work</label>
-               <div class="col-sm-10">
-                 <select name="account" class="form-control m-b">
-                   <option>part-time</option>
-                   <option>full-time</option>
-                   <option>retired</option>
-                   <option>no</option>
-                 </select>
-               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="line line-dashed b-b line-lg "></div>
-          </div>
-          <div class="form-group text-center">
-            <button class="btn btn-default" ng-click="cancel()">Cancel</button>
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
+      <div class="row m-t">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
+            <input type="text" name="text" class="form-control m-b" ng-model="Customer.CEmail" placeholder="Email">
           </div>
         </div>
+
+        <div class="line line-dashed b-b line-lg "></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control m-b" ng-model="Customer.CPassword" placeholder="password">
+          </div>
+        </div>
+        <!-- <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Work</label>
+          <div class="col-sm-10">
+            <select name="account" ng-model="Customer" class="form-control m-b">
+               <option>part-time</option>
+               <option>full-time</option>
+               <option>retired</option>
+               <option>no</option>
+            </select>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg"></div>
+        <div class="form-group">
+          <label class="col-sm-1 control-label">Available</label>
+          <div class="col-sm-3">
+            <div class="input-group w-sm">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="$parent.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="line line-dashed b-b line-lg "></div>
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+          <button class="btn btn-primary" ng-click="ok()">OK</button>
+        </div>
+      </div>
     </div>
 
   </div>

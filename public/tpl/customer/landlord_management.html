@@ -12,11 +12,11 @@
   <!-- / breadcrumb -->
   <div class="panel panel-default">
     <div class="panel-heading">
-    <script type="text/ng-template" id="landlordAdd.html">
-          <div ng-include="'/tpl/modal/landlord_add.html'"></div>
-    </script>
-    <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-    <button class="btn btn-info" ng-click="open('lg')"><i class="fa fa-plus"></i>房东添加</button>
+      <script type="text/ng-template" id="landlordAdd.html">
+        <div ng-include="'/tpl/modal/landlord_add.html'"></div>
+      </script>
+      <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+      <button class="btn btn-info" ng-click="open('lg')"><i class="fa fa-plus"></i>房东添加</button>
     </div>
     <div class="row wrapper">
       <div class="col-sm-3 m-b-xs">
@@ -30,9 +30,9 @@
       </div>
       <div class="col-sm-5">
         <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
+          <input type="text" class="input-sm form-control" ng-model="inputStr" placeholder="Search">
           <span class="input-group-btn">
-          <button class="btn btn-sm btn-default" type="button">Go!</button>
+          <button class="btn btn-sm btn-default" type="button" ng-click="landlords_check()">检索</button>
         </span>
         </div>
       </div>
@@ -50,132 +50,38 @@
             </label>
             </th>
             <th>ID</th>
-            <th>用户列表</th>
-            <th>业务负责</th>
-            <th>房产信息</th>
-            <th>业务关系</th>
+            <th>房东姓名</th>
+            <th>邮件</th>
+            <th>手机号</th>
+            <th>座机号</th>
             <th>状态</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="landLord_info in landLord_infos track by $index">
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>1</td>
-            <td><a ui-sref="app.customer.landlordprofile">admin</a></td>
-            <td>Andy</td>
-            <td>9/20 harbourne road kingsford</td>
-            <td>出售此房</td>
+            <td>{{landLord_info.LLID}}</td>
+            <td><a ui-sref="app.customer.landlordprofile({LLEmail:landLord_info.LLEmail,
+                                                       LLID:landLord_info.LLID,
+                                                       LLName:landLord_info.LLName,
+                                                       LLPassword:landLord_info.LLPassword,
+                                                       LLPhone:landLord_info.LLPhone,
+                                                       LLCellphone:landLord_info.LLCellphone
+                                                        })">{{landLord_info.LLName}}</a></td>
+            <td>{{landLord_info.LLEmail}}</td>
+            <td>{{landLord_info.LLPhone}}</td>
+            <td>{{landLord_info.LLCellphone}}</td>
             <td>
               <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
             </td>
             <td>
+              <a class="active m-r-md" ng-click="show=!show">
+                <i class="fa fa-minus-circle" aria-hidden="true" ng-if="show"></i>
+                <i class="fa fa-check-circle" aria-hidden="true" ng-if="!show"></i>
+              </a>
               <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>2</td>
-            <td><a ui-sref="app.customer.landlordprofile">张三</a></td>
-            <td>Andy</td>
-            <td>9/20 harbourne road kingsford</td>
-            <td>出售此房</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>3</td>
-            <td><a ui-sref="app.customer.landlordprofile">李四</a></td>
-            <td>Andy</td>
-            <td>9/20 harbourne road kingsford</td>
-            <td>出租此房</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>4</td>
-            <td><a ui-sref="app.customer.landlordprofile">钱七</a></td>
-            <td>Andy</td>
-            <td>9/20 harbourne road kingsford</td>
-            <td>出售此房</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>5</td>
-            <td><a ui-sref="app.customer.landlordprofile">赵六</a></td>
-            <td>Andy</td>
-            <td>9/20 harbourne road kingsford</td>
-            <td>出售此房</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>6</td>
-            <td><a ui-sref="app.customer.landlordprofile">钱七</a></td>
-            <td>Andy</td>
-            <td>9/20 harbourne road kingsford</td>
-            <td>出租此房</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>7</td>
-            <td><a ui-sref="app.customer.landlordprofile">钱七</a></td>
-            <td>Andy</td>
-            <td>9/20 harbourne road kingsford</td>
-            <td>出售房源</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-              <a href class="active"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>8</td>
-            <td><a ui-sref="app.customer.landlordprofile">赵六</a></td>
-            <td>Andy</td>
-            <td>9/20 harbourne road kingsford</td>
-            <td>出租房源</td>
-            <td>
-              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-            <td>
-              <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+              <a href class="active m-r-md"><i class="fa fa-key" aria-hidden="true"></i></a>
               <a href class="active"><i class="fa fa-trash"></i></a>
             </td>
           </tr>

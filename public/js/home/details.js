@@ -1,3 +1,11 @@
+/**
+ * @Date:   2017-06-30T10:20:04+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-08-09T10:01:34+10:00
+ */
+
+
+
 ;
 (function() {
 	'use strict';
@@ -33,17 +41,7 @@
 //		 $scope.datapackage = datapackage;
 		 console.log("=====datapackage=====",datapackage);
 		 console.log($stateParams.id +"<======>"+$stateParams.name);
-		 	/*$scope.shortlistData = {};
-			$scope.shortlistDelete={};
-			$scope.shortlistData.CID = 0;
-			$scope.shortlistData.CLType='FavorSave';
-			$http.post('/customer/shortlist',$scope.shortlistData)
-						.then(function(r){
-							$scope.shortlistData = r.data;
-							//console.log("$scope.shortlistData",$scope.shortlistData);
-						},function(e){
-
-						});*/
+		
 		if (typeof($scope.datapackage) === "undefined")
 		 {
 		 	if(JSON.stringify(hotRentService.get()) != "{}"){
