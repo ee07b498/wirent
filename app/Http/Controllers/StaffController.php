@@ -256,6 +256,7 @@ class StaffController extends Controller
 		$ER_St = $request->input('ER_St');
 		$ER_Suburb=$request->input('ER_Suburb');
 		$ER_Region = $request->input('ER_Region');
+		$postcode = $request->input('postcode');
 		$ER_Area = $request->input('ER_Area');
 		$ER_BedRoom = $request->input('ER_BedRoom');
 		$ER_BathRoom = $request->input('ER_BathRoom');
@@ -272,21 +273,24 @@ class StaffController extends Controller
 
 		$proc_check = 'check_EntireRentInfo_by_ERAddress';
 		$check_sql = "call $proc_check('{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}')";
+
 		$check_result = DB::select($check_sql);
+		
+//		return $check_result;
 		if ($check_result==null)
 		{
 			$proc_name = 'proc_Insert_ERInfo';
 			$sql = "call $proc_name(
-								'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}',
+								'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}','{$postcode}',
 								{$ER_Area},{$ER_BedRoom},{$ER_BathRoom},{$ER_Kitchen},
 								{$ER_Dining},{$ER_Parking},{$ER_Price},'{$ER_AvailableDate}',
 								{$LLID},'{$ER_Description}','{$ER_Type}','{$ER_Feature}',
 								'{$ER_Stat}'
 								)";
 			$result = DB::insert($sql);
-			return json_encode($result);
+			return 1;
 		}
-		else{return false;} 		//该地址已注册
+		else{return "property info exist";} 		//该地址已注册
 	}
 
 	public function admin_landlord_er_form_insert(Request $request)
@@ -382,7 +386,7 @@ class StaffController extends Controller
 	public function admin_landlord_er_delete(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$proc = 'proc_Delete_ER';
-		$sql = 'call $proc($ER_ID)';
+		$sql = "call $proc({$ER_ID})";
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
@@ -390,7 +394,7 @@ class StaffController extends Controller
 	public function admin_landlord_er_form_delete(Request $request) {
 		$identirerent_form = $request->input('identirerent_form');
 		$proc = 'proc_Delete_ERForm';
-		$sql = 'call $proc($identirerent_form)';
+		$sql = "call $proc({$identirerent_form})";
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
@@ -435,7 +439,7 @@ class StaffController extends Controller
 	public function admin_er_landlord_check(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$proc = 'check_LandlordInfo_by_ERID';
-		$sql = 'call $proc($ER_ID)';
+		$sql = "call $proc({$ER_ID})";
 		$result = DB::select($sql);
 		return $result;
 	}
@@ -448,7 +452,7 @@ class StaffController extends Controller
 	public function admin_sr_check(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$proc = 'check_SharingRoomInfo_by_ERID';
-		$sql = 'call $proc($ER_ID)';
+		$sql = "call $proc({$ER_ID})";
 		$result = DB::select($sql);
 		return $result;
 	}
@@ -502,7 +506,7 @@ class StaffController extends Controller
 	public function admin_pic_delete(Request $request) {
 		$PLID = $request->input('PLID');
 		$proc = 'proc_Delete_PicLibrary';
-		$sql = 'call $proc({$PLID})';
+		$sql = "call $proc({$PLID})";
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
@@ -548,7 +552,7 @@ class StaffController extends Controller
 	public function admin_er_bill_delete(Request $request) {
 		$BLID = $request->input('BLID');
 		$proc = 'proc_Delete_BillLibrary';
-		$sql = 'call $proc({$BLID})';
+		$sql = "call $proc({$BLID})";
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
@@ -620,7 +624,7 @@ class StaffController extends Controller
 	public function admin_customer_delete(Request $request) {
 		$CID = $request->input('CID');
 		$proc = 'proc_Delete_CustomerInfo';
-		$sql = 'call $proc({$CID})';
+		$sql = "call $proc({$CID})";
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
@@ -636,7 +640,22 @@ class StaffController extends Controller
 	public function admin_customer_er_insert(Request $request) {
 		$this->admin_customer_contract_insert($request);
 	}
+	
+	public function admin_customer_contract_check(Request $request)
+	{
+		$ER_ID= $request->input('ER_ID');
+		$CLType= $request->input('CLType');
+		$CID= $request->input('CID');
+		$CLDateMin= $request->input('CLDateMin');
+		$CLDateMax= $request->input('CLDateMax');
+		$ContractComment= $request->input('ContractComment');
 
+		$proc = 'filt_Check_ContractLibrary';
+		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{CLDateMin}','{CLDateMax}','{$ContractComment}')";
+		$result = DB::select($sql);
+		return json_encode($result);		
+	}
+	
 	public function admin_customer_contract_insert(Request $request) {
 		$ER_ID= $request->input('ER_ID');
 		$CLType= $request->input('CLType');
@@ -894,7 +913,7 @@ class StaffController extends Controller
 	public function admin_bill_delete(Request $request) {
 		$BLID = $request->input('BLID');
 		$proc = 'proc_Delete_BillLibrary';
-		$sql = 'call $proc({$BLID})';
+		$sql = "call $proc({$BLID})";
 		$result = DB::delete($sql);
 		return json_encode($result);
 	}
