@@ -67,7 +67,7 @@
         </div>
       </div>
       <div class="table-responsive">
-        <table class="table table-striped b-t b-light">
+        <table class="table table-striped b-t b-light" style="table-layout:fixed; width: 100%;">
           <thead>
             <tr>
               <th style="width:20px;">
@@ -75,39 +75,39 @@
                   <input type="checkbox"><i></i>
                 </label>
               </th>
-              <th>ID</th>
-              <th>房东</th>
-              <th>用户</th>
-              <th>地址</th>
-              <th>Available Date</th>
-              <th>价格</th>
-              <th>Allocation</th>
-              <th>Status</th>
-              <th>Manipulate</th>
+              <th style="width:30px;" class="text-center">ID</th>
+              <th style="width:150px;" class="text-center">房东</th>
+              <th style="width:150px;" class="text-center">用户</th>
+              <th style="width:150px;" class="text-center">地址</th>
+              <th style="width:150px;" class="text-center">Available Date</th>
+              <th style="width:100px;" class="text-center">价格</th>
+              <th style="width:100px;" class="text-center">Allocation</th>
+              <th style="width:150px;" class="text-center">Status</th>
+              <th style="width:200px;" class="text-center">Manipulate</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="entireItem in entireProperties track by $index">
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>{{$index + 1}}</td>
-              <td><a ui-sref="app.customer.landlordprofile({LLEmail:entireItem.landlord.LLEmail,
+              <td class="text-center">{{$index + 1}}</td>
+              <td class="text-center"><a ui-sref="app.customer.landlordprofile({LLEmail:entireItem.landlord.LLEmail,
                                                          LLID:entireItem.landlord.LLID,
                                                          LLName:entireItem.landlord.LLName,
                                                          LLPassword:entireItem.landlord.LLPassword,
                                                          LLPhone:entireItem.landlord.LLPhone,
                                                          LLCellphone:entireItem.landlord.LLCellphone
                                                           })">{{entireItem.landlord.LLName}}</a></td>
-              <td>
+              <td class="text-center">
                 <a href>Boudreaux</a>
               </td>
               <script type="text/ng-template" id="propertyDetails.html">
                 <div ng-include="'/tpl/modal/property_details.html'"></div>
               </script>
-              <td><a ng-click="openDetails('lg',$index)">{{entireItem.ER_No + " " + entireItem.ER_St +" " + entireItem.ER_Suburb +","+ entireItem.ER_Region}}</a></td>
-              <td>{{entireItem.ER_AvailableDate}}</td>
-              <td><span><i class="fa fa-usd"></i></span>{{entireItem.ER_Price}}</td>
-              <td><span class="label bg-success" title="Active">已分配</span></td>
-              <td><span class="label bg-success" title="Active">Active</span></td>
+              <td class="text-center"><a ng-click="openDetails('lg',$index)">{{entireItem.ER_No + " " + entireItem.ER_St +" " + entireItem.ER_Suburb +","+ entireItem.ER_Region}}</a></td>
+              <td class="text-center">{{entireItem.ER_AvailableDate}}</td>
+              <td class="text-center"><span><i class="fa fa-usd"></i></span>&nbsp;{{entireItem.ER_Price}}</td>
+              <td class="text-center"><span class="label bg-success" title="Active">已分配</span></td>
+              <td class="text-center"><span class="label bg-success" title="Active">{{entireItem.ER_Stat}}</span></td>
               <script type="text/ng-template" id="entirePropertyAdd.html">
                     <div ng-include="'/tpl/modal/entire_propertyAdd.html'"></div>
               </script>

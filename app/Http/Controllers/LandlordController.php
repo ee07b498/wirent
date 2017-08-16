@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-06-30T10:20:03+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-07-26T13:56:20+10:00
+# @Last modified time: 2017-08-16T13:32:46+10:00
 
 
 
@@ -157,6 +157,7 @@ class LandlordController extends Controller
 		$ER_St = $request->input('ER_St');
 		$ER_Suburb=$request->input('ER_Suburb');
 		$ER_Region = $request->input('ER_Region');
+		$postcode =$request->input('postcode');
 		$ER_Area = $request->input('ER_Area');
 		$ER_BedRoom = $request->input('ER_BedRoom');
 		$ER_BathRoom = $request->input('ER_BathRoom');
@@ -178,7 +179,7 @@ class LandlordController extends Controller
 		{
 			$proc_name = 'proc_Insert_ERInfo';
 			$sql = "call $proc_name(
-								'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}',
+								'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}','{$postcode}',
 								{$ER_Area},{$ER_BedRoom},{$ER_BathRoom},{$ER_Kitchen},
 								{$ER_Dining},{$ER_Parking},{$ER_Price},'{$ER_AvailableDate}',
 								{$LLID},'{$ER_Description}','{$ER_Type}','{$ER_Feature}',

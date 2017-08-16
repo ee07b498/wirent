@@ -1,4 +1,15 @@
-app.controller('MailCtrl', ['$scope', function($scope) {
+/**
+ * @Date:   2017-06-30T10:20:04+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-08-16T16:21:46+10:00
+ */
+app.controller('MailCtrl', ['$scope', '$http', function($scope, $http) {
+  $http.get('/staff/msg_direct_check')
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
   $scope.folds = [
     {name: 'Inbox', filter:''},
     {name: 'Starred', filter:'starred'},
@@ -31,7 +42,7 @@ app.controller('MailCtrl', ['$scope', function($scope) {
       'b-l-info': angular.lowercase(label) === 'angular',
       'b-l-primary': angular.lowercase(label) === 'bootstrap',
       'b-l-warning': angular.lowercase(label) === 'client',
-      'b-l-success': angular.lowercase(label) === 'work'      
+      'b-l-success': angular.lowercase(label) === 'work'
     };
   };
 

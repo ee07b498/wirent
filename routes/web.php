@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-16T10:54:16+10:00
+# @Last modified time: 2017-08-16T16:18:24+10:00
 
 
 
@@ -143,6 +143,7 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/admin_landlord_er_delete', 			['uses'=>'StaffController@admin_landlord_er_delete']);
 		$app->post('/admin_er_check', 			['uses'=>'StaffController@admin_er_check']);
 		$app->post('/admin_sr_check', 			['uses'=>'StaffController@admin_sr_check']);
+		$app->get('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
 		// customer start
 		$app->post('/admin_customer_check', 			['uses'=>'StaffController@admin_customer_check']);
 		$app->post('/admin_customer_insert', 			['uses'=>'StaffController@admin_customer_insert']);
@@ -155,8 +156,10 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/admin_bill_check', 			['uses'=>'StaffController@admin_bill_check']);
 		//bill insert
 		$app->post('/admin_er_bill_insert', 			['uses'=>'StaffController@admin_er_bill_insert']);
+		$app->post('/admin_customer_contract_check', 			['uses'=>'StaffController@admin_customer_contract_check']);
 		//service check
 		$app->post('/admin_customer_service_check', 			['uses'=>'StaffController@admin_customer_service_check']);
 		$app->post('/admin_customer_maintenance_check', 			['uses'=>'StaffController@admin_customer_maintenance_check']);
-
+		//msg check
+		$app->get('/msg_direct_check', 			['uses'=>'StaffController@msg_direct_check']);
 });
