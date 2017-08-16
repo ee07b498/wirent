@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-16T10:29:57+10:00
+# @Last modified time: 2017-08-16T10:54:16+10:00
 
 
 
@@ -158,5 +158,6 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/admin_er_bill_insert', 			['uses'=>'StaffController@admin_er_bill_insert']);
 		//service check
 		$app->post('/admin_customer_service_check', 			['uses'=>'StaffController@admin_customer_service_check']);
-		
+		$app->post('/admin_customer_maintenance_check', 			['uses'=>'StaffController@admin_customer_maintenance_check']);
+
 });
