@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-15T16:58:15+10:00
+ * @Last modified time: 2017-08-16T10:41:50+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -237,21 +237,54 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
       console.log('Server Error');
     });
   ///////////////////////////////admin customer bil check/////////////////////////////////////////////////////
-  $http.get('/staff/admin_customer_bill_check')
+  $scope.Bill = {};
+  $scope.billData = {};
+  $scope.billData.CID = $stateParams.CID;
+  $scope.billData.ER_ID = 0;
+  $scope.billData.BillType = "";
+  $scope.billData.BillDateMin = "2000-08-17";
+  $scope.billData.BillDateMax = "2117-08-17";
+  $http.post('/staff/admin_bill_check',$scope.billData)
     .then(function(response) {
-      console.log("customer er list", response);
+      $scope.Bill = response.data;
+      console.log("$scope.billData", response);
     }, function(x) {
       console.log('Server Error');
     });
-  /////////////////////////service check///////////////////////////
-  $scope.service_check = {};
 
-  $http.get('/staff/admin_customer_bill_check')
+  /////////////////////////service check///////////////////////////
+  $scope.Service = {};
+  $scope.serviceData = {};
+  $scope.serviceData.CID = $stateParams.CID;
+  $scope.serviceData.ER_ID = 0;
+  $scope.serviceData.ServiceType = "";
+  $scope.serviceData.ServiceStat = "";
+  $scope.serviceData.ServiceDateMin = "2000-08-17";
+  $scope.serviceData.ServiceDateMax = "2117-08-17";
+  $http.post('/staff/admin_customer_service_check', $scope.serviceData)
     .then(function(response){
-      console.log("customer er list", response);
+      $scope.Service = response.data;
+      console.log("$scope.serviceData", response);
     }, function(x) {
       console.log('Server Error');
     });
+    /////////////////////////maintenance check///////////////////////////
+    $scope.Maintenance = {};
+    $scope.maintenanceData = {};
+    $scope.maintenanceData.CID = $stateParams.CID;
+    $scope.maintenanceData.ER_ID = 0;
+    $scope.maintenanceData.MType = "";
+    $scope.maintenanceData.MStat = "";
+    $scope.maintenanceData.MApplyDateMin = "2000-08-17";
+    $scope.maintenanceData.MApplyDateMax = "2117-08-17";
+    $http.post('/staff/admin_customer_service_check', $scope.maintenanceData)
+      .then(function(response){
+        console.log("$scope.maintenanceData", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
+
+    ////////////////////////////////////////////////////////////////////
   $scope.open = function(size) {
     var modalInstance = $modal.open({
       templateUrl: 'propertyDetails.html',

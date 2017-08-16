@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-15T14:22:18+10:00
+ * @Last modified time: 2017-08-16T09:42:54+10:00
  */
 
 
@@ -278,7 +278,6 @@ angular.module('app')
               .state('app.calendar', {
                   url: '/calendar',
                   templateUrl: 'tpl/app_calendar.html',
-                  // use resolve to load other dependences
                   resolve: {
                       deps: ['$ocLazyLoad', 'uiLoad',
                         function( $ocLazyLoad, uiLoad ){
