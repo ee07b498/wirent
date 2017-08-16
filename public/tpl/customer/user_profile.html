@@ -418,25 +418,27 @@
                         </th>
                         <th class="text-center" style="width:30px">CID</th>
                         <th class="text-center" style="width:250px">ER_ID</th>
-                        <th class="text-center" style="width:80px">BillType</th>
-                        <th class="text-center" style="width:80px">BillAmount</th>
-                        <th class="text-center" style="width:100px">BillCopy</th>
-                        <th class="text-center" style="width:100px">BillDate</th>
-                        <th class="text-center" style="width:150px">BillReceipt</th>
+                        <th class="text-center" style="width:100px">BillType</th>
+                        <th class="text-center" style="width:100px">BillAmount</th>
+                        <th class="text-center" style="width:250px">BillCopy</th>
+                        <th class="text-center" style="width:150px">BillDate</th>
+                        <th class="text-center" style="width:200px">BillReceipt</th>
                         <th class="text-center" style="width:100px">BillComment</th>
+                        <th class="text-center" style="width:150px">status</th>
                         <th class="text-center" style="width:150px">Manipulate</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr ng-repeat="bill in Bills track by $index">
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                        <th class="text-center">1</th>
-                        <th class="text-center">9/20 harbourne road kingsford,NSW</th>
-                        <td class="text-center">整租房</td>
-                        <td class="text-center">$595</td>
-                        <td class="text-center"><span><a>BillCopy<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></span></td>
-                        <td class="text-center">25/06/2017</td>
-                        <td class="text-center"><a>BillReceipt<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <th class="text-center">{{$index + 1}}</th>
+                        <th class="text-center">{{bill.address}}</th>
+                        <td class="text-center">{{bill.BillType}}</td>
+                        <td class="text-center">{{bill.BillAmount}}</td>
+                        <td class="text-center"><span><a>{{bill.BillCopy}}<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></span></td>
+                        <td class="text-center">{{bill.BillDate}}</td>
+                        <td class="text-center"><a>{{bill.BillReceipt}}<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <td class="text-center">{{bill.BillComment}}</td>
                         <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
                         <td class="text-center">
                           <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
@@ -520,7 +522,7 @@
                       <tr>
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
                         <td>1</td>
-                        <td><span>9/20 harbourne road kingsford, NSW</span></td>
+                        <td><span>vvv</span></td>
                         <td>整租</td>
                         <td>25/06/2017</td>
                         <td><a href="">ContractFile <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
@@ -594,25 +596,29 @@
                           <input type="checkbox"><i></i>
                         </label>
                         </th>
-                        <th style="width:30px;">CID</th>
-                        <th style="width:250px;">ER_ID</th>
-                        <th style="width:100px;">ServiceType</th>
-                        <th style="width:150px;">ServiceDateMin</th>
-                        <th style="width:150px;">ServiceDateMax</th>
-                        <th style="width:150px;">ServiceStat</th>
-                        <th style="width:150px;">Manipulate</th>
+                        <th style="width:30px;" class="text-center">CID</th>
+                        <th style="width:250px;" class="text-center">ER_ID</th>
+                        <th style="width:150px;" class="text-center">ServiceType</th>
+                        <th style="width:150px;" class="text-center">ServiceDate</th>
+                        <th style="width:150px;" class="text-center">ServiceFile</th>
+                        <th style="width:150px;" class="text-center">ServiceStat</th>
+                        <th style="width:150px;" class="text-center">ServiceComment</th>
+                        <th style="width:150px;" class="text-center">status</th>
+                        <th style="width:150px;" class="text-center">Manipulate</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr  ng-repeat="service in Services track by $index">
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                        <td>1</td>
-                        <td>9/20 harbourne road kingsford, NSW</td>
-                        <td>repairment</td>
-                        <td>10/06/2017</td>
-                        <td>20/06/2017</td>
+                        <td class="text-center">{{$index + 1}}</td>
+                        <td class="text-center">{{service.address}}</td>
+                        <td class="text-center">{{service.ServiceType}}</td>
+                        <td class="text-center">{{service.ServiceDate}}</td>
+                        <td class="text-center">{{service.ServiceFile}}</td>
+                        <td class="text-center">{{service.ServiceStat}}</td>
+                        <td class="text-center">{{service.ServiceComment}}</td>
                         <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
-                        <td>
+                        <td class="text-center">
                           <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
                           <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
                           <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
@@ -682,25 +688,27 @@
                           <input type="checkbox"><i></i>
                         </label>
                         </th>
-                        <th style="width:30px;">CID</th>
-                        <th style="width:250px;">ER_ID</th>
-                        <th style="width:100px;">MType</th>
-                        <th style="width:150px;">MApplyForm</th>
-                        <th style="width:150px;">MApplyDate</th>
-                        <th style="width:150px;">MStat</th>
-                        <th style="width:150px;">Manipulate</th>
+                        <th style="width:30px;" class="text-center">CID</th>
+                        <th style="width:250px;" class="text-center">ER_ID</th>
+                        <th style="width:100px;" class="text-center">MType</th>
+                        <th style="width:250px;" class="text-center">MApplyForm</th>
+                        <th style="width:150px;" class="text-center">MApplyDate</th>
+                        <th style="width:150px;" class="text-center">MConfirm</th>
+                        <th style="width:150px;" class="text-center">MStat</th>
+                        <th style="width:150px;" class="text-center">Manipulate</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr ng-repeat="maintenance in Maintenances track by $index">
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                        <td>1</td>
-                        <td>9/20 harbourne road, NSW</td>
-                        <td>repairment</td>
-                        <td><a>BillReceipt<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
-                        <td>20/06/2017</td>
-                        <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
-                        <td>
+                        <td class="text-center">{{$index + 1}}</td>
+                        <td class="text-center">{{maintenance.address}}</td>
+                        <td class="text-center">{{maintenance.MType}}</td>
+                        <td class="text-center"><a>{{maintenance.MApplyForm}}<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <td class="text-center">{{maintenance.MApplyDate}}</td>
+                        <td class="text-center">{{maintenance.MConfirm}}</td>
+                        <td data-value="1"  class="text-center"><span class="label bg-success" title="Active">{{maintenance.MStat}}</span></td>
+                        <td class="text-center">
                           <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
                           <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
                           <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>

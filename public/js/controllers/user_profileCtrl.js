@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-16T10:41:50+10:00
+ * @Last modified time: 2017-08-16T11:59:31+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -237,7 +237,7 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
       console.log('Server Error');
     });
   ///////////////////////////////admin customer bil check/////////////////////////////////////////////////////
-  $scope.Bill = {};
+  $scope.Bills = {};
   $scope.billData = {};
   $scope.billData.CID = $stateParams.CID;
   $scope.billData.ER_ID = 0;
@@ -246,14 +246,31 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
   $scope.billData.BillDateMax = "2117-08-17";
   $http.post('/staff/admin_bill_check',$scope.billData)
     .then(function(response) {
-      $scope.Bill = response.data;
+      $scope.Bills = response.data;
+      /*********************get the properties**************************/
+      $http.post('/staff/admin_customer_er_check', {
+          'CID': $stateParams.CID
+        })
+        .then(function(response) {
+          $scope.customerProperties = response.data;
+          angular.forEach($scope.customerProperties, function(value, key) {
+            for (var i = 0; i < $scope.Bills.length; i++) {
+              if ($scope.Bills[i].ER_ID === value.ER_ID) {
+                $scope.Bills[i].address = value.address;
+              }
+            }
+          });
+          console.log("customer er list", response);
+        }, function(x) {
+          console.log('Server Error');
+        });
       console.log("$scope.billData", response);
     }, function(x) {
       console.log('Server Error');
     });
 
   /////////////////////////service check///////////////////////////
-  $scope.Service = {};
+  $scope.Services = {};
   $scope.serviceData = {};
   $scope.serviceData.CID = $stateParams.CID;
   $scope.serviceData.ER_ID = 0;
@@ -263,13 +280,30 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
   $scope.serviceData.ServiceDateMax = "2117-08-17";
   $http.post('/staff/admin_customer_service_check', $scope.serviceData)
     .then(function(response){
-      $scope.Service = response.data;
+      $scope.Services = response.data;
+      /*********************get the properties**************************/
+      $http.post('/staff/admin_customer_er_check', {
+          'CID': $stateParams.CID
+        })
+        .then(function(response) {
+          $scope.customerProperties = response.data;
+          angular.forEach($scope.customerProperties, function(value, key) {
+            for (var i = 0; i < $scope.Services.length; i++) {
+              if ($scope.Services[i].ER_ID === value.ER_ID) {
+                $scope.Services[i].address = value.address;
+              }
+            }
+          });
+          console.log("customer er list", response);
+        }, function(x) {
+          console.log('Server Error');
+        });
       console.log("$scope.serviceData", response);
     }, function(x) {
       console.log('Server Error');
     });
     /////////////////////////maintenance check///////////////////////////
-    $scope.Maintenance = {};
+    $scope.Maintenances = {};
     $scope.maintenanceData = {};
     $scope.maintenanceData.CID = $stateParams.CID;
     $scope.maintenanceData.ER_ID = 0;
@@ -277,8 +311,26 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
     $scope.maintenanceData.MStat = "";
     $scope.maintenanceData.MApplyDateMin = "2000-08-17";
     $scope.maintenanceData.MApplyDateMax = "2117-08-17";
-    $http.post('/staff/admin_customer_service_check', $scope.maintenanceData)
+    $http.post('/staff/admin_customer_maintenance_check', $scope.maintenanceData)
       .then(function(response){
+        $scope.Maintenances = response.data;
+        /*********************get the properties**************************/
+        $http.post('/staff/admin_customer_er_check', {
+            'CID': $stateParams.CID
+          })
+          .then(function(response) {
+            $scope.customerProperties = response.data;
+            angular.forEach($scope.customerProperties, function(value, key) {
+              for (var i = 0; i < $scope.Maintenances.length; i++) {
+                if ($scope.Maintenances[i].ER_ID === value.ER_ID) {
+                  $scope.Maintenances[i].address = value.address;
+                }
+              }
+            });
+            console.log("customer er list", response);
+          }, function(x) {
+            console.log('Server Error');
+          });
         console.log("$scope.maintenanceData", response);
       }, function(x) {
         console.log('Server Error');

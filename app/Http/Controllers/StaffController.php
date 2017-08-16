@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-16T10:29:46+10:00
+# @Last modified time: 2017-08-16T12:18:34+10:00
 
 
 
@@ -868,7 +868,7 @@ class StaffController extends Controller
 		$BillDate = $request->input('BillDate');
 		$BillAmount = $request->input('BillAmount');
 		$BillReceipt = $request->input('BillReceipt');
-        $BillComment = $request->input('BillComment');
+    $BillComment = $request->input('BillComment');
 
 		$proc = 'proc_Insert_BillLibrary';
 		$sql = "call $proc({$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
