@@ -974,7 +974,12 @@ class StaffController extends Controller
 		return json_encode($result);
 	}
 
-
+	public function msg_direct_check(Request $request) {
+		$proc_Name = 'msg_direct_check';
+		$sql = "call $proc_Name()";
+		$result = DB::select($sql);
+		return $result;		
+	}
 
 
 }
