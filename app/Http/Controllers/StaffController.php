@@ -457,7 +457,12 @@ class StaffController extends Controller
 		return $result;
 	}
 
-
+	public function admin_sr_list_check(Request $request){
+		$proc = 'check_SharingRoomInfo';
+		$sql = "call $proc()";
+		$result = DB::select($sql);
+		return $result;		
+	}
 
 	public function admin_sr_insert(Request $request) {
 		$ER_ID = $request->input('ER_ID');
