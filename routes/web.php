@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-16T16:18:24+10:00
+# @Last modified time: 2017-08-17T20:49:49+10:00
 
 
 
@@ -162,4 +162,7 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/admin_customer_maintenance_check', 			['uses'=>'StaffController@admin_customer_maintenance_check']);
 		//msg check
 		$app->get('/msg_direct_check', 			['uses'=>'StaffController@msg_direct_check']);
+		$app->post('/msg_received', 			['uses'=>'StaffController@msg_received']);
+		$app->post('/msg_write', 			['uses'=>'StaffController@msg_write']);
+
 });
