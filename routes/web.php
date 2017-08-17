@@ -138,7 +138,7 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/admin_landlord_insert', 			['uses'=>'StaffController@admin_landlord_insert']);
 		$app->post('/admin_landlord_update', 			['uses'=>'StaffController@admin_landlord_update']);
 		$app->post('/admin_landlord_er_check', 			['uses'=>'StaffController@admin_landlord_er_check']);
-		$app->post('/admin_landlord_er_insert', 			['uses'=>'StaffController@admin_landlord_er_insert']);
+		$app->get('/admin_landlord_er_insert', 			['uses'=>'StaffController@admin_landlord_er_insert']);
 		$app->post('/admin_landlord_er_update', 			['uses'=>'StaffController@admin_landlord_er_update']);
 		$app->post('/admin_landlord_er_delete', 			['uses'=>'StaffController@admin_landlord_er_delete']);
 		$app->post('/admin_er_check', 			['uses'=>'StaffController@admin_er_check']);
@@ -147,6 +147,7 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		// customer start
 		$app->post('/admin_customer_check', 			['uses'=>'StaffController@admin_customer_check']);
 		$app->post('/admin_customer_insert', 			['uses'=>'StaffController@admin_customer_insert']);
+
 		$app->post('/admin_customer_update', 			['uses'=>'StaffController@admin_customer_update']);
 		$app->post('/admin_customer_delete', 			['uses'=>'StaffController@admin_customer_delete']);
 		$app->post('/admin_customer_er_check', 			['uses'=>'StaffController@admin_customer_er_check']);

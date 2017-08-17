@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-15T14:20:59+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-16T15:25:48+10:00
+ * @Last modified time: 2017-08-18T09:33:26+10:00
  */
 'use strict'
 app.controller('updateShareRoomInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', function($scope, $http, $modalInstance, items) {
