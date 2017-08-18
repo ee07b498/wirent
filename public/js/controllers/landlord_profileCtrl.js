@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-24T13:55:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-15T15:59:42+10:00
+ * @Last modified time: 2017-08-16T15:48:02+10:00
  */
 'use strict'
 
@@ -282,6 +282,20 @@ app.controller('landlordPropertyAddInstanceCtrl', ['$scope', '$modalInstance', '
     $modalInstance.dismiss('cancel');
   };
 }]);
+/*******************分租房源信息添加****************************************************/
+app.controller('landlordShareRoomAddInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+  $scope.propertyItem = {};
+  $scope.propertyItem = items;
+  $scope.ok = function() {
+    console.log($scope.propertyItem);
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+
 app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$stateParams', function($scope, $modal, $http, $log, $stateParams) {
   $scope.landLord_info = {};
   $scope.changePassword = {};
@@ -356,6 +370,7 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
+  /*********************添加整租房产信息************************************/
   $scope.landlord_propertyAdd = function(size) {
     var modalInstance = $modal.open({
       templateUrl: 'landlordPropertyAdd.html',
@@ -367,11 +382,18 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
         }
       }
     });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
+  };
+  /*********************添加分租房产信息************************************/
+  $scope.landlord_ShareRoomAdd = function(size) {
+    var modalInstance = $modal.open({
+      templateUrl: 'landlordShareRoomAdd.html',
+      controller: 'landlordShareRoomAddInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.properties;
+        }
+      }
     });
   };
   /************************details edit***********************************/
@@ -385,12 +407,6 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
           return $scope.propertyDetails[$index];
         }
       }
-    });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
     });
   };
   /*****************admin entire properties check*****************************/
@@ -422,8 +438,6 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
     $http.post('/staff/admin_landlord_er_delete', {'ER_ID':ER_ID})
       .then(function(response) {
         console.log("response", response);
-        /**************关闭当前modal********************/
-        $modalInstance.close();
       }, function(x) {
         console.log('Server Error');
       });

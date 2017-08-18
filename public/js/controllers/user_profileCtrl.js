@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-16T11:59:31+10:00
+ * @Last modified time: 2017-08-16T16:04:47+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -244,7 +244,7 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
   $scope.billData.BillType = "";
   $scope.billData.BillDateMin = "2000-08-17";
   $scope.billData.BillDateMax = "2117-08-17";
-  $http.post('/staff/admin_bill_check',$scope.billData)
+  $http.post('/staff/admin_bill_check', $scope.billData)
     .then(function(response) {
       $scope.Bills = response.data;
       /*********************get the properties**************************/
@@ -269,6 +269,42 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
       console.log('Server Error');
     });
 
+  ///////////////////////////////admin customer contract check/////////////////////////////////////////////////////
+  $scope.Contracts = {};
+  $scope.contractData = {};
+  $scope.contractData.CID = $stateParams.CID;
+  $scope.contractData.ER_ID = 0;
+  $scope.contractData.CLType = "";
+  $scope.contractData.CLDateMin = "2000-08-17";
+  $scope.contractData.CLDateMax = "2117-08-17";
+  $scope.contractData.ContractComment = "";
+  $http.post('/staff/admin_customer_contract_check', $scope.contractData)
+    .then(function(response) {
+      $scope.Contracts = response.data;
+      console.log(response);
+      /*********************get the properties**************************/
+      $http.post('/staff/admin_customer_er_check', {
+          'CID': $stateParams.CID
+        })
+        .then(function(response) {
+          $scope.customerProperties = response.data;
+          angular.forEach($scope.customerProperties, function(value, key) {
+            for (var i = 0; i < $scope.Contracts.length; i++) {
+              if ($scope.Contracts[i].ER_ID === value.ER_ID) {
+                $scope.Contracts[i].address = value.address;
+              }
+            }
+          });
+          console.log("customer er list", response);
+        }, function(x) {
+          console.log('Server Error');
+        });
+      console.log("$scope.billData", response);
+    }, function(x) {
+      console.log('Server Error');
+    });
+
+
   /////////////////////////service check///////////////////////////
   $scope.Services = {};
   $scope.serviceData = {};
@@ -279,7 +315,7 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
   $scope.serviceData.ServiceDateMin = "2000-08-17";
   $scope.serviceData.ServiceDateMax = "2117-08-17";
   $http.post('/staff/admin_customer_service_check', $scope.serviceData)
-    .then(function(response){
+    .then(function(response) {
       $scope.Services = response.data;
       /*********************get the properties**************************/
       $http.post('/staff/admin_customer_er_check', {
@@ -302,41 +338,41 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
     }, function(x) {
       console.log('Server Error');
     });
-    /////////////////////////maintenance check///////////////////////////
-    $scope.Maintenances = {};
-    $scope.maintenanceData = {};
-    $scope.maintenanceData.CID = $stateParams.CID;
-    $scope.maintenanceData.ER_ID = 0;
-    $scope.maintenanceData.MType = "";
-    $scope.maintenanceData.MStat = "";
-    $scope.maintenanceData.MApplyDateMin = "2000-08-17";
-    $scope.maintenanceData.MApplyDateMax = "2117-08-17";
-    $http.post('/staff/admin_customer_maintenance_check', $scope.maintenanceData)
-      .then(function(response){
-        $scope.Maintenances = response.data;
-        /*********************get the properties**************************/
-        $http.post('/staff/admin_customer_er_check', {
-            'CID': $stateParams.CID
-          })
-          .then(function(response) {
-            $scope.customerProperties = response.data;
-            angular.forEach($scope.customerProperties, function(value, key) {
-              for (var i = 0; i < $scope.Maintenances.length; i++) {
-                if ($scope.Maintenances[i].ER_ID === value.ER_ID) {
-                  $scope.Maintenances[i].address = value.address;
-                }
+  /////////////////////////maintenance check///////////////////////////
+  $scope.Maintenances = {};
+  $scope.maintenanceData = {};
+  $scope.maintenanceData.CID = $stateParams.CID;
+  $scope.maintenanceData.ER_ID = 0;
+  $scope.maintenanceData.MType = "";
+  $scope.maintenanceData.MStat = "";
+  $scope.maintenanceData.MApplyDateMin = "2000-08-17";
+  $scope.maintenanceData.MApplyDateMax = "2117-08-17";
+  $http.post('/staff/admin_customer_maintenance_check', $scope.maintenanceData)
+    .then(function(response) {
+      $scope.Maintenances = response.data;
+      /*********************get the properties**************************/
+      $http.post('/staff/admin_customer_er_check', {
+          'CID': $stateParams.CID
+        })
+        .then(function(response) {
+          $scope.customerProperties = response.data;
+          angular.forEach($scope.customerProperties, function(value, key) {
+            for (var i = 0; i < $scope.Maintenances.length; i++) {
+              if ($scope.Maintenances[i].ER_ID === value.ER_ID) {
+                $scope.Maintenances[i].address = value.address;
               }
-            });
-            console.log("customer er list", response);
-          }, function(x) {
-            console.log('Server Error');
+            }
           });
-        console.log("$scope.maintenanceData", response);
-      }, function(x) {
-        console.log('Server Error');
-      });
+          console.log("customer er list", response);
+        }, function(x) {
+          console.log('Server Error');
+        });
+      console.log("$scope.maintenanceData", response);
+    }, function(x) {
+      console.log('Server Error');
+    });
 
-    ////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
   $scope.open = function(size) {
     var modalInstance = $modal.open({
       templateUrl: 'propertyDetails.html',

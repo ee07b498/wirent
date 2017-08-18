@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-16T12:18:34+10:00
+# @Last modified time: 2017-08-18T09:37:36+10:00
 
 
 
@@ -275,7 +275,7 @@ class StaffController extends Controller
 		$check_sql = "call $proc_check('{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}')";
 
 		$check_result = DB::select($check_sql);
-		
+
 //		return $check_result;
 		if ($check_result==null)
 		{
@@ -461,7 +461,7 @@ class StaffController extends Controller
 		$proc = 'check_SharingRoomInfo';
 		$sql = "call $proc()";
 		$result = DB::select($sql);
-		return $result;		
+		return $result;
 	}
 	//点击某个房源的某个房间后根据SRID查看该房间描述表单
 	public function admin_sr_form_check(Request $request){
@@ -688,7 +688,7 @@ class StaffController extends Controller
 	public function admin_customer_er_insert(Request $request) {
 		$this->admin_customer_contract_insert($request);
 	}
-	
+
 	public function admin_customer_contract_check(Request $request)
 	{
 		$ER_ID= $request->input('ER_ID');
@@ -701,9 +701,9 @@ class StaffController extends Controller
 		$proc = 'filt_Check_ContractLibrary';
 		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{CLDateMin}','{CLDateMax}','{$ContractComment}')";
 		$result = DB::select($sql);
-		return json_encode($result);		
+		return json_encode($result);
 	}
-	
+
 	public function admin_customer_contract_insert(Request $request) {
 		$ER_ID= $request->input('ER_ID');
 		$CLType= $request->input('CLType');
@@ -1156,7 +1156,7 @@ class StaffController extends Controller
 		$proc_Name = 'msg_direct_check';
 		$sql = "call $proc_Name()";
 		$result = DB::select($sql);
-		return $result;		
+		return $result;
 	}
 
 

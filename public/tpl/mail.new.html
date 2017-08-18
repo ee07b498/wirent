@@ -13,7 +13,7 @@
         <label class="col-lg-2 control-label">To:</label>
         <div class="col-lg-8">
           <select ui-jq="chosen" data-placeholder="Choose email" class="form-control" multiple ng-model="mail.to">
-            <option ng-repeat="list in tolist" value="{{list.email}}">{{list.name}} <{{list.email}}></option>
+            <option ng-repeat="list in tolist track by $index " value="{{list.email}}">{{list.name}} <{{list.email}}></option>
           </select>
         </div>
       </div>
@@ -30,7 +30,7 @@
             <div class="btn-group dropdown">
               <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" tooltip="Font"><i class="fa text-base fa-font"></i><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href dropdown-toggle data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
+                <li><a href dropdown-toggle data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li>
                 <li><a href dropdown-toggle data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
                 <li><a href dropdown-toggle data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
             </div>
@@ -68,7 +68,7 @@
       </div>
       <div class="form-group">
         <div class="col-lg-8 col-lg-offset-2">
-          <button class="btn btn-info w-xs">Send</button>
+          <button class="btn btn-info w-xs" ng-click="Send()">Send</button>
         </div>
       </div>
     </form>

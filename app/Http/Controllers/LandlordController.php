@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-06-30T10:20:03+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-07-26T13:56:20+10:00
+# @Last modified time: 2017-08-18T09:37:47+10:00
 
 
 
@@ -158,7 +158,7 @@ class LandlordController extends Controller
 		$ER_Suburb=$request->input('ER_Suburb');
 		$ER_Region = $request->input('ER_Region');
 		$postcode =$request->input('postcode');
-		$ER_Area = $request->input('ER_Area');		
+		$ER_Area = $request->input('ER_Area');
 		$ER_BedRoom = $request->input('ER_BedRoom');
 		$ER_BathRoom = $request->input('ER_BathRoom');
 		$ER_Kitchen = $request->input('ER_Kitchen');
