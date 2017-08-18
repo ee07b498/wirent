@@ -463,7 +463,15 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
-
+	//点击某个房源的某个房间后根据SRID查看该房间描述表单
+	public function admin_sr_form_check(Request $request){
+		$SRID = $request->input('SRID');
+		$proc = 'proc_Check_SR_Form_by_SRID';
+		$sql = "call $proc({$SRID})";
+		$result = DB::select($sql);
+		return $result;		
+	}
+	
 	public function admin_sr_insert(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$SRArea= $request->input('SRArea');
@@ -476,7 +484,23 @@ class StaffController extends Controller
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
-
+	
+	public function admin_sr_form_insert(Request $request) {
+    	$SRID= $request->input('SRID');
+		$sr_including= $request->input('sr_including');
+		$fur_room= $request->input('fur_room');
+		$fur_kitchen= $request->input('fur_kitchen');
+		$fur_laundry= $request->input('fur_laundry');
+		$fur_living= $request->input('fur_living');
+		$fur_balcony= $request->input('fur_balcony');
+		$others= $request->input('others');
+		
+		$proc = 'proc_Insert_SRForm';
+		$sql = "call $proc('{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}',{$fur_laundry},'{$fur_living}','{$fur_balcony}','{$others}')";
+		$result = DB::insert($sql);
+		return json_encode($result);	
+	}
+	
 	public function admin_sr_update(Request $request) {
 		$SRID = $request->input('SRID');
 		$ER_ID = $request->input('ER_ID');
@@ -490,6 +514,25 @@ class StaffController extends Controller
 		$result = DB::update($sql);
 		return json_encode($result);
 	}
+	
+	public function admin_sr_form_update(Request $request) {
+		$idsharerent_form = $request->input('idsharerent_form');
+    	$SRID= $request->input('SRID');
+		$sr_including= $request->input('sr_including');
+		$fur_room= $request->input('fur_room');
+		$fur_kitchen= $request->input('fur_kitchen');
+		$fur_laundry= $request->input('fur_laundry');
+		$fur_living= $request->input('fur_living');
+		$fur_balcony= $request->input('fur_balcony');
+		$others= $request->input('others');
+		
+		$proc = 'proc_Update_SRForm';
+		$sql = "call $proc('{$idsharerent_form}','{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}',{$fur_laundry},'{$fur_living}','{$fur_balcony}','{$others}')";
+		$result = DB::update($sql);
+		return json_encode($result);
+	}	
+	
+	
 	//requirements to inval sr
 	public function admin_sr_delete(Request $request) {
 
@@ -856,8 +899,138 @@ class StaffController extends Controller
 
 	/**
 	 * admin thirdparty
+	 * 商家管理中新入住商家在商家表中记录商家信息，需要展示给租客业主看的添加promotion，之后不再合作的status改回0。
 	 */
+	// 商家分类查询， 服务类型 TPDetail；服务区域TPServLoc； 合作状态status；TPDetail|TPServLoc default都为空‘’，status=-1查全部商家
+	public function admin_thirdparty_filt_check(Request $request)
+	{
+		$TPDetail = $request->input('TPDetail');
+		$TPServLoc = $request->input('TPServLoc');
+		try{
+			$proc_name = 'filt_Check_ThirdParty';
+			$sql = "call $proc_name('{$TPDetail}','{$TPServLoc}')";
+			$result = DB::select($sql);
+			return $result;
+		}
+		catch(exception $e)
+		{
+			return $e;
+		}
+	} 
+	// 商家名称模糊查询
+	public function admin_thirdparty_name_check(Request $request)
+	{
+		$TPName = $request->input('$TPName');
+		try{
+			$proc_name = 'check_ThirdPartyInfo_by_TPName';
+			$sql = "call $proc_name('{$TPName}')";
+			$result = DB::select($sql);
+			return $result;
+		}
+		catch(exception $e)
+		{
+			return $e;
+		}
+	} 
 
+	public function admin_thirdparty_insert(Request $request){
+		$TPName = $request->input('$TPName');
+		$TPPassword = $request->input('TPPassword');
+		$TPDetail = $request->input('TPDetail');
+		$TPDescription = $request->input('TPDescription');
+		$TPLogo = $request->input('TPLogo');
+		$TPAds = $request->input('TPAds');
+		$TPPhone = $request->input('TPPhone');
+		$TPEmail = $request->input('TPEmail');
+		$TPLink = $request->input('TPLink');
+		$TPServLoc = $request->input('TPServLoc');
+		try{
+			$proc_name = 'proc_Insert_ThirdPartyInfo';
+			$sql = "call $proc_name('{$TPName}','{$TPPassword}','{$TPDetail}','{$TPDescription}','{$TPLogo}',
+			'{$TPAds}','{$TPPhone}','{$TPEmail}','{$TPLink}','{$TPServLoc}')";
+			$result = DB::insert($sql);
+			return json_encode($result);
+		}
+		catch(exception $e)
+		{
+			return $e;
+		}							
+	}
+	//商家信息更新， 不更新部分为空‘’
+	public function admin_thirdparty_update(Request $request){
+		$TPID = $request->input('TPID');	
+		$TPName = $request->input('TPName');
+		$TPPassword = $request->input('TPPassword');
+		$TPDetail = $request->input('TPDetail');
+		$TPDescription = $request->input('TPDescription');
+		$TPLogo = $request->input('TPLogo');
+		$TPAds = $request->input('TPAds');
+		$TPPhone = $request->input('TPPhone');
+		$TPEmail = $request->input('TPEmail');
+		$TPLink = $request->input('TPLink');
+		$TPServLoc = $request->input('TPServLoc');
+		$status = $request->input('status');
+		try{
+			$proc_name = 'proc_Update_ThirdPartyInfo';
+			$sql = "call $proc_name('{$TPID}','{$TPName}','{$TPPassword}','{$TPDetail}','{$TPDescription}','{$TPLogo}',
+			'{$TPAds}','{$TPPhone}','{$TPEmail}','{$TPLink}','{$TPServLoc}','{status}')";
+			$result = DB::update($sql);
+			return json_encode($result);
+		}
+		catch(exception $e)
+		{
+			return $e;
+		}							
+	}
+	
+	public function admin_thirdparty_promotion_check(Request $request)
+	{
+		$TPID = $request->input('TPID');
+		try{
+			$proc_name = 'check_ThirdParty_promotion_by_TPID';
+			$sql = "call $proc_name('{$TPID}')";
+			$result = DB::select($sql);
+			return $result;	
+		}
+		catch(exception $e)
+		{
+			return $e;
+		}
+	}
+
+	public function admin_thirdparty_promotion_insert(Request $request){
+		$TPID = $request->input('TPID');
+		$StartDate = $request->input('StartDate');
+		$EndDate = $request->input('EndDate');
+		try{
+			$proc_name = 'proc_Insert_ThirdParty_promotion';
+			$sql = "call $proc_name('{$TPID}','{$StartDate}','{$EndDate}')";
+			$result = DB::select($sql);
+			return $result;	
+		}
+		catch(exception $e)
+		{
+			return $e;
+		}
+	}
+	//更新推广日期
+	public function admin_thirdparty_promotion_update(Request $request){
+		$idthirdparty_promotion = $request->input('idthirdparty_promotion');
+		$TPID = $request->input('TPID');
+		$StartDate = $request->input('StartDate');
+		$EndDate = $request->input('EndDate');
+		try{
+			$proc_name = 'proc_Insert_ThirdParty_promotion';
+			$sql = "call $proc_name('{$idthirdparty_promotion}','{$TPID}','{$StartDate}','{$EndDate}')";
+			$result = DB::update($sql);
+			return $result;	
+		}
+		catch(exception $e)
+		{
+			return $e;
+		}
+	}
+	
 	/**
 	 * admin bill
 	 * convenient method to notice unpaid bill to payment role
@@ -987,5 +1160,22 @@ class StaffController extends Controller
 	}
 
 
+	/*
+	 * 查询已发送站内信，根据direct_comment判断收发人id所属表单即身份 格式： % to %
+	 * 例如：员工发送给客户  msg_direct_comment = ‘staff to customer’
+	 * IdSender是发信人id 例如：员工发给客户的，IdSender = StaffID (SName = Libin 的是 3)
+	 * IdReceiver是收信人id 例如：员工发给客户的，IdReceiver = CID (CName = Libin 的是 1)
+	 * 当收信人id>0时查发送给某个人的， 当id<=0时查所有已发送邮件
+	 */
+	 
+	public function msg_trace(Request $request) {
+		$IdSender =$request->input('IdSender');	//i.e. staffID=3
+		$IdReceiver=$request->input('IdReceiver');	//i.e. =3
+		$msg_direct_comment = $request->input('msg_direct_comment');
+		$proc_Name = 'msg_trace';
+		$sql = "call $proc_Name({$IdSender},{$IdReceiver},'{$msg_direct_comment}')";
+		$result = DB::select($sql);
+		return $result;	
+	}
 }
 ?>

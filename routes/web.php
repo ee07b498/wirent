@@ -138,12 +138,16 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/admin_landlord_insert', 			['uses'=>'StaffController@admin_landlord_insert']);
 		$app->post('/admin_landlord_update', 			['uses'=>'StaffController@admin_landlord_update']);
 		$app->post('/admin_landlord_er_check', 			['uses'=>'StaffController@admin_landlord_er_check']);
-		$app->get('/admin_landlord_er_insert', 			['uses'=>'StaffController@admin_landlord_er_insert']);
+		$app->post('/admin_landlord_er_insert', 			['uses'=>'StaffController@admin_landlord_er_insert']);
 		$app->post('/admin_landlord_er_update', 			['uses'=>'StaffController@admin_landlord_er_update']);
 		$app->post('/admin_landlord_er_delete', 			['uses'=>'StaffController@admin_landlord_er_delete']);
 		$app->post('/admin_er_check', 			['uses'=>'StaffController@admin_er_check']);
 		$app->post('/admin_sr_check', 			['uses'=>'StaffController@admin_sr_check']);
+<<<<<<< HEAD
+		$app->post('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
+=======
 		$app->get('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
+>>>>>>> fa9c2716b517091a6a2ba7081b253776431cc1cf
 		// customer start
 		$app->post('/admin_customer_check', 			['uses'=>'StaffController@admin_customer_check']);
 		$app->post('/admin_customer_insert', 			['uses'=>'StaffController@admin_customer_insert']);
@@ -166,4 +170,5 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/msg_received', 			['uses'=>'StaffController@msg_received']);
 		$app->post('/msg_write', 			['uses'=>'StaffController@msg_write']);
 
+		$app->get('/admin_thirdparty_promotion_check', 			['uses'=>'StaffController@admin_thirdparty_promotion_check']);
 });
