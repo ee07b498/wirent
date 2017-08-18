@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-18T09:37:36+10:00
+# @Last modified time: 2017-08-18T12:16:37+10:00
 
 
 
@@ -965,7 +965,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
-
+	
 	public function msg_write(Request $request) {
 		$title = $request->input('title');
 		$content = $request->input('content');
