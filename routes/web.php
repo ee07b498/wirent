@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-17T20:49:49+10:00
+# @Last modified time: 2017-08-18T16:02:43+10:00
 
 
 
@@ -121,7 +121,7 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 //thirdparty entrance
 
 //staff entrance: cms, move to another framework future with different .env config to db
-$app->group(['prefix' => 'staff'], function () use ($app){
+		$app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/login',			'StaffController@login');
 		$app->get('/profile', 			['uses'=>'StaffController@profile_check']);
 		$app->get('/rankname', 			['uses'=>'StaffController@admin_rankrights_check_rankname']);
@@ -143,11 +143,7 @@ $app->group(['prefix' => 'staff'], function () use ($app){
 		$app->post('/admin_landlord_er_delete', 			['uses'=>'StaffController@admin_landlord_er_delete']);
 		$app->post('/admin_er_check', 			['uses'=>'StaffController@admin_er_check']);
 		$app->post('/admin_sr_check', 			['uses'=>'StaffController@admin_sr_check']);
-<<<<<<< HEAD
 		$app->post('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
-=======
-		$app->get('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
->>>>>>> fa9c2716b517091a6a2ba7081b253776431cc1cf
 		// customer start
 		$app->post('/admin_customer_check', 			['uses'=>'StaffController@admin_customer_check']);
 		$app->post('/admin_customer_insert', 			['uses'=>'StaffController@admin_customer_insert']);
