@@ -1,4 +1,4 @@
-<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="landlord_profileCtrl">
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="business_profileCtrl">
   <!-- breadcrumb -->
   <div>
     <h4>Staff Profile</h4>
@@ -21,34 +21,54 @@
         <div class="col-sm-7">
           <div class="clear m-b pull-in">
             <div class="m-b m-t-sm">
-              <span class="h3 text-black">{{landLord_info.LLName}}</span>
+              <span class="h3 text-black">{{business_info.TPName}}</span>
               <small class="m-l">Sydney, Australia</small>
             </div>
-            <!-- <div class="line line-dashed b-b line-lg pull-in"></div>
-            <p class="m-b">
-              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
-              <a>IT Software Developer</a>
-            </p> -->
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
-              <a>{{landLord_info.LLEmail}}</a>
+              <a>{{business_info.TPPhone}}</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
+              <a>{{business_info.TPEmail}}</a>
             </p>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-phone"></i></a>
-              <a>{{landLord_info.LLCellphone}}</a>
+              <a>{{business_info.TPServLoc}}</a>
             </p>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
-              <a>{{landLord_info.LLPhone}}</a>
+              <a>{{business_info.TPLink}}</a>
             </p>
-            <!-- <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
-              <a>IT 部门开发人员</a>
-            </p> -->
+              <a>{{business_info.LLPhone}}</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+              <a>{{business_info.TPDetail}}</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+              <a>{{business_info.TPDescription}}</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+              <a>{{business_info.TPAds}}</a>
+            </p>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <p class="m-b">
+              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
+              <a>{{business_info.status}}</a>
+            </p>
           </div>
         </div>
       </div>
@@ -74,33 +94,100 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                  <input type="text" ng-model="landLord_info.LLName" class="form-control m-b" placeholder="Name">
+                  <input type="text" class="form-control m-b" ng-model="business_info.TPName" placeholder="Name">
                 </div>
               </div>
-              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <!--
+              <div class="line line-dashed b-b line-lg "></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control m-b" ng-model="business_info.LLPassword" placeholder="password">
+                </div>
+              </div>
+              -->
+              <div class="line line-dashed b-b line-lg "></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">服务类型</label>
+                <div class="col-sm-10">
+                  <input type="text" name="text" class="form-control m-b" ng-model="business_info.TPDetail" placeholder="ServiceTypes">
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg "></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">服务描述</label>
+                <div class="col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <textarea class="form-control" rows="6" ng-model="business_info.TPDescription" placeholder="type in comment"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg "></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">商标</label>
+                <div class="col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <input type="text" name="text" class="form-control m-b" ng-model="business_info.TPLogo" placeholder="Logo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg "></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">广告</label>
+                <div class="col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <textarea class="form-control" rows="6" ng-model="business_info.TPAds" placeholder="type in ads"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg "></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                  <input type="text" ng-model="landLord_info.LLEmail" class="form-control m-b" placeholder="Email">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <input type="phone" class="form-control m-b" ng-model="business_info.TPEmail" placeholder="Email">
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="line line-dashed b-b line-lg "></div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">Phone</label>
+                <label class="col-sm-2 control-label">Mobile</label>
                 <div class="col-sm-10">
-                  <input type="phone" ng-model="landLord_info.LLPhone" class="form-control m-b" placeholder="Phone">
+                  <input type="phone" class="form-control m-b" ng-model="business_info.TPPhone" placeholder="0424909328">
                 </div>
               </div>
-              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="line line-dashed b-b line-lg "></div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">Cell Phone</label>
+                <label class="col-sm-2 control-label">网站</label>
                 <div class="col-sm-10">
-                  <input type="text" ng-model="landLord_info.LLCellphone" class="form-control m-b" placeholder="Cell Phone">
+                  <input type="phone" class="form-control m-b" ng-model="business_info.TPLink" placeholder="website">
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg "></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">服务区域</label>
+                <div class="col-sm-10">
+                  <input type="phone" class="form-control m-b" ng-model="business_info.TPServLoc" placeholder="location">
+                </div>
+              </div>
+              <div class="line line-dashed b-b line-lg "></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">status</label>
+                <div class="col-sm-10">
+                  <input type="phone" class="form-control m-b" ng-model="business_info.status" placeholder="status">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="text-center">
-                <button class="btn btn-success m-r" ng-click="update_landlord_profile()" >Submit</button>
+                <button class="btn btn-success m-r" ng-click="update_business_profile()" >Submit</button>
               </div>
             </div>
 
@@ -123,7 +210,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Current password</label>
                 <div class="col-sm-10">
-                  <input type="password" ng-model="landLord_info.LLPassword " class="form-control m-b" placeholder="Current password">
+                  <input type="password" ng-model="business_info.TPPassword " class="form-control m-b" placeholder="Current password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -154,26 +241,14 @@
 
       </div>
     </tab>
-    <tab heading="My Property">
+    <tab heading="Business promotions">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <script type="text/ng-template" id="landlordPropertyAdd.html">
-            <div ng-include="'/tpl/modal/landlord_propertyAdd.html'"></div>
-          </script>
-          <script type="text/ng-template" id="propertyForms.html">
-            <div ng-include="'/tpl/modal/landlord_property_form.html'"></div>
-          </script>
-          <script type="text/ng-template" id="landlordShareRoomAdd.html">
-            <div ng-include="'/tpl/modal/landlord_shareRoom_add.html'"></div>
-          </script>
-          <script type="text/ng-template" id="shareRoomFormAdd.html">
-            <div ng-include="'/tpl/modal/landlord_shareRoomForm_add.html'"></div>
+          <script type="text/ng-template" id="promotionAdd.html">
+            <div ng-include="'/tpl/modal/business_promotion_add.html'"></div>
           </script>
           <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-          <button class="btn btn-info" ng-click="landlord_propertyAdd('lg')"><i class="fa fa-plus"></i>房屋信息添加</button>
-          <button class="btn btn-info" ng-click="landlord_propertyFormAdd('lg')"><i class="fa fa-plus"></i>整租表格添加</button>
-          <button class="btn btn-info" ng-click="landlord_ShareRoomAdd('lg')"><i class="fa fa-plus"></i>分租信息添加</button>
-          <button class="btn btn-info" ng-click="landlord_ShareRoomFormAdd('lg')"><i class="fa fa-plus"></i>分租表格添加</button>
+          <button class="btn btn-info" ng-click="promotionAdd('lg')"><i class="fa fa-plus"></i>房屋信息添加</button>
         </div>
         <div class="row wrapper">
           <div class="col-sm-3 m-b-xs">
@@ -207,52 +282,44 @@
                 </label>
                 </th>
                 <th style="width:30px;" class="text-center">ID</th>
-                <th style="width:100px;" class="text-center">房屋类型</th>
-                <th style="width:50px;" class="text-center">No</th>
-                <th style="width:100px;" class="text-center">地址</th>
-                <th style="width:100px;" class="text-center">所属区</th>
-                <th style="width:100px;" class="text-center">所属州</th>
-                <th style="width:100px;" class="text-center">房屋状态</th>
-                <th style="width:100px;" class="text-center">可租时间</th>
-                <th style="width:100px;" class="text-center">看房时间</th>
-                <th style="width:100px;" class="text-center">Details</th>
+                <th style="width:100px;" class="text-center">公司名</th>
+                <th style="width:50px;" class="text-center">具体服务</th>
+                <th style="width:100px;" class="text-center">服务区域</th>
+                <th style="width:100px;" class="text-center">促销ID</th>
+                <th style="width:100px;" class="text-center">开始时间</th>
+                <th style="width:100px;" class="text-center">结束时间</th>
                 <th style="width:100px;" class="text-center">状态</th>
                 <th style="width:200px;" class="text-center">操作</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="property in properties track by $index">
+              <tr ng-repeat="promotion in promotions track by $index">
                 <td class="text-center"><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                <td class="text-center">{{$index + 1}}</td>
-                <td class="text-center">{{property.ER_Type}}</td>
-                <td class="text-center">{{property.ER_No}}</td>
-                <td class="text-center">{{property.ER_St}}</td>
-                <td class="text-center">{{property.ER_Suburb}}</td>
-                <td class="text-center">{{property.ER_Region}}</td>
-                <td class="text-center">{{property.ER_Stat}}</td>
-                <td class="text-center">{{property.ER_AvailableDate}}</td>
-                <td class="text-center">{{property.ER_InspRep}}</td>
-                <script type="text/ng-template" id="propertyDetails.html">
+                <td class="text-center">{{business_info.TPID}}</td>
+                <td class="text-center">{{business_info.TPName}}</td>
+                <td class="text-center">{{business_info.TPDetail}}</td>
+                <td class="text-center">{{business_info.TPServLoc}}</td>
+                <td class="text-center">{{promotion.idthirdparty_promotion}}</td>
+                <td class="text-center">{{promotion.StartDate}}</td>
+                <td class="text-center">{{promotion.EndDate}}</td>
+                <!--<script type="text/ng-template" id="propertyDetails.html">
                   <div ng-include="'/tpl/modal/property_details.html'"></div>
                 </script>
-                <td class="text-center"><a ng-click="openDetails('lg',$index)">Details&nbsp;&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></td>
+                <td class="text-center"><a ng-click="openDetails('lg',$index)">Details&nbsp;&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></td>-->
                 <td class="text-center">
                   <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
                 </td>
-                <script type="text/ng-template" id="propertyDetailsEdit.html">
-                  <div ng-include="'/tpl/modal/property_details_modify.html'"></div>
-                </script>
-                <script type="text/ng-template" id="propertyPicAdd.html">
-                  <div ng-include="'/tpl/modal/property_pic_add.html'"></div>
+                <script type="text/ng-template" id="promotionUpdte.html">
+                  <div ng-include="'/tpl/modal/business_promotion_update.html'"></div>
                 </script>
                 <td class="text-center">
-                  <a href class="active m-r-md" ng-click="details_Edit('lg',$index)"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="promotion_update('lg',$index)"><i class="fa fa-pencil"></i></a>
                   <a href class="active m-r-md" ng-click="check=!check">
                     <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
                     <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
                   </a>
-                  <a class="active m-r-md" ng-click="property_pic_add('')"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
-                  <a href><i class="fa fa-trash" ng-click="er_delete(property.ER_ID)"></i></a>
+                  <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
             </tbody>

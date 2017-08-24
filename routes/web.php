@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-18T16:02:43+10:00
+# @Last modified time: 2017-08-24T16:43:10+10:00
 
 
 
@@ -141,9 +141,14 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 		$app->post('/admin_landlord_er_insert', 			['uses'=>'StaffController@admin_landlord_er_insert']);
 		$app->post('/admin_landlord_er_update', 			['uses'=>'StaffController@admin_landlord_er_update']);
 		$app->post('/admin_landlord_er_delete', 			['uses'=>'StaffController@admin_landlord_er_delete']);
+		$app->post('/admin_landlord_er_form_insert', 			['uses'=>'StaffController@admin_landlord_er_form_insert']);
+
 		$app->post('/admin_er_check', 			['uses'=>'StaffController@admin_er_check']);
 		$app->post('/admin_sr_check', 			['uses'=>'StaffController@admin_sr_check']);
-		$app->post('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
+		$app->post('/admin_sr_form_check', 			['uses'=>'StaffController@admin_sr_form_check']);
+		$app->get('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
+		$app->post('/admin_sr_form_insert', 			['uses'=>'StaffController@admin_sr_form_insert']);
+
 		// customer start
 		$app->post('/admin_customer_check', 			['uses'=>'StaffController@admin_customer_check']);
 		$app->post('/admin_customer_insert', 			['uses'=>'StaffController@admin_customer_insert']);
@@ -162,9 +167,16 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 		$app->post('/admin_customer_service_check', 			['uses'=>'StaffController@admin_customer_service_check']);
 		$app->post('/admin_customer_maintenance_check', 			['uses'=>'StaffController@admin_customer_maintenance_check']);
 		//msg check
-		$app->get('/msg_direct_check', 			['uses'=>'StaffController@msg_direct_check']);
+		$app->post('/msg_direct_check', 			['uses'=>'StaffController@msg_direct_check']);
 		$app->post('/msg_received', 			['uses'=>'StaffController@msg_received']);
 		$app->post('/msg_write', 			['uses'=>'StaffController@msg_write']);
+		$app->post('/msg_trace', 			['uses'=>'StaffController@msg_trace']);
 
-		$app->get('/admin_thirdparty_promotion_check', 			['uses'=>'StaffController@admin_thirdparty_promotion_check']);
+		// business section
+		$app->post('/admin_thirdparty_filt_check', 			['uses'=>'StaffController@admin_thirdparty_filt_check']);
+		$app->post('/admin_thirdparty_name_check', 			['uses'=>'StaffController@admin_thirdparty_name_check']);
+		$app->post('/admin_thirdparty_insert', 			['uses'=>'StaffController@admin_thirdparty_insert']);
+		$app->post('/admin_thirdparty_update', 			['uses'=>'StaffController@admin_thirdparty_update']);
+		$app->post('/admin_thirdparty_promotion_check', 			['uses'=>'StaffController@admin_thirdparty_promotion_check']);
+		$app->post('/admin_thirdparty_promotion_update', 			['uses'=>'StaffController@admin_thirdparty_promotion_update']);
 });
