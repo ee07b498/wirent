@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-28T16:13:00+10:00
+# @Last modified time: 2017-08-28T18:09:44+10:00
 
 
 
@@ -344,10 +344,10 @@ class StaffController extends Controller
 		$postcode = $request->input('postcode');
 		$proc_name = 'proc_Update_ERInfo';
 		$sql = "call $proc_name(
-							'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}',{$postcode},
-							{$ER_Area},{$ER_BedRoom},{$ER_BathRoom},{$ER_Kitchen},
-							{$ER_Dining},{$ER_Parking},{$ER_Price},'{$ER_Stat}',
-							'{$ER_AvailableDate}',{$LLID},'{$ER_InspRep}',
+							'{$ER_ID}','{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}','{$postcode}',
+							'{$ER_Area}','{$ER_BedRoom}','{$ER_BathRoom}','{$ER_Kitchen}',
+							'{$ER_Dining}','{$ER_Parking}','{$ER_Price}','{$ER_Stat}',
+							'{$ER_AvailableDate}','{$LLID}','{$ER_InspRep}',
 							'{$ER_Description}','{$ER_Type}','{$ER_Feature}'
 							)";
 		$result = DB::update($sql);

@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-15T14:20:59+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-28T17:05:25+10:00
+ * @Last modified time: 2017-08-28T18:04:17+10:00
  */
 'use strict'
 app.controller('updateShareRoomInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', function($scope, $http, $modalInstance, items) {
@@ -168,14 +168,14 @@ app.controller('SharePropertyCtrl', function($scope, $http, $state, $modal, $log
     });
   }
   ////////////////////////update share room informations////////////////////////////////////
-   $scope.update_shareRoom = function(size, ER_ID) {
+   $scope.update_shareRoom = function(size, $index) {
      var modalInstance = $modal.open({
        templateUrl: 'updateShareRoom.html',
        controller: 'updateShareRoomInstanceCtrl',
        size: size,
        resolve: {
          items: function() {
-           return ER_ID;
+           return $scope.ShareProperties[$index];
          }
        }
      });
