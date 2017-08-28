@@ -74,6 +74,7 @@
               <th style="width:30px;" class="text-center">ID</th>
               <th style="width:100px;" class="text-center">Landlord</th>
               <th style="width:200px;" class="text-center">Property address</th>
+              <th style="width:150px;" class="text-center">表单信息</th>
               <th style="width:150px;" class="text-center">Available Date</th>
               <th style="width:100px;" class="text-center">Price</th>
               <th style="width:100px;" class="text-center">Area</th>
@@ -88,6 +89,10 @@
               <td class="text-center">{{$index + 1}}</td>
               <td class="text-center"><a href>{{property.LLName}}</a></td>
               <td class="text-center"><a>{{property.address}}</a></td>
+              <script type="text/ng-template" id="shareRoomForm.html">
+                <div ng-include="'/tpl/modal/property_share_form.html'"></div>
+              </script>
+              <td class="text-center"><a class="active" ng-click="shareForm('',property.SRID)">表单&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></td>
               <td class="text-center" data-value="78025368997">{{property.SRAvailableDate}}</td>
               <td class="text-center"><span><i class="fa fa-usd"></i></span><span>&nbsp;{{property.SRPrice}}</span></td>
               <td class="text-center">{{property.SRArea}}</td>
@@ -96,10 +101,16 @@
               <script type="text/ng-template" id="updateShareRoom.html">
                 <div ng-include="'/tpl/modal/update_shareRoom.html'"></div>
               </script>
+              <script type="text/ng-template" id="propertyPicAdd.html">
+                <div ng-include="'/tpl/modal/property_pic_add.html'"></div>
+              </script>
               <td class="text-center">
                 <span class="m-r-md" ng-click="show=!show">
                   <i class="fa fa-level-down" ng-if="show" title="下架"></i>
                   <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
+                </span>
+                <span class="active m-r-md" ng-click="property_pic_add('')">
+                  <i class="fa fa-file-image-o" aria-hidden="true"></i>
                 </span>
                 <span class="m-r-md" ng-click="user=!user">
                   <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>

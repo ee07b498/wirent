@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-24T16:59:28+10:00
+# @Last modified time: 2017-08-28T16:13:00+10:00
 
 
 
@@ -374,9 +374,9 @@ class StaffController extends Controller
 
 		$proc_name = 'proc_Update_ERForm';
 		$sql = "call $proc_name(
-							'{$identirerent_form}',{$ER_ID},'{$er_including}','{$facility}','{$train_station}',{$bus_stop},
-							{$ferry},{$light_rail},{$shops},{$school},
-							{$others},{$description_en},{$description_ch},'{$description_zh}',
+							'{$identirerent_form}','{$ER_ID}','{$er_including}','{$facility}','{$train_station}','{$bus_stop}',
+							'{$ferry}','{$light_rail}','{$shops}','{$school}',
+							'{$others}','{$description_en}','{$description_ch}','{$description_zh}',
 							'{$comment}'
 							)";
 		$result = DB::update($sql);
@@ -413,11 +413,11 @@ class StaffController extends Controller
 		return $result;
 	}
 
-	public function admin_er_form_check()
+	public function admin_er_form_check(Request $request)
 	{
 		$ER_ID = $request->input('ER_ID');
 		$proc_Name = 'check_EntireRentInfo_by_ERID';
-		$sql = "call $proc_Name({$ER_ID})";
+		$sql = "call $proc_Name('{$ER_ID}')";
 		$data = DB::select($sql);
 
 		//循环查询图片库及编辑文字叙述部分
@@ -496,7 +496,7 @@ class StaffController extends Controller
 		$others= $request->input('others');
 
 		$proc = 'proc_Insert_SRForm';
-		$sql = "call $proc('{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}',{$fur_laundry},'{$fur_living}','{$fur_balcony}','{$others}')";
+		$sql = "call $proc('{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}','{$fur_laundry}','{$fur_living}','{$fur_balcony}','{$others}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}

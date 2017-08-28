@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-24T16:43:10+10:00
+# @Last modified time: 2017-08-28T16:01:50+10:00
 
 
 
@@ -146,7 +146,9 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 		$app->post('/admin_er_check', 			['uses'=>'StaffController@admin_er_check']);
 		$app->post('/admin_sr_check', 			['uses'=>'StaffController@admin_sr_check']);
 		$app->post('/admin_sr_form_check', 			['uses'=>'StaffController@admin_sr_form_check']);
+		$app->post('/admin_er_form_check', 			['uses'=>'StaffController@admin_er_form_check']);
 		$app->get('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
+		$app->post('/admin_sr_insert', 			['uses'=>'StaffController@admin_sr_insert']);
 		$app->post('/admin_sr_form_insert', 			['uses'=>'StaffController@admin_sr_form_insert']);
 
 		// customer start

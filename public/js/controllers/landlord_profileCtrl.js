@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-24T13:55:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-24T17:29:54+10:00
+ * @Last modified time: 2017-08-28T15:08:51+10:00
  */
 'use strict'
 
@@ -37,18 +37,6 @@ app.controller('propertyPicAddInstanceCtrl', ['$scope', '$modalInstance', 'S3Upl
               });
           });
       }
-  };
-}]);
-app.controller('shareRoomFormAddInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
-  $scope.shareRoomForm = {};
-  $scope.shareRoomForm = items;
-  $scope.ok = function() {
-    console.log($scope.shareRoomForm);
-    $modalInstance.close();
-  };
-
-  $scope.cancel = function() {
-    $modalInstance.dismiss('cancel');
   };
 }]);
 app.controller('propertyFormsInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', function($scope, $http, $modalInstance, items) {
@@ -111,8 +99,29 @@ app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'item
     $modalInstance.dismiss('cancel');
   };
 }]);
-app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', function($scope, $http, $modalInstance, items) {
+app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$http', '$modalInstance', '$filter', 'items', function($scope, $http, $modalInstance, $filter, items) {
   $scope.propertyItem = {};
+  $scope.dateSelect = {};
+  $scope.propertyItem.ER_No = "";
+  $scope.propertyItem.ER_St = "";
+  $scope.propertyItem.ER_Suburb = "";
+  $scope.propertyItem.ER_Region = "";
+  $scope.propertyItem.ER_Area = "";
+  $scope.propertyItem.ER_BedRoom = "";
+  $scope.propertyItem.ER_BathRoom = "";
+  $scope.propertyItem.ER_Kitchen = "";
+  $scope.propertyItem.ER_Dining = "";
+  $scope.propertyItem.ER_Parking = "";
+  $scope.propertyItem.ER_Price = "";
+  $scope.propertyItem.ER_Stat = "";
+  $scope.propertyItem.ER_AvailableDate = "2017-08-24";
+  $scope.propertyItem.LLID = 0;
+  $scope.propertyItem.ER_InspRep = "2017-08-24";
+  $scope.propertyItem.ER_Description = "";
+  $scope.propertyItem.ER_Type = "";
+  $scope.propertyItem.ER_Feature = "";
+  $scope.propertyItem.postcode = "";
+  $scope.propertyItem = items;
   /**
    * datepicker - change the date
    *
@@ -120,40 +129,53 @@ app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$http', '$modalIns
    * wrok only for the first time. Then add $parent.opened to is-opened
    * so, the datepicker will work correctly
    */
-  $scope.today = function() {
-    $scope.dt = new Date();
-  };
-  $scope.today();
+   /*datepicker*/
+   $scope.today = function() {
+       $scope.dateSelect.dt = getDateToString(getStringToDate($scope.propertyItem.ER_AvailableDate),"yyyy-MM-dd");
+     };
+     $scope.today();
 
-  $scope.clear = function() {
-    $scope.dt = null;
-  };
+     $scope.clear = function () {
+       $scope.dateSelect.dt = null;
+     };
+   $scope.today = function() {
+       if (!$scope.propertyItem.ER_InspRep) {
+          $scope.dateSelect.dt2 = getDateToString(new Date(),"yyyy-MM-dd");
+       }else {
+          $scope.dateSelect.dt2 = getDateToString(getStringToDate($scope.propertyItem.ER_InspRep),"yyyy-MM-dd");
+       }
+     };
+     $scope.today();
 
-  // Disable weekend selection
-  $scope.disabled = function(date, mode) {
-    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
-  };
+     $scope.clear = function () {
+       $scope.dateSelect.dt2 = null;
+     };
 
-  $scope.toggleMin = function() {
-    $scope.minDate = $scope.minDate ? null : new Date();
-  };
-  $scope.toggleMin();
+     $scope.toggleMin = function() {
+       $scope.minDate = $scope.minDate ? null : new Date();
+     };
+     $scope.toggleMin();
 
-  $scope.open = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.opened = !$scope.opened;
-  };
+     $scope.open = function($event) {
+       $event.preventDefault();
+       $event.stopPropagation();
+       $scope.opened = true;
+     };
+   $scope.open2 = function($event) {
+       $event.preventDefault();
+       $event.stopPropagation();
+       $scope.opened2 = true;
+     };
+     $scope.dateOptions = {
+       formatYear: 'yy',
+       startingDay: 1,
+       class: 'datepicker'
+     };
 
-  $scope.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1,
-    class: 'datepicker'
-  };
-  $scope.initDate = getStringToDate($scope.propertyItem.ER_AvailableDate);
-  $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  $scope.format = $scope.formats[0];
-  $scope.propertyItem = items;
+    $scope.initDate = getStringToDate($scope.propertyItem.ER_AvailableDate);
+    $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+
 
   /**
    * getStringToDate - convert string date to date format
@@ -166,10 +188,22 @@ app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$http', '$modalIns
       return new Date(string.replace(/-/g, "-"));
     }
   }
+  /**
+   * getDateToString - convert date formate data into string data
+   *
+   * @param  {date} date   date
+   * @param  {string} format format
+   * @return {string}        string date
+   */
+  function getDateToString(date, format) {
+    if (angular.isDate(date) && angular.isString(format)) {
+      return $filter('date')(date, format);
+    }
+  }
 
   $scope.ok = function() {
-
-    console.log($scope.propertyItem);
+    $scope.propertyItem.ER_AvailableDate = $scope.dateSelect.dt;
+    $scope.propertyItem.ER_InspRep = $scope.dateSelect.dt2;
     $http.post('/staff/admin_landlord_er_update', $scope.propertyItem)
       .then(function(response) {
         console.log("response", response);
@@ -326,13 +360,132 @@ app.controller('landlordPropertyAddInstanceCtrl', ['$scope', '$modalInstance', '
   };
 }]);
 /*******************分租房源信息添加****************************************************/
-app.controller('landlordShareRoomAddInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+app.controller('landlordShareRoomAddInstanceCtrl', ['$scope', '$http', '$modalInstance', '$filter', 'items', function($scope, $http, $modalInstance, $filter, items) {
   $scope.propertyItem = {};
-  $scope.propertyItem = items;
+  $scope.propertyItems = [];
+  $scope.dateSelect = {};
+  $scope.shareRoomProperty = {};
+  $scope.shareRoomProperty.ER_ID = 0;
+  $scope.shareRoomProperty.SRArea = "";
+  $scope.shareRoomProperty.SRStat = "";
+  // $scope.shareRoomProperty.SRAvailableDate = "";
+  $scope.shareRoomProperty.SRPrice = "";
+  $scope.shareRoomProperty.SRName = "";
+
+  /**
+   * datepicker - change the date
+   *
+   * here in the modal if we use $scope.opened for is open, which will
+   * wrok only for the first time. Then add $parent.opened to is-opened
+   * so, the datepicker will work correctly
+   */
+  $scope.today = function() {
+    $scope.dateSelect.dt =  getDateToString(new Date(),"yyyy-MM-dd");
+  };
+  $scope.today();
+
+  $scope.clear = function() {
+    $scope.dateSelect.dt = null;
+  };
+
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened = true;
+  };
+$scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1,
+    class: 'datepicker'
+  };
+  $scope.initDate = new Date('2016-5-20');
+  $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+
+  /**
+   * getDateToString - convert date formate data into string data
+   *
+   * @param  {date} date   date
+   * @param  {string} format format
+   * @return {string}        string date
+   */
+  function getDateToString(date, format) {
+    if (angular.isDate(date) && angular.isString(format)) {
+      return $filter('date')(date, format);
+    }
+  }
+
+  /*************************************************************************************/
+  for (var i = 0; i < items.length; i++) {
+    $scope.propertyItem.ER_ID = items[i].ER_ID;
+    $scope.propertyItem.address = items[i].ER_No + " " + items[i].ER_St + " " + items[i].ER_Suburb + "," + items[i].ER_Region;
+    $scope.propertyItems.push($scope.propertyItem);
+    $scope.propertyItem = {};
+  }
+  $scope.propertyItem.address = $scope.propertyItems[0].address;
   $scope.ok = function() {
-    console.log($scope.propertyItem);
+    console.log($scope.dateSelect.dt);
+    $scope.shareRoomProperty.SRAvailableDate = getDateToString($scope.dateSelect.dt,"yyyy-MM-dd");
+    angular.forEach($scope.propertyItems, function(value, key) {
+      if (value.address === $scope.propertyItem.address) {
+        $scope.shareRoomProperty.ER_ID = value.ER_ID;
+      }
+    });
+    $http.post('/staff/admin_sr_insert', $scope.shareRoomProperty)
+      .then(function(response) {
+        console.log("response", response);
+        //close 当前的modal
+        $modalInstance.close();
+      }, function(x) {
+        console.log('Server Error');
+      });
     $modalInstance.close();
   };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+app.controller('shareRoomFormAddInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', function($scope, $http, $modalInstance, items) {
+  $scope.propertyItem = {};
+  $scope.propertyItems = [];
+  $scope.shareRoomForm = {};
+  $scope.shareRoomForm.sr_including = "";
+  $scope.shareRoomForm.fur_room = "";
+  $scope.shareRoomForm.fur_kitchen = "";
+  $scope.shareRoomForm.fur_laundry = "";
+  $scope.shareRoomForm.fur_living = "";
+  $scope.shareRoomForm.fur_balcony = "";
+  for (var i = 0; i < items.length; i++) {
+    $scope.propertyItem.SRID = items[i].SRID;
+    $scope.propertyItem.address = items[i].address;
+    $scope.propertyItems.push($scope.propertyItem);
+    $scope.propertyItem = {};
+  }
+  $scope.propertyItem.address = $scope.propertyItems[0].address;
+  $scope.ok = function() {
+    angular.forEach($scope.propertyItems, function(value, key) {
+      if (value.address === $scope.propertyItem.address) {
+        $scope.shareRoomForm.SRID = value.SRID;
+      }
+    });
+    console.log($scope.shareRoomForm);
+    $http.post('/staff/admin_sr_form_insert', $scope.shareRoomForm)
+      .then(function(response) {
+        console.log("response", response);
+        $modalInstance.close();
+      }, function(x) {
+        console.log('Server Error');
+      });
+    $modalInstance.close();
+  };
+
 
   $scope.cancel = function() {
     $modalInstance.dismiss('cancel');
@@ -353,8 +506,6 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
   $scope.landLord_info.LLCellphone = $stateParams.LLCellphone;
   console.log($scope.landLord_info);
   $scope.items = {};
-
-
 
   //////////////////change password///////////////////////
   $scope.update_staff_password = function() {
@@ -488,6 +639,15 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
     });
   }
   /**************admin share room propertyForm add**********************************************************/
+  $scope.shareRoomProperties = {};
+  $http.get('/staff/admin_sr_list_check')
+    .then(function(response) {
+      $scope.shareRoomProperties = response.data;
+      console.log("response", response);
+    }, function(x) {
+      console.log('Server Error');
+    });
+
   $scope.landlord_ShareRoomFormAdd = function(size) {
     var modalInstance = $modal.open({
       templateUrl: 'shareRoomFormAdd.html',
@@ -495,7 +655,7 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
       size: size,
       resolve: {
         items: function() {
-          return $scope.properties;
+          return $scope.shareRoomProperties;
         }
       }
     });
