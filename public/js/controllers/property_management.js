@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-12T12:15:07+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-28T17:06:48+10:00
+ * @Last modified time: 2017-08-28T17:48:57+10:00
  */
 'use strict'
 app.controller('entirePropertyAddInstanceCtrl', ['$scope', '$modalInstance', 'items', '$filter', '$http', function($scope, $modalInstance, items, $filter, $http) {
@@ -212,6 +212,7 @@ app.controller('propertyDetailsUpdateInstanceCtrl', ['$scope', '$http', '$modalI
   $scope.format = $scope.formats[0];
   $scope.propertyItem = items;
 
+
   /**
    * getStringToDate - convert string date to date format
    *
@@ -224,15 +225,30 @@ app.controller('propertyDetailsUpdateInstanceCtrl', ['$scope', '$http', '$modalI
     }
   }
 
+  /**
+   * getDateToString - convert date formate data into string data
+   *
+   * @param  {date} date   date
+   * @param  {string} format format
+   * @return {string}        string date
+   */
+  function getDateToString(date, format) {
+    if (angular.isDate(date) && angular.isString(format)) {
+      return $filter('date')(date, format);
+    }
+  }
+
   $scope.ok = function() {
+    delete $scope.propertyItem["landlord"];
     console.log($scope.propertyItem);
-    /*$http.post('/staff/admin_landlord_er_update', $scope.propertyItem)
+    $scope.propertyItem.ER_InspRep = "F://abc/dg";
+    $http.post('/staff/admin_landlord_er_update', $scope.propertyItem)
       .then(function(response) {
         console.log("response", response);
         $modalInstance.close();
       }, function(x) {
         console.log('Server Error');
-      });*/
+      });
   };
 
   $scope.cancel = function() {

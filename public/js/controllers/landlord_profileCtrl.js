@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-24T13:55:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-28T15:08:51+10:00
+ * @Last modified time: 2017-08-28T17:27:32+10:00
  */
 'use strict'
 
@@ -116,7 +116,7 @@ app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$http', '$modalIns
   $scope.propertyItem.ER_Stat = "";
   $scope.propertyItem.ER_AvailableDate = "2017-08-24";
   $scope.propertyItem.LLID = 0;
-  $scope.propertyItem.ER_InspRep = "2017-08-24";
+  $scope.propertyItem.ER_InspRep = "";
   $scope.propertyItem.ER_Description = "";
   $scope.propertyItem.ER_Type = "";
   $scope.propertyItem.ER_Feature = "";
@@ -203,7 +203,8 @@ app.controller('propertyDetailsEditInstanceCtrl', ['$scope', '$http', '$modalIns
 
   $scope.ok = function() {
     $scope.propertyItem.ER_AvailableDate = $scope.dateSelect.dt;
-    $scope.propertyItem.ER_InspRep = $scope.dateSelect.dt2;
+    $scope.propertyItem.ER_InspRep = "";
+    console.log($scope.propertyItem);
     $http.post('/staff/admin_landlord_er_update', $scope.propertyItem)
       .then(function(response) {
         console.log("response", response);
