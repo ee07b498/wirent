@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-12T12:15:07+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-28T17:48:57+10:00
+ * @Last modified time: 2017-08-29T10:50:23+10:00
  */
 'use strict'
 app.controller('entirePropertyAddInstanceCtrl', ['$scope', '$modalInstance', 'items', '$filter', '$http', function($scope, $modalInstance, items, $filter, $http) {
@@ -145,12 +145,18 @@ app.controller('entirePropertyAddInstanceCtrl', ['$scope', '$modalInstance', 'it
   };
 }]);
 //===================add pictures to entire properties====================================
-app.controller('propertyPicAddInstanceCtrl', ['$scope', '$modalInstance', 'S3UploadService', function($scope, $modalInstance, S3UploadService) {
+app.controller('propertyPicAddInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', 'S3UploadImgService', function($scope, $http, $modalInstance, items, S3UploadImgService) {
+  // console.log(items);
+  $scope.etPicInsert = {};
+  $scope.etPicInsert.ER_ID = items.ER_ID;
+  $scope.etPicInsert.SRID = 0;
+  $scope.etPicInsert.PicFile = "";
+  $scope.etPicInsert.PicDescription = "";
   $scope.uploadFiles = function (files) {
       $scope.Files = files;
       if (files && files.length > 0) {
           angular.forEach($scope.Files, function (file, key) {
-              S3UploadService.Upload(file).then(function (result) {
+              S3UploadImgService.Upload(file).then(function (result) {
                   // Mark as success
                   file.Success = true;
               }, function (error) {
@@ -160,7 +166,17 @@ app.controller('propertyPicAddInstanceCtrl', ['$scope', '$modalInstance', 'S3Upl
                   // Write the progress as a percentage
                   file.Progress = (progress.loaded / progress.total) * 100;
                   if (file.Progress === 100) {
-                    console.log("https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name);
+                    $scope.etPicInsert.PicFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+                    // console.log($scope.etPicInsert);
+                    $http.post('/staff/admin_pic_insert', $scope.etPicInsert)
+                      .then(function(response) {
+                        console.log("response", response);
+                        /**************关闭当前modal********************/
+                        $modalInstance.close();
+                      }, function(x) {
+                        console.log('Server Error');
+                      });
+
                   }
               });
           });
@@ -403,14 +419,14 @@ app.controller('propertyManagementCtrl', function($scope, $http, $state, $modal,
     });
   };
   //================== add pictures for properties======================================================================================
-  $scope.property_pic_add = function(size) {
+  $scope.property_pic_add = function(size, index) {
     var modalInstance = $modal.open({
       templateUrl: 'propertyPicAdd.html',
       controller: 'propertyPicAddInstanceCtrl',
       size: size,
       resolve: {
         items: function() {
-          return $scope.entireProperties;
+          return $scope.entireProperties[index];
         }
       }
     });

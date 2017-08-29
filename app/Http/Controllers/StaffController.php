@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-28T18:09:44+10:00
+# @Last modified time: 2017-08-29T13:39:24+10:00
 
 
 
@@ -1017,13 +1017,13 @@ class StaffController extends Controller
 	}
 	//更新推广日期
 	public function admin_thirdparty_promotion_update(Request $request){
-		$idthirdparty_promotion = $request->input('idthirdparty_promotion');
+		// $idthirdparty_promotion = $request->input('idthirdparty_promotion');
 		$TPID = $request->input('TPID');
 		$StartDate = $request->input('StartDate');
 		$EndDate = $request->input('EndDate');
 		try{
 			$proc_name = 'proc_Insert_ThirdParty_promotion';
-			$sql = "call $proc_name('{$idthirdparty_promotion}','{$TPID}','{$StartDate}','{$EndDate}')";
+			$sql = "call $proc_name('{$TPID}','{$StartDate}','{$EndDate}')";
 			$result = DB::update($sql);
 			return $result;
 		}

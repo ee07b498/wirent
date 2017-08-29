@@ -1,21 +1,28 @@
 <div class="panel panel-default">
   <div class="panel-heading font-bold">
-    添加员工
+    添加Promotion
   </div>
   <div class="panel-body">
     <div class="wrapper bg-white">
       <div class="row m-t">
         <div class="form-group">
-          <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>姓名：</label>
+          <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>商家：</label>
           <div class="col-sm-10">
-            <label class="control-label" for="input-id-1"><i style="color:red">张砺斌</i></label>
+            <label class="control-label" for="input-id-1"><i style="color:red">{{business_info.TPName}}</i></label>
           </div>
         </div>
         <div class="line line-dashed b-b line-lg pull-in"></div>
         <div class="form-group">
-          <label class="col-sm-2 control-label">idthirdparty_promotion</label>
+          <label class="col-sm-2 control-label">Description</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control m-b" ng-model="businessInfo.idthirdparty_promotion" placeholder="Current password">
+            <p class="control-label" for="input-id-1"><i style="color:red">{{business_info.TPDescription}}</i></p>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Detail</label>
+          <div class="col-sm-10">
+            <p class="control-label" for="input-id-1"><i style="color:red">{{business_info.TPDetail}}</i></p>
           </div>
         </div>
         <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -23,7 +30,7 @@
           <label class="col-sm-2 control-label">start time</label>
           <div class="col-sm-10">
             <div class="input-group w-sm">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="$parent.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateSelect.dt" is-open="$parent.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" close-text="Close" />
               <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
@@ -35,9 +42,9 @@
           <label class="col-sm-2 control-label">end time</label>
           <div class="col-sm-10">
             <div class="input-group w-sm">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="$parent.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateSelect.dt2" is-open="$parent.opened2" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" close-text="Close" />
               <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
             </div>
           </div>
@@ -47,6 +54,7 @@
           Error
         </div> -->
         <div class="text-center">
+          <button class="btn btn-primary m-r text-center" ng-click="cancel()">Cancel</button>
           <button class="btn btn-success m-r text-center" ng-click="business_promotion_update()">Update</button>
         </div>
       </div>

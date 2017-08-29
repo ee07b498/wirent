@@ -14,9 +14,13 @@
     <tab heading="Profile Information">
       <div class="row">
         <div class="col-sm-5">
-          <a href class="">
-            <img src="img/andy.jpg" class="img-circle">
-          </a>
+          <div class="text-center">
+              <div class="text-center">
+                <img ng-src="{{customerItem.CPhoto}}" class="img-circle" style="width:250px;height:250px;"alt="...">
+              </div>
+              <div class="h4 m-t m-b-xs">{{customerItem.CName}}</div>
+              <small class="text-muted m-b">{{customerItem.CEmail}}</small>
+          </div>
         </div>
         <div class="col-sm-7">
           <div class="clear m-b pull-in">
@@ -95,7 +99,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" ng-model="customerItem.CEmail" placeholder="Email">
+                  <input type="text" class="form-control m-b" ng-model="customerItem.CEmail" placeholder="Email">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -109,60 +113,155 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" ng-model="customerItem.CName" placeholder="Name">
+                  <input type="text" class="form-control m-b" ng-model="customerItem.CName" placeholder="Name">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Phone</label>
                 <div class="col-sm-10">
-                  <input type="phone"  class="form-control m-b" ng-model="customerItem.CPhone" placeholder="Phone">
+                  <input type="phone" class="form-control m-b" ng-model="customerItem.CPhone" placeholder="Phone">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Current Status</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" ng-model="customerItem.CCurrStat" placeholder="Current Status">
+                  <input type="text" class="form-control m-b" ng-model="customerItem.CCurrStat" placeholder="Current Status">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                 <label class="col-sm-2 control-label">ID Type</label>
-                 <div class="col-sm-10">
-                   <select name="account" ng-model="customerItem.CIDType" class="form-control m-b">
-                     <option>option 1</option>
-                     <option>option 2</option>
-                     <option>option 3</option>
-                     <option>option 4</option>
-                   </select>
-                 </div>
+                <label class="col-sm-2 control-label">ID Type</label>
+                <div class="col-sm-10">
+                  <input type="text"  class="form-control m-b" ng-model="customerItem.CIDType" placeholder="Current Status">
+                </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Upload File</label>
                 <div class="col-sm-10">
-                  <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  <div class="b" ng-strict-di>
+                    <form novalidate>
+                      <div class="text-center">
+                        <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
+                        <p>Choose a photo ID to upload.</p>
+                        <p>
+                          <button type="file" ngf-select="uploadPhotoID($files)" ngf-multiple="true" class="btn btn btn-warning">
+                              Select File
+                          </button>
+                        </p>
+                      </div>
+                      <div ng-show="IDFiles.length > 0" class="text-center">
+                        <div ng-repeat="file in IDFiles">
+                          File:
+                          <div>
+                            {{file.name}} {{file.$error}} {{file.$errorParam}}
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+                              {{file.Progress | number:0}}%
+                            </div>
+                          </div>
+                          <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+                          <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+                        </div>
+                        <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+                          Oooops we had trouble uploading the file. Please refresh the page and try again.
+                          <p>If the problem persits please supply us with the following details</p>
+                          <p>{{errorMsg}}</p>
+                        </div>
+                        <div>{{IDError}}</div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Income File</label>
                 <div class="col-sm-10">
-                  <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  <div class="b" ng-strict-di>
+                    <form novalidate>
+                      <div class="text-center">
+                        <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
+                        <p>Choose a Income file or paylisp to upload.</p>
+                        <p>
+                          <button type="file" ngf-select="uploadIncomeFiles($files)" ngf-multiple="true" class="btn btn btn-warning">
+                              Select File
+                          </button>
+                        </p>
+                      </div>
+                      <div ng-show="IncomeFiles.length > 0" class="text-center">
+                        <div ng-repeat="file in IncomeFiles">
+                          File:
+                          <div>
+                            {{file.name}} {{file.$error}} {{file.$errorParam}}
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+                              {{file.Progress | number:0}}%
+                            </div>
+                          </div>
+                          <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+                          <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+                        </div>
+                        <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+                          Oooops we had trouble uploading the file. Please refresh the page and try again.
+                          <p>If the problem persits please supply us with the following details</p>
+                          <p>{{errorMsg}}</p>
+                        </div>
+                        <div>{{IncomeError}}</div>
+                      </div>
+                    </form>
+                  </div>
+
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Saving File</label>
                 <div class="col-sm-10">
-                  <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                  <div class="b" ng-strict-di>
+                    <form novalidate>
+                      <div class="text-center">
+                        <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
+                        <p>Choose a Saving file to upload.</p>
+                        <p>
+                          <button type="file" ngf-select="uploadSavingFiles($files)" ngf-multiple="true" class="btn btn btn-warning">
+                              Select File
+                          </button>
+                        </p>
+                      </div>
+                      <div ng-show="SavingFiles.length > 0" class="text-center">
+                        <div ng-repeat="file in SavingFiles">
+                          File:
+                          <div>
+                            {{file.name}} {{file.$error}} {{file.$errorParam}}
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+                              {{file.Progress | number:0}}%
+                            </div>
+                          </div>
+                          <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+                          <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+                        </div>
+                        <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+                          Oooops we had trouble uploading the file. Please refresh the page and try again.
+                          <p>If the problem persits please supply us with the following details</p>
+                          <p>{{errorMsg}}</p>
+                        </div>
+                        <div>{{SavingError}}</div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">Email</label>
+                <label class="col-sm-2 control-label">PartenerID</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Email">
+                    <input type="text"  class="form-control m-b" ng-model="customerItem.CPartenerID" placeholder="PartenerID">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -170,7 +269,7 @@
                 <label class="col-sm-2 control-label">Datepicker</label>
                 <div class="col-sm-10">
                   <div class="input-group w-md m-b">
-                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateSelect.dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                     <span class="input-group-btn">
                       <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -179,13 +278,14 @@
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                 <label class="col-sm-2 control-label">Gender</label>
-                 <div class="col-sm-10">
-                   <select name="account" ng-model="customerItem.CSex" class="form-control m-b">
-                     <option>male</option>
-                     <option>female</option>
+                <label class="col-sm-2 control-label">Gender</label>
+                <div class="col-sm-10">
+                  <select name="account" ng-model="customerItem.CSex" class="form-control m-b">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Others</option>
                    </select>
-                 </div>
+                </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
@@ -196,50 +296,44 @@
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                 <label class="col-sm-2 control-label">Work</label>
-                 <div class="col-sm-10">
-                   <select name="account" ng-model="customerItem.CWorking" class="form-control m-b">
-                     <option>yes</option>
-                     <option>not yet</option>
-                     <option>retired</option>
+                <label class="col-sm-2 control-label">Work</label>
+                <div class="col-sm-10">
+                  <select name="account" ng-model="customerItem.CWorking" class="form-control m-b">
+                    <option>full-time</option>
+                    <option>part-time</option>
+                    <option>not yet</option>
+                    <option>retired</option>
                    </select>
-                 </div>
+                </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                 <label class="col-sm-2 control-label">pet</label>
-                 <div class="col-sm-10">
-                   <select name="account" ng-model="customerItem.CPet" class="form-control m-b">
+                <label class="col-sm-2 control-label">pet</label>
+                <div class="col-sm-10">
+                  <select name="account" ng-model="customerItem.CPet" class="form-control m-b">
                      <option>Yes</option>
                      <option>No</option>
                    </select>
-                 </div>
+                </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                 <label class="col-sm-2 control-label">Smoking</label>
-                 <div class="col-sm-10">
-                   <select name="account" ng-model="customerItem.CSmoking" class="form-control m-b">
-                     <option>option 1</option>
-                     <option>option 2</option>
-                     <option>option 3</option>
-                     <option>option 4</option>
+                <label class="col-sm-2 control-label">Smoking</label>
+                <div class="col-sm-10">
+                  <select name="account" ng-model="customerItem.CSmoking" class="form-control m-b">
+                    <option>Yes</option>
+                    <option>No</option>
                    </select>
-                 </div>
+                </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
-                 <label class="col-sm-2 control-label">Budget</label>
-                 <div class="col-sm-10">
-                   <select name="account" ng-model="customerItem.CBudget" class="form-control m-b">
-                     <option>option 1</option>
-                     <option>option 2</option>
-                     <option>option 3</option>
-                     <option>option 4</option>
-                   </select>
-                 </div>
+                <label class="col-sm-2 control-label">Budget</label>
+                <div class="col-sm-10">
+                  <input type="text"  class="form-control m-b" ng-model="customerItem.CBudget" placeholder="Budget"/>
+                </div>
               </div>
-                <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="text-center">
                 <button class="btn btn-success m-r" ng-click="update_customer_info()">update submit</button>
               </div>
@@ -283,7 +377,7 @@
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="text-center" style="color:red; font-size:14px" ng-show="authorError">
-                  前后密码不一致
+                前后密码不一致
               </div>
               <div class="text-center">
                 <button class="btn btn-success m-r" ng-click="update_customer_password()">Change password</button>
@@ -372,18 +466,18 @@
             <div class="tab-content" ng-show="selectedTab == 1">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                <!-- <script type="text/ng-template" id="userAdd.html">
+                  <!-- <script type="text/ng-template" id="userAdd.html">
                       <div ng-include="'/tpl/modal/user_add.html'"></div>
                 </script> -->
-                <script type="text/ng-template" id="billProduce.html">
-                      <div ng-include="'/tpl/modal/bill_produce.html'"></div>
-                </script>
-                <script type="text/ng-template" id="billAdd.html">
-                      <div ng-include="'/tpl/modal/bill_add.html'"></div>
-                </script>
-                <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-                <button class="btn btn-info" ng-click="openInvoice('lg')"><i class="fa fa-plus"></i>生成账单</button>
-                <button class="btn btn-info" ng-click="addBill('')"><i class="fa fa-plus"></i>添加账单</button>
+                  <script type="text/ng-template" id="billProduce.html">
+                    <div ng-include="'/tpl/modal/bill_produce.html'"></div>
+                  </script>
+                  <script type="text/ng-template" id="billAdd.html">
+                    <div ng-include="'/tpl/modal/bill_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="openInvoice('lg')"><i class="fa fa-plus"></i>生成账单</button>
+                  <button class="btn btn-info" ng-click="addBill('')"><i class="fa fa-plus"></i>添加账单</button>
                 </div>
                 <div class="row wrapper">
                   <div class="col-sm-4 m-b-xs">
@@ -472,11 +566,11 @@
             <div class="tab-content" ng-show="selectedTab == 2">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                <script type="text/ng-template" id="contractAdd.html">
-                      <div ng-include="'/tpl/modal/contract_add.html'"></div>
-                </script>
-                <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-                <button class="btn btn-info" ng-click="contract_add('lg')"><i class="fa fa-plus"></i>Contract 添加</button>
+                  <script type="text/ng-template" id="contractAdd.html">
+                    <div ng-include="'/tpl/modal/contract_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="contract_add('lg')"><i class="fa fa-plus"></i>Contract 添加</button>
                 </div>
                 <div class="row wrapper">
                   <div class="col-sm-4 m-b-xs">
@@ -501,7 +595,7 @@
                   </div>
                 </div>
                 <div class="table-responsive">
-                  <table class="table table-striped b-t b-light"  style="table-layout:fixed ; width: 100%;">
+                  <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
                     <thead>
                       <tr>
                         <th style="width:20px;">
@@ -560,11 +654,11 @@
             <div class="tab-content" ng-show="selectedTab == 3">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                <script type="text/ng-template" id="serviceAdd.html">
-                      <div ng-include="'/tpl/modal/service_add.html'"></div>
-                </script>
-                <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-                <button class="btn btn-info" ng-click="service_add('lg')"><i class="fa fa-plus"></i>Service添加</button>
+                  <script type="text/ng-template" id="serviceAdd.html">
+                    <div ng-include="'/tpl/modal/service_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="service_add('lg')"><i class="fa fa-plus"></i>Service添加</button>
                 </div>
                 <div class="row wrapper">
                   <div class="col-sm-4 m-b-xs">
@@ -608,7 +702,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr  ng-repeat="service in Services track by $index">
+                      <tr ng-repeat="service in Services track by $index">
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
                         <td class="text-center">{{$index + 1}}</td>
                         <td class="text-center">{{service.address}}</td>
@@ -651,11 +745,11 @@
             <div class="tab-content" ng-show="selectedTab == 4">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                <script type="text/ng-template" id="maintenanceAdd.html">
-                      <div ng-include="'/tpl/modal/maintenance_add.html'"></div>
-                </script>
-                <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-                <button class="btn btn-info" ng-click="maintenance_add('lg')"><i class="fa fa-plus"></i>Maintenance添加</button>
+                  <script type="text/ng-template" id="maintenanceAdd.html">
+                    <div ng-include="'/tpl/modal/maintenance_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="maintenance_add('lg')"><i class="fa fa-plus"></i>Maintenance添加</button>
                 </div>
                 <div class="row wrapper">
                   <div class="col-sm-4 m-b-xs">
@@ -707,7 +801,7 @@
                         <td class="text-center"><a>{{maintenance.MApplyForm}}<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
                         <td class="text-center">{{maintenance.MApplyDate}}</td>
                         <td class="text-center">{{maintenance.MConfirm}}</td>
-                        <td data-value="1"  class="text-center"><span class="label bg-success" title="Active">{{maintenance.MStat}}</span></td>
+                        <td data-value="1" class="text-center"><span class="label bg-success" title="Active">{{maintenance.MStat}}</span></td>
                         <td class="text-center">
                           <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
                           <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
@@ -741,11 +835,11 @@
             <div class="tab-content" ng-show="selectedTab == 5">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                <script type="text/ng-template" id="inspectionAdd.html">
-                      <div ng-include="'/tpl/modal/inspection_add.html'"></div>
-                </script>
-                <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-                <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Inspection添加</button>
+                  <script type="text/ng-template" id="inspectionAdd.html">
+                    <div ng-include="'/tpl/modal/inspection_add.html'"></div>
+                  </script>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+                  <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Inspection添加</button>
                 </div>
                 <div class="row wrapper">
                   <div class="col-sm-4 m-b-xs">

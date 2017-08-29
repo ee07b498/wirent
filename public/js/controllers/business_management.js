@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-14T16:43:33+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-24T17:34:21+10:00
+ * @Last modified time: 2017-08-29T11:16:46+10:00
  */
 
 
@@ -40,12 +40,12 @@ app.controller('businessUpdateInstanceCtrl', ['$scope', '$modalInstance', '$http
   $scope.business_update_info = items;
   $scope.ok = function() {
     console.log($scope.business_update_info);
-  /*  $http.post('/staff/admin_landlord_update', $scope.business_update_info)
+    $http.post('/staff/admin_thirdparty_update', $scope.business_update_info)
       .then(function(response) {
         console.log("response", response);
       }, function(x) {
         console.log('Server Error');
-      });*/
+      });
     $modalInstance.close();
   };
 

@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-24T16:04:21+10:00
+ * @Last modified time: 2017-08-29T17:33:21+10:00
  */
 'use strict';
 
@@ -26,7 +26,7 @@ angular.module('app')
     };
 
   })
-  .service('S3UploadService', ['$q', function ($q) {
+  .service('S3UploadImgService', ['$q', function ($q) {
      // Us standard region
     //  AWS.config.region = 'us-east-1';
      AWS.config.region = 'ap-southeast-2';
@@ -58,6 +58,38 @@ angular.module('app')
          return deferred.promise;
      };
  }])
+ .service('S3UploadFileService', ['$q', function ($q) {
+    // Us standard region
+    // AWS.config.region = 'us-east-1';
+    AWS.config.region = 'ap-southeast-2';
+    AWS.config.update({ accessKeyId: 'AKIAIJNVRWANKL3NCD7Q', secretAccessKey: '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' });
+
+    var bucket = new AWS.S3({ params: { Bucket: 'property-img-upload-test/img', maxRetries: 10 }, httpOptions: { timeout: 360000 } });
+    this.Progress = 0;
+    this.Upload = function (file) {
+        var deferred = $q.defer();
+
+        var params = { Bucket: 'property-img-upload-test/img', Key: file.name, ContentType: file.type, Body: file };
+        var options = {
+            // Part Size of 10mb
+            partSize: 10 * 1024 * 1024,
+            queueSize: 1,
+            // Give the owner of the bucket full control
+            ACL: 'bucket-owner-full-control'
+        };
+        var uploader = bucket.upload(params, options, function (err, data) {
+            if (err) {
+                deferred.reject(err);
+            }
+            deferred.resolve();
+        });
+        uploader.on('httpUploadProgress', function (event) {
+            deferred.notify(event);
+        });
+
+        return deferred.promise;
+    };
+}])
   .controller('AppCtrl', ['$scope', '$state', '$http','$translate', '$localStorage', '$window',
     function($scope, $state, $http, $translate, $localStorage, $window) {
       // add 'ie' classes to html

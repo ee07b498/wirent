@@ -247,8 +247,8 @@
           <script type="text/ng-template" id="promotionAdd.html">
             <div ng-include="'/tpl/modal/business_promotion_add.html'"></div>
           </script>
-          <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
-          <button class="btn btn-info" ng-click="promotionAdd('lg')"><i class="fa fa-plus"></i>房屋信息添加</button>
+          <!-- <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button> -->
+          <button class="btn btn-info" ng-click="promotionAdd('lg')"><i class="fa fa-plus"></i>Promotion添加</button>
         </div>
         <div class="row wrapper">
           <div class="col-sm-3 m-b-xs">
@@ -289,7 +289,7 @@
                 <th style="width:100px;" class="text-center">开始时间</th>
                 <th style="width:100px;" class="text-center">结束时间</th>
                 <th style="width:100px;" class="text-center">状态</th>
-                <th style="width:200px;" class="text-center">操作</th>
+                <th style="width:100px;" class="text-center">操作</th>
               </tr>
             </thead>
             <tbody>
@@ -313,13 +313,13 @@
                   <div ng-include="'/tpl/modal/business_promotion_update.html'"></div>
                 </script>
                 <td class="text-center">
-                  <a href class="active m-r-md" ng-click="promotion_update('lg',$index)"><i class="fa fa-pencil"></i></a>
-                  <a href class="active m-r-md" ng-click="check=!check">
+                  <a href class="active" ng-click="promotion_update('lg',$index)"><i class="fa fa-pencil"></i></a>
+                  <!-- <a href class="active m-r-md" ng-click="check=!check">
                     <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
                     <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
                   </a>
                   <a ui-sref="app.customer.addPic" class="active m-r-md"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
-                  <a href><i class="fa fa-trash"></i></a>
+                  <a href><i class="fa fa-trash"></i></a> -->
                 </td>
               </tr>
             </tbody>

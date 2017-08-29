@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-15T14:20:59+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-28T18:04:17+10:00
+ * @Last modified time: 2017-08-29T11:04:58+10:00
  */
 'use strict'
 app.controller('updateShareRoomInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', function($scope, $http, $modalInstance, items) {
@@ -89,12 +89,18 @@ app.controller('shareRoomFormInstanceCtrl', ['$scope', '$http', '$modalInstance'
   };
 }]);
 //add pictues to share room
-app.controller('propertyPicAddInstanceCtrl', ['$scope', '$modalInstance', 'S3UploadService', function($scope, $modalInstance, S3UploadService) {
+app.controller('propertyPicAddInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', 'S3UploadImgService', function($scope, $http, $modalInstance, items, S3UploadImgService) {
+  $scope.etPicInsert = {};
+  // console.log(items);
+  $scope.etPicInsert.ER_ID = items.ER_ID;
+  $scope.etPicInsert.SRID = items.SRID;
+  $scope.etPicInsert.PicFile = "";
+  $scope.etPicInsert.PicDescription = "";
   $scope.uploadFiles = function (files) {
       $scope.Files = files;
       if (files && files.length > 0) {
           angular.forEach($scope.Files, function (file, key) {
-              S3UploadService.Upload(file).then(function (result) {
+              S3UploadImgService.Upload(file).then(function (result) {
                   // Mark as success
                   file.Success = true;
               }, function (error) {
@@ -104,7 +110,16 @@ app.controller('propertyPicAddInstanceCtrl', ['$scope', '$modalInstance', 'S3Upl
                   // Write the progress as a percentage
                   file.Progress = (progress.loaded / progress.total) * 100;
                   if (file.Progress === 100) {
-                    console.log("https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name);
+                    $scope.etPicInsert.PicFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+                    console.log($scope.etPicInsert);
+                    $http.post('/staff/admin_pic_insert', $scope.etPicInsert)
+                      .then(function(response) {
+                        console.log("response", response);
+                        /**************关闭当前modal********************/
+                        $modalInstance.close();
+                      }, function(x) {
+                        console.log('Server Error');
+                      });
                   }
               });
           });
@@ -155,14 +170,14 @@ app.controller('SharePropertyCtrl', function($scope, $http, $state, $modal, $log
     });
   };*/
   //================== add pictures for share room properties======================================================================================
-  $scope.property_pic_add = function(size) {
+  $scope.property_pic_add = function(size, index) {
     var modalInstance = $modal.open({
       templateUrl: 'propertyPicAdd.html',
       controller: 'propertyPicAddInstanceCtrl',
       size: size,
       resolve: {
         items: function() {
-          return $scope.ShareProperties;
+          return $scope.ShareProperties[index];
         }
       }
     });

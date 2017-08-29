@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-16T16:04:47+10:00
+ * @Last modified time: 2017-08-29T18:13:37+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -180,9 +180,10 @@ app.controller('inspectionAddInstanceCtrl', ['$scope', '$modalInstance', 'items'
     $modalInstance.dismiss('cancel');
   };
 }]);
-app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$stateParams', function($scope, $http, $modal, $log, $stateParams) {
+app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$stateParams', 'S3UploadImgService', function($scope, $http, $modal, $log, $stateParams, S3UploadImgService) {
   $scope.items = ['item1', 'item2', 'item3'];
   $scope.customerItem = {};
+  $scope.dateSelect = {};
   $scope.changePassword = {};
   $scope.customerProperties = {};
   $scope.authorError = false;
@@ -199,6 +200,138 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
     }, function(x) {
       console.log('Server Error');
     });
+
+    /**
+     * datepicker - change the date
+     *
+     * here in the modal if we use $scope.opened for is open, which will
+     * wrok only for the first time. Then add $parent.opened to is-opened
+     * so, the datepicker will work correctly
+     */
+    $scope.today = function() {
+      $scope.dateSelect.dt = getDateToString(getStringToDate($scope.customerItem.CLastContDate), 'yyyy-MM-dd');
+    };
+    $scope.today();
+
+    $scope.clear = function() {
+      $scope.dateSelect.dt = null;
+    };
+
+    // Disable weekend selection
+    $scope.disabled = function(date, mode) {
+      return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+    };
+    $scope.toggleMin = function() {
+      $scope.minDate = $scope.minDate ? null : new Date();
+    };
+    $scope.toggleMin();
+    $scope.open = function($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+      $scope.opened = true;
+    };
+
+    $scope.dateOptions = {
+      formatYear: 'yy',
+      startingDay: 1,
+      class: 'datepicker'
+    };
+    $scope.initDate = new Date('2016-15-20');
+    $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+
+    /**
+     * getDateToString - convert date formate data into string data
+     *
+     * @param  {date} date   date
+     * @param  {string} format format
+     * @return {string}        string date
+     */
+    function getDateToString(date, format) {
+      if (angular.isDate(date) && angular.isString(format)) {
+        return $filter('date')(date, format);
+      }
+    }
+    /**
+     * getStringToDate - convert string date to date format
+     *
+     * @param  {String} string date string
+     * @return {date}        date result
+     */
+    function getStringToDate(string) {
+      if (angular.isString(string)) {
+        return new Date(string.replace(/-/g, "-"));
+      }
+    }
+
+
+    //upload photo ID
+    $scope.uploadPhotoID = function (files) {
+        $scope.IDFiles = files;
+        if (files && files.length > 0) {
+            angular.forEach($scope.IDFiles, function (file, key) {
+                S3UploadImgService.Upload(file).then(function (result) {
+                    // Mark as success
+                    file.Success = true;
+                }, function (error) {
+                    // Mark the error
+                    $scope.IDError = error;
+                }, function (progress) {
+                    // Write the progress as a percentage
+                    file.Progress = (progress.loaded / progress.total) * 100;
+                    if (file.Progress === 100) {
+                      $scope.customerItem.CIDProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+
+                    }
+                });
+            });
+        }
+    };
+    //upload photo ID
+    $scope.uploadIncomeFiles = function (files) {
+        $scope.IncomeFiles = files;
+        if (files && files.length > 0) {
+            angular.forEach($scope.IncomeFiles, function (file, key) {
+                S3UploadImgService.Upload(file).then(function (result) {
+                    // Mark as success
+                    file.Success = true;
+                }, function (error) {
+                    // Mark the error
+                    $scope.IncomeError = error;
+                }, function (progress) {
+                    // Write the progress as a percentage
+                    file.Progress = (progress.loaded / progress.total) * 100;
+                    if (file.Progress === 100) {
+                      $scope.customerItem.CIncomeProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+
+                    }
+                });
+            });
+        }
+    };
+    //upload photo ID
+    $scope.uploadSavingFiles = function (files) {
+        $scope.SavingFiles = files;
+        if (files && files.length > 0) {
+            angular.forEach($scope.SavingFiles, function (file, key) {
+                S3UploadImgService.Upload(file).then(function (result) {
+                    // Mark as success
+                    file.Success = true;
+                }, function (error) {
+                    // Mark the error
+                    $scope.SavingError = error;
+                }, function (progress) {
+                    // Write the progress as a percentage
+                    file.Progress = (progress.loaded / progress.total) * 100;
+                    if (file.Progress === 100) {
+                      $scope.customerItem.CSavingProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+                      console.log($scope.etPicInsert);
+                    }
+                });
+            });
+        }
+    };
+
   //////////////////change password///////////////////////
   $scope.update_customer_password = function() {
     console.log($scope.changePassword);
@@ -373,18 +506,18 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
     });
 
   ////////////////////////////////////////////////////////////////////
-  $scope.open = function(size) {
-    var modalInstance = $modal.open({
-      templateUrl: 'propertyDetails.html',
-      controller: 'propertyDetailsInstanceCtrl',
-      size: size,
-      resolve: {
-        items: function() {
-          return $scope.items;
-        }
-      }
-    });
-  };
+  // $scope.open = function(size) {
+  //   var modalInstance = $modal.open({
+  //     templateUrl: 'propertyDetails.html',
+  //     controller: 'propertyDetailsInstanceCtrl',
+  //     size: size,
+  //     resolve: {
+  //       items: function() {
+  //         return $scope.items;
+  //       }
+  //     }
+  //   });
+  // };
 
   /**
    * produce bill

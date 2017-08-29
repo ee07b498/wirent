@@ -1,6 +1,52 @@
 <div class="panel panel-default">
-  <div class="panel-heading font-bold">
-    添加合同
+  <div class="panel-heading font-bold bg-white">
+    用户更新
+    <div class="clearfix text-center m-t">
+      <div class="text-center">
+          <div class="text-center">
+            <img ng-src="{{customerItem.CPhoto}}" class="img-circle" style="width:150px;height:150px;"alt="...">
+          </div>
+        </div>
+        <div class="h4 m-t m-b-xs">{{customerItem.CName}}</div>
+        <small class="text-muted m-b">{{customerItem.CEmail}}</small>
+      </div>
+
+      <div ng-strict-di>
+        <form novalidate>
+          <div class="text-center">
+            <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
+            <!-- <p>Choose a picture to upload.</p> -->
+            <p>
+              <button type="file" ngf-select="uploadProfileImg($files)" ngf-multiple="false" class="btn btn btn-warning">
+                  Change Profile
+              </button>
+            </p>
+          </div>
+          <div ng-show="ImgFiles.length > 0" class="text-center">
+            <div ng-repeat="file in ImgFiles">
+              File:
+              <div>
+                {{file.name}} {{file.$error}} {{file.$errorParam}}
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+                  {{file.Progress | number:0}}%
+                </div>
+              </div>
+              <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+              <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+            </div>
+            <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+              Oooops we had trouble uploading the file. Please refresh the page and try again.
+              <p>If the problem persits please supply us with the following details</p>
+              <p>{{errorMsg}}</p>
+            </div>
+            <div>{{ImgError}}</div>
+          </div>
+        </form>
+      </div>
+
+    </div>
   </div>
   <div class="panel-body">
     <div class="form-group">
@@ -34,46 +80,146 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">Current Status</label>
       <div class="col-sm-10">
-        <input type="text"  class="form-control m-b" ng-model="customerItem.CCurrStat" placeholder="Current Status">
+        <input type="text"  class="form-control m-b" ng-model="customerItem.CCurrStat" placeholder="Current Status"/>
       </div>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <div class="form-group">
        <label class="col-sm-2 control-label">ID Type</label>
        <div class="col-sm-10">
-         <select name="account" ng-model="customerItem.CIDType" class="form-control m-b">
+         <!--<select name="account" ng-model="customerItem.CIDType" class="form-control m-b">
            <option>option 1</option>
            <option>option 2</option>
            <option>option 3</option>
            <option>option 4</option>
-         </select>
+         </select>-->
+         <input type="text"  class="form-control m-b" ng-model="customerItem.CIDType" placeholder="Current Status">
        </div>
     </div>
     <div class="form-group">
       <label class="col-sm-2 control-label">Upload File</label>
       <div class="col-sm-10">
-        <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+          <div class="b" ng-strict-di>
+            <form novalidate>
+              <div class="text-center">
+                <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
+                <p>Choose a photo ID to upload.</p>
+                <p>
+                  <button type="file" ngf-select="uploadPhotoID($files)" ngf-multiple="true" class="btn btn btn-warning">
+                      Select File
+                  </button>
+                </p>
+              </div>
+              <div ng-show="IDFiles.length > 0" class="text-center">
+                <div ng-repeat="file in IDFiles">
+                  File:
+                  <div>
+                    {{file.name}} {{file.$error}} {{file.$errorParam}}
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+                      {{file.Progress | number:0}}%
+                    </div>
+                  </div>
+                  <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+                  <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+                </div>
+                <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+                  Oooops we had trouble uploading the file. Please refresh the page and try again.
+                  <p>If the problem persits please supply us with the following details</p>
+                  <p>{{errorMsg}}</p>
+                </div>
+                <div>{{IDError}}</div>
+              </div>
+            </form>
+          </div>
       </div>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <div class="form-group">
       <label class="col-sm-2 control-label">Income File</label>
       <div class="col-sm-10">
-        <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+        <div class="b" ng-strict-di>
+          <form novalidate>
+            <div class="text-center">
+              <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
+              <p>Choose a Income file or paylisp to upload.</p>
+              <p>
+                <button type="file" ngf-select="uploadIncomeFiles($files)" ngf-multiple="true" class="btn btn btn-warning">
+                    Select File
+                </button>
+              </p>
+            </div>
+            <div ng-show="IncomeFiles.length > 0" class="text-center">
+              <div ng-repeat="file in IncomeFiles">
+                File:
+                <div>
+                  {{file.name}} {{file.$error}} {{file.$errorParam}}
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+                    {{file.Progress | number:0}}%
+                  </div>
+                </div>
+                <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+                <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+              </div>
+              <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+                Oooops we had trouble uploading the file. Please refresh the page and try again.
+                <p>If the problem persits please supply us with the following details</p>
+                <p>{{errorMsg}}</p>
+              </div>
+              <div>{{IncomeError}}</div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <div class="form-group">
       <label class="col-sm-2 control-label">Saving File</label>
       <div class="col-sm-10">
-        <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+        <div class="b" ng-strict-di>
+          <form novalidate>
+            <div class="text-center">
+              <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
+              <p>Choose a Saving file to upload.</p>
+              <p>
+                <button type="file" ngf-select="uploadSavingFiles($files)" ngf-multiple="true" class="btn btn btn-warning">
+                    Select File
+                </button>
+              </p>
+            </div>
+            <div ng-show="SavingFiles.length > 0" class="text-center">
+              <div ng-repeat="file in SavingFiles">
+                File:
+                <div>
+                  {{file.name}} {{file.$error}} {{file.$errorParam}}
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+                    {{file.Progress | number:0}}%
+                  </div>
+                </div>
+                <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+                <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+              </div>
+              <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+                Oooops we had trouble uploading the file. Please refresh the page and try again.
+                <p>If the problem persits please supply us with the following details</p>
+                <p>{{errorMsg}}</p>
+              </div>
+              <div>{{SavingError}}</div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">Email</label>
+      <label class="col-sm-2 control-label">PartenerID</label>
       <div class="col-sm-10">
-        <input type="text"  class="form-control m-b" placeholder="Email">
+        <input type="text"  class="form-control m-b" ng-model="customerItem.CPartenerID" placeholder="PartenerID">
       </div>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -81,7 +227,7 @@
       <label class="col-sm-2 control-label">Datepicker</label>
       <div class="col-sm-10">
         <div class="input-group w-md m-b">
-          <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+          <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateSelect.dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -93,8 +239,9 @@
        <label class="col-sm-2 control-label">Gender</label>
        <div class="col-sm-10">
          <select name="account" ng-model="customerItem.CSex" class="form-control m-b">
-           <option>male</option>
-           <option>female</option>
+           <option>Male</option>
+           <option>Female</option>
+           <option>Others</option>
          </select>
        </div>
     </div>
@@ -102,7 +249,7 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">Age</label>
       <div class="col-sm-10">
-        <input type="text" ng-model="customerItem.CAge" class="form-control m-b" placeholder="Email">
+        <input type="text" ng-model="customerItem.CAge" class="form-control m-b" placeholder="Age">
       </div>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -110,7 +257,8 @@
        <label class="col-sm-2 control-label">Work</label>
        <div class="col-sm-10">
          <select name="account" ng-model="customerItem.CWorking" class="form-control m-b">
-           <option>yes</option>
+           <option>full-time</option>
+           <option>part-time</option>
            <option>not yet</option>
            <option>retired</option>
          </select>
@@ -131,10 +279,8 @@
        <label class="col-sm-2 control-label">Smoking</label>
        <div class="col-sm-10">
          <select name="account" ng-model="customerItem.CSmoking" class="form-control m-b">
-           <option>option 1</option>
-           <option>option 2</option>
-           <option>option 3</option>
-           <option>option 4</option>
+           <option>Yes</option>
+           <option>No</option>
          </select>
        </div>
     </div>
@@ -142,12 +288,13 @@
     <div class="form-group">
        <label class="col-sm-2 control-label">Budget</label>
        <div class="col-sm-10">
-         <select name="account" ng-model="customerItem.CBudget" class="form-control m-b">
+         <!--<select name="account" ng-model="customerItem.CBudget" class="form-control m-b">
            <option>option 1</option>
            <option>option 2</option>
            <option>option 3</option>
            <option>option 4</option>
-         </select>
+         </select>-->
+         <input type="text"  class="form-control m-b" ng-model="customerItem.CBudget" placeholder="Current Status"/>
        </div>
     </div>
       <div class="line line-dashed b-b line-lg pull-in"></div>

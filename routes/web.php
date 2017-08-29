@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-28T16:01:50+10:00
+# @Last modified time: 2017-08-29T11:57:30+10:00
 
 
 
@@ -179,6 +179,8 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 		$app->post('/admin_thirdparty_name_check', 			['uses'=>'StaffController@admin_thirdparty_name_check']);
 		$app->post('/admin_thirdparty_insert', 			['uses'=>'StaffController@admin_thirdparty_insert']);
 		$app->post('/admin_thirdparty_update', 			['uses'=>'StaffController@admin_thirdparty_update']);
+		$app->post('/admin_thirdparty_promotion_insert', 			['uses'=>'StaffController@admin_thirdparty_promotion_insert']);
 		$app->post('/admin_thirdparty_promotion_check', 			['uses'=>'StaffController@admin_thirdparty_promotion_check']);
 		$app->post('/admin_thirdparty_promotion_update', 			['uses'=>'StaffController@admin_thirdparty_promotion_update']);
+		$app->post('/admin_pic_insert', 			['uses'=>'StaffController@admin_pic_insert']);
 });
