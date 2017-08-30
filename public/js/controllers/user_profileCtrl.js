@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-30T16:18:49+10:00
+ * @Last modified time: 2017-08-30T17:57:35+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -63,10 +63,10 @@ app.controller('billProduceInstanceCtrl', ['$scope', '$modalInstance', '$filter'
   $scope.initDate = new Date('2016-15-20');
   $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
-  if ( typeof $scope.dateSelect.dt === "string") {
-    $scope.dateSelect.dt = $scope.dateSelect.dt.slice(0,10);
-  }else {
-    $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd').slice(0,10);
+  if (typeof $scope.dateSelect.dt === "string") {
+    $scope.dateSelect.dt = $scope.dateSelect.dt.slice(0, 10);
+  } else {
+    $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd').slice(0, 10);
   }
   /**
    * getDateToString - convert date formate data into string data
@@ -109,11 +109,11 @@ app.controller('billProduceInstanceCtrl', ['$scope', '$modalInstance', '$filter'
    *
    **/
   $scope.printBill = function(div) {
-    if ( typeof $scope.dateSelect.dt === "string") {
-      $scope.dateSelect.dt = $scope.dateSelect.dt.slice(0,10);
+    if (typeof $scope.dateSelect.dt === "string") {
+      $scope.dateSelect.dt = $scope.dateSelect.dt.slice(0, 10);
       console.log($scope.dateSelect.dt);
-    }else {
-      $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd').slice(0,10);
+    } else {
+      $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd').slice(0, 10);
       console.log($scope.dateSelect.dt);
     }
     var printContents = document.getElementById(div);
@@ -213,47 +213,47 @@ app.controller('billAddInstanceCtrl', ['$scope', '$http', '$modalInstance', 'ite
     }
   }
   //upload Bill Copy
-  $scope.uploadBillCopy = function (files) {
-      $scope.BillCopy = files;
-      if (files && files.length > 0) {
-          angular.forEach($scope.BillCopy, function (file, key) {
-              S3UploadImgService.Upload(file).then(function (result) {
-                  // Mark as success
-                  file.Success = true;
-              }, function (error) {
-                  // Mark the error
-                  $scope.BillCopyError = error;
-              }, function (progress) {
-                  // Write the progress as a percentage
-                  file.Progress = (progress.loaded / progress.total) * 100;
-                  if (file.Progress === 100) {
-                    $scope.Bill.BillCopy = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+  $scope.uploadBillCopy = function(files) {
+    $scope.BillCopy = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.BillCopy, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.BillCopyError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Bill.BillCopy = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
 
-                  }
-              });
-          });
-      }
+          }
+        });
+      });
+    }
   };
   //upload Bill Receipt
-  $scope.uploadBillReceipt = function (files) {
-      $scope.BillReceipt = files;
-      if (files && files.length > 0) {
-          angular.forEach($scope.BillReceipt, function (file, key) {
-              S3UploadImgService.Upload(file).then(function (result) {
-                  // Mark as success
-                  file.Success = true;
-              }, function (error) {
-                  // Mark the error
-                  $scope.IDError = error;
-              }, function (progress) {
-                  // Write the progress as a percentage
-                  file.Progress = (progress.loaded / progress.total) * 100;
-                  if (file.Progress === 100) {
-                    $scope.Bill.BillReceipt = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
-                  }
-              });
-          });
-      }
+  $scope.uploadBillReceipt = function(files) {
+    $scope.BillReceipt = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.BillReceipt, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.IDError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Bill.BillReceipt = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
+          }
+        });
+      });
+    }
   };
 
   $scope.ok = function() {
@@ -261,10 +261,10 @@ app.controller('billAddInstanceCtrl', ['$scope', '$http', '$modalInstance', 'ite
     $scope.authorError = false;
     if (typeof $scope.dateSelect.dt === "string") {
       $scope.dateSelect.dt = $scope.dateSelect.dt;
-    }else {
+    } else {
       $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd');
     }
-    if ($scope.Bill.BillReceipt ==="" || $scope.Bill.BillCopy ==="") {
+    if ($scope.Bill.BillReceipt === "" || $scope.Bill.BillCopy === "") {
       $scope.authorError = true;
     }
     $scope.Bill.BillDate = $scope.dateSelect.dt;
@@ -350,63 +350,63 @@ app.controller('billUpdateInstanceCtrl', ['$scope', '$http', '$modalInstance', '
     }
   }
   //upload Bill Copy
-  $scope.uploadBillCopy = function (files) {
-      $scope.BillCopy = files;
-      if (files && files.length > 0) {
-          angular.forEach($scope.BillCopy, function (file, key) {
-              S3UploadImgService.Upload(file).then(function (result) {
-                  // Mark as success
-                  file.Success = true;
-              }, function (error) {
-                  // Mark the error
-                  $scope.BillCopyError = error;
-              }, function (progress) {
-                  // Write the progress as a percentage
-                  file.Progress = (progress.loaded / progress.total) * 100;
-                  if (file.Progress === 100) {
-                    $scope.Bill.BillCopy = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+  $scope.uploadBillCopy = function(files) {
+    $scope.BillCopy = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.BillCopy, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.BillCopyError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Bill.BillCopy = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
 
-                  }
-              });
-          });
-      }
+          }
+        });
+      });
+    }
   };
   //upload Bill Receipt
-  $scope.uploadBillReceipt = function (files) {
-      $scope.BillReceipt = files;
-      if (files && files.length > 0) {
-          angular.forEach($scope.BillReceipt, function (file, key) {
-              S3UploadImgService.Upload(file).then(function (result) {
-                  // Mark as success
-                  file.Success = true;
-              }, function (error) {
-                  // Mark the error
-                  $scope.IDError = error;
-              }, function (progress) {
-                  // Write the progress as a percentage
-                  file.Progress = (progress.loaded / progress.total) * 100;
-                  if (file.Progress === 100) {
-                    $scope.Bill.BillReceipt = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
-                  }
-              });
-          });
-      }
+  $scope.uploadBillReceipt = function(files) {
+    $scope.BillReceipt = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.BillReceipt, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.IDError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Bill.BillReceipt = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
+          }
+        });
+      });
+    }
   };
 
   $scope.ok = function() {
     $scope.authorError = false;
     if (typeof $scope.dateSelect.dt === "string") {
       $scope.dateSelect.dt = $scope.dateSelect.dt;
-    }else {
+    } else {
       $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd');
     }
-    if ($scope.Bill.BillReceipt ==="" || $scope.Bill.BillCopy ==="") {
+    if ($scope.Bill.BillReceipt === "" || $scope.Bill.BillCopy === "") {
       $scope.authorError = true;
     }
     if ($scope.Bill.BillComment) {
-       $scope.Bill.BillComment = $scope.Bill.BillComment;
-    }else {
-       $scope.Bill.BillComment = "";
+      $scope.Bill.BillComment = $scope.Bill.BillComment;
+    } else {
+      $scope.Bill.BillComment = "";
     }
     $scope.Bill.BillDate = $scope.dateSelect.dt;
     $scope.BillItem = $scope.Bill;
@@ -502,30 +502,30 @@ app.controller('contractAddInstanceCtrl', ['$scope', '$modalInstance', '$filter'
     }
   }
   //upload Bill Copy
-  $scope.uploadContract = function (files) {
-      $scope.ContractFiles = files;
-      if (files && files.length > 0) {
-          angular.forEach($scope.ContractFiles, function (file, key) {
-              S3UploadImgService.Upload(file).then(function (result) {
-                  // Mark as success
-                  file.Success = true;
-              }, function (error) {
-                  // Mark the error
-                  $scope.ContractError = error;
-              }, function (progress) {
-                  // Write the progress as a percentage
-                  file.Progress = (progress.loaded / progress.total) * 100;
-                  if (file.Progress === 100) {
-                    $scope.Contract.ContractFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+  $scope.uploadContract = function(files) {
+    $scope.ContractFiles = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.ContractFiles, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.ContractError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Contract.ContractFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
 
-                  }
-              });
-          });
-      }
+          }
+        });
+      });
+    }
   };
 
   $scope.ok = function() {
-    angular.forEach(properties, function(value,key){
+    angular.forEach(properties, function(value, key) {
       if (value.address == $scope.propertyItem.address) {
         $scope.Contract.ER_ID = value.ER_ID;
       }
@@ -533,10 +533,10 @@ app.controller('contractAddInstanceCtrl', ['$scope', '$modalInstance', '$filter'
     $scope.authorError = false;
     if (typeof $scope.dateSelect.dt === "string") {
       $scope.dateSelect.dt = $scope.dateSelect.dt;
-    }else {
+    } else {
       $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd');
     }
-    if ($scope.Contract.ContractFile ==="") {
+    if ($scope.Contract.ContractFile === "") {
       $scope.authorError = true;
     }
     $scope.Contract.CLDate = $scope.dateSelect.dt;
@@ -556,7 +556,7 @@ app.controller('contractAddInstanceCtrl', ['$scope', '$modalInstance', '$filter'
   };
 
 }]);
-app.controller('serviceAddInstanceCtrl', ['$scope', '$modalInstance', '$filter', 'items', 'properties', function($scope, $modalInstance, $filter, items, properties) {
+app.controller('serviceAddInstanceCtrl', ['$scope', '$modalInstance', '$filter', '$http', 'items', 'properties', 'S3UploadImgService', function($scope, $modalInstance, $filter, $http, items, properties, S3UploadImgService) {
   $scope.customer = items;
   $scope.propertyItem = {};
   $scope.dateSelect = {};
@@ -632,47 +632,47 @@ app.controller('serviceAddInstanceCtrl', ['$scope', '$modalInstance', '$filter',
     }
   }
   //upload Bill Copy
-  $scope.uploadContract = function (files) {
-      $scope.ContractFiles = files;
-      if (files && files.length > 0) {
-          angular.forEach($scope.ContractFiles, function (file, key) {
-              S3UploadImgService.Upload(file).then(function (result) {
-                  // Mark as success
-                  file.Success = true;
-              }, function (error) {
-                  // Mark the error
-                  $scope.ContractError = error;
-              }, function (progress) {
-                  // Write the progress as a percentage
-                  file.Progress = (progress.loaded / progress.total) * 100;
-                  if (file.Progress === 100) {
-                    $scope.Contract.ContractFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+  $scope.uploadService = function(files) {
+    $scope.ServiceFiles = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.ServiceFiles, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.ServiceError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Service.ServiceFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
 
-                  }
-              });
-          });
-      }
+          }
+        });
+      });
+    }
   };
 
   $scope.ok = function() {
-    angular.forEach(properties, function(value,key){
+    angular.forEach(properties, function(value, key) {
       if (value.address == $scope.propertyItem.address) {
-        $scope.Contract.ER_ID = value.ER_ID;
+        $scope.Service.ER_ID = value.ER_ID;
       }
     });
     $scope.authorError = false;
     if (typeof $scope.dateSelect.dt === "string") {
       $scope.dateSelect.dt = $scope.dateSelect.dt;
-    }else {
+    } else {
       $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd');
     }
-    if ($scope.Contract.ContractFile ==="") {
+    if ($scope.Service.ServiceFile === "") {
       $scope.authorError = true;
     }
-    $scope.Contract.CLDate = $scope.dateSelect.dt;
-    console.log($scope.Contract);
+    $scope.Service.ServiceDate = $scope.dateSelect.dt;
+    console.log($scope.Service);
     /*************get all customers' informations***************/
-    $http.post('/staff/admin_customer_contract_insert', $scope.Contract)
+    $http.post('/staff/admin_customer_service_insert', $scope.Service)
       .then(function(response) {
         console.log(response.data);
       }, function(x) {
@@ -685,14 +685,255 @@ app.controller('serviceAddInstanceCtrl', ['$scope', '$modalInstance', '$filter',
     $modalInstance.dismiss('cancel');
   };
 }]);
-app.controller('maintenanceAddInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
+app.controller('serviceUpdateInstanceCtrl', ['$scope', '$modalInstance', '$filter', '$http', 'items', 'customerItem', 'S3UploadImgService', function($scope, $modalInstance, $filter, $http, items, customerItem, S3UploadImgService) {
+  $scope.customer = customerItem;
+  $scope.propertyItem = {};
+  $scope.dateSelect = {};
+  $scope.Service = {};
+  $scope.authorError = false;
+  $scope.Service.ServiceType = "";
+  $scope.Service.ServiceDate = "2017-06-26";
+  $scope.Service.ServiceFile = "";
+  $scope.Service.ServiceComment = "";
+  $scope.Service.ServiceStat = "";
+  $scope.Service = items;
+  console.log(items);
+  /**
+   * datepicker - change the date
+   *
+   * here in the modal if we use $scope.opened for is open, which will
+   * wrok only for the first time. Then add $parent.opened to is-opened
+   * so, the datepicker will work correctly
+   */
+  $scope.today = function() {
+    $scope.dateSelect.dt = getDateToString(getStringToDate($scope.Service.ServiceDate), 'yyyy-MM-dd');
+  };
+  $scope.today();
+
+  $scope.clear = function() {
+    $scope.dateSelect.dt = null;
+  };
+
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+  };
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1,
+    class: 'datepicker'
+  };
+  $scope.initDate = new Date('2016-15-20');
+  $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  /**
+   * getDateToString - convert date formate data into string data
+   *
+   * @param  {date} date   date
+   * @param  {string} format format
+   * @return {string}        string date
+   */
+  function getDateToString(date, format) {
+    if (angular.isDate(date) && angular.isString(format)) {
+      return $filter('date')(date, format);
+    }
+  }
+  /**
+   * getStringToDate - convert string date to date format
+   *
+   * @param  {String} string date string
+   * @return {date}        date result
+   */
+  function getStringToDate(string) {
+    if (angular.isString(string)) {
+      return new Date(string.replace(/-/g, "-"));
+    }
+  }
+  //upload Bill Copy
+  $scope.uploadService = function(files) {
+    $scope.ServiceFiles = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.ServiceFiles, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.ServiceError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Service.ServiceFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
+
+          }
+        });
+      });
+    }
   };
 
   $scope.ok = function() {
-    $modalInstance.close($scope.selected.item);
+    $scope.authorError = false;
+    if (typeof $scope.dateSelect.dt === "string") {
+      $scope.dateSelect.dt = $scope.dateSelect.dt;
+    } else {
+      $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd');
+    }
+    if ($scope.Service.ServiceFile === "") {
+      $scope.authorError = true;
+    }
+    $scope.Service.ServiceDate = $scope.dateSelect.dt;
+    /*************get all customers' informations***************/
+    var serviceDataItem = {}
+    serviceDataItem = $scope.Service;
+    delete serviceDataItem["address"];
+    console.log(serviceDataItem);
+    $http.post('/staff/admin_customer_service_update', serviceDataItem)
+      .then(function(response) {
+        console.log(response.data);
+      }, function(x) {
+        console.log('Server Error');
+      });
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+
+app.controller('maintenanceAddInstanceCtrl', ['$scope', '$modalInstance', '$filter', '$http', 'items', 'properties', 'S3UploadImgService', function($scope, $modalInstance, $filter, $http, items, properties, S3UploadImgService) {
+  $scope.customer = items;
+  $scope.propertyItem = {};
+  $scope.dateSelect = {};
+  $scope.Maintenance = {};
+  $scope.authorError = false;
+  $scope.Maintenance.MType = "";
+  $scope.Maintenance.MApplyDate = "2017-06-26";
+  $scope.Maintenance.MApplyForm = "";
+  $scope.Maintenance.MStat = "";
+  $scope.Maintenance.CID = items.CID;
+  $scope.properties = properties;
+  $scope.propertyItem.address = properties[0].address;
+  /**
+   * datepicker - change the date
+   *
+   * here in the modal if we use $scope.opened for is open, which will
+   * wrok only for the first time. Then add $parent.opened to is-opened
+   * so, the datepicker will work correctly
+   */
+  $scope.today = function() {
+    $scope.dateSelect.dt = getDateToString(new Date(), 'yyyy-MM-dd');
+  };
+  $scope.today();
+
+  $scope.clear = function() {
+    $scope.dateSelect.dt = null;
+  };
+
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+  };
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1,
+    class: 'datepicker'
+  };
+  $scope.initDate = new Date('2016-15-20');
+  $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  /**
+   * getDateToString - convert date formate data into string data
+   *
+   * @param  {date} date   date
+   * @param  {string} format format
+   * @return {string}        string date
+   */
+  function getDateToString(date, format) {
+    if (angular.isDate(date) && angular.isString(format)) {
+      return $filter('date')(date, format);
+    }
+  }
+  /**
+   * getStringToDate - convert string date to date format
+   *
+   * @param  {String} string date string
+   * @return {date}        date result
+   */
+  function getStringToDate(string) {
+    if (angular.isString(string)) {
+      return new Date(string.replace(/-/g, "-"));
+    }
+  }
+  //upload Maintenance Application forms
+  $scope.uploadMaintenance = function(files) {
+    $scope.MaintenanceFiles = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.MaintenanceFiles, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.ServiceError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Maintenance.MApplyForm = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
+
+          }
+        });
+      });
+    }
+  };
+
+  $scope.ok = function() {
+    angular.forEach(properties, function(value, key) {
+      if (value.address == $scope.propertyItem.address) {
+        $scope.Maintenance.ER_ID = value.ER_ID;
+      }
+    });
+    $scope.authorError = false;
+    if (typeof $scope.dateSelect.dt === "string") {
+      $scope.dateSelect.dt = $scope.dateSelect.dt;
+    } else {
+      $scope.dateSelect.dt = getDateToString($scope.dateSelect.dt, 'yyyy-MM-dd');
+    }
+    if ($scope.Maintenance.MApplyForm === "") {
+      $scope.authorError = true;
+    }
+    $scope.Maintenance.MApplyDate = $scope.dateSelect.dt;
+    console.log($scope.Maintenance);
+    /*************get all customers' informations***************/
+    $http.post('/staff/admin_customer_service_insert', $scope.Maintenance)
+      .then(function(response) {
+        console.log(response.data);
+      }, function(x) {
+        console.log('Server Error');
+      });
+    $modalInstance.close();
   };
 
   $scope.cancel = function() {
@@ -734,136 +975,136 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
       console.log('Server Error');
     });
 
-    /**
-     * datepicker - change the date
-     *
-     * here in the modal if we use $scope.opened for is open, which will
-     * wrok only for the first time. Then add $parent.opened to is-opened
-     * so, the datepicker will work correctly
-     */
-    $scope.today = function() {
-      $scope.dateSelect.dt = getDateToString(getStringToDate($scope.customerItem.CLastContDate), 'yyyy-MM-dd');
-    };
-    $scope.today();
+  /**
+   * datepicker - change the date
+   *
+   * here in the modal if we use $scope.opened for is open, which will
+   * wrok only for the first time. Then add $parent.opened to is-opened
+   * so, the datepicker will work correctly
+   */
+  $scope.today = function() {
+    $scope.dateSelect.dt = getDateToString(getStringToDate($scope.customerItem.CLastContDate), 'yyyy-MM-dd');
+  };
+  $scope.today();
 
-    $scope.clear = function() {
-      $scope.dateSelect.dt = null;
-    };
+  $scope.clear = function() {
+    $scope.dateSelect.dt = null;
+  };
 
-    // Disable weekend selection
-    $scope.disabled = function(date, mode) {
-      return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
-    };
-    $scope.toggleMin = function() {
-      $scope.minDate = $scope.minDate ? null : new Date();
-    };
-    $scope.toggleMin();
-    $scope.open = function($event) {
-      $event.preventDefault();
-      $event.stopPropagation();
-      $scope.opened = true;
-    };
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+  };
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened = true;
+  };
 
-    $scope.dateOptions = {
-      formatYear: 'yy',
-      startingDay: 1,
-      class: 'datepicker'
-    };
-    $scope.initDate = new Date('2016-15-20');
-    $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1,
+    class: 'datepicker'
+  };
+  $scope.initDate = new Date('2016-15-20');
+  $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
 
-    /**
-     * getDateToString - convert date formate data into string data
-     *
-     * @param  {date} date   date
-     * @param  {string} format format
-     * @return {string}        string date
-     */
-    function getDateToString(date, format) {
-      if (angular.isDate(date) && angular.isString(format)) {
-        return $filter('date')(date, format);
-      }
+  /**
+   * getDateToString - convert date formate data into string data
+   *
+   * @param  {date} date   date
+   * @param  {string} format format
+   * @return {string}        string date
+   */
+  function getDateToString(date, format) {
+    if (angular.isDate(date) && angular.isString(format)) {
+      return $filter('date')(date, format);
     }
-    /**
-     * getStringToDate - convert string date to date format
-     *
-     * @param  {String} string date string
-     * @return {date}        date result
-     */
-    function getStringToDate(string) {
-      if (angular.isString(string)) {
-        return new Date(string.replace(/-/g, "-"));
-      }
+  }
+  /**
+   * getStringToDate - convert string date to date format
+   *
+   * @param  {String} string date string
+   * @return {date}        date result
+   */
+  function getStringToDate(string) {
+    if (angular.isString(string)) {
+      return new Date(string.replace(/-/g, "-"));
     }
+  }
 
 
-    //upload photo ID
-    $scope.uploadPhotoID = function (files) {
-        $scope.IDFiles = files;
-        if (files && files.length > 0) {
-            angular.forEach($scope.IDFiles, function (file, key) {
-                S3UploadImgService.Upload(file).then(function (result) {
-                    // Mark as success
-                    file.Success = true;
-                }, function (error) {
-                    // Mark the error
-                    $scope.IDError = error;
-                }, function (progress) {
-                    // Write the progress as a percentage
-                    file.Progress = (progress.loaded / progress.total) * 100;
-                    if (file.Progress === 100) {
-                      $scope.customerItem.CIDProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+  //upload photo ID
+  $scope.uploadPhotoID = function(files) {
+    $scope.IDFiles = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.IDFiles, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.IDError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.customerItem.CIDProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
 
-                    }
-                });
-            });
-        }
-    };
-    //upload photo ID
-    $scope.uploadIncomeFiles = function (files) {
-        $scope.IncomeFiles = files;
-        if (files && files.length > 0) {
-            angular.forEach($scope.IncomeFiles, function (file, key) {
-                S3UploadImgService.Upload(file).then(function (result) {
-                    // Mark as success
-                    file.Success = true;
-                }, function (error) {
-                    // Mark the error
-                    $scope.IncomeError = error;
-                }, function (progress) {
-                    // Write the progress as a percentage
-                    file.Progress = (progress.loaded / progress.total) * 100;
-                    if (file.Progress === 100) {
-                      $scope.customerItem.CIncomeProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+          }
+        });
+      });
+    }
+  };
+  //upload photo ID
+  $scope.uploadIncomeFiles = function(files) {
+    $scope.IncomeFiles = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.IncomeFiles, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.IncomeError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.customerItem.CIncomeProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
 
-                    }
-                });
-            });
-        }
-    };
-    //upload photo ID
-    $scope.uploadSavingFiles = function (files) {
-        $scope.SavingFiles = files;
-        if (files && files.length > 0) {
-            angular.forEach($scope.SavingFiles, function (file, key) {
-                S3UploadImgService.Upload(file).then(function (result) {
-                    // Mark as success
-                    file.Success = true;
-                }, function (error) {
-                    // Mark the error
-                    $scope.SavingError = error;
-                }, function (progress) {
-                    // Write the progress as a percentage
-                    file.Progress = (progress.loaded / progress.total) * 100;
-                    if (file.Progress === 100) {
-                      $scope.customerItem.CSavingProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
-                      console.log($scope.etPicInsert);
-                    }
-                });
-            });
-        }
-    };
+          }
+        });
+      });
+    }
+  };
+  //upload photo ID
+  $scope.uploadSavingFiles = function(files) {
+    $scope.SavingFiles = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.SavingFiles, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.SavingError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.customerItem.CSavingProfile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
+            console.log($scope.etPicInsert);
+          }
+        });
+      });
+    }
+  };
 
   //////////////////change password///////////////////////
   $scope.update_customer_password = function() {
@@ -1090,16 +1331,16 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
       }
     });
   };
-$scope.deleteBill = function(index){
-  var deleteData = {};
-  deleteData.BLID = $scope.Bills[index].BLID;
-  $http.post('/staff/admin_er_bill_delete', deleteData)
-    .then(function(response) {
-      console.log("response", response);
-    }, function(x) {
-      console.log('Server Error');
-    });
-}
+  $scope.deleteBill = function(index) {
+    var deleteData = {};
+    deleteData.BLID = $scope.Bills[index].BLID;
+    $http.post('/staff/admin_er_bill_delete', deleteData)
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
+  }
 
 
   $scope.contract_add = function(size) {
@@ -1148,6 +1389,34 @@ $scope.deleteBill = function(index){
       }
     });
   };
+
+  $scope.service_update = function(size, index) {
+    var modalInstance = $modal.open({
+      templateUrl: 'serviceUpdate.html',
+      controller: 'serviceUpdateInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.Services[index];
+        },
+        customerItem: function(){
+          return $scope.customerItem;
+        }
+      }
+    });
+  };
+
+  $scope.service_delete = function(index) {
+    var serviceDeleteData = {};
+    serviceDeleteData.SLID = $scope.Services[index].SLID;
+    $http.post('/staff/admin_customer_service_delete', serviceDeleteData)
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
+  };
+
   $scope.maintenance_add = function(size) {
     var modalInstance = $modal.open({
       templateUrl: 'maintenanceAdd.html',
@@ -1155,36 +1424,15 @@ $scope.deleteBill = function(index){
       size: size,
       resolve: {
         items: function() {
-          return $scope.items;
+          return $scope.customerItem;
+        },
+        properties: function() {
+          return $scope.customerProperties;
         }
       }
-    });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
     });
   };
 
-  /*$scope.service_add = function(size) {
-    var modalInstance = $modal.open({
-      templateUrl: 'serviceAdd.html',
-      controller: 'serviceAddInstanceCtrl',
-      size: size,
-      resolve: {
-        items: function() {
-          return $scope.items;
-        }
-      }
-    });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };*/
   /***********add inspection info********************/
   $scope.inspection_add = function(size) {
     var modalInstance = $modal.open({

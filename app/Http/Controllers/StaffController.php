@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-30T15:45:50+10:00
+# @Last modified time: 2017-08-30T17:58:39+10:00
 
 
 
@@ -788,7 +788,7 @@ class StaffController extends Controller
 		$ServiceStat = $request->input('ServiceStat');
 
 		$proc = 'proc_Insert_ServiceLibrary';
-		$sql = "call $proc({$ER_ID},{$CID},'{$ServiceType}','{$ServiceFile}','{$ServiceComment}','{$ServiceDate}','{$ServiceStat}')";
+		$sql = "call $proc('{$ER_ID}','{$CID}','{$ServiceType}','{$ServiceFile}','{$ServiceComment}','{$ServiceDate}','{$ServiceStat}')";
 		$result = DB::insert($sql);
 		return $result;
 	}
@@ -861,7 +861,7 @@ class StaffController extends Controller
 		try
 		{
 			$proc_name = 'proc_Insert_MaintenanceLibrary';
-			$sql = "call $proc_name('{$MType}',{$ER_ID},{$CID},'{$MApplyForm}','{$MStat}','{$MApplyDate}')";
+			$sql = "call $proc_name('{$MType}','{$ER_ID}','{$CID}','{$MApplyForm}','{$MStat}','{$MApplyDate}')";
 			$result = DB::insert($sql);
 			return json_encode($result);
 		}

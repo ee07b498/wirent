@@ -710,14 +710,17 @@
                         <td class="text-center">{{service.address}}</td>
                         <td class="text-center">{{service.ServiceType}}</td>
                         <td class="text-center">{{service.ServiceDate}}</td>
-                        <td class="text-center">{{service.ServiceFile}}</td>
+                        <td class="text-center"><a ng-href="{{service.ServiceFile}}">ServiceFile <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
                         <td class="text-center">{{service.ServiceStat}}</td>
                         <td class="text-center">{{service.ServiceComment}}</td>
                         <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
+                        <script type="text/ng-template" id="serviceUpdate.html">
+                          <div ng-include="'/tpl/modal/service_update.html'"></div>
+                        </script>
                         <td class="text-center">
-                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
-                          <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                          <a ng-click="service_update('',$index)" class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                          <a ng-click="service_delete($index)" class="active m-r-md"><i class="fa fa-trash"></i></a>
+                          <!-- <a class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a> -->
                         </td>
                       </tr>
                     </tbody>
