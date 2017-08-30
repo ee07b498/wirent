@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-29T11:57:30+10:00
+# @Last modified time: 2017-08-30T15:34:27+10:00
 
 
 
@@ -164,7 +164,12 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 		$app->post('/admin_bill_check', 			['uses'=>'StaffController@admin_bill_check']);
 		//bill insert
 		$app->post('/admin_er_bill_insert', 			['uses'=>'StaffController@admin_er_bill_insert']);
+		$app->post('/admin_er_bill_update', 			['uses'=>'StaffController@admin_er_bill_update']);
+		$app->post('/admin_er_bill_delete', 			['uses'=>'StaffController@admin_er_bill_delete']);
+		//contract check
 		$app->post('/admin_customer_contract_check', 			['uses'=>'StaffController@admin_customer_contract_check']);
+		$app->post('/admin_customer_contract_insert', 			['uses'=>'StaffController@admin_customer_contract_insert']);
+		$app->post('/admin_customer_contract_delete', 			['uses'=>'StaffController@admin_customer_contract_delete']);
 		//service check
 		$app->post('/admin_customer_service_check', 			['uses'=>'StaffController@admin_customer_service_check']);
 		$app->post('/admin_customer_maintenance_check', 			['uses'=>'StaffController@admin_customer_maintenance_check']);

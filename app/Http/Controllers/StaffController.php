@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-29T13:39:24+10:00
+# @Last modified time: 2017-08-30T15:45:50+10:00
 
 
 
@@ -700,7 +700,7 @@ class StaffController extends Controller
 		$ContractComment= $request->input('ContractComment');
 
 		$proc = 'filt_Check_ContractLibrary';
-		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{CLDateMin}','{CLDateMax}','{$ContractComment}')";
+		$sql = "call $proc('{$ER_ID}','{$CLType}',{$CID},'{$CLDateMin}','{$CLDateMax}','{$ContractComment}')";
 		$result = DB::select($sql);
 		return json_encode($result);
 	}
@@ -714,7 +714,7 @@ class StaffController extends Controller
 		$ContractComment= $request->input('ContractComment');
 
 		$proc = 'proc_Insert_ContractLibrary';
-		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{$CLDate}','{$ContractFile}','{$ContractComment}')";
+		$sql = "call $proc('{$ER_ID}','{$CLType}',{$CID},'{$CLDate}','{$ContractFile}','{$ContractComment}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}

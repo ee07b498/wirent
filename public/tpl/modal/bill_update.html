@@ -8,8 +8,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>地址选择</label>
             <div class="col-sm-10">
-              <select ng-model="propertyItem.address" class="input form-control inline v-middle m-b" ng-options="myproperty.address as myproperty.address for myproperty in properties">
-              </select>
+              <p>{{Bill.address}}</p>
             </div>
         </div>
         <div class="line line-dashed b-b line-lg "></div>
@@ -56,7 +55,8 @@
               <form novalidate>
                 <div class="text-center">
                   <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
-                  <p>Choose a photo ID to upload.</p>
+                  <!-- <p>Choose a photo ID to upload.</p> -->
+                  <p>{{Bill.BillCopy}}</p>
                   <p>
                     <button type="file" ngf-select="uploadBillCopy($files)" ngf-multiple="false" class="btn btn btn-warning">
                         Select File
@@ -98,7 +98,8 @@
               <form novalidate>
                 <div class="text-center">
                   <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
-                  <p>Choose a photo ID to upload.</p>
+                  <!-- <p>Choose a photo ID to upload.</p> -->
+                  <p>{{Bill.BillReceipt}}</p>
                   <p>
                     <button type="file" ngf-select="uploadBillReceipt($files)" ngf-multiple="false" class="btn btn btn-warning">
                         Select File

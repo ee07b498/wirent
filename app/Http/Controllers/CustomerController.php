@@ -1,4 +1,10 @@
 <?php
+# @Date:   2017-08-22T10:58:52+10:00
+# @Email:  yiensuen@gmail.com
+# @Last modified time: 2017-08-29T21:49:41+10:00
+
+
+
 
 namespace App\Http\Controllers;
 
@@ -193,8 +199,8 @@ class CustomerController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
-	
-	
+
+
 	/*
 	 * multi suburbs surrounding 可记录查询方式
 	 */
@@ -223,9 +229,9 @@ class CustomerController extends Controller
 		}
 		return $MultiSuburbSurrounds;
 	}
-	
-	
-	
+
+
+
 	public function filt_entire_count(Request $request)
 	{
 
@@ -250,7 +256,8 @@ class CustomerController extends Controller
 		$data = array();
 		if ($include_area==true)
 		{
-			$ER_Suburb = $this->multi_suburb_surrounding($request);
+			// $ER_Suburb = $this->multi_suburb_surrounding($request);
+      $ER_Suburb = $this->multi_suburb_surrounding($ER_Suburb);
 			$proc_name = 'filt_Check_EntireRent_Count';
 			$sql = "call $proc_name(
 									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
@@ -307,7 +314,7 @@ class CustomerController extends Controller
 		try{
 			if ($include_area==true)
 			{
-				$ER_Suburb = $this->multi_suburb_surrounding($request);	
+				$ER_Suburb = $this->multi_suburb_surrounding($request);
 				$proc_name = 'filt_Check_EntireRent';
 				$sql = "call $proc_name(
 										'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',

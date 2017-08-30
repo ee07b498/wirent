@@ -3,7 +3,7 @@
   <div>
     <h4>Staff Profile</h4>
     <ul class="breadcrumb bg-white b-a">
-      <li><a href><i class="fa fa-home"></i> Admin</a></li>
+      <li><a href><i class="fa fa-home"></i>Admin</a></li>
       <li><a href>staff</a></li>
       <li class="active">role management</li>
       <li class="pull-right"><i class="fa fa-lg fa-refresh"></i></li>
@@ -214,7 +214,6 @@
                       </div>
                     </form>
                   </div>
-
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -514,12 +513,12 @@
                         <th class="text-center" style="width:250px">ER_ID</th>
                         <th class="text-center" style="width:100px">BillType</th>
                         <th class="text-center" style="width:100px">BillAmount</th>
-                        <th class="text-center" style="width:250px">BillCopy</th>
+                        <th class="text-center" style="width:200px">BillCopy</th>
                         <th class="text-center" style="width:150px">BillDate</th>
                         <th class="text-center" style="width:200px">BillReceipt</th>
                         <th class="text-center" style="width:100px">BillComment</th>
-                        <th class="text-center" style="width:150px">status</th>
-                        <th class="text-center" style="width:150px">Manipulate</th>
+                        <th class="text-center" style="width:100px">status</th>
+                        <th class="text-center" style="width:100px">Manipulate</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -529,15 +528,18 @@
                         <th class="text-center">{{bill.address}}</th>
                         <td class="text-center">{{bill.BillType}}</td>
                         <td class="text-center">{{bill.BillAmount}}</td>
-                        <td class="text-center"><span><a>{{bill.BillCopy}}<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></span></td>
+                        <td class="text-center"><span><a ng-href="{{bill.BillCopy}}">BillCopy<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></span></td>
                         <td class="text-center">{{bill.BillDate}}</td>
-                        <td class="text-center"><a>{{bill.BillReceipt}}<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <td class="text-center"><a ng-href="{{bill.BillReceipt}}">BillReceipt<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
                         <td class="text-center">{{bill.BillComment}}</td>
-                        <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
+                        <td class="text-center"><span class="label bg-success" title="Active">paid</span></td>
+                        <script type="text/ng-template" id="billUpdate.html">
+                          <div ng-include="'/tpl/modal/bill_update.html'"></div>
+                        </script>
                         <td class="text-center">
-                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
-                          <a href class="active" title="add a bill"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                          <a ng-click="updateBill('', $index)" class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                          <a ng-click="deleteBill($index)" class="active m-r-md"><i class="fa fa-trash"></i></a>
+                          <!-- <a href class="active" title="add a bill"><i class="fa fa-plus-square" aria-hidden="true"></i></a> -->
                         </td>
                       </tr>
                     </tbody>
@@ -595,7 +597,7 @@
                   </div>
                 </div>
                 <div class="table-responsive">
-                  <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+                  <table class="table table-striped b-t b-light" style="table-layout:fixed; width: 100%;">
                     <thead>
                       <tr>
                         <th style="width:20px;">
@@ -603,28 +605,28 @@
                           <input type="checkbox"><i></i>
                         </label>
                         </th>
-                        <th style="width:30px">CID</th>
-                        <th style="width:250px">ER_ID</th>
-                        <th style="width:100px">CLType</th>
-                        <th style="width:100px">CLDate</th>
-                        <th style="width:150px">ContractFile</th>
-                        <th style="width:150px">ContractComment</th>
-                        <th style="width:150px">Manipulate</th>
+                        <th style="width:30px" class="text-center">CID</th>
+                        <th style="width:250px" class="text-center">ER_ID</th>
+                        <th style="width:200px" class="text-center">CLType</th>
+                        <th style="width:100px" class="text-center">CLDate</th>
+                        <th style="width:150px" class="text-center">ContractFile</th>
+                        <th style="width:150px" class="text-center">ContractComment</th>
+                        <th style="width:150px" class="text-center">Manipulate</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                        <td>1</td>
-                        <td><span>vvv</span></td>
-                        <td>整租</td>
-                        <td>25/06/2017</td>
-                        <td><a href="">ContractFile <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
-                        <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
-                        <td>
-                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
-                          <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                      <tr ng-repeat = "contract in Contracts track by $index">
+                        <td class="text-center"><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td class="text-center">{{$index + 1}}</td>
+                        <td class="text-center"><span>{{contract.address}}</span></td>
+                        <td class="text-center">{{contract.CLType}}</td>
+                        <td class="text-center">{{contract.CLDate}}</td>
+                        <td class="text-center"><a ng-href="{{contract.ContractFile}}">ContractFile <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <td class="text-center">{{contract.ContractComment}}</td>
+                        <td class="text-center">
+                          <!-- <a href class="active m-r-md"><i class="fa fa-pencil"></i></a> -->
+                          <a ng-click="contract_delete($index)" class="active m-r-md"><i class="fa fa-trash"></i></a>
+                          <!-- <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a> -->
                         </td>
                       </tr>
                     </tbody>
