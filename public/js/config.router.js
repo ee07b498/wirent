@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-16T09:42:54+10:00
+ * @Last modified time: 2017-08-24T14:47:50+10:00
  */
 
 
@@ -53,11 +53,7 @@ angular.module('app')
                   resolve: {
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad){
-                          return $ocLazyLoad.load('angularFileUpload').then(
-                              function(){
                                  return $ocLazyLoad.load('js/controllers/file-upload.js');
-                              }
-                          );
                       }]
                   }
               })
@@ -187,6 +183,16 @@ angular.module('app')
                       }]
                   }
               })
+              .state('app.customer.business', {
+                  url: '/business_management',
+                  templateUrl: 'tpl/customer/business_management.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/business_management.js');
+                      }]
+                  }
+              })
               .state('app.customer.userprofile', {
                   url: '/user_profile?CID',
                   templateUrl: 'tpl/customer/user_profile.html',
@@ -204,6 +210,16 @@ angular.module('app')
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad){
                           return $ocLazyLoad.load('js/controllers/landlord_profileCtrl.js');
+                      }]
+                  }
+              })
+              .state('app.customer.businessprofile', {
+                  url: '/business_profile?id',
+                  templateUrl: 'tpl/customer/business_profile.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/business_profileCtrl.js');
                       }]
                   }
               })

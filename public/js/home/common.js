@@ -1,3 +1,11 @@
+/**
+ * @Date:   2017-08-22T10:58:54+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-08-29T21:58:03+10:00
+ */
+
+
+
   'use strict';
   angular.module('andy')
    .controller('searchController', [
@@ -1527,6 +1535,9 @@
        if(r.data.customer_login_status){
          //search for the results of properties
            $scope.entireLocationSearch = function(theme) {
+             if(theme !==null){
+               $scope.include_area = false;
+             }
              var regionArr = [];
              var result = [];
              var suburb = "";
@@ -1608,6 +1619,9 @@
 
            /************share rooms data filter get starts**************/
           $scope.shareLocationSearch = function(theme){
+            if(theme !==null){
+              $scope.include_area = false;
+            }
             var regionArr = [];
             var result = [];
             var suburb = "";
@@ -1698,7 +1712,8 @@
              CID:r.data.CID,
              ER_Suburb: suburb,
              ER_Region: region,
-             include_area:$scope.include_area,
+            //  include_area:$scope.include_area,
+             include_area: false,
              ER_Type: $scope.myPropertyType,
              ER_PriceMin: $scope.myMinPrice,
              ER_PriceMax: $scope.myMaxPrice,
@@ -1771,7 +1786,8 @@
               CID:r.data.CID,
               ER_Suburb: suburb,
               ER_Region:region,
-              include_area:$scope.include_area_share,
+              // include_area:$scope.include_area_share,
+              include_area: false,
               ER_Type: $scope.myPropertyType,
               SRName:'',
               SRPriceMin: $scope.myMinPrice_Share,
@@ -1822,6 +1838,9 @@
         }else {
             //search for the results of properties
             $scope.entireLocationSearch = function(theme) {
+            if(theme !==null){
+              $scope.include_area = false;
+            }
             var regionArr = [];
             var result = [];
             var suburb = "";
@@ -1868,6 +1887,8 @@
                 entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
                 entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
              }
+             console.log(entireData);
+
              getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
                   $scope.data = result;
                   console.log($scope.data);
@@ -1875,14 +1896,16 @@
               },function(error){
                 console.log("error" + error);
               }).then(function(result){
+                var _entireData = {};
+                _entireData = entireData;
                 result = Math.ceil(result/20);
-                entireData.OrderBy = 'ER_AvailableDate';
-                entireData.PageID = 0;
+                _entireData.OrderBy = 'ER_AvailableDate';
+                _entireData.PageID = 0;
                  console.log(entireData);
-                 $http.post('/customer/filt/entire', entireData)
+                 $http.post('/customer/filt/entire', _entireData)
                   .then(function(r) {
                    SearchService.set(r);
-                   updateService.set(entireData);
+                   updateService.set(_entireData);
                    console.log('r===>', r);
                     $state.go('app.listpage');
                   }, function(e) {
@@ -1897,6 +1920,9 @@
 
             /***************share rooms search without login starts************************/
             $scope.shareLocationSearch = function(theme){
+              if(theme !==null){
+                $scope.include_area_share = false;
+              }
               var regionArr = [];
               var result = [];
               var suburb = "";
@@ -1987,7 +2013,8 @@
                 entireData = {
                  ER_Suburb: suburb,
                  ER_Region: region,
-                 include_area:$scope.include_area,
+                //  include_area:$scope.include_area,
+                 include_area:false, //station search 的时候不检查周边suburb
                  ER_Type: $scope.myPropertyType,
                  ER_PriceMin: $scope.myMinPrice,
                  ER_PriceMax: $scope.myMaxPrice,
@@ -2011,12 +2038,14 @@
                 },function(error){
                   console.log("error" + error);
                 }).then(function(result){
+                  var _entireData = {};
+                  _entireData = entireData;
                   result = Math.ceil(result/20);
-                  entireData.OrderBy = 'ER_AvailableDate';
-                  entireData.PageID = 0;
+                  _entireData.OrderBy = 'ER_AvailableDate';
+                  _entireData.PageID = 0;
                   console.log(entireData);
 
-                   $http.post('/customer/filt/entire', entireData)
+                   $http.post('/customer/filt/entire', _entireData)
                     .then(function(r) {
                       /****************************************************
                       station search region will be empty string,
@@ -2029,7 +2058,7 @@
                          entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
                       }
                      SearchService.set(r);
-                     updateService.set(entireData);
+                     updateService.set(_entireData);
                      console.log('r===>', r);
                       $state.go('app.listpage');
                     }, function(e) {
@@ -2062,7 +2091,8 @@
                shareData = {
                 ER_Suburb: suburb,
                 ER_Region: region,
-                include_area:$scope.include_area_share,
+                // include_area:$scope.include_area_share,
+                include_area:false, //station search 的时候不检查周边suburb
                 ER_Type: $scope.myPropertyType,
                 SRPriceMin: $scope.myMinPrice_Share,
                 SRPriceMax: $scope.myMaxPrice_Share,

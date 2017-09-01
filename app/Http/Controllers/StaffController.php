@@ -1,7 +1,11 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
+<<<<<<< HEAD
 # @Last modified time: 2017-08-18T16:13:04+10:00
+=======
+# @Last modified time: 2017-08-30T17:58:39+10:00
+>>>>>>> 83b93c7c5f69fefdd52b52365ad585b99dc99c8e
 
 
 
@@ -312,9 +316,9 @@ class StaffController extends Controller
 
 		$proc_name = 'proc_Insert_ERForm';
 		$sql = "call $proc_name(
-							'{$ER_ID}','{$er_including}','{$facility}','{$train_station}',{$bus_stop},
-							{$ferry},{$light_rail},{$shops},{$school},
-							{$others},{$description_en},{$description_ch},'{$description_zh}',
+							'{$ER_ID}','{$er_including}','{$facility}','{$train_station}','{$bus_stop}',
+							'{$ferry}','{$light_rail}','{$shops}','{$school}',
+							'{$others}','{$description_en}','{$description_ch}','{$description_zh}',
 							'{$comment}'
 							)";
 		$result = DB::insert($sql);
@@ -344,10 +348,10 @@ class StaffController extends Controller
 		$postcode = $request->input('postcode');
 		$proc_name = 'proc_Update_ERInfo';
 		$sql = "call $proc_name(
-							'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}',{$postcode},
-							{$ER_Area},{$ER_BedRoom},{$ER_BathRoom},{$ER_Kitchen},
-							{$ER_Dining},{$ER_Parking},{$ER_Price},'{$ER_Stat}',
-							'{$ER_AvailableDate}',{$LLID},'{$ER_InspRep}',
+							'{$ER_ID}','{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}','{$postcode}',
+							'{$ER_Area}','{$ER_BedRoom}','{$ER_BathRoom}','{$ER_Kitchen}',
+							'{$ER_Dining}','{$ER_Parking}','{$ER_Price}','{$ER_Stat}',
+							'{$ER_AvailableDate}','{$LLID}','{$ER_InspRep}',
 							'{$ER_Description}','{$ER_Type}','{$ER_Feature}'
 							)";
 		$result = DB::update($sql);
@@ -374,9 +378,9 @@ class StaffController extends Controller
 
 		$proc_name = 'proc_Update_ERForm';
 		$sql = "call $proc_name(
-							'{$identirerent_form}',{$ER_ID},'{$er_including}','{$facility}','{$train_station}',{$bus_stop},
-							{$ferry},{$light_rail},{$shops},{$school},
-							{$others},{$description_en},{$description_ch},'{$description_zh}',
+							'{$identirerent_form}','{$ER_ID}','{$er_including}','{$facility}','{$train_station}','{$bus_stop}',
+							'{$ferry}','{$light_rail}','{$shops}','{$school}',
+							'{$others}','{$description_en}','{$description_ch}','{$description_zh}',
 							'{$comment}'
 							)";
 		$result = DB::update($sql);
@@ -413,11 +417,11 @@ class StaffController extends Controller
 		return $result;
 	}
 
-	public function admin_er_form_check()
+	public function admin_er_form_check(Request $request)
 	{
 		$ER_ID = $request->input('ER_ID');
 		$proc_Name = 'check_EntireRentInfo_by_ERID';
-		$sql = "call $proc_Name({$ER_ID})";
+		$sql = "call $proc_Name('{$ER_ID}')";
 		$data = DB::select($sql);
 
 		//循环查询图片库及编辑文字叙述部分
@@ -496,7 +500,7 @@ class StaffController extends Controller
 		$others= $request->input('others');
 
 		$proc = 'proc_Insert_SRForm';
-		$sql = "call $proc('{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}',{$fur_laundry},'{$fur_living}','{$fur_balcony}','{$others}')";
+		$sql = "call $proc('{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}','{$fur_laundry}','{$fur_living}','{$fur_balcony}','{$others}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
@@ -541,6 +545,7 @@ class StaffController extends Controller
 	//picLibrary
 	//upload and view pic only after insp
 	//after pic file upload, pic relative path record into|delete from db
+
 	public function admin_pic_insert(Request $request) {
 		$ER_ID= $request->input('ER_ID');
 		$SRID= $request->input('SRID');
@@ -699,7 +704,7 @@ class StaffController extends Controller
 		$ContractComment= $request->input('ContractComment');
 
 		$proc = 'filt_Check_ContractLibrary';
-		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{CLDateMin}','{CLDateMax}','{$ContractComment}')";
+		$sql = "call $proc('{$ER_ID}','{$CLType}',{$CID},'{$CLDateMin}','{$CLDateMax}','{$ContractComment}')";
 		$result = DB::select($sql);
 		return json_encode($result);
 	}
@@ -713,7 +718,7 @@ class StaffController extends Controller
 		$ContractComment= $request->input('ContractComment');
 
 		$proc = 'proc_Insert_ContractLibrary';
-		$sql = "call $proc({$ER_ID},'{$CLType}',{$CID},'{$CLDate}','{$ContractFile}','{$ContractComment}')";
+		$sql = "call $proc('{$ER_ID}','{$CLType}',{$CID},'{$CLDate}','{$ContractFile}','{$ContractComment}')";
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
@@ -787,7 +792,7 @@ class StaffController extends Controller
 		$ServiceStat = $request->input('ServiceStat');
 
 		$proc = 'proc_Insert_ServiceLibrary';
-		$sql = "call $proc({$ER_ID},{$CID},'{$ServiceType}','{$ServiceFile}','{$ServiceComment}','{$ServiceDate}','{$ServiceStat}')";
+		$sql = "call $proc('{$ER_ID}','{$CID}','{$ServiceType}','{$ServiceFile}','{$ServiceComment}','{$ServiceDate}','{$ServiceStat}')";
 		$result = DB::insert($sql);
 		return $result;
 	}
@@ -860,7 +865,7 @@ class StaffController extends Controller
 		try
 		{
 			$proc_name = 'proc_Insert_MaintenanceLibrary';
-			$sql = "call $proc_name('{$MType}',{$ER_ID},{$CID},'{$MApplyForm}','{$MStat}','{$MApplyDate}')";
+			$sql = "call $proc_name('{$MType}','{$ER_ID}','{$CID}','{$MApplyForm}','{$MStat}','{$MApplyDate}')";
 			$result = DB::insert($sql);
 			return json_encode($result);
 		}
@@ -901,7 +906,8 @@ class StaffController extends Controller
 	 * admin thirdparty
 	 * 商家管理中新入住商家在商家表中记录商家信息，需要展示给租客业主看的添加promotion，之后不再合作的status改回0。
 	 */
-	// 商家分类查询， 服务类型 TPDetail；服务区域TPServLoc； 合作状态status；TPDetail|TPServLoc default都为空‘’，status=-1查全部商家
+	// 商家分类查询， 服务类型 TPDetail；服务区域TPServLoc；
+	// 合作状态status；TPDetail|TPServLoc default都为空‘’，status=-1查全部商家
 	public function admin_thirdparty_filt_check(Request $request)
 	{
 		$TPDetail = $request->input('TPDetail');
@@ -920,7 +926,7 @@ class StaffController extends Controller
 	// 商家名称模糊查询
 	public function admin_thirdparty_name_check(Request $request)
 	{
-		$TPName = $request->input('$TPName');
+		$TPName = $request->input('TPName');
 		try{
 			$proc_name = 'check_ThirdPartyInfo_by_TPName';
 			$sql = "call $proc_name('{$TPName}')";
@@ -934,7 +940,7 @@ class StaffController extends Controller
 	}
 
 	public function admin_thirdparty_insert(Request $request){
-		$TPName = $request->input('$TPName');
+		$TPName = $request->input('TPName');
 		$TPPassword = $request->input('TPPassword');
 		$TPDetail = $request->input('TPDetail');
 		$TPDescription = $request->input('TPDescription');
@@ -1015,13 +1021,13 @@ class StaffController extends Controller
 	}
 	//更新推广日期
 	public function admin_thirdparty_promotion_update(Request $request){
-		$idthirdparty_promotion = $request->input('idthirdparty_promotion');
+		// $idthirdparty_promotion = $request->input('idthirdparty_promotion');
 		$TPID = $request->input('TPID');
 		$StartDate = $request->input('StartDate');
 		$EndDate = $request->input('EndDate');
 		try{
 			$proc_name = 'proc_Insert_ThirdParty_promotion';
-			$sql = "call $proc_name('{$idthirdparty_promotion}','{$TPID}','{$StartDate}','{$EndDate}')";
+			$sql = "call $proc_name('{$TPID}','{$StartDate}','{$EndDate}')";
 			$result = DB::update($sql);
 			return $result;
 		}
@@ -1080,7 +1086,7 @@ class StaffController extends Controller
 		$BillDate = $request->input('BillDate');
 		$BillAmount = $request->input('BillAmount');
 		$BillReceipt = $request->input('BillReceipt');
-        $BillComment = $request->input('BillComment');
+    $BillComment = $request->input('BillComment');
 
 		$proc = 'proc_Update_BillLibrary';
 		$sql = "call $proc({$BLID},{$CID},{$ER_ID},'{$BillType}','{$BillCopy}','{$BillDate}',{$BillAmount},'{$BillReceipt}','{$BillComment}')";
@@ -1105,7 +1111,6 @@ class StaffController extends Controller
 //		    $request->photo->store($savePath, $fileName, $diskName);	//para1 必填,2可以自动生成唯一名称,3默认.env配置位置
 //		}
 //	}
-
 
 	/**
 	 * msg

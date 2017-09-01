@@ -1,7 +1,7 @@
 <!--
 # @Date:   2017-06-30T10:20:05+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-07-25T16:49:38+10:00
+# @Last modified time: 2017-08-24T14:11:54+10:00
 -->
 
 <!DOCTYPE html>
@@ -48,7 +48,8 @@
   <script src="vendor/angular/angular-translate/loader-static-files.js"></script>
   <script src="vendor/angular/angular-translate/storage-cookie.js"></script>
   <script src="vendor/angular/angular-translate/storage-local.js"></script>
-
+  <script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.48.min.js"></script>
   <!-- App -->
   <script src="js/app.js"></script>
   <script src="js/config.js"></script>

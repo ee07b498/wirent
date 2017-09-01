@@ -1,14 +1,13 @@
 <div class="panel panel-default">
   <div class="panel-heading font-bold">
-    maintenance add
+    更新服务
   </div>
   <div class="panel-body">
     <form class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>选择合同房源：</label>
+        <label class="col-sm-2 control-label" for="input-id-1"><i style="color:red">*</i>地址：</label>
         <div class="col-sm-10">
-          <select ng-model="propertyItem.address" class="input form-control inline v-middle m-b" ng-options="myproperty.address as myproperty.address for myproperty in properties">
-          </select>
+          <p>{{Service.address}}</p>
         </div>
       </div>
       <div class="form-group">
@@ -29,21 +28,21 @@
           <div class="input-group w-md">
             <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateSelect.dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
             <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
+              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Maintenance Type</label>
+        <label class="col-sm-2 control-label">Service Type</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control m-b" ng-model="Maintenance.MType" placeholder="Name">
+          <input type="text" class="form-control m-b" ng-model="Service.ServiceType" placeholder="Name">
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Maintenance Status</label>
+        <label class="col-sm-2 control-label">Service status</label>
         <div class="col-sm-10">
-          <select ng-model="Maintenance.MStat" class="input form-control inline v-middle m-b">
+          <select ng-model="Service.ServiceStat" class="input form-control inline v-middle m-b">
             <option>Pending</option>
             <option>Processing</option>
             <option>Complete</option>
@@ -51,21 +50,22 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Maintenance Application Form</label>
+        <label class="col-sm-2 control-label">文件：</label>
         <div class="col-sm-10">
           <div class="b" ng-strict-di>
             <form novalidate>
               <div class="text-center">
                 <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
-                <p>Choose a file to upload.</p>
+                <!-- <p>Choose a file to upload.</p> -->
+                <p>{{Service.ServiceFile}}</p>
                 <p>
-                  <button type="file" ngf-select="uploadMaintenance($files)" ngf-multiple="false" class="btn btn btn-warning">
+                  <button type="file" ngf-select="uploadService($files)" ngf-multiple="false" class="btn btn btn-warning">
                       Select File
                   </button>
                 </p>
               </div>
-              <div ng-show="MaintenanceFiles.length > 0" class="text-center">
-                <div ng-repeat="file in MaintenanceFiles">
+              <div ng-show="ServiceFiles.length > 0" class="text-center">
+                <div ng-repeat="file in ServiceFiles">
                   File:
                   <div>
                     {{file.name}} {{file.$error}} {{file.$errorParam}}
@@ -83,10 +83,16 @@
                   <p>If the problem persits please supply us with the following details</p>
                   <p>{{errorMsg}}</p>
                 </div>
-                <div>{{MaintenanceError}}</div>
+                <div>{{ServiceError}}</div>
               </div>
             </form>
           </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Service Comment</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" rows="6" ng-model="Service.ServiceComment" placeholder="Type your message"></textarea>
         </div>
       </div>
       <div class="form-group text-center">
