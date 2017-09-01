@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-18T12:16:37+10:00
+# @Last modified time: 2017-08-18T16:13:04+10:00
 
 
 
@@ -469,9 +469,9 @@ class StaffController extends Controller
 		$proc = 'proc_Check_SR_Form_by_SRID';
 		$sql = "call $proc({$SRID})";
 		$result = DB::select($sql);
-		return $result;		
+		return $result;
 	}
-	
+
 	public function admin_sr_insert(Request $request) {
 		$ER_ID = $request->input('ER_ID');
 		$SRArea= $request->input('SRArea');
@@ -484,7 +484,7 @@ class StaffController extends Controller
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}
-	
+
 	public function admin_sr_form_insert(Request $request) {
     	$SRID= $request->input('SRID');
 		$sr_including= $request->input('sr_including');
@@ -494,13 +494,13 @@ class StaffController extends Controller
 		$fur_living= $request->input('fur_living');
 		$fur_balcony= $request->input('fur_balcony');
 		$others= $request->input('others');
-		
+
 		$proc = 'proc_Insert_SRForm';
 		$sql = "call $proc('{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}',{$fur_laundry},'{$fur_living}','{$fur_balcony}','{$others}')";
 		$result = DB::insert($sql);
-		return json_encode($result);	
+		return json_encode($result);
 	}
-	
+
 	public function admin_sr_update(Request $request) {
 		$SRID = $request->input('SRID');
 		$ER_ID = $request->input('ER_ID');
@@ -514,7 +514,7 @@ class StaffController extends Controller
 		$result = DB::update($sql);
 		return json_encode($result);
 	}
-	
+
 	public function admin_sr_form_update(Request $request) {
 		$idsharerent_form = $request->input('idsharerent_form');
     	$SRID= $request->input('SRID');
@@ -525,14 +525,14 @@ class StaffController extends Controller
 		$fur_living= $request->input('fur_living');
 		$fur_balcony= $request->input('fur_balcony');
 		$others= $request->input('others');
-		
+
 		$proc = 'proc_Update_SRForm';
 		$sql = "call $proc('{$idsharerent_form}','{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}',{$fur_laundry},'{$fur_living}','{$fur_balcony}','{$others}')";
 		$result = DB::update($sql);
 		return json_encode($result);
-	}	
-	
-	
+	}
+
+
 	//requirements to inval sr
 	public function admin_sr_delete(Request $request) {
 
@@ -916,7 +916,7 @@ class StaffController extends Controller
 		{
 			return $e;
 		}
-	} 
+	}
 	// 商家名称模糊查询
 	public function admin_thirdparty_name_check(Request $request)
 	{
@@ -931,7 +931,7 @@ class StaffController extends Controller
 		{
 			return $e;
 		}
-	} 
+	}
 
 	public function admin_thirdparty_insert(Request $request){
 		$TPName = $request->input('$TPName');
@@ -954,11 +954,11 @@ class StaffController extends Controller
 		catch(exception $e)
 		{
 			return $e;
-		}							
+		}
 	}
 	//商家信息更新， 不更新部分为空‘’
 	public function admin_thirdparty_update(Request $request){
-		$TPID = $request->input('TPID');	
+		$TPID = $request->input('TPID');
 		$TPName = $request->input('TPName');
 		$TPPassword = $request->input('TPPassword');
 		$TPDetail = $request->input('TPDetail');
@@ -980,9 +980,9 @@ class StaffController extends Controller
 		catch(exception $e)
 		{
 			return $e;
-		}							
+		}
 	}
-	
+
 	public function admin_thirdparty_promotion_check(Request $request)
 	{
 		$TPID = $request->input('TPID');
@@ -990,7 +990,7 @@ class StaffController extends Controller
 			$proc_name = 'check_ThirdParty_promotion_by_TPID';
 			$sql = "call $proc_name('{$TPID}')";
 			$result = DB::select($sql);
-			return $result;	
+			return $result;
 		}
 		catch(exception $e)
 		{
@@ -1006,7 +1006,7 @@ class StaffController extends Controller
 			$proc_name = 'proc_Insert_ThirdParty_promotion';
 			$sql = "call $proc_name('{$TPID}','{$StartDate}','{$EndDate}')";
 			$result = DB::select($sql);
-			return $result;	
+			return $result;
 		}
 		catch(exception $e)
 		{
@@ -1023,14 +1023,14 @@ class StaffController extends Controller
 			$proc_name = 'proc_Insert_ThirdParty_promotion';
 			$sql = "call $proc_name('{$idthirdparty_promotion}','{$TPID}','{$StartDate}','{$EndDate}')";
 			$result = DB::update($sql);
-			return $result;	
+			return $result;
 		}
 		catch(exception $e)
 		{
 			return $e;
 		}
 	}
-	
+
 	/**
 	 * admin bill
 	 * convenient method to notice unpaid bill to payment role
@@ -1138,7 +1138,7 @@ class StaffController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
-	
+
 	public function msg_write(Request $request) {
 		$title = $request->input('title');
 		$content = $request->input('content');
@@ -1167,15 +1167,15 @@ class StaffController extends Controller
 	 * IdReceiver是收信人id 例如：员工发给客户的，IdReceiver = CID (CName = Libin 的是 1)
 	 * 当收信人id>0时查发送给某个人的， 当id<=0时查所有已发送邮件
 	 */
-	 
+
 	public function msg_trace(Request $request) {
 		$IdSender =$request->input('IdSender');	//i.e. staffID=3
-		$IdReceiver=$request->input('IdReceiver');	//i.e. =3
+		$IdReceiver=$request->input('IdReceiver');	//i.e. =0
 		$msg_direct_comment = $request->input('msg_direct_comment');
 		$proc_Name = 'msg_trace';
 		$sql = "call $proc_Name({$IdSender},{$IdReceiver},'{$msg_direct_comment}')";
 		$result = DB::select($sql);
-		return $result;	
+		return $result;
 	}
 }
 ?>

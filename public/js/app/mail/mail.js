@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-18T12:33:08+10:00
+ * @Last modified time: 2017-08-18T16:25:32+10:00
  */
 app.controller('MailCtrl', ['$scope', '$http','mails', function($scope, $http,mails) {
   var vm = this;
@@ -20,7 +20,40 @@ app.controller('MailCtrl', ['$scope', '$http','mails', function($scope, $http,ma
                 console.log('albums retrieval failed.')
        });
      }
-  //=======================================
+//====================================================================================
+//msg_trace test
+$http.post('/staff/msg_trace', {'IdSender':3,'IdReceiver':0,'msg_direct_comment':'staff to customer'})
+  .then(function(response) {
+    console.log("response", response);
+  }, function(x) {
+    console.log('Server Error');
+  });
+
+//admin_sr_form_check
+$http.post('/staff/admin_sr_form_check', {'SRID':1})
+  .then(function(response) {
+    console.log("response", response);
+  }, function(x) {
+    console.log('Server Error');
+  });
+
+//admin_thirdparty_filt_check
+$http.post('/staff/admin_thirdparty_promotion_check', {'TPID':1})
+  .then(function(response) {
+    console.log("response", response);
+  }, function(x) {
+    console.log('Server Error');
+  });
+  //admin_thirdparty_filt_check
+  $http.post('/staff/admin_thirdparty_filt_check', {'TPDetail':'','TPServLoc':''})
+    .then(function(response) {
+      console.log("response", response);
+    }, function(x) {
+      console.log('Server Error');
+    });
+
+
+//=====================================================================================
   vm.getMessages();
 
   $http.post('/staff/msg_received', vm.msg_received)
