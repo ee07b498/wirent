@@ -7,37 +7,40 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">Address</label>
         <div class="col-sm-10">
-          <select ng-model="propertyItem.address" class="input form-control inline v-middle m-b" ng-options="propertyItem.address as propertyItem.address for propertyItem in propertyItems">
-          </select>
+          <p>{{address}}</p>
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Family</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" ng-model="propertyForm.facility" placeholder="facility">
+          <p ng-show="!edit">{{entireFormData.facility}}</p>
+          <input ng-show="edit" type="text" class="form-control" ng-model="entireFormData.facility" placeholder="facility">
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Station</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" ng-model="propertyForm.train_station" placeholder="station">
+          <p ng-show="!edit">{{entireFormData.train_station}}</p>
+          <input ng-show="edit" type="text" class="form-control" ng-model="entireFormData.train_station" placeholder="station">
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Bus Stop</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" ng-model="propertyForm.bus_stop" placeholder="bus stop">
+          <p ng-show="!edit">{{entireFormData.bus_stop}}</p>
+          <input ng-show="edit" type="text" class="form-control" ng-model="entireFormData.bus_stop" placeholder="bus stop">
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">ferry</label>
         <div class="col-sm-10">
-          <div class="input-group m-b">
-            <input type="text" class="form-control" ng-model="propertyForm.ferry" placeholder="ferry">
+          <p ng-show="!edit">{{entireFormData.ferry}}</p>
+          <div class="input-group m-b" ng-show="edit">
+            <input type="text" class="form-control" ng-model="entireFormData.ferry" placeholder="ferry">
             <span class="input-group-addon"><i class="fa fa-bath"></i></span>
           </div>
         </div>
@@ -46,8 +49,9 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">light rail</label>
         <div class="col-sm-10">
-          <div class="input-group m-b">
-            <input type="text" class="form-control" ng-model="propertyForm.light_rail" placeholder="light_rail">
+          <p ng-show="!edit">{{entireFormData.light_rail}}</p>
+          <div class="input-group m-b" ng-show="edit">
+            <input type="text" class="form-control" ng-model="entireFormData.light_rail" placeholder="light_rail">
             <span class="input-group-addon"><i class="fa fa-bed"></i></span>
           </div>
         </div>
@@ -56,8 +60,9 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">shops</label>
         <div class="col-sm-10">
-          <div class="input-group m-b">
-            <input type="text" class="form-control" ng-model="propertyForm.shops" placeholder="shops">
+          <p ng-show="!edit">{{entireFormData.shops}}</p>
+          <div class="input-group m-b" ng-show="edit">
+            <input type="text" class="form-control" ng-model="entireFormData.shops" placeholder="shops">
             <span class="input-group-addon"><i class="fa fa-car"></i></span>
           </div>
         </div>
@@ -66,56 +71,64 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">school</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" ng-model="propertyForm.school" placeholder="school">
+          <p ng-show="!edit">{{entireFormData.school}}</p>
+          <input ng-show="edit" type="text" class="form-control" ng-model="entireFormData.school" placeholder="school">
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">others</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" ng-model="propertyForm.others" placeholder="others">
+          <p ng-show="!edit">{{entireFormData.others}}</p>
+          <input ng-show="edit" type="text" class="form-control" ng-model="entireFormData.others" placeholder="others">
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Including</label>
         <div class="col-sm-10">
-          <textarea class="form-control" rows="6" ng-model="propertyItem.er_including" placeholder="type in comment"></textarea>
+          <p ng-show="!edit">{{entireFormData.er_including}}</p>
+          <textarea ng-show="edit" class="form-control" rows="6" ng-model="entireFormData.er_including" placeholder="type in comment"></textarea>
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">description en</label>
         <div class="col-sm-10">
-          <textarea class="form-control" rows="6" ng-model="propertyForm.description_en" placeholder="description en version"></textarea>
+          <p ng-show="!edit">{{entireFormData.description_en}}</p>
+          <textarea ng-show="edit" class="form-control" rows="6" ng-model="entireFormData.description_en" placeholder="description en version"></textarea>
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">description ch</label>
         <div class="col-sm-10">
-          <textarea class="form-control" rows="6" ng-model="propertyForm.description_ch" placeholder="description ch version"></textarea>
+          <p ng-show="!edit">{{entireFormData.description_ch}}</p>
+          <textarea ng-show="edit" class="form-control" rows="6" ng-model="entireFormData.description_ch" placeholder="description ch version"></textarea>
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">description zh</label>
         <div class="col-sm-10">
-          <textarea class="form-control" rows="6" ng-model="propertyForm.description_zh" placeholder="description zh version"></textarea>
+          <p ng-show="!edit">{{entireFormData.description_zh}}</p>
+          <textarea ng-show="edit" class="form-control" rows="6" ng-model="entireFormData.description_zh" placeholder="description zh version"></textarea>
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group">
         <label class="col-sm-2 control-label">comment</label>
         <div class="col-sm-10">
-          <textarea class="form-control" rows="6" ng-model="propertyForm.comment" placeholder="type in comment"></textarea>
+          <p ng-show="!edit">{{entireFormData.comment}}</p>
+          <textarea ng-show="edit" class="form-control" rows="6" ng-model="entireFormData.comment" placeholder="type in comment"></textarea>
         </div>
       </div>
       <div class="line line-dashed b-b line-lg"></div>
       <div class="form-group text-center">
         <div class="col-sm-4 col-sm-offset-4">
           <button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
-          <button type="submit" class="btn btn-success" ng-click="ok()">Add property</button>
+            <button type="submit" class="btn btn-success" ng-show="!edit" ng-click="Edit()">Edit</button>
+            <button type="submit" class="btn btn-success" ng-show="edit" ng-click="Save()">Save</button>
         </div>
       </div>
     </form>

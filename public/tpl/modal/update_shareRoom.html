@@ -8,7 +8,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Landlord</label>
           <div class="col-sm-10">
-            <p style="color:red; font-size: 14px;">Libin</p>
+            <p style="color:red; font-size: 14px;">{{ShareRoomData.LLName}}</p>
           </div>
         </div>
       </div>
@@ -17,31 +17,35 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Address</label>
           <div class="col-sm-10">
-            <p style="color:red; font-size: 14px;">9/20 harbourne road</p>
+            <p style="color:red; font-size: 14px;">{{ShareRoomData.address}}</p>
           </div>
         </div>
         <div class="line line-dashed b-b line-lg "></div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Area</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" ng-model="staffInfo.SCurrLoc" placeholder="Current Location">
+            <input type="text" class="form-control m-b" ng-model="ShareRoomData.SRArea" placeholder="Current Location">
           </div>
         </div>
         <div class="line line-dashed b-b line-lg "></div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Status</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" ng-model="staffInfo.SCurrLoc" placeholder="Current Location">
-            <!-- <select ng-model="staffInfo.SRankName" class="input form-control inline v-middle m-b"  ng-options="myrankname.SRankName as myrankname.SRankName for myrankname in ranknames">
-                 </select> -->
+            <!-- <input type="text" class="form-control m-b" ng-model="ShareRoomData.SRStat" placeholder="Current Location"> -->
+            <select ng-model="ShareRoomData.SRStat" class="input form-control inline v-middle m-b">
+              <option>Pending</option>
+              <option>Processing</option>
+              <option>Deposit Taken</option>
+              <option>Renting</option>
+            </select>
           </div>
         </div>
         <div class="line line-dashed b-b line-lg "></div>
         <div class="form-group">
           <label class="col-sm-2 control-label">AvailableDate</label>
-          <div class="col-sm-10">
+          <div class="col-sm-10 m-b">
             <div class="input-group w-sm">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="$parent.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateSelect.dt" is-open="$parent.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -52,14 +56,19 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Price</label>
           <div class="col-sm-10">
-              <input type="text" class="form-control" ng-model="staffInfo.SCurrLoc" placeholder="Current Location">
+              <input type="text" class="form-control m-b" ng-model="ShareRoomData.SRPrice" placeholder="Current Location">
           </div>
         </div>
         <div class="line line-dashed b-b line-lg "></div>
         <div class="form-group">
           <label class="col-sm-2 control-label">RoomType</label>
           <div class="col-sm-10">
-              <input type="text" class="form-control" ng-model="staffInfo.SCurrLoc" placeholder="Current Location">
+              <!-- <input type="text" class="form-control m-b" ng-model="ShareRoomData.SRName" placeholder="Current Location"> -->
+              <select ng-model="ShareRoomData.SRName" class="input form-control inline v-middle m-b">
+                <option>Single</option>
+                <option>Master</option>
+                <option>Double</option>
+              </select>
           </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>

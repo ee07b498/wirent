@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-03T22:25:24+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-30T17:58:39+10:00
+# @Last modified time: 2017-09-01T15:25:34+10:00
 
 
 
@@ -517,7 +517,7 @@ class StaffController extends Controller
 
 	public function admin_sr_form_update(Request $request) {
 		$idsharerent_form = $request->input('idsharerent_form');
-    	$SRID= $request->input('SRID');
+    $SRID= $request->input('SRID');
 		$sr_including= $request->input('sr_including');
 		$fur_room= $request->input('fur_room');
 		$fur_kitchen= $request->input('fur_kitchen');
@@ -527,7 +527,7 @@ class StaffController extends Controller
 		$others= $request->input('others');
 
 		$proc = 'proc_Update_SRForm';
-		$sql = "call $proc('{$idsharerent_form}','{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}',{$fur_laundry},'{$fur_living}','{$fur_balcony}','{$others}')";
+		$sql = "call $proc('{$idsharerent_form}','{$SRID}','{$sr_including}','{$fur_room}','{$fur_kitchen}','{$fur_laundry}','{$fur_living}','{$fur_balcony}','{$others}')";
 		$result = DB::update($sql);
 		return json_encode($result);
 	}
@@ -881,7 +881,7 @@ class StaffController extends Controller
 		$MConfirm = $request->input('MConfirm');
 
 		$proc_name = 'proc_Insert_MaintenanceLibrary';
-		$sql = "call $proc_name({$MLID},'{$MType}',{$ER_ID},{$CID},'{$MApplyForm}','{$MStat}','{$MConfirm}')";
+		$sql = "call $proc_name('{$MLID}','{$MType}','{$ER_ID}','{$CID}','{$MApplyForm}','{$MStat}','{$MConfirm}')";
 		$result = DB::update($sql);
 		return json_encode($result);
 	}

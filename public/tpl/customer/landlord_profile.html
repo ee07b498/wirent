@@ -14,9 +14,13 @@
     <tab heading="Profile Information">
       <div class="row">
         <div class="col-sm-5">
-          <a href class="">
-            <img src="img/andy.jpg" class="img-circle">
-          </a>
+          <div class="text-center">
+              <div class="text-center">
+                <img ng-src="{{business_info.TPLogo}}" class="img-circle" style="width:250px;height:250px;"alt="...">
+              </div>
+              <div class="h4 m-t m-b-xs">{{business_info.TPName}}</div>
+              <small class="text-muted m-b">{{business_info.TPDetail}}</small>
+          </div>
         </div>
         <div class="col-sm-7">
           <div class="clear m-b pull-in">
@@ -160,7 +164,7 @@
           <script type="text/ng-template" id="landlordPropertyAdd.html">
             <div ng-include="'/tpl/modal/landlord_propertyAdd.html'"></div>
           </script>
-          <script type="text/ng-template" id="propertyForms.html">
+          <!-- <script type="text/ng-template" id="propertyForms.html">
             <div ng-include="'/tpl/modal/landlord_property_form.html'"></div>
           </script>
           <script type="text/ng-template" id="landlordShareRoomAdd.html">
@@ -168,12 +172,12 @@
           </script>
           <script type="text/ng-template" id="shareRoomFormAdd.html">
             <div ng-include="'/tpl/modal/landlord_shareRoomForm_add.html'"></div>
-          </script>
+          </script> -->
           <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
           <button class="btn btn-info" ng-click="landlord_propertyAdd('lg')"><i class="fa fa-plus"></i>房屋信息添加</button>
-          <button class="btn btn-info" ng-click="landlord_propertyFormAdd('')"><i class="fa fa-plus"></i>整租表格添加</button>
+          <!-- <button class="btn btn-info" ng-click="landlord_propertyFormAdd('')"><i class="fa fa-plus"></i>整租表格添加</button>
           <button class="btn btn-info" ng-click="landlord_ShareRoomAdd('')"><i class="fa fa-plus"></i>分租信息添加</button>
-          <button class="btn btn-info" ng-click="landlord_ShareRoomFormAdd('')"><i class="fa fa-plus"></i>分租表格添加</button>
+          <button class="btn btn-info" ng-click="landlord_ShareRoomFormAdd('')"><i class="fa fa-plus"></i>分租表格添加</button> -->
         </div>
         <div class="row wrapper">
           <div class="col-sm-3 m-b-xs">
@@ -251,8 +255,362 @@
                     <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
                     <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
                   </a>
-                  <a class="active m-r-md" ng-click="property_pic_add('')"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a class="active m-r-md" ng-click="property_pic_add('', $index)"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
                   <a href><i class="fa fa-trash" ng-click="er_delete(property.ER_ID)"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+              <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+            </div>
+            <div class="col-sm-6 text-right text-center-xs">
+              <ul class="pagination pagination-sm m-t-none m-b-none">
+                <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                <li><a href>1</a></li>
+                <li><a href>2</a></li>
+                <li><a href>3</a></li>
+                <li><a href>4</a></li>
+                <li><a href>5</a></li>
+                <li><a href><i class="fa fa-chevron-right"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </tab>
+    <tab heading="Entire Forms">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <!-- <script type="text/ng-template" id="landlordPropertyAdd.html">
+            <div ng-include="'/tpl/modal/landlord_propertyAdd.html'"></div>
+          </script> -->
+          <script type="text/ng-template" id="propertyForms.html">
+            <div ng-include="'/tpl/modal/landlord_property_form.html'"></div>
+          </script>
+          <!-- <script type="text/ng-template" id="landlordShareRoomAdd.html">
+            <div ng-include="'/tpl/modal/landlord_shareRoom_add.html'"></div>
+          </script>
+          <script type="text/ng-template" id="shareRoomFormAdd.html">
+            <div ng-include="'/tpl/modal/landlord_shareRoomForm_add.html'"></div>
+          </script> -->
+          <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+          <!-- <button class="btn btn-info" ng-click="landlord_propertyAdd('lg')"><i class="fa fa-plus"></i>房屋信息添加</button> -->
+          <button class="btn btn-info" ng-click="landlord_propertyFormAdd('')"><i class="fa fa-plus"></i>整租表格添加</button>
+          <!-- <button class="btn btn-info" ng-click="landlord_ShareRoomAdd('')"><i class="fa fa-plus"></i>分租信息添加</button>
+          <button class="btn btn-info" ng-click="landlord_ShareRoomFormAdd('')"><i class="fa fa-plus"></i>分租表格添加</button> -->
+        </div>
+        <div class="row wrapper">
+          <div class="col-sm-3 m-b-xs">
+            <select class="input-sm form-control w-sm inline v-middle">
+              <option value="0">整租</option>
+              <option value="1">分租</option>
+              <option value="2">二手房购买</option>
+              <option value="3">房产投资</option>
+          </select>
+            <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+          </div>
+          <div class="col-sm-5">
+            <div class="input-group">
+              <input type="text" class="input-sm form-control" placeholder="Search">
+              <span class="input-group-btn">
+              <button class="btn btn-sm btn-default" type="button" ng-click="admin_er_check()">Go!</button>
+            </span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+            <thead>
+              <tr>
+                <th style="width:20px;">
+                  <label class="i-checks m-b-none">
+                  <input type="checkbox"><i></i>
+                </label>
+                </th>
+                <th style="width:30px;" class="text-center">ID</th>
+                <th style="width:100px;" class="text-center">房屋类型</th>
+                <th style="width:50px;" class="text-center">No</th>
+                <th style="width:100px;" class="text-center">地址</th>
+                <th style="width:100px;" class="text-center">所属区</th>
+                <th style="width:100px;" class="text-center">所属州</th>
+                <th style="width:100px;" class="text-center">房屋状态</th>
+                <th style="width:100px;" class="text-center">可租时间</th>
+                <th style="width:100px;" class="text-center">表单</th>
+                <th style="width:100px;" class="text-center">状态</th>
+                <th style="width:200px;" class="text-center">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="property in properties track by $index">
+                <td class="text-center"><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td class="text-center">{{$index + 1}}</td>
+                <td class="text-center">{{property.ER_Type}}</td>
+                <td class="text-center">{{property.ER_No}}</td>
+                <td class="text-center">{{property.ER_St}}</td>
+                <td class="text-center">{{property.ER_Suburb}}</td>
+                <td class="text-center">{{property.ER_Region}}</td>
+                <td class="text-center">{{property.ER_Stat}}</td>
+                <td class="text-center">{{property.ER_AvailableDate}}</td>
+                <script type="text/ng-template" id="entireFormCheck.html">
+                  <div ng-include="'/tpl/modal/property_entire_form.html'"></div>
+                </script>
+                <td class="text-center"><a ng-click="entire_form('', property.ER_ID, property.ER_No+' '+property.ER_St+' '+property.ER_Suburb +','+property.ER_Region)">表单&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></td>
+                <td class="text-center">
+                  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                </td>
+                <script type="text/ng-template" id="propertyDetailsEdit.html">
+                  <div ng-include="'/tpl/modal/property_details_modify.html'"></div>
+                </script>
+                <script type="text/ng-template" id="propertyPicAdd.html">
+                  <div ng-include="'/tpl/modal/property_pic_add.html'"></div>
+                </script>
+                <td class="text-center">
+                  <a href class="active m-r-md" ng-click="details_Edit('lg',$index)"><i class="fa fa-pencil"></i></a>
+                  <a href class="active m-r-md" ng-click="check=!check">
+                    <i class="fa fa-check" aria-hidden="true" ng-show="check"></i>
+                    <i class="fa fa-times" aria-hidden="true" ng-show="!check"></i>
+                  </a>
+                  <a class="active m-r-md" ng-click="property_pic_add('', $index)"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                  <a href><i class="fa fa-trash" ng-click="er_delete(property.ER_ID)"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+              <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+            </div>
+            <div class="col-sm-6 text-right text-center-xs">
+              <ul class="pagination pagination-sm m-t-none m-b-none">
+                <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                <li><a href>1</a></li>
+                <li><a href>2</a></li>
+                <li><a href>3</a></li>
+                <li><a href>4</a></li>
+                <li><a href>5</a></li>
+                <li><a href><i class="fa fa-chevron-right"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </tab>
+    <tab heading="Share Property">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <script type="text/ng-template" id="landlordShareRoomAdd.html">
+            <div ng-include="'/tpl/modal/landlord_shareRoom_add.html'"></div>
+          </script>
+          <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+          <button class="btn btn-info" ng-click="landlord_ShareRoomAdd('')"><i class="fa fa-plus"></i>分租信息添加</button>
+        </div>
+        <div class="row wrapper">
+          <div class="col-sm-3 m-b-xs">
+            <select class="input-sm form-control w-sm inline v-middle">
+              <option value="0">整租</option>
+              <option value="1">分租</option>
+              <option value="2">二手房购买</option>
+              <option value="3">房产投资</option>
+          </select>
+            <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+          </div>
+          <div class="col-sm-5">
+            <div class="input-group">
+              <input type="text" class="input-sm form-control" placeholder="Search">
+              <span class="input-group-btn">
+              <button class="btn btn-sm btn-default" type="button" ng-click="admin_er_check()">Go!</button>
+            </span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light"  style="table-layout:fixed; width: 100%;">
+            <thead>
+              <tr>
+                <th style="width:20px;">
+                  <label class="i-checks m-b-none">
+                    <input type="checkbox"><i></i>
+                  </label>
+                </th>
+                <th style="width:30px;" class="text-center">ID</th>
+                <th style="width:100px;" class="text-center">Landlord</th>
+                <th style="width:200px;" class="text-center">Property address</th>
+                <!-- <th style="width:150px;" class="text-center">表单信息</th> -->
+                <th style="width:150px;" class="text-center">Available Date</th>
+                <th style="width:100px;" class="text-center">Price</th>
+                <th style="width:100px;" class="text-center">Area</th>
+                <th style="width:100px;" class="text-center">Room Type</th>
+                <th style="width:100px;" class="text-center">Status</th>
+                <th style="width:200px;" class="text-center">Manipulate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="property in ShareProperties track by $index">
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td class="text-center">{{$index + 1}}</td>
+                <td class="text-center"><a href>{{property.LLName}}</a></td>
+                <td class="text-center"><a>{{property.address}}</a></td>
+                <!-- <script type="text/ng-template" id="shareRoomForm.html">
+                  <div ng-include="'/tpl/modal/property_share_form.html'"></div>
+                </script> -->
+                <!-- <td class="text-center"><a class="active" ng-click="shareForm('', property.address, property.SRID)">表单&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></td> -->
+                <td class="text-center" data-value="78025368997">{{property.SRAvailableDate}}</td>
+                <td class="text-center"><span><i class="fa fa-usd"></i></span><span>&nbsp;{{property.SRPrice}}</span></td>
+                <td class="text-center">{{property.SRArea}}</td>
+                <td class="text-center" data-value="1"><span class="label bg-primary" title="Active">{{property.SRName}}</span></td>
+                <td class="text-center" data-value="1"><span class="label bg-danger" title="Active">{{property.SRStat}}</span></td>
+                <script type="text/ng-template" id="updateShareRoom.html">
+                  <div ng-include="'/tpl/modal/update_shareRoom.html'"></div>
+                </script>
+                <script type="text/ng-template" id="sharePicAdd.html">
+                  <div ng-include="'/tpl/modal/share_property_pic_add.html'"></div>
+                </script>
+                <td class="text-center">
+                  <span class="m-r-md" ng-click="show=!show">
+                    <i class="fa fa-level-down" ng-if="show" title="下架"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
+                  </span>
+                  <span class="active m-r-md" ng-click="share_property_pic_add('', $index)">
+                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                  </span>
+                  <!-- <span class="m-r-md" ng-click="user=!user">
+                    <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
+                    <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
+                  </span> -->
+                  <span class="m-r-md" ng-click="update_shareRoom('',$index)">
+                    <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
+                  </span>
+                  <span>
+                    <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+              <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+            </div>
+            <div class="col-sm-6 text-right text-center-xs">
+              <ul class="pagination pagination-sm m-t-none m-b-none">
+                <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                <li><a href>1</a></li>
+                <li><a href>2</a></li>
+                <li><a href>3</a></li>
+                <li><a href>4</a></li>
+                <li><a href>5</a></li>
+                <li><a href><i class="fa fa-chevron-right"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </tab>
+    <tab heading="Share Form">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <script type="text/ng-template" id="shareRoomFormAdd.html">
+            <div ng-include="'/tpl/modal/landlord_shareRoomForm_add.html'"></div>
+          </script>
+          <button class="btn btn-danger"><i class="fa fa-trash"></i>批量删除</button>
+          <button class="btn btn-info" ng-click="landlord_ShareRoomFormAdd('')"><i class="fa fa-plus"></i>分租表格添加</button>
+        </div>
+        <div class="row wrapper">
+          <div class="col-sm-3 m-b-xs">
+            <select class="input-sm form-control w-sm inline v-middle">
+              <option value="0">整租</option>
+              <option value="1">分租</option>
+              <option value="2">二手房购买</option>
+              <option value="3">房产投资</option>
+          </select>
+            <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+          </div>
+          <div class="col-sm-5">
+            <div class="input-group">
+              <input type="text" class="input-sm form-control" placeholder="Search">
+              <span class="input-group-btn">
+              <button class="btn btn-sm btn-default" type="button" ng-click="admin_er_check()">Go!</button>
+            </span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light"  style="table-layout:fixed; width: 100%;">
+            <thead>
+              <tr>
+                <th style="width:20px;">
+                  <label class="i-checks m-b-none">
+                    <input type="checkbox"><i></i>
+                  </label>
+                </th>
+                <th style="width:30px;" class="text-center">ID</th>
+                <th style="width:100px;" class="text-center">Landlord</th>
+                <th style="width:200px;" class="text-center">Property address</th>
+                <th style="width:150px;" class="text-center">表单信息</th>
+                <th style="width:150px;" class="text-center">Available Date</th>
+                <th style="width:100px;" class="text-center">Price</th>
+                <th style="width:100px;" class="text-center">Area</th>
+                <th style="width:100px;" class="text-center">Room Type</th>
+                <th style="width:100px;" class="text-center">Status</th>
+                <th style="width:200px;" class="text-center">Manipulate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="property in ShareProperties track by $index">
+                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td class="text-center">{{$index + 1}}</td>
+                <td class="text-center"><a href>{{property.LLName}}</a></td>
+                <td class="text-center"><a>{{property.address}}</a></td>
+                <script type="text/ng-template" id="shareRoomForm.html">
+                  <div ng-include="'/tpl/modal/property_share_form.html'"></div>
+                </script>
+                <td class="text-center"><a class="active" ng-click="shareForm('', property.address, property.SRID)">表单&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></td>
+                <td class="text-center" data-value="78025368997">{{property.SRAvailableDate}}</td>
+                <td class="text-center"><span><i class="fa fa-usd"></i></span><span>&nbsp;{{property.SRPrice}}</span></td>
+                <td class="text-center">{{property.SRArea}}</td>
+                <td class="text-center" data-value="1"><span class="label bg-primary" title="Active">{{property.SRName}}</span></td>
+                <td class="text-center" data-value="1"><span class="label bg-danger" title="Active">{{property.SRStat}}</span></td>
+                <script type="text/ng-template" id="updateShareRoom.html">
+                  <div ng-include="'/tpl/modal/update_shareRoom.html'"></div>
+                </script>
+                <script type="text/ng-template" id="sharePicAdd.html">
+                  <div ng-include="'/tpl/modal/share_property_pic_add.html'"></div>
+                </script>
+                <td class="text-center">
+                  <span class="m-r-md" ng-click="show=!show">
+                    <i class="fa fa-level-down" ng-if="show" title="下架"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true" ng-if="!show" title="发布"></i>
+                  </span>
+                  <span class="active m-r-md" ng-click="share_property_pic_add('', $index)">
+                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                  </span>
+                  <!-- <span class="m-r-md" ng-click="user=!user">
+                    <i class="fa fa-plus" aria-hidden="true" title="添加房产" ng-if="user"></i>
+                    <i class="fa fa-user" aria-hidden="true" title="已分配" ng-if="!user"></i>
+                  </span> -->
+                  <span class="m-r-md" ng-click="update_shareRoom('',$index)">
+                    <i class="fa fa-pencil" aria-hidden="true" title="修改"></i>
+                  </span>
+                  <span>
+                    <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
+                  </span>
                 </td>
               </tr>
             </tbody>

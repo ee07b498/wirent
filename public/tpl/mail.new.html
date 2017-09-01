@@ -62,7 +62,7 @@
             </div>
           </div>
           <div ui-jq="wysiwyg" class="form-control h-auto" style="min-height:200px;">
-            Go ahead&hellip;
+            <textarea class="form-control" rows="6" ng-model="vm.mail.content" style="width:100%;min-height:200px; border:none;" placeholder="Type your message"></textarea>
           </div>
         </div>
       </div>
@@ -72,8 +72,5 @@
         </div>
       </div>
     </form>
-    <div ng-repeat="list in vm.tolist track by $index" style="width:200px;height:50px;color:red">
-      {{list.email}}000
-    </div>
   </div>
 </div>

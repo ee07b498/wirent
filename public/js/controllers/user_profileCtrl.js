@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-30T17:57:35+10:00
+ * @Last modified time: 2017-08-31T17:53:23+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -927,7 +927,7 @@ app.controller('maintenanceAddInstanceCtrl', ['$scope', '$modalInstance', '$filt
     $scope.Maintenance.MApplyDate = $scope.dateSelect.dt;
     console.log($scope.Maintenance);
     /*************get all customers' informations***************/
-    $http.post('/staff/admin_customer_service_insert', $scope.Maintenance)
+    $http.post('/staff/admin_customer_maintenance_insert', $scope.Maintenance)
       .then(function(response) {
         console.log(response.data);
       }, function(x) {
@@ -940,6 +940,69 @@ app.controller('maintenanceAddInstanceCtrl', ['$scope', '$modalInstance', '$filt
     $modalInstance.dismiss('cancel');
   };
 }]);
+app.controller('maintenanceUpdateInstanceCtrl', ['$scope', '$modalInstance', '$filter', '$http', 'items', 'customerItem', 'S3UploadImgService', function($scope, $modalInstance, $filter, $http, items, customerItem, S3UploadImgService) {
+  $scope.customer = customerItem;
+  $scope.propertyItem = {};
+  $scope.Maintenance = {};
+  $scope.authorError = false;
+  $scope.Maintenance.MType = "";
+  $scope.Maintenance.MApplyForm = "";
+  $scope.Maintenance.MConfirm = "";
+  $scope.Maintenance.MStat = "";
+  $scope.Maintenance = items;
+  console.log(items);
+  //upload Bill Copy
+  $scope.uploadMaintenance = function(files) {
+    $scope.MaintenanceFiles = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.MaintenanceFiles, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.MaintenanceError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.Maintenance.MApplyForm = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
+
+          }
+        });
+      });
+    }
+  };
+
+  $scope.ok = function() {
+    $scope.authorError = false;
+    if ($scope.Maintenance.MApplyForm === "") {
+      $scope.authorError = true;
+    }
+    if (!$scope.Maintenance.MConfirm) {
+      $scope.Maintenance.MConfirm = "Pending";
+    }
+    /*************get all customers' informations***************/
+    var MaintenanceDataItem = {}
+    MaintenanceDataItem = $scope.Maintenance;
+    delete MaintenanceDataItem["address"];
+    delete MaintenanceDataItem["MApplyDate"];
+    // delete MaintenanceDataItem["MLID"];
+    console.log(MaintenanceDataItem);
+    $http.post('/staff/admin_customer_maintenance_update', MaintenanceDataItem)
+      .then(function(response) {
+        console.log(response.data);
+      }, function(x) {
+        console.log('Server Error');
+      });
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+
 app.controller('inspectionAddInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
   $scope.items = items;
   $scope.selected = {
@@ -992,9 +1055,9 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
   };
 
   // Disable weekend selection
-  $scope.disabled = function(date, mode) {
-    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
-  };
+  // $scope.disabled = function(date, mode) {
+  //   return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+  // };
   $scope.toggleMin = function() {
     $scope.minDate = $scope.minDate ? null : new Date();
   };
@@ -1002,7 +1065,7 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
   $scope.open = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
-    $scope.opened = true;
+    $scope.opened = !$scope.opened ;
   };
 
   $scope.dateOptions = {
@@ -1432,7 +1495,31 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
       }
     });
   };
-
+  $scope.maintenance_update = function(size, index) {
+    var modalInstance = $modal.open({
+      templateUrl: 'maintenanceUpdate.html',
+      controller: 'maintenanceUpdateInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.Maintenances[index];
+        },
+        customerItem: function(){
+          return $scope.customerItem;
+        }
+      }
+    });
+  };
+  $scope.maintenance_delete = function(index) {
+    var maintenanceDeleteData = {};
+    maintenanceDeleteData.MLID = $scope.Maintenances[index].MLID
+    $http.post('/staff/admin_customer_maintenance_delete', maintenanceDeleteData)
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
+  };
   /***********add inspection info********************/
   $scope.inspection_add = function(size) {
     var modalInstance = $modal.open({

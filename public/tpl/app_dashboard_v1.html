@@ -101,7 +101,7 @@
                 <div ng-include="'/tpl/modal/property_entire_form.html'"></div>
               </script>
               <td class="text-center">
-                <a class="active" ng-click="entireForm('',entireItem.ER_ID)">表单&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                <a class="active" ng-click="entireForm('', entireItem.ER_ID, entireItem.ER_No+' '+entireItem.ER_St+' '+entireItem.ER_Suburb +','+entireItem.ER_Region)">表单&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
               </td>
               <script type="text/ng-template" id="propertyDetails.html">
                 <div ng-include="'/tpl/modal/property_details.html'"></div>

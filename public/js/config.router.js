@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-24T14:47:50+10:00
+ * @Last modified time: 2017-09-01T14:09:38+10:00
  */
 
 
@@ -333,7 +333,7 @@ angular.module('app')
                   templateUrl: 'tpl/mail.list.html'
               })
               .state('app.mail.detail', {
-                  url: '/{mailId:[0-9]{1,4}}',
+                  url: '/?mailId&foldId',
                   templateUrl: 'tpl/mail.detail.html'
               })
               .state('app.mail.compose', {

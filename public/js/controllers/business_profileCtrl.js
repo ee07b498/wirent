@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-24T13:55:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-29T14:32:16+10:00
+ * @Last modified time: 2017-08-31T17:49:44+10:00
  */
 'use strict'
 
@@ -270,6 +270,28 @@ app.controller('business_profileCtrl', ['$scope', '$modal', '$http', '$log', '$l
         });
     } else if ($scope.changePassword.newPassword !== $scope.changePassword.retypePassword) {
       $scope.authorError = true;
+    }
+  };
+  //upload Bill Copy
+  $scope.uploadAdsLogo = function(files) {
+    $scope.AdsLogo = files;
+    if (files && files.length > 0) {
+      angular.forEach($scope.AdsLogo, function(file, key) {
+        S3UploadImgService.Upload(file).then(function(result) {
+          // Mark as success
+          file.Success = true;
+        }, function(error) {
+          // Mark the error
+          $scope.AdsLogoError = error;
+        }, function(progress) {
+          // Write the progress as a percentage
+          file.Progress = (progress.loaded / progress.total) * 100;
+          if (file.Progress === 100) {
+            $scope.business_info.TPLogo = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/" + file.name;
+
+          }
+        });
+      });
     }
   };
   //////////////////////profile update///////////////////////////////

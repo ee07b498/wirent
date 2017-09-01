@@ -14,9 +14,13 @@
     <tab heading="Profile Information">
       <div class="row">
         <div class="col-sm-5">
-          <a href class="">
-            <img src="img/andy.jpg" class="img-circle">
-          </a>
+          <div class="text-center">
+              <div class="text-center">
+                <img ng-src="{{business_info.TPLogo}}" class="img-circle" style="width:250px;height:250px;"alt="...">
+              </div>
+              <div class="h4 m-t m-b-xs">{{business_info.TPName}}</div>
+              <small class="text-muted m-b">{{business_info.TPDetail}}</small>
+          </div>
         </div>
         <div class="col-sm-7">
           <div class="clear m-b pull-in">
@@ -130,7 +134,43 @@
                 <div class="col-sm-10">
                   <div class="row">
                     <div class="col-sm-12">
-                      <input type="text" name="text" class="form-control m-b" ng-model="business_info.TPLogo" placeholder="Logo">
+                      <!-- <input type="text" name="text" class="form-control m-b" ng-model="business_info.TPLogo" placeholder="Logo"> -->
+                      <div class="b" ng-strict-di>
+                        <form novalidate>
+                          <div class="text-center">
+                            <!-- <p>We strongly recommend <a href="http://7-zip.org/download.html">7-zip</a> for zipping/extracting files</p> -->
+                            <!-- <p>Choose a photo ID to upload.</p> -->
+                              <p>{{business_info.TPLogo}}</p>
+                            <p>
+                              <button type="file" ngf-select="uploadAdsLogo($files)" ngf-multiple="true" class="btn btn btn-warning">
+                                  Select File
+                              </button>
+                            </p>
+                          </div>
+                          <div ng-show="AdsLogo.length > 0" class="text-center">
+                            <div ng-repeat="file in AdsLogo">
+                              File:
+                              <div>
+                                {{file.name}} {{file.$error}} {{file.$errorParam}}
+                              </div>
+                              <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+                                  {{file.Progress | number:0}}%
+                                </div>
+                              </div>
+                              <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+                              <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+                            </div>
+                            <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+                              Oooops we had trouble uploading the file. Please refresh the page and try again.
+                              <p>If the problem persits please supply us with the following details</p>
+                              <p>{{errorMsg}}</p>
+                            </div>
+                            <div>{{AdsLogoError}}</div>
+                          </div>
+                        </form>
+                      </div>
+
                     </div>
                   </div>
                 </div>

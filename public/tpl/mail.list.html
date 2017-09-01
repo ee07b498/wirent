@@ -9,7 +9,7 @@
     <div class="btn-toolbar">
       <div class="btn-group dropdown">
         <button class="btn btn-default btn-sm btn-bg dropdown-toggle" data-toggle="dropdown">
-          <span class="dropdown-label">Filter</span>                    
+          <span class="dropdown-label">Filter</span>
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu text-left text-sm">
@@ -26,18 +26,21 @@
 
   <!-- list -->
   <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-    <li ng-repeat="mail in mails | filter:fold" ng-class="labelClass(mail.label)" class="list-group-item clearfix b-l-3x">
+    <div ng-if="!mails.length">
+      没有数据。。请前去添加！
+    </div>
+    <li ng-repeat="mail in mails | filter:fold" ng-class="labelClass(mail.readStat)" class="list-group-item clearfix b-l-3x">
       <a ui-sref="app.page.profile" class="avatar thumb pull-left m-r">
-        <img ng-src="{{mail.avatar}}">
+        <img ng-src="../img/a6.jpg">
       </a>
       <div class="pull-right text-sm text-muted">
-        <span class="hidden-xs">{{ mail.date | fromNow }}</span>
+        <span class="hidden-xs">{{ mail.createTime }}</span>
         <i class="fa fa-paperclip ng-hide m-l-sm" ng-show="{{mail.attach}}"></i>
       </div>
       <div class="clear">
-        <div><a ui-sref="app.mail.detail({mailId:mail.id})" class="text-md">{{mail.subject}}</a><span class="label bg-light m-l-sm">{{mail.label}}</span></div>
+        <div><a ui-sref="app.mail.detail({mailId:mail.idMsg_sr,foldId:mail.idMsg_direct})" class="text-md">{{mail.title}}</a><span class="label bg-light m-l-sm">{{mail.label}}</span></div>
         <div class="text-ellipsis m-t-xs">{{mail.content | limitTo:100}}</div>
-      </div>      
+      </div>
     </li>
   </ul>
   <!-- / list -->

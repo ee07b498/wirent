@@ -268,7 +268,7 @@
                 <label class="col-sm-2 control-label">Datepicker</label>
                 <div class="col-sm-10">
                   <div class="input-group w-md m-b">
-                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateSelect.dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateSelect.dt" is-open="$parent.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                     <span class="input-group-btn">
                       <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -803,14 +803,16 @@
                         <td class="text-center">{{$index + 1}}</td>
                         <td class="text-center">{{maintenance.address}}</td>
                         <td class="text-center">{{maintenance.MType}}</td>
-                        <td class="text-center"><a>{{maintenance.MApplyForm}}<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                        <td class="text-center"><a ng-href="{{maintenance.MApplyForm}}">Application Form<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
                         <td class="text-center">{{maintenance.MApplyDate}}</td>
-                        <td class="text-center">{{maintenance.MConfirm}}</td>
+                        <td class="text-center"><span class="label bg-primary" title="Active">{{maintenance.MConfirm}}</span></td>
                         <td data-value="1" class="text-center"><span class="label bg-success" title="Active">{{maintenance.MStat}}</span></td>
+                        <script type="text/ng-template" id="maintenanceUpdate.html">
+                          <div ng-include="'/tpl/modal/maintenance_update.html'"></div>
+                        </script>
                         <td class="text-center">
-                          <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
-                          <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
-                          <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                          <a ng-click="maintenance_update('', $index)" class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                          <a ng-click="maintenance_delete($index)" class="active m-r-md"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                     </tbody>

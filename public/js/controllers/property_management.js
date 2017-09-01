@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-12T12:15:07+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-29T10:50:23+10:00
+ * @Last modified time: 2017-08-31T17:30:34+10:00
  */
 'use strict'
 app.controller('entirePropertyAddInstanceCtrl', ['$scope', '$modalInstance', 'items', '$filter', '$http', function($scope, $modalInstance, items, $filter, $http) {
@@ -285,27 +285,46 @@ app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'item
 }]);
 
 // entire form check modal
-app.controller('entireFormCheckInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', function($scope, $http, $modalInstance, items) {
-  $scope.propertyForm = {};
-  $scope.entire_form = {};
-  $scope.entire_form.ER_ID = items;
-  $scope.ok = function() {
-    console.log(items);
-    $http.post('/staff/admin_er_form_check', $scope.entire_form)
+app.controller('entireFormCheckInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items','address', function($scope, $http, $modalInstance, items, address) {
+  $scope.address = address;
+  $scope.entireFormData = items[0];
+  $scope.edit = false;
+  $scope.Edit = function() {
+    $scope.edit = true;
+  };
+  $scope.Save = function() {
+    $scope.edit = false;
+    var entireFormUpdate = {};
+    entireFormUpdate.identirerent_form = $scope.entireFormData.identirerent_form;
+    entireFormUpdate.ER_ID = $scope.entireFormData.ER_ID;
+    entireFormUpdate.er_including = $scope.entireFormData.er_including;
+    entireFormUpdate.facility = $scope.entireFormData.facility;
+    entireFormUpdate.train_station = $scope.entireFormData.train_station;
+    entireFormUpdate.bus_stop = $scope.entireFormData.bus_stop;
+    entireFormUpdate.ferry = $scope.entireFormData.ferry;
+    entireFormUpdate.light_rail = $scope.entireFormData.light_rail;
+    entireFormUpdate.shops = $scope.entireFormData.shops;
+    entireFormUpdate.school = $scope.entireFormData.school || '';
+    entireFormUpdate.others = $scope.entireFormData.others;
+    entireFormUpdate.description_en = $scope.entireFormData.description_en;
+    entireFormUpdate.description_ch = $scope.entireFormData.description_ch;
+    entireFormUpdate.description_zh = $scope.entireFormData.description_zh;
+    entireFormUpdate.comment = $scope.entireFormData.comment;
+    console.log(entireFormUpdate);
+    $http.post('/staff/admin_landlord_er_form_update', entireFormUpdate)
       .then(function(response) {
         console.log("response", response);
-        $scope.propertyForm = response.data;
         $modalInstance.close();
       }, function(x) {
         console.log('Server Error');
       });
     $modalInstance.close();
   };
-
   $scope.cancel = function() {
     $modalInstance.dismiss('cancel');
   };
 }]);
+
 
 app.controller('propertyManagementCtrl', function($scope, $http, $state, $modal, $log, $timeout) {
   $scope.inputStr = "";
@@ -381,23 +400,30 @@ app.controller('propertyManagementCtrl', function($scope, $http, $state, $modal,
       console.log('Server Error');
     });
   //===========================entire form check====================================================
-  $scope.entireForm = function(size,ER_ID) {
-    var modalInstance = $modal.open({
-      templateUrl: 'entireFormCheck.html',
-      controller: 'entireFormCheckInstanceCtrl',
-      size: size,
-      resolve: {
-        items: function() {
-          return ER_ID;
-        }
-      }
-    });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
+  $scope.entireForm = function(size,ER_ID,address) {
+    $scope.EntireRoomForm = {};
+    $scope.entireForm = {};
+    $scope.entireForm.ER_ID = ER_ID;
+    $http.post('/staff/admin_er_form_check', $scope.entireForm)
+      .then(function(response) {
+        console.log("response", response);
+        $scope.EntireRoomForm = response.data;
+        var modalInstance = $modal.open({
+          templateUrl: 'entireFormCheck.html',
+          controller: 'entireFormCheckInstanceCtrl',
+          size: size,
+          resolve: {
+            items: function() {
+              return $scope.EntireRoomForm;
+            },
+            address: function(){
+              return address;
+            }
+          }
+        });
+      }, function(x) {
+        console.log('Server Error');
+      });
   };
   ///////////////////////////////////property details////////////////////////////////////////
   $scope.openDetails = function(size, $index) {

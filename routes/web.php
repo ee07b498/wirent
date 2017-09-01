@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-30T17:31:50+10:00
+# @Last modified time: 2017-09-01T15:40:47+10:00
 
 
 
@@ -137,19 +137,25 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 		$app->post('/admin_landlord_check', 			['uses'=>'StaffController@admin_landlord_check']);
 		$app->post('/admin_landlord_insert', 			['uses'=>'StaffController@admin_landlord_insert']);
 		$app->post('/admin_landlord_update', 			['uses'=>'StaffController@admin_landlord_update']);
+
+
 		$app->post('/admin_landlord_er_check', 			['uses'=>'StaffController@admin_landlord_er_check']);
 		$app->post('/admin_landlord_er_insert', 			['uses'=>'StaffController@admin_landlord_er_insert']);
 		$app->post('/admin_landlord_er_update', 			['uses'=>'StaffController@admin_landlord_er_update']);
 		$app->post('/admin_landlord_er_delete', 			['uses'=>'StaffController@admin_landlord_er_delete']);
 		$app->post('/admin_landlord_er_form_insert', 			['uses'=>'StaffController@admin_landlord_er_form_insert']);
-
 		$app->post('/admin_er_check', 			['uses'=>'StaffController@admin_er_check']);
+		$app->post('/admin_er_form_check', 			['uses'=>'StaffController@admin_er_form_check']);
+		$app->post('/admin_landlord_er_form_update', 			['uses'=>'StaffController@admin_landlord_er_form_update']);
 		$app->post('/admin_sr_check', 			['uses'=>'StaffController@admin_sr_check']);
 		$app->post('/admin_sr_form_check', 			['uses'=>'StaffController@admin_sr_form_check']);
-		$app->post('/admin_er_form_check', 			['uses'=>'StaffController@admin_er_form_check']);
+
 		$app->get('/admin_sr_list_check', 			['uses'=>'StaffController@admin_sr_list_check']);
 		$app->post('/admin_sr_insert', 			['uses'=>'StaffController@admin_sr_insert']);
 		$app->post('/admin_sr_form_insert', 			['uses'=>'StaffController@admin_sr_form_insert']);
+		$app->post('/admin_sr_form_update', 			['uses'=>'StaffController@admin_sr_form_update']);
+
+		$app->post('/admin_sr_update', 			['uses'=>'StaffController@admin_sr_update']);
 
 		// customer start
 		$app->post('/admin_customer_check', 			['uses'=>'StaffController@admin_customer_check']);
@@ -177,11 +183,16 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 
 		//maintenance check
 		$app->post('/admin_customer_maintenance_check', 			['uses'=>'StaffController@admin_customer_maintenance_check']);
+		$app->post('/admin_customer_maintenance_insert', 			['uses'=>'StaffController@admin_customer_maintenance_insert']);
+		$app->post('/admin_customer_maintenance_update', 			['uses'=>'StaffController@admin_customer_maintenance_update']);
+		$app->post('/admin_customer_maintenance_delete', 			['uses'=>'StaffController@admin_customer_maintenance_delete']);
+
 		//msg check
 		$app->post('/msg_direct_check', 			['uses'=>'StaffController@msg_direct_check']);
 		$app->post('/msg_received', 			['uses'=>'StaffController@msg_received']);
 		$app->post('/msg_write', 			['uses'=>'StaffController@msg_write']);
 		$app->post('/msg_trace', 			['uses'=>'StaffController@msg_trace']);
+		$app->post('/msg_confirm', 			['uses'=>'StaffController@msg_confirm']);
 
 		// business section
 		$app->post('/admin_thirdparty_filt_check', 			['uses'=>'StaffController@admin_thirdparty_filt_check']);

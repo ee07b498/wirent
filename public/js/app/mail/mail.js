@@ -1,9 +1,9 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-18T16:25:32+10:00
+ * @Last modified time: 2017-09-01T16:34:42+10:00
  */
-app.controller('MailCtrl', ['$scope', '$http','mails', function($scope, $http,mails) {
+app.controller('MailCtrl', ['$scope', '$http', '$state', 'mails', 'getDataCommonService', function($scope, $http, $state, mails, getDataCommonService) {
   var vm = this;
   vm.msg_direct = {};
   vm.msg_received = {};
@@ -11,54 +11,21 @@ app.controller('MailCtrl', ['$scope', '$http','mails', function($scope, $http,ma
   vm.msg_received.msg_direct_comment = '% to Staff';
 
   vm.getMessages = function() {
-        mails.getMessages()
-            .then(function(messages) {
-                    vm.tolist = messages;
-                    console.log(messages);
-                },
-            function(data) {
-                console.log('albums retrieval failed.')
-       });
-     }
-//====================================================================================
-//msg_trace test
-$http.post('/staff/msg_trace', {'IdSender':3,'IdReceiver':0,'msg_direct_comment':'staff to customer'})
-  .then(function(response) {
-    console.log("response", response);
-  }, function(x) {
-    console.log('Server Error');
-  });
-
-//admin_sr_form_check
-$http.post('/staff/admin_sr_form_check', {'SRID':1})
-  .then(function(response) {
-    console.log("response", response);
-  }, function(x) {
-    console.log('Server Error');
-  });
-
-//admin_thirdparty_filt_check
-$http.post('/staff/admin_thirdparty_promotion_check', {'TPID':1})
-  .then(function(response) {
-    console.log("response", response);
-  }, function(x) {
-    console.log('Server Error');
-  });
-  //admin_thirdparty_filt_check
-  $http.post('/staff/admin_thirdparty_filt_check', {'TPDetail':'','TPServLoc':''})
-    .then(function(response) {
-      console.log("response", response);
-    }, function(x) {
-      console.log('Server Error');
-    });
-
-
-//=====================================================================================
+    mails.getMessages()
+      .then(function(messages) {
+          vm.tolist = messages;
+          console.log(messages);
+        },
+        function(data) {
+          console.log('albums retrieval failed.')
+        });
+  }
   vm.getMessages();
 
   $http.post('/staff/msg_received', vm.msg_received)
     .then(function(response) {
       console.log("response", response);
+      getDataCommonService.set(response.data, 'messages');
     }, function(x) {
       console.log('Server Error');
     });
@@ -75,103 +42,465 @@ $http.post('/staff/admin_thirdparty_promotion_check', {'TPID':1})
       filter: ''
     },
     {
+        name: 'Sent',
+        filter: '0'
+      },
+    {
       name: 'Staff to Staff',
-      filter: 'starred'
+      filter: '1'
     },
     {
       name: 'Customer to Staff',
-      filter: 'sent'
+      filter: '2'
     },
     {
       name: 'Landlord to Staff',
-      filter: 'important'
+      filter: '3'
     },
     {
       name: 'Thirdparty to Staff',
-      filter: 'draft'
+      filter: '4'
     },
     {
       name: 'Staff to Customer',
-      filter: 'trash'
+      filter: '5'
     },
     {
       name: 'Staff to Landlord',
-      filter: 'trash'
+      filter: '6'
     },
     {
       name: 'Staff to Thirdparty',
-      filter: 'trash'
+      filter: '7'
     }
   ];
-  /*angular.forEach($scope.msg_direct, function(value, key) {
-    for (var i = 0; i < array.length; i++) {
-      array[i]
-    }
-
-  });*/
-
-
-  vm.labels = [{
-      name: 'Angular',
-      filter: 'angular',
-      color: '#23b7e5'
-    },
-    {
-      name: 'Bootstrap',
-      filter: 'bootstrap',
-      color: '#7266ba'
-    },
-    {
-      name: 'Client',
-      filter: 'client',
-      color: '#fad733'
-    },
-    {
-      name: 'Work',
-      filter: 'work',
-      color: '#27c24c'
-    }
-  ];
-
-  vm.addLabel = function() {
-    vm.labels.push({
-      name: vm.newLabel.name,
-      filter: angular.lowercase(vm.newLabel.name),
-      color: '#ccc'
+  $scope.labelClass = function(label) {
+   return {
+     'active': !~label
+   };
+ };
+  //已发邮件
+  $scope.trace_desc = {};
+  $scope.trace_desc.IdSender = 3;
+  $scope.trace_desc.IdReceiver = -1;
+  $scope.trace_desc.msg_direct_comment = '% to %';
+  $http.post('/staff/msg_trace', $scope.trace_desc)
+    .then(function(response) {
+      console.log("response", response);
+    }, function(x) {
+      console.log('Server Error');
     });
-    vm.newLabel.name = '';
-  }
 
-  vm.labelClass = function(label) {
-    return {
-      'b-l-info': angular.lowercase(label) === 'angular',
-      'b-l-primary': angular.lowercase(label) === 'bootstrap',
-      'b-l-warning': angular.lowercase(label) === 'client',
-      'b-l-success': angular.lowercase(label) === 'work'
-    };
+
+  vm.compose = function() {
+    vm.getCustomers = function() {
+      mails.getCustomers()
+        .then(function(customers) {
+            console.log('albums returned to controller.', customers);
+            getDataCommonService.set(customers, 'customer');
+            $state.go("app.mail.compose");
+          },
+          function(data) {
+            console.log('albums retrieval failed.');
+          });
+    }
+    vm.getCustomers();
   };
 
 }]);
 
-app.controller('MailListCtrl', ['$scope', 'mails', '$stateParams', function($scope, mails, $stateParams) {
+app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$localStorage', 'getDataCommonService', function($scope, $http, mails, $stateParams, $localStorage, getDataCommonService) {
   $scope.fold = $stateParams.fold;
-  mails.all().then(function(mails) {
-    $scope.mails = mails;
-  });
+  console.log(typeof $scope.fold);
+
+  switch ($scope.fold) {
+    case '0':
+      $scope.msg_sent = {};
+      $scope.msg_sent.IdSender = 3;
+      $scope.msg_sent.IdReceiver = 0;
+      $scope.msg_sent.msg_direct_comment = '% to %';
+
+      $http.post('/staff/msg_trace', $scope.msg_sent)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '1':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Staff to Staff';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '2':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Customer to Staff';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '3':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Landlord to Staff';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '4':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Thirdparty to Staff';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '5':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Staff to Customer';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '6':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Staff to Landlord';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '7':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Staff to Thirdparty';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+      default:
+        $scope.msg_received = {};
+        $scope.msg_received.StaffID = 3;
+        $scope.msg_received.msg_direct_comment = 'Customer to Staff';
+
+        $http.post('/staff/msg_received', $scope.msg_received)
+          .then(function(response) {
+            console.log("response", response);
+            $scope.mails = response.data;
+          }, function(x) {
+            console.log('Server Error');
+          });
+        break;
+  }
+  // mails.all().then(function(mails) {
+  //   $scope.mails = mails;
+  // });
+
+
 }]);
 
-app.controller('MailDetailCtrl', ['$scope', 'mails', '$stateParams', function($scope, mails, $stateParams) {
-  mails.get($stateParams.mailId).then(function(mail) {
-    $scope.mail = mail;
-  })
+app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateParams', function($scope, $http, $state, mails, $stateParams) {
+  $scope.fold = $stateParams.foldId;
+  $scope.contents = "";
+  switch ($scope.fold) {
+    case '0':
+      $scope.msg_sent = {};
+      $scope.msg_sent.IdSender = 3;
+      $scope.msg_sent.IdReceiver = 0;
+      $scope.msg_sent.msg_direct_comment = '% to %';
+
+      $http.post('/staff/msg_trace', $scope.msg_sent)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          angular.forEach($scope.mails, function(value, key){
+              if (value.idMsg_sr == $stateParams.mailId) {
+                  $scope.mail = value;
+                  $scope.mail.from = 'Staff';
+                  //******标记信息已读******//
+                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                    .then(function(response) {
+                      console.log("response", response);
+                    }, function(x) {
+                      console.log('Server Error');
+                    });
+              }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '1':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Staff to Staff';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          angular.forEach($scope.mails, function(value, key){
+              if (value.idMsg_sr == $stateParams.mailId) {
+                  $scope.mail = value;
+                  $scope.mail.from = 'Staff';
+                  //******标记信息已读******//
+                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                    .then(function(response) {
+                      console.log("response", response);
+                    }, function(x) {
+                      console.log('Server Error');
+                    });
+              }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '2':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Customer to Staff';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          console.log(typeof $stateParams.mailId);
+          angular.forEach($scope.mails, function(value, key){
+              if (value.idMsg_sr == $stateParams.mailId) {
+                $scope.mail = value;
+                $scope.mail.from = 'Customer';
+                //******标记信息已读******//
+                $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                  .then(function(response) {
+                    console.log("response", response);
+                  }, function(x) {
+                    console.log('Server Error');
+                  });
+              }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '3':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Landlord to Staff';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          angular.forEach($scope.mails, function(value, key){
+              if (value.idMsg_sr == $stateParams.mailId) {
+                  $scope.mail = value;
+                  $scope.mail.from = 'Landlord';
+                  //******标记信息已读******//
+                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                    .then(function(response) {
+                      console.log("response", response);
+                    }, function(x) {
+                      console.log('Server Error');
+                    });
+              }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '4':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Thirdparty to Staff';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          angular.forEach($scope.mails, function(value, key){
+              if (value.idMsg_sr == $stateParams.mailId) {
+                  $scope.mail = value;
+                  $scope.mail.from = 'Thirdparty';
+                  //******标记信息已读******//
+                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                    .then(function(response) {
+                      console.log("response", response);
+                    }, function(x) {
+                      console.log('Server Error');
+                    });
+              }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '5':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Staff to Customer';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          angular.forEach($scope.mails, function(value, key){
+              if (value.idMsg_sr == $stateParams.mailId) {
+                  $scope.mail = value;
+                  $scope.mail.from = 'Staff';
+                  //******标记信息已读******//
+                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                    .then(function(response) {
+                      console.log("response", response);
+                    }, function(x) {
+                      console.log('Server Error');
+                    });
+              }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '6':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Staff to Landlord';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          angular.forEach($scope.mails, function(value, key){
+              if (value.idMsg_sr == $stateParams.mailId) {
+                $scope.mail = value;
+                $scope.mail.from = 'Staff';
+                //******标记信息已读******//
+                $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                  .then(function(response) {
+                    console.log("response", response);
+                  }, function(x) {
+                    console.log('Server Error');
+                  });
+              }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+    case '7':
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Staff to Thirdparty';
+
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          angular.forEach($scope.mails, function(value, key){
+              if (value.idMsg_sr == $stateParams.mailId) {
+                  $scope.mail = value;
+                  $scope.mail.from = 'Staff';
+                  //******标记信息已读******//
+                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                    .then(function(response) {
+                      console.log("response", response);
+                    }, function(x) {
+                      console.log('Server Error');
+                    });
+              }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
+      default:
+        $scope.msg_received = {};
+        $scope.msg_received.StaffID = 3;
+        $scope.msg_received.msg_direct_comment = 'Customer to Staff';
+
+        $http.post('/staff/msg_received', $scope.msg_received)
+          .then(function(response) {
+            console.log("response", response);
+            $scope.mails = response.data;
+            angular.forEach($scope.mails, function(value, key){
+                if (value.idMsg_sr == $stateParams.mailId) {
+                  $scope.mail = value;
+                  $scope.mail.from = 'Customer';
+                  //******标记信息已读******//
+                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
+                    .then(function(response) {
+                      console.log("response", response);
+                    }, function(x) {
+                      console.log('Server Error');
+                    });
+                }
+            });
+          }, function(x) {
+            console.log('Server Error');
+          });
+        break;
+  }
+
+  $scope.Send = function(){
+    $scope.Reply = {};
+    $scope.Reply.title = $scope.mail.title;
+    $scope.Reply.content = $scope.contents;
+    $scope.Reply.StaffID = 3;
+    $scope.Reply.IdReceiver = $scope.mail.idSender;
+    $scope.Reply.msg_direct_comment = $scope.msg_received.msg_direct_comment;
+    console.log($scope.Reply);
+    $http.post('/staff/msg_write', $scope.Reply)
+      .then(function(response) {
+        console.log("response", response);
+        $state.go("app.mail.list");
+      }, function(x) {
+        console.log('Server Error');
+      });
+  }
 }]);
 
-app.controller('MailNewCtrl', ['$scope', 'mails', '$http', '$state', function($scope, mails, $http, $state) {
-  /*  $scope.mail = {
-      to: '',
-      subject: '',
-      content: ''
-    }*/
+app.controller('MailNewCtrl', ['$scope', 'mails', '$http', '$state', '$localStorage', 'getDataCommonService', function($scope, mails, $http, $state, $localStorage, getDataCommonService) {
   var vm = this;
   vm.mail = {
     StaffID: 1,
@@ -181,56 +510,32 @@ app.controller('MailNewCtrl', ['$scope', 'mails', '$http', '$state', function($s
     content: '',
     msg_direct_comment: ''
   }
-/*  vm.tolist = [
-    {name: 'James', email:'james@gmail.com'},
-    {name: 'Luoris Kiso', email:'luoris.kiso@hotmail.com'},
-    {name: 'Lucy Yokes', email:'lucy.yokes@gmail.com'}
-  ];*/
-
-
-
-  /*$http.post('/staff/admin_customer_check', {
-    'inputStr': ''
-  }).then(function(response) {
-    angular.forEach(response.data, function(value, key) {
-      var customer = new Customer({
-        name: value.CName,
-        email: value.CEmail
-      });
-      customer.save();
-    });
-  }, function(x) {
-    console.log('Server Error');
-  });*/
-  vm.getCustomers = function() {
-        mails.getCustomers()
-            .then(function(customers) {
-                    vm.tolist = customers;
-                    var chosenSelect=$("#OneChosen");
-                    angular.forEach(vm.tolist, function(value, key) {
-                      var html ="<option value='"+value.name+"' class='ng-binding ng-scope'>"+value.email+"</option>";
-                      chosenSelect.append(html);
-                    console.log('albums returned to controller.',customers);
-                  });
-                },
-                function(data) {
-                    console.log('albums retrieval failed.')
-
-       });
-     }
-  vm.getCustomers();
-  /*  for (var i = 0; i < array.length; i++) {
-      array[i]
-    }*/
+  vm.tolist = [];
+  if (JSON.stringify(getDataCommonService.get()) !== "{}") {
+    $localStorage.tolist = getDataCommonService.get().data;
+    vm.tolist = $localStorage.tolist;
+  } else {
+    vm.tolist = $localStorage.tolist;
+  }
 
   vm.Send = function() {
-    $state.go('app.mail.list');
-    /*$http.post('/staff/msg_write',$scope.mail)
+    // TODO: 管理员ID 以及客户ID 需要跟用户名和email关联，这里无法找到
+    // StaffID和IdReceiver暂时使用固定值
+    vm.writeData = {};
+    vm.writeData.title = vm.mail.title;
+    vm.writeData.content = vm.mail.content;
+    vm.writeData.StaffID = 3;
+    vm.writeData.IdReceiver = 1;
+    vm.writeData.msg_direct_comment = 'Staff to Customer';
+    console.log(vm.mail);
+    console.log(vm.writeData);
+    $http.post('/staff/msg_write',vm.writeData)
         .then(function(response) {
           console.log("response", response);
         }, function(x) {
           console.log('Server Error');
-        });*/
+        });
+      $state.go('app.mail.list');
   }
 
 }]);

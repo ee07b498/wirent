@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-24T13:55:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-28T17:27:32+10:00
+ * @Last modified time: 2017-09-01T09:59:32+10:00
  */
 'use strict'
 
@@ -17,12 +17,18 @@ app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'item
     $modalInstance.dismiss('cancel');
   };
 }]);
-app.controller('propertyPicAddInstanceCtrl', ['$scope', '$modalInstance', 'S3UploadService', function($scope, $modalInstance, S3UploadService) {
+app.controller('propertyPicAddInstanceCtrl', ['$scope', '$modalInstance', '$http', 'items', 'S3UploadImgService', function($scope, $modalInstance, $http, items, S3UploadImgService) {
+  $scope.etPicInsert = {};
+  console.log(items);
+  $scope.etPicInsert.ER_ID = items.ER_ID;
+  $scope.etPicInsert.SRID = 0;
+  $scope.etPicInsert.PicFile = "";
+  $scope.etPicInsert.PicDescription = "";
   $scope.uploadFiles = function (files) {
       $scope.Files = files;
       if (files && files.length > 0) {
           angular.forEach($scope.Files, function (file, key) {
-              S3UploadService.Upload(file).then(function (result) {
+              S3UploadImgService.Upload(file).then(function (result) {
                   // Mark as success
                   file.Success = true;
               }, function (error) {
@@ -32,7 +38,16 @@ app.controller('propertyPicAddInstanceCtrl', ['$scope', '$modalInstance', 'S3Upl
                   // Write the progress as a percentage
                   file.Progress = (progress.loaded / progress.total) * 100;
                   if (file.Progress === 100) {
-                    console.log("https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name);
+                    $scope.etPicInsert.PicFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+                    console.log($scope.etPicInsert);
+                    $http.post('/staff/admin_pic_insert', $scope.etPicInsert)
+                      .then(function(response) {
+                        console.log("response", response);
+                        /**************关闭当前modal********************/
+                        $modalInstance.close();
+                      }, function(x) {
+                        console.log('Server Error');
+                      });
                   }
               });
           });
@@ -77,9 +92,6 @@ app.controller('propertyFormsInstanceCtrl', ['$scope', '$http', '$modalInstance'
       }, function(x) {
         console.log('Server Error');
       });
-    console.log($scope.propertyItem.address);
-    console.log($scope.propertyItems);
-    console.log($scope.propertyForm);
     $modalInstance.close();
   };
 
@@ -87,6 +99,47 @@ app.controller('propertyFormsInstanceCtrl', ['$scope', '$http', '$modalInstance'
     $modalInstance.dismiss('cancel');
   };
 }]);
+// entire form check modal
+app.controller('entireFormCheckInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items','address', function($scope, $http, $modalInstance, items, address) {
+  $scope.address = address;
+  $scope.entireFormData = items[0];
+  $scope.edit = false;
+  $scope.Edit = function() {
+    $scope.edit = true;
+  };
+  $scope.Save = function() {
+    $scope.edit = false;
+    var entireFormUpdate = {};
+    entireFormUpdate.identirerent_form = $scope.entireFormData.identirerent_form;
+    entireFormUpdate.ER_ID = $scope.entireFormData.ER_ID;
+    entireFormUpdate.er_including = $scope.entireFormData.er_including;
+    entireFormUpdate.facility = $scope.entireFormData.facility;
+    entireFormUpdate.train_station = $scope.entireFormData.train_station;
+    entireFormUpdate.bus_stop = $scope.entireFormData.bus_stop;
+    entireFormUpdate.ferry = $scope.entireFormData.ferry;
+    entireFormUpdate.light_rail = $scope.entireFormData.light_rail;
+    entireFormUpdate.shops = $scope.entireFormData.shops;
+    entireFormUpdate.school = $scope.entireFormData.school || '';
+    entireFormUpdate.others = $scope.entireFormData.others;
+    entireFormUpdate.description_en = $scope.entireFormData.description_en;
+    entireFormUpdate.description_ch = $scope.entireFormData.description_ch;
+    entireFormUpdate.description_zh = $scope.entireFormData.description_zh;
+    entireFormUpdate.comment = $scope.entireFormData.comment;
+    console.log(entireFormUpdate);
+    $http.post('/staff/admin_landlord_er_form_update', entireFormUpdate)
+      .then(function(response) {
+        console.log("response", response);
+        $modalInstance.close();
+      }, function(x) {
+        console.log('Server Error');
+      });
+    $modalInstance.close();
+  };
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
   $scope.propertyItem = {};
   $scope.propertyItem = items;
@@ -492,6 +545,156 @@ app.controller('shareRoomFormAddInstanceCtrl', ['$scope', '$http', '$modalInstan
     $modalInstance.dismiss('cancel');
   };
 }]);
+app.controller('sharePicAddInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items', 'S3UploadImgService', function($scope, $http, $modalInstance, items, S3UploadImgService) {
+  $scope.etPicInsert = {};
+  // console.log(items);
+  $scope.etPicInsert.ER_ID = items.ER_ID;
+  $scope.etPicInsert.SRID = items.SRID;
+  $scope.etPicInsert.PicFile = "";
+  $scope.etPicInsert.PicDescription = "";
+  $scope.uploadFiles = function (files) {
+      $scope.Files = files;
+      if (files && files.length > 0) {
+          angular.forEach($scope.Files, function (file, key) {
+              S3UploadImgService.Upload(file).then(function (result) {
+                  // Mark as success
+                  file.Success = true;
+              }, function (error) {
+                  // Mark the error
+                  $scope.Error = error;
+              }, function (progress) {
+                  // Write the progress as a percentage
+                  file.Progress = (progress.loaded / progress.total) * 100;
+                  if (file.Progress === 100) {
+                    $scope.etPicInsert.PicFile = "https://s3-ap-southeast-2.amazonaws.com/property-img-upload-test/img/"+file.name;
+                    console.log($scope.etPicInsert);
+                    $http.post('/staff/admin_pic_insert', $scope.etPicInsert)
+                      .then(function(response) {
+                        console.log("response", response);
+                        /**************关闭当前modal********************/
+                        $modalInstance.close();
+                      }, function(x) {
+                        console.log('Server Error');
+                      });
+                  }
+              });
+          });
+      }
+  };
+}]);
+
+app.controller('updateShareRoomInstanceCtrl', ['$scope', '$http', '$filter', '$modalInstance', 'items', function($scope, $http, $filter, $modalInstance, items) {
+  $scope.ShareRoomData ={};
+  $scope.dateSelect = {};
+  $scope.ShareRoomData.SRArea = "";
+  $scope.ShareRoomData.SRStat = "";
+  $scope.ShareRoomData.SRAvailableDate = "2017-06-26";
+  $scope.ShareRoomData.SRPrice = "";
+  $scope.ShareRoomData.SRName = "";
+  $scope.ShareRoomData = items;
+  /**
+   * datepicker - change the date
+   *
+   * here in the modal if we use $scope.opened for is open, which will
+   * wrok only for the first time. Then add $parent.opened to is-opened
+   * so, the datepicker will work correctly
+   */
+  $scope.today = function() {
+    $scope.dateSelect.dt = getDateToString(getStringToDate($scope.ShareRoomData.SRAvailableDate), 'yyyy-MM-dd');
+  };
+  $scope.today();
+
+  $scope.clear = function() {
+    $scope.dateSelect.dt = null;
+  };
+
+  // Disable weekend selection
+  // $scope.disabled = function(date, mode) {
+  //   return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+  // };
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1,
+    class: 'datepicker'
+  };
+  $scope.initDate = new Date('2016-15-20');
+  $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  /**
+   * getDateToString - convert date formate data into string data
+   *
+   * @param  {date} date   date
+   * @param  {string} format format
+   * @return {string}        string date
+   */
+  function getDateToString(date, format) {
+    if (angular.isDate(date) && angular.isString(format)) {
+      return $filter('date')(date, format);
+    }
+  }
+  /**
+   * getStringToDate - convert string date to date format
+   *
+   * @param  {String} string date string
+   * @return {date}        date result
+   */
+  function getStringToDate(string) {
+    if (angular.isString(string)) {
+      return new Date(string.replace(/-/g, "-"));
+    }
+  }
+
+  $scope.ok = function() {
+    var ShareRoomData = {};
+    ShareRoomData = $scope.ShareRoomData;
+    delete ShareRoomData["address"];
+    delete ShareRoomData["LLName"];
+    $http.post('/staff/admin_sr_update', ShareRoomData)
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+// entire form check modal
+app.controller('shareRoomFormInstanceCtrl', ['$scope', '$http', '$modalInstance', 'items','address', function($scope, $http, $modalInstance, items, address) {
+  $scope.shareRoomForm = items[0];
+  console.log($scope.shareRoomForm);
+  $scope.edit = false;
+  $scope.address = address;
+  $scope.Edit = function() {
+    $scope.edit = true;
+  };
+  $scope.Save = function() {
+    $scope.edit = false;
+    console.log($scope.shareRoomForm);
+    $http.post('/staff/admin_sr_form_update', $scope.shareRoomForm)
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
+  };
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
 
 app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$stateParams', function($scope, $modal, $http, $log, $stateParams) {
   $scope.landLord_info = {};
@@ -545,7 +748,6 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
       console.log('Server Error');
     });
 
-
   //////////////////////////show the details about the property///////////////////////////////////////////////
   $scope.openDetails = function(size, $index) {
     console.log(getPropertyDetails($index));
@@ -558,12 +760,6 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
           return getPropertyDetails($index);
         }
       }
-    });
-
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
     });
   };
   /*********************添加整租房产信息************************************/
@@ -579,6 +775,33 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
       }
     });
   };
+
+  /********************************************************************/
+   $scope.entire_form = function(size, ER_ID, address){
+     $scope.EntireRoomForm = {};
+     $scope.entireForm = {};
+     $scope.entireForm.ER_ID = ER_ID;
+     $http.post('/staff/admin_er_form_check', $scope.entireForm)
+       .then(function(response) {
+         console.log("response", response);
+         $scope.EntireRoomForm = response.data;
+         var modalInstance = $modal.open({
+           templateUrl: 'entireFormCheck.html',
+           controller: 'entireFormCheckInstanceCtrl',
+           size: size,
+           resolve: {
+             items: function() {
+               return $scope.EntireRoomForm;
+             },
+             address: function(){
+               return address;
+             }
+           }
+         });
+       }, function(x) {
+         console.log('Server Error');
+       });
+   }
   /*********************添加分租房产信息************************************/
   $scope.landlord_ShareRoomAdd = function(size) {
     var modalInstance = $modal.open({
@@ -592,6 +815,73 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
       }
     });
   };
+  //check the share properties
+    $scope.ShareProperties = {};
+    $http.get('/staff/admin_sr_list_check')
+        .then(function(response) {
+          var SharePropertiesData = [];
+      angular.forEach(response.data, function(value, key){
+       if (value.LLName === $stateParams.LLName) {
+           SharePropertiesData[SharePropertiesData.length] = value;
+       }
+     });
+      $scope.ShareProperties = SharePropertiesData;
+    }, function(x) {
+      console.log('Server Error');
+    });
+
+    $scope.shareForm = function(size, address, SRID) {
+      $scope.shareRoomForm = {};
+      $scope.share_form = {};
+      $scope.share_form.SRID = SRID;
+      $http.post('/staff/admin_sr_form_check', $scope.share_form)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.shareRoomForm = response.data;
+          var modalInstance = $modal.open({
+            templateUrl: 'shareRoomForm.html',
+            controller: 'shareRoomFormInstanceCtrl',
+            size: size,
+            resolve: {
+              items: function() {
+                return $scope.shareRoomForm;
+              },
+              address: function(){
+                return address;
+              }
+            }
+          });
+        }, function(x) {
+          console.log('Server Error');
+        });
+    };
+
+  //================== add pictures for share room properties======================================================================================
+  $scope.share_property_pic_add = function(size, index) {
+    var modalInstance = $modal.open({
+      templateUrl: 'sharePicAdd.html',
+      controller: 'sharePicAddInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.ShareProperties[index];
+        }
+      }
+    });
+  }
+  ////////////////////////update share room informations////////////////////////////////////
+   $scope.update_shareRoom = function(size, $index) {
+     var modalInstance = $modal.open({
+       templateUrl: 'updateShareRoom.html',
+       controller: 'updateShareRoomInstanceCtrl',
+       size: size,
+       resolve: {
+         items: function() {
+           return $scope.ShareProperties[$index];
+         }
+       }
+     });
+   };
   /************************details edit***********************************/
   $scope.details_Edit = function(size, $index) {
     var modalInstance = $modal.open({
@@ -639,15 +929,16 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
       }
     });
   }
-  /**************admin share room propertyForm add**********************************************************/
-  $scope.shareRoomProperties = {};
-  $http.get('/staff/admin_sr_list_check')
-    .then(function(response) {
-      $scope.shareRoomProperties = response.data;
-      console.log("response", response);
-    }, function(x) {
-      console.log('Server Error');
-    });
+  // /**************admin share room propertyForm add**********************************************************/
+  // $scope.shareRoomProperties = {};
+  // $http.get('/staff/admin_sr_list_check')
+  //   .then(function(response) {
+  //     $scope.shareRoomProperties = response.data;
+  //
+  //     console.log("response", response);
+  //   }, function(x) {
+  //     console.log('Server Error');
+  //   });
 
   $scope.landlord_ShareRoomFormAdd = function(size) {
     var modalInstance = $modal.open({
@@ -656,7 +947,7 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
       size: size,
       resolve: {
         items: function() {
-          return $scope.shareRoomProperties;
+          return $scope.ShareProperties;
         }
       }
     });
@@ -677,14 +968,14 @@ app.controller('landlord_profileCtrl', ['$scope', '$modal', '$http', '$log', '$s
       });
   }
   //================== add pictures for properties======================================================================================
-  $scope.property_pic_add = function(size) {
+  $scope.property_pic_add = function(size,index) {
     var modalInstance = $modal.open({
       templateUrl: 'propertyPicAdd.html',
       controller: 'propertyPicAddInstanceCtrl',
       size: size,
       resolve: {
         items: function() {
-          return $scope.properties;
+          return $scope.properties[index];
         }
       }
     });
