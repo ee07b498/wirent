@@ -1,7 +1,7 @@
 <!--
 # @Date:   2017-08-22T10:58:58+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-29T15:50:59+10:00
+# @Last modified time: 2017-09-05T12:38:59+10:00
 -->
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="andy">
@@ -9,6 +9,7 @@
 	<meta charset="utf-8" />
 	<title>winninginvestment</title>
 	<link rel="shortcut icon" href="/img/favorite.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link rel="stylesheet" href="/node_modules/normalize-css/normalize.css">
 	<link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="/css/animate.css" type="text/css" />
@@ -16,7 +17,6 @@
 	<link rel="stylesheet" href="/css/simple-line-icons.css" type="text/css" />
 	<link rel="stylesheet" href="/css/font.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/app.css" type="text/css" />
-	<!-- <link rel="stylesheet" href="/css/winning/search-option.css" type="text/css" /> -->
 	<link rel="stylesheet" href="/css/winning/profile.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/infowindow.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />
@@ -35,14 +35,13 @@
 	<link rel="stylesheet" href="/css/winning/loading.css" type="text/css" />
 </head>
 <body ng-controller="MainCtrl">
-
 	<div style="height: 100%;" ui-view></div>
 	 <!-- jQuery -->
-  	<script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/angular/angular.js"></script>
 	<script src="vendor/angular/angular-animate/angular-animate.js"></script>
 	<script src="vendor/angular/angular-cookies/angular-cookies.js"></script>
-	<script src="vendor/angular/ngstorage/ngStorage.js"></script>
+	<script src="vendor/angular/angular-resource/angular-resource.js"></script>
 	<script src="vendor/angular/angular-css.min.js"></script>
 	<script src="vendor/angular/angular-sanitize/angular-sanitize.js"></script>
 	<script src="vendor/angular/angular-translate/angular-translate.js"></script>
@@ -52,6 +51,7 @@
 	<script src="/node_modules/bootstrap.min.js"></script>
 	<script src="/node_modules/jquery.slimscroll.min.js"></script>
 	<script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="vendor/angular/ngstorage/ngStorage.js"></script>
 	<script src="/node_modules/ui-bootstrap-tpls.js"></script>
 	<script src="/node_modules/ng-map.min.js"></script>
 	<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
@@ -91,9 +91,9 @@
 	<script src="/js/home/footer.js"></script>
 	<script src="/js/home/contact.js"></script>
 	<script src="/js/home/home.js"></script>
-	<script src="/js/home/landlord.js"></script>
+	<!-- <script src="/js/home/landlord.js"></script> -->
 	<script src="/js/home/ui-nav.js"></script>
-	<script src="/js/home/updateProperty.js"></script>
+	<!-- <script src="/js/home/updateProperty.js"></script> -->
 </body>
 
 </html>

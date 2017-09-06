@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-09-01T16:34:42+10:00
+ * @Last modified time: 2017-09-06T15:06:46+10:00
  */
 app.controller('MailCtrl', ['$scope', '$http', '$state', 'mails', 'getDataCommonService', function($scope, $http, $state, mails, getDataCommonService) {
   var vm = this;
@@ -42,9 +42,9 @@ app.controller('MailCtrl', ['$scope', '$http', '$state', 'mails', 'getDataCommon
       filter: ''
     },
     {
-        name: 'Sent',
-        filter: '0'
-      },
+      name: 'Sent',
+      filter: '0'
+    },
     {
       name: 'Staff to Staff',
       filter: '1'
@@ -75,10 +75,10 @@ app.controller('MailCtrl', ['$scope', '$http', '$state', 'mails', 'getDataCommon
     }
   ];
   $scope.labelClass = function(label) {
-   return {
-     'active': !~label
-   };
- };
+    return {
+      'active': !~label
+    };
+  };
   //已发邮件
   $scope.trace_desc = {};
   $scope.trace_desc.IdSender = 3;
@@ -110,9 +110,13 @@ app.controller('MailCtrl', ['$scope', '$http', '$state', 'mails', 'getDataCommon
 }]);
 
 app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$localStorage', 'getDataCommonService', function($scope, $http, mails, $stateParams, $localStorage, getDataCommonService) {
+  /***********pagination starts********************/
+  $scope.maxSize = 5;
+  // $scope.totalItems = $scope.customers.length;
+  $scope.currentPage = 1;
+  $scope.itemsPerPage = 6;
+  /***********pagination ends********************/
   $scope.fold = $stateParams.fold;
-  console.log(typeof $scope.fold);
-
   switch ($scope.fold) {
     case '0':
       $scope.msg_sent = {};
@@ -124,6 +128,7 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
         }, function(x) {
           console.log('Server Error');
         });
@@ -137,6 +142,7 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
         }, function(x) {
           console.log('Server Error');
         });
@@ -145,11 +151,11 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
       $scope.msg_received = {};
       $scope.msg_received.StaffID = 3;
       $scope.msg_received.msg_direct_comment = 'Customer to Staff';
-
       $http.post('/staff/msg_received', $scope.msg_received)
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
         }, function(x) {
           console.log('Server Error');
         });
@@ -163,6 +169,7 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
         }, function(x) {
           console.log('Server Error');
         });
@@ -176,6 +183,7 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
         }, function(x) {
           console.log('Server Error');
         });
@@ -189,6 +197,7 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
         }, function(x) {
           console.log('Server Error');
         });
@@ -202,6 +211,7 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
         }, function(x) {
           console.log('Server Error');
         });
@@ -215,23 +225,25 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
         }, function(x) {
           console.log('Server Error');
         });
       break;
-      default:
-        $scope.msg_received = {};
-        $scope.msg_received.StaffID = 3;
-        $scope.msg_received.msg_direct_comment = 'Customer to Staff';
+    default:
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Customer to Staff';
 
-        $http.post('/staff/msg_received', $scope.msg_received)
-          .then(function(response) {
-            console.log("response", response);
-            $scope.mails = response.data;
-          }, function(x) {
-            console.log('Server Error');
-          });
-        break;
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          $scope.totalItems = $scope.mails.length;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
   }
   // mails.all().then(function(mails) {
   //   $scope.mails = mails;
@@ -254,18 +266,20 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
-          angular.forEach($scope.mails, function(value, key){
-              if (value.idMsg_sr == $stateParams.mailId) {
-                  $scope.mail = value;
-                  $scope.mail.from = 'Staff';
-                  //******标记信息已读******//
-                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                    .then(function(response) {
-                      console.log("response", response);
-                    }, function(x) {
-                      console.log('Server Error');
-                    });
-              }
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Staff';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
         }, function(x) {
           console.log('Server Error');
@@ -280,18 +294,20 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
-          angular.forEach($scope.mails, function(value, key){
-              if (value.idMsg_sr == $stateParams.mailId) {
-                  $scope.mail = value;
-                  $scope.mail.from = 'Staff';
-                  //******标记信息已读******//
-                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                    .then(function(response) {
-                      console.log("response", response);
-                    }, function(x) {
-                      console.log('Server Error');
-                    });
-              }
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Staff';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
         }, function(x) {
           console.log('Server Error');
@@ -307,18 +323,20 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
           console.log("response", response);
           $scope.mails = response.data;
           console.log(typeof $stateParams.mailId);
-          angular.forEach($scope.mails, function(value, key){
-              if (value.idMsg_sr == $stateParams.mailId) {
-                $scope.mail = value;
-                $scope.mail.from = 'Customer';
-                //******标记信息已读******//
-                $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                  .then(function(response) {
-                    console.log("response", response);
-                  }, function(x) {
-                    console.log('Server Error');
-                  });
-              }
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Customer';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
         }, function(x) {
           console.log('Server Error');
@@ -333,18 +351,20 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
-          angular.forEach($scope.mails, function(value, key){
-              if (value.idMsg_sr == $stateParams.mailId) {
-                  $scope.mail = value;
-                  $scope.mail.from = 'Landlord';
-                  //******标记信息已读******//
-                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                    .then(function(response) {
-                      console.log("response", response);
-                    }, function(x) {
-                      console.log('Server Error');
-                    });
-              }
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Landlord';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
         }, function(x) {
           console.log('Server Error');
@@ -359,18 +379,20 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
-          angular.forEach($scope.mails, function(value, key){
-              if (value.idMsg_sr == $stateParams.mailId) {
-                  $scope.mail = value;
-                  $scope.mail.from = 'Thirdparty';
-                  //******标记信息已读******//
-                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                    .then(function(response) {
-                      console.log("response", response);
-                    }, function(x) {
-                      console.log('Server Error');
-                    });
-              }
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Thirdparty';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
         }, function(x) {
           console.log('Server Error');
@@ -385,18 +407,20 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
-          angular.forEach($scope.mails, function(value, key){
-              if (value.idMsg_sr == $stateParams.mailId) {
-                  $scope.mail = value;
-                  $scope.mail.from = 'Staff';
-                  //******标记信息已读******//
-                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                    .then(function(response) {
-                      console.log("response", response);
-                    }, function(x) {
-                      console.log('Server Error');
-                    });
-              }
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Staff';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
         }, function(x) {
           console.log('Server Error');
@@ -411,18 +435,20 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
-          angular.forEach($scope.mails, function(value, key){
-              if (value.idMsg_sr == $stateParams.mailId) {
-                $scope.mail = value;
-                $scope.mail.from = 'Staff';
-                //******标记信息已读******//
-                $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                  .then(function(response) {
-                    console.log("response", response);
-                  }, function(x) {
-                    console.log('Server Error');
-                  });
-              }
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Staff';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
         }, function(x) {
           console.log('Server Error');
@@ -437,52 +463,56 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
-          angular.forEach($scope.mails, function(value, key){
-              if (value.idMsg_sr == $stateParams.mailId) {
-                  $scope.mail = value;
-                  $scope.mail.from = 'Staff';
-                  //******标记信息已读******//
-                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                    .then(function(response) {
-                      console.log("response", response);
-                    }, function(x) {
-                      console.log('Server Error');
-                    });
-              }
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Staff';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
         }, function(x) {
           console.log('Server Error');
         });
       break;
-      default:
-        $scope.msg_received = {};
-        $scope.msg_received.StaffID = 3;
-        $scope.msg_received.msg_direct_comment = 'Customer to Staff';
+    default:
+      $scope.msg_received = {};
+      $scope.msg_received.StaffID = 3;
+      $scope.msg_received.msg_direct_comment = 'Customer to Staff';
 
-        $http.post('/staff/msg_received', $scope.msg_received)
-          .then(function(response) {
-            console.log("response", response);
-            $scope.mails = response.data;
-            angular.forEach($scope.mails, function(value, key){
-                if (value.idMsg_sr == $stateParams.mailId) {
-                  $scope.mail = value;
-                  $scope.mail.from = 'Customer';
-                  //******标记信息已读******//
-                  $http.post('/staff/msg_confirm', {'idMsg_sr':value.idMsg_sr})
-                    .then(function(response) {
-                      console.log("response", response);
-                    }, function(x) {
-                      console.log('Server Error');
-                    });
-                }
-            });
-          }, function(x) {
-            console.log('Server Error');
+      $http.post('/staff/msg_received', $scope.msg_received)
+        .then(function(response) {
+          console.log("response", response);
+          $scope.mails = response.data;
+          angular.forEach($scope.mails, function(value, key) {
+            if (value.idMsg_sr == $stateParams.mailId) {
+              $scope.mail = value;
+              $scope.mail.from = 'Customer';
+              //******标记信息已读******//
+              $http.post('/staff/msg_confirm', {
+                  'idMsg_sr': value.idMsg_sr
+                })
+                .then(function(response) {
+                  console.log("response", response);
+                }, function(x) {
+                  console.log('Server Error');
+                });
+            }
           });
-        break;
+        }, function(x) {
+          console.log('Server Error');
+        });
+      break;
   }
 
-  $scope.Send = function(){
+  $scope.Send = function() {
     $scope.Reply = {};
     $scope.Reply.title = $scope.mail.title;
     $scope.Reply.content = $scope.contents;
@@ -529,13 +559,13 @@ app.controller('MailNewCtrl', ['$scope', 'mails', '$http', '$state', '$localStor
     vm.writeData.msg_direct_comment = 'Staff to Customer';
     console.log(vm.mail);
     console.log(vm.writeData);
-    $http.post('/staff/msg_write',vm.writeData)
-        .then(function(response) {
-          console.log("response", response);
-        }, function(x) {
-          console.log('Server Error');
-        });
-      $state.go('app.mail.list');
+    $http.post('/staff/msg_write', vm.writeData)
+      .then(function(response) {
+        console.log("response", response);
+      }, function(x) {
+        console.log('Server Error');
+      });
+    $state.go('app.mail.list');
   }
 
 }]);

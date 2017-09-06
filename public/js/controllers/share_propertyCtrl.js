@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-15T14:20:59+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-31T16:26:35+10:00
+ * @Last modified time: 2017-09-06T13:11:14+10:00
  */
 'use strict'
 app.controller('updateShareRoomInstanceCtrl', ['$scope', '$http', '$filter', '$modalInstance', 'items', function($scope, $http, $filter, $modalInstance, items) {
@@ -157,9 +157,16 @@ app.controller('propertyPicAddInstanceCtrl', ['$scope', '$http', '$modalInstance
 app.controller('SharePropertyCtrl', function($scope, $http, $state, $modal, $log, $timeout) {
   ///////////////////////////share room property check///////////////////////////////////////////////
   $scope.ShareProperties = {};
+  /***********pagination starts********************/
+  $scope.maxSize = 5;
+  // $scope.totalItems = $scope.customers.length;
+  $scope.currentPage = 1;
+  $scope.itemsPerPage = 10;
+  /***********pagination ends********************/
   $http.get('/staff/admin_sr_list_check')
     .then(function(response) {
       $scope.ShareProperties = response.data;
+      $scope.totalItems = $scope.ShareProperties.length;
       console.log("response", response);
     }, function(x) {
       console.log('Server Error');

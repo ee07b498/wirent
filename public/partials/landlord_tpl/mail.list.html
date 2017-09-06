@@ -13,8 +13,8 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu text-left text-sm">
-          <li><a ui-sref="app.landlord.mail.list({fold:'unread'})">Unread</a></li>
-          <li><a ui-sref="app.landlord.mail.list({fold:'starred'})">Starred</a></li>
+          <li><a ui-sref="landlord.mail.list({fold:'unread'})">Unread</a></li>
+          <li><a ui-sref="landlord.mail.list({fold:'starred'})">Starred</a></li>
         </ul>
       </div>
       <div class="btn-group">
@@ -26,19 +26,39 @@
 
   <!-- list -->
   <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-    <li ng-repeat="mail in mails | filter:fold" ng-class="labelClass(mail.label)" class="list-group-item clearfix b-l-3x">
-      <a ui-sref="app.landlord.profile" class="avatar thumb pull-left m-r">
-        <img ng-src="[:mail.avatar:]">
+    <div ng-if="!mails.length">
+      没有数据。。请前去添加！
+    </div>
+    <li ng-repeat="mail in mails.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:fold" ng-class="labelClass(mail.label)" class="list-group-item clearfix b-l-3x">
+      <a ui-sref="landlord.profile" class="avatar thumb pull-left m-r">
+        <img ng-src="../img/a6.jpg">
       </a>
       <div class="pull-right text-sm text-muted">
-        <span class="hidden-xs">[: mail.date | fromNow :]</span>
+        <span class="hidden-xs">[: mail.createTime :]</span>
         <i class="fa fa-paperclip ng-hide m-l-sm" ng-show="[:mail.attach:]"></i>
       </div>
       <div class="clear">
-        <div><a ui-sref="app.landlord.mail.detail({mailId:mail.id})" class="text-md">[:mail.subject:]</a><span class="label bg-light m-l-sm">[:mail.label:]</span></div>
+        <div><a ui-sref="landlord.mail.detail({mailId:mail.idMsg_sr,foldId:mail.idMsg_direct})" class="text-md">[:mail.title:]</a><span class="label bg-light m-l-sm">[:mail.label:]</span></div>
         <div class="text-ellipsis m-t-xs">[:mail.content | limitTo:100:]</div>
       </div>
     </li>
   </ul>
+  <div class="row">
+    <div class="col-sm-6 text-left">
+      <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+    </div>
+    <div class="col-sm-6 text-right text-center-xs">
+      <!--<ul class="pagination pagination-sm m-t-none m-b-none">
+        <li><a href><i class="fa fa-chevron-left"></i></a></li>
+        <li><a href>1</a></li>
+        <li><a href>2</a></li>
+        <li><a href>3</a></li>
+        <li><a href>4</a></li>
+        <li><a href>5</a></li>
+        <li><a href><i class="fa fa-chevron-right"></i></a></li>
+      </ul>-->
+      <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm m-r-lg pull-right m-t-sm m-b-md" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+    </div>
+  </div>
   <!-- / list -->
 </div>

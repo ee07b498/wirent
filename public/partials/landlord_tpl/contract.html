@@ -15,25 +15,11 @@
           <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Contract添加</button>
           </div>
           <div class="row wrapper">
-            <div class="col-sm-4 m-b-xs">
-              <select class="input-sm form-control w-sm inline v-middle">
-                <option value="0">整租</option>
-                <option value="1">分租</option>
-                <option value="2">二手房购买</option>
-                <option value="3">房产投资</option>
-            </select>
-              <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
-            </div>
-            <div class="col-sm-6">
-              <div class="input-group">
-                <input type="text" class="input-sm form-control" placeholder="Search">
-                <span class="input-group-btn">
-                <button class="btn btn-sm btn-default" type="button">Go!</button>
-              </span>
-              </div>
-            </div>
-
-            <div class="col-sm-2">
+            <div class="col-sm-6 m-b-xs">
+              <select class="input-sm form-control w-sm inline v-middle" ng-model="contract_ER_ID">
+                <option ng-repeat="property in properties" value="[:property.ER_ID:]">[:property.ER_No+" "+property.ER_St+" "+property.ER_Suburb+","+property.ER_Region:]</option>
+              </select>
+              <button class="btn btn-sm m-l-n-xxs btn-default" ng-click="getContract()">Apply</button>
             </div>
           </div>
           <div class="table-responsive">
@@ -66,8 +52,11 @@
                   <td><span>26/04/2017</span></td>
                   <td>10/05/2017</td>
                   <td>这是一个一年的合同</td>
+                  <script type="text/ng-template" id="inpectionMsg.html">
+                        <div ng-include="'/partials/tpl/inspection_msg.html'"></div>
+                  </script>
                   <td>
-                    <a href class="active m-r-md"><i class="fa fa-pencil"></i></a>
+                    <a ng-click="inspection_msg('')" class="active m-r-md"><i class="fa fa-pencil"></i></a>
                     <a href class="active m-r-md"><i class="fa fa-trash"></i></a>
                     <a href class="active" title="add a contract"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
                   </td>

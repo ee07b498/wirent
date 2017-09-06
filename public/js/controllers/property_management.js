@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-12T12:15:07+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-31T17:30:34+10:00
+ * @Last modified time: 2017-09-06T13:34:09+10:00
  */
 'use strict'
 app.controller('entirePropertyAddInstanceCtrl', ['$scope', '$modalInstance', 'items', '$filter', '$http', function($scope, $modalInstance, items, $filter, $http) {
@@ -331,6 +331,12 @@ app.controller('propertyManagementCtrl', function($scope, $http, $state, $modal,
   $scope.str = "";
   $scope.entireProperties = {};
   $scope.landlords = {};
+  /***********pagination starts********************/
+  $scope.maxSize = 5;
+  // $scope.totalItems = $scope.customers.length;
+  $scope.currentPage = 1;
+  $scope.itemsPerPage = 6;
+  /***********pagination ends********************/
   /**
    * datepicker - change the date
    *
@@ -379,6 +385,7 @@ app.controller('propertyManagementCtrl', function($scope, $http, $state, $modal,
     .then(function(response) {
       console.log("response", response);
       $scope.entireProperties = response.data;
+      $scope.totalItems = $scope.entireProperties.length;
       ////////////////////////landlord check///////////////////////////////////////////////////
       $http.post('/staff/admin_landlord_check', {
           'str': $scope.str

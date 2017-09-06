@@ -1,11 +1,3 @@
-/**
- * @Date:   2017-08-22T10:58:52+10:00
- * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-09-05T12:20:19+10:00
- */
-
-
-
 /*
 
 */
@@ -20,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.42857143;
   color: #58666e;
-  background-color: transparent;
+ // background-color: transparent;
 }
 
 *:focus {
@@ -850,11 +842,13 @@ body {
   bottom: 0;
   left: 0;
 }
-
+/*andy*/
 .navbar {
   margin: 0;
   border-width: 0;
   border-radius: 0;
+  background:rgba(255,255,255,0.8) !important;/*background-color*/
+  z-index:999;
 }
 
 .navbar .navbar-form-sm {
@@ -913,6 +907,20 @@ body {
   vertical-align: middle;
 }
 
+.bg-grey {
+	border-radius:3px;
+	width:80%;
+	height:300px;
+	background:rgba(255,255,255,0.5);
+	margin:0 auto;
+}
+.bg-grey .wdt {
+	width:100%;
+}
+
+.bg-grey .wdt .bcg-l{
+	background-color:rgba(255,255,255,0);
+}
 @media (min-width: 768px) {
   .app-aside,
   .navbar-header {
@@ -1086,7 +1094,7 @@ body {
 }
 
 html {
-  background: url('../img/bg.jpg');
+  background: #fff;
   background-attachment: fixed;
   background-size: cover;
 }
@@ -1209,7 +1217,7 @@ html {
 .navi ul.nav li a {
   position: relative;
   display: block;
-  padding: 10px 20px;
+  padding: 10px 10px;
   font-weight: normal;
   text-transform: none;
   -webkit-transition: background-color 0.2s ease-in-out 0s;
@@ -2326,7 +2334,7 @@ fieldset[disabled] .btn-black.active {
   border-width: 0 0 0 4px;
 }
 
-.tl-wrap:before,
+/*.tl-wrap:before,
 .tl-wrap:after {
   display: table;
   content: " ";
@@ -2355,7 +2363,7 @@ fieldset[disabled] .btn-black.active {
 .tl-wrap:hover:before {
   background: transparent;
   border-color: #fff;
-}
+}*/
 
 .tl-date {
   position: relative;
@@ -3021,7 +3029,7 @@ fieldset[disabled] .i-checks input + i:before {
 .bg-dark .auto .list-group-item.active {
   background-color: #2e3344 !important;
 }
-
+/*andy*/
 .bg-black {
   color: #7793a7;
   background-color: #1c2b36;
@@ -4729,7 +4737,9 @@ a.text-#000000:hover {
 .w-xxl {
   width: 360px;
 }
-
+.w-xxxl {
+	width: 1012px;
+}
 .w-full {
   width: 100%;
 }

@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-03T13:14:08+10:00
+ * @Last modified time: 2017-09-05T16:35:01+10:00
  */
 
 
@@ -9,8 +9,8 @@
 ﻿;(function(){
 	'use strict';
 	angular.module('andy')
-			.service('UserService',['$state','$http','$window',
-			function ($state,$http,$window){
+			.service('UserService',['$state','$http','$window','$localStorage',
+			function ($state,$http,$window,$localStorage){
 				var me = this;
 				me.customer_signup_data = {};
 				me.customer_login_data = {};
@@ -83,11 +83,12 @@
 							console.log('me.login_data',me.landlord_login_data);
 							console.log("r",r);
 							//$state.go('home')
-							if(r.data.stat){
+							if(r.data.stat == 1){
 								// me.profile = true;
 								console.log(me);
-								location.href = '/';
-//								  $state.go('app.home');
+								//store landlord email in localStorage
+								 $localStorage.landlord = r.data.LLEmail;
+								  $state.go('landlord.profile',{landlord: me.landlord_login_data.LLEmail});
 							}else
 							{
 								me.login_failed = true;

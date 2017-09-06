@@ -1,9 +1,9 @@
-<div ng-controller="MailNewCtrl">
+<div ng-controller="MailNewCtrl as vm">
   <!-- header -->
   <div class="wrapper bg-light lter b-b">
     <div class="btn-group m-r-sm">
       <a href class="btn btn-sm btn-default w-xxs w-auto-xs" tooltip="Save"><i class="fa fa-file"></i></a>
-      <a ui-sref="app.mail.list" class="btn btn-sm btn-default w-xxs w-auto-xs" tooltip="Discard"><i class="fa fa-trash-o"></i></a>
+      <a ui-sref="landlord.mail.list" class="btn btn-sm btn-default w-xxs w-auto-xs" tooltip="Discard"><i class="fa fa-trash-o"></i></a>
     </div>
   </div>
   <!-- / header -->
@@ -12,15 +12,15 @@
       <div class="form-group">
         <label class="col-lg-2 control-label">To:</label>
         <div class="col-lg-8">
-          <select ui-jq="chosen" data-placeholder="Choose email" class="form-control" multiple ng-model="mail.to">
-            <option ng-repeat="list in tolist" value="[:list.email:]">[:list.name:] <[:list.email:]></option>
+          <select ui-jq="chosen" data-placeholder="Choose email" class="form-control" multiple ng-model="vm.mail.to">
+            <option ng-repeat="list in vm.tolist" value="[:list.email:]">[:list.name:] <[:list.email:]></option>
           </select>
         </div>
       </div>
       <div class="form-group">
         <label class="col-lg-2 control-label">Subject:</label>
         <div class="col-lg-8">
-          <input type="text" class="form-control" ng-model="mail.subject">
+          <input type="text" class="form-control" ng-model="vm.mail.title">
         </div>
       </div>
       <div class="form-group">
@@ -62,13 +62,13 @@
             </div>
           </div>
           <div ui-jq="wysiwyg" class="form-control h-auto" style="min-height:200px;">
-            Go ahead&hellip;
+            <textarea class="form-control" rows="6" ng-model="vm.mail.content" style="width:100%;min-height:200px; border:none;" placeholder="Type your message"></textarea>
           </div>
         </div>
       </div>
       <div class="form-group">
         <div class="col-lg-8 col-lg-offset-2">
-          <button class="btn btn-info w-xs">Send</button>
+          <button class="btn btn-info w-xs" ng-click="vm.Send()">Send</button>
         </div>
       </div>
     </form>

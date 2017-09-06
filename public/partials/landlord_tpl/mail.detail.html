@@ -1,7 +1,7 @@
 <div ng-controller="MailDetailCtrl">
   <!-- header -->
   <div class="wrapper bg-light lter b-b">
-    <a ui-sref="app.landlord.mail.list" class="btn btn-sm btn-default w-xxs m-r-sm" tooltip="Back to Inbox"><i class="fa fa-long-arrow-left"></i></a>
+    <a ui-sref="landlord.mail.list" class="btn btn-sm btn-default w-xxs m-r-sm" tooltip="Back to Inbox"><i class="fa fa-long-arrow-left"></i></a>
     <div class="btn-group m-r-sm">
       <button class="btn btn-sm btn-default w-xxs w-auto-xs" tooltip="Archive"><i class="fa fa-archive"></i></button>
       <button class="btn btn-sm btn-default w-xxs w-auto-xs" tooltip="Report"><i class="fa fa-exclamation-circle"></i></button>
@@ -30,11 +30,11 @@
   </div>
   <!-- / header -->
   <div class="wrapper b-b">
-    <h2 class="font-thin m-n">[:mail.subject:]</h2>
+    <h2 class="font-thin m-n">[:mail.title:]</h2>
   </div>
   <div class="wrapper b-b">
     <img ng-src="[:mail.avatar:]" class="img-circle thumb-xs m-r-sm">
-    from <a href>[:mail.from:]</a> on [:mail.date:]
+    from <a href>[:mail.from +" "+ mail.idSender:]</a> on [:mail.createTime:]
   </div>
   <div class="wrapper">
     [:mail.content:]
@@ -51,17 +51,19 @@
     <div class="panel b-a">
       <div class="panel-heading ng-show" ng-hide="reply">
         <div class="m-b-lg">
-        Click here to <a href class="text-u-l" ng-click="reply=!reply">Reply</a> or <a href class="text-u-l" ng-click="reply=!reply">Forward</a>
+        Click here to <a href class="text-u-l" ng-click="reply=!reply">Reply</a>
         </div>
       </div>
       <div class="ng-hide" ng-show="reply">
         <div class="panel-heading b-b b-light">
-          [:mail.from:]
+          [:mail.from +" "+ mail.idSender:]
         </div>
-        <div class="wrapper" contenteditable="true" style="min-height:100px"></div>
+        <div class="wrapper" contenteditable="true" style="min-height:100px">
+          <textarea class="form-control" rows="2" ng-model="contents" style="width:100%;min-height:100px; border:none;" placeholder="Type your message"></textarea>
+        </div>
         <div class="panel-footer bg-light lt">
           <button class="btn btn-link pull-right" ng-click="reply=!reply"><i class="fa fa-trash-o"></i></button>
-          <button class="btn btn-info w-xs font-bold">Send</button>
+          <button class="btn btn-info w-xs font-bold" ng-click="Send()">Send</button>
         </div>
       </div>
     </div>

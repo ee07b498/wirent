@@ -1,3 +1,8 @@
+/**
+ * @Date:   2017-09-05T13:32:53+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-09-06T12:05:25+10:00
+ */
 'use strict';
 
 /* Controllers */
@@ -25,26 +30,6 @@ angular.module('andy')
 	    return moment(date).fromNow();
 	  }
 	})
-	.factory('mails', ['$http', function ($http) {
-	  var path = '/mails.json';
-	  var mails = $http.get(path).then(function (resp) {
-	    return resp.data.mails;
-	  });
-
-	  var factory = {};
-	  factory.all = function () {
-	    return mails;
-	  };
-	  factory.get = function (id) {
-	    return mails.then(function(mails){
-	      for (var i = 0; i < mails.length; i++) {
-	        if (mails[i].id == id) return mails[i];
-	      }
-	      return null;
-	    })
-	  };
-	  return factory;
-	}])
 	.directive('keyBind', ['keyCodes', function (keyCodes) {
 			function map(obj) {
 					var mapped = {};

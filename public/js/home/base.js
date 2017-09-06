@@ -1,10 +1,8 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-01T11:37:32+10:00
+ * @Last modified time: 2017-09-06T14:18:20+10:00
  */
-
-
 
 'use strict';
 angular.module('andy', [
@@ -67,11 +65,11 @@ angular.module('andy', [
           ],
         },
       })
-      .state('app.googlemap', {
-        url: '/googlemap',
-        //template:'<h1>homePage</h1>'
-        templateUrl: '/partials/googlemap.html', //localhost:8080/home.tpl
-      })
+      // .state('app.googlemap', {
+      //   url: '/googlemap',
+      //   //template:'<h1>homePage</h1>'
+      //   templateUrl: '/partials/googlemap.html', //localhost:8080/home.tpl
+      // })
       .state('landlord', {
         url: '/landlord',
         //template:'<h1>homePage</h1>'
@@ -81,7 +79,7 @@ angular.module('andy', [
             function($ocLazyLoad) {
               return $ocLazyLoad.load('angularFileUpload').then(
                 function() {
-                  return $ocLazyLoad.load('js/home/landlordProfile.js');
+                  return $ocLazyLoad.load('js/home/ll_controller/landlordProfile.js');
                 }
               );
             }
@@ -89,28 +87,37 @@ angular.module('andy', [
         }
       })
       .state('landlord.profile', {
-        url: '/profile',
+        url: '/profile?landlord',
         //template:'<h1>homePage</h1>'
         templateUrl: '/partials/landlord_tpl/profile.html', //localhost:8080/home.tpl
+        resolve: {
+          deps: ['$ocLazyLoad',
+            function($ocLazyLoad) {
+              return $ocLazyLoad.load('js/home/ll_controller/landlord.js');
+            }
+          ]
+        }
       })
       .state('landlord.balance', {
         url: '/balance',
         templateUrl: '/partials/landlord_tpl/balance.html', //localhost:8080/home.tpl
         resolve: {
-            deps: ['$ocLazyLoad',
-              function( $ocLazyLoad){
-                return $ocLazyLoad.load('js/home/balanceCtrl.js');
-            }]
+          deps: ['$ocLazyLoad',
+            function($ocLazyLoad) {
+              return $ocLazyLoad.load('js/home/ll_controller/balanceCtrl.js');
+            }
+          ]
         }
       })
       .state('landlord.contract', {
         url: '/contract',
         templateUrl: '/partials/landlord_tpl/contract.html', //localhost:8080/home.tpl
         resolve: {
-            deps: ['$ocLazyLoad',
-              function( $ocLazyLoad){
-                return $ocLazyLoad.load('js/home/contractCtrl.js');
-            }]
+          deps: ['$ocLazyLoad',
+            function($ocLazyLoad) {
+              return $ocLazyLoad.load('js/home/ll_controller/contractCtrl.js');
+            }
+          ]
         }
       })
       .state('landlord.propertyManagement', {
@@ -123,7 +130,7 @@ angular.module('andy', [
             function($ocLazyLoad) {
               return $ocLazyLoad.load('ui.select').then(
                 function() {
-                  return $ocLazyLoad.load('js/home/propertyManagement.js');
+                  return $ocLazyLoad.load('js/home/ll_controller/propertyManagement.js');
                 }
               );
             },
@@ -145,9 +152,6 @@ angular.module('andy', [
           deps: ['uiLoad',
             function(uiLoad) {
               return uiLoad.load(['js/home/mail/mail.js',
-                'js/home/mail/maillist.js',
-                'js/home/mail/maildetail.js',
-                'js/home/mail/mailnew.js',
                 'js/home/mail/mail-service.js',
                 'vendor/libs/moment.min.js'
               ]);
@@ -160,7 +164,7 @@ angular.module('andy', [
         templateUrl: '/partials/landlord_tpl/mail.list.html'
       })
       .state('landlord.mail.detail', {
-        url: '/{mailId:[0-9]{1,4}}',
+        url: '/?mailId&foldId',
         templateUrl: '/partials/landlord_tpl/mail.detail.html'
       })
       .state('landlord.mail.compose', {
@@ -169,47 +173,47 @@ angular.module('andy', [
       })
       // customer
       .state('customer', {
-          url: '/customer',
-          templateUrl: '/partials/customer/profile_customer.html',
-          resolve: {
-            deps: ['$ocLazyLoad',
-              function($ocLazyLoad) {
-                return $ocLazyLoad.load('angularFileUpload').then(
-                  function() {
-                    return $ocLazyLoad.load('js/home/customerCtrl.js');
-                  }
-                );
-              }
-            ]
-          }
+        url: '/customer',
+        templateUrl: '/partials/customer/profile_customer.html',
+        resolve: {
+          deps: ['$ocLazyLoad',
+            function($ocLazyLoad) {
+              return $ocLazyLoad.load('angularFileUpload').then(
+                function() {
+                  return $ocLazyLoad.load('js/home/customerCtrl.js');
+                }
+              );
+            }
+          ]
+        }
       })
       .state('customer.profile', {
-          url: '/profile',
-          templateUrl: '/partials/customer/profile.html'
+        url: '/profile',
+        templateUrl: '/partials/customer/profile.html'
       })
       .state('customer.myPayments', {
-          url: '/mypament',
-          templateUrl: '/partials/customer/myPament.html'
+        url: '/mypament',
+        templateUrl: '/partials/customer/myPament.html'
       })
       .state('customer.myContract', {
-          url: '/mycontract',
-          templateUrl: '/partials/customer/myContract.html'
+        url: '/mycontract',
+        templateUrl: '/partials/customer/myContract.html'
       })
       .state('customer.maintenanceApply', {
-          url: '/maintenanceApply',
-          templateUrl: '/partials/customer/maintenance_apply.html'
+        url: '/maintenanceApply',
+        templateUrl: '/partials/customer/maintenance_apply.html'
       })
       .state('customer.maintenanceHistory', {
-          url: '/maintenanceHistory',
-          templateUrl: '/partials/customer/maintenance_history.html'
+        url: '/maintenanceHistory',
+        templateUrl: '/partials/customer/maintenance_history.html'
       })
       .state('customer.serviceApply', {
-          url: '/serviceApply',
-          templateUrl: '/partials/customer/service_apply.html'
+        url: '/serviceApply',
+        templateUrl: '/partials/customer/service_apply.html'
       })
       .state('customer.serviceHistory', {
-          url: '/serviceHistory',
-          templateUrl: '/partials/customer/service_history.html'
+        url: '/serviceHistory',
+        templateUrl: '/partials/customer/service_history.html'
       })
       //customer mail
       // mail

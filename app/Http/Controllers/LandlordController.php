@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-06-30T10:20:03+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-18T16:03:57+10:00
+# @Last modified time: 2017-09-06T15:58:31+10:00
 
 namespace App\Http\Controllers;
 
@@ -61,7 +61,7 @@ class LandlordController extends Controller
  	public function profile_check(Request $request)
 	{
 		$LLEmail = $request->input('LLEmail');
-		$proc_name = 'check_LandlordInfo_by_LLEmail';
+		$proc_Name = 'check_LandlordInfo_by_LLEmail';
 		$dataset = DB::select("call $proc_Name('{$LLEmail}')");
 		return json_encode($dataset);
 	}
@@ -82,7 +82,7 @@ class LandlordController extends Controller
 		$LLEmail=$request->input('LLEmail'); //不允许用户从此过程修改邮箱
 		$proc_Name = 'proc_Update_LandlordInfo';
 		$sql = "call $proc_Name(
-									'{$LLID}'，'{$LLName}'，'{$LLPassword}'，'{$LLPhone}'，'{$LLCellphone}'，'{$LLEmail}'
+									'{$LLID}','{$LLName}','{$LLPassword}','{$LLPhone}','{$LLCellphone}','{$LLEmail}'
 								)";
 		$result = DB::update($sql);
 		return response($result) ; //0:失败或无更新；1：成功
@@ -94,7 +94,8 @@ class LandlordController extends Controller
 	public function balance(Request $request)
 	{
 		//赋值参数
-		$CID = 0;										//所有;
+		// $CID = 0;										//所有;
+    $CID = $request->input('CID');
 		$ER_ID = $request->input('ER_ID');
 		$BillType = $request->input('BillType');		//'balance'; 当为""空的时候查出所有的bill
 		$BillDateMin = $request->input('BillDateMin');
@@ -177,25 +178,24 @@ class LandlordController extends Controller
 			$proc_name = 'proc_Insert_ERInfo';
 			$sql = "call $proc_name(
 								'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}','{$postcode}',
-								{$ER_Area},{$ER_BedRoom},{$ER_BathRoom},{$ER_Kitchen},
-								{$ER_Dining},{$ER_Parking},{$ER_Price},'{$ER_AvailableDate}',
-								{$LLID},'{$ER_Description}','{$ER_Type}','{$ER_Feature}',
+								'{$ER_Area}','{$ER_BedRoom}','{$ER_BathRoom}','{$ER_Kitchen}',
+								'{$ER_Dining}','{$ER_Parking}','{$ER_Price}','{$ER_AvailableDate}',
+								'{$LLID}','{$ER_Description}','{$ER_Type}','{$ER_Feature}',
 								'{$ER_Stat}'
 								)";
 			$result = DB::insert($sql);
-			return $result;
+			return 1;
 		}
-		else{return false;} 		//该地址已注册
+		else{return "property info exist";} 		//该地址已注册
 	}
 
 	public function update(Request $request){
 		//声明及获取参数
-		$ER_ID = $request->input('ER_ID');
+    $ER_ID = $request->input('ER_ID');
 		$ER_No = $request->input('ER_No');
 		$ER_St = $request->input('ER_St');
 		$ER_Suburb=$request->input('ER_Suburb');
 		$ER_Region = $request->input('ER_Region');
-		$postcode = $request->input('postcode');
 		$ER_Area = $request->input('ER_Area');
 		$ER_BedRoom = $request->input('ER_BedRoom');
 		$ER_BathRoom = $request->input('ER_BathRoom');
@@ -203,24 +203,24 @@ class LandlordController extends Controller
 		$ER_Dining = $request->input('ER_Dining');
 		$ER_Parking = $request->input('ER_Parking');
 		$ER_Price = $request->input('ER_Price');
-		$ER_Stat = '';
+		$ER_Stat = $request->input('ER_Stat');
 		$ER_AvailableDate = $request->input('ER_AvailableDate');
 		$LLID = $request->input('LLID');
-		$ER_InspRep = '';
+		$ER_InspRep = $request->input('ER_InspRep');
 		$ER_Description = $request->input('ER_Description');
 		$ER_Type = $request->input('ER_Type');
 		$ER_Feature = $request->input('ER_Feature');
-
+		$postcode = $request->input('postcode');
 		$proc_name = 'proc_Update_ERInfo';
 		$sql = "call $proc_name(
-							'{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}',{$postcode},
-							{$ER_Area},{$ER_BedRoom},{$ER_BathRoom},{$ER_Kitchen},
-							{$ER_Dining},{$ER_Parking},{$ER_Price},'{$ER_Stat}',
-							'{$ER_AvailableDate}',{$LLID},'{$ER_InspRep}',
+							'{$ER_ID}','{$ER_No}','{$ER_St}','{$ER_Suburb}','{$ER_Region}','{$postcode}',
+							'{$ER_Area}','{$ER_BedRoom}','{$ER_BathRoom}','{$ER_Kitchen}',
+							'{$ER_Dining}','{$ER_Parking}','{$ER_Price}','{$ER_Stat}',
+							'{$ER_AvailableDate}','{$LLID}','{$ER_InspRep}',
 							'{$ER_Description}','{$ER_Type}','{$ER_Feature}'
 							)";
 		$result = DB::update($sql);
-		return $result;
+		return json_encode($result);
 	}
 	/*
 	 * msg	relate to customer so id~CID
@@ -268,7 +268,7 @@ class LandlordController extends Controller
 		$proc_Name = 'msg_write';
 		$sql = "call $proc_Name('{$title}','{$content}','{$createTime}',{$IdSender},{$IdReceiver},'{$msg_direct_comment}')";
 		$result = DB::insert($sql);
-		return $result;
+		return json_encode($result);
 	}
 }
 

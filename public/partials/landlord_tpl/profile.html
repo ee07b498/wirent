@@ -21,33 +21,23 @@
         <div class="col-sm-7">
           <div class="clear m-b pull-in">
             <div class="m-b m-t-sm">
-              <span class="h3 text-black">Libin.Zhang</span>
+              <span class="h3 text-black">[:landlord.LLName:]</span>
               <small class="m-l">Sydney, Australia</small>
             </div>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
-              <a>IT Software Developer</a>
+              <a>[:landlord.LLEmail:]</a>
             </p>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-envelope"></i></a>
-              <a>yiensuen@gmail.com</a>
+              <a>[:landlord.LLPhone:]</a>
             </p>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <p class="m-b">
               <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-phone"></i></a>
-              <a>02-80021739</a>
-            </p>
-            <div class="line line-dashed b-b line-lg pull-in"></div>
-            <p class="m-b">
-              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
-              <a>0424909328</a>
-            </p>
-            <div class="line line-dashed b-b line-lg pull-in"></div>
-            <p class="m-b">
-              <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-lg fa-mobile"></i></a>
-              <a>IT 部门开发人员</a>
+              <a>[:landlord.LLCellphone:]</a>
             </p>
           </div>
         </div>
@@ -74,38 +64,34 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="First Name">
-                </div>
-              </div>
-              <div class="line line-dashed b-b line-lg pull-in"></div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Surname</label>
-                <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Last Name">
+                  <input type="text"  ng-model="landlord.LLName" class="form-control m-b" placeholder="First Name">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="Email">
+                  <input type="text"  ng-model="landlord.LLEmail" class="form-control m-b" placeholder="Email">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Phone</label>
                 <div class="col-sm-10">
-                  <input type="phone"  class="form-control m-b" placeholder="Phone">
+                  <input type="phone"  ng-model="landlord.LLPhone" class="form-control m-b" placeholder="Phone">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Ceil Phone</label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control m-b" placeholder="042...">
+                  <input type="text"  ng-model="landlord.LLCellphone" class="form-control m-b" placeholder="042...">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="text-center">
+                <button class="btn btn-success m-r" ng-click="update_Profile()">Update Profile</button>
+              </div>
             </div>
             <div class="tab-content" ng-show="selectedTab == 2">
                 <img src="img/andy.jpg"/>
@@ -125,27 +111,29 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Current password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="Current password">
+                  <input type="password"  class="form-control m-b"  ng-model="landlord.LLPassword" placeholder="Current password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">New password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="New password">
+                  <input type="password"  class="form-control m-b" ng-model="changePassword.newPassword" placeholder="New password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Retype New password</label>
                 <div class="col-sm-10">
-                  <input type="password"  class="form-control m-b" placeholder="Retype New password">
+                  <input type="password"  class="form-control m-b" ng-model="changePassword.retypePassword" placeholder="Retype New password">
                 </div>
               </div>
               <div class="line line-dashed b-b line-lg pull-in"></div>
-              <div class="line line-dashed b-b line-lg pull-in"></div>
-              <div>
-                <button class="btn btn-success m-r">Change password</button><button class="btn btn-error">cancel</button>
+              <div class="text-center" ng-show="authorError">
+                <p style="color:red; font-size:14px;">前后密码不一致！</p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-success m-r" ng-click="update_password()">Change password</button>
               </div>
             </div>
 

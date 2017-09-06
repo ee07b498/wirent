@@ -1,0 +1,213 @@
+<div class="wrapper-md">
+  <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false}">
+    <tab heading="Step 1" active="steps.step1" select="steps.percent=10">
+      <p class="m-b">Follow the steps to fullfil your property infomations</p>
+      <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+      <h4>application Form</h4>
+      <form name="step1" class="form-validation">
+        <div class="form-group pull-in clearfix">
+          <div class="col-sm-6">
+            <label>Property NO</label>
+            <input type="text" class="form-control" name="property no" ng-model="no" required>
+            <label>street</label>
+            <input type="text" class="form-control" name="street" required ng-model="street" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
+            <span ng-show='form.confirm_password.$error.validator'>Passwords do not match!</span>
+          </div>
+          <div class="col-sm-6">
+            <label>suburb</label>
+            <input type="text" class="form-control" name="suburb" required ng-model="suburb" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
+            <label>region</label>
+            <input type="text" class="form-control" name="region" required ng-model="region" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
+            <span ng-show='form.confirm_password.$error.validator'>Passwords do not match!</span>
+          </div>
+        </div>
+        <p>postcode:</p>
+        <input type="text" name="postcode" class="form-control" ng-model="postcode" required ng-change="step1.postcode.$valid ? (steps.percent=30) : (steps.percent=20)">
+        <div class="m-t m-b">
+          <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step2=true">Next</button>
+        </div>
+      </form>
+    </tab>
+    <tab heading="Step 2" disabled="step1.$invalid" active="steps.step2" select="steps.percent=30">
+      <form name="step2" class="form-validation">
+        <p class="m-b">Continue the next step</p>
+        <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Property Type:</label>
+          <div class="col-sm-10 ">
+            <select ui-jq="chosen" class="w-md">
+                <optgroup label="房屋类型">
+                  <option value="unit">Unit</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="studio">Studio</option>
+                  <option value="townhouse">Townhouse</option>
+                  <option value="house">House</option>
+                </optgroup>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Features:</label>
+          <div class="col-sm-10 ">
+            <select ui-jq="chosen" multiple class="w-md">
+              <option value="girls_only">girls_only</option>
+              <option value="boys_only">boys_only</option>
+              <option value="no_pets">no_pets</option>
+              <option value="no_smoking">no_smoking</option>
+              <option value="furniture">furniture</option>
+              <option value="laundry">laundry</option>
+              <option value="full_kitchen">full_kitchen</option>
+              <option value="coffe_bar">coffe_bar</option>
+              <option value="aircondition">aircondition</option>
+              <option value="media">media</option>
+            </select>
+          </div>
+        </div>
+        <div class="line line-dashed b-b m-t line-lg pull-in"></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Rooms:</label>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="input-group m-b">
+                  <span class="input-group-addon"><i class="fa fa-bed"></i></span>
+                  <input type="text" class="form-control" placeholder="bedrooms">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group m-b">
+                  <span class="input-group-addon"><i class="fa fa-bath"></i></span>
+                  <input type="text" class="form-control" placeholder="bathrooms">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group m-b">
+                  <span class="input-group-addon"><i class="fa fa-car"></i></span>
+                  <input type="text" class="form-control" placeholder="parkings">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Area</label>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-group m-b">
+                  <input type="text" class="form-control" placeholder="input the area of the property">
+                  <span class="input-group-addon">m^2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Kitchen</label>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-group m-b">
+                  <input type="text" class="form-control" placeholder="kitchen">
+                  <span class="input-group-addon">kitchen</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Dining</label>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-group m-b">
+                  <input type="text" class="form-control" placeholder="Dining">
+                  <span class="input-group-addon">Dining</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-t m-b">
+          <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step1=true">Prev</button>
+          <button type="submit" ng-disabled="step2.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step3=true">Next</button>
+        </div>
+      </form>
+    </tab>
+    <tab heading="Step 3" disabled="step2.$invalid" active="steps.step3" select="steps.percent=60">
+      <p class="m-b">Congraduations! You got the last step.</p>
+      <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Price</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group m-b">
+                <span class="input-group-addon">$</span>
+                <input type="text" class="form-control" placeholder="input the area of the property">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">AvailableDate</label>
+        <div class="col-sm-10">
+          <div class="input-group w-md m-b">
+            <input type="text" class="form-control" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+            <span class="input-group-btn">
+           <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+         </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+          <div class="input-group w-full m-b">
+            <!-- <textarea class="form-control" rows="6" placeholder="Type your message"></textarea> -->
+            <select ui-jq="chosen" ng-model="property_info.ER_Description" multiple class="w-lg">
+              <option value="university">university</option>
+              <option value="train_station">train_station</option>
+              <option value="backpack">backpack</option>
+              <option value="park">park</option>
+              <option value="school">school</option>
+              <option value="big_family">big_family</option>
+              <option value="shopping_mall">shopping_mall</option>
+              <option value="office_rental">office_rental</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label text-left">Types</label>
+        <div class="col-sm-10">
+          <!-- <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" ng-disabled="disabled">
+            <ui-select-match placeholder="Select person...">[:$item.name:] &lt;[:$item.email:]&gt;</ui-select-match>
+            <ui-select-choices group-by="someGroupFn" repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
+              <div ng-bind-html="person.name | highlight: $select.search"></div>
+              <small>
+             email: [:person.email:]
+             age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+           </small>
+            </ui-select-choices>
+          </ui-select> -->
+          <select ui-jq="chosen" ng-model="property_info.ER_Type" class="w-lg">
+              <optgroup label="房屋类型">
+                <option value="unit">Unit</option>
+                <option value="apartment">Apartment</option>
+                <option value="studio">Studio</option>
+                <option value="townhouse">Townhouse</option>
+                <option value="house">House</option>
+              </optgroup>
+          </select>
+
+        </div>
+      </div>
+      <div class="m-t m-b">
+        <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step2=true">Prev</button>
+        <button type="button" class="btn btn-default btn-rounded" ng-click="steps.percent=100">Click to Submit</button>
+      </div>
+    </tab>
+  </tabset>
+</div>

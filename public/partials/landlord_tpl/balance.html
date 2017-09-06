@@ -15,29 +15,23 @@
           <button class="btn btn-info" ng-click="inspection_add('lg')"><i class="fa fa-plus"></i>Balance添加</button>
           </div>
           <div class="row wrapper">
-            <div class="col-sm-4 m-b-xs">
-              <select class="input-sm form-control w-sm inline v-middle">
-                <option value="0">整租</option>
-                <option value="1">分租</option>
-                <option value="2">二手房购买</option>
-                <option value="3">房产投资</option>
+            <div class="col-sm-6 m-b-xs">
+              <select class="input-sm form-control w-lg inline v-middle" ng-model="balance_ER_ID">
+                <option ng-repeat="property in properties" value="[:property.ER_ID:]">[:property.ER_No+" "+property.ER_St+" "+property.ER_Suburb+","+property.ER_Region:]</option>
             </select>
-              <button class="btn btn-sm m-l-n-xxs btn-default">Apply</button>
+              <button class="btn btn-sm m-l-n-xxs btn-default" ng-click="getBalance()">Apply</button>
             </div>
-            <div class="col-sm-6">
+            <!-- <div class="col-sm-4">
               <div class="input-group">
                 <input type="text" class="input-sm form-control" placeholder="Search">
                 <span class="input-group-btn">
                 <button class="btn btn-sm btn-default" type="button">Go!</button>
               </span>
               </div>
-            </div>
-
-            <div class="col-sm-2">
-            </div>
+            </div> -->
           </div>
           <div class="table-responsive">
-            <table class="table table-striped b-t b-light" style="table-layout:fixed ; width: 100%;">
+            <table class="table table-striped b-t b-light" style="table-layout:fixed; width: 100%;">
               <thead>
                 <tr>
                   <th style="width:20px;">

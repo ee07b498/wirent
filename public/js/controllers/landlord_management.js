@@ -1,10 +1,8 @@
 /**
  * @Date:   2017-07-14T16:43:33+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-28T15:46:37+10:00
+ * @Last modified time: 2017-09-06T13:07:58+10:00
  */
-
-
 
 'use strict'
 app.controller('landlordAddInstanceCtrl', ['$scope', '$modalInstance', '$http', function($scope, $modalInstance, $http) {
@@ -80,10 +78,17 @@ app.controller('landlordManagement', ['$scope', '$modal', '$log', '$http', funct
   $scope.items = ['item1', 'item2', 'item3'];
   $scope.inputStr = "";
   $scope.landLord_infos = {};
+  /***********pagination starts********************/
+  $scope.maxSize = 5;
+  // $scope.totalItems = $scope.customers.length;
+  $scope.currentPage = 1;
+  $scope.itemsPerPage = 10;
+  /***********pagination ends********************/
   $http.post('/staff/admin_landlord_check', $scope.inputStr)
     .then(function(response) {
       console.log("response", response);
       $scope.landLord_infos = response.data;
+      $scope.totalItems = $scope.landLord_infos.length;
     }, function(x) {
       console.log('Server Error');
     });

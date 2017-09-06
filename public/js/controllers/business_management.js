@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-14T16:43:33+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-29T11:16:46+10:00
+ * @Last modified time: 2017-09-06T13:15:42+10:00
  */
 
 
@@ -94,6 +94,12 @@ app.controller('businessManagement', ['$scope', '$modal', '$log', '$http', 'getD
   $scope.business = {};
   $scope.business.TPDetail = "";
   $scope.business.TPServLoc = "";
+  /***********pagination starts********************/
+  $scope.maxSize = 5;
+  // $scope.totalItems = $scope.customers.length;
+  $scope.currentPage = 1;
+  $scope.itemsPerPage = 10;
+  /***********pagination ends********************/
   /*$http.post('/staff/admin_thirdparty_filt_check', $scope.business)
     .then(function(response) {
       console.log("response", response);
@@ -106,6 +112,7 @@ app.controller('businessManagement', ['$scope', '$modal', '$log', '$http', 'getD
     .then(function(response) {
       console.log("response", response);
       $scope.business_infos = response.data;
+      $scope.totalItems =  $scope.business_infos.length;
     }, function(x) {
       console.log('Server Error');
     });

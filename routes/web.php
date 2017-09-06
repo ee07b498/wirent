@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-07-12T15:18:25+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-09-01T15:40:47+10:00
+# @Last modified time: 2017-09-06T15:03:25+10:00
 
 
 
@@ -99,24 +99,20 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 	$app->post('/register',			'LandlordController@register');
 	$app->get('/logout',			'LandlordController@logout');
 
-	$app->get('/profile', 			['middleware' => 'lord','uses'=>'LandlordController@profile_check']);
-	$app->post('/profile/update',	['middleware' => 'lord','uses'=>'LandlordController@profile_update']);
+	$app->post('/profile', 		['uses'=>'StaffController@profile_check']);
+	$app->post('/profile/update',	'LandlordController@profile_update');
 
-	$app->group(['prefix'=>'pm'], function () use ($app){
-		$app->get('/balance',		['middleware' => 'lord','uses'=>'LandlordController@balance']);
-		$app->get('/check',			['middleware' => 'lord','uses'=>'LandlordController@check']);
-		$app->get('/stat_on',		['middleware' => 'lord','uses'=>'LandlordController@stat_on']);
-		$app->get('/stat_pre',		['middleware' => 'lord','uses'=>'LandlordController@stat_pre']);
-		$app->get('/insert',		['middleware' => 'lord','uses'=>'LandlordController@insert']);
-		$app->get('/update',		['middleware' => 'lord','uses'=>'LandlordController@update']);
-	});
+	$app->post('/balance',		'LandlordController@balance');
+	$app->post('/check',			'LandlordController@check');
+	$app->post('/stat_on',		'LandlordController@stat_on');
+	$app->post('/stat_pre',	'LandlordController@stat_pre');
+	$app->post('/insert',		'LandlordController@insert');
+	$app->post('/update',		'LandlordController@update');
+	$app->post('/notice',		'LandlordController@msg_notice');
+	$app->post('/confirm',		'LandlordController@msg_confirm');
+	$app->post('/received',	'LandlordController@msg_received');	//msg_receive is php function
+	$app->post('/write',		'LandlordController@msg_write');
 
-	$app->group(['prefix' => 'msg'], function () use ($app){
-		$app->get('/notice',		['middleware' => 'lord','uses'=>'LandlordController@msg_notice']);
-		$app->get('/confirm',		['middleware' => 'lord','uses'=>'LandlordController@msg_confirm']);
-		$app->get('/received',		['middleware' => 'lord','uses'=>'LandlordController@msg_received']);	//msg_receive is php function
-		$app->post('/write',			['middleware' => 'lord','uses'=>'LandlordController@msg_write']);
-	});
 });
 //thirdparty entrance
 
