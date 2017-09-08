@@ -1,3 +1,11 @@
+/**
+ * @Date:   2017-08-22T10:58:54+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-09-08T16:00:58+10:00
+ */
+
+
+
   'use strict';
   angular.module('andy')
    .controller('HomeController', [
@@ -1527,6 +1535,9 @@
        if(r.data.customer_login_status){
          //search for the results of properties
            $scope.entireLocationSearch = function(theme) {
+             if(theme !==null){
+               $scope.include_area = false;
+             }
              var regionArr = [];
              var result = [];
              var suburb = "";
@@ -1545,7 +1556,7 @@
              });
              regionArr = result;
              for (var i = 0; i < regionArr.length; i++) {
-                 region = regionArr[i] + region;
+                 region = regionArr[i] +","+ region;
              }
              entireData = {
               CID:r.data.CID,
@@ -1568,25 +1579,31 @@
               ER_Feature: ER_Feature
              };
             console.log(entireData);
-            getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
-                 $scope.data = result;
-                 console.log($scope.data);
-                 return result;
-             },function(error){
-               console.log("error" + error);
-             }).then(function(result){
-               result = Math.ceil(result/20);
+            delete entireData.OrderBy;
+            delete entireData.PageID;
+            if (entireData.ER_Region === "") {
+               entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
+            }else {
+               entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
+               entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
+            }
+              console.log(entireData);
+            // getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
+            //   console.log(result);
+            //      $scope.data = result;
+            //      console.log($scope.data);
+            //      return result;
+            //  },function(error){
+            //    console.log("error" + error);
+            //  })
+            $http.post('/customer/filt/entire/count',entireData).then(function(result){
+               console.log(result);
+              //  result = Math.ceil(result/20);
                entireData.OrderBy = 'ER_AvailableDate';
                entireData.PageID = 0;
                console.log(entireData);
                 $http.post('/customer/filt/entire/tenant', entireData)
                  .then(function(r) {
-                   if (entireData.ER_Region === "") {
-                      entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
-                   }else {
-                      entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
-                      entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
-                   }
                   SearchService.set(r);
                   updateService.set(entireData);
                   console.log('r===>', r);
@@ -1602,6 +1619,9 @@
 
            /************share rooms data filter get starts**************/
           $scope.shareLocationSearch = function(theme){
+            if(theme !==null){
+              $scope.include_area = false;
+            }
             var regionArr = [];
             var result = [];
             var suburb = "";
@@ -1643,6 +1663,7 @@
              },function(error){
                console.log("error" + error);
              }).then(function(result){
+               console.log(result);
                result = Math.ceil(result/20);
                shareData.OrderBy = 'SRAvailableDate';
                shareData.PageID = 0;
@@ -1661,7 +1682,7 @@
                   console.log('r===>', r);
                    $state.go('app.listpageShare');
                  }, function(e) {
-
+                    console.log("error" + error);
                  });
              },function(error){
                console.log("error" + error);
@@ -1691,7 +1712,8 @@
              CID:r.data.CID,
              ER_Suburb: suburb,
              ER_Region: region,
-             include_area:$scope.include_area,
+            //  include_area:$scope.include_area,
+             include_area: false,
              ER_Type: $scope.myPropertyType,
              ER_PriceMin: $scope.myMinPrice,
              ER_PriceMax: $scope.myMaxPrice,
@@ -1764,7 +1786,8 @@
               CID:r.data.CID,
               ER_Suburb: suburb,
               ER_Region:region,
-              include_area:$scope.include_area_share,
+              // include_area:$scope.include_area_share,
+              include_area: false,
               ER_Type: $scope.myPropertyType,
               SRName:'',
               SRPriceMin: $scope.myMinPrice_Share,
@@ -1815,6 +1838,9 @@
         }else {
             //search for the results of properties
             $scope.entireLocationSearch = function(theme) {
+            if(theme !==null){
+              $scope.include_area = false;
+            }
             var regionArr = [];
             var result = [];
             var suburb = "";
@@ -1855,6 +1881,14 @@
                ER_Feature: ER_Feature
               };
              console.log(entireData);
+             if (entireData.ER_Region === "") {
+                entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
+             }else {
+                entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
+                entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
+             }
+             console.log(entireData);
+
              getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
                   $scope.data = result;
                   console.log($scope.data);
@@ -1862,22 +1896,16 @@
               },function(error){
                 console.log("error" + error);
               }).then(function(result){
+                var _entireData = {};
+                _entireData = entireData;
                 result = Math.ceil(result/20);
-                entireData.OrderBy = 'ER_AvailableDate';
-                entireData.PageID = 0;
-                entireData.ER_Suburb = suburb;
-                entireData.ER_Region = region;
+                _entireData.OrderBy = 'ER_AvailableDate';
+                _entireData.PageID = 0;
                  console.log(entireData);
-                 $http.post('/customer/filt/entire', entireData)
+                 $http.post('/customer/filt/entire', _entireData)
                   .then(function(r) {
-                    if (entireData.ER_Region === "") {
-                       entireData.ER_Description = entireData.ER_Description.slice(1,entireData.ER_Description.length-1);
-                    }else {
-                       entireData.ER_Suburb = suburb.slice(0,entireData.ER_Suburb.length-1);
-                       entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
-                    }
                    SearchService.set(r);
-                   updateService.set(entireData);
+                   updateService.set(_entireData);
                    console.log('r===>', r);
                     $state.go('app.listpage');
                   }, function(e) {
@@ -1892,6 +1920,9 @@
 
             /***************share rooms search without login starts************************/
             $scope.shareLocationSearch = function(theme){
+              if(theme !==null){
+                $scope.include_area_share = false;
+              }
               var regionArr = [];
               var result = [];
               var suburb = "";
@@ -1926,6 +1957,12 @@
                 ER_Feature: ER_Feature
                };
               console.log(shareData);
+              if (shareData.ER_Region === "") {
+                 shareData.ER_Description = shareData.ER_Description.slice(1,shareData.ER_Description.length-1);
+              }else {
+                 shareData.ER_Suburb = suburb.slice(0,shareData.ER_Suburb.length-1);
+                 shareData.ER_Region = region.slice(0,shareData.ER_Region.length-1);
+              }
               getDataService.getDataRequests('/customer/filt/share/count',shareData).then(function(result){
                    $scope.data = result;
                    console.log($scope.data);
@@ -1940,12 +1977,7 @@
 
                   $http.post('/customer/filt/share', shareData)
                    .then(function(r) {
-                   if (shareData.ER_Region === "") {
-                      shareData.ER_Description = shareData.ER_Description.slice(1,shareData.ER_Description.length-1);
-                   }else {
-                      shareData.ER_Suburb = suburb.slice(0,shareData.ER_Suburb.length-1);
-                      shareData.ER_Region = region.slice(0,shareData.ER_Region.length-1);
-                   }
+
                     SearchService.set(r);
                     updateService.set(shareData);
                     console.log('r===>', r);
@@ -1981,7 +2013,8 @@
                 entireData = {
                  ER_Suburb: suburb,
                  ER_Region: region,
-                 include_area:$scope.include_area,
+                //  include_area:$scope.include_area,
+                 include_area:false, //station search 的时候不检查周边suburb
                  ER_Type: $scope.myPropertyType,
                  ER_PriceMin: $scope.myMinPrice,
                  ER_PriceMax: $scope.myMaxPrice,
@@ -2005,12 +2038,14 @@
                 },function(error){
                   console.log("error" + error);
                 }).then(function(result){
+                  var _entireData = {};
+                  _entireData = entireData;
                   result = Math.ceil(result/20);
-                  entireData.OrderBy = 'ER_AvailableDate';
-                  entireData.PageID = 0;
+                  _entireData.OrderBy = 'ER_AvailableDate';
+                  _entireData.PageID = 0;
                   console.log(entireData);
 
-                   $http.post('/customer/filt/entire', entireData)
+                   $http.post('/customer/filt/entire', _entireData)
                     .then(function(r) {
                       /****************************************************
                       station search region will be empty string,
@@ -2023,7 +2058,7 @@
                          entireData.ER_Region = region.slice(0,entireData.ER_Region.length-1);
                       }
                      SearchService.set(r);
-                     updateService.set(entireData);
+                     updateService.set(_entireData);
                      console.log('r===>', r);
                       $state.go('app.listpage');
                     }, function(e) {
@@ -2056,7 +2091,8 @@
                shareData = {
                 ER_Suburb: suburb,
                 ER_Region: region,
-                include_area:$scope.include_area_share,
+                // include_area:$scope.include_area_share,
+                include_area:false, //station search 的时候不检查周边suburb
                 ER_Type: $scope.myPropertyType,
                 SRPriceMin: $scope.myMinPrice_Share,
                 SRPriceMax: $scope.myMaxPrice_Share,
