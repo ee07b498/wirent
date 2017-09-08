@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-06-30T10:20:04+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-09-06T15:06:46+10:00
+ * @Last modified time: 2017-09-08T13:46:21+10:00
  */
 app.controller('MailCtrl', ['$scope', '$http', '$state', 'mails', 'getDataCommonService', function($scope, $http, $state, mails, getDataCommonService) {
   var vm = this;
@@ -122,6 +122,7 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
       $scope.msg_sent = {};
       $scope.msg_sent.IdSender = 3;
       $scope.msg_sent.IdReceiver = 0;
+      // $scope.msg_sent.msg_direct_comment = '% to %';
       $scope.msg_sent.msg_direct_comment = '% to %';
 
       $http.post('/staff/msg_trace', $scope.msg_sent)
@@ -233,7 +234,7 @@ app.controller('MailListCtrl', ['$scope', '$http', 'mails', '$stateParams', '$lo
     default:
       $scope.msg_received = {};
       $scope.msg_received.StaffID = 3;
-      $scope.msg_received.msg_direct_comment = 'Customer to Staff';
+      $scope.msg_received.msg_direct_comment = '% to Staff';
 
       $http.post('/staff/msg_received', $scope.msg_received)
         .then(function(response) {
@@ -314,11 +315,16 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         });
       break;
     case '2':
-      $scope.msg_received = {};
+      /*$scope.msg_received = {};
       $scope.msg_received.StaffID = 3;
       $scope.msg_received.msg_direct_comment = 'Customer to Staff';
 
-      $http.post('/staff/msg_received', $scope.msg_received)
+      $http.post('/staff/msg_received', $scope.msg_received)*/
+      $scope.msg_sent = {};
+      $scope.msg_sent.IdSender = 3;
+      $scope.msg_sent.IdReceiver = 0;
+      $scope.msg_sent.msg_direct_comment = 'Customer to Staff';
+      $http.post('/staff/msg_trace', $scope.msg_sent)
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
@@ -399,17 +405,22 @@ app.controller('MailDetailCtrl', ['$scope', '$http', '$state', 'mails', '$stateP
         });
       break;
     case '5':
-      $scope.msg_received = {};
+      /*$scope.msg_received = {};
       $scope.msg_received.StaffID = 3;
-      $scope.msg_received.msg_direct_comment = 'Staff to Customer';
-
-      $http.post('/staff/msg_received', $scope.msg_received)
+      $scope.msg_received.msg_direct_comment = 'Staff to Customer';*/
+      $scope.msg_sent = {};
+      $scope.msg_sent.IdSender = 3;
+      $scope.msg_sent.IdReceiver = 0;
+      $scope.msg_sent.msg_direct_comment = 'Staff to Customer';
+      $http.post('/staff/msg_trace', $scope.msg_sent)
+      // $http.post('/staff/msg_received', $scope.msg_received)
         .then(function(response) {
           console.log("response", response);
           $scope.mails = response.data;
           angular.forEach($scope.mails, function(value, key) {
             if (value.idMsg_sr == $stateParams.mailId) {
               $scope.mail = value;
+              console.log(value);
               $scope.mail.from = 'Staff';
               //******标记信息已读******//
               $http.post('/staff/msg_confirm', {

@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-14T16:27:20+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-29T17:44:42+10:00
+ * @Last modified time: 2017-09-08T13:05:16+10:00
  */
 
 
@@ -194,7 +194,7 @@ app.controller('updateCustomerInstanceCtrl', ['$scope', '$modalInstance', '$filt
     }
     $http.post('/staff/admin_customer_update', $scope.customerItem)
       .then(function(response) {
-        
+
         $modalInstance.close();
       }, function(x) {
         console.log('Server Error');
@@ -215,6 +215,7 @@ app.controller('userManagementCtrl', ['$scope', '$modal', '$log', '$http', funct
     .then(function(response) {
       $scope.customers = response.data;
       $scope.totalItems = $scope.customers.length;
+      console.log(response.data);
     }, function(x) {
       console.log('Server Error');
     });

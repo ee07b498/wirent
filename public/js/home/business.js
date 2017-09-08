@@ -1,3 +1,11 @@
+/**
+ * @Date:   2017-09-05T13:32:53+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-09-07T17:31:37+10:00
+ */
+
+
+
 ;(function () {
   'use strict';
   angular.module('andy').controller('businessCtrl', ['$scope', '$http', '$cookies', '$rootScope', '$localStorage','$window', 'SearchService', 'updateService','pagerService', function ($scope, $http, $cookies, $rootScope, $localStorage,$window, SearchService, updateService,pagerService) {
@@ -42,6 +50,7 @@
       $scope.businessSearch = function(TPDetail){
        business.TPDetail = TPDetail;
        business.TPServLoc = '';
+       business.status = -1;
        $http.post('/customer/filt_thirdparty', business)
         .then(function(r) {
          SearchService.set(r);

@@ -973,7 +973,7 @@ class StaffController extends Controller
 		try{
 			$proc_name = 'proc_Update_ThirdPartyInfo';
 			$sql = "call $proc_name('{$TPID}','{$TPName}','{$TPPassword}','{$TPDetail}','{$TPDescription}','{$TPLogo}',
-			'{$TPAds}','{$TPPhone}','{$TPEmail}','{$TPLink}','{$TPServLoc}','{status}')";
+			'{$TPAds}','{$TPPhone}','{$TPEmail}','{$TPLink}','{$TPServLoc}','{$status}')";
 			$result = DB::update($sql);
 			return json_encode($result);
 		}

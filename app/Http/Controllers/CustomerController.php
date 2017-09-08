@@ -1,7 +1,7 @@
 <?php
 # @Date:   2017-08-22T10:58:52+10:00
 # @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-29T21:49:41+10:00
+# @Last modified time: 2017-09-07T17:30:45+10:00
 
 
 
@@ -1083,8 +1083,9 @@ class CustomerController extends Controller
 	{
 		$TPDetail=$request->input('TPDetail');
 		$TPServLoc = $request->input('TPServLoc');			//e.g.租客检查未读邮件$msg_direct_comment = '% to customer';
+    $status = $request->input('status');
 		$proc_Name = 'filt_Check_ThirdParty';
-		$sql = "call $proc_Name('{$TPDetail}','{$TPServLoc}')";
+		$sql = "call $proc_Name('{$TPDetail}','{$TPServLoc}','{$status}')";
 		$result = DB::select($sql);
 		return $result;
 	}

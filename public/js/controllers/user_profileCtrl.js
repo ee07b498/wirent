@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-07-23T21:31:42+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-31T17:53:23+10:00
+ * @Last modified time: 2017-09-08T14:04:01+10:00
  */
 'use strict'
 app.controller('propertyDetailsInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
@@ -1217,6 +1217,7 @@ app.controller('user_profileCtrl', ['$scope', '$http', '$modal', '$log', '$state
   $http.post('/staff/admin_bill_check', $scope.billData)
     .then(function(response) {
       $scope.Bills = response.data;
+      console.log($scope.Bills);
       /*********************get the properties**************************/
       $http.post('/staff/admin_customer_er_check', {
           'CID': $stateParams.CID
