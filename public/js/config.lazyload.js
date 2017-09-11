@@ -1,3 +1,11 @@
+/**
+ * @Date:   2017-09-11T11:42:14+10:00
+ * @Email:  yiensuen@gmail.com
+ * @Last modified time: 2017-09-11T13:30:25+10:00
+ */
+
+
+
 // lazyload config
 
 angular.module('app')
@@ -9,7 +17,7 @@ angular.module('app')
   .constant('JQ_CONFIG', {
       easyPieChart:   ['vendor/jquery/charts/easypiechart/jquery.easy-pie-chart.js'],
       sparkline:      ['vendor/jquery/charts/sparkline/jquery.sparkline.min.js'],
-      plot:           ['vendor/jquery/charts/flot/jquery.flot.min.js', 
+      plot:           ['vendor/jquery/charts/flot/jquery.flot.min.js',
                           'vendor/jquery/charts/flot/jquery.flot.resize.js',
                           'vendor/jquery/charts/flot/jquery.flot.tooltip.min.js',
                           'vendor/jquery/charts/flot/jquery.flot.spline.js',
@@ -31,7 +39,7 @@ angular.module('app')
       dataTable:      ['vendor/jquery/datatables/jquery.dataTables.min.js',
                           'vendor/jquery/datatables/dataTables.bootstrap.js',
                           'vendor/jquery/datatables/dataTables.bootstrap.css'],
-      vectorMap:      ['vendor/jquery/jvectormap/jquery-jvectormap.min.js', 
+      vectorMap:      ['vendor/jquery/jvectormap/jquery-jvectormap.min.js',
                           'vendor/jquery/jvectormap/jquery-jvectormap-world-mill-en.js',
                           'vendor/jquery/jvectormap/jquery-jvectormap-us-aea-en.js',
                           'vendor/jquery/jvectormap/jquery-jvectormap.css'],
@@ -62,9 +70,9 @@ angular.module('app')
                   ]
               },
               {
-                  name:'angularFileUpload',
+                  name:'ngFileUpload',
                   files: [
-                    'vendor/modules/angular-file-upload/angular-file-upload.min.js'
+                    'js/controllers/uploads/ng-file-upload.js'
                   ]
               },
               {

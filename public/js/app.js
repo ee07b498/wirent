@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-22T10:58:54+10:00
  * @Email:  yiensuen@gmail.com
- * @Last modified time: 2017-08-24T15:01:52+10:00
+ * @Last modified time: 2017-09-11T13:28:59+10:00
  */
 
 
@@ -10,6 +10,7 @@
 
 
 angular.module('app', [
+    'ngFileUpload',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -22,6 +23,5 @@ angular.module('app', [
     'ui.jq',
     'ui.validate',
     'oc.lazyLoad',
-    'ngFileUpload',
     'pascalprecht.translate'
 ]);

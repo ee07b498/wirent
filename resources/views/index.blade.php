@@ -1,9 +1,4 @@
-<!--
-# @Date:   2017-08-22T10:58:58+10:00
-# @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-09-05T12:38:59+10:00
--->
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" ng-app="andy">
 <head>
 	<meta charset="utf-8" />
@@ -35,7 +30,7 @@
 	<link rel="stylesheet" href="/css/winning/loading.css" type="text/css" />
 </head>
 <body ng-controller="MainCtrl">
-	<div style="height: 100%;" ui-view></div>
+	<div style="height: 100%;"  ui-view></div>
 	 <!-- jQuery -->
   <script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/angular/angular.js"></script>
@@ -54,8 +49,10 @@
 	<script src="vendor/angular/ngstorage/ngStorage.js"></script>
 	<script src="/node_modules/ui-bootstrap-tpls.js"></script>
 	<script src="/node_modules/ng-map.min.js"></script>
-	<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.48.min.js"></script>
+	<!-- <script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.48.min.js"></script>-->
+	<script src="js/controllers/uploads/ng-file-upload.js"></script>
+  <script src="js/controllers/uploads/aws-sdk-2.1.48.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDvEbpAtBYXMXoun-I3wYhn-7K33iVc7qs"></script>
 	<script src="/node_modules/ui-utils.js"></script>
 	<script src="/node_modules/underscore-min.js"></script>
