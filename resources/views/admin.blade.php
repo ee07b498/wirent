@@ -1,9 +1,3 @@
-<!--
-# @Date:   2017-06-30T10:20:05+10:00
-# @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-09-11T13:31:40+10:00
--->
-
 <!DOCTYPE html>
 <html lang="en" data-ng-app="app">
 <head>

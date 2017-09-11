@@ -1,11 +1,4 @@
-<!--
-# @Date:   2017-06-30T10:20:05+10:00
-# @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-02T09:50:23+10:00
--->
-
-
-    <div class="container w-xxl w-auto-xs" ng-controller="SignupFormController" >
+<div class="container w-xxl w-auto-xs" ng-controller="SignupFormController" >
       <a href class="navbar-brand block m-t">[:name1:]</a>
 
       <tabset class="tab-container">

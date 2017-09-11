@@ -1,11 +1,3 @@
-<!--
-# @Date:   2017-06-30T10:20:05+10:00
-# @Email:  yiensuen@gmail.com
-# @Last modified time: 2017-08-01T10:41:45+10:00
- -->
-
-
-
 <div class="container w-xxl w-auto-xs" ng-controller="SigninFormController" >
   <a href class="navbar-brand block m-t">[:name:]</a>
   <tabset class="tab-container">
